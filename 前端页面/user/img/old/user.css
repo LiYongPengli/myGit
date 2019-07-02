@@ -1,0 +1,340 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+html,body{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'PingFang-Medium';
+}
+
+/*外边距内边距清零 字体为微软雅黑*/
+ul,ol{
+    list-style: none;
+}          /*列表前的前缀去掉*/
+a,s,del,u{
+    color:#333;text-decoration: none;
+}          /*设定超链接. 下滑线. 删除线等字体颜色和清除字体的下缀*/
+h1,h2,h3,h4,h5,h6,i,em,strong,b,dl,dt,dd{
+    font:normal 12px 'PingFang-Medium';
+}          /*清除它们的加粗效果，统一设置字体和字体大小*/
+input,select,textarea,button,a{
+    outline: none;
+}          /*清除它们的焦点框*/
+textarea{
+    resize: none;
+}          /*清除文本域 框可以随意拉动*/
+img{
+    display: block;border:none;
+}          /*图片转换为块级元素，清除图片边框*/
+.clear{
+    clear:both
+}         /*同级清浮动*/
+.clearfix:after{
+    content:'';width:0;height:0;display: block;visibility: hidden;clear:both;
+}         /*父级清浮动*/
+input[type=button],input[type=submit],input[type=file],button{
+    cursor: pointer;
+    -webkit-appearance: none;
+} 
+ .phoneClick{
+     cursor: pointer;
+ }
+.content{
+    margin-bottom: 1.08rem;
+}
+.userHeader{
+    width: 100%;
+    height: 2.43rem;
+    background: url("../../userPic/userHeader-bg.png") no-repeat;
+    background-size: 100%;
+    background-color: #ffffff;
+}
+.userHeader-header{
+    display: flex;
+    width: 100%;
+    padding: 0.18rem 0 0;
+    justify-content: flex-end;
+}
+.setting{
+    margin-right: 0.35rem;
+    width:0.38rem;
+    height: .4rem;
+}
+.setting img{
+    width: 100%;
+}
+.info{
+    margin-right: 0.34rem;
+    width:0.38rem;
+    height: .4rem;
+    position: relative;
+}
+.info img{
+    width: .32rem;
+}
+.infoNum{
+    padding: 0 0.03rem;
+    height: .2rem;
+    position: absolute;
+    top: 0;
+    left: 0.16rem;
+    color: #fff;
+    background:#ff0000 ;
+    font-size: 0.16rem;
+    line-height: 0.2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+.userHeader-content{
+    display: flex;
+    padding-left: 0.3rem;
+}
+
+.tar{
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.26rem;
+    border-radius: 50%;
+}
+.tar img{
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+}
+.userInfo{
+    height: 1.1rem;
+    display: flex;
+    flex-direction: column;
+}
+.userName{
+    font-size: .36rem;
+    color: #ffffff;
+}
+.honnor{
+    width: 1.6rem;
+
+}
+.honnor-btn{
+    width: 100%;
+    height: .34rem;
+    font-size: .22rem;
+    line-height: .22rem;
+    color: #ffffff;
+    background: #e5494c;
+    border-radius: 0.5rem;
+    border: 0.01rem #dc3837 solid;
+    display: flex;
+    justify-content: center;
+    justify-content:center;
+    padding: 0.06rem 0.12rem 0.06rem;
+    align-items: center;
+    margin-top: 0.2rem;
+}
+.triangle_border_right{
+    width:0;
+    height:0;
+    border-width:.1px 0 .1px .1px;
+    border-style:solid;
+    border-color:transparent transparent transparent #ffffff;/*透明 透明 透明 灰*/
+    margin: auto;
+    position:relative;
+}
+.triangle_border_right span{
+    display:block;
+    width:0;
+    height:0;
+    border-width:.1rem 0 .1rem .1rem;
+    border-style:solid;
+    border-color:transparent transparent transparent #ffffff;/*透明 透明 透明 黄*/
+    position:absolute;
+    top:-.12rem;
+
+}
+.time{
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0.38rem;
+}
+.time p{
+    text-align: center;
+    font-size: 0.18rem;
+}
+.register{
+    margin-top: -.3rem;
+}
+.userContent{
+
+}
+.userContent-header{
+    padding: 0.3rem .8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    border-bottom: 0.01rem solid #f2f2f2;
+}
+.divider{
+    font-size: 0.32rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.diverHeader{
+    display: flex;
+}
+.diverLine{
+    width: 0.02rem;
+    height: 1.04rem;
+    background: #efefef;
+}
+.content{
+    background: #f2f2f2;
+}
+.diverHeader{
+    display: flex;
+    align-items: center;
+}
+.diverHeader img{
+    width: 0.4rem;
+    height: 0.33rem;
+    margin-right: 0.2rem;
+}
+.diverHeader .tou{
+    margin-left: 0.2rem;
+    width: 0.1rem;
+    height: 0.18rem;
+}
+.diverHeader .money{
+    width: 0.4rem;
+    height: 0.33rem;
+    height: 0.38rem;
+}
+.diverPrice{
+    text-align: center;
+    font-size: 0.24rem;
+    margin-top: 0.2rem;
+    color: #666666;
+}
+.userContent-headerLine{
+    display: flex;
+    padding:0.2rem 0rem;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+.data{
+    flex: 1;
+    border-right: 0.01rem solid #f2f2f2;
+}
+.data a{
+    display: block;
+    font-size: .26rem;
+}
+.data a p{
+    text-align: center;
+}
+.dataNum{
+    color: #f44b4f;
+    margin-bottom: 0.13rem;
+}
+.myOrder{
+    margin-top: .18rem;
+    background-color: #ffffff;
+    font-size: .28rem;
+}
+.orderHeader{
+    padding: 0.28rem 0.3rem;
+    border-bottom: 0.01rem solid #f2f2f2;
+}
+.orderState{
+    display: flex;
+    padding-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+.state{
+    flex: 1;
+    align-items: center;
+}
+.state h4{
+    text-align: center;
+    margin-top: 0.4rem;
+    margin-bottom: 0.1rem;
+}
+.state p{
+    text-align:  center;
+}
+.state i{
+    font-size: 0.4rem;
+    color: #777;
+}
+.state .t-remark3{
+    font-size: 0.18rem;
+    color: #8d8d8d;
+}
+.tool{
+    margin-top: 0.18rem;
+    background: #ffffff;
+}
+.toolHeader{
+    font-size: 0.28rem;
+    padding: 0.28rem 0.3rem;
+    border-bottom: 0.02rem solid #f2f2f2;
+}
+.toolList{
+    display: flex;
+    flex-wrap: wrap;
+    border:0.02rem solid #F2F2F2;
+}
+.tools{
+    border-right: 0.02rem solid #f2f2f2;
+    border-bottom: 0.02rem solid #f2f2f2;
+    padding: 0.35rem 0;
+    width: 25%;
+}
+.tools a{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tools a img{
+    width:0.48rem;
+    height: .44rem;
+}
+.tools a p{
+    font-size: 0.24rem;
+    margin-top: 0.11rem;
+    color: #666666;
+}
+.tab-down{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 0.02rem solid #efefef;
+    display: flex;
+    padding: 0.14rem 0 0.09rem;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+}
+.tab-down .taba{
+
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    align-items: center;
+
+}
+.taba img{
+    width: 0.5rem;
+    height: 0.44rem;
+}
+.taba p{
+    font-size: 0.2rem;
+    color: #333333;
+    margin-top: 0.07rem;
+}

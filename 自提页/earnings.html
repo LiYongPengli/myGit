@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./rem.js"></script>
+    <link rel="stylesheet" href="./css/earnings.css">
+    <title>我的收益</title>
+</head>
+<body>
+    <header>
+        <div class="top" onclick="toInfo()">明细</div>
+        <div class="banner">
+            <p>500.00</p>
+        </div>
+    </header>
+    <div class="centerCaption">提现方式</div>
+    <ul>
+        <li>
+            <div class="top">
+                <div class="left">
+                    <div class="img">
+                        <img src="./img/yinhangka@2x.png" alt="">
+                    </div>
+                    <p class="text">提现至银行卡</p>
+                </div>
+                <div class="right" id="one" onclick="animation(this)">
+                    <img src="./img/xia@2x.png" alt="">
+                </div>
+            </div>
+            <div class="foot">
+                <div class="list">
+                    <input type="number" placeholder="请输入提现金额">
+                </div>
+                <div class="list">
+                    <input type="text" placeholder="请输入开户行名称">
+                </div>
+                <div class="list">
+                    <input type="text" placeholder="请输入开户名">
+                </div>
+                <div class="list">
+                    <input type="number" placeholder="请输入银行卡卡号">
+                </div>
+                <a href="">
+                    <img src="./img/submit@2x.png" />
+                </a>
+            </div>
+        </li>
+
+
+        <li>
+            <div class="top">
+                <div class="left">
+                    <div class="img">
+                        <img src="./img/yue@2x.png" alt="">
+                    </div>
+                    <p class="text">提现至余额</p>
+                </div>
+                <div class="right" id="two" onclick="animation2(this)">
+                    <img src="./img/xia@2x.png" alt="">
+                </div>
+            </div>
+            <div class="foot2">
+                <div class="list">
+                    <input type="number" placeholder="请输入提现金额">
+                </div>
+                <a href="">
+                    <img src="./img/submit@2x.png" />
+                </a>
+            </div>
+        </li>
+    </ul>
+</body>
+<script>
+    var foot = document.getElementsByClassName("foot")[0];
+    var foot2 = document.getElementsByClassName("foot2")[0];
+    var flag = false,flag2 = false,timer,timer2,height = 0,height2 = 0
+    function animation(n){
+        if(!flag){
+            n.style.animation = "rout 0.3s linear forwards";
+            if(n.id == "one"){
+                time = setInterval(function(){
+                    height += 0.4;
+                    foot.style.height = height+"rem";
+                    if(height>17.5){
+                        clearInterval(time);
+                    }
+                },10)
+            }
+        }else{
+            n.style.animation = "rout2 0.3s linear forwards";
+            if(n.id == "one"){
+                time = setInterval(function(){
+                    height -= 0.4;
+                    foot.style.height = height+"rem";
+                    if(height<0.4){
+                        height = 0;
+                        foot.style.height = height+"rem";
+                        clearInterval(time);
+                    }
+                },10)
+            }
+        }
+        flag = !flag;
+    }
+
+
+
+    function animation2(n){
+        if(!flag2){
+            n.style.animation = "rout 0.3s linear forwards";
+            if(n.id == "two"){
+                time2 = setInterval(function(){
+                    height2 += 0.4;
+                    foot2.style.height = height2+"rem";
+                    if(height2>8.5){
+                        clearInterval(time2);
+                    }
+                },10)
+            }
+        }else{
+            n.style.animation = "rout2 0.3s linear forwards";
+            if(n.id == "two"){
+                time2 = setInterval(function(){
+                    height2 -= 0.4;
+                    foot2.style.height = height2+"rem";
+                    if(height2<0.4){
+                        height2 = 0;
+                        foot2.style.height = height2+"rem";
+                        clearInterval(time2);
+                    }
+                },10)
+            }
+        }
+        flag2 = !flag2;
+    }
+
+    function toInfo(){
+        location.href = "./earningsInfo.html"
+    }
+</script>
+</html>

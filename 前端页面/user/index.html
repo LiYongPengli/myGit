@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        ;(function(){
+            var html = document.getElementsByTagName("html")[0];
+            var width = window.screen.width;
+            html.style.fontSize = width/23.4375+"px";
+        })();
+        window.onresize = function(){
+            var html = document.getElementsByTagName("html")[0];
+            var width = window.screen.width;
+            html.style.fontSize = width/23.4375+"px";
+        }
+    
+    </script>
+    <link rel="stylesheet" href="__PUBLIC__/css/addNewText/user.css">
+    <title>个人中心</title>
+</head>
+<body>
+    <header>
+        <div class="float">
+                天天领金豆
+        </div>
+        <div class="top">
+            <div class="left">
+                <img class="vs" src="__PUBLIC__/img/addNewText/user/textV.png" alt="">
+                <div class="img" onclick="clicks(this)" url="{url('profile/index')}">
+                    {if $info.user_picture !=='' }
+                    <img src="{$info.user_picture}">
+                    {else}
+                    <img src="{elixir('img/no_image.jpg')}">
+                    {/if}
+                </div>
+                <div class="text">
+                    <p onclick="clicks(this)" url="{url('profile/index')}">{$info.mobile_phone}</p>
+                    <div class="foot" onclick="clicks(this)" url="{url('index/userhonorlog')}">
+                        <div class="img">
+                            <img src="__PUBLIC__/img/addNewText/user/rongYuHuiZhang.png" alt="">
+                        </div>
+                        <p>荣誉值:{$info.honor}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div onclick="clicks(this)" url="{url('profile/index')}">
+                    <img src="__PUBLIC__/img/addNewText/user/setting.png" alt="">
+                </div>
+                <div onclick="clicks(this)" url="{url('index/messagelist')}">
+                    <img src="__PUBLIC__/img/addNewText/user/message.png" alt="">
+                    {if $cache_info }
+                    <div class="message">{$cache_info}</div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="items" onclick="clicks(this)" url="{url('user/index/collectionlist')}">
+                <p>17</p>
+                <p>商品收藏</p>
+            </div>
+            <div class="items" onclick="clicks(this)" url="{url('user/index/storelist')}">
+                <p>17</p>
+                <p>店铺关注</p>
+            </div>
+            <div class="items" onclick="clicks(this)" url="http://wap1.nst1688.com/#/my">
+                <p>17</p>
+                <p>我的发布</p>
+            </div>
+            <div class="items" onclick="clicks(this)" url="{url('account/li_cheng')}">
+                <p>{$mileage}</p>
+                <p>骑行里程(km)</p>
+            </div>
+        </div>
+    </header>
+    <div class="banner">
+        <div class="left">
+            <figure onclick="clicks(this)" url="{url('user/order/index', array('status'=>1))}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/daifukuan.png" alt="">
+                </div>
+                <figcaption>待付款</figcaption>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('team/user/index')}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/daipintuan.png" alt="">
+                </div>
+                <figcaption>待拼团</figcaption>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('user/order/index',array('status'=>2))}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/daishouhuo.png" alt="">
+                </div>
+                <figcaption>待收货</figcaption>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('user/index/comment_list')}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/daipingjia.png" alt="">
+                </div>
+                <figcaption>待评价</figcaption>
+            </figure>
+        </div>
+        <div class="center">
+            <img src="__PUBLIC__/img/addNewText/user/shap.png" alt="">
+        </div>
+        <div class="right" onclick="clicks(this)" url="{url('order/index',array('status'=>0))}">
+            <div class="img">
+                <img src="__PUBLIC__/img/addNewText/user/wodedingdan.png" alt="">
+            </div>
+            <p>我的订单</p>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="left">
+            <figure>
+                <div class="text">
+                        120
+                </div>
+                <figcaption>中润豆</figcaption>
+            </figure>
+            <figure>
+                <div class="text">
+                    50000
+                </div>
+                <figcaption>优惠券</figcaption>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('drp/index/index')}">
+                <div class="text">
+                        {$wait_amount}
+                </div>
+                <figcaption>收益(元)</figcaption>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('drp/user/team')}">
+                <div class="text">
+                        {$num}
+                </div>
+                <figcaption>团队人数</figcaption>
+            </figure>
+        </div>
+        <div class="center">
+            <img src="__PUBLIC__/img/addNewText/user/shap.png" alt="">
+        </div>
+        <div class="right" onclick="clicks(this)" url="{url('user/index/usermoney')}">
+            <div class="img">
+                <img src="__PUBLIC__/img/addNewText/user/wodeqianbao.png" alt="">
+            </div>
+            <p>我的钱包</p>
+        </div>
+    </div>
+    <div class="tools">
+        <div class="header">
+                工具与服务
+        </div>
+        <div class="body">
+            <figure onclick="clicks(this)" url="{url('merchants/index/index')}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/shangjiaruzhu.png" alt="">
+                </div>
+                <p>商家入驻</p>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('user/index/erweima')}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/erweima.png" alt="">
+                </div>
+                <p>我的推广</p>
+            </figure>
+            <figure>
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/shouhouwangdian.png" alt="">
+                </div>
+                <p>售后网点</p>
+            </figure>
+            <figure onclick="clicks(this)" url="{url('purchase/index/apply')}">
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/caigou.png" alt="">
+                </div>
+                <p>采购专区</p>
+            </figure>
+            <figure>
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/niuzai.png" alt="">
+                </div>
+                <p>牛仔租赁</p>
+            </figure>
+            <figure>
+                <div class="img">
+                    <img src="__PUBLIC__/img/addNewText/user/zhongrunchuxing.png" alt="">
+                </div>
+                <p>中润出行</p>
+            </figure>
+        </div>
+    </div>
+    <div class="caiGou">
+        <div class="header">
+                开通采购专区
+        </div>
+        <div class="body">
+            <div class="wrap" onclick="clicks(this)" url="" >
+                <img src="__PUBLIC__/img/addNewText/user/kaitogndaili@2x.png" alt="">
+            </div>
+            <!-- {if $purch_user_rank}
+            <a href="http://m.nst1688.com/mobile/index.php?m=purchase">
+                <img src="__PUBLIC__/img/addNewText/user/footerImggo.png" />
+            </a>
+               <img src="../../../public/img/addNewText/user/footerImg.png" />
+            {else}
+            <a href="http://m.nst1688.com/mobile/index.php?m=purchase&a=apply">
+                <img src="__PUBLIC__/img/addNewText/user/footerImg.png" />
+            </a>
+            {/if} -->
+        </div>
+    </div>
+    <footer>
+            {if $sign_area}授权区域，{$sign_area}{/if}
+    </footer>
+    <!--遮罩层-->
+    <div class="back">
+            <a class="imgWrap" href="{url('user/account/coupont')}">
+                <img src="__PUBLIC__/img/coupons.png"/>
+            </a>
+            <div class="close" onclick="closeBack()">
+                <img src="__PUBLIC__/close.png"/>
+            </div>
+        </div>
+    </body>
+</body>
+<script>
+
+    function clicks(addr){
+        //console.log(addr.getAttribute("url"))
+        if(addr.getAttribute("url")){
+            location.href = addr.getAttribute("url");
+        }
+    }
+
+
+    //控制遮罩层显示与隐藏的变量
+        if({$coupons_alert}){
+            var showBack = true;
+        }else{
+            var showBack = false;
+        }
+
+        var back = document.getElementsByClassName("back")[0];
+        window.onload = function(){
+            (showBack)?back.style.display = 'block':back.style.display = "none";
+        }
+
+        function closeBack(){
+            back.style.display = "none";
+        }
+</script>
+</html>

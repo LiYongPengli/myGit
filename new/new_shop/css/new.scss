@@ -1,0 +1,223 @@
+*{margin: 0;padding: 0;}
+$font-size:16px;
+
+@function rem($px){
+	@return $px/$font-size/2 * 1rem;
+}
+
+body{
+	background: #f2f2f2;
+}
+
+.wrap{
+	width: 100%;
+	box-sizing: border-box;
+	background: #f2f2f2;
+	padding: 0 rem(20px);
+	header{
+		width: 100%;
+		height: rem(128px);
+		display: flex;
+		align-items: center;
+		background: white;
+		position: fixed;
+		left: 0;
+		top: 0;
+		.left{
+			margin-left: rem(24px);
+			font-size: rem(40px);
+		}
+		p{
+			font-size:rem(40px);
+			font-family:SourceHanSansCN-Regular;
+			font-weight:400;
+			color:rgba(51,51,51,1);
+			margin-left: rem(240px);
+		}
+	}
+	.header-next{
+		width: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+		background: #f2f2f2;
+		box-sizing: border-box;
+		padding: 0 rem(20px);
+		.back{
+			width: rem(50px);
+			img{
+				width: 100%;
+				display: block;
+			}
+		}
+		.left,.right{
+			display: flex;
+			background: white;
+			align-items: center;
+			margin: rem(20px) 0;
+			padding: rem(10px) rem(20px);
+			border-radius: rem(12px);
+			.imgs{
+				display: block;
+				width: rem(20px);
+				img{
+					width: 100%;
+					display: block;
+				}
+			}
+			p{
+				font-size:rem(30px);
+				font-family:SourceHanSansCN-Normal;
+				font-weight:400;
+				color:rgba(102,102,102,1);
+			}
+		}
+		.right{
+			margin-left:rem(38px);
+		}
+	}
+	.center{
+		margin-top: rem(120px);
+		.text{
+			background: white;
+			margin: rem(20px) 0;
+			border-radius: 10px;
+			.text_top{
+				height: rem(150px);
+				display: flex;
+				justify-content: space-between;
+				padding: rem(20px);
+				.left{
+					text-align: left;
+					p:first-of-type{
+						font-size: rem(30px);
+						font-family:SourceHanSansCN-Regular;
+						font-weight:400;
+						color:rgba(51,51,51,1);
+					}
+					p:nth-of-type(2){
+						font-size: rem(22px);
+						font-family:SourceHanSansCN-Normal;
+						font-weight:400;
+						color:rgba(102,102,102,1);
+						margin: rem(10px) 0;
+						img{
+							width: rem(20px);
+							height: rem(20px);
+						}
+					}
+					p:last-of-type{
+						font-size: rem(26px);
+						font-family:SourceHanSansCN-Normal;
+						font-weight:400;
+						color:rgba(102,102,102,1);
+						img{
+							width: rem(20px);
+							height: rem(20px);
+						}
+					}
+				}
+				.right{
+					text-align: right;
+					p:first-of-type{
+						font-size: rem(22px);
+						font-family:SourceHanSansCN-Normal;
+						font-weight:400;
+						color:rgba(153,153,153,1);
+					}
+					p:nth-of-type(2){
+						span{
+							font-size: rem(48px);
+							font-family:SourceHanSansCN-Normal;
+							font-weight:400;
+							color:rgba(244,75,78,1);
+						}
+						font-size: rem(20px)
+					}
+					p:last-of-type{
+						font-size: rem(22px);
+						font-family:SourceHanSansCN-Normal;
+						font-weight:400;
+						color:rgba(153,153,153,1);
+					}
+				}
+			}
+			.footer{
+				width: 100%;
+				padding-bottom: 10px;
+				overflow-x: scroll;
+				.footer_wrap{
+					height: rem(180px);
+					white-space:nowrap;
+					div{
+						height: rem(154px);
+						display: inline-block;
+						text-align: center;
+						padding: 0 rem(10px);
+						img{
+							height: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+	.infoImages{
+		width: rem(750px);
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 100;
+		background: rgba(0,0,0,.9);
+		.swiper-container{
+			width: rem(750px);
+			margin: 0;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			.swiper-wrapper{
+				//height: rem(848px);
+				.swiper-slide{
+					img{
+						max-width: 100%;
+						max-height: 100%;
+						display: block;
+						margin: auto;
+					}
+				}
+			}
+			.swiper-pagination{
+				width: rem(90px);
+				height: rem(44px);
+				top: rem(19px);
+				left: rem(640px);
+				background: rgba(0,0,0,.5);
+				border-radius: rem(20px);
+				font-size: rem(12px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				span:last-of-type{
+					color: gray;
+				}
+			}
+		}
+	}
+	.loading{
+		text-align: center;
+		background: white;
+		.iconfont{
+			font-size: rem(60px);
+		}
+	}
+
+	@keyframes show {
+		from{opacity: 0;}
+		to{opacity: 1;}
+	}
+}

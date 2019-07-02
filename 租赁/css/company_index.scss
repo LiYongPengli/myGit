@@ -1,0 +1,95 @@
+*{margin: 0;padding: 0};
+
+$font-size:16px;
+
+@function rem($px){
+    @return $px/$font-size/2*1rem;
+}
+
+body{
+    background:rgba(242,242,242,1);
+}
+
+header{
+    width: rem(750px);
+    height: rem(320px);
+    background: url(../img/back1@2x.png) no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+    padding-top: 1px;
+    p:first-of-type{
+        margin-top: rem(53px);
+        margin-left: rem(63px);
+        font-size:rem(48px);
+        font-family:SourceHanSansCN-Medium;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+        line-height:rem(48px);
+    }
+    p:last-of-type{
+        margin-left: rem(63px);
+        font-size:rem(36px);
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        line-height:rem(48px);
+    }
+    .footer{
+        width: rem(616px);
+        margin: auto;
+        padding: rem(29px) 0 rem(29px) rem(29px);
+        margin-top: rem(45px);
+        background:rgba(255,255,255,1);
+        opacity:0.92;
+        border-radius:12px;
+        font-size:rem(26px);
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        line-height:rem(36px);
+    }
+}
+.center{
+    width:rem(690px);
+    background: white;
+    border-radius:rem(12px);
+    padding-top: 1px;
+    margin: rem(30px) auto;
+    .ipt{
+        width:rem(610px);
+        margin: rem(20px) auto;
+        input{
+            width:rem(543px);
+            padding: rem(20px) 0 rem(20px) rem(67px);
+            background:rgba(255,249,219,1);
+            border-radius:rem(12px);
+            border: none;
+            outline: none;
+        }
+        input::-webkit-input-placeholder{
+            font-size: rem(30px);
+        }
+    }
+    .ipt:first-of-type{
+        margin-top: rem(67px)
+    }
+    footer{
+        width: 100%;
+        text-align: center;
+        button{
+            width:rem(610px);
+            background:rgba(241,193,1,1);
+            border-radius:rem(45px);
+            font-size:rem(32px);
+            font-family:SourceHanSansCN-Medium;
+            font-weight:500;
+            color:rgba(255,255,255,1);
+            line-height:rem(48px);
+            text-shadow:0px 2px 6px rgba(211,175,6,1);
+            padding: rem(20px) 0;
+            margin: rem(50px) 0;
+            border: none;
+            outline: none;
+        }
+    }
+}

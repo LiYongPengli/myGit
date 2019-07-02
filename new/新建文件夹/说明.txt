@@ -1,0 +1,1 @@
+procurementShop使用时需要引入jQuery

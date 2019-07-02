@@ -1,0 +1,108 @@
+*{margin: 0;padding: 0};
+
+$font-size:16px;
+
+@function rem($px){
+    @return $px/$font-size/2*1rem;
+}
+
+body{
+    background:rgba(242,242,242,1);
+}
+li{list-style: none;}
+a{
+    color: black;
+    text-decoration: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+header{
+    width: rem(750px);
+    height: rem(320px);
+    background: url(../img/back1@2x.png) no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+    padding-top: 1px;
+    p:first-of-type{
+        margin-top: rem(53px);
+        margin-left: rem(63px);
+        font-size:rem(48px);
+        font-family:SourceHanSansCN-Medium;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+        line-height:rem(48px);
+    }
+    p:last-of-type{
+        margin-left: rem(63px);
+        margin-top: rem(10px);
+        font-size:rem(26px);
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        line-height:rem(48px);
+    }
+    .footer{
+        width: rem(616px);
+        margin: auto;
+        padding: rem(29px) 0 rem(29px) rem(29px);
+        margin-top: rem(45px);
+        background:rgba(255,255,255,1);
+        opacity:0.92;
+        border-radius:12px;
+        font-size:rem(26px);
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        line-height:rem(36px);
+    }
+}
+.center{
+    width: rem(690px);
+    margin: rem(20px) auto;
+    background: white;
+    box-sizing: border-box;
+    padding: rem(20px) 0;
+    li{
+        margin: rem(20px) auto;
+        width: rem(610px);
+        input{
+            display: block;
+            width: rem(590px);
+            height: rem(80px);
+            background:rgba(255,249,219,1);
+            border-radius:rem(12px);
+            outline: none;
+            border: none;
+            padding-left: rem(20px);
+        }
+        input::-webkit-input-placeholder{
+            font-size: rem(30px);
+            line-height: rem(30px);
+        }
+    }
+    li:nth-of-type(5){
+        display: flex;
+        justify-content: space-between;
+        input{
+            width: 45%;
+        }
+    }
+    li:last-of-type{
+        display: flex;
+        justify-content: center;
+        padding: rem(20px) 0;
+        a{
+            width: rem(610px);
+            background:rgba(241,193,1,1);
+            border-radius:rem(45px);
+            text-align: center;
+            font-size:rem(32px);
+            font-family:SourceHanSansCN-Medium;
+            font-weight:500;
+            color:rgba(255,255,255,1);
+            line-height:rem(48px);
+            text-shadow:0px 2px 6px rgba(211,175,6,1);
+            padding: rem(15px) rem(20px);
+        }
+    }
+}

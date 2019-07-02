@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./rem.js"></script>
+    <link rel="stylesheet" href="./css/user.css">
+    <title>个人中心</title>
+</head>
+<body>
+    <ul>
+        <li onclick="myOrder()">
+            <div class="img">
+                <img src="./img/caigou_he@2x.png" />
+            </div>
+            <p>我的订单</p>
+        </li>
+        <li onclick="code()">
+            <div class="img">
+                <img src="./img/code@2x.png" />
+            </div>
+            <p>扫码验证</p>
+        </li>
+        <li onclick="earnings()">
+            <div class="img">
+                <img src="./img/wodeshouyi@2x.png" />
+            </div>
+            <p>我的收益</p>
+        </li>
+    </ul>
+    <footer>
+        <a href="">
+            <div class="img">
+                <img src="./img/pifa_no@2x.png" />
+            </div>
+            <p>批发首页</p>
+        </a>
+        <a href="">
+            <div class="img">
+                <img src="./img/liebiao_no@2x.png" />
+            </div>
+            <p>批发列表</p>
+        </a>
+        <a href="">
+            <div class="img">
+                <img src="./img/shap 7@2x.png" />
+            </div>
+            <p>进货单</p>
+        </a>
+        <a href="">
+            <div class="img">
+                <img src="./img/caigou_no@2x.png" />
+            </div>
+            <p>采购信息</p>
+        </a>
+        <a href="">
+            <div class="img">
+                <img src="./img/wode_he@2x.png" />
+            </div>
+            <p class="active">我的</p>
+        </a>
+    </footer>
+</body>
+<script>
+    
+    function myOrder(){
+        location.href = "./myOrder.html";
+    }
+    function code(){
+        location.href = "./code.html";
+    }
+    function earnings(){
+        location.href = "./earnings.html";
+    }
+
+</script>
+</html>

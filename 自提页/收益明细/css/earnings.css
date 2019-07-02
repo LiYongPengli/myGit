@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* body{
+    background:rgba(248,249,253,1);
+} */
+li {
+  list-style: none;
+}
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+header .top {
+  width: 20.9375rem;
+  margin: auto;
+  text-align: right;
+  font-size: 0.9375rem;
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  color: #333333;
+  padding: 0.78125rem 0;
+}
+
+header .banner {
+  width: 20.9375rem;
+  height: 6.1875rem;
+  margin: auto;
+  background: url(../img/zhanghuyue@2x.png) no-repeat;
+  background-size: 100%;
+  padding-top: 1px;
+}
+
+header .banner p {
+  font-size: 1.5625rem;
+  font-family: Adobe Heiti Std R;
+  font-weight: normal;
+  color: white;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.centerCaption {
+  font-size: 1rem;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  color: #333333;
+  box-sizing: border-box;
+  padding: 0.625rem 1.375rem;
+}
+
+ul {
+  width: 21.0625rem;
+  margin: auto;
+}
+
+ul li .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0;
+}
+
+ul li .top .left {
+  display: flex;
+  align-items: center;
+}
+
+ul li .top .left .img {
+  width: 1.1875rem;
+}
+
+ul li .top .left .img img {
+  width: 100%;
+  display: block;
+}
+
+ul li .top .left .text {
+  font-size: 0.9375rem;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #333333;
+  margin-left: 0.625rem;
+}
+
+ul li .top .right {
+  width: 1.375rem;
+}
+
+ul li .top .right img {
+  width: 100%;
+  display: block;
+}
+
+ul li .foot, ul li .foot2 {
+  height: 0;
+  background: #f5f1f1;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+ul li .foot .list, ul li .foot2 .list {
+  width: 18.125rem;
+  margin: 0.78125rem auto;
+}
+
+ul li .foot .list input, ul li .foot2 .list input {
+  width: 100%;
+  border: none;
+  line-height: 2.5rem;
+  border-radius: 0.375rem;
+  outline: none;
+}
+
+ul li .foot .list input::-webkit-input-placeholder, ul li .foot2 .list input::-webkit-input-placeholder {
+  text-align: center;
+  font-size: 0.9375rem;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #999999;
+}
+
+ul li .foot a, ul li .foot2 a {
+  display: block;
+  width: 18.125rem;
+  margin: 0.9375rem auto;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul li .foot a img, ul li .foot2 a img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes rout {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rout2 {
+  from {
+    transform: rotateZ(180deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}

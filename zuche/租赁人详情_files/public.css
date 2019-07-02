@@ -1,0 +1,90 @@
+/*-----------公共样式reset 重置------------*/
+*{
+    margin:0;padding:0;font-family: 微软雅黑;
+}
+html,body{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/*外边距内边距清零 字体为微软雅黑*/
+ul,ol{
+    list-style: none;
+}          /*列表前的前缀去掉*/
+a,s,del,u{
+    color:#333;text-decoration: none;
+}          /*设定超链接. 下滑线. 删除线等字体颜色和清除字体的下缀*/
+h1,h2,h3,h4,h5,h6,i,em,strong,b,dl,dt,dd{
+    font:normal 12px '微软雅黑';
+}          /*清除它们的加粗效果，统一设置字体和字体大小*/
+input,select,textarea,button,a{
+    outline: none;
+}          /*清除它们的焦点框*/
+textarea{
+    resize: none;
+}          /*清除文本域 框可以随意拉动*/
+img{
+    display: block;border:none;
+}          /*图片转换为块级元素，清除图片边框*/
+.clear{
+    clear:both
+}         /*同级清浮动*/
+.clearfix:after{
+    content:'';width:0;height:0;display: block;visibility: hidden;clear:both;
+}         /*父级清浮动*/
+input[type=button],input[type=submit],input[type=file],button{
+    cursor: pointer;
+    -webkit-appearance: none;
+} 
+.phoneClick{
+     cursor: pointer;
+ }
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 312.5%;
+    }
+}
+@media screen and (min-width: 360px) {
+    html {
+        font-size: 351.56%;
+    }
+}
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 390.63%;
+    }
+}
+@media screen and (min-width: 440px) {
+    html {
+        font-size: 429.69%;
+    }
+}
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 468.75%;
+    }
+}
+@media screen and (min-width: 520px) {
+    html {
+        font-size: 507.81%;
+    }
+}
+@media screen and (min-width: 560px) {
+    html {
+        font-size: 546.88%;
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 585.94%;
+    }
+}
+@media screen and (min-width: 640px) {
+    html {
+        font-size: 625%;
+    }
+}
+body{
+    overflow-y: scroll;
+}

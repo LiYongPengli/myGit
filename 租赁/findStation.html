@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./rem.js"></script>
+    <link rel="stylesheet" href="./css/findStation.min.css">
+    <title>站点查询</title>
+</head>
+<body>
+    <header>
+        <p>搜索</p>
+        <p>search</p>
+        <div class="footer">
+            可根据骑手或站点查询车辆信息 和车辆历史租赁信息
+        </div>
+    </header>
+    <div class="center">
+        <div class="qishouAndStation">
+            <div class="qishou active">骑手</div>
+            <div class="station">站点</div>
+        </div>
+    </div>
+    <div class="textWrap">
+        <!-- 搜索站点 -->
+            <div class="stationSearch">
+                    <select>
+                        <option selected>选择站点名称</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+            </div>
+            <!-- 搜索骑手 -->
+            <div class="qishouSearch">
+                <div>
+                    <input type="text" placeholder="请输入骑手姓名">
+                </div>
+                <div>
+                    <input type="number" placeholder="手机号：" maxlength="11">
+                </div>
+                <div>
+                    <input type="number" placeholder="身份证号码：" maxlength="18">
+                </div>
+            </div>
+    </div>
+    <footer>
+        <button>搜索</button>
+    </footer>
+</body>
+<script>
+    var qishou = document.getElementsByClassName("qishou")[0];
+    var station = document.getElementsByClassName("station")[0];
+    var stationSearch = document.getElementsByClassName("stationSearch")[0];
+    var qishouSearch = document.getElementsByClassName("qishouSearch")[0];
+
+    qishou.onclick = function(){
+        if(this.className.indexOf("active") ==-1){
+            this.className = "qishou active";
+            station.className = "station";
+            stationSearch.style.display = "none";
+            qishouSearch.style.display = "block";
+        }
+    }
+
+    station.onclick = function(){
+        if(this.className.indexOf("active") ==-1){
+            this.className = "station active";
+            qishou.className = "qishou";
+            stationSearch.style.display = "block";
+            qishouSearch.style.display = "none";
+        }
+    }
+</script>
+</html>

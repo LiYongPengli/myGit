@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金豆明细</title>
+    <script>
+        ;(function(){
+            var html = document.getElementsByTagName("html")[0];
+            var width = window.screen.width;
+            html.style.fontSize = width/23.4375+"px";
+        })();
+        window.onresize = function(){
+            var html = document.getElementsByTagName("html")[0];
+            var width = window.screen.width;
+            html.style.fontSize = width/23.4375+"px";
+        }
+    
+    </script>
+    <link rel="stylesheet" href="./css/jinDouInfo.css">
+</head>
+<body>
+    <header>
+        <p>1000</p>
+        <p>当前金豆(个)</p>
+    </header>
+    <ul class="list">
+        <li onclick="clicks(this)" url="">
+            <div class="left">
+                <div class="top">
+                        无线端签到领金豆
+                </div>
+                <div class="time">
+                        2019-06-09   09:40:30
+                </div>
+            </div>
+            <div class="right">
+                +10
+            </div>
+        </li>
+    </ul>
+</body>
+<script>
+
+    window.onload = function(){
+        var li = document.querySelectorAll("li");
+        for(let i=0;i<li.length;i++){
+            var cash = li[i].children[1];
+            if(~cash.innerHTML.indexOf("+")){
+                cash.style.color = "red";
+            }
+        }
+        
+    }
+
+    function clicks(url){
+        if(url.getAttribute("url")){
+            location.href = url.getAttribute("url")
+        }
+    }
+</script>
+</html>

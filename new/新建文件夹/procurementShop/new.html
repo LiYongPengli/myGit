@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>申请代理</title>
+		<script src="./rem.js"></script>
+		<script src="./js/jquery-3.3.1.min.js"></script>
+		<link rel="stylesheet" href="./css/new.min.css">
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="imgwrap">
+				<img src="./img/picture1.png" />
+			</div>
+			<div class="imgwrap">
+				<img src="./img/picture2.png" />
+			</div>
+			<div class="imgwrap">
+				<img src="./img/picture3.png" />
+			</div>
+			<div class="imgwrap">
+				<img src="./img/picture4.png" />
+			</div>
+		</div>
+		
+
+		<div class="windowWraper" style="display: none">
+			<div class="showWindow">
+				<div class="input">
+					<div>
+						<input type="text" placeholder="输入您的姓名" />
+					</div>
+					<div class="last">	
+						<input type="number" placeholder="输入您的电话" maxlength="11"/>
+					</div>
+					<p>提交信息后，我们将尽快与您联系</p>
+				</div>
+				<div class="submit">
+					<button>提交</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<div>
+				<button>申请代理</button>
+			</div>
+			<div>
+				<button>已是代理</button>
+			</div>
+		</div>
+	</body>
+	<script>
+
+		$(".showWindow").click(function(e){
+			var ev = e||event;
+			ev.stopPropagation();
+		})
+		$(".footer div").eq(0).click(function(){
+			$(".windowWraper").eq(0).css("display","block");
+		})
+		$(".windowWraper").click(function(){
+			$(this).css("display","none")
+		})
+	
+		//判断手机号
+		$(".submit button").click(function(){
+			var val = $(".last input").val()
+			var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+            if (!myreg.test(val)) {
+                return 0;
+            } else {
+                //手机号正确
+            }
+		})
+	</script>
+</html>
