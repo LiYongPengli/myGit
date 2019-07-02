@@ -73,12 +73,20 @@ header{
         margin-top: rem(24px);
     }
 }
+.banner{
+    width: rem(732px);
+    margin: auto;
+    img{
+        width: 100%;
+        display: block;
+    }
+}
 
 .todyRenwu{
     width: rem(710px);
     margin: 0 auto;
     padding-top: 1px;
-    margin-top: rem(50px);
+    margin-top: rem(40px);
     .top{
         display: block;
         padding-top: 1px;

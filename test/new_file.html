@@ -4,44 +4,25 @@
 		<meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta charset="utf-8">
 		<title>图片压缩</title>
-		<script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js 
-		"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=TlAeuRGnonkU82nUoh15QiUGgEKTjFSW"></script>
 	</head>
 	<body>
-		<canvas width="600" height="400" id="cav"></canvas>
+		
 	</body>
 	<script type="text/javascript">
-		var cav = document.getElementById("cav");
-		var ctx = cav.getContext('2d');
-		
-		var arr = []
-		draw()
-		
-		function draw(){
-			ctx.moveTo(0,0);
-			ctx.strokeStyle = "green"
-			ctx.font="50px Arile"
-			ctx.strokeText("hello",0,50)
-			getDraw()
-		}
-		
-		function getDraw(){
-			var data = ctx.getImageData(0,0,cav.width,cav.height);
-			ctx.clearRect(0,0,cav.width,cav.height)
-			console.log(data.data)
-			for (let i = 0; i < 400; i++) {
-				for(let j=3;j<2400;j+=4){
-					if(data.data[i*2400+j]>128){
-						var position = {
-							x:j,
-							y:i+3
-						}
-						
-					}
+		getLocation()
+		function getLocation(){
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r){
+				if(this.getStatus() == BMAP_STATUS_SUCCESS){
+					alert('您的位置：'+r.point.lng+','+r.point.lat);
 				}
-			}
-			console.log(arr)
-			ctx.putImageData(data,0,0)
-		}
+				else {
+					alert('failed'+this.getStatus());
+				}        
+			});
+		
+		};
+
 	</script>
 </html>
