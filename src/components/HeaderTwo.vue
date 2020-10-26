@@ -4,7 +4,25 @@
       <div class="logo">
         <img src="../assets/img/logo.png" alt="">
       </div>
-      <div class="user"></div>
+      <div class="user">
+        <div class="user_img">
+          <img src="../assets/img/tx.png" alt="">
+        </div>
+        <div class="user_name">
+          <el-dropdown class="select" @command="handleCommand" trigger="click">
+            <span style="color: white" class="el-dropdown-link">
+              username<i
+                style="margin-left: 20px"
+                class="el-icon-arrow-down el-icon--right"
+              ></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="/user">个人中心</el-dropdown-item>
+              <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
       <div class="search">
         <img src="../assets/img/search.png" alt="">
         <input type="text" placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策" />
@@ -17,11 +35,30 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { baseApi } from '@/axios/axios';
 import { Component,Vue } from 'vue-property-decorator'
 @Component
 export default class HeaderTwo extends Vue {
-
+  public handleCommand(cmd:string):void{
+    if(cmd=='logout'){
+      this.logout();
+    }else if(cmd=='/user'){
+      this.$router.push(cmd);
+    }
+  }
+  //登出
+  private logout():void{
+    this.axios.post(baseApi.api1+'/v1/user/login/logout').then(res=>{
+      console.log(res.data)
+      if(res.data.status==1){
+        this.$router.push('/login');
+        this.$message.success('已登出');
+      }
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
 }
 </script>
 
@@ -46,6 +83,18 @@ export default class HeaderTwo extends Vue {
         display: block;
         width: 55%;
         margin: auto;
+      }
+    }
+    .user{
+      display: flex;
+      align-items: center;
+      .user_img{
+        width: 39px;
+        height: 39px;
+        margin-left: 31px;
+      }
+      .user_name{
+        margin-left: 21px;
       }
     }
     .user{
