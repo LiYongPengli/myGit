@@ -35,17 +35,51 @@
                 font-weight: bold;
                 font-size: 20px;
             }
-            .gjlb {
-                p {
-                    color: red
-                }
-                span {
-                    color: green;
+        }
+        .gjlb {
+            background-color: #3a3a48;
+            position: relative;
+            p.sx {
+                margin-top: 10px;
+                margin-left: 30px;
+                padding-top: 30px;
+                color: #bcc2d5;
+                font-size: 14px;
+            }
+            .erhang {
+                margin-top: 15px;
+                height: 26px;
+                line-height: 26px;
+                padding-bottom: 30px;
+                color: white;
+                span.all {
+                    float: left;
+                    margin-left: 50px;
+                    font-size: 14px;
+                    cursor: pointer;
                 }
                 ul {
+                    overflow: hidden;
                     list-style: none;
                     li {
+                        cursor: pointer;
                         float: left;
+                        margin-left: 25px;
+                        margin-right: 25px;
+                        a {
+                            padding: 0 10px;
+                            font-size: 15px;
+                        }
+                    }
+                    li:first-child {
+                        background-color: #0079ed;
+                    }
+                    div.gd {
+                        cursor: pointer;
+                        float: right;
+                        margin-right: 30px;
+                        padding: 0 10px;
+                        border: 1px solid #676770;
                     }
                 }
             }
@@ -55,10 +89,9 @@
             padding-top: 10px;
             ul {
                 list-style: none;
-                padding-left: 40px;
                 li {
                     margin-top: 30px;
-                    // padding-left: 50px;
+                    padding-left: 40px;
                     padding-bottom: 30px;
                     overflow: hidden;
                     // border-bottom: 1px solid #3a3a48;
@@ -97,7 +130,10 @@
                         margin-top: 15px;
                         .title {
                             font-size: 16px;
-                            color: white;
+                            a {
+                                color: white;
+                                text-decoration: none;
+                            }
                         }
                         .ziyuan {
                             margin-top: 20px;
