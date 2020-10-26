@@ -1,0 +1,227 @@
+.login {
+  width: 100%;
+  height: 100%;
+  //background: url(../../assets/img/login_back.jpg) no-repeat;
+  color: white;
+  .login_wrap {
+    width: 27%;
+    min-width: 400px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    .logo {
+      margin-left: 15%;
+      padding-top: 50px;
+    }
+    .title {
+      margin-left: 15%;
+      margin-top: 100px;
+      font-size: 18px;
+      padding: 20px 0;
+    }
+    .inputs,
+    .phoneLogin {
+      margin-left: 15%;
+      width: 70%;
+      .item {
+        position: relative;
+        input {
+          width: 100%;
+          background: none;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid gray;
+          color: white;
+          box-sizing: border-box;
+          padding: 20px 0 20px 50px;
+        }
+        input::-webkit-input-placeholder {
+          color: white;
+        }
+        .icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .show {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+        .code {
+          width: 100px;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+        .get_code {
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 12px;
+          border: 1px solid gray;
+          padding: 6px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+      .password {
+        input {
+          padding-right: 30px;
+        }
+      }
+      .sub_btn {
+        display: flex;
+        margin-top: 40px;
+      }
+      .other {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        .el-checkbox {
+          color: white;
+        }
+        .foget_pwd {
+          cursor: pointer;
+        }
+        .foget_pwd:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .bindAccount {
+      width: 70%;
+      margin-left: 15%;
+      .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        .left_log,
+        .right_log {
+          display: flex;
+          width: 70px;
+          height: 70px;
+          box-sizing: border-box;
+          border: 1px solid gray;
+          border-radius: 50%;
+          img {
+            display: block;
+            width: 50%;
+            margin: auto;
+          }
+        }
+        .center_ico {
+          margin: 0 10px;
+          font-size: 20px;
+          transform: rotateZ(90deg);
+        }
+      }
+      .center {
+        margin-top: 10px;
+      }
+      .footer {
+        text-align: center;
+        font-size: 14px;
+        padding: 20px 0;
+        span {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+    .weiChatLogin {
+      margin-left: 15%;
+      margin-top: 40px;
+      display: flex;
+      width: 70%;
+      .code {
+        width: 40%;
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+      .text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+          padding: 5px 0;
+        }
+      }
+    }
+    footer {
+      width: 100%;
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      padding: 20px 0;
+      border-top: 1px solid gray;
+      .weixin,
+      .account,
+      .phone {
+        height: 15px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        box-sizing: border-box;
+        cursor: pointer;
+        img {
+          width: 25px;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+      .weixin,
+      .account {
+        justify-content: flex-end;
+        padding-right: 40px;
+      }
+      .phone {
+        border-left: 1px solid gray;
+        padding-left: 40px;
+      }
+    }
+  }
+  .code_wrap{
+    position: relative;
+        input {
+          width: 100%;
+          background: none;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid gray;
+          box-sizing: border-box;
+          padding: 20px 0 20px 50px;
+        }
+        .icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .code{
+          width: 100px;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+  }
+}

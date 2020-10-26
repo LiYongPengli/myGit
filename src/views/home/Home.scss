@@ -1,0 +1,167 @@
+.home {
+    height: 100%;
+    // display: flex;
+    // background-image: url("../../assets/img/bg.png");
+    header {
+        width: 100%;
+        height: 10vh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        // border: 1px solid;
+        height: 130px;
+        background-image: linear-gradient(to bottom, #31313d, #272730);
+        .logo {
+            position: absolute;
+            left: 0;
+            // top: 47px;
+            width: 210px;
+            height: 132px;
+            z-index: 9999;
+            background: url(../../assets/img/logo.png) 20px center no-repeat #30303c;
+            border-right: 1px solid #3a3a48;
+        }
+        .search {
+            margin-left: 210px;
+            border-bottom: 1px solid #242432;
+            button {
+                background: url(../../assets/img/search.png) 30px center no-repeat #272731;
+                border: none;
+                cursor: pointer;
+                border: 0;
+                height: 65px;
+                width: 75px;
+                float: left;
+                outline: none;
+            }
+            input {
+                //width: 1618px;
+                width: calc(100% - 75px);
+                background-color: #272731;
+                height: 65px;
+                border: 0;
+                box-sizing: border-box;
+                // margin-left: 10px;
+            }
+            input:focus {
+                outline: none;
+                border: 10px solid #272731;
+                background-color: #272731;
+            }
+        }
+        .bottom {
+            margin-left: 210px;
+            height: 65px;
+            background: #282832;
+            border-top: 1px solid #3a3a48;
+            .user_info {
+                float: left;
+                button {
+                    background: url(../../assets/img/tx.png) 30px center no-repeat #272731;
+                    border: none;
+                    cursor: pointer;
+                    border: 0;
+                    height: 65px;
+                    width: 75px;
+                    float: left;
+                    outline: none;
+                }
+                .select {
+                    margin-top: 20px;
+                }
+                select {
+                    height: 65px;
+                    line-height: 65px;
+                    background: #282832;
+                    float: right;
+                    border: none;
+                    width: 185px;
+                    padding-left: 83px;
+                    color: white;
+                }
+            }
+            .nav {
+                float: left;
+                height: 65px;
+                line-height: 65px;
+                padding-left: 60px;
+                a {
+                    color: white;
+                    font-size: 16px;
+                    margin-right: 70px;
+                    text-decoration: none;
+                    display: inline-block;
+                }
+                a.router-link-active {
+                    background-image: url(/img/cur.0d28872f.png);
+                    background-position: bottom;
+                    background-repeat: no-repeat;
+                }
+            }
+            .lang {
+                float: right;
+                width: 373px;
+                height: 65px;
+                line-height: 65px;
+                span {
+                    color: white;
+                    width: 95px;
+                    display: inline-block;
+                    text-align: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+                span.cur {
+                    background-color: #22222b;
+                }
+            }
+        }
+    }
+    .topic {
+        width: 37%;
+        height: 100%;
+        flex-shrink: 0;
+        background: black;
+    }
+    .body {
+        flex: 1;
+        //height: 90vh;
+        // padding-top: 10vh;
+        padding-top: 163px;
+        overflow-x: auto;
+        background-image: linear-gradient(-15deg, #31313d, #17171d);
+        min-height: 800px;
+        .wrap {
+            width: 90%;
+            height: 100%;
+            min-width: 1200px;
+            margin: auto;
+            margin-left: 210px;
+        }
+        footer {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .4);
+            margin-top: 20px;
+            margin-bottom: 30px;
+            p {
+                margin-left: 800px;
+            }
+        }
+    }
+    .topic-enter-active {
+        animation: show linear 0.3s;
+    }
+    .topic-leave-active {
+        animation: show linear 0.3s reverse;
+    }
+    @keyframes show {
+        from {
+            margin-left: -37%;
+        }
+        to {
+            margin-left: 0;
+        }
+    }
+}
