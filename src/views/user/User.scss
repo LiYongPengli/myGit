@@ -2,4 +2,69 @@
     width: 100%;
     height: 100%;
     background: url("../../assets/img/bg.png") no-repeat;
+    &_wrap{
+        width: 1200px;
+        margin: auto;
+        color: white;
+        .user_header{
+            display: flex;
+            margin-top: 72px;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #3a3a48;
+            
+            .user_info{
+                display: flex;
+                align-items: center;
+                padding-bottom: 20px;
+                .user_img{
+                    width: 60px;
+                    img{
+                        display: block;
+                        width: 100%;
+                    }
+                }
+                .user_message{
+                    margin-left: 21px;
+                    
+                    .user_name{
+                        font-size: 32px;
+                    }
+                    .user_id{
+                        color: #bcc2d5;
+                        font-size: 13px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            .user_menu{
+                display: flex;
+                width: 740px;
+                flex-shrink: 0;
+                justify-content: space-between;
+                li{
+                    list-style: none;
+                    height: 56px;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid transparent;
+                    padding: 0 10px;
+                    cursor: pointer;
+                }
+                .user_nav_active{
+                    border-bottom: 1px solid #0079ed;
+                    background: url("../../assets/img/cur.png") no-repeat;
+                    background-size: 200% 100%;
+                    background-position: -40px 0;
+                }
+            }
+        }
+        .user_content{
+            .choose_nav{
+                margin-top: 47px;
+                margin-bottom: 29px;
+                font-size: 20px;
+            }
+        }
+    }
 }

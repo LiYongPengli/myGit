@@ -59,7 +59,20 @@ const routes: RouteConfig[] = [
   {
     path:'/user',
     name:'User',
-    component:()=>import('../views/user/User.vue')
+    redirect:'/user/form',
+    component:()=>import('../views/user/User.vue'),
+    children:[
+      {
+        path:'form',
+        name:'UserForm',
+        component:()=>import('../views/userform/UserForm.vue')
+      },
+      {
+        path:'password',
+        name:'UserPassWord',
+        component:()=>import('../views/userpassword/UserPassWord.vue')
+      }
+    ]
   }
 ];
 
