@@ -35,8 +35,23 @@
                 font-weight: bold;
                 font-size: 20px;
             }
+            .gjlb {
+                p {
+                    color: red
+                }
+                span {
+                    color: green;
+                }
+                ul {
+                    list-style: none;
+                    li {
+                        float: left;
+                    }
+                }
+            }
         }
         .list {
+            clear: both;
             padding-top: 10px;
             ul {
                 list-style: none;
@@ -74,6 +89,20 @@
                                 font-size: 16px;
                                 color: white;
                                 display: block;
+                                margin-bottom: 15px;
+                            }
+                        }
+                    }
+                    .content {
+                        margin-top: 15px;
+                        .title {
+                            font-size: 16px;
+                            color: white;
+                        }
+                        .ziyuan {
+                            margin-top: 20px;
+                            img {
+                                margin-right: 20px;
                             }
                         }
                     }

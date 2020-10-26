@@ -47,7 +47,7 @@
                 color: rgb(255, 255, 255);
                 height: 70px;
                 border-bottom: 1px solid #3a3a48;
-                .recommend{
+                .recommend {
                     display: block;
                     width: 100px;
                     flex-shrink: 0;
@@ -134,7 +134,7 @@
         }
     }
     .message {
-        width: 455px;
+        width: 440px;
         height: 300px;
         //border: 1px solid;
         flex-shrink: 0;
@@ -145,6 +145,7 @@
             display: block;
             flex-direction: column;
             border-radius: 3px;
+            width: 440px;
             //加投影
             background-image: linear-gradient(to bottom, #3a3a48, #262630);
             //background-image: linear-gradient(to bottom, red, yellow);
