@@ -163,6 +163,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
             // box-shadow: 0 0 8px #000;
             border-radius: 3px;
+            overflow: hidden;
             .media_nav {
                 flex: 1;
                 display: flex;
@@ -191,6 +192,7 @@
                         .item {
                             width: 25%;
                             cursor: pointer;
+                            margin-top: 20px;
                             img {
                                 display: block;
                                 width: 54px;

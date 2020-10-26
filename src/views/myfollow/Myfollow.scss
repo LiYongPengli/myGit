@@ -48,6 +48,7 @@
             }
             .erhang {
                 margin-top: 15px;
+                border-bottom: 1px solid #676770;
                 height: 26px;
                 line-height: 26px;
                 padding-bottom: 30px;
@@ -74,13 +75,13 @@
                     li:first-child {
                         background-color: #0079ed;
                     }
-                    div.gd {
-                        cursor: pointer;
-                        float: right;
-                        margin-right: 30px;
-                        padding: 0 10px;
-                        border: 1px solid #676770;
-                    }
+                }
+                div.gd {
+                    cursor: pointer;
+                    float: right;
+                    margin-right: 30px;
+                    padding: 0 10px;
+                    border: 1px solid #676770;
                 }
             }
         }

@@ -16,6 +16,7 @@
         <p class="sx">选择相关国家可以进行信息筛选</p>
         <div class="erhang">
           <span class="all">全部</span>
+           <div class="gd">更多+</div>
           <ul>
             <li><a>中国</a>X</li>
             <li><a>美国</a></li>
@@ -24,9 +25,54 @@
             <li><a>墨西哥</a></li>
             <li><a>古巴</a></li>
             <li><a>瑞典</a></li>
-             <div class="gd">更多+</div>
+            <li><a>美国</a></li>
+            <li><a>加拿大</a></li>
+            <li><a>伯利兹</a></li>
+            <li><a>墨西哥</a></li>
+            <li><a>古巴</a></li>
+            <li><a>瑞典</a></li>
           </ul>
-         
+          
+        </div>
+        <div class="erhang">
+          <span class="all">全部</span>
+           <div class="gd">更多+</div>
+          <ul>
+            <li><a>中国</a>X</li>
+            <li><a>美国</a></li>
+            <li><a>加拿大</a></li>
+            <li><a>伯利兹</a></li>
+            <li><a>墨西哥</a></li>
+            <li><a>古巴</a></li>
+            <li><a>瑞典</a></li>
+            <li><a>美国</a></li>
+            <li><a>加拿大</a></li>
+            <li><a>伯利兹</a></li>
+            <li><a>墨西哥</a></li>
+            <li><a>古巴</a></li>
+            <li><a>瑞典</a></li>
+          </ul>
+          
+        </div>
+        <div class="erhang">
+          <span class="all">全部</span>
+           <div class="gd">更多+</div>
+          <ul>
+            <li><a>中国</a>X</li>
+            <li><a>美国</a></li>
+            <li><a>加拿大</a></li>
+            <li><a>伯利兹</a></li>
+            <li><a>墨西哥</a></li>
+            <li><a>古巴</a></li>
+            <li><a>瑞典</a></li>
+            <li><a>美国</a></li>
+            <li><a>加拿大</a></li>
+            <li><a>伯利兹</a></li>
+            <li><a>墨西哥</a></li>
+            <li><a>古巴</a></li>
+            <li><a>瑞典</a></li>
+          </ul>
+          
         </div>
       </div>
       <div class="list">
