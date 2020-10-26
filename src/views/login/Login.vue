@@ -78,10 +78,10 @@
         <div class="code">
           <wx-login :state="wx_data.state" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"/>
         </div>
-        <div class="text">
+        <!-- <div class="text">
           <p>请使用微信扫描二维码</p>
           <p>登录睿读数据采集平台</p>
-        </div>
+        </div> -->
       </div>
       <!-- 手机登录 -->
       <div v-if="phoneLogin" class="phoneLogin">

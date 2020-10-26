@@ -1,6 +1,6 @@
 <template>
   <div class="wxlogin">
-      <iframe scrolling="no" frameBorder="0" allowTransparency="true" :src="url"></iframe>
+      <iframe height="400" scrolling="no" frameBorder="0" allowTransparency="true" :src="url"></iframe>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default class WxLogin extends Vue {
 .wxlogin{
 iframe{
     width: 100%;
-    height: 100%;
+    //height: 100%;
 }
 }
 </style>
