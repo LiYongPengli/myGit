@@ -28,6 +28,7 @@ export default class RecommendCom extends Vue {
     public country: { sub_id: string; name: string }[] = [];
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
+    @Mutation('setTopicShow') setTopicShow!:any;
 
     @Watch('language')
     public language_change(): void {
@@ -42,17 +43,14 @@ export default class RecommendCom extends Vue {
     public created(): void {
         //获取国家列表
         this.getSubscriptions("country", "sub", (res) => {
-            console.log(res.data);
             this.country = res.data.data.subscriptions;
         });
         //获取人物列表
         this.getSubscriptions("character", "sub", (res) => {
-            console.log(res.data);
             this.people = res.data.data.subscriptions;
         });
         //获取媒体列表
         this.getSubscriptions("media", "sub", (res) => {
-            console.log(res.data);
             this.media = res.data.data.subscriptions;
         });
 
@@ -63,7 +61,6 @@ export default class RecommendCom extends Vue {
     public mounted(): void {
         //获取频道列表
         this.getSubscriptions("channel", "sub", (res) => {
-            console.log(res.data);
             this.channel = res.data.data.subscriptions;
             this.channel_swiper = new Swiper('#swiper1', {
                 slidesPerView: 4,
@@ -74,6 +71,17 @@ export default class RecommendCom extends Vue {
         });
 
         this.media_swiper = new Swiper('#swiper2')
+    }
+
+    //回到顶部
+    public toTop():void{
+        let top = window.scrollY;
+        let timer = setInterval(()=>{
+            window.scrollTo({top:(top-=20)})
+            if(top<=0){
+                clearInterval(timer)
+            }
+        })
     }
 
 
@@ -123,7 +131,6 @@ export default class RecommendCom extends Vue {
             cmd: 'hours24',
             paras: { language: this.language, limit: 10 }
         }).then(res => {
-            console.log(res.data);
             this.hours_24 = res.data.data;
         }).catch(err => {
             console.log(err);

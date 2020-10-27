@@ -12,14 +12,14 @@
           <span
             class="recommend"
             @click="change_recommend(0, '推荐')"
-            :class="{ cur: active_recommend == 0 }"
+            :class="{ 'cur': active_recommend == 0 }"
             >推荐</span
           >
           <!-- <span class="selected swiper-slide-active">推荐</span> -->
           <div class="swiper-container" id="swiper1">
             <div class="swiper-wrapper">
               <!-- <span class="swiper-slide swiper-slide-next">菜单 2</span> -->
-              <div v-for="(v, i) in channel" :key="i" class="swiper-slide" :class="{ cur: active_recommend == i + 1 }">
+              <div v-for="(v, i) in channel" :key="i" class="swiper-slide" :class="{ 'cur': active_recommend == i + 1 }">
                 <!-- <span
                   @click="change_recommend(i + 1, v.name)"
                   :class="{ cur: active_recommend == i + 1 }"
@@ -138,9 +138,9 @@
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
     <div class="fx">
-      <a class="arrow" href=""><img title="置顶" src="../../assets/img/arrow-right.png" alt="" /></a>
+      <a @click="toTop" class="arrow"><img title="置顶" src="../../assets/img/arrow-right.png" alt="" /></a>
       <a class="fenxiang" href=""><img title="分享" src="../../assets/img/fenxiang.png" alt="" /></a>
-      <a class="chat" href=""> <img title="分享到微信" src="../../assets/img/chat.png" alt="" /></a>
+      <a @click.stop="setTopicShow(true)" class="chat"> <img title="分享到微信" src="../../assets/img/chat.png" alt="" /></a>
     </div>
   </div>
 </template>

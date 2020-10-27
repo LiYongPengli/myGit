@@ -17,7 +17,6 @@
               </ul>
           </div>
           <div class="user_content">
-              <p class="choose_nav">{{choose_nav}}</p>
               <router-view />
           </div>
       </div>

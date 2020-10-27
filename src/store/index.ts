@@ -6,7 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     index_channel_window:false,
-    language:'crawler'
+    language:'crawler',
+    //聊天窗口
+    topic_show:false
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -14,6 +16,9 @@ export default new Vuex.Store({
     },
     setLanguage(state,n):void{
       state.language = n;
+    },
+    setTopicShow(state,n):void{
+      state.topic_show = n;
     }
   },
   actions: {
