@@ -26,7 +26,9 @@ axios.interceptors.response.use(res=>{
     switch(err.response.status){
         case 401:
             if(err.response.data.msg=='请登录后操作！'){
-                router.push('/login');
+                if(router.currentRoute.path!='/login'){
+                    router.push('/login');
+                }
             }
             break;
     }
