@@ -19,10 +19,14 @@
           <div class="swiper-container" id="swiper1">
             <div class="swiper-wrapper">
               <!-- <span class="swiper-slide swiper-slide-next">菜单 2</span> -->
-              <div v-for="(v, i) in channel" :key="i" class="swiper-slide">
-                <span
+              <div v-for="(v, i) in channel" :key="i" class="swiper-slide" :class="{ cur: active_recommend == i + 1 }">
+                <!-- <span
                   @click="change_recommend(i + 1, v.name)"
                   :class="{ cur: active_recommend == i + 1 }"
+                  >{{ v.name }}</span
+                > -->
+                <span
+                  @click="change_recommend(i + 1, v.name)"
                   >{{ v.name }}</span
                 >
               </div>
