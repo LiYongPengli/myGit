@@ -57,17 +57,19 @@ body {
   clear: both;
 }
 //下拉框样式
-.el-dropdown-menu {
+.el-popover {
   background: #2d2d39 !important;
   border: none!important;
+  color: white!important;
+  box-sizing: border-box;
 }
 
-.el-dropdown-menu li{
+/* .el-dropdown-menu li{
   color: white!important;
 }
 .el-dropdown-menu li:hover{
   background:  #2d2d39!important;
-}
+} */
 .popper__arrow::after{
   border-color: #2d2d39!important;
 }

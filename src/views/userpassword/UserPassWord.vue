@@ -1,5 +1,6 @@
 <template>
   <div class="userpassword">
+    <div class="choose_nav">密码管理</div>
     <div class="userpassword_wrap">
       <el-form ref="form" size="small" :model="form" :rules="rules" label-width="97px" label-position="left">
         <el-form-item class="item" label="旧密码:" prop="oldpwd">
