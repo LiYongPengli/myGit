@@ -9,13 +9,22 @@
       </div>
       <div class="list_wrap">
         <div class="list_nav">
-          <span class="recommend" @click="change_recommend(0,'推荐')" :class="{'cur':active_recommend==0}">推荐</span>
+          <span
+            class="recommend"
+            @click="change_recommend(0, '推荐')"
+            :class="{ cur: active_recommend == 0 }"
+            >推荐</span
+          >
           <!-- <span class="selected swiper-slide-active">推荐</span> -->
           <div class="swiper-container" id="swiper1">
             <div class="swiper-wrapper">
               <!-- <span class="swiper-slide swiper-slide-next">菜单 2</span> -->
-              <div v-for="(v,i) in channel" :key="i" class="swiper-slide">
-                <span @click="change_recommend(i+1,v.name)" :class="{'cur':active_recommend==i+1}">{{v.name}}</span>
+              <div v-for="(v, i) in channel" :key="i" class="swiper-slide">
+                <span
+                  @click="change_recommend(i + 1, v.name)"
+                  :class="{ cur: active_recommend == i + 1 }"
+                  >{{ v.name }}</span
+                >
               </div>
             </div>
           </div>
@@ -124,6 +133,11 @@
     <transition name="el-zoom-in-top">
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
+    <div class="fx">
+      <a class="arrow" href=""><img src="../../assets/img/arrow-right.png" alt="" /></a>
+      <a class="fenxiang" href=""><img src="../../assets/img/fenxiang.png" alt="" /></a>
+      <a class="chat" href=""> <img src="../../assets/img/chat.png" alt="" /></a>
+    </div>
   </div>
 </template>
 

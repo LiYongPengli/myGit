@@ -277,4 +277,35 @@
             }
         }
     }
+    .fx {
+        top: 163px;
+        right: 110px;
+        position: fixed;
+        border: 1px solid #343441;
+        border-radius: 5px;
+        background-color: #343441;
+        a {
+            width: 60px;
+            height: 60px;
+            display: block;
+            line-height: 60px;
+            text-align: center;
+            img {
+                margin: 18px auto;
+                width: 24px;
+            }
+        }
+        a.arrow {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+        a.fenxiang {
+            border-top: 1px solid #494958;
+        }
+        a.chat {
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            border-top: 1px solid #494958;
+        }
+    }
 }
