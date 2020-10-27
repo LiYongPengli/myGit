@@ -1,3 +1,15 @@
-.usercollection{
-    
+.usercollection {
+    .ss {
+        height: 40px;
+        p {
+            font-size: 20px;
+            color: #fff;
+            display: inline;
+        }
+        .plfx {
+            float: right;
+            margin-right: 0;
+            height: 110px;
+        }
+    }
 }
