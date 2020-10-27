@@ -58,7 +58,7 @@
       <!-- 国家媒体列表 -->
       <div class="top">
         <div class="media_nav">
-          <span @click="mediaTab(0)">国家</span>
+          <span class="cur" @click="mediaTab(0)">国家</span>
           <span @click="mediaTab(1)">人物</span>
           <span @click="mediaTab(2)">媒体</span>
         </div>
@@ -134,9 +134,9 @@
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
     <div class="fx">
-      <a class="arrow" href=""><img src="../../assets/img/arrow-right.png" alt="" /></a>
-      <a class="fenxiang" href=""><img src="../../assets/img/fenxiang.png" alt="" /></a>
-      <a class="chat" href=""> <img src="../../assets/img/chat.png" alt="" /></a>
+      <a class="arrow" href=""><img title="置顶" src="../../assets/img/arrow-right.png" alt="" /></a>
+      <a class="fenxiang" href=""><img title="分享" src="../../assets/img/fenxiang.png" alt="" /></a>
+      <a class="chat" href=""> <img title="分享到微信" src="../../assets/img/chat.png" alt="" /></a>
     </div>
   </div>
 </template>

@@ -67,12 +67,20 @@
                 .swiper-container {
                     flex: 1;
                     .swiper-wrapper {
-                        span {
-                            cursor: pointer;
-                            font-size: 16px;
-                            height: 70px;
-                            line-height: 70px;
-                            // width: 64px;
+                        .swiper-slide {
+                            text-align: center;
+                            span {
+                                cursor: pointer;
+                                font-size: 16px;
+                                height: 70px;
+                                line-height: 70px;
+                                // width: 64px;
+                            }
+                        }
+                        .cur {
+                            background-image: url("/img/cur.0d28872f.png");
+                            background-position: center bottom;
+                            background-repeat: no-repeat;
                         }
                     }
                 }
@@ -176,6 +184,14 @@
                     font-family: "PingFangSC";
                     color: rgb(255, 255, 255);
                     margin: 0 20px;
+                    display: block;
+                    line-height: 70px;
+                    padding: 0 5px;
+                }
+                .cur {
+                    background-image: url("/img/cur.0d28872f.png");
+                    background-position: center bottom;
+                    background-repeat: no-repeat;
                 }
             }
             .media_content {
