@@ -4,11 +4,67 @@
     <div class="ss">
       <p>我的收藏(8)</p>
       <input type="text" placeholder="请输入关键词" />
-      <button class="plfx">批量分享</button>
+      <span class="plfx">批量分享</span>
     </div>
     <div class="collectionlist">
       <ul>
         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+         <li>
+          <div class="collection">
+            <img src="../../assets/img/sylbtp.png" alt="">
+            <span class="name">拜登系列</span>
+            <span class="time">2020年10月21日 创建</span>
+          </div>
+        </li>
+          <li>
           <div class="collection">
             <img src="../../assets/img/sylbtp.png" alt="">
             <span class="name">拜登系列</span>
