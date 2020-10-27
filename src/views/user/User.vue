@@ -5,11 +5,12 @@
           <div class="user_header">
               <div class="user_info">
                   <div class="user_img">
-                      <img src="../../assets/img/tx.png" alt="">
+                      <img v-show="!user_message.wechat_info.head_img" src="../../assets/img/tx.png" alt="">
+                      <img v-show="user_message.wechat_info.head_img" :src="user_message.wechat_info.head_img" alt="">
                   </div>
                   <div class="user_message">
-                      <p class="user_name">Steven Paijo</p>
-                      <span class="user_id">13011825913</span>
+                      <p class="user_name">{{user_message.nickname}}</p>
+                      <span class="user_id">{{user_message.phone_number}}</span>
                   </div>
               </div>
               <ul class="user_menu">

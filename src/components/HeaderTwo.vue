@@ -19,9 +19,10 @@
         </ul>
         <div slot="reference" class="user_wrap">
           <div class="user_img">
-            <img src="../assets/img/tx.png" alt="" />
+            <img v-show="!user_message.wechat_info.head_img" src="../assets/img/tx.png" alt="" />
+            <img v-show="user_message.wechat_info.head_img" :src="user_message.wechat_info.head_img" alt="">
           </div>
-          <span>username</span>
+          <span>{{user_message.nickname}}</span>
           <i class="el-icon-arrow-down"></i>
         </div>
       </el-popover>
@@ -49,6 +50,8 @@ import { Mutation, State } from 'vuex-class';
 export default class HeaderTwo extends Vue {
   //当前系统语言
   @State("language") language!: string;
+  //用户信息
+  @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
   //登出
@@ -108,7 +111,13 @@ export default class HeaderTwo extends Vue {
       .user_img {
         width: 39px;
         height: 39px;
+        border-radius: 5px;
+        overflow: hidden;
         margin-left: 31px;
+        img{
+          display: block;
+          width: 100%;
+        }
       }
       .user_name {
         margin-left: 21px;

@@ -14,16 +14,49 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
+import { Mutation } from 'vuex-class';
+import { baseApi } from './axios/axios';
 @Component
 export default class App extends Vue {
   private isshow = false;
+  //设置用户信息
+  @Mutation('setUserMessage') setUserMessage:any;
+
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
     if (newVal == "Login" || newVal == "Register" || newVal == "Findpassword") {
       this.isshow = true;
     } else {
       this.isshow = false;
+      this.userLoginType();
     }
+  }
+  
+  private created():void{
+    this.userLoginType();
+  }
+
+  private userLoginType():void{
+    this.axios.get(baseApi.api2+'/v1/user/login/').then(res=>{
+      this.getUserInfo(res.data.data.user_id);
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
+
+  /**
+   * 获取用户信息
+   * @param user_id 用户id
+   */
+  private getUserInfo(user_id:string):void{
+    this.axios.post(baseApi.api2+'/v1/cmd/',{
+      cmd:'user_info',
+      paras: { user_id: user_id }
+    }).then(res=>{
+      this.setUserMessage(res.data.data);
+    }).catch(err=>{
+      console.log(err);
+    })
   }
 }
 </script>

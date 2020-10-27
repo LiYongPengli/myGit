@@ -1,8 +1,11 @@
 import { baseApi } from '@/axios/axios'
 import { AxiosResponse } from 'axios';
 import { Component, Vue } from 'vue-property-decorator'
+import { State } from 'vuex-class';
 @Component
 export default class UserCom extends Vue {
+    //用户信息
+    @State('user_message') user_message!:any;
     //国家
     public country: any[] = [];
     //人物

@@ -27,7 +27,7 @@
           </ul>
           <div slot="reference" class="user_info_wrap">
             <button value="" title="头像"></button>
-            <span>username</span>
+            <span>{{user_message.nickname}}</span>
             <i class="el-icon-arrow-down"></i>
           </div>
         </el-popover>
@@ -64,6 +64,8 @@ import { Mutation, State } from "vuex-class";
 export default class HeaderOne extends Vue {
   //当前系统语言
   @State("language") language!: string;
+  //用户信息
+  @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
 
