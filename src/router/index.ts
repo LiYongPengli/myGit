@@ -62,15 +62,23 @@ const routes: RouteConfig[] = [
     redirect:'/user/form',
     component:()=>import('../views/user/User.vue'),
     children:[
+      //统计报表
       {
         path:'form',
         name:'UserForm',
         component:()=>import('../views/userform/UserForm.vue')
       },
+      //密码管理
       {
         path:'password',
         name:'UserPassWord',
         component:()=>import('../views/userpassword/UserPassWord.vue')
+      },
+      //我的收藏
+      {
+        path:'collection',
+        name:'UserCollection',
+        component:()=>import('../views/usercollection/UserCollection.vue')
       }
     ]
   }

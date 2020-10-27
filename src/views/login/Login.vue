@@ -76,7 +76,8 @@
       <!-- 微信登录 -->
       <div v-if="weiChatLogin" class="weiChatLogin">
         <div class="code">
-          <wx-login :state="wx_data.state" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"/>
+          <wxlogin :state="wx_data.state" :theme="'white'" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"></wxlogin>
+          <!-- <wx-login :state="wx_data.state" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"/> -->
         </div>
         <!-- <div class="text">
           <p>请使用微信扫描二维码</p>
@@ -159,9 +160,9 @@
 <script lang="ts">
 import Component, { mixins } from 'vue-class-component';
 import LoginCom from "./Login";
-import WxLogin from '@/components/WxLogin.vue'
+import wxlogin from '@/components/vue-wxlogin.vue'
 @Component({
-  components:{WxLogin}
+  components:{wxlogin}
 })
 export default class Login extends mixins(LoginCom){
   private created():void{

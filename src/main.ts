@@ -15,7 +15,6 @@ import 'swiper/swiper-bundle.min.css';
 Vue.use(vuescroll);
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios);
-
 Vue.config.productionTip = false;
 
 new Vue({

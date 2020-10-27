@@ -154,7 +154,7 @@ export default class LoginCom extends Vue {
             this.wx_data = res.data.data;
             this.bindAccount = false;
             this.weiChatLogin = true;
-            let obj = Wx({
+            /* let obj = Wx({
                 self_redirect:true,
                 id:"login_container", 
                 appid: this.wx_data.appid, 
@@ -163,8 +163,8 @@ export default class LoginCom extends Vue {
                 state: this.wx_data.state,
                 style: "white",
                 href: ""
-                })
-                console.log(obj)
+                }) */
+                //console.log(obj)
         }).catch(err=>{})
         /* this.axios.put(baseApi.api1+'/v1/user/wechat/').then(res=>{
             this.bindAccount = false;
