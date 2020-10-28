@@ -1,0 +1,35 @@
+.userfollow{
+    .top{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-top: 44px;
+        &_nav{
+            display: flex;
+            width: 485px;
+            flex-shrink: 0;
+            justify-content: space-between;
+            li{
+                list-style: none;
+            }
+        }
+        &_search{
+            input{
+                width: 199px;
+                height: 30px;
+                background: #494959;
+                border: none;
+                outline: none;
+                color: white;
+                box-sizing: border-box;
+                padding: 9px 20px 7px 19px;
+            }
+            input::placeholder{
+                font-size: 14px;
+                color: #cdd6e5;
+            }
+        }
+    }
+    .content{
+    }
+}

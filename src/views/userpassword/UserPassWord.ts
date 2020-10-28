@@ -3,15 +3,31 @@ import { Component,Vue } from 'vue-property-decorator'
 import qs from 'qs'
 @Component
 export default class UserPassWordCom extends Vue{
+    //忘记原密码
+    public fogetpwd:boolean = false;
+    //是否发送验证码
+    public sendCode:boolean = false;
     public form = {
         oldpwd:'',
         newpwd:'',
         surenewpwd:''
     }
+    public fogetForm = {
+        tel:'',
+        vc:'',
+        newpwd:'',
+        surenewpwd:''
+    }
     public rules = {
-        oldpwd:{ required: true, message: '请输入旧密码', trigger: 'blur' },
+        oldpwd:[{ required: true, message: '请输入旧密码', trigger: 'blur' }],
         newpwd:[{ validator: this.initNewPwd, trigger: 'blur' }],
         surenewpwd:[{ validator: this.initSurePwd, trigger: 'blur' }],
+    }
+    public fogetRules = {
+        tel:[{ validator: this.initTel, trigger: 'blur' }],
+        vc:[{ required: true, message: '请输入验证码', trigger: 'blur' }],
+        newpwd:[{ validator: this.initNewPwd, trigger: 'blur' }],
+        surenewpwd:[{ validator: this.initSurePwd, trigger: 'blur' }]
     }
 
     /**
@@ -58,6 +74,26 @@ export default class UserPassWordCom extends Vue{
         callback();
     }
 
+
+    private initTel(rule:any, value:string, callback:any):void{
+        if(!value){
+            callback(new Error('请输入手机号!'));
+            return;
+        }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(value))){
+            callback(new Error('手机号格式有误!'));
+            return;
+        }
+        callback();
+    }
+    //点击获取手机验证码
+    public get_code():void{
+        this.sendCode=true
+    }
+    //发送手机验证码
+    private send_code():void{
+
+    }
+
     //最终表单验证
     private async init_form():Promise<boolean>{
         return new Promise((resolve,reject)=>{
@@ -71,10 +107,26 @@ export default class UserPassWordCom extends Vue{
         })
     }
 
+    //忘记密码表单验证
+    private async init_foget_form():Promise<boolean>{
+        return new Promise((resolve,reject)=>{
+            (this.$refs['fogetform'] as any).validate((valid:any) => {
+                if (valid) {
+                  resolve(true);
+                } else {
+                  reject(false);
+                }
+              })
+        })
+    }
     //确认修改密码
     public async toEditPassword(){
         try{
-            await this.init_form();
+            if(!this.fogetpwd){
+                await this.init_form();
+            }else{
+                await this.init_foget_form();
+            }
         }catch(err){
             console.log(err);
             return;

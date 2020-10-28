@@ -79,6 +79,12 @@ const routes: RouteConfig[] = [
         path:'collection',
         name:'UserCollection',
         component:()=>import('../views/usercollection/UserCollection.vue')
+      },
+      //我的关注
+      {
+        path:'follow',
+        name:'UserFollow',
+        component:()=>import('../views/userfollow/UserFollow.vue')
       }
     ]
   }
