@@ -11,15 +11,32 @@
         <ul>
           <li>
             <div class="collection">
-              <img src="../../assets/img/scmr.png" alt="">
+              <img src="../../assets/img/scmr.png" alt="" />
               <span class="name">默认标签</span>
               <span class="time"></span>
-              <span class="edit">
-                编辑
-              </span>
-              <span class="delete">
+              <el-button class="edit" type="primary" icon="el-icon-edit-outline">编辑</el-button>
+
+              <el-button
+                @click="dialogVisible = true"
+                class="delete"
+                type="danger"
+                icon="el-icon-delete"
+              >
                 删除
-              </span>
+              </el-button>
+              <el-dialog
+                title="编辑书签标题"
+                :visible.sync="dialogVisible"
+              >
+                <span>专题书签标题</span>
+                <span>专题书签标题</span>
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="dialogVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="dialogVisible = false"
+                    >确 定</el-button
+                  >
+                </span>
+              </el-dialog>
             </div>
           </li>
           <li>
@@ -27,12 +44,8 @@
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
-               <span class="edit">
-                编辑
-              </span>
-              <span class="delete">
-                删除
-              </span>
+              <span class="edit"> 编辑 </span>
+              <span class="delete"> 删除 </span>
             </div>
           </li>
           <li>
@@ -40,12 +53,8 @@
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
-               <span class="edit">
-                编辑
-              </span>
-              <span class="delete">
-                删除
-              </span>
+              <span class="edit"> 编辑 </span>
+              <span class="delete"> 删除 </span>
             </div>
           </li>
           <li>
@@ -62,7 +71,7 @@
               <span class="time">2020年10月21日 创建</span>
             </div>
           </li>
-           <li>
+          <li>
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
               <span class="cjsqmz">拜登系列</span>
@@ -83,28 +92,24 @@
               <span class="time">2020年10月21日 创建</span>
             </div>
           </li>
-            <li>
+          <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
             </div>
           </li>
-            <li>
+          <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
             </div>
           </li>
-         
-         
         </ul>
       </div>
     </vue-scroll>
-     
   </div>
- 
 </template>
 
 <script lang="ts">
@@ -116,7 +121,10 @@ import UserCollectionCom from "./UserCollection";
 //     FooterTwo
 //   }
 // })
-export default class UserCollection extends mixins(UserCollectionCom) {};
+
+
+export default class UserCollection extends mixins(UserCollectionCom) {}
+
 </script>
 
 <style lang="scss" scoped>
