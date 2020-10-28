@@ -6,130 +6,101 @@
       <input type="text" placeholder="请输入关键词" />
       <span class="plfx">批量分享</span>
     </div>
-    <div class="collectionlist">
-      <ul>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
+    <vue-scroll>
+      <div class="collectionlist">
+        <ul>
           <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-         <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="">
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-      </ul>
-    </div>
+            <div class="collection">
+              <img src="../../assets/img/scmr.png" alt="">
+              <span class="name">默认标签</span>
+              <span class="time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+           <li>
+            <div class="collection cjsqhz">
+              <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
+              <span class="cjsqmz">拜登系列</span>
+              <span class="time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+          <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+            <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+            <li>
+            <div class="collection">
+              <img src="../../assets/img/sylbtp.png" alt="" />
+              <span class="name">拜登系列</span>
+              <span class="time">2020年10月21日 创建</span>
+            </div>
+          </li>
+         
+         
+        </ul>
+      </div>
+    </vue-scroll>
+     <footer-two />
   </div>
+ 
 </template>
 
 <script lang="ts">
+
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
 @Component
-export default class UserCollection extends mixins(UserCollectionCom) {}
+export default class UserCollection extends mixins(UserCollectionCom) {};
+import FooterTwo from '@/components/FooterTwo.vue'
+@Component({
+  components:{
+    FooterTwo
+  }
+})
 </script>
 
 <style lang="scss" scoped>

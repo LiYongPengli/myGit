@@ -18,6 +18,8 @@
             height: 30px;
             width: 200px;
             padding-left: 20px;
+            background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
+            cursor: pointer;
         }
         .plfx {
             float: right;
@@ -26,14 +28,17 @@
             width: 110px;
             line-height: 30px;
             border: 1px solid #676770;
-            margin-top: 36px;
+            margin-top: 35px;
             box-sizing: border-box;
             padding-left: 40px;
+            background: url("../../assets/img/sczhuanfa.png") 20% 50% no-repeat;
+            cursor: pointer;
             // height: 110px;
         }
     }
     .collectionlist {
         width: 1200px;
+        height: 500px;
         ul {
             list-style: none;
             li {
@@ -43,18 +48,36 @@
                 margin-right: 15px;
                 margin-top: 30px;
                 background-color: #3a3a48;
+                div.cjsqhz {
+                    border: 1px dashed #9499aa;
+                    margin: 10px;
+                    height: 215px;
+                }
                 img {
                     width: 100%;
                     //height: 112px;
+                }
+                img.cjsq {
+                    width: 40px;
+                    height: 40px;
+                    margin-top: 86px;
+                    margin-left: 125px;
                 }
                 span {
                     display: block;
                     margin-left: 30px;
                 }
+                span.cjsqmz {
+                    text-align: center;
+                    margin-top: 15px;
+                    color: #a2a7b9;
+                }
                 span.name {
                     font-size: 16px;
                     color: #fff;
                     margin-top: 10px;
+                    background: url("../../assets/img/sczhuanfa.png") 90% 50% no-repeat;
+                    cursor: pointer;
                 }
                 span.time {
                     font-size: 13px;
