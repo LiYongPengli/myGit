@@ -14,7 +14,9 @@
               <img src="../../assets/img/scmr.png" alt="" />
               <span class="name">默认标签</span>
               <span class="time"></span>
-              <el-button class="edit" type="primary" icon="el-icon-edit-outline">编辑</el-button>
+              <el-button class="edit" type="primary" icon="el-icon-edit-outline"
+                >编辑</el-button
+              >
 
               <el-button
                 @click="dialogVisible = true"
@@ -24,19 +26,6 @@
               >
                 删除
               </el-button>
-              <el-dialog
-                title="编辑书签标题"
-                :visible.sync="dialogVisible"
-              >
-                <span>专题书签标题</span>
-                <span>专题书签标题</span>
-                <span slot="footer" class="dialog-footer">
-                  <el-button @click="dialogVisible = false">取 消</el-button>
-                  <el-button type="primary" @click="dialogVisible = false"
-                    >确 定</el-button
-                  >
-                </span>
-              </el-dialog>
             </div>
           </li>
           <li>
@@ -109,6 +98,16 @@
         </ul>
       </div>
     </vue-scroll>
+    <el-dialog title="编辑书签标题" :visible.sync="dialogVisible">
+      <span>专题书签标题</span>
+      <span>专题书签标题</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -121,12 +120,17 @@ import UserCollectionCom from "./UserCollection";
 //     FooterTwo
 //   }
 // })
-
-
+@Component
 export default class UserCollection extends mixins(UserCollectionCom) {}
-
 </script>
 
 <style lang="scss" scoped>
 @import "./UserCollection.scss";
+</style>
+<style lang="scss">
+.usercollection{
+  .el-dialog{
+    background: black;
+  }
+}
 </style>
