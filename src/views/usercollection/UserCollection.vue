@@ -90,17 +90,15 @@
 </template>
 
 <script lang="ts">
-
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
-@Component
-export default class UserCollection extends mixins(UserCollectionCom) {};
-import FooterTwo from '@/components/FooterTwo.vue'
+import FooterTwo from '@/components/FooterTwo.vue';
 @Component({
   components:{
     FooterTwo
   }
 })
+export default class UserCollection extends mixins(UserCollectionCom) {};
 </script>
 
 <style lang="scss" scoped>
