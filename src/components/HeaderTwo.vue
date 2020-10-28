@@ -18,9 +18,9 @@
           </li>
         </ul>
         <div slot="reference" class="user_wrap">
-          <div class="user_img">
+          <div class="user_img" v-if="user_message">
             <img v-show="!user_message.wechat_info.head_img" src="../assets/img/tx.png" alt="" />
-            <img v-show="user_message.wechat_info.head_img" :src="user_message.wechat_info.head_img" alt="">
+            <img v-if="user_message.wechat_info.head_img" :src="user_message.wechat_info.head_img" alt="">
           </div>
           <span>{{user_message.nickname}}</span>
           <i class="el-icon-arrow-down"></i>

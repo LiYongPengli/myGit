@@ -12,7 +12,7 @@
       />
     </div>
     <div class="bottom">
-      <div class="user_info">
+      <div class="user_info" v-if="user_message">
         <!-- 头部下拉框 -->
         <el-popover placement="bottom-start" width="265" trigger="click">
           <ul id="setting_list">
@@ -26,7 +26,8 @@
             </li>
           </ul>
           <div slot="reference" class="user_info_wrap">
-            <button value="" title="头像"></button>
+            <button v-if="user_message.wechat_info.head_img" :style="{'background-image':'url('+user_message.wechat_info.head_img+')'}" value="" title="头像"></button>
+            <button v-show="!user_message.wechat_info.head_img" :style="{'background-image':'url(../assets/img/tx.png)'}" value="" title="头像"></button>
             <span>{{user_message.nickname}}</span>
             <i class="el-icon-arrow-down"></i>
           </div>
@@ -152,12 +153,14 @@ export default class HeaderOne extends Vue {
         color: white;
         border-right: 1px solid #3a3a48;
         button {
-          background: url(../assets/img/tx.png) 30px center no-repeat #272731;
+          margin-left: 30px;
+          background: center no-repeat #272731;
+          background-size: 100%;
           border: none;
           cursor: pointer;
           border: 0;
           height: 65px;
-          width: 75px;
+          width: 39px;
           float: left;
           outline: none;
         }
