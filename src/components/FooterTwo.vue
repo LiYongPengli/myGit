@@ -1,5 +1,5 @@
 <template>
-  <!-- 头部2 -->
+  <!-- 底部 -->
   <div class="footertwo">
     <footer><p>睿读v2.1.35 2018 © 中经软件</p></footer>
   </div>
@@ -18,7 +18,7 @@ footer{
     margin-top: 20px;
     margin-bottom: 30px;
     p{
-        margin-left: 800px;
+      text-align: center;
     }
 }
 </style>

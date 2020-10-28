@@ -14,6 +14,12 @@
               <img src="../../assets/img/scmr.png" alt="">
               <span class="name">默认标签</span>
               <span class="time"></span>
+              <span class="edit">
+                编辑
+              </span>
+              <span class="delete">
+                删除
+              </span>
             </div>
           </li>
           <li>
@@ -21,6 +27,12 @@
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
+               <span class="edit">
+                编辑
+              </span>
+              <span class="delete">
+                删除
+              </span>
             </div>
           </li>
           <li>
@@ -28,6 +40,12 @@
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
               <span class="time">2020年10月21日 创建</span>
+               <span class="edit">
+                编辑
+              </span>
+              <span class="delete">
+                删除
+              </span>
             </div>
           </li>
           <li>
@@ -84,7 +102,7 @@
         </ul>
       </div>
     </vue-scroll>
-     <footer-two />
+     
   </div>
  
 </template>
@@ -92,12 +110,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
-import FooterTwo from '@/components/FooterTwo.vue';
-@Component({
-  components:{
-    FooterTwo
-  }
-})
+// import FooterTwo from '@/components/FooterTwo.vue';
+// @Component({
+//   components:{
+//     FooterTwo
+//   }
+// })
 export default class UserCollection extends mixins(UserCollectionCom) {};
 </script>
 
