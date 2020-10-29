@@ -1,3 +1,103 @@
-.zhuanti{
-    
+.zhuanti {
+    .mycollect {
+        margin-top: 25px;
+        height: 70px;
+        line-height: 70px;
+        .position {
+            float: left;
+            width: 1090px;
+            list-style: none;
+            .L {
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+                a:nth-child(1) {
+                    font-size: 16PX;
+                }
+                a:nth-child(2) {
+                    font-size: 20px;
+                }
+                .tongji {
+                    font-size: 14px;
+                    margin-left: 25px;
+                }
+            }
+        }
+        .plfx {
+            margin-top: 20px;
+            float: right;
+            margin-right: 0;
+            height: 30px;
+            width: 110px;
+            line-height: 30px;
+            border: 1px solid #676770;
+            box-sizing: border-box;
+            padding-left: 40px;
+            background: url("../../assets/img/sczhuanfa.png") 20% 50% no-repeat;
+            cursor: pointer;
+            // height: 110px;
+        }
+    }
+    .list {
+        ul {
+            list-style: none;
+            li {
+                margin-top: 36px;
+                // padding-left: 50px;
+                padding-bottom: 30px;
+                overflow: hidden;
+                // border-bottom: 1px solid #3a3a48;
+                // box-sizing: border-box;
+                border-bottom: 1px solid #3a3a48;
+                .pic {
+                    float: left;
+                    margin-right: 30px;
+                    position: relative;
+                }
+                .text {
+                    float: left;
+                    width: 633px;
+                    .title {
+                        font-size: 16px;
+                        color: #e2e2e4;
+                    }
+                    .mt,
+                    .time,
+                    .ll {
+                        margin-top: 16px;
+                        display: block;
+                        font-size: 13px;
+                        color: #bcc2d5;
+                    }
+                }
+                .zan {
+                    float: right;
+                    width: 140px;
+                    span {
+                        float: right;
+                        width: 55px;
+                        font-size: 14px;
+                        color: #bcc2d5;
+                        display: inline-block;
+                        box-sizing: border-box;
+                        padding-left: 20px;
+                    }
+                    span.shanchu {
+                        background: url("../../assets/img/shanchu.png") left center no-repeat;
+                        margin-left: 30px;
+                    }
+                    span.fenxiang {
+                        background: url("../../assets/img/sczhuanfa.png") left center no-repeat;
+                    }
+                }
+            }
+            .jzgd {
+                padding: 20px 0;
+                text-align: center;
+                font-size: 14px;
+                color: #bcc2d5;
+            }
+        }
+    }
 }

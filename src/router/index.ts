@@ -85,6 +85,24 @@ const routes: RouteConfig[] = [
         path:'follow',
         name:'UserFollow',
         component:()=>import('../views/userfollow/UserFollow.vue')
+      },
+      //我的消息
+      {
+        path:'message',
+        name:'UserMessage',
+        component:()=>import('../views/usermessage/UserMessage.vue')
+      },
+      //账号管理
+      {
+        path:"account",
+        name:"UserAccount",
+        component:()=>import('../views/useraccount/UserAccount.vue')
+      },
+      //用户管理
+      {
+        path:"users",
+        name:"UserUsers",
+        component:()=>import('../views/userusers/UserUsers.vue')
       }
     ]
   }

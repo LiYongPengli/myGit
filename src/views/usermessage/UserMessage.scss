@@ -1,0 +1,44 @@
+.usermessage {
+    .mymessage {
+        height: 70px;
+        margin-top: 30px;
+        line-height: 70px;
+        border-bottom: 1px solid #3a3a48;
+        span {
+            font-size: 20px;
+        }
+    }
+    .list {
+        width: 1200px;
+        ul {
+            list-style: none;
+            li {
+                height: 100px;
+                border-bottom: 1px solid #3a3a48;
+                .weidu {
+                    cursor: pointer;
+                    width: 50px;
+                    height: 20px;
+                    line-height: 20px;
+                    background-color: #0079ed;
+                    display: inline-block;
+                    text-align: center;
+                    margin-right: 10px;
+                }
+                .name {
+                    text-decoration: none;
+                    color: white;
+                    font-size: 16px;
+                    margin-top: 30px;
+                    display: inline-block;
+                }
+                .time {
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 13px;
+                    color: #bcc2d5;
+                }
+            }
+        }
+    }
+}

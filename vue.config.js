@@ -12,8 +12,8 @@ module.exports = {
               }
             }, */
             '/aps': {
-                //target: "http://192.168.71.171:5000",
-                target: "http://zlbxxcj.bjceis.com",
+                target: "http://192.168.71.171:5000",
+                // target: "http://zlbxxcj.bjceis.com",
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
