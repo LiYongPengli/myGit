@@ -1,7 +1,7 @@
 <template>
   <!-- 我的收藏 -->
   <div class="usercollection">
-    <div class="ss">
+    <div v-if="show" class="ss">
       <p>我的收藏(8)</p>
       <input type="text" placeholder="请输入关键词" />
       <span class="plfx">批量分享</span>
@@ -36,7 +36,7 @@
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
               <span class="edit"> 编辑 </span>
               <span class="delete"> 删除 </span>
             </div>
@@ -45,7 +45,7 @@
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
               <span class="edit"> 编辑 </span>
               <span class="delete"> 删除 </span>
             </div>
@@ -54,14 +54,14 @@
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
           <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
           <li>
@@ -75,28 +75,28 @@
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
           <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
           <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
           <li>
             <div class="collection">
               <img src="../../assets/img/sylbtp.png" alt="" />
               <span class="name">拜登系列</span>
-              <span class="time">2020年10月21日 创建</span>
+              <span class="time">2020�0�1�创建</span>
             </div>
           </li>
         </ul>
@@ -108,8 +108,8 @@
       title="编辑书签标题"
       :visible.sync="dialogVisible"
     >
-      <span class="name">书签名称：</span>
-      <span class="nr">请输入专题名称</span>
+      <span class="name">书签名称�/span>
+      <span class="nr">请输入专题名�/span>
       <span class="fm">书签封面:</span>
       <div class="sqcj">
         <img src="../../assets/img/cjqs.png" alt="" />
@@ -117,9 +117,9 @@
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false"
-          >确 认</el-button
+          >��/el-button
         >
-        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="dialogVisible = false">��/el-button>
       </span>
     </el-dialog>
   </div>
@@ -128,13 +128,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
-// import FooterTwo from '@/components/FooterTwo.vue';
-// @Component({
-//   components:{
-//     FooterTwo
-//   }
-// })
-@Component
+import Zhuanti from '@/components/zhuanti/Zhuanti.vue';
+@Component({
+  components:{
+    Zhuanti
+  }
+})
 export default class UserCollection extends mixins(UserCollectionCom) {}
 </script>
 
