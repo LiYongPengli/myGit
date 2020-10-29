@@ -1,7 +1,7 @@
 <template>
   <!-- 我的收藏 -->
   <div class="usercollection">
-    <div class="ss">
+    <div v-if="show" class="ss">
       <p>我的收藏(8)</p>
       <input type="text" placeholder="请输入关键词" />
       <span class="plfx">批量分享</span>
@@ -98,6 +98,7 @@
         </ul>
       </div>
     </vue-scroll>
+    <zhuanti />
     <el-dialog title="编辑书签标题" :visible.sync="dialogVisible">
       <span>专题书签标题</span>
       <span>专题书签标题</span>
@@ -114,13 +115,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
-// import FooterTwo from '@/components/FooterTwo.vue';
-// @Component({
-//   components:{
-//     FooterTwo
-//   }
-// })
-@Component
+import Zhuanti from '@/components/zhuanti/Zhuanti.vue';
+@Component({
+  components:{
+    Zhuanti
+  }
+})
 export default class UserCollection extends mixins(UserCollectionCom) {}
 </script>
 
