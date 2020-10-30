@@ -6,10 +6,11 @@
     </div>
     <div class="search">
       <button value="" title="检索"></button>
-      <input
+      <!-- <input
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
-      />
+      /> -->
+      <div class="ss">搜索111111111111111111111111111111</div>
     </div>
     <div class="bottom">
       <div class="user_info" v-if="user_message">
@@ -131,6 +132,15 @@ export default class HeaderOne extends Vue {
       box-sizing: border-box;
       color: white;
       // margin-left: 10px;
+    }
+    .ss{
+        width: calc(100% - 75px);
+      background-color: #272731;
+      height: 65px;
+      line-height: 65px;
+      border: 0;
+      box-sizing: border-box;
+      color: white;
     }
     input:focus {
       outline: none;
