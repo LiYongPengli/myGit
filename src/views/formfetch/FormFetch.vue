@@ -12,8 +12,6 @@ import FormFetchCom from "./FormFetch";
 export default class FormFetch extends mixins(FormFetchCom) {}
 </script>
 
-
-
 <style scoped>
 @import "./FormFetch.scss";
 </style>
