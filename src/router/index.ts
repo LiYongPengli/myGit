@@ -11,20 +11,20 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
-    redirect:'/recommend',
+    redirect: '/recommend',
     component: Home,
-    children:[
+    children: [
       //热门推荐
       {
-        path:'/recommend',
-        name:'Recommend',
-        component:()=>import('../views/recommend/Recommend.vue')
+        path: '/recommend',
+        name: 'Recommend',
+        component: () => import('../views/recommend/Recommend.vue')
       },
       //我的关注
       {
-        path:'/myfollow',
-        name:'Myfollow',
-        component:()=>import('../views/myfollow/Myfollow.vue')
+        path: '/myfollow',
+        name: 'Myfollow',
+        component: () => import('../views/myfollow/Myfollow.vue')
       }
     ]
   },
@@ -51,58 +51,65 @@ const routes: RouteConfig[] = [
   },
   //新闻详情
   {
-    path:'/newsinfo',
-    name:'NewsInfo',
-    component:()=>import('../views/newsinfo/NewsInfo.vue')
+    path: '/newsinfo',
+    name: 'NewsInfo',
+    component: () => import('../views/newsinfo/NewsInfo.vue')
   },
   //个人中心
   {
-    path:'/user',
-    name:'User',
-    redirect:'/user/form',
-    component:()=>import('../views/user/User.vue'),
-    children:[
+    path: '/user',
+    name: 'User',
+    redirect: '/user/form',
+    component: () => import('../views/user/User.vue'),
+    children: [
       //统计报表
       {
-        path:'form',
-        name:'UserForm',
-        component:()=>import('../views/userform/UserForm.vue')
+        path: 'form',
+        name: 'UserForm',
+        component: () => import('../views/userform/UserForm.vue')
       },
       //密码管理
       {
-        path:'password',
-        name:'UserPassWord',
-        component:()=>import('../views/userpassword/UserPassWord.vue')
+        path: 'password',
+        name: 'UserPassWord',
+        component: () => import('../views/userpassword/UserPassWord.vue')
       },
       //我的收藏
       {
-        path:'collection',
-        name:'UserCollection',
-        component:()=>import('../views/usercollection/UserCollection.vue')
+        path: 'collection',
+        name: 'UserCollection',
+        component: () => import('../views/usercollection/UserCollection.vue')
       },
       //我的关注
       {
-        path:'follow',
-        name:'UserFollow',
-        component:()=>import('../views/userfollow/UserFollow.vue')
+        path: 'follow',
+        name: 'UserFollow',
+        component: () => import('../views/userfollow/UserFollow.vue')
       },
       //我的消息
       {
-        path:'message',
-        name:'UserMessage',
-        component:()=>import('../views/usermessage/UserMessage.vue')
+        path: 'message',
+        name: 'UserMessage',
+        component: () => import('../views/usermessage/UserMessage.vue')
+      },
+
+      //消息详情
+      {
+        path: 'messageinfo',
+        name: 'MessageInfo',
+        component: () => import('../views/messageinfo/MessageInfo.vue')
       },
       //账号管理
       {
-        path:"account",
-        name:"UserAccount",
-        component:()=>import('../views/useraccount/UserAccount.vue')
+        path: "account",
+        name: "UserAccount",
+        component: () => import('../views/useraccount/UserAccount.vue')
       },
       //用户管理
       {
-        path:"users",
-        name:"UserUsers",
-        component:()=>import('../views/userusers/UserUsers.vue')
+        path: "users",
+        name: "UserUsers",
+        component: () => import('../views/userusers/UserUsers.vue')
       }
     ]
   }

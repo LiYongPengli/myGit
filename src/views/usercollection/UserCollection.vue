@@ -122,7 +122,7 @@
         <el-button @click="dialogVisible = false">取 消</el-button>
       </span>
     </el-dialog>
-   <!-- <zhuan-ti /> -->
+   <zhuan-ti />
   </div>
 
 </template>

@@ -15,15 +15,19 @@
           <span class="time"> 时间：2020年10月13日16:26:33 </span>
         </li>
         <li>
-          <span class="weidu"> 已读 </span>
+          <span v-if="show" class="weidu"> 已读 </span>
           <a class="name" href="">了解清楚文章到底是一种怎么样的存在</a>
           <span class="time"> 时间：2020年10月13日16:26:33 </span>
         </li>
-        <li>
+        <li class="cur">
           <span class="weidu"> 未读 </span>
-          <a class="name" href="" >了解清楚文章到底是一种怎么样的存在</a>
+          <a class="name" href="">了解清楚文章到底是一种怎么样的存在</a>
           <span class="time"> 时间：2020年10月13日16:26:33 </span>
+          <el-button class="shanchu" type="primary" icon="el-icon-delete"
+            >删除</el-button
+          >
         </li>
+        <div class="jzgd">更多精彩内容，加载中</div>
       </ul>
     </div>
   </div>
@@ -51,6 +55,26 @@ export default class UserCollection extends mixins(UserMessageCom) {}
   }
   .yidu {
     margin-left: 20px;
+  }
+  .list {
+    ul {
+      li {
+        position: relative;
+
+        .shanchu {
+          position: absolute;
+          right: 30px;
+          top: 30px;
+          background-color: #3a3a48;
+          border: 0;
+          font-size: 14px;
+
+        }
+      }
+      li.cur {
+        background-color: #3a3a48;
+      }
+    }
   }
 }
 </style>

@@ -3,5 +3,5 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class UserCollectionCom extends Vue{
     public  dialogVisible=false;
     public show = false;
-    public listshow=true;
+    public listshow=false;
 }

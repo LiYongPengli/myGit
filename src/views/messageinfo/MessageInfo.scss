@@ -1,0 +1,75 @@
+.messageinfo {
+    .mycollect {
+        margin-top: 25px;
+        height: 70px;
+        line-height: 70px;
+        border-bottom: 1px solid #3a3a48;
+        .position {
+            float: left;
+            width: 1090px;
+            list-style: none;
+            .L {
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+                a:nth-child(1) {
+                    font-size: 16PX;
+                }
+                a:nth-child(2) {
+                    font-size: 20px;
+                }
+                .tongji {
+                    font-size: 14px;
+                    margin-left: 25px;
+                }
+            }
+        }
+        .fanhui {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            float: right;
+        }
+    }
+    .content {
+        width: 1200px;
+        .title {
+            margin-top: 40px;
+            color: white;
+            font-size: 32px;
+            text-align: center;
+        }
+        .time {
+            color: #bcc2d5;
+            font-size: 14px;
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        p {
+            font-size: 16px;
+            color: white;
+            margin-bottom: 10px;
+            text-indent: 2em;
+        }
+        .btn {
+            div {
+                width: 90px;
+                height: 30px;
+                float: right;
+                line-height: 30px;
+                text-align: center;
+                cursor: pointer;
+            }
+            div.shanchu {
+                background-color: #f4516c;
+                margin-left: 20px;
+            }
+            div.return {
+                background-color: #0074ff;
+            }
+        }
+    }
+}
