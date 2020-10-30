@@ -10,7 +10,7 @@
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
       /> -->
-      <div @click="show_intelligent=true" class="ss">搜索111111111111111111111111111111</div>
+      <div @click="show_intelligent=true" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策</div>
     </div>
     <div class="bottom">
       <div class="user_info" v-if="user_message">
@@ -116,7 +116,7 @@ export default class HeaderOne extends Vue {
     // top: 47px;
     width: 210px;
     height: 132px;
-    z-index: 9999;
+    z-index: 0;
     background: url(../assets/img/logo.png) 20px center no-repeat #30303c;
     border-right: 1px solid #3a3a48;
   }
