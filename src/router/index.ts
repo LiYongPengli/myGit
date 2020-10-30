@@ -66,7 +66,15 @@ const routes: RouteConfig[] = [
       {
         path: 'form',
         name: 'UserForm',
-        component: () => import('../views/userform/UserForm.vue')
+        redirect:'/user/form/fetch',
+        component: () => import('../views/userform/UserForm.vue'),
+        children:[
+          {
+            path:'fetch',
+            name:'Fetch',
+            component:()=>import('../views/formfetch/FormFetch.vue')
+          }
+        ]
       },
       //密码管理
       {
@@ -93,12 +101,6 @@ const routes: RouteConfig[] = [
         component: () => import('../views/usermessage/UserMessage.vue')
       },
 
-      //消息详情
-      {
-        path: 'messageinfo',
-        name: 'MessageInfo',
-        component: () => import('../views/messageinfo/MessageInfo.vue')
-      },
       //账号管理
       {
         path: "account",
