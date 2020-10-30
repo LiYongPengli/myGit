@@ -1,13 +1,13 @@
 <template>
   <div class="usermessage">
-    <div class="mymessage">
+    <div v-show="show" class="mymessage">
       <el-row>
         <span> 我的消息 </span>
         <el-button class="yidu" type="info">全部已读</el-button>
         <el-button class="clear" type="info">全部清空</el-button>
       </el-row>
     </div>
-    <div class="list">
+    <div v-show="listshow" class="list">
       <ul>
         <li>
           <span class="weidu"> 未读 </span>
@@ -30,13 +30,19 @@
         <div class="jzgd">更多精彩内容，加载中</div>
       </ul>
     </div>
+      <message-info />
   </div>
+      
 </template>
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserMessageCom from "./UserMessage";
-
-@Component
+import MessageInfo from "@/components/messageinfo/MessageInfo.vue";
+@Component({
+  components: {
+    MessageInfo,
+  },
+})
 export default class UserCollection extends mixins(UserMessageCom) {}
 </script>
 
