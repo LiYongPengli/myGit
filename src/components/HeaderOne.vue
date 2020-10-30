@@ -10,7 +10,7 @@
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
       /> -->
-      <div class="ss">搜索111111111111111111111111111111</div>
+      <div @click="show_intelligent=true" class="ss">搜索111111111111111111111111111111</div>
     </div>
     <div class="bottom">
       <div class="user_info" v-if="user_message">
@@ -55,6 +55,9 @@
         >
       </div>
     </div>
+    <transition name="el-zoom-in-top">
+      <intelligent-retrieval v-if="show_intelligent" />
+    </transition>
   </div>
 </template>
 
@@ -62,7 +65,12 @@
 import { baseApi } from "@/axios/axios";
 import { Component, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-@Component
+import IntelligentRetrieval from '@/components/intelligentretrieval/IntelligentRetrieval.vue'
+@Component({
+  components:{
+    IntelligentRetrieval
+  }
+})
 export default class HeaderOne extends Vue {
   //当前系统语言
   @State("language") language!: string;
@@ -70,6 +78,8 @@ export default class HeaderOne extends Vue {
   @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
+
+  public show_intelligent:boolean = false;
 
   //登出
   public logout(): void {
@@ -96,7 +106,7 @@ export default class HeaderOne extends Vue {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   // border: 1px solid;
   height: 130px;
   background-image: linear-gradient(to bottom, #31313d, #272730);
