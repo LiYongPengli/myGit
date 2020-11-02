@@ -6,7 +6,13 @@ export default class UserPassWordCom extends Vue{
     //忘记原密码
     public fogetpwd:boolean = false;
     //是否发送验证码
-    public sendCode:boolean = false;
+    public send_code:boolean = false;
+    public img_vc_code:string = "";
+    public show_vc_code:boolean = false;
+    private is_send_img_code:boolean = false;
+    private time:number = 59;
+    //图片验证码数据
+    public img_vc:string = "";
     public form = {
         oldpwd:'',
         newpwd:'',
@@ -75,23 +81,86 @@ export default class UserPassWordCom extends Vue{
     }
 
 
+    //验证手机号
     private initTel(rule:any, value:string, callback:any):void{
         if(!value){
+            this.is_send_img_code = false;
             callback(new Error('请输入手机号!'));
             return;
         }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(value))){
+            this.is_send_img_code = false;
             callback(new Error('手机号格式有误!'));
             return;
         }
+        this.is_send_img_code = true;
         callback();
+    
     }
+
+    //获取图片验证码
+    private async getImgCode():Promise<void>{
+        try{
+            let res = await this.axios.get(baseApi.api1+'/v1/verify/img');
+            this.img_vc = res.data.data;
+        }catch(err){
+            console.log(err);
+        }
+    }
+    //获取手机验证码
+    private getPhoneCode(phoneNumber:string):void{
+        this.axios.get(baseApi.api1+'/v1/verify/telphone?tel='+phoneNumber).then(res=>{
+            console.log(res.data);
+            this.send_code = true;
+            this.show_vc_code = false;
+            this.$message.success("验证码发送成功");
+            let interval = setInterval(() => {
+                if (--this.time <= 0) {
+                    clearInterval(interval);
+                    this.time = 59;
+                    this.send_code = false;
+                }
+            }, 1000)
+        }).catch(err=>{
+
+        })
+    }
+
+    //点击确认校验图片验证码
+    public async img_srue():Promise<void>{
+        if(await this.imgCodeSure(this.img_vc_code)){
+            this.getPhoneCode(this.fogetForm.tel);
+        }
+    }
+
+    //图片验证码确认
+    public async imgCodeSure(img_code:string): Promise<boolean> {
+        if (!img_code) {
+            this.$message.error('请输入图片验证码');
+            return false;
+        }
+        try {
+            await this.axios.put(baseApi.api1+'/v1/verify/img', qs.stringify({ vc: img_code }));
+            return true;
+        } catch (code_err) {
+            if (code_err.response.data.message == 'Verification code is uncorrect.') {
+                this.$message.error('图片验证码错误');
+                this.getImgCode();
+            }
+            console.log(code_err)
+            return false;
+        }
+    }
+
+
     //点击获取手机验证码
     public get_code():void{
-        this.sendCode=true
-    }
-    //发送手机验证码
-    private send_code():void{
+        if(this.is_send_img_code&&!this.send_code){
+            this.show_vc_code=true;
+            this.getImgCode();
+        }else{
 
+        }
+        
     }
 
     //最终表单验证

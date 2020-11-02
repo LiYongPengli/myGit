@@ -1,12 +1,12 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import qs from 'qs';
 import { baseApi } from '@/axios/axios';
-const {Wx} = require('../../libs/wx.js')
+const { Wx } = require('../../libs/wx.js')
 @Component
 export default class LoginCom extends Vue {
     public remember_password: boolean = false;
     //微信登录需要的信息
-    public wx_data:any = "";
+    public wx_data: any = "";
     //base64图片验证码
     public img_vc: string = "";
     //存放图片验证码
@@ -48,15 +48,15 @@ export default class LoginCom extends Vue {
     //获取图片验证码
     public async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1+'/v1/verify/img');
+            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img');
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
         }
     }
     //获取手机验证码
-    private getPhoneCode(phoneNumber:string):void{
-        this.axios.get(baseApi.api1+'/v1/verify/telphone?tel='+phoneNumber).then(res=>{
+    private getPhoneCode(phoneNumber: string): void {
+        this.axios.get(baseApi.api1 + '/v1/verify/telphone?tel=' + phoneNumber).then(res => {
             console.log(res.data);
             this.send_code = true;
             this.show_vc_code = false;
@@ -68,26 +68,26 @@ export default class LoginCom extends Vue {
                     this.send_code = false;
                 }
             }, 1000)
-        }).catch(err=>{
+        }).catch(err => {
 
         })
     }
 
     //手机验证码确认
-    private async phoneCodeSure(phoneNumber:string,vc:string):Promise<boolean>{
-        try{
+    private async phoneCodeSure(phoneNumber: string, vc: string): Promise<boolean> {
+        try {
             let data = qs.stringify({
-                tel:phoneNumber,
-                vc:vc,
-                type:1
+                tel: phoneNumber,
+                vc: vc,
+                type: 1
             })
-            let res = await this.axios.put(baseApi.api1+'/v1/verify/telphone',data);
-            if(!res.data.status){
+            let res = await this.axios.put(baseApi.api1 + '/v1/verify/telphone', data);
+            if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 return false;
             }
             return true;
-        }catch(code_err){
+        } catch (code_err) {
             if (code_err.response.status == 401 && code_err.response.data.message) {
                 if (code_err.response.data.message == 'Verification code is uncorrect.') {
                     this.$message.error('手机验证码有误');
@@ -107,20 +107,20 @@ export default class LoginCom extends Vue {
         }
     }
     //点击确认校验图片验证码
-    public async img_srue():Promise<void>{
-        if(await this.imgCodeSure(this.img_vc_code)){
+    public async img_srue(): Promise<void> {
+        if (await this.imgCodeSure(this.img_vc_code)) {
             this.getPhoneCode(this.phone_form.tel);
         }
     }
 
     //图片验证码确认
-    public async imgCodeSure(img_code:string): Promise<boolean> {
+    public async imgCodeSure(img_code: string): Promise<boolean> {
         if (!img_code) {
             this.$message.error('请输入图片验证码');
             return false;
         }
         try {
-            await this.axios.put(baseApi.api1+'/v1/verify/img', qs.stringify({ vc: img_code }));
+            await this.axios.put(baseApi.api1 + '/v1/verify/img', qs.stringify({ vc: img_code }));
             return true;
         } catch (code_err) {
             if (code_err.response.data.message == 'Verification code is uncorrect.') {
@@ -150,29 +150,12 @@ export default class LoginCom extends Vue {
 
     //绑定微信
     public bindWechat(): void {
-        this.axios.post(baseApi.api1+'/v1/user/wechat/').then(res=>{
+        this.axios.post(baseApi.api1 + '/v1/user/wechat/').then(res => {
             this.wx_data = res.data.data;
             this.bindAccount = false;
             this.weiChatLogin = true;
-            /* let obj = Wx({
-                self_redirect:true,
-                id:"login_container", 
-                appid: this.wx_data.appid, 
-                scope: this.wx_data.scope, 
-                redirect_uri: this.wx_data.redirect_uri,
-                state: this.wx_data.state,
-                style: "white",
-                href: ""
-                }) */
-                //console.log(obj)
-        }).catch(err=>{})
-        /* this.axios.put(baseApi.api1+'/v1/user/wechat/').then(res=>{
-            this.bindAccount = false;
-            this.weiChatLogin = true;
-        }).catch(err=>{
-            console.log(err);
-        }) */
-        
+        }).catch(err => { })
+
     }
     //账号登录
     public async toLogin(): Promise<void> {
@@ -192,13 +175,13 @@ export default class LoginCom extends Vue {
             this.$message.error('请输入验证码');
             return;
         }
-        if(await this.imgCodeSure(this.form.vc)){
-            try{
+        if (await this.imgCodeSure(this.form.vc)) {
+            try {
                 let data = {
-                    account:this.form.account,
-                    password:this.form.password
+                    account: this.form.account,
+                    password: this.form.password
                 }
-                let res = await this.axios.post(baseApi.api1+'/v1/user/login/', qs.stringify(data));
+                let res = await this.axios.post(baseApi.api1 + '/v1/user/login/', qs.stringify(data));
                 if (!res.data.status) {
                     this.$message.error(res.data.msg);
                     return;
@@ -210,25 +193,29 @@ export default class LoginCom extends Vue {
                     return;
                 }
                 this.$router.push('/');
-            }catch(err){
+            } catch (err) {
                 console.log(err);
             }
         }
     }
     //不绑定微信直接账号登录
     public noBindWeichat(): void {
-        this.axios.put(baseApi.api1+'/v1/user/wechat/').then(res=>{
+        this.axios.put(baseApi.api1 + '/v1/user/wechat/').then(res => {
             this.bindAccount = false;
             this.$router.push('/');
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
     }
     //微信登录(导航切换)
     public toWeiChatLogin(): void {
-        this.weiChatLogin = true;
-        this.account = false;
-        this.phoneLogin = false;
+        this.axios.post(baseApi.api1 + '/v1/user/wechat/').then(res => {
+            this.wx_data = res.data.data;
+            this.weiChatLogin = true;
+            this.account = false;
+            this.phoneLogin = false;
+        }).catch(err => { })
+
     }
     //账号登录(导航切换)
     public toAccountLogin(): void {
@@ -257,18 +244,18 @@ export default class LoginCom extends Vue {
             this.$message.error('请输入手机验证码');
             return;
         }
-        if(!await this.phoneCodeSure(this.phone_form.tel,this.phone_form.tel_vc)){
+        if (!await this.phoneCodeSure(this.phone_form.tel, this.phone_form.tel_vc)) {
             return;
         }
-        try{
-            let res = await this.axios.post(baseApi.api1+'/v1/user/login/telphone', qs.stringify({tel:this.phone_form.tel}));
+        try {
+            let res = await this.axios.post(baseApi.api1 + '/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel }));
             if (!res.data.status) {
                 this.$message.success(res.data.msg);
                 return;
             }
             this.$message.success('登录成功');
             this.$router.push('/');
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
     }
