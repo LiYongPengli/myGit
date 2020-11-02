@@ -18,13 +18,13 @@ import { Mutation } from 'vuex-class';
 import { baseApi } from './axios/axios';
 @Component
 export default class App extends Vue {
-  private isshow = false;
+  private isshow = true;
   //设置用户信息
   @Mutation('setUserMessage') setUserMessage:any;
 
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
-    if (newVal == "Login" || newVal == "Register" || newVal == "Findpassword") {
+    if (newVal == "Login" || newVal == "Register" || newVal == "Findpassword" || newVal == "BindAccount") {
       this.isshow = true;
     } else {
       this.isshow = false;

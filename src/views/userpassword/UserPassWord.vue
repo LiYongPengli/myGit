@@ -40,7 +40,9 @@
         </el-form-item>
         <el-form-item class="item" label="验证码:" prop="vc">
           <el-input class="usrpwd" v-model="fogetForm.vc" placeholder="请输入验证码" />
-          <span @click.stop="get_code" class="get_code">获取手机验证码</span>
+          <span @click.stop="get_code" class="get_code">{{
+            send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
+          }}</span>
         </el-form-item>
         <el-form-item class="item" label="新密码:" prop="newpwd">
           <el-input class="usrpwd"  v-model="fogetForm.newpwd" placeholder="请输入新密码" />
@@ -53,11 +55,15 @@
     <div class="footer">
       <el-button @click="toEditPassword" style="width:280px;" type="primary">确认修改</el-button>
     </div>
-    <el-dialog width="800px" top="30vh" :visible.sync="sendCode">
+    <el-dialog width="800px" top="30vh" :visible.sync="show_vc_code">
       <div class="img_code_wrap">
         <div class="img_code_item">
           <span>图片验证码:</span>
-          <input type="text" placeholder="请输入图片验证码" />
+          <input type="text" v-model="img_vc_code" placeholder="请输入图片验证码" />
+          <img @click="getImgCode" :src="img_vc" alt="">
+        </div>
+        <div class="footer">
+          <el-button @click="img_srue" style="width:200px;" size="mini" type="primary">确定</el-button>
         </div>
       </div>
     </el-dialog>
