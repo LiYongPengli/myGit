@@ -10,7 +10,7 @@
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
       /> -->
-      <div @click="show_intelligent=true" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策</div>
+      <div @click="setShowIntelligent(true)" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策</div>
     </div>
     <div class="bottom">
       <div class="user_info" v-if="user_message">
@@ -79,7 +79,9 @@ export default class HeaderOne extends Vue {
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
 
-  public show_intelligent:boolean = false;
+  @State('show_intelligent') show_intelligent!:boolean;
+
+  @Mutation('setShowIntelligent') setShowIntelligent:any;
 
   //登出
   public logout(): void {
