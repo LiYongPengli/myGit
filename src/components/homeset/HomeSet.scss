@@ -6,5 +6,166 @@
     left: 0;
     top: 0;
     z-index: 15;
+    box-sizing: border-box;
     background: #272730;
+    header {
+        height: 260px;
+        border-bottom: 1px solid #3a3a48;
+        .header {
+            width: 1000px;
+            margin: 0 auto;
+            padding-top: 75px;
+            h1 {
+                font-size: 40px;
+                color: white;
+                margin-bottom: 20px;
+            }
+            span {
+                color: #bcc2d5;
+                font-size: 14px;
+            }
+            .tab {
+                overflow: hidden;
+                input {
+                    width: 200px;
+                    float: right;
+                    box-sizing: border-box;
+                    background-color: #494959;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    height: 30px;
+                    width: 200px;
+                    padding-left: 20px;
+                    background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
+                    cursor: pointer;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    .content {
+        width: 1000px;
+        margin: auto;
+        span.yx {
+            display: block;
+            padding-top: 30px;
+            color: white;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            overflow: hidden;
+            max-height: 500px;
+            overflow-y: auto;
+            li {
+                position: relative;
+                float: left;
+                height: 70px;
+                width: 163px;
+                line-height: 70px;
+                a {
+                    img {
+                        // padding-left: 20px;
+                        width: 50px;
+                        height: 30px;
+                    }
+                    color: white;
+                    text-decoration: none;
+                    font-size: 16px;
+                    .chinese {
+                        position: absolute;
+                        top: -20px;
+                        margin-left: 20px;
+                        font-size: 15px;
+                    }
+                    .english {
+                        margin-left: 20px;
+                        font-size: 13px;
+                    }
+                }
+            }
+            li.cur {
+                background-color: #494959;
+            }
+        }
+        .qit {
+            margin-top: 50px;
+            color: #6d6f7e;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .sst {
+            margin-top: 50px;
+            color: #6d6f7e;
+            display: block;
+            margin-bottom: 20px;
+        }
+        ul.mt {
+            li {
+                width: 196px;
+                a {
+                    img {
+                        width: 54px;
+                        height: 54px;
+                        margin-top: 8px;
+                        margin-left: 20px;
+                    }
+                    span.chinese {
+                        top: -5px;
+                        font-size: 15px;
+                    }
+                    span.english {
+                        position: absolute;
+                        top: 15px;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        ul.rw {
+            li {
+                margin-top: 40px;
+                width: 245px;
+                a {
+                    img {
+                        width: 54px;
+                        height: 54px;
+                        margin-top: 8px;
+                    }
+                    span.chinese {
+                        top: -10px;
+                        font-size: 13px;
+                    }
+                    span.english {
+                        position: absolute;
+                        top: 10px;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        ul.tjpd {
+            margin-top: 20px;
+            li {
+                height: 50px;
+                line-height: 50px;
+                width: 166px;
+                a {
+                    img {
+                        width: 54px;
+                        height: 54px;
+                        margin-top: 8px;
+                    }
+                    span.chinese {
+                        top: -10px;
+                    }
+                    span.english {
+                        position: absolute;
+                        top: 10px;
+                    }
+                }
+            }
+        }
+    }
 }
