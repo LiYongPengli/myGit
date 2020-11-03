@@ -18,6 +18,7 @@
         <p>睿读v2.1.35 2018 © 中经软件</p>
       </footer>
     </div>
+    <home-set />
   </div>
 </template>
 
@@ -25,13 +26,22 @@
 import HomeCom from "./Home";
 import Component, { mixins } from "vue-class-component";
 import HeaderOne from '@/components/HeaderOne.vue'
+import HomeSet from '@/components/homeset/HomeSet.vue'
 @Component({
   components:{
-    HeaderOne
+    HeaderOne,
+    HomeSet
   }
 })
 export default class Home extends mixins(HomeCom) {}
 </script>
 <style lang="scss" scoped>
 @import "./Home.scss";
+</style>
+<style lang="scss">
+.home{
+  .homeset{
+    z-index: 99999999999;
+  }
+}
 </style>
