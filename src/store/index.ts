@@ -11,7 +11,9 @@ export default new Vuex.Store({
     //文章语言
     language:'crawler',
     //聊天窗口
-    topic_show:false
+    topic_show:false,
+    //是否显示搜索页面
+    show_intelligent:false
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -25,6 +27,9 @@ export default new Vuex.Store({
     },
     setUserMessage(state,n):void{
       state.user_message = n;
+    },
+    setShowIntelligent(state,n):void{
+      state.show_intelligent = n;
     }
   },
   actions: {

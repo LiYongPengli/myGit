@@ -3,7 +3,7 @@
   <div class="intelligentretrieval">
     <header>
       <div class="search">
-        <div class="gbjs">关闭检索</div>
+        <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
         <input
           type="text"
           placeholder="美国大选"
