@@ -58,6 +58,7 @@
                 color: rgb(255, 255, 255);
                 height: 70px;
                 border-bottom: 1px solid #3a3a48;
+                margin-left: 40px;
                 .cur {
                     background-image: url("../../assets/img/cur.png")!important;
                     background-position: center bottom!important;
@@ -68,6 +69,8 @@
                     width: 100px;
                     flex-shrink: 0;
                     text-align: center;
+                    height: 70px;
+                    line-height: 70px;
                 }
                 .swiper-container {
                     flex: 1;

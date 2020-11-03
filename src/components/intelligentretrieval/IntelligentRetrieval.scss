@@ -136,6 +136,7 @@
                     width: 130px;
                     .morchoice,
                     .more {
+                        cursor: pointer;
                         float: left;
                         width: 60px;
                         height: 25px;
@@ -147,6 +148,17 @@
                     }
                     .more {
                         margin-right: 10px;
+                    }
+                    .morepe {
+                        width: 60px;
+                        height: 25px;
+                        border: 1px solid #676770;
+                        color: white;
+                        line-height: 25px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        margin-left: 70px;
+                        cursor: pointer;
                     }
                 }
             }
@@ -168,25 +180,33 @@
                 .list {
                     width: 756px;
                     float: left;
-                    ul {
-                        list-style: none;
-                        overflow: hidden;
-                        li {
-                            float: left;
-                            div {
-                                width: 100px;
-                                height: 30px;
-                                line-height: 30px;
-                                text-align: center;
-                                color: white;
-                                margin-left: 20px;
-                                margin-right: 35px;
-                                text-decoration: none;
-                                font-size: 14px;
-                                border: 1px solid #676770;
-                                box-sizing: border-box;
+                    .other {
+                        ul {
+                            list-style: none;
+                            overflow: hidden;
+                            li {
+                                float: left;
+                                margin-right: 10px;
+                                div {
+                                    cursor: pointer;
+                                    width: 100px;
+                                    height: 30px;
+                                    line-height: 30px;
+                                    text-align: center;
+                                    color: white;
+                                    text-decoration: none;
+                                    font-size: 14px;
+                                    border: 1px solid #676770;
+                                    box-sizing: border-box;
+                                }
+                                input {
+                                    height: 30px;
+                                    box-sizing: border-box;
+                                }
                             }
-                            input {}
+                            li:first-child {
+                                margin-left: 20px;
+                            }
                         }
                     }
                 }
@@ -213,11 +233,13 @@
                         overflow: hidden;
                         border-bottom: 1px solid #3a3a48;
                         .pic {
+                            cursor: pointer;
                             float: left;
                             margin-right: 30px;
                             position: relative;
                         }
                         .text {
+                            cursor: pointer;
                             float: left;
                             width: 633px;
                             .title {
