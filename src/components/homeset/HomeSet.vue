@@ -17,497 +17,497 @@
         </div>
       </div>
     </header>
-    <div  class="content">
-          <vue-scroll>
-      <span class="yx"> 已选:中国、美国、加拿大 </span>
-      <ul>
-        <li class="cur">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li class="cur">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li class="cur">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/china.png" alt="" />
-            <span class="chinese">中国</span>
-            <span class="english">China</span>
-          </a>
-        </li>
-      </ul>
-          </vue-scroll>
+    <div v-show="show" class="content">
+      <vue-scroll>
+        <span class="yx"> 已选:中国、美国、加拿大 </span>
+        <ul>
+          <li class="cur">
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li class="cur">
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li class="cur">
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <!-- 50*30 -->
+              <img src="../../assets/img/china.png" alt="" />
+              <span class="chinese">中国</span>
+              <span class="english">China</span>
+            </a>
+          </li>
+        </ul>
+      </vue-scroll>
       <el-row>
         <el-button type="primary">下一步</el-button>
       </el-row>
     </div>
-    <div v-show="show"  class="content">
+    <div class="content">
       <span class="yx"> 已选:新华社、环球网、推特 </span>
       <span class="qit">近7天内活跃的媒体</span>
       <ul class="mt">
@@ -641,7 +641,7 @@
       </ul>
       <el-row>
         <el-button type="primary">下一步</el-button>
-        <el-button type="primary">上一步</el-button>
+        <div class="up">上一步</div>
       </el-row>
     </div>
 
@@ -779,10 +779,10 @@
 
       <el-row>
         <el-button type="primary">下一步</el-button>
-        <el-button type="primary">上一步</el-button>
+        <div class="up">上一步</div>
       </el-row>
     </div>
-    <div  v-show="show" class="content">
+    <div v-show="show" class="content">
       <ul class="tjpd">
         <li><a href="">疫情每日数据</a></li>
         <li><a href="">疫</a></li>
@@ -805,7 +805,7 @@
       </ul>
       <el-row>
         <el-button type="primary">完成</el-button>
-        <el-button type="primary">上一步</el-button>
+        <div class="up">上一步</div>
       </el-row>
     </div>
   </div>
@@ -844,6 +844,19 @@ export default class HomeSet extends mixins(HomeSetCom) {}
       .el-button {
         width: 280px;
         height: 60px;
+      }
+      .up{
+        width: 140px;
+        height: 60px;
+        line-height: 60px;
+         background-color: #272730;
+        margin-left: 20px;
+        display: inline-block;
+        color: white;
+        cursor: pointer;
+      }
+      .up:hover{
+        font-size: 20px;
       }
     }
   }
