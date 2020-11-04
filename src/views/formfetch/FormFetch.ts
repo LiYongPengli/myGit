@@ -3,26 +3,76 @@ import echarts from 'echarts'
 @Component
 export default class FormFetchCom extends Vue {
 
-    public mounted():void{
+    public mounted(): void {
         this.fetchDataInfo();
     }
     //采集数据趋势图
-    private fetchDataInfo():void{
+    private fetchDataInfo(): void {
         let myChart2 = this.$refs.myChart2;
         let myChart = echarts.init((myChart2 as HTMLDivElement));
-        let option:any = {
+        let option: any = {
+            title: {
+                text: '数据采集趋势图',
+                subtext: '',
+                textStyle: {
+                    color: 'white'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['本周', '上周']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    magicType: { show: true, type: ['stack', 'tiled'] },
+                    saveAsImage: { show: true }
+                }
+            },
             xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                    color: '#cdd6e5'
+                        }
+                    } 
+            
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                axisLine:{
+                    show:false
+                },
+                axisTick:{
+                    show:false
+                     
+                },axisLabel: {
+                    show: true,
+                    textStyle: {
+                    color: '#cdd6e5'
+                        }
+                    } 
             },
             series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                name: '本周',
                 type: 'line',
-                smooth: true
+                smooth: true,
+                data: [10000, 120000, 40000, 60000, 70000, 83000, 100000],
+                color:"#19d1ff"
+            },
+            {
+                name: '上周',
+                type: 'line',
+                smooth: true,
+                data: [300000, 18200, 43400, 79100, 39000, 30000, 90000],
+                color:'#f4516c'
             }]
+
         }
         myChart.setOption(option);
     }
