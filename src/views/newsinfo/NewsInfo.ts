@@ -1,5 +1,114 @@
-import { Component, Vue } from 'vue-property-decorator'
+import { baseApi } from '@/axios/axios'
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { State } from 'vuex-class'
 @Component
 export default class NewsInfoCom extends Vue{
+    @State('language') language!:string;
+    public newsInfo:any = "";
+    //字体大小
+    public fontSize:number = 16;
+    public created():void{
+        this.getData();
+    }
+    @Watch('language')
+    public listenLanguage(newVal:string,oldVal:string):void{
+        this.getData();
+    }
 
+    private getData():void{
+        this.axios.post(baseApi.api2+'/v1/cmd/',{
+            cmd:'news_detail',
+            paras:{
+                news_id:this.$route.query.id,
+                language:this.language
+            }
+        }).then(res=>{
+            console.log(res.data);
+            this.newsInfo = res.data.data;
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+    /**
+     * 获取视频字幕
+     * @param xml 输入的xml字符串
+     * @returns html标签集合
+     */
+    public getYouTubeText(xml:string):any{
+        let parser = new DOMParser();
+        let xmlDoc = parser.parseFromString(xml,"text/xml");
+        return xmlDoc.getElementsByTagName('text') as any;
+    }
+
+    //获取新闻内容
+    public getNewsContent():string{
+        let str = "";
+        for(let i of this.newsInfo.html){
+            if(i.content){
+                str+=`<${i.tag}>${i.content}</${i.tag}>`
+            }
+            if(i.id){
+                for(let j of this.newsInfo.attachments){
+                    if(j.position==i.id){
+                        str+=`<img style="display:block;margin:39px auto;" src="${j.url}" />`
+                    }
+                }
+            }
+        }
+        return str;
+    }
+    //收藏或取消收藏
+    public toCollection():void{
+        this.axios.post(baseApi.api2+'/v1/cmd/',{
+            cmd:'favorite_news',
+            paras:{
+                news_id:this.$route.query.id,
+                news_oper:this.newsInfo.favorited?'undo':'do'
+            }
+        }).then(res=>{
+            this.newsInfo.favorited = !this.newsInfo.favorited;
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+    //不感兴趣或取消不感兴趣
+    public notInterested():void{
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'not_interest_news',
+          paras: {
+            news_id: this.$route.query.id,
+            news_oper: this.newsInfo.not_interested?'undo':'do',
+          },
+        })
+        .then(res => {
+          console.log(res.data);
+          this.newsInfo.not_interested = !this.newsInfo.not_interested;
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+
+    //点赞或取消点赞
+    public likes():void{
+        this.axios.post(baseApi.api2+'/v1/cmd/',{
+            cmd: 'like_news',
+            paras: {
+              news_id: this.$route.query.id,
+              news_oper: this.newsInfo.liked?'undo':'do'
+            }
+        }).then(res=>{
+            console.log(res.data);
+            this.newsInfo.liked = !this.newsInfo.liked;
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+    //导出world
+    public downloadWord():void{
+        
+    }
 }

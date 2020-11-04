@@ -2,7 +2,7 @@
   <!-- 热门推荐 -->
   <div class="recommend">
     <div class="mainpage">
-      <div @click="toNewsInfo" class="banner">
+      <div class="banner">
         <img src="../../assets/img/banner.png" alt="" />
         <a class="banner-p">福奇公开与特朗普唱反调 称美疫情或持续至明年底</a>
         <p class="load"></p>
@@ -41,7 +41,7 @@
                 <img :src="v.thumb" alt="" />
               </div>
               <div class="text">
-                <p class="title">{{ v.title }}</p>
+                <p @click="toNewsInfo(v)" class="title">{{ v.title }}</p>
                 <span class="mt">媒体: {{ v.media }} </span>
                 <span class="time">时间: {{ init_time(v.time) }}</span>
                 <span class="ll">浏览次数: {{ v.pv }}人</span>
