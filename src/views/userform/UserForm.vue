@@ -2,7 +2,10 @@
 <!-- 个人中心 统计报表 -->
   <div class="userform">
     <div class="top_nav">
-      <router-link tag="div" to="/user/form/fetch">数据采集统计</router-link>
+      <router-link tag="div" class="cur" to="/user/form/fetch">数据采集统计</router-link>
+      <router-link tag="div"  to="/user/form/fetch">平台运行统计</router-link>
+      <router-link tag="div"  to="/user/form/fetch">资源使用率说明</router-link>
+
     </div>
     <router-view />
   </div>
@@ -18,5 +21,5 @@ export default class UserForm extends mixins(UserFormCom) {
 </script>
 
 <style lang="scss" scoped>
-
+@import './UserForm.scss';
 </style>

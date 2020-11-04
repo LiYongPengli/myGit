@@ -1,5 +1,31 @@
 .formfetch {
-    h1 {
-        background-color: red;
+    padding-top: 60px;
+    .content {
+        width: 1200px;
+        height: 1230px;
+        margin: 0 auto;
+        background-color: #3a3a48;
+        .count {
+            padding-top: 50px;
+            margin-left: 60px;
+            .cjgj,
+            .cjzd,
+            .cjtj {
+                width: 330px;
+                height: 133px;
+                float: left;
+                background-color: #494959;
+                margin-right: 45px;
+                position: relative;
+                text-align: center;
+                .sl {
+                    font-size: 40px;
+                    margin-top: 20px;
+                }
+                .name {
+                    margin-top: 20px;
+                }
+            }
+        }
     }
 }

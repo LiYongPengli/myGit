@@ -10,6 +10,8 @@ import vuescroll from 'vuescroll';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'swiper/swiper-bundle.min.css';
 //import 'vuetify/dist/vuetify.min.css'
+ 
+
 
 //Vue.use(Vuetify);
 Vue.use(vuescroll);

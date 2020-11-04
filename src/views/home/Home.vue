@@ -18,7 +18,7 @@
         <p>睿读v2.1.35 2018 © 中经软件</p>
       </footer>
     </div>
-    <home-set />
+    <!-- <home-set /> -->
   </div>
 </template>
 

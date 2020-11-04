@@ -17,7 +17,7 @@
         </div>
       </div>
     </header>
-    <div v-show="show" class="content">
+    <div  class="content">
       <vue-scroll>
         <span class="yx"> 已选:中国、美国、加拿大 </span>
         <ul>
@@ -507,7 +507,7 @@
         <el-button type="primary">下一步</el-button>
       </el-row>
     </div>
-    <div class="content">
+    <div v-show="show" class="content">
       <span class="yx"> 已选:新华社、环球网、推特 </span>
       <span class="qit">近7天内活跃的媒体</span>
       <ul class="mt">
