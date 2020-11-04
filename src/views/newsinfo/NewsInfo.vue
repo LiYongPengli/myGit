@@ -25,11 +25,19 @@
         </div>
         <!-- 文章主体 -->
         <div v-if="newsInfo" class="content" :style="{'font-size':fontSize+'px'}">
-          <div v-html="getNewsContent()" class="news"></div>
+          <div v-if="newsInfo.media != '油管'" v-html="getNewsContent()" class="news"></div>
           <div v-if="newsInfo.media == '油管'" class="youtube">
-            <p v-for="(v, i) in getYouTubeText(newsInfo.html.content)" :key="i">
+            <div class="video_wrap">
+              <video :src="newsInfo.attachments[1].url" controls>
+                <track :src="newsInfo.attachments[2].url" label="中文" />
+                <track :src="newsInfo.attachments[3].url" label="原文" />
+              </video>
+            </div>
+            <div class="vvts">
+              <p v-for="(v, i) in getYouTubeText(newsInfo.html.content)" :key="i">
               {{ v.innerHTML }}
             </p>
+            </div>
           </div>
         </div>
         <!-- 底部操作 -->

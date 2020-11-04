@@ -13,7 +13,9 @@ export default new Vuex.Store({
     //聊天窗口
     topic_show:false,
     //是否显示搜索页面
-    show_intelligent:false
+    show_intelligent:false,
+    //主页面距离顶部距离
+    mainPageScrollTop:0
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -30,6 +32,9 @@ export default new Vuex.Store({
     },
     setShowIntelligent(state,n):void{
       state.show_intelligent = n;
+    },
+    setScrollTop(state,n):void{
+      state.mainPageScrollTop = n;
     }
   },
   actions: {

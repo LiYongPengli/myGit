@@ -10,7 +10,7 @@
       <div class="list_wrap">
         <div class="list_nav">
           <span
-            class="recommend"
+            class="recommend_nav"
             @click="change_recommend(0, '推荐')"
             :class="{ 'cur': active_recommend == 0 }"
             >推荐</span
@@ -103,7 +103,7 @@
       </div>
 
       <!-- 24小时 -->
-      <div class="eshour">
+      <div class="eshour" :class="{'fixed':mainPageScrollTop>=350}">
         <div class="bt">24小时</div>
         <div class="content">
           <ul>

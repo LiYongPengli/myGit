@@ -1,15 +1,14 @@
 <template>
   <div class="home">
-    <!-- 头部导航 -->
-
-    <header-one />
     <!-- 聊天工具 -->
     <transition name="topic">
       <div v-if="topic_show" class="topic">
         <!-- 聊天工具组件 -->
       </div>
     </transition>
-    <div class="body">
+    <div @scroll="mainPageScroll" class="body">
+      <!-- 头部导航 -->
+      <header-one />
       <!-- 内容主体 -->
       <div class="wrap">
         <router-view />
@@ -25,13 +24,13 @@
 <script lang="ts">
 import HomeCom from "./Home";
 import Component, { mixins } from "vue-class-component";
-import HeaderOne from '@/components/HeaderOne.vue'
-import HomeSet from '@/components/homeset/HomeSet.vue'
+import HeaderOne from "@/components/HeaderOne.vue";
+import HomeSet from "@/components/homeset/HomeSet.vue";
 @Component({
-  components:{
+  components: {
     HeaderOne,
-    HomeSet
-  }
+    HomeSet,
+  },
 })
 export default class Home extends mixins(HomeCom) {}
 </script>
@@ -39,8 +38,8 @@ export default class Home extends mixins(HomeCom) {}
 @import "./Home.scss";
 </style>
 <style lang="scss">
-.home{
-  .homeset{
+.home {
+  .homeset {
     z-index: 99999999999;
   }
 }

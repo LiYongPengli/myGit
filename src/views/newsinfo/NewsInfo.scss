@@ -96,6 +96,20 @@
         color: #ffffff;
         border-bottom: 1px solid #3a3a48;
         padding: 56px 0;
+        .youtube{
+          display: flex;
+          .video_wrap{
+            flex: 2;
+            video{
+              height: 400px;
+            }
+          }
+          .vvts{
+            flex: 1;
+            height: 400px;
+            overflow-y: auto;
+          }
+        }
       }
       .footer {
         margin-top: 20px;

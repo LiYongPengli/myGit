@@ -7,6 +7,7 @@ import { Mutation, State } from 'vuex-class';
 export default class RecommendCom extends Vue {
     @State('index_channel_window') index_channel_window!: boolean;
     @State('language') language!: string;
+    @State('mainPageScrollTop') mainPageScrollTop!:number;
     //被激活的推荐频道导航
     public active_recommend: number = 0;
     public active_recommend_name: string = '推荐';

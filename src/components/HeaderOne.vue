@@ -105,7 +105,7 @@ export default class HeaderOne extends Vue {
 .headerone {
   width: 100%;
   height: 10vh;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 100;
