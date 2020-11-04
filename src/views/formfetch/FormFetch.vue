@@ -43,7 +43,7 @@
       </div>
       <div class="cjsjqst">
         <div class="small">
-          <canvas id="myChart2" width="400px" height="400px"></canvas>
+          <div ref="myChart2" class="myChart2"></div>
         </div>
       </div>
     </div>
@@ -53,7 +53,6 @@
 <script lang="ts">
 
 import Component, { mixins } from "vue-class-component";
-import chart from 'chart.js'
 import FormFetchCom from "./FormFetch";
 @Component
 export default class FormFetch extends mixins(FormFetchCom) {}

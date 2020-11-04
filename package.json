@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "echarts": "^4.9.0",
     "element-ui": "^2.13.2",
     "swiper": "^6.3.3",
     "vant": "^2.10.9",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/echarts": "^4.9.0",
     "@types/swiper": "^5.4.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
