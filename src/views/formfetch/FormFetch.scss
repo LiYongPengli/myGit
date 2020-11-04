@@ -1,5 +1,88 @@
-.formfetch {
-    h1 {
-        background-color: red;
-    }
-}
+        .formfetch {
+            padding-top: 60px;
+            .content {
+                width: 1200px;
+                height: 1230px;
+                margin: 0 auto;
+                background-color: #3a3a48;
+                .count {
+                    padding-top: 50px;
+                    padding-left: 60px;
+                    padding-bottom: 50px;
+                    border-bottom: 1px solid #494959;
+                    .cjgj,
+                    .cjzd,
+                    .cjtj {
+                        width: 330px;
+                        height: 133px;
+                        float: left;
+                        background-color: #494959;
+                        margin-right: 45px;
+                        text-align: center;
+                        .sl {
+                            font-size: 40px;
+                            margin-top: 25px;
+                        }
+                        .name {
+                            margin-top: 5px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .count::after {
+                    content: "";
+                    display: block;
+                    clear: both;
+                }
+                .cjsjs {
+                    padding-left: 60px;
+                    .cjsjs_head {
+                        margin-top: 40px;
+                        p {
+                            font-size: 20px;
+                            color: white;
+                            display: inline;
+                        }
+                        .el-row {
+                            float: right;
+                            margin-right: 400px;
+                            padding-bottom: 20px;
+                            button {
+                                width: 100px;
+                            }
+                        }
+                    }
+                    .cjsjs_content {
+                        width: 1080px;
+                        margin-top: 40px;
+                        background-color: #494959;
+                        height: 130px;
+                        text-align: center;
+                        div {
+                            float: left;
+                            margin-left: 49px;
+                            margin-right: 74px;
+                            height: 150px;
+                            position: relative;
+                            width: 100px;
+                        }
+                        div p:first-child {
+                            position: absolute;
+                            // line-height: 130px;
+                            font-size: 30px;
+                            top: 35px;
+                        }
+                        div p:nth-child(2) {
+                            position: absolute;
+                            top: 80px;
+                            font-size: 14px;
+                        }
+                    }
+                    .cjsjs_content::after {
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+                }
+            }
+        }
