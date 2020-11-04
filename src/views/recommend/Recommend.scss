@@ -124,6 +124,10 @@
                             .title {
                                 font-size: 16px;
                                 color: #e2e2e4;
+                                cursor: pointer;
+                            }
+                            .title:hover{
+                                text-decoration: underline;
                             }
                             .mt,
                             .time,

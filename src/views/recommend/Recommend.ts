@@ -89,8 +89,8 @@ export default class RecommendCom extends Vue {
         this.media_swiper.slideTo(index);
     }
     //到新闻详情页
-    public toNewsInfo(): void {
-        this.$router.push('/newsinfo');
+    public toNewsInfo(item:any): void {
+        window.open('#/newsinfo?id='+item.news_id);
     }
 
 

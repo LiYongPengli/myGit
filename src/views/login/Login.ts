@@ -1,7 +1,6 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import qs from 'qs';
 import { baseApi } from '@/axios/axios';
-const { Wx } = require('../../libs/wx.js')
 @Component
 export default class LoginCom extends Vue {
     public remember_password: boolean = false;
