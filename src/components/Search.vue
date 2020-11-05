@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Emit, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 @Component
 export default class Search extends Vue {
@@ -56,10 +56,12 @@ export default class Search extends Vue {
     }
   }
   //搜索
-  public toSearch(e: KeyboardEvent): void {
+  @Emit('tosearch')
+  public toSearch(e: KeyboardEvent): string {
     if (e.keyCode == 13) {
       this.setHistory();
     }
+    return this.searchText;
   }
 
   //删除某条历史记录
