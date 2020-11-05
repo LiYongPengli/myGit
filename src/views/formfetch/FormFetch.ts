@@ -24,6 +24,8 @@ export default class FormFetchCom extends Vue {
 
     public mounted(): void {
         this.fetchDataInfo();
+        // this.tableRowClassName();
+
     }
     //采集数据趋势图
     private fetchDataInfo(): void {
@@ -109,6 +111,15 @@ export default class FormFetchCom extends Vue {
         }
         myChart.setOption(option);
     }
+
+    // private tableRowClassName(row, rowIndex){
+    //     if (rowIndex === 1) {
+    //         return 'warning-row';
+    //       } else if (rowIndex === 3) {
+    //         return 'success-row';
+    //       }
+    //       return '';
+    // }
   
      
 }

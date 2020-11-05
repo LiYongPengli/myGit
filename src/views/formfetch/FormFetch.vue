@@ -49,7 +49,11 @@
 
       <div class="site">
         <div class="list">
-          <el-table :data="tableData" style="width: 90%;background-color:red;height:300px">
+          <el-table
+            :data="tableData"
+            style="width: 100%"
+            :header-cell-style="{ background: '#3a3a48', color: 'white' }"
+          >
             <el-table-column prop="date" label="日期" width="180">
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="180">
@@ -71,4 +75,30 @@ export default class FormFetch extends mixins(FormFetchCom) {}
 
 <style lang="scss" scoped>
 @import "./FormFetch.scss";
+</style>
+
+<style lang="scss">
+.formfetch {
+  .list /deep/ .el-table--fit {
+    padding: 20px;
+  }
+
+  .list /deep/ .el-table,
+  .el-table__expanded-cell {
+    background-color: transparent;
+  }
+
+  .list /deep/ .el-table__header .has-gutter {
+    background-color: transparent !important;
+  }
+
+  .list /deep/ .el-table tr {
+    background-color: transparent !important;
+  }
+  .list /deep/ .el-table--enable-row-transition .el-table__body td,
+  .el-table .cell {
+    background-color: transparent;
+  }
+  
+}
 </style>
