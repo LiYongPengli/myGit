@@ -3,6 +3,9 @@
     <header-two />
     <div class="wrap">
       <div class="wrap_content">
+        <div class="crumbs">
+                <a href="/">首页</a><b>&gt;</b><a href="#">新闻详情</a>
+            </div>
         <p class="title">{{ newsInfo.title }}</p>
         <div class="control_wrap">
           <div class="left">
