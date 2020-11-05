@@ -5,9 +5,11 @@ import Swiper from 'swiper'
 import { Mutation, State } from 'vuex-class';
 @Component
 export default class RecommendCom extends Vue {
+    public  eshour:boolean=true
     @State('index_channel_window') index_channel_window!: boolean;
     @State('language') language!: string;
-    @State('mainPageScrollTop') mainPageScrollTop!:number;
+    @State('mainPageScrollTop') mainPageScrollTop!: number;
+    @State('topic_show') topic_show!: boolean;
     //被激活的推荐频道导航
     public active_recommend: number = 0;
     public active_recommend_name: string = '推荐';
@@ -29,7 +31,15 @@ export default class RecommendCom extends Vue {
     public country: { sub_id: string; name: string }[] = [];
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
-    @Mutation('setTopicShow') setTopicShow!:any;
+    @Mutation('setTopicShow') setTopicShow!: any;
+
+    @Watch('topic_show')
+    public topic_show_change(): void {
+        this.eshour=!this.topic_show;
+        console.log(this.eshour)
+        debugger
+        
+    }
 
     @Watch('language')
     public language_change(): void {
@@ -65,9 +75,9 @@ export default class RecommendCom extends Vue {
             this.channel = res.data.data.subscriptions;
             this.channel_swiper = new Swiper('#swiper1', {
                 slidesPerView: 4,
-                freeMode:true,
-                observer:true,
-                observeSlideChildren:true
+                freeMode: true,
+                observer: true,
+                observeSlideChildren: true
             })
         });
 
@@ -75,11 +85,11 @@ export default class RecommendCom extends Vue {
     }
 
     //回到顶部
-    public toTop():void{
+    public toTop(): void {
         let top = window.scrollY;
-        let timer = setInterval(()=>{
-            window.scrollTo({top:(top-=20)})
-            if(top<=0){
+        let timer = setInterval(() => {
+            window.scrollTo({ top: (top -= 20) })
+            if (top <= 0) {
                 clearInterval(timer)
             }
         })
@@ -90,8 +100,8 @@ export default class RecommendCom extends Vue {
         this.media_swiper.slideTo(index);
     }
     //到新闻详情页
-    public toNewsInfo(item:any): void {
-        window.open('#/newsinfo?id='+item.news_id);
+    public toNewsInfo(item: any): void {
+        window.open('#/newsinfo?id=' + item.news_id);
     }
 
 

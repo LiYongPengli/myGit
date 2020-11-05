@@ -103,7 +103,7 @@
       </div>
 
       <!-- 24小时 -->
-      <div class="eshour" :class="{'fixed':mainPageScrollTop>=350}">
+      <div class="eshour" v-show="eshour"  :class="{'fixed':mainPageScrollTop>=350}">
         <div class="bt">24小时</div>
         <div class="content">
           <ul>

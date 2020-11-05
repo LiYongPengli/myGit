@@ -46,12 +46,23 @@
           <div ref="myChart2" class="myChart2"></div>
         </div>
       </div>
+
+      <div class="site">
+        <div class="list">
+          <el-table :data="tableData" style="width: 90%;background-color:red;height:300px">
+            <el-table-column prop="date" label="日期" width="180">
+            </el-table-column>
+            <el-table-column prop="name" label="姓名" width="180">
+            </el-table-column>
+            <el-table-column prop="address" label="地址"> </el-table-column>
+          </el-table>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-
 import Component, { mixins } from "vue-class-component";
 import FormFetchCom from "./FormFetch";
 @Component
