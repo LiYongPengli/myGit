@@ -51,6 +51,27 @@
                                 width: 100px;
                             }
                         }
+                        .zhi {
+                            display: inline-block;
+                            width: 16px;
+                            font-weight: bold;
+                        }
+                        .zjsst {
+                            margin-right: 30px;
+                        }
+                        .cjsjs_head_search {
+                            display: inline-block;
+                            height: 40px;
+                            width: 50px;
+                            float: right;
+                            margin-right: 60px;
+                            text-align: center;
+                            border: 1px solid #494959;
+                            cursor: pointer;
+                            img {
+                                margin-top: 10px;
+                            }
+                        }
                     }
                     .cjsjs_content {
                         width: 1080px;
@@ -96,7 +117,6 @@
                 }
                 .site {
                     padding-left: 60px;
-                    .list {}
                 }
             }
         }

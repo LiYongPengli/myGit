@@ -3,27 +3,60 @@ import echarts from 'echarts'
 @Component
 export default class FormFetchCom extends Vue {
 
-    public tableData= [{
+    public pickerOptions = {
+        disabledDate(time: any) {
+            return time.getTime() > Date.now();
+        },
+        shortcuts: [{
+            text: '今天',
+            onClick(picker: any) {
+                picker.$emit('pick', new Date());
+            }
+        }, {
+            text: '昨天',
+            onClick(picker: any) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                picker.$emit('pick', date);
+            }
+        }, {
+            text: '一周前',
+            onClick(picker: any) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit('pick', date);
+            }
+        }]
+        
+    }
+    public value1:string = "";
+    public value2:string = "";
+
+
+
+    public tableData = [{
         date: '2016-05-02',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1518 弄'
-      }, {
+    }, {
         date: '2016-05-04',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1517 弄'
-      }, {
+    }, {
         date: '2016-05-01',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1519 弄'
-      }, {
+    }, {
         date: '2016-05-03',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄'
-      }]
-    
+    }]
+
 
     public mounted(): void {
         this.fetchDataInfo();
+        
+
         // this.tableRowClassName();
 
     }
@@ -60,8 +93,8 @@ export default class FormFetchCom extends Vue {
                 type: 'category',
                 axisLine: {
                     show: false,
-                    lineStyle:{
-                        color:'red'
+                    lineStyle: {
+                        color: 'red'
                     }
                 },
                 axisTick: {
@@ -112,6 +145,15 @@ export default class FormFetchCom extends Vue {
         myChart.setOption(option);
     }
 
+
+
+
+
+
+
+
+
+
     // private tableRowClassName(row, rowIndex){
     //     if (rowIndex === 1) {
     //         return 'warning-row';
@@ -120,6 +162,6 @@ export default class FormFetchCom extends Vue {
     //       }
     //       return '';
     // }
-  
-     
+
+
 }
