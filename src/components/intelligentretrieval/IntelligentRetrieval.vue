@@ -5,7 +5,7 @@
       <header>
         <div class="search">
           <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
-          <input type="text" placeholder="美国大选" />
+          <input v-model="searchText" type="text" placeholder="美国大选" />
         </div>
       </header>
       <div class="content">
@@ -124,7 +124,7 @@
             </div>
           </div>
         </div>
-        <div v-show="show" class="mj">
+        <div class="mj">
           <div class="countrymore country">
             <ul style="margin-left: 55px" class="">
               <li>A</li>
@@ -339,7 +339,7 @@
         </div>
       </div>
     </div>
-    <search-com v-if="showSearch" />
+    <search-com @tosearch="getSearchText" v-if="showSearch" />
   </div>
 </template>
 
