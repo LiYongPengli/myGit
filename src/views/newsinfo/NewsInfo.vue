@@ -6,11 +6,11 @@
         <p class="title">{{ newsInfo.title }}</p>
         <div class="control_wrap">
           <div class="left">
-            <span v-if="!newsInfo.subscribed" class="unfollow">关注</span>
-            <span v-if="newsInfo.subscribed" class="follow">已关注</span>
+            <span @click="tofollow" v-if="!newsInfo.subscribed" class="unfollow">关注</span>
+            <span @click="tofollow" v-if="newsInfo.subscribed" class="follow">已关注</span>
             <span
             class="info"
-              >{{ newsInfo.media }} 丨 {{ newsInfo.time }} 丨
+              >{{ newsInfo.media_name }} 丨 {{ newsInfo.time }} 丨
               {{ newsInfo.favorite }}人收藏 丨 {{ newsInfo.pv }}次浏览量</span
             >
           </div>
@@ -25,8 +25,8 @@
         </div>
         <!-- 文章主体 -->
         <div v-if="newsInfo" class="content" :style="{'font-size':fontSize+'px'}">
-          <div v-if="newsInfo.media != '油管'" v-html="getNewsContent()" class="news"></div>
-          <div v-if="newsInfo.media == '油管'" class="youtube">
+          <div v-if="newsInfo.media_name != '油管'" v-html="getNewsContent()" class="news"></div>
+          <div v-if="newsInfo.media_name == '油管'" class="youtube">
             <div class="video_wrap">
               <video :src="newsInfo.attachments[1].url" controls>
                 <track :src="newsInfo.attachments[2].url" label="中文" />

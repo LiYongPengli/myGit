@@ -107,6 +107,19 @@ export default class NewsInfoCom extends Vue{
         })
     }
 
+    //关注或取消关注
+    public tofollow():void{
+        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+            sub_id: this.$route.query.md_id,
+            sub_type: 'media',
+            sub_oper_type: this.newsInfo.subscribed?'unsub':'sub',
+          }).then(res=>{
+            this.newsInfo.subscribed = !this.newsInfo.subscribed;
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
     //导出world
     public downloadWord():void{
         

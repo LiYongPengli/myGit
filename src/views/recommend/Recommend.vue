@@ -42,7 +42,7 @@
               </div>
               <div class="text">
                 <p @click="toNewsInfo(v)" class="title">{{ v.title }}</p>
-                <span class="mt">媒体: {{ v.media }} </span>
+                <span class="mt">媒体: {{ v.media_name }} </span>
                 <span class="time">时间: {{ init_time(v.time) }}</span>
                 <span class="ll">浏览次数: {{ v.pv }}人</span>
               </div>

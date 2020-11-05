@@ -101,7 +101,7 @@ export default class RecommendCom extends Vue {
     }
     //到新闻详情页
     public toNewsInfo(item: any): void {
-        window.open('#/newsinfo?id=' + item.news_id);
+        window.open('#/newsinfo?id=' + item.news_id+'&md_id='+item.media_id);
     }
 
 

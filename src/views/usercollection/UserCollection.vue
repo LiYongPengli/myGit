@@ -2,105 +2,47 @@
   <!-- 我的收藏 -->
   <div class="usercollection">
     <div v-if="show" class="ss">
-      <p>我的收藏(8)</p>
+      <p>我的收藏({{favoriteList.length}})</p>
       <input type="text" placeholder="请输入关键词" />
       <span class="plfx">批量分享</span>
     </div>
     <div class="collectionlist">
       <my-scroll v-if="listshow">
-      <ul>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/scmr.png" alt="" />
-            <span class="name">默认标签</span>
-            <span class="time"></span>
-            <el-button
-              @click="dialogVisible = true"
-              class="edit"
-              type="primary"
-              icon="el-icon-edit-outline"
-              >编辑</el-button
-            >
+        <ul>
+          <li @mouseover="showBtn(i)" @mouseout="hideBtn(v,i)" v-for="(v,i) in favoriteList" :key="i">
+            <div class="collection">
+              <img v-if="v.name=='默认'" src="../../assets/img/scmr.png" alt="" />
+              <img v-if="v.name!='默认'" :src="v.cover" alt="" />
+              <span class="name">{{v.name=='默认'?'默认标签':v.name}}</span>
+              <span class="time">{{v.created_at.split(".")[0]}} 创建</span>
+              <el-button
+                @click="dialogVisible = true"
+                v-show="v.showControl"
+                class="edit"
+                type="primary"
+                icon="el-icon-edit-outline"
+                >编辑</el-button
+              >
 
-            <el-button
-              @click="dialogVisible = true"
-              class="delete"
-              type="danger"
-              icon="el-icon-delete"
-            >
-              删除
-            </el-button>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-            <span class="edit"> 编辑 </span>
-            <span class="delete"> 删除 </span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-            <span class="edit"> 编辑 </span>
-            <span class="delete"> 删除 </span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-        <li>
-          <div class="collection cjsqhz">
-            <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
-            <span class="cjsqmz">拜登系列</span>
-            <span class="time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-        <li>
-          <div class="collection">
-            <img src="../../assets/img/sylbtp.png" alt="" />
-            <span class="name">拜登系列</span>
-            <span class="time">2020年10月21日 创建</span>
-          </div>
-        </li>
-      </ul>
-    </my-scroll>
+              <el-button
+                @click="dialogVisible = true"
+                v-show="v.showControl"
+                class="delete"
+                type="danger"
+                icon="el-icon-delete"
+              >
+                删除
+              </el-button>
+            </div>
+          </li>
+          <li>
+            <div class="collection cjsqhz">
+              <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
+              <span class="cjsqmz">拜登系列</span>
+            </div>
+          </li>
+        </ul>
+      </my-scroll>
     </div>
     <el-dialog
       top="390px"
@@ -130,11 +72,11 @@
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
 import ZhuanTi from "@/components/zhuanti/Zhuanti.vue";
-import MyScroll from '@/components/MyScroll.vue'
+import MyScroll from "@/components/MyScroll.vue";
 @Component({
   components: {
     ZhuanTi,
-    MyScroll
+    MyScroll,
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
