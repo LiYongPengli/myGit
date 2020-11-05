@@ -1,14 +1,14 @@
 <template>
   <!-- 智能检索 -->
   <div class="intelligentretrieval">
-    <header>
+    <header v-show="show">
       <div class="search">
         <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
         <input type="text" placeholder="美国大选" />
       </div>
     </header>
-    <div class="content">
-      <div  class="mj">
+    <div v-show="show" class="content">
+      <div class="mj">
         <div class="country">
           <span>国家：</span>
           <div class="list">
@@ -333,6 +333,34 @@
               </div>
             </li>
             <div class="jzgd">更多精彩内容，加载中</div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="search">
+      <div class="header">
+        <div class="closesearch"></div>
+        <span class="close"> 关闭检索 </span>
+      </div>
+      <div class="historycontent">
+        <input type="text" placeholder="请输入关键词" />
+        <div class="history">
+          <p>历史记录</p>
+          <span class="clearhistory">清除历史</span>
+          <ul>
+            <li>
+              <span>新冠疫情</span>
+            </li>
+            <li>
+              <span>美国大选</span>
+            </li>
+            <li>
+              <span>黎巴嫩大火</span>
+            </li>
+            <li>
+              <span>疫情每日数据</span>
+            </li>
           </ul>
         </div>
       </div>
