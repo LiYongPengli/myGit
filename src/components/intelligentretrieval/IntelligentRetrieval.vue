@@ -1,13 +1,13 @@
 <template>
   <!-- 智能检索 -->
   <div class="intelligentretrieval">
-    <header v-show="show">
+    <header>
       <div class="search">
         <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
         <input type="text" placeholder="美国大选" />
       </div>
     </header>
-    <div v-show="show" class="content">
+    <div class="content">
       <div class="mj">
         <div class="country">
           <span>国家：</span>
@@ -338,7 +338,7 @@
       </div>
     </div>
 
-    <div class="search">
+    <div  v-show="show" class="search">
       <div class="header">
         <div class="closesearch"></div>
         <span class="close"> 关闭检索 </span>
