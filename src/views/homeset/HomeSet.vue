@@ -50,11 +50,12 @@
       </div>
     </div>
     <!-- 媒体 -->
-    <div v-if="pageIndex == 1" class="content">
+    <div v-if="pageIndex == 1" class="content content_mt">
       <span class="yx"> 已选:{{ sub_form.media.join("、") }} </span>
       <div class="content_wrap">
+             <span class="qit">近7天内活跃的媒体</span>
         <my-scroll>
-          <span class="qit">近7天内活跃的媒体</span>
+     
           <ul class="mt">
             <li
               @click="chooseMediaItem('week', v, i)"
@@ -70,7 +71,10 @@
               </a>
             </li>
           </ul>
-          <span class="sst">近30天内活跃的媒体</span>
+        </my-scroll>
+         <span class="sst">近30天内活跃的媒体</span>
+        <my-scroll>
+         
           <ul class="mt">
             <li
               @click="chooseMediaItem('month', v, i)"
@@ -150,7 +154,13 @@
         </my-scroll>
       </div>
       <div class="footer">
-        <el-button @click="toFinish" :disabled="sub_form.channel.length < 3" style="width:280px;" type="primary">完成</el-button>
+        <el-button
+          @click="toFinish"
+          :disabled="sub_form.channel.length < 3"
+          style="width: 280px"
+          type="primary"
+          >完成</el-button
+        >
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
