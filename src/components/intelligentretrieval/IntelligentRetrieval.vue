@@ -6,6 +6,7 @@
         <div class="search">
           <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
           <input v-model="searchText" type="text" placeholder="美国大选" />
+            <!-- <img class="sousuo"  src="../assets/img/sousuo.png" alt=""> -->
         </div>
       </header>
       <div class="content">
@@ -14,47 +15,47 @@
             <span>国家：</span>
             <div class="list">
               <ul>
-                <li>
-                  <a href=""> 中国(23) </a>
+               <li>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> America(美国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Canada(加拿大) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Mexico(墨西哥) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Cuba(古巴) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Belize(伯利兹) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
               </ul>
             </div>
@@ -70,11 +71,11 @@
               <div class="all">全部</div>
               <div class="other">
                 <ul>
-                  <li><a href="">BBC(2)</a></li>
-                  <li><a href="">Hangmeiti(3)</a></li>
-                  <li><a href="">BBC(2)</a></li>
-                  <li><a href="">Hangmeiti(3)</a></li>
-                  <li><a href="">BBC(2)</a></li>
+                  <li><a href="">BBC(英文广播电视台)</a></li>
+                  <li><a href="">Hangmeiti</a></li>
+                  <li><a href="">BBC</a></li>
+                  <li><a href="">Hangmeiti</a></li>
+                  <li><a href="">BBC</a></li>
                 </ul>
               </div>
             </div>
@@ -108,17 +109,18 @@
               <div class="other">
                 <ul>
                   <li>
-                    <div>今日(23)</div>
+                    <div>今日</div>
                   </li>
-                  <li><div>一周内(23)</div></li>
-                  <li><div>一月内(23)</div></li>
-                  <li>
+                  <li><div>一周内</div></li>
+                  <li><div>一月内</div></li>
+                  <!-- <li>
                     <input type="date" value="2015-09-24" />
                   </li>
                   <li><span>-</span></li>
                   <li>
                     <input type="date" value="2015-09-24" />
-                  </li>
+                  </li> -->
+                  <time-slot />                  
                 </ul>
               </div>
             </div>
@@ -126,7 +128,7 @@
         </div>
         <div class="mj">
           <div class="countrymore country">
-            <ul style="margin-left: 55px" class="">
+            <ul style="margin-left: 55px" class="zm">
               <li>A</li>
               <li>B</li>
               <li>C</li>
@@ -156,36 +158,48 @@
             </ul>
             <span>国家：</span>
             <div class="list">
-              <ul>
+                 <ul>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> America(美国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Canada(加拿大) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Mexico(墨西哥) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Cuba(古巴) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> Belize(伯利兹) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
                 </li>
                 <li>
-                  <a href=""> 中国(23) </a>
+                  <a href=""> China(中国) </a>
+                </li>
+                <li>
+                  <a href=""> China(中国) </a>
+                </li>
+                <li>
+                  <a href=""> China(中国) </a>
+                </li>
+                <li>
+                  <a href=""> China(中国) </a>
+                </li>
+                <li>
+                  <a href=""> China(中国) </a>
                 </li>
               </ul>
             </div>
@@ -204,11 +218,11 @@
               <div class="all">全部</div>
               <div class="other">
                 <ul>
-                  <li><a href="">BBC(2)</a></li>
-                  <li><a href="">Hangmeiti(3)</a></li>
-                  <li><a href="">BBC(2)</a></li>
-                  <li><a href="">Hangmeiti(3)</a></li>
-                  <li><a href="">BBC(2)</a></li>
+                  <li><a href="">BBC(英文广播电视台)</a></li>
+                  <li><a href="">Hangmeiti</a></li>
+                  <li><a href="">BBC</a></li>
+                  <li><a href="">Hangmeiti</a></li>
+                  <li><a href="">BBC</a></li>
                 </ul>
               </div>
             </div>
@@ -242,17 +256,11 @@
               <div class="other">
                 <ul>
                   <li>
-                    <div>今日(23)</div>
+                    <div>今日</div>
                   </li>
-                  <li><div>一周内(23)</div></li>
-                  <li><div>一月内(23)</div></li>
-                  <li>
-                    <input type="date" value="2015-09-24" />
-                  </li>
-                  <li><span>-</span></li>
-                  <li>
-                    <input type="date" value="2015-09-24" />
-                  </li>
+                  <li><div>一周内</div></li>
+                  <li><div>一月内</div></li>
+                   <time-slot />        
                 </ul>
               </div>
             </div>
@@ -260,12 +268,34 @@
         </div>
         <div class="resultlist">
           <div class="paixu">
-            <el-button type="primary"
+            
+            <div class="correlationsort">
+              相关度排序
+              <img class="up" src="../../assets/img/up.png" alt="">
+              <img class="down" src="../../assets/img/down.png" alt="">
+            </div>
+            <div class="releasetimesort">
+              发布时间排序
+            <img class="up" src="../../assets/img/up.png" alt="">
+              <img class="down" src="../../assets/img/down.png" alt="">
+            </div>
+            <ul>
+              <li class="cur"><a href="">原文</a></li>
+              <li><a href="">中文</a></li>
+              <li><a href="">英文</a></li>
+            </ul>
+
+
+
+
+
+
+            <!-- <el-button type="primary"
               >相关度排序<i class="el-icon-d-caret el-icon--right"></i
             ></el-button>
             <el-button type="primary"
               >发布时间排序<i class="el-icon-d-caret el-icon--right"></i
-            ></el-button>
+            ></el-button> -->
           </div>
           <div class="result">
             <ul>
@@ -348,9 +378,11 @@
 import Component, { mixins } from "vue-class-component";
 import IntelligentRetrievalCom from "./IntelligentRetrieval";
 import SearchCom from "@/components/Search.vue"
+import TimeSlot from '@/components/TimeSlot.vue'
 @Component({
   components:{
-    SearchCom
+    SearchCom,
+    TimeSlot
   }
 })
 export default class IntelligentRetrieval extends mixins(IntelligentRetrievalCom) {}
@@ -361,16 +393,5 @@ export default class IntelligentRetrieval extends mixins(IntelligentRetrievalCom
 @import "./IntelligentRetrieval.scss";
 </style>
 <style lang="scss">
-.intelligentretrieval {
-  .el-button--primary {
-    background-color: #272730;
-    border: none;
-  }
-  .el-button--primary:hover {
-    background-color: #272730;
-  }
-  .el-button--primary:focus {
-    background-color: #272730;
-  }
-}
+
 </style>
