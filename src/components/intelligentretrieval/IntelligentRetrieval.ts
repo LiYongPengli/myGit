@@ -8,7 +8,9 @@ export default class IntelligentRetrievalCom extends Vue {
     public showSearch = true;
 
     public getSearchText(searchText:string):void{
-        this.searchText = searchText;
-        this.showSearch = false;
+        if(searchText){
+            this.searchText = searchText;
+            this.showSearch = false;
+        }
     }
 }

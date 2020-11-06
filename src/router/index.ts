@@ -49,6 +49,12 @@ const routes: RouteConfig[] = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/login/Login.vue'),
   },
+  //注册
+  {
+    path: '/homeset',
+    name: 'HomeSet',
+    component: ()=>import('../views/homeset/HomeSet.vue'),
+  },
   //绑定睿读账号
   {
     path: '/bindAccount',

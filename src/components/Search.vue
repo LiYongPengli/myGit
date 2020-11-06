@@ -60,8 +60,9 @@ export default class Search extends Vue {
   public toSearch(e: KeyboardEvent): string {
     if (e.keyCode == 13) {
       this.setHistory();
+      return this.searchText;
     }
-    return this.searchText;
+    return ""
   }
 
   //删除某条历史记录
