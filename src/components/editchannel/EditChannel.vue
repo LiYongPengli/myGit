@@ -8,8 +8,14 @@
       <div class="follow">
         <div class="follow_header">已关注</div>
         <div class="follow_list">
-          <span style="margin:auto;width:max-content;" v-show="!follow_channel.length">还没有关注任何频道</span>
-          <span v-for="(v,i) in follow_channel" :key="i">{{v.name}}<i class="el-icon-close" @click="unfollow(v,i)"></i></span>
+          <span
+            style="margin: auto; width: max-content"
+            v-show="!follow_channel.length"
+            >还没有关注任何频道</span
+          >
+          <span v-for="(v, i) in follow_channel" :key="i"
+            >{{ v.name }}<i class="el-icon-close" @click="unfollow(v, i)"></i
+          ></span>
         </div>
       </div>
       <!-- 推荐频道 -->
@@ -25,8 +31,14 @@
         </div>
         <vue-scroll>
           <div class="channel_list">
-              <span style="margin:auto;width:max-content;" v-show="!channel.length">暂无要推荐的频道</span>
-            <span @click="tofollow(v,i)" v-for="(v, i) in channel" :key="i">{{ v.name }}</span>
+            <span
+              style="margin: auto; width: max-content"
+              v-show="!channel.length"
+              >暂无要推荐的频道</span
+            >
+            <span @click="tofollow(v, i)" v-for="(v, i) in channel" :key="i">{{
+              v.name
+            }}</span>
           </div>
         </vue-scroll>
       </div>

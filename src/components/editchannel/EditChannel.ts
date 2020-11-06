@@ -14,7 +14,7 @@ export default class EditChannelCom extends Vue{
         //获取频道列表
         this.getSubscriptions("channel", "unsub", (res) => {
             console.log(res.data);
-            this.channel = res.data.data.subscriptions;
+            this.channel = res.data.data;
         });
     }
 

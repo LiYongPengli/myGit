@@ -72,7 +72,7 @@ export default class RecommendCom extends Vue {
     public mounted(): void {
         //获取频道列表
         this.getSubscriptions("channel", "sub", (res) => {
-            this.channel = res.data.data.subscriptions;
+            this.channel = res.data.data;
             this.channel_swiper = new Swiper('#swiper1', {
                 slidesPerView: 4,
                 freeMode: true,
