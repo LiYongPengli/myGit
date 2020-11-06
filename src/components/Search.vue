@@ -12,6 +12,7 @@
         type="text"
         placeholder="请输入关键词"
       />
+      <img class="sousuo"  src="../assets/img/sousuo.png" alt="">
       <div class="history">
         <p>历史记录</p>
         <span @click="clearHistory" class="clearhistory">清除历史</span>
@@ -147,6 +148,7 @@ export default class Search extends Vue {
   }
   .historycontent {
     margin-top: 100px;
+    position: relative;
     input {
       height: 50px;
       width: 100%;
@@ -155,9 +157,17 @@ export default class Search extends Vue {
       border: 1px solid #353541;
       padding-left: 20px;
       color: white;
-      background: url("../assets/img/sousuo.png") 95% center no-repeat;
+     // background: url("../assets/img/sousuo.png") 95% center no-repeat;
       background-color: #353541;
     }
+    img.sousuo{
+      cursor: pointer;
+      position:absolute;
+      top: 15px;
+      right: 20px;
+    }
+
+
     .history {
       position: relative;
       margin-top: 40px;
@@ -175,9 +185,11 @@ export default class Search extends Vue {
       cursor: pointer;
     }
     ul {
-      margin-top: 30px;
+      //margin-top: 30px;
       list-style: none;
       li {
+        height: 40px;
+        line-height: 40px;
         float: left;
         margin-right: 35px;
         span {
