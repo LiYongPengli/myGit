@@ -1,27 +1,65 @@
 import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 @Component
 export default class HomeSetCom extends Vue {
     public show = false;
+    public searchText: string = "";
+    //搜索防抖
+    private search_timeout: any = null;
     //目前所处的页码
     public pageIndex: number = 0;
     public sub_form = {
         country: [] as string[],
         media: [] as string[],
-        character: [] as string[]
+        character: [] as string[],
+        channel: [] as string[]
+    }
+    private page_data = {
+        country_list: [] as any[],
+        character_list: [] as any[],
+        channel_list: [] as any[],
+        media_list: {
+            week: [] as any[],
+            month: [] as any[]
+        },
+    }
+    public country_list: any[] = [];
+    public character_list: any[] = [];
+    public channel_list: any[] = [];
+    public media_list: { week: any[]; month: any[] } = {
+        week: [],
+        month: []
     }
 
-    public country_list: any[] = [];
-    public media_list: {week:any[];month:any[]} = {
-        week:[],
-        month:[]
+    @Watch('searchText')
+    public searchChange(newVal: string, oldVal: string): void {
+        if (this.search_timeout) {
+            clearTimeout(this.search_timeout);
+        }
+        this.search_timeout = setTimeout(() => {
+            switch (this.pageIndex) {
+                case 0:
+                    this.searchCountry(newVal);
+                    break;
+                case 1:
+                    this.searchMedia(newVal);
+                    break;
+                case 2:
+                    this.searchCharacter(newVal);
+                    break;
+                case 3:
+                    this.searchChannel(newVal);
+                    break;
+            }
+        }, 1000)
+
     }
 
     public created(): void {
-        this.getSubscriptions("country", "unsub", (res) => {
-            console.log(res.data)
+        this.getSubscriptions("country", "unsub", res => {
             this.country_list = res.data.data;
+            this.page_data.country_list = res.data.data;
         })
     }
 
@@ -34,17 +72,109 @@ export default class HomeSetCom extends Vue {
         })
     }
 
-    private getMedia_list():void{
+    //搜索匹配国家
+    private searchCountry(str: string): void {
+        let reg_zh = /[\u4e00-\u9fa5]+/g;
+        let arr = [];
+        if (reg_zh.test(str)) {
+            for (let i of this.page_data.country_list) {
+                if (~i.name_zh.indexOf(str)) {
+                    arr.push(i);
+                }
+            }
+        } else {
+            for (let i of this.page_data.country_list) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    arr.push(i);
+                }
+            }
+        }
+        this.country_list = arr;
+    }
+
+    //搜索匹配国家
+    private searchMedia(str: string): void {
+        let reg_zh = /[\u4e00-\u9fa5]+/g;
+        let obj = {
+            week: [] as any[],
+            month: [] as any[]
+        }
+        if (reg_zh.test(str)) {
+            for (let i of this.page_data.media_list.week) {
+                if (~i.name_zh.indexOf(str)) {
+                    obj.week.push(i)
+                }
+            }
+            for (let i of this.page_data.media_list.month) {
+                if (~i.name_zh.indexOf(str)) {
+                    obj.month.push(i)
+                }
+            }
+        } else {
+            for (let i of this.page_data.media_list.week) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    obj.week.push(i)
+                }
+            }
+            for (let i of this.page_data.media_list.month) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    obj.month.push(i)
+                }
+            }
+        }
+        this.media_list = obj;
+    }
+
+    //搜索匹配人物
+    private searchCharacter(str: string): void {
+        let reg_zh = /[\u4e00-\u9fa5]+/g;
+        let arr = [];
+        if (reg_zh.test(str)) {
+            for (let i of this.page_data.character_list) {
+                if (~i.name_zh.indexOf(str)) {
+                    arr.push(i);
+                }
+            }
+        } else {
+            for (let i of this.page_data.character_list) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    arr.push(i);
+                }
+            }
+        }
+        this.character_list = arr;
+    }
+    //搜索匹配频道
+    private searchChannel(str: string): void {
+        let reg_zh = /[\u4e00-\u9fa5]+/g;
+        let arr = [];
+        if (reg_zh.test(str)) {
+            for (let i of this.page_data.channel_list) {
+                if (~i.name.indexOf(str)) {
+                    arr.push(i);
+                }
+            }
+        } else {
+            for (let i of this.page_data.channel_list) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    arr.push(i);
+                }
+            }
+        }
+        this.channel_list = arr;
+    }
+    
+    private getMedia_list(): void {
         this.getSubscriptions("media", "unsub", (res) => {
-            console.log(res.data)
             let media_list = res.data.data as any[];
-            for(let i=0;i<media_list.length;i++){
-                if(i<8){
+            for (let i = 0; i < media_list.length; i++) {
+                if (i < 8) {
                     this.media_list.week.push(media_list[i])
-                }else{
+                } else {
                     this.media_list.month.push(media_list[i])
                 }
             }
+            this.page_data.media_list = this.media_list;
         })
     }
 
@@ -69,6 +199,32 @@ export default class HomeSetCom extends Vue {
                     }
                 }
                 break;
+            case 'character':
+                if (!this.character_list[index].choose) {
+                    this.$set(this.character_list[index], 'choose', true);
+                    this.sub_form.character.push(item.name);
+                } else {
+                    this.$set(this.character_list[index], 'choose', false);
+                    for (let i = 0; i < this.sub_form.character.length; i++) {
+                        if (item.name == this.sub_form.character[i]) {
+                            this.$delete(this.sub_form.character, i)
+                        }
+                    }
+                }
+                break;
+            case 'channel':
+                if (!this.channel_list[index].choose) {
+                    this.$set(this.channel_list[index], 'choose', true);
+                    this.sub_form.channel.push(item.name);
+                } else {
+                    this.$set(this.channel_list[index], 'choose', false);
+                    for (let i = 0; i < this.sub_form.channel.length; i++) {
+                        if (item.name == this.sub_form.channel[i]) {
+                            this.$delete(this.sub_form.channel, i)
+                        }
+                    }
+                }
+                break;
         }
     }
     /**
@@ -77,20 +233,59 @@ export default class HomeSetCom extends Vue {
      * @param item 该项对象
      * @param index 该项索引
      */
-    public chooseMediaItem(type:string,item: any, index: number):void{
-        if(type=='week'){
-            this.media_list.week[index]
+    public chooseMediaItem(type: string, item: any, index: number): void {
+        if (type == 'week') {
+            if (!this.media_list.week[index].choose) {
+                this.$set(this.media_list.week[index], 'choose', true);
+                this.sub_form.media.push(item.name);
+            } else {
+                this.$set(this.media_list.week[index], 'choose', false);
+                for (let i = 0; i < this.sub_form.media.length; i++) {
+                    if (item.name == this.sub_form.media[i]) {
+                        this.$delete(this.sub_form.media, i)
+                    }
+                }
+            }
+        } else {
+            if (!this.media_list.month[index].choose) {
+                this.$set(this.media_list.month[index], 'choose', !this.media_list.month[index].choose);
+                this.sub_form.media.push(item.name);
+            } else {
+                this.$set(this.media_list.month[index], 'choose', false);
+                for (let i = 0; i < this.sub_form.media.length; i++) {
+                    if (item.name == this.sub_form.media[i]) {
+                        this.$delete(this.sub_form.media, i)
+                    }
+                }
+            }
         }
     }
 
     //下一步
     public toNext(): void {
-        switch (this.pageIndex) {
+        switch (this.pageIndex++) {
             case 0:
-                this.pageIndex++;
-                if (!this.media_list.week.length||!this.media_list.month.length)
-                this.getMedia_list()
+                if (!this.media_list.week.length || !this.media_list.month.length)
+                    this.getMedia_list()
+                break;
+            case 1:
+                this.getSubscriptions("character", "unsub", res => {
+                    console.log(res.data)
+                    this.character_list = res.data.data;
+                    this.page_data.character_list = res.data.data;
+                })
+                break;
+            case 2:
+                this.getSubscriptions("channel", "unsub", res => {
+                    console.log(res.data)
+                    this.channel_list = res.data.data;
+                    this.page_data.channel_list = res.data.data;
+                })
                 break;
         }
+    }
+    //完成
+    public toFinish(): void {
+
     }
 }

@@ -39,7 +39,6 @@
           padding-left: 20px;
           background: url("../../assets//img/scsearch.png") 90% 50% no-repeat
             #494959;
-          cursor: pointer;
           margin-top: 30px;
         }
       }
@@ -114,6 +113,51 @@
           }
         }
       }
+      ul.rw {
+        overflow: unset;
+        li {
+          margin-top: 40px;
+          width: 245px;
+          a {
+            img {
+              width: 54px;
+              height: 54px;
+              margin-top: 8px;
+            }
+            span.chinese {
+              top: -10px;
+              font-size: 13px;
+            }
+            span.english {
+              position: absolute;
+              top: 10px;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      ul.tjpd {
+        margin-top: 20px;
+        li {
+          height: 50px;
+          line-height: 50px;
+          width: 166px;
+          a {
+            img {
+              width: 54px;
+              height: 54px;
+              margin-top: 8px;
+            }
+            span.chinese {
+              top: -10px;
+            }
+            span.english {
+              position: absolute;
+              top: 10px;
+            }
+          }
+        }
+      }
     }
     .qit {
       margin-top: 50px;
@@ -128,58 +172,14 @@
       margin-bottom: 20px;
     }
 
-    ul.rw {
-      li {
-        margin-top: 40px;
-        width: 245px;
-        a {
-          img {
-            width: 54px;
-            height: 54px;
-            margin-top: 8px;
-          }
-          span.chinese {
-            top: -10px;
-            font-size: 13px;
-          }
-          span.english {
-            position: absolute;
-            top: 10px;
-            font-size: 13px;
-          }
-        }
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .up {
+        margin-left: 20px;
+        cursor: pointer;
       }
-    }
-    ul.tjpd {
-      margin-top: 20px;
-      li {
-        height: 50px;
-        line-height: 50px;
-        width: 166px;
-        a {
-          img {
-            width: 54px;
-            height: 54px;
-            margin-top: 8px;
-          }
-          span.chinese {
-            top: -10px;
-          }
-          span.english {
-            position: absolute;
-            top: 10px;
-          }
-        }
-      }
-    }
-    .footer{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .up{
-            margin-left: 20px;
-            cursor: pointer;
-        }
     }
   }
 }

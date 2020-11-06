@@ -13,7 +13,7 @@
             <el-breadcrumb-item>人物</el-breadcrumb-item>
             <el-breadcrumb-item>推荐频道</el-breadcrumb-item>
           </el-breadcrumb>
-          <input data-v-23616036="" type="text" placeholder="请输入关键词" />
+          <input v-model="searchText" type="text" placeholder="请输入关键词" />
         </div>
       </div>
     </header>
@@ -27,7 +27,7 @@
               @click="chooseItem('country', v, i)"
               v-for="(v, i) in country_list"
               :key="i"
-              :class="{ 'cur': v.choose }"
+              :class="{ cur: v.choose }"
             >
               <a>
                 <!-- 50*30 -->
@@ -57,10 +57,10 @@
           <span class="qit">近7天内活跃的媒体</span>
           <ul class="mt">
             <li
-            @click="chooseMediaItem('week', v, i)"
+              @click="chooseMediaItem('week', v, i)"
               v-for="(v, i) in media_list.week"
               :key="i"
-              :class="{ 'cur': v.choose }"
+              :class="{ cur: v.choose }"
             >
               <a>
                 <!-- 50*30 -->
@@ -73,10 +73,10 @@
           <span class="sst">近30天内活跃的媒体</span>
           <ul class="mt">
             <li
-            @click="chooseMediaItem('month',v,i)"
+              @click="chooseMediaItem('month', v, i)"
               v-for="(v, i) in media_list.month"
               :key="i"
-              :class="{ 'cur': v.choose }"
+              :class="{ cur: v.choose }"
             >
               <a>
                 <!-- 50*30 -->
@@ -99,168 +99,60 @@
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
+    <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
-      <ul class="rw">
-        <li class=" ">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="">
-            <!-- 50*30 -->
-            <img src="../../assets/img/xdd.png" alt="" />
-            <span class="chinese">习近平</span>
-            <span class="english">中国共产党中央委员会总书记</span>
-          </a>
-        </li>
-      </ul>
+      <div class="content_wrap">
+        <my-scroll>
+          <ul class="rw">
+            <li
+              @click="chooseItem('character', v, i)"
+              :class="{ cur: v.choose }"
+              v-for="(v, i) in character_list"
+              :key="i"
+              class=" "
+            >
+              <a>
+                <!-- 50*30 -->
+                <img src="../../assets/img/xdd.png" alt="" />
+                <span class="chinese">{{ v.name }}</span>
+                <!-- <span class="english">中国共产党中央委员会总书记</span> -->
+              </a>
+            </li>
+          </ul>
+        </my-scroll>
+      </div>
 
-      <el-row>
-        <el-button type="primary">下一步</el-button>
-        <div class="up">上一步</div>
-      </el-row>
+      <div class="footer">
+        <el-button
+          @click="toNext"
+          :disabled="sub_form.character.length < 3"
+          style="width: 280px"
+          type="primary"
+          >下一步</el-button
+        >
+        <div @click="pageIndex--" class="up">上一步</div>
+      </div>
     </div>
+    <!-- 推荐频道 -->
     <div v-if="pageIndex == 3" class="content">
-      <ul class="tjpd">
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫</a></li>
-        <li><a href="">疫数据</a></li>
-        <li><a href="">疫数据</a></li>
-        <li><a href="">疫情日数据</a></li>
-        <li><a href="">疫情</a></li>
-        <li><a href="">据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-        <li><a href="">疫情每日数据</a></li>
-      </ul>
-      <el-row>
-        <el-button type="primary">完成</el-button>
-        <div class="up">上一步</div>
-      </el-row>
+      <div class="content_wrap">
+        <my-scroll>
+          <ul class="tjpd">
+            <li
+              @click="chooseItem('channel', v, i)"
+              :class="{ cur: v.choose }"
+              v-for="(v, i) in channel_list"
+              :key="i"
+            >
+              <a>{{ v.name }}</a>
+            </li>
+          </ul>
+        </my-scroll>
+      </div>
+      <div class="footer">
+        <el-button @click="toFinish" :disabled="sub_form.channel.length < 3" style="width:280px;" type="primary">完成</el-button>
+        <div @click="pageIndex--" class="up">上一步</div>
+      </div>
     </div>
   </div>
 </template>
