@@ -146,7 +146,7 @@ export default class HeaderOne extends Vue {
       // margin-left: 10px;
     }
     .ss{
-        width: calc(100% - 75px);
+        // width: calc(100% - 75px);
       background-color: #272731;
       height: 65px;
       line-height: 65px;
