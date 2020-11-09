@@ -12,7 +12,12 @@
         type="text"
         placeholder="请输入关键词"
       />
-      <img @click.stop="clickSearch" class="sousuo"  src="../assets/img/sousuo.png" alt="">
+      <img
+        @click.stop="clickSearch"
+        class="sousuo"
+        src="../assets/img/sousuo.png"
+        alt=""
+      />
       <div class="history">
         <p>历史记录</p>
         <span @click="clearHistory" class="clearhistory">清除历史</span>
@@ -57,21 +62,27 @@ export default class Search extends Vue {
     }
   }
   //搜索
-  @Emit('tosearch')
+  @Emit("tosearch")
   public toSearch(e: KeyboardEvent): string {
     if (e.keyCode == 13) {
+      if (!this.searchText) {
+        return "";
+      }
       this.setHistory();
       return this.searchText;
     }
-    return ""
+    return "";
   }
-  @Emit('tosearch')
-  public toSearchClk(item:string):string{
+  @Emit("tosearch")
+  public toSearchClk(item: string): string {
     return item;
   }
 
-  @Emit('tosearch')
-  public clickSearch():string{
+  @Emit("tosearch")
+  public clickSearch(): string {
+    if (!this.searchText) {
+      return "";
+    }
     this.setHistory();
     return this.searchText;
   }
@@ -91,7 +102,7 @@ export default class Search extends Vue {
       let user_history_parse = JSON.parse(user_history);
       if (user_history_parse[this.user_message.phone_number]) {
         if (user_history_parse[this.user_message.phone_number].length >= 10) {
-          user_history_parse[this.user_message.phone_number].pop()
+          user_history_parse[this.user_message.phone_number].pop();
           user_history_parse[this.user_message.phone_number].unshift(
             this.searchText
           );
@@ -167,16 +178,15 @@ export default class Search extends Vue {
       border: 1px solid #353541;
       padding-left: 20px;
       color: white;
-     // background: url("../assets/img/sousuo.png") 95% center no-repeat;
+      // background: url("../assets/img/sousuo.png") 95% center no-repeat;
       background-color: #353541;
     }
-    img.sousuo{
+    img.sousuo {
       cursor: pointer;
-      position:absolute;
+      position: absolute;
       top: 15px;
       right: 20px;
     }
-
 
     .history {
       position: relative;

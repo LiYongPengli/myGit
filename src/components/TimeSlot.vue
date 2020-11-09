@@ -1,19 +1,52 @@
 <template>
   <div class="timesearch">
-    <el-date-picker v-model="value1" type="date" placeholder="开始日期">
+    <el-date-picker @change="cmd('0')" v-model="value1" type="date" placeholder="开始日期">
     </el-date-picker>
-    <span style="float:none; display: inline-block;width: 16px;font-weight: bold;color:#676770" class="zhi">-</span>
-    <el-date-picker v-model="value2" type="date" placeholder="截止日期">
+    <span
+      style="
+        float: none;
+        display: inline-block;
+        width: 16px;
+        font-weight: bold;
+        color: #676770;
+      "
+      class="zhi"
+      >-</span
+    >
+    <el-date-picker @change="cmd('1')" v-model="value2" type="date" placeholder="截止日期">
     </el-date-picker>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class TimeSolt extends Vue {
-     public value1:string = "";
-    public value2:string = "";
+  @Prop({}) clear!:boolean;
+  public value1: string|Date = "";
+  public value2: string|Date = "";
+
+  @Watch('clear')
+  listenClear(newVal:boolean,oldVal:boolean):void{
+    console.log(newVal)
+    if(newVal){
+      this.value1 = "";
+      this.value2 = "";
+    }
+  }
+  @Emit('dateChange')
+  public cmd(index:string):{index:string;value:Date|String}{
+    let obj = {
+      index:index,
+      value:'' as Date|string
+    }
+    if(index=='0'){
+      obj.value = this.value1;
+    }else{
+      obj.value = this.value2;
+    }
+    return obj;
+  }
 }
 </script>
 
