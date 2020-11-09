@@ -118,10 +118,13 @@
                         list-style: none;
                         overflow: hidden;
                         li {
+                            width: 120px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                             height: 26px;
                             line-height: 26px;
                             float: left;
-                            a {
+                            p {
                                 color: white;
                                 margin-left: 20px;
                                 margin-right: 13px;
@@ -205,6 +208,9 @@
                             }
                         }
                     }
+                }
+                .cur {
+                    background: #0079ed;
                 }
             }
         }
