@@ -26,11 +26,15 @@
             }
             .tab {
                 overflow: hidden;
-                margin-top: 45px;
+                margin-top: 30px;
                 position: relative;
+                .el-breadcrumb {
+                    .cur.span {
+                        color: red;
+                    }
+                }
                 input {
-                    position: relative;
-                    top: -45px;
+                    top: -25px;
                     right: 0px;
                     width: 200px;
                     float: right;
@@ -43,7 +47,7 @@
                     width: 200px;
                     padding-left: 20px;
                     background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
-                    margin-top: 30px;
+                    margin-top: 10px;
                 }
             }
         }
@@ -195,5 +199,11 @@
             }
         }
     }
-    .content_mt {}
+    // .content_mt {
+    //     .content_wrap {
+    //         .mt {
+    //             //height: 250px;
+    //         }
+    //     }
+    // }
 }

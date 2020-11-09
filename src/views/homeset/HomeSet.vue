@@ -3,15 +3,16 @@
     <header>
       <div class="header">
         <h1>选择您感兴趣的选项</h1>
+ 
         <span> 至少选择3个，后期可以调整 </span>
         <div class="tab">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item class="cur" :to="{ path: '/' }"
-              >国家</el-breadcrumb-item
+            <el-breadcrumb-item :class="{'cur':pageIndex==0}" :to="{ path: '/' }"
+              >国家  </el-breadcrumb-item
             >
-            <el-breadcrumb-item>媒体</el-breadcrumb-item>
-            <el-breadcrumb-item>人物</el-breadcrumb-item>
-            <el-breadcrumb-item>推荐频道</el-breadcrumb-item>
+            <el-breadcrumb-item :class="{'cur':pageIndex==1}" >媒体 </el-breadcrumb-item>
+            <el-breadcrumb-item :class="{'cur':pageIndex==2}" >人物 </el-breadcrumb-item>
+            <el-breadcrumb-item :class="{'cur':pageIndex==3}" >推荐频道 </el-breadcrumb-item>
           </el-breadcrumb>
           <input v-model="searchText" type="text" placeholder="请输入关键词" />
         </div>
@@ -48,14 +49,14 @@
           >下一步</el-button
         >
       </div>
+    
     </div>
     <!-- 媒体 -->
     <div v-if="pageIndex == 1" class="content content_mt">
       <span class="yx"> 已选:{{ sub_form.media.join("、") }} </span>
-      <div class="content_wrap">
-             <span class="qit">近7天内活跃的媒体</span>
-        <my-scroll>
-     
+      <div class="content_wrap" style="height:250px">
+        <span class="qit">近7天内活跃的媒体</span>
+        <my-scroll style="content_mt_onescroll">
           <ul class="mt">
             <li
               @click="chooseMediaItem('week', v, i)"
@@ -65,16 +66,17 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img src="../../assets/img/xdd.png" alt="" />
+                <img src="../../assets/img/morentx.png" alt="" />
                 <span class="chinese">{{ v.name_zh }}</span>
                 <span class="english">{{ v.name }}</span>
               </a>
             </li>
           </ul>
-        </my-scroll>
-         <span class="sst">近30天内活跃的媒体</span>
+           </my-scroll>
+      </div>
+      <div class="content_wrap" style="height:250px">
+        <span class="sst">近30天内活跃的媒体</span>
         <my-scroll>
-         
           <ul class="mt">
             <li
               @click="chooseMediaItem('month', v, i)"
@@ -84,7 +86,7 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img src="../../assets/img/xdd.png" alt="" />
+                <img src="../../assets/img/morentx.png" alt="" />
                 <span class="chinese">{{ v.name_zh }}</span>
                 <span class="english">{{ v.name }}</span>
               </a>
@@ -105,6 +107,7 @@
     </div>
     <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
+         <span class="yx"> 已选:{{ sub_form.character.join("、") }} </span>
       <div class="content_wrap">
         <my-scroll>
           <ul class="rw">
@@ -117,7 +120,7 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img src="../../assets/img/xdd.png" alt="" />
+                <img src="../../assets/img/morentx.png" alt="" />
                 <span class="chinese">{{ v.name }}</span>
                 <!-- <span class="english">中国共产党中央委员会总书记</span> -->
               </a>
@@ -184,19 +187,21 @@ export default class HomeSet extends mixins(HomeSetCom) {}
 </style>
 
 <style lang="scss">
-.home {
+
   .homeset {
     .el-breadcrumb {
       width: 800px;
-      height: 80px;
-      line-height: 80px;
+      height: 40px;
+      line-height: 40px;
       float: left;
+     
     }
+    
     .el-breadcrumb__inner,
     .el-breadcrumb__inner {
       color: white !important;
     }
-    span.cur .el-breadcrumb__inner.is-link {
+    span.cur .el-breadcrumb__inner {
       font-size: 20px;
     }
     .el-row {
@@ -221,6 +226,6 @@ export default class HomeSet extends mixins(HomeSetCom) {}
       }
     }
   }
-}
+
 </style>
 
