@@ -42,7 +42,7 @@
                 <!-- 50*30 -->
                 <img :src="v.flag" alt="" />
 
-                <span class="chinese">{{ v.name_zh }}</span>
+                 <span class="chinese">{{ v.name_zh }}</span> 
                 <!-- <span class="english">{{ v.name }}</span> -->
 
                 <el-tooltip
