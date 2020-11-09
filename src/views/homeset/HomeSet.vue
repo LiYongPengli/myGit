@@ -3,16 +3,24 @@
     <header>
       <div class="header">
         <h1>选择您感兴趣的选项</h1>
- 
+
         <span> 至少选择3个，后期可以调整 </span>
         <div class="tab">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :class="{'cur':pageIndex==0}" :to="{ path: '/' }"
-              >国家  </el-breadcrumb-item
-            >
-            <el-breadcrumb-item :class="{'cur':pageIndex==1}" >媒体 </el-breadcrumb-item>
-            <el-breadcrumb-item :class="{'cur':pageIndex==2}" >人物 </el-breadcrumb-item>
-            <el-breadcrumb-item :class="{'cur':pageIndex==3}" >推荐频道 </el-breadcrumb-item>
+            <el-breadcrumb-item
+              :class="{ cur: pageIndex == 0 }"
+              :to="{ path: '/' }"
+              >国家
+            </el-breadcrumb-item>
+            <el-breadcrumb-item :class="{ cur: pageIndex == 1 }"
+              >媒体
+            </el-breadcrumb-item>
+            <el-breadcrumb-item :class="{ cur: pageIndex == 2 }"
+              >人物
+            </el-breadcrumb-item>
+            <el-breadcrumb-item :class="{ cur: pageIndex == 3 }"
+              >推荐频道
+            </el-breadcrumb-item>
           </el-breadcrumb>
           <input v-model="searchText" type="text" placeholder="请输入关键词" />
         </div>
@@ -33,8 +41,20 @@
               <a>
                 <!-- 50*30 -->
                 <img :src="v.flag" alt="" />
+
                 <span class="chinese">{{ v.name_zh }}</span>
-                <span class="english">{{ v.name }}</span>
+                <!-- <span class="english">{{ v.name }}</span> -->
+
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <el-button
+                    ><span class="english">{{ v.name }} </span></el-button
+                  >
+                </el-tooltip>
               </a>
             </li>
           </ul>
@@ -49,12 +69,11 @@
           >下一步</el-button
         >
       </div>
-    
     </div>
     <!-- 媒体 -->
     <div v-if="pageIndex == 1" class="content content_mt">
       <span class="yx"> 已选:{{ sub_form.media.join("、") }} </span>
-      <div class="content_wrap" style="height:250px">
+      <div class="content_wrap" style="height: 250px">
         <span class="qit">近7天内活跃的媒体</span>
         <my-scroll style="content_mt_onescroll">
           <ul class="mt">
@@ -67,14 +86,32 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-                <span class="chinese">{{ v.name_zh }}</span>
-                <span class="english">{{ v.name }}</span>
+                <el-tooltip
+                  class="item itmemt_ch"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <el-button
+                    ><span class="chinese">{{ v.name_zh }}</span>
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip
+                  class="item itmemt_en"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <el-button
+                    ><span class="english">{{ v.name }} </span></el-button
+                  >
+                </el-tooltip>
               </a>
             </li>
           </ul>
-           </my-scroll>
+        </my-scroll>
       </div>
-      <div class="content_wrap" style="height:250px">
+      <div class="content_wrap" style="height: 250px">
         <span class="sst">近30天内活跃的媒体</span>
         <my-scroll>
           <ul class="mt">
@@ -87,8 +124,26 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-                <span class="chinese">{{ v.name_zh }}</span>
-                <span class="english">{{ v.name }}</span>
+                <el-tooltip
+                  class="item itmemt_ch"
+                  effect="dark"
+                  :content="v.name_zh"
+                  placement="right"
+                >
+                  <el-button
+                    ><span class="chinese">{{ v.name_zh }}</span>
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip
+                  class="item itmemt_en"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <el-button
+                    ><span class="english">{{ v.name }} </span></el-button
+                  >
+                </el-tooltip>
               </a>
             </li>
           </ul>
@@ -107,7 +162,7 @@
     </div>
     <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
-         <span class="yx"> 已选:{{ sub_form.character.join("、") }} </span>
+      <span class="yx"> 已选:{{ sub_form.character.join("、") }} </span>
       <div class="content_wrap">
         <my-scroll>
           <ul class="rw">
@@ -121,7 +176,18 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
+                <el-tooltip
+                  class="item itmemt_ch"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <el-button
+                    >
                 <span class="chinese">{{ v.name }}</span>
+                </el-button
+                  >
+                </el-tooltip>
                 <!-- <span class="english">中国共产党中央委员会总书记</span> -->
               </a>
             </li>
@@ -187,45 +253,42 @@ export default class HomeSet extends mixins(HomeSetCom) {}
 </style>
 
 <style lang="scss">
-
-  .homeset {
-    .el-breadcrumb {
-      width: 800px;
-      height: 40px;
-      line-height: 40px;
-      float: left;
-     
-    }
-    
-    .el-breadcrumb__inner,
-    .el-breadcrumb__inner {
-      color: white !important;
-    }
-    span.cur .el-breadcrumb__inner {
-      font-size: 20px;
-    }
-    .el-row {
-      text-align: center;
-      margin-top: 80px;
-      .el-button {
-        width: 280px;
-        height: 60px;
-      }
-      .up {
-        width: 140px;
-        height: 60px;
-        line-height: 60px;
-        background-color: #272730;
-        margin-left: 20px;
-        display: inline-block;
-        color: white;
-        cursor: pointer;
-      }
-      .up:hover {
-        font-size: 20px;
-      }
-    }
+.homeset {
+  .el-breadcrumb {
+    width: 800px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
   }
 
+  .el-breadcrumb__inner,
+  .el-breadcrumb__inner {
+    color: white !important;
+  }
+  span.cur .el-breadcrumb__inner {
+    font-size: 20px;
+  }
+  .el-row {
+    text-align: center;
+    margin-top: 80px;
+    .el-button {
+      width: 280px;
+      height: 60px;
+    }
+    .up {
+      width: 140px;
+      height: 60px;
+      line-height: 60px;
+      background-color: #272730;
+      margin-left: 20px;
+      display: inline-block;
+      color: white;
+      cursor: pointer;
+    }
+    .up:hover {
+      font-size: 20px;
+    }
+  }
+}
 </style>
 
