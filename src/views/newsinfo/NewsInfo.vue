@@ -30,14 +30,14 @@
             >
             <span @click="likes" class="tool"
               ><i
-                class="el-icon-star-off"
+                class="el-icon-zan"
                 :class="{ actives: newsInfo.liked }"
               ></i
               >点赞</span
             >
             <span @click="notInterested" class="tool"
               ><i
-                class="el-icon-star-off"
+                class="el-icon-nozan"
                 :class="{ actives: newsInfo.not_interested }"
               ></i
               >不感兴趣</span
