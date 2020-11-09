@@ -9,123 +9,7 @@
             <!-- <img class="sousuo"  src="../assets/img/sousuo.png" alt=""> -->
         </div>
       </header>
-      <div class="content">
-        <div class="mj">
-          <div class="country">
-            <span>国家：</span>
-            <div class="list">
-              <ul>
-               <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> America(美国) </a>
-                </li>
-                <li>
-                  <a href=""> Canada(加拿大) </a>
-                </li>
-                <li>
-                  <a href=""> Mexico(墨西哥) </a>
-                </li>
-                <li>
-                  <a href=""> Cuba(古巴) </a>
-                </li>
-                <li>
-                  <a href=""> Belize(伯利兹) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-              </ul>
-            </div>
-            <div class="operation">
-              <div class="more">更多+</div>
-              <div class="morchoice">多选+</div>
-            </div>
-          </div>
-
-          <div class="country">
-            <span>媒体：</span>
-            <div class="list">
-              <div class="all">全部</div>
-              <div class="other">
-                <ul>
-                  <li><a href="">BBC(英文广播电视台)</a></li>
-                  <li><a href="">Hangmeiti</a></li>
-                  <li><a href="">BBC</a></li>
-                  <li><a href="">Hangmeiti</a></li>
-                  <li><a href="">BBC</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="operation">
-              <div class="more">更多+</div>
-              <div class="morchoice">多选+</div>
-            </div>
-          </div>
-          <!-- 人物 -->
-          <div class="country">
-            <span>人物：</span>
-            <div class="list">
-              <div class="all">全部</div>
-              <div class="other">
-                <ul>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="operation">
-              <div class="morepe">更多+</div>
-            </div>
-          </div>
-          <div class="time">
-            <span>时间：</span>
-            <div class="list">
-              <div class="other">
-                <ul>
-                  <li>
-                    <div>今日</div>
-                  </li>
-                  <li><div>一周内</div></li>
-                  <li><div>一月内</div></li>
-                  <!-- <li>
-                    <input type="date" value="2015-09-24" />
-                  </li>
-                  <li><span>-</span></li>
-                  <li>
-                    <input type="date" value="2015-09-24" />
-                  </li> -->
-                  <time-slot />                  
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="content" v-if="searchData">
         <div class="mj">
           <div class="countrymore country">
             <ul style="margin-left: 55px" class="zm">
@@ -159,47 +43,8 @@
             <span>国家：</span>
             <div class="list">
                  <ul>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> America(美国) </a>
-                </li>
-                <li>
-                  <a href=""> Canada(加拿大) </a>
-                </li>
-                <li>
-                  <a href=""> Mexico(墨西哥) </a>
-                </li>
-                <li>
-                  <a href=""> Cuba(古巴) </a>
-                </li>
-                <li>
-                  <a href=""> Belize(伯利兹) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
-                </li>
-                <li>
-                  <a href=""> China(中国) </a>
+                <li v-for="(v,i) in searchData.filters.country" :key="i">
+                  <a> {{v.name.en}}({{v.name['zh-CN']}}) </a>
                 </li>
               </ul>
             </div>
@@ -209,20 +54,17 @@
             </div>
           </div>
           <div class="cz">
-            <div class="quanbu">全部</div>
+            <div class="quanbu">确定</div>
             <div class="quxiao">取消</div>
           </div>
+          <!-- 媒体 -->
           <div class="country">
             <span>媒体：</span>
             <div class="list">
               <div class="all">全部</div>
               <div class="other">
                 <ul>
-                  <li><a href="">BBC(英文广播电视台)</a></li>
-                  <li><a href="">Hangmeiti</a></li>
-                  <li><a href="">BBC</a></li>
-                  <li><a href="">Hangmeiti</a></li>
-                  <li><a href="">BBC</a></li>
+                  <li v-for="(v,i) in searchData.filters.media" :key="i"><a>{{v.name.en}}({{v.name['zh-CN']}})</a></li>
                 </ul>
               </div>
             </div>
@@ -238,11 +80,7 @@
               <div class="all">全部</div>
               <div class="other">
                 <ul>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
-                  <li><a href="">习近平</a></li>
+                  <li v-for="(v,i) in searchData.filters.character" :key="i"><a>{{v}}</a></li>
                 </ul>
               </div>
             </div>
@@ -299,68 +137,17 @@
           </div>
           <div class="result">
             <ul>
-              <li>
+              <li v-for="(v,i) in searchData.news" :key="i">
                 <div class="pic">
                   <img src="../../assets/img/sylbtp.png" alt="" />
                 </div>
                 <div class="text">
                   <p class="title">
-                    美国财长谈TikTok解决方案 不涉及出售和技术转让 #新冠疫情
-                    #美国大选
+                    {{v.title}}
                   </p>
-                  <span class="mt">媒体: TechWeb.com.cn </span>
-                  <span class="time">时间: 10分钟前</span>
-                  <span class="ll">浏览次数: 32人</span>
-                </div>
-              </li>
-              <li>
-                <div class="pic">
-                  <img src="../../assets/img/sylbtp.png" alt="" />
-                </div>
-                <div class="text">
-                  <p class="title">
-                    美国财长谈TikTok解决方案 不涉及出售和技术转让 #新冠疫情
-                    #美国大选
-                  </p>
-                  <span class="mt">媒体: TechWeb.com.cn </span>
-                  <span class="time">时间: 10分钟前</span>
-                  <span class="ll">浏览次数: 32人</span>
-                </div>
-              </li>
-              <li>
-                <div class="pic">
-                  <img src="../../assets/img/sylbtp.png" alt="" />
-                </div>
-                <div class="text">
-                  <p class="title">
-                    美国财长谈TikTok解决方案 不涉及出售和技术转让 #新冠疫情
-                    #美国大选
-                  </p>
-                  <span class="mt">媒体: TechWeb.com.cn </span>
-                  <span class="time">时间: 10分钟前</span>
-                  <span class="ll">浏览次数: 32人</span>
-                </div>
-              </li>
-              <li>
-                <div class="text">
-                  <p class="title">
-                    美国财长谈TikTok解决方案 不涉及出售和技术转让 #新冠疫情
-                    #美国大选
-                  </p>
-                  <span class="mt">媒体: TechWeb.com.cn </span>
-                  <span class="time">时间: 10分钟前</span>
-                  <span class="ll">浏览次数: 32人</span>
-                </div>
-              </li>
-              <li>
-                <div class="text">
-                  <p class="title">
-                    美国财长谈TikTok解决方案 不涉及出售和技术转让 #新冠疫情
-                    #美国大选
-                  </p>
-                  <span class="mt">媒体: TechWeb.com.cn </span>
-                  <span class="time">时间: 10分钟前</span>
-                  <span class="ll">浏览次数: 32人</span>
+                  <span class="mt">媒体: {{v.media_name}} </span>
+                  <span class="time">时间: {{init_time(v.time)}}</span>
+                  <span class="ll">浏览次数: {{v.pv}}人</span>
                 </div>
               </li>
               <div class="jzgd">更多精彩内容，加载中</div>

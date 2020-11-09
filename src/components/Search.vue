@@ -12,12 +12,12 @@
         type="text"
         placeholder="请输入关键词"
       />
-      <img class="sousuo"  src="../assets/img/sousuo.png" alt="">
+      <img @click.stop="clickSearch" class="sousuo"  src="../assets/img/sousuo.png" alt="">
       <div class="history">
         <p>历史记录</p>
         <span @click="clearHistory" class="clearhistory">清除历史</span>
         <ul>
-          <li v-for="(v, i) in historyList" :key="i">
+          <li @click="toSearchClk(v)" v-for="(v, i) in historyList" :key="i">
             <span
               >{{ v
               }}<img
@@ -65,6 +65,16 @@ export default class Search extends Vue {
     }
     return ""
   }
+  @Emit('tosearch')
+  public toSearchClk(item:string):string{
+    return item;
+  }
+
+  @Emit('tosearch')
+  public clickSearch():string{
+    this.setHistory();
+    return this.searchText;
+  }
 
   //删除某条历史记录
   public deleteItemHistory(index: number): void {
@@ -81,12 +91,12 @@ export default class Search extends Vue {
       let user_history_parse = JSON.parse(user_history);
       if (user_history_parse[this.user_message.phone_number]) {
         if (user_history_parse[this.user_message.phone_number].length >= 10) {
-          user_history_parse[this.user_message.phone_number].shift();
-          user_history_parse[this.user_message.phone_number].push(
+          user_history_parse[this.user_message.phone_number].pop()
+          user_history_parse[this.user_message.phone_number].unshift(
             this.searchText
           );
         } else {
-          user_history_parse[this.user_message.phone_number].push(
+          user_history_parse[this.user_message.phone_number].unshift(
             this.searchText
           );
         }
