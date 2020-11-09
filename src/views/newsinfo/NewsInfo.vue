@@ -23,7 +23,7 @@
           <div class="right">
             <span @click="toCollection" class="tool"
               ><i
-                class="el-icon-star-off"
+                class="el-icon-shoucang"
                 :class="{ actives: newsInfo.favorited }"
               ></i
               >收藏</span

@@ -91,6 +91,14 @@
                         i {
                             margin-right: 10px;
                             font-size: 16px;
+                            margin-bottom: -2px;
+                        }
+                        .el-icon-shoucang::before {
+                            content: "";
+                            display: block;
+                            background: url("../../assets/img/shoucang.png") left 0px no-repeat;
+                            width: 18px;
+                            height: 18px;
                         }
                         .el-icon-zan::before {
                             content: "";
@@ -210,7 +218,13 @@
     .fontActive {
         text-decoration: underline;
     }
-    .actives {
-        color: orange;
+    .actives.el-icon-shoucang {
+        background: url("../../assets/img/shoucangl.png") left 0px no-repeat;
+    }
+    .actives.el-icon-zan {
+        background: url("../../assets/img/zanpressl.png") left 0px no-repeat;
+    }
+    .actives.el-icon-nozan {
+        background: url("../../assets/img/nozanpressl.png") left 0px no-repeat;
     }
 }
