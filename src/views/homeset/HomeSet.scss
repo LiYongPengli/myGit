@@ -87,11 +87,25 @@
                         }
                         .itmemt_ch {
                             position: absolute;
-                            top: 20px;
+                            top: 12px;
                         }
                         .itmemt_en {
                             position: absolute;
-                            top: 30px;
+                            top: 28px;
+                        }
+                        .itmerw_ch {
+                            position: absolute;
+                            top: 12px;
+                            span {
+                                .chinese {
+                                    height: 20px;
+                                    line-height: 20px;
+                                }
+                            }
+                        }
+                        .itmerw_en {
+                            position: absolute;
+                            top: 28px;
                         }
                         color: white;
                         text-decoration: none;
@@ -101,6 +115,8 @@
                             top: -20px;
                             margin-left: 20px;
                             font-size: 15px;
+                            // height: 25px;
+                            // line-height: 25px;
                         }
                         .english {
                             // margin-left: 20px;

@@ -99,7 +99,7 @@
                   placement="right"
                 >
                   <el-button
-                    ><span class="chinese">{{ v.name_zh }}</span>
+                    ><span style="height:25px;line-height:25px" class="chinese">{{ v.name_zh }}</span>
                   </el-button>
                 </el-tooltip>
                 <el-tooltip
@@ -130,14 +130,14 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-                <el-tooltip
+                <el-tooltip style="top:12px"
                   class="item itmemt_ch"
                   effect="dark"
                   :content="v.name_zh"
                   placement="right"
                 >
                   <el-button
-                    ><span class="chinese">{{ v.name_zh }}</span>
+                    ><span  style="height:25px;line-height:25px"  class="chinese">{{ v.name_zh }}</span>
                   </el-button>
                 </el-tooltip>
                 <el-tooltip
@@ -185,16 +185,16 @@
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
                 <el-tooltip
-                  class="item itmemt_ch"
+                  class="item itmerw_ch"
                   effect="dark"
                   :content="v.name"
                   placement="right"
                 >
                   <el-button>
-                    <span class="chinese">{{ v.name }}</span>
+                    <span style="height:20px;line-height:20px;top:0px" class="chinese">{{ v.name }}</span>
                   </el-button>
                 </el-tooltip>
-                <!-- <span class="english">中国共产党中央委员会总书记</span> -->
+                <span class="english">中国共产党中央委员会总书记</span>
               </a>
             </li>
           </ul>
