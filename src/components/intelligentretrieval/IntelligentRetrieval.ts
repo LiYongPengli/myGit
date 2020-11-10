@@ -25,9 +25,9 @@ export default class IntelligentRetrievalCom extends Vue {
     public monthFilter: boolean = false;
 
     //过滤菜单
-    public countryList:any[] = [];
-    public mediaList:any[] = [];
-    public characterList:any[] = [];
+    public countryList: any[] = [];
+    public mediaList: any[] = [];
+    public characterList: any[] = [];
 
     public language: string = "crawler"
     //初次检索后的数据
@@ -39,32 +39,32 @@ export default class IntelligentRetrievalCom extends Vue {
     }
     public showSearch = true;
     public filterMenu = [
-        {name:'A',choose:false},
-        {name:'B',choose:false},
-        {name:'C',choose:false},
-        {name:'D',choose:false},
-        {name:'E',choose:false},
-        {name:'F',choose:false},
-        {name:'G',choose:false},
-        {name:'H',choose:false},
-        {name:'I',choose:false},
-        {name:'J',choose:false},
-        {name:'K',choose:false},
-        {name:'L',choose:false},
-        {name:'M',choose:false},
-        {name:'N',choose:false},
-        {name:'O',choose:false},
-        {name:'P',choose:false},
-        {name:'Q',choose:false},
-        {name:'R',choose:false},
-        {name:'S',choose:false},
-        {name:'T',choose:false},
-        {name:'U',choose:false},
-        {name:'V',choose:false},
-        {name:'W',choose:false},
-        {name:'X',choose:false},
-        {name:'Y',choose:false},
-        {name:'Z',choose:false},
+        { name: 'A', choose: false },
+        { name: 'B', choose: false },
+        { name: 'C', choose: false },
+        { name: 'D', choose: false },
+        { name: 'E', choose: false },
+        { name: 'F', choose: false },
+        { name: 'G', choose: false },
+        { name: 'H', choose: false },
+        { name: 'I', choose: false },
+        { name: 'J', choose: false },
+        { name: 'K', choose: false },
+        { name: 'L', choose: false },
+        { name: 'M', choose: false },
+        { name: 'N', choose: false },
+        { name: 'O', choose: false },
+        { name: 'P', choose: false },
+        { name: 'Q', choose: false },
+        { name: 'R', choose: false },
+        { name: 'S', choose: false },
+        { name: 'T', choose: false },
+        { name: 'U', choose: false },
+        { name: 'V', choose: false },
+        { name: 'W', choose: false },
+        { name: 'X', choose: false },
+        { name: 'Y', choose: false },
+        { name: 'Z', choose: false },
     ];
     public filter = {
         start: 1 as number,
@@ -392,7 +392,42 @@ export default class IntelligentRetrievalCom extends Vue {
      * @param filter 筛选拼音首字母
      * @returns {void}
      */
-    public toFilterMenu(type: string, filter: {name:string;choose:boolean}): void {
+    public toFilterMenu(type: string, filter: { name: string; choose: boolean }): void {
+        for (let i = 0; i < this.filterMenu.length; i++) {
+            if (this.filterMenu[i].name != filter.name) {
+                this.filterMenu[i].choose = false;
+            }
+        }
+        if (!filter.choose) {
+            let arr: any[] = [];
+            switch (type) {
+                case 'country':
+                    for (let i of this.searchData.filters.country) {
+                        if (i.letter == filter.name) {
+                            arr.push(i)
+                        }
+                    }
+                    this.countryList = arr;
+                    break;
+                case 'media':
+                    for (let i of this.searchData.filters.media) {
+                        if (i.letter == filter.name) {
+                            arr.push(i)
+                        }
+                    }
+                    this.mediaList = arr;
+                    break;
+            }
+        } else {
+            switch (type) {
+                case 'country':
+                    this.countryList = this.searchData.filters.country;
+                    break;
+                case 'media':
+                    this.mediaList = this.searchData.filters.media;
+                    break;
+            }
+        }
         filter.choose = !filter.choose;
     }
 }

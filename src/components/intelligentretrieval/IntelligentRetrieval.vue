@@ -55,32 +55,7 @@
             <!-- 媒体 -->
             <div class="countrymore country">
               <ul v-show="showMedia" style="margin-left: 55px" class="zm">
-                <li>A</li>
-                <li>B</li>
-                <li>C</li>
-                <li>D</li>
-                <li>E</li>
-                <li>F</li>
-                <li>G</li>
-                <li>H</li>
-                <li>I</li>
-                <li>J</li>
-                <li>K</li>
-                <li>L</li>
-                <li>M</li>
-                <li>N</li>
-                <li>O</li>
-                <li>P</li>
-                <li>Q</li>
-                <li>R</li>
-                <li>S</li>
-                <li>T</li>
-                <li>U</li>
-                <li>V</li>
-                <li>W</li>
-                <li>X</li>
-                <li>Y</li>
-                <li>Z</li>
+                <li :class="{cur:v.choose}" @click="toFilterMenu('media',v)" v-for="(v,i) in filterMenu" :key="i">{{v.name}}</li>
               </ul>
               <span>媒体：</span>
               <div class="list">
