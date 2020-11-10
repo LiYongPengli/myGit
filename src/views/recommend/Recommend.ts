@@ -15,6 +15,7 @@ export default class RecommendCom extends Vue {
     public active_recommend_name: string = '推荐';
     //国家、媒体、人物
     public media_swiper!: Swiper;
+    public mediaSwiperCurrentIndex: number = 0;
     //频道列表
     public channel_swiper!: Swiper;
     //新闻列表
@@ -98,6 +99,7 @@ export default class RecommendCom extends Vue {
 
     public mediaTab(index: number): void {
         this.media_swiper.slideTo(index);
+        this.mediaSwiperCurrentIndex = index;
     }
     //到新闻详情页
     public toNewsInfo(item: any): void {
