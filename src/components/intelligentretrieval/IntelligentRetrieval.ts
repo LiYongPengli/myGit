@@ -1,11 +1,16 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Vue } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
+import { Mutation, State } from 'vuex-class'
 @Component
 export default class IntelligentRetrievalCom extends Vue {
+    @State("user_message") user_message: any;
     @Mutation('setShowIntelligent') setShowIntelligent: any;
     public searchText: string = "";
-    public clearDate:boolean = false;
+    public clearDate: boolean = false;
+    //加载中
+    public loading: boolean = false;
+    //加载完成
+    public finished: boolean = false;
     //多选开关
     public multipleCountry: boolean = false;
     public multipleCharacter: boolean = false;
@@ -19,6 +24,11 @@ export default class IntelligentRetrievalCom extends Vue {
     public weekFilter: boolean = false;
     public monthFilter: boolean = false;
 
+    //过滤菜单
+    public countryList:any[] = [];
+    public mediaList:any[] = [];
+    public characterList:any[] = [];
+
     public language: string = "crawler"
     //初次检索后的数据
     public searchData: any = "";
@@ -28,6 +38,34 @@ export default class IntelligentRetrievalCom extends Vue {
         time_to: '',
     }
     public showSearch = true;
+    public filterMenu = [
+        {name:'A',choose:false},
+        {name:'B',choose:false},
+        {name:'C',choose:false},
+        {name:'D',choose:false},
+        {name:'E',choose:false},
+        {name:'F',choose:false},
+        {name:'G',choose:false},
+        {name:'H',choose:false},
+        {name:'I',choose:false},
+        {name:'J',choose:false},
+        {name:'K',choose:false},
+        {name:'L',choose:false},
+        {name:'M',choose:false},
+        {name:'N',choose:false},
+        {name:'O',choose:false},
+        {name:'P',choose:false},
+        {name:'Q',choose:false},
+        {name:'R',choose:false},
+        {name:'S',choose:false},
+        {name:'T',choose:false},
+        {name:'U',choose:false},
+        {name:'V',choose:false},
+        {name:'W',choose:false},
+        {name:'X',choose:false},
+        {name:'Y',choose:false},
+        {name:'Z',choose:false},
+    ];
     public filter = {
         start: 1 as number,
         size: 10 as number,
@@ -61,6 +99,9 @@ export default class IntelligentRetrievalCom extends Vue {
             .then((res) => {
                 console.log(res.data);
                 this.searchData = res.data.data;
+                this.countryList = res.data.data.filters.country;
+                this.mediaList = res.data.data.filters.media;
+                this.characterList = res.data.data.filters.character;
                 this.newsList = res.data.data.news;
             })
             .catch((err) => {
@@ -84,10 +125,30 @@ export default class IntelligentRetrievalCom extends Vue {
             cmd: 'filter_news',
             paras: filter
         }).then(res => {
-            this.newsList = res.data.data.news;
+            if (this.filter.start == 1) {
+                this.newsList = res.data.data.news;
+            } else {
+                this.newsList = this.newsList.concat(res.data.data.news);
+            }
+            if (!res.data.data.news.length) {
+                this.finished = true;
+            }
+            this.loading = false;
         }).catch(err => {
             console.log(err);
         })
+    }
+    //加载更多
+    public loadMore(): void {
+        if (this.loading) {
+            return;
+        }
+        if (this.finished) {
+            return;
+        }
+        this.loading = true;
+        this.filter.start++;
+        this.toFilter();
     }
 
     /**
@@ -126,6 +187,7 @@ export default class IntelligentRetrievalCom extends Vue {
                 break;
         }
         this.filter.start = 1;
+        this.finished = false;
         this.toFilter();
     }
     /**
@@ -135,6 +197,8 @@ export default class IntelligentRetrievalCom extends Vue {
     public setLanguage(language: string): void {
         this.language = language;
         this.filter.language = language;
+        this.filter.start = 1;
+        this.finished = false;
         this.toFilter();
     }
 
@@ -158,38 +222,6 @@ export default class IntelligentRetrievalCom extends Vue {
             return `${parseInt(time / 60 / 60 / 24 / 30 + '')}月前`
         } else {
             return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
-        }
-    }
-
-    /**
-     * 
-     * @param type 列表类型
-     * @param list 筛选菜单列表
-     * @returns {any[]}
-     */
-    public getFilterList(type: string, list: any[]): any[] {
-        let flag = false;
-        switch (type) {
-            case 'country':
-                if (this.showCountry) {
-                    flag = true;
-                }
-                break;
-            case 'media':
-                if (this.showMedia) {
-                    flag = true;
-                }
-                break;
-            case 'character':
-                if (this.showCharacter) {
-                    flag = true;
-                }
-                break;
-        }
-        if (flag) {
-            return list;
-        } else {
-            return list.slice(0, 5);
         }
     }
 
@@ -235,38 +267,41 @@ export default class IntelligentRetrievalCom extends Vue {
 
         }
         this.filter.start = 1;
+        this.finished = false;
         this.toFilter();
     }
 
     //自定义日期筛选
-    public dateChange(obj:{index:string;value:Date|String}):void{
+    public dateChange(obj: { index: string; value: Date | String }): void {
         let date = obj.value as Date;
         this.clearDate = false;
-        if(obj.index=='0'){
-            try{
+        if (obj.index == '0') {
+            try {
                 this.dateTime.time_from = date.toLocaleDateString();
-            }catch(error){
+            } catch (error) {
                 this.dateTime.time_from = ""
             }
-        }else{
-            try{
+        } else {
+            try {
                 this.dateTime.time_to = date.toLocaleDateString();
-            }catch(error){
+            } catch (error) {
                 this.dateTime.time_to = ""
             }
         }
-        if(this.dateTime.time_from&&this.dateTime.time_to){
+        if (this.dateTime.time_from && this.dateTime.time_to) {
             this.filter.start = 1;
+            this.finished = false;
             this.dayFilter = false;
             this.weekFilter = false;
             this.monthFilter = false;
             this.filter.time_from = this.dateTime.time_from;
             this.filter.time_to = this.dateTime.time_to;
             this.toFilter();
-        }else if(!this.dateTime.time_from&&!this.dateTime.time_to){
+        } else if (!this.dateTime.time_from && !this.dateTime.time_to) {
             this.filter.time_from = "";
             this.filter.time_to = "";
             this.filter.start = 1;
+            this.finished = false;
             this.dayFilter = false;
             this.weekFilter = false;
             this.monthFilter = false;
@@ -277,13 +312,87 @@ export default class IntelligentRetrievalCom extends Vue {
     }
 
     //相关度和时间排序
-    public sortList(type:string):void{
+    public sortList(type: string): void {
         this.filter.sort_type = type;
         this.filter.start = 1;
+        this.finished = false;
         this.toFilter();
     }
 
-    public toNewsInfo(item:any):void{
-        window.open('#/newsinfo?id=' + item.news_id+'&md_id='+item.media_id);
+    public toNewsInfo(item: any): void {
+        window.open('#/newsinfo?id=' + item.news_id + '&md_id=' + item.media_id);
+    }
+
+    //去搜索
+    public toSearch(e: KeyboardEvent): void {
+        if (e.keyCode == 13) {
+            if (!this.searchText) {
+                return;
+            }
+            this.setHistory();
+            this.clearFilter();
+            this.searchNews();
+        }
+    }
+
+    //清空过滤条件
+    private clearFilter(): void {
+        this.weekFilter = false;
+        this.dayFilter = false;
+        this.monthFilter = false;
+        this.filter = {
+            start: 1,
+            size: 10,
+            country: [],
+            language: this.language,
+            sort_type: 'r',
+            media: [],
+            character: [],
+            time_from: '',
+            time_to: '',
+        }
+    }
+
+    //记录搜索历史
+    public setHistory(): void {
+        let user_history = localStorage.getItem("user_history");
+        if (user_history) {
+            let user_history_parse = JSON.parse(user_history);
+            if (user_history_parse[this.user_message.phone_number]) {
+                if (
+                    !~user_history_parse[this.user_message.phone_number].indexOf(
+                        this.searchText
+                    )
+                ) {
+                    if (user_history_parse[this.user_message.phone_number].length >= 10) {
+                        user_history_parse[this.user_message.phone_number].pop();
+                        user_history_parse[this.user_message.phone_number].unshift(
+                            this.searchText
+                        );
+                    } else {
+                        user_history_parse[this.user_message.phone_number].unshift(
+                            this.searchText
+                        );
+                    }
+                }
+            } else {
+                user_history_parse[this.user_message.phone_number] = [this.searchText];
+            }
+            localStorage.setItem("user_history", JSON.stringify(user_history_parse));
+        } else {
+            let obj: any = {};
+            obj[this.user_message.phone_number] = [this.searchText];
+            localStorage.setItem("user_history", JSON.stringify(obj));
+        }
+    }
+
+    /**
+     * 对过滤菜单进行筛选
+     * @param type 菜单类型
+     * @param filter 筛选拼音首字母
+     * @returns {void}
+     */
+    public toFilterMenu(type: string, filter: {name:string;choose:boolean}): void {
+        filter.choose = !filter.choose;
     }
 }

@@ -101,15 +101,21 @@ export default class Search extends Vue {
     if (user_history) {
       let user_history_parse = JSON.parse(user_history);
       if (user_history_parse[this.user_message.phone_number]) {
-        if (user_history_parse[this.user_message.phone_number].length >= 10) {
-          user_history_parse[this.user_message.phone_number].pop();
-          user_history_parse[this.user_message.phone_number].unshift(
+        if (
+          !~user_history_parse[this.user_message.phone_number].indexOf(
             this.searchText
-          );
-        } else {
-          user_history_parse[this.user_message.phone_number].unshift(
-            this.searchText
-          );
+          )
+        ) {
+          if (user_history_parse[this.user_message.phone_number].length >= 10) {
+            user_history_parse[this.user_message.phone_number].pop();
+            user_history_parse[this.user_message.phone_number].unshift(
+              this.searchText
+            );
+          } else {
+            user_history_parse[this.user_message.phone_number].unshift(
+              this.searchText
+            );
+          }
         }
       } else {
         user_history_parse[this.user_message.phone_number] = [this.searchText];

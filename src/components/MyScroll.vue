@@ -70,6 +70,9 @@ export default {
     },
     onscroll() {
       this.top = this.$refs.vueScroll.scrollTop * this.rate; //计算滚动条所在的高度
+      if(this.$refs.vueScroll.clientHeight+this.$refs.vueScroll.scrollTop==this.$refs.vueScroll.scrollHeight){
+        this.$emit('loading','');
+      }
       if (this.rate < 1) {
         this.eventTrigger(this.top);
       }
