@@ -115,8 +115,11 @@
                 </div>
               </div>
               <div class="operation">
-                <div @click="showCharacter = !showCharacter" class="morepe">
+                <!-- <div @click="showCharacter = !showCharacter" class="morepe">
                   更多+
+                </div> -->
+                <div @click="showCharacter = !showCharacter" class="morepe">
+                  {{"更多"+ (showCharacter?"-":"+")}}
                 </div>
               </div>
             </div>
