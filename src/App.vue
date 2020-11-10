@@ -68,7 +68,6 @@ export default class App extends Vue {
 * {
   margin: 0;
   padding: 0;
-  font-size: 16px;
   box-sizing: border-box;
 }
 html,

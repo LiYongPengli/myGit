@@ -1,11 +1,30 @@
 import { baseApi } from '@/axios/axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import qs from 'qs';
 @Component
 export default class UserCollectionCom extends Vue{
     public  dialogVisible=false;
+    public dialogTitle:string = "编辑书签";
+    private editItem:any = null;
     public show = true;
     public listshow=true;
     public favoriteList:any[] = [];
+    public favorite_form = {
+        name:'',
+        cover:'',
+        coverFile:'' as any
+    }
+
+    @Watch("dialogVisible")
+    dialogListen(newVal:boolean,oldVal:boolean):void{
+        if(!newVal){
+            this.favorite_form = {
+                name:'',
+                cover:'',
+                coverFile:''
+            }
+        }
+    }
 
     public created():void{
         //this.createFavorite();
@@ -21,14 +40,59 @@ export default class UserCollectionCom extends Vue{
         })
     }
 
+    //创建收藏夹
     private createFavorite():void{
-        this.axios.post(baseApi.api2+'/v1/user/favorite/',{
-            name:'hahahaha'
-        }).then(res=>{
-            console.log(res.data)
+        let formdata = new FormData();
+        formdata.append('name',this.favorite_form.name);
+        formdata.append('cover',this.favorite_form.coverFile);
+        this.axios.post(baseApi.api2+'/v1/user/favorite/',formdata).then(res=>{
+            this.$message.success(res.data.data.msg);
+            this.dialogVisible = false;
+            this.favorite_form = {
+                name:'',
+                cover:'',
+                coverFile:''
+            }
+            this.getData();
         }).catch(err=>{
             console.log(err)
         })
+    }
+    //编辑收藏夹
+    private editFavorite():void{
+        let formdata = new FormData();
+        formdata.append('name',this.editItem.name);
+        formdata.append('new_name',this.favorite_form.name);
+        if(this.favorite_form.coverFile){
+            formdata.append('cover',this.favorite_form.coverFile);
+        }
+        this.axios.put(baseApi.api2+'/v1/user/favorite/',formdata).then(res=>{
+            this.$message.success(res.data.data.msg);
+            this.dialogVisible = false;
+            this.favorite_form = {
+                name:'',
+                cover:'',
+                coverFile:''
+            }
+            this.getData();
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+    //删除收藏夹
+    public deleteFav(item:any):void{
+        this.$confirm('确定要删除该收藏夹吗?','提示',{
+            confirmButtonText:'确定',
+            cancelButtonText:'取消'
+        }).then(()=>{
+            this.axios.delete(baseApi.api2+'/v1/user/favorite/',{
+                data: { name: item.name },
+              }).then(res=>{
+                  this.getData();
+              }).catch(err=>{
+                  console.log(err)
+              })
+        }).catch(()=>{})
     }
 
     public showBtn(index:number):void{
@@ -36,5 +100,51 @@ export default class UserCollectionCom extends Vue{
     }
     public hideBtn(item:any,index:number):void{
         item.showControl = false;
+    }
+    //点击创建收藏夹
+    public toCreateFavorite():void{
+        this.dialogVisible = true;
+        this.dialogTitle = "创建书签";
+    }
+
+    //编辑收藏夹
+    public toEdit(item:any):void{
+        this.dialogVisible = true;
+        this.dialogTitle = "编辑书签";
+        this.editItem = item;
+        this.favorite_form = {
+            name:item.name,
+            cover:item.cover,
+            coverFile:''
+        }
+    }
+
+    //选择文件
+    public chooseFile():void{
+        let file = this.$refs.fileipt as HTMLInputElement;
+        let fileList = file.files as FileList;
+        if(fileList[0]){
+            this.favorite_form.coverFile = fileList[0];
+            this.favorite_form.cover = URL.createObjectURL(fileList[0]);
+        }
+    }
+
+    
+
+    //弹框的确认
+    public toSure():void{
+        if(!this.favorite_form.name){
+            this.$message.error('请输入书签名称!');
+            return;
+        }
+        if(!this.favorite_form.cover){
+            this.$message.error('请选择封面图片');
+            return;
+        }
+        if(this.dialogTitle=='创建书签'){
+            this.createFavorite();
+        }else{
+            this.editFavorite();
+        }
     }
 }
