@@ -73,8 +73,8 @@
               <div class="swiper-slide">
                 <div class="country">
                   <div v-for="(v, i) in country" :key="i" class="item">
-                    <img src="../../assets/img/weixin2.png" alt="" />
-                    <p class="name">{{ v.name }}</p>
+                    <img :src="v.flag" alt="" />
+                    <p class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@
               <div class="swiper-slide">
                 <div class="country">
                   <div v-for="(v, i) in people" :key="i" class="item">
-                    <img src="../../assets/img/weixin2.png" alt="" />
+                    <img src="../../assets/img/media.png" alt="" />
                     <p class="name">{{ v.name }}</p>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                   <div v-for="(v, i) in media" :key="i" class="item">
                     <img src="../../assets/img/media.png" alt="" />
 
-                    <p class="name">{{ v.name }}</p>
+                    <p class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
               </div>
