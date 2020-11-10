@@ -95,7 +95,7 @@
                 <el-tooltip
                   class="item itmemt_ch"
                   effect="dark"
-                  :content="v.name"
+                  :content="v.name_zh"
                   placement="right"
                 >
                   <el-button

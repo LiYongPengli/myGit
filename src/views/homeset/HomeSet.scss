@@ -88,10 +88,23 @@
                         .itmemt_ch {
                             position: absolute;
                             top: 12px;
+                            text-align: left;
+                            span {
+                                .chinese {
+                                    margin-left: 0px;
+                                }
+                            }
                         }
                         .itmemt_en {
                             position: absolute;
                             top: 28px;
+                            text-align: left;
+                            margin-left: 0;
+                            span {
+                                .english {
+                                    margin-left: 0px;
+                                }
+                            }
                         }
                         .itmerw_ch {
                             position: absolute;

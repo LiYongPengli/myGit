@@ -62,9 +62,9 @@
       <!-- 国家媒体列表 -->
       <div class="top">
         <div class="media_nav">
-          <span class="cur" @click="mediaTab(0)">国家</span>
-          <span @click="mediaTab(1)">人物</span>
-          <span @click="mediaTab(2)">媒体</span>
+          <span :class="[mediaSwiperCurrentIndex==0?'cur':'']" @click="mediaTab(0)">国家</span>
+          <span :class="[mediaSwiperCurrentIndex==1?'cur':'']" @click="mediaTab(1)">人物</span>
+          <span :class="[mediaSwiperCurrentIndex==2?'cur':'']" @click="mediaTab(2)">媒体</span>
         </div>
         <div class="media_content">
           <div class="swiper-container" id="swiper2">
