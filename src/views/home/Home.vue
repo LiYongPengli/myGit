@@ -26,9 +26,11 @@
 import HomeCom from "./Home";
 import Component, { mixins } from "vue-class-component";
 import HeaderOne from "@/components/HeaderOne.vue";
+import MyScroll from "@/components/MyScroll.vue";
 @Component({
   components: {
     HeaderOne,
+    MyScroll
   },
 })
 export default class Home extends mixins(HomeCom) {}

@@ -28,7 +28,11 @@
     </header>
     <!-- 国家 -->
     <div v-if="pageIndex == 0" class="content">
-      <span class="yx"> 已选:{{ sub_form.country.join("、") }} </span>
+      <span class="yx">
+        已选:<span v-for="(v, i) in sub_form.country" :key="i"
+          > {{ i ==0? "" : "、" }} {{ v.name }}</span
+        >
+      </span>
       <div class="content_wrap">
         <my-scroll>
           <ul>
@@ -42,7 +46,7 @@
                 <!-- 50*30 -->
                 <img :src="v.flag" alt="" />
 
-                 <span class="chinese">{{ v.name_zh }}</span> 
+                <span class="chinese">{{ v.name_zh }}</span>
                 <!-- <span class="english">{{ v.name }}</span> -->
 
                 <el-tooltip
@@ -72,7 +76,9 @@
     </div>
     <!-- 媒体 -->
     <div v-if="pageIndex == 1" class="content content_mt">
-      <span class="yx"> 已选:{{ sub_form.media.join("、") }} </span>
+      <span class="yx"> 已选:<span v-for="(v, i) in sub_form.media" :key="i"
+          > {{ i ==0? "" : "、" }} {{ v.name }}</span
+        > </span>
       <div class="content_wrap" style="height: 250px">
         <span class="qit">近7天内活跃的媒体</span>
         <my-scroll style="content_mt_onescroll">
@@ -162,7 +168,9 @@
     </div>
     <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
-      <span class="yx"> 已选:{{ sub_form.character.join("、") }} </span>
+      <span class="yx"> 已选:<span v-for="(v, i) in sub_form.character" :key="i"
+          > {{ i ==0? "" : "、" }} {{ v.name }}</span
+        ></span>
       <div class="content_wrap">
         <my-scroll>
           <ul class="rw">
@@ -182,11 +190,9 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <el-button
-                    >
-                <span class="chinese">{{ v.name }}</span>
-                </el-button
-                  >
+                  <el-button>
+                    <span class="chinese">{{ v.name }}</span>
+                  </el-button>
                 </el-tooltip>
                 <!-- <span class="english">中国共产党中央委员会总书记</span> -->
               </a>

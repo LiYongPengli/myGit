@@ -54,6 +54,9 @@ export default class App extends Vue {
       paras: { user_id: user_id }
     }).then(res=>{
       this.setUserMessage(res.data.data);
+      if(!res.data.data.sub_prompted&&this.$route.name!="HomeSet"){
+        this.$router.push('/homeset');
+      }
     }).catch(err=>{
       console.log(err);
     })

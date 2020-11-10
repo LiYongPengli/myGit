@@ -10,10 +10,10 @@ export default class HomeSetCom extends Vue {
     //目前所处的页码
     public pageIndex: number = 0;
     public sub_form = {
-        country: [] as string[],
-        media: [] as string[],
-        character: [] as string[],
-        channel: [] as string[]
+        country: [] as {name:string;id:string}[],
+        media: [] as {name:string;id:string}[],
+        character: [] as {name:string;id:string}[],
+        channel: [] as {name:string;id:string}[]
     }
     private page_data = {
         country_list: [] as any[],
@@ -163,14 +163,16 @@ export default class HomeSetCom extends Vue {
         }
         this.channel_list = arr;
     }
-    
+
     private getMedia_list(): void {
         this.getSubscriptions("media", "unsub", (res) => {
             let media_list = res.data.data as any[];
+            let week = new Date().getTime()-(7*24*60*60*1000);
+            let month = new Date().getTime()-(30*24*60*60*1000);
             for (let i = 0; i < media_list.length; i++) {
-                if (i < 8) {
+                if (new Date(media_list[i].update_time).getTime()>=week) {
                     this.media_list.week.push(media_list[i])
-                } else {
+                } else if(new Date(media_list[i].update_time).getTime()>month) {
                     this.media_list.month.push(media_list[i])
                 }
             }
@@ -189,7 +191,10 @@ export default class HomeSetCom extends Vue {
             case 'country':
                 if (!this.country_list[index].choose) {
                     this.$set(this.country_list[index], 'choose', true);
-                    this.sub_form.country.push(item.name);
+                    this.sub_form.country.push({
+                        name:item.name,
+                        id:item.sub_id
+                    });
                 } else {
                     this.$set(this.country_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.country.length; i++) {
@@ -202,7 +207,10 @@ export default class HomeSetCom extends Vue {
             case 'character':
                 if (!this.character_list[index].choose) {
                     this.$set(this.character_list[index], 'choose', true);
-                    this.sub_form.character.push(item.name);
+                    this.sub_form.character.push({
+                        name:item.name,
+                        id:item.sub_id
+                    });
                 } else {
                     this.$set(this.character_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.character.length; i++) {
@@ -215,7 +223,10 @@ export default class HomeSetCom extends Vue {
             case 'channel':
                 if (!this.channel_list[index].choose) {
                     this.$set(this.channel_list[index], 'choose', true);
-                    this.sub_form.channel.push(item.name);
+                    this.sub_form.channel.push({
+                        name:item.name,
+                        id:item.sub_id
+                    });
                 } else {
                     this.$set(this.channel_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.channel.length; i++) {
@@ -237,7 +248,10 @@ export default class HomeSetCom extends Vue {
         if (type == 'week') {
             if (!this.media_list.week[index].choose) {
                 this.$set(this.media_list.week[index], 'choose', true);
-                this.sub_form.media.push(item.name);
+                this.sub_form.media.push({
+                    name:item.name,
+                    id:item.sub_id
+                });
             } else {
                 this.$set(this.media_list.week[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
@@ -249,7 +263,10 @@ export default class HomeSetCom extends Vue {
         } else {
             if (!this.media_list.month[index].choose) {
                 this.$set(this.media_list.month[index], 'choose', !this.media_list.month[index].choose);
-                this.sub_form.media.push(item.name);
+                this.sub_form.media.push({
+                    name:item.name,
+                    id:item.sub_id
+                });
             } else {
                 this.$set(this.media_list.month[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
@@ -269,23 +286,54 @@ export default class HomeSetCom extends Vue {
                     this.getMedia_list()
                 break;
             case 1:
-                this.getSubscriptions("character", "unsub", res => {
-                    console.log(res.data)
-                    this.character_list = res.data.data;
-                    this.page_data.character_list = res.data.data;
-                })
+                if (!this.character_list.length) {
+                    this.getSubscriptions("character", "unsub", res => {
+                        console.log(res.data)
+                        this.character_list = res.data.data;
+                        this.page_data.character_list = res.data.data;
+                    })
+                }
+
                 break;
             case 2:
-                this.getSubscriptions("channel", "unsub", res => {
-                    console.log(res.data)
-                    this.channel_list = res.data.data;
-                    this.page_data.channel_list = res.data.data;
-                })
+                if (!this.channel_list.length) {
+                    this.getSubscriptions("channel", "unsub", res => {
+                        console.log(res.data)
+                        this.channel_list = res.data.data;
+                        this.page_data.channel_list = res.data.data;
+                    })
+                }
+
                 break;
         }
     }
     //完成
     public toFinish(): void {
-
+        let sub_form:any = {
+            country:[],
+            media:[],
+            character:[],
+            channel:[]
+        }
+        for(let i of this.sub_form.country){
+            sub_form.country.push(i.id);
+        }
+        for(let i of this.sub_form.media){
+            sub_form.media.push(i.id);
+        }
+        for(let i of this.sub_form.character){
+            sub_form.character.push(i.id);
+        }
+        for(let i of this.sub_form.channel){
+            sub_form.channel.push(i.id);
+        }
+        this.axios.post(baseApi.api2+'/v1/cmd/',{
+            cmd:'first_login_sub',
+            paras:sub_form
+        }).then(res=>{
+            this.$router.push('/')
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 }
