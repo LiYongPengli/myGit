@@ -212,6 +212,8 @@ export default class HeaderOne extends Vue {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
+        width: 140px;
+        text-align: center;
       }
     }
     .lang {

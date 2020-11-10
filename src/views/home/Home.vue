@@ -7,6 +7,7 @@
       </div>
     </transition>
     <div @scroll="mainPageScroll" class="body">
+       <my-scroll class="sydht">
       <!-- 头部导航 -->
       <header-one />
       <!-- 内容主体 -->
@@ -16,6 +17,7 @@
       <footer>
         <p>睿读v2.1.35 2018 © 中经软件</p>
       </footer>
+       </my-scroll>
     </div>
   </div>
 </template>

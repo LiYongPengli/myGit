@@ -11,23 +11,27 @@
     }
     .body {
         flex: 1;
-        height: 100%;
+        //height: 100%;
         //padding-top: 163px;
-        overflow-y: auto;
+        // overflow-y: auto;
+        overflow: hidden;
         background-image: linear-gradient(-15deg, #31313d, #17171d);
-        .wrap {
-            max-width: 1500px;
-            min-width: 1030px;
-            margin: auto;
-            overflow: hidden;
-        }
-        footer {
-            font-size: 14px;
-            color: rgba(255, 255, 255, .4);
-            margin-top: 20px;
-            margin-bottom: 30px;
-            p {
-                text-align: center;
+        .sydht {
+            height: 100%;
+            .wrap {
+                max-width: 1500px;
+                min-width: 1030px;
+                margin: auto;
+                overflow: hidden;
+            }
+            footer {
+                font-size: 14px;
+                color: rgba(255, 255, 255, .4);
+                margin-top: 20px;
+                margin-bottom: 30px;
+                p {
+                    text-align: center;
+                }
             }
         }
     }
