@@ -13,6 +13,7 @@
               placeholder="美国大选"
             />
             <!-- <img class="sousuo"  src="../../assets/img/sousuo.png" alt=""> -->
+            <img class="sousuo"  src="../../assets/img/sousuo.png" alt="">
           </div>
         </header>
         <div class="content" v-if="searchData">
@@ -25,14 +26,15 @@
               <div class="list">
                 <div
                   @click="chooseitem('country', '')"
-                  class="all"
+                  class="all listqb"
                   :class="{ cur: !filter.country.length }"
+                  
                 >
                   全部
                 </div>
                 <ul :style="{'height':showCountry?'auto':'30px'}">
                   <li
-                    :class="{ cur: ~filter.country.indexOf(v.name.en) }"
+                    :class="{ countryli: ~filter.country.indexOf(v.name.en) }"
                     @click="chooseitem('country', v)"
                     v-for="(v, i) in countryList"
                     :key="i"
@@ -55,7 +57,7 @@
             <!-- 媒体 -->
             <div class="countrymore country">
               <ul v-show="showMedia" style="margin-left: 55px" class="zm">
-                <li :class="{cur:v.choose}" @click="toFilterMenu('media',v)" v-for="(v,i) in filterMenu" :key="i">{{v.name}}</li>
+                <li :class="{cur:v.choose}" class="listqb"  @click="toFilterMenu('media',v)" v-for="(v,i) in filterMenu" :key="i">{{v.name}}</li>
               </ul>
               <span>媒体：</span>
               <div class="list">
@@ -69,7 +71,7 @@
                 <div class="other">
                   <ul :style="{'height':showMedia?'auto':'30px'}">
                     <li
-                      :class="{ cur: ~filter.media.indexOf(v.name.en) }"
+                      :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
                       @click="chooseitem('media', v)"
                       v-for="(v, i) in mediaList"
                       :key="i"
@@ -90,7 +92,7 @@
               <div class="list">
                 <div
                   @click="chooseitem('character', '')"
-                  class="all"
+                  class="all listqb"
                   :class="{ cur: !filter.character.length }"
                 >
                   全部
@@ -99,7 +101,7 @@
                   <ul :style="{'height':showCharacter?'auto':'30px'}">
                     <li
                       @click="chooseitem('character', v)"
-                      :class="{ cur: ~filter.character.indexOf(v) }"
+                      :class="{ rwli: ~filter.character.indexOf(v) }"
                       v-for="(v, i) in characterList"
                       :key="i"
                     >
@@ -147,8 +149,8 @@
                 class="correlationsort"
               >
                 相关度排序
-                <img class="up" src="../../assets/img/up.png" alt="" />
-                <img class="down" src="../../assets/img/down.png" alt="" />
+                <!-- <img class="up" src="../../assets/img/up.png" alt="" />
+                <img class="down" src="../../assets/img/down.png" alt="" /> -->
               </div>
               <div
                 @click="sortList('t')"
@@ -156,8 +158,8 @@
                 class="releasetimesort"
               >
                 发布时间排序
-                <img class="up" src="../../assets/img/up.png" alt="" />
-                <img class="down" src="../../assets/img/down.png" alt="" />
+                <!-- <img class="up" src="../../assets/img/up.png" alt="" />
+                <img class="down" src="../../assets/img/down.png" alt="" /> -->
               </div>
               <ul>
                 <li
