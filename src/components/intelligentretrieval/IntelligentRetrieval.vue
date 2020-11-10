@@ -44,9 +44,10 @@
                 </ul>
               </div>
               <div class="operation">
-                <div @click="showCountry = !showCountry" class="more">
-                  更多+
+                <div  @click="showCountry = !showCountry" class="more">
+                {{ "更多" + (showCountry ? "-" : "+") }}
                 </div>
+                  
                 <div class="morchoice">多选+</div>
               </div>
             </div>
@@ -82,7 +83,10 @@
                 </div>
               </div>
               <div class="operation">
-                <div @click="showMedia = !showMedia" class="more">更多+</div>
+                <!-- <div v-show="showMedia" @click="showMedia = !showMedia" class="more">更多-</div>
+
+                <div v-show="!showMedia" @click="showMedia = !showMedia" class="more">更多+</div> -->
+                <div @click="showMedia = !showMedia" class="more">{{ "更多" + (showMedia ? "-" : "+") }}</div>
                 <div class="morchoice">多选+</div>
               </div>
             </div>

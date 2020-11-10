@@ -97,6 +97,7 @@ export default class TimeSolt extends Vue {
     background: #494959;
     border: 0;
     color: white;
+    cursor: pointer;
   }
   .timesearch {
     .zhi {

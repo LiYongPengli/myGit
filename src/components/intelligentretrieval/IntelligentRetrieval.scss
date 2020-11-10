@@ -134,7 +134,7 @@
                             margin-left: 20px;
                             cursor: pointer;
                             font-size: 14px;
-                            color: wheat;
+                            color: white;
                             width: 60px;
                             height: 26px;
                             line-height: 26px;
@@ -225,8 +225,10 @@
                                     div {
                                         cursor: pointer;
                                         width: 100px;
-                                        height: 30px;
-                                        line-height: 30px;
+                                        height: 40px;
+                                        line-height: 40px;
+                                        text-align: center;
+                                        line-height: 40px;
                                         text-align: center;
                                         color: white;
                                         text-decoration: none;
@@ -251,6 +253,7 @@
                     // float: right;
                     margin: 25px 0;
                     .correlationsort {
+                        cursor: pointer;
                         position: relative;
                         width: 120px;
                         height: 30px;
@@ -286,6 +289,8 @@
                         height: 30px;
                         line-height: 30px;
                         padding-right: 10px;
+                        cursor: pointer;
+                        text-align: center;
                         // img.up {
                         //     cursor: pointer;
                         //     position: absolute;
