@@ -15,6 +15,12 @@
             width: 1000px;
             text-align: center;
             margin: 0 auto;
+            .sousuo {
+                position: relative;
+                top: 50px;
+                right: 50px;
+                cursor: pointer;
+            }
             .gbjs {
                 float: right;
                 height: 40px;
@@ -37,7 +43,8 @@
                 margin-bottom: 30px;
                 float: left;
                 border: none;
-                background: url("../../assets/img/search.png") 840px center no-repeat #353541;
+                background-color: #353541;
+                // background: url("../../assets/img/search.png") 840px center no-repeat #353541;
             }
             input:focus {
                 outline: none;
@@ -103,6 +110,22 @@
                 .list {
                     width: 756px;
                     float: left;
+                    .listqb {
+                        margin-left: 20px;
+                        font-size: 14px;
+                        color: white;
+                        width: 60px;
+                        height: 26px;
+                        line-height: 26px;
+                        text-align: center;
+                        float: left;
+                        cursor: pointer;
+                    }
+                    .countryli,
+                    .mtli,
+                    .rwli {
+                        background-color: #0079ed;
+                    }
                     .all {
                         margin-left: 20px;
                         background-color: #0079ed;
@@ -113,23 +136,27 @@
                         line-height: 26px;
                         text-align: center;
                         float: left;
+                        cursor: pointer;
                     }
                     ul {
                         list-style: none;
                         overflow: hidden;
+                        margin-right: 60px;
                         li {
-                            width: 120px;
+                            // width: 110px;
                             overflow: hidden;
                             text-overflow: ellipsis;
                             height: 26px;
                             line-height: 26px;
                             float: left;
+                            cursor: pointer;
                             p {
                                 color: white;
-                                margin-left: 20px;
-                                margin-right: 13px;
+                                margin-left: 10px;
+                                // margin-right: 13px;
                                 text-decoration: none;
                                 font-size: 14px;
+                                text-align: center;
                             }
                         }
                     }
@@ -227,20 +254,26 @@
                     font-size: 14px;
                     color: white;
                     padding-right: 10px;
-                    img.up {
-                        cursor: pointer;
-                        position: absolute;
-                        top: 10px;
-                        margin-left: 10px;
-                    }
-                    img.down {
-                        cursor: pointer;
-                        position: absolute;
-                        bottom: 7px;
-                        margin-left: 10px;
-                    }
+                    cursor: pointer;
+                    text-align: center;
+                    // img.up {
+                    //     cursor: pointer;
+                    //     position: absolute;
+                    //     top: 10px;
+                    //     margin-left: 10px;
+                    // }
+                    // img.down {
+                    //     cursor: pointer;
+                    //     position: absolute;
+                    //     bottom: 7px;
+                    //     margin-left: 10px;
+                    // }
+                }
+                div.cur {
+                    background: #0079ed;
                 }
                 .releasetimesort {
+                    cursor: pointer;
                     position: relative;
                     width: 120px;
                     float: left;
@@ -249,18 +282,19 @@
                     height: 30px;
                     line-height: 30px;
                     padding-right: 10px;
-                    img.up {
-                        cursor: pointer;
-                        position: absolute;
-                        top: 10px;
-                        margin-left: 10px;
-                    }
-                    img.down {
-                        cursor: pointer;
-                        position: absolute;
-                        bottom: 7px;
-                        margin-left: 10px;
-                    }
+                    text-align: center;
+                    // img.up {
+                    //     cursor: pointer;
+                    //     position: absolute;
+                    //     top: 10px;
+                    //     margin-left: 10px;
+                    // }
+                    // img.down {
+                    //     cursor: pointer;
+                    //     position: absolute;
+                    //     bottom: 7px;
+                    //     margin-left: 10px;
+                    // }
                 }
                 ul {
                     list-style: none;
@@ -273,6 +307,7 @@
                         width: 60px;
                         text-align: center;
                         margin-right: 20px;
+                        cursor: pointer;
                         a {
                             text-decoration: none;
                             color: white;

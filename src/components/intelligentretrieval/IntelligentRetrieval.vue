@@ -6,7 +6,7 @@
         <div class="search">
           <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
           <input v-model="searchText" type="text" placeholder="美国大选" />
-          <!-- <img class="sousuo"  src="../assets/img/sousuo.png" alt=""> -->
+          <img class="sousuo"  src="../../assets/img/sousuo.png" alt="">
         </div>
       </header>
       <div class="content" v-if="searchData">
@@ -42,11 +42,12 @@
             </ul>
             <span>国家：</span>
             <div class="list">
-              <div @click="chooseitem('country','')" :class="{'all':!filter.country.length}">全部</div>
+              <div @click="chooseitem('country','')" :class="{'all':!filter.country.length}" class="listqb">全部</div>
               <ul>
-                <li :class="{'all':~filter.country.indexOf(v.name.en)}" @click="chooseitem('country',v)" v-for="(v, i) in getFilterList('country',searchData.filters.country)" :key="i">
+                <li :class="{'countryli':~filter.country.indexOf(v.name.en)}" @click="chooseitem('country',v)" v-for="(v, i) in getFilterList('country',searchData.filters.country)" :key="i">
                   <p> {{ v.name.en }}({{ v.name["zh-CN"] }}) </p>
                 </li>
+                <li data-v-2750436f="" class=""><p data-v-2750436f=""> Kenya(肯尼亚) </p></li>
               </ul>
             </div>
             <div class="operation">
@@ -90,10 +91,10 @@
             </ul>
             <span>媒体：</span>
             <div class="list">
-              <div :class="{'all':!filter.media.length}" @click="chooseitem('media','')">全部</div>
+              <div :class="{'all':!filter.media.length}" @click="chooseitem('media','')" class="listqb">全部</div>
               <div class="other">
                 <ul>
-                  <li :class="{'all':~filter.media.indexOf(v.name.en)}" @click="chooseitem('media',v)" v-for="(v, i) in getFilterList('media',searchData.filters.media)" :key="i">
+                  <li :class="{'mtli':~filter.media.indexOf(v.name.en)}" @click="chooseitem('media',v)" v-for="(v, i) in getFilterList('media',searchData.filters.media)" :key="i">
                     <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
                   </li>
                 </ul>
@@ -108,10 +109,10 @@
           <div class="country">
             <span>人物：</span>
             <div class="list">
-              <div @click="chooseitem('character','')" :class="{'all':!filter.character.length}">全部</div>
+              <div @click="chooseitem('character','')" :class="{'all':!filter.character.length}" class="listqb">全部</div>
               <div class="other">
                 <ul>
-                  <li @click="chooseitem('character',v)" :class="{'all':~filter.character.indexOf(v)}" v-for="(v, i) in getFilterList('character',searchData.filters.character)" :key="i">
+                  <li @click="chooseitem('character',v)" :class="{'rwli':~filter.character.indexOf(v)}" v-for="(v, i) in getFilterList('character',searchData.filters.character)" :key="i">
                     <p>{{ v }}</p>
                   </li>
                 </ul>
@@ -141,13 +142,13 @@
           <div class="paixu">
             <div @click="sortList('r')" :class="{'cur':filter.sort_type=='r'}" class="correlationsort">
               相关度排序
-              <img class="up" src="../../assets/img/up.png" alt="" />
-              <img class="down" src="../../assets/img/down.png" alt="" />
+              <!-- <img class="up" src="../../assets/img/up.png" alt="" />
+              <img class="down" src="../../assets/img/down.png" alt="" /> -->
             </div>
             <div @click="sortList('t')" :class="{'cur':filter.sort_type=='t'}" class="releasetimesort">
               发布时间排序
-              <img class="up" src="../../assets/img/up.png" alt="" />
-              <img class="down" src="../../assets/img/down.png" alt="" />
+              <!-- <img class="up" src="../../assets/img/up.png" alt="" />
+              <img class="down" src="../../assets/img/down.png" alt="" /> -->
             </div>
             <ul>
               <li @click="setLanguage('crawler')" :class="{'cur':language=='crawler'}"><a>原文</a></li>
