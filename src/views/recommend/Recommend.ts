@@ -54,15 +54,15 @@ export default class RecommendCom extends Vue {
     public created(): void {
         //获取国家列表
         this.getSubscriptions("country", "sub", (res) => {
-            this.country = res.data.data.subscriptions;
+            this.country = res.data.data;
         });
         //获取人物列表
         this.getSubscriptions("character", "sub", (res) => {
-            this.people = res.data.data.subscriptions;
+            this.people = res.data.data;
         });
         //获取媒体列表
         this.getSubscriptions("media", "sub", (res) => {
-            this.media = res.data.data.subscriptions;
+            this.media = res.data.data;
         });
 
         this.get_recommend();
