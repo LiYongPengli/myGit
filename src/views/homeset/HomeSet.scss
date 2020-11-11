@@ -109,10 +109,12 @@
                         .itmerw_ch {
                             position: absolute;
                             top: 12px;
+                            text-align: left;
                             span {
                                 .chinese {
                                     height: 20px;
                                     line-height: 20px;
+                                    margin-left: 0;
                                 }
                             }
                         }
