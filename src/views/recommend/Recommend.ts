@@ -5,10 +5,11 @@ import Swiper from 'swiper'
 import { Mutation, State } from 'vuex-class';
 @Component
 export default class RecommendCom extends Vue {
-    public  eshour:boolean=true
+    
     @State('index_channel_window') index_channel_window!: boolean;
+    @State('mainPageLoading') mainPageLoading!: boolean;
     @State('language') language!: string;
-    @State('mainPageScrollTop') mainPageScrollTop!: number;
+    
     @State('topic_show') topic_show!: boolean;
     //被激活的推荐频道导航
     public active_recommend: number = 0;
@@ -18,10 +19,15 @@ export default class RecommendCom extends Vue {
     public mediaSwiperCurrentIndex: number = 0;
     //频道列表
     public channel_swiper!: Swiper;
+
+    //是否加载完毕
+    public finished:boolean = false;
+    
     //新闻列表
     public newsList: any[] = [];
-    //24小时列表
-    public hours_24: any[] = [];
+    //起始页码
+    public start:number = 1;
+    
     //关注频道列表
     public channel: { sub_id: string; name: string }[] = [];
     //媒体列表
@@ -33,26 +39,24 @@ export default class RecommendCom extends Vue {
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
     @Mutation('setTopicShow') setTopicShow!: any;
-
-    @Watch('topic_show')
-    public topic_show_change(): void {
-        this.eshour=!this.topic_show;
-        console.log(this.eshour)
-        debugger
-        
-    }
+    @Mutation('setSureTop') setSureTop!: any;
+    @Mutation('setMainPageLoading') setMainPageLoading!: any;
 
     @Watch('language')
     public language_change(): void {
+        this.start = 1;
+        this.finished = false;
         this.get_recommend();
-        this.get24Hour();
     }
-    /* @Watch('channel')
-    public channelChange():void{
-        this.channel_swiper
-    } */
+    @Watch('mainPageLoading')
+    public loadingChange(newVal:boolean,oldVal:boolean):void{
+        if(newVal&&!this.finished){
+            this.loading();
+        }
+    }
 
     public created(): void {
+        this.setMainPageLoading(false);
         //获取国家列表
         this.getSubscriptions("country", "sub", (res) => {
             this.country = res.data.data;
@@ -67,7 +71,6 @@ export default class RecommendCom extends Vue {
         });
 
         this.get_recommend();
-        this.get24Hour()
     }
 
     public mounted(): void {
@@ -78,22 +81,24 @@ export default class RecommendCom extends Vue {
                 slidesPerView: 4,
                 freeMode: true,
                 observer: true,
-                observeSlideChildren: true
+                observeSlideChildren: true,
             })
         });
 
         this.media_swiper = new Swiper('#swiper2')
     }
 
+
+    private loading():void{
+        this.start++;
+        this.get_recommend();
+    }
+
+    
+
     //回到顶部
     public toTop(): void {
-        let top = window.scrollY;
-        let timer = setInterval(() => {
-            window.scrollTo({ top: (top -= 20) })
-            if (top <= 0) {
-                clearInterval(timer)
-            }
-        })
+        this.setSureTop(true);
     }
 
 
@@ -116,39 +121,40 @@ export default class RecommendCom extends Vue {
         })
     }
 
+    
+
     //获取推荐文章列表
     private get_recommend(): void {
         let cmd = 'query_recommend';
         let paras: any = {};
         switch (this.active_recommend) {
             case 0:
-                paras = { language: this.language, limit: 10 };
+                paras = { language: this.language,start:this.start, size: 10 };
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { name: this.active_recommend_name, language: this.language, limit: 10 };
+                paras = { name: this.active_recommend_name,start:this.start, language: this.language, size: 10 };
                 break;
         }
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
             cmd: cmd,
             paras: paras,
         }).then(res => {
-            this.newsList = res.data.data;
+            if(this.start==1){
+                this.newsList = res.data.data;
+            }else{
+                if(!res.data.data.length){
+                    this.finished = true;
+                    return;
+                }
+                this.newsList = this.newsList.concat(res.data.data);
+                this.setMainPageLoading(false);
+            }
         }).catch(err => {
             console.log(err);
         })
     }
-    //获取24小时数据
-    private get24Hour(): void {
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
-            cmd: 'hours24',
-            paras: { language: this.language, limit: 10 }
-        }).then(res => {
-            this.hours_24 = res.data.data;
-        }).catch(err => {
-            console.log(err);
-        })
-    }
+    
     /**
      * 推荐频道发生改变
      * @param index 所点击的索引

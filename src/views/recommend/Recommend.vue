@@ -12,23 +12,27 @@
           <span
             class="recommend_nav"
             @click="change_recommend(0, '推荐')"
-            :class="{ 'cur': active_recommend == 0 }"
+            :class="{ cur: active_recommend == 0 }"
             >推荐</span
           >
           <!-- <span class="selected swiper-slide-active">推荐</span> -->
           <div class="swiper-container" id="swiper1">
             <div class="swiper-wrapper">
               <!-- <span class="swiper-slide swiper-slide-next">菜单 2</span> -->
-              <div v-for="(v, i) in channel" :key="i" class="swiper-slide" :class="{ 'cur': active_recommend == i + 1 }">
+              <div
+                v-for="(v, i) in channel"
+                :key="i"
+                class="swiper-slide"
+                :class="{ cur: active_recommend == i + 1 }"
+              >
                 <!-- <span
                   @click="change_recommend(i + 1, v.name)"
                   :class="{ cur: active_recommend == i + 1 }"
                   >{{ v.name }}</span
                 > -->
-                <span
-                  @click="change_recommend(i + 1, v.name)"
-                  >{{ v.name }}</span
-                >
+                <span @click="change_recommend(i + 1, v.name)">{{
+                  v.name
+                }}</span>
               </div>
             </div>
           </div>
@@ -53,7 +57,7 @@
                 <img src="../../assets/img/zhuanfafasong.png" alt="" />
               </div>
             </li>
-            <div class="jzgd">更多精彩内容，加载中</div>
+            <div v-show="!finished" class="jzgd">更多精彩内容，加载中</div>
           </ul>
         </div>
       </div>
@@ -62,9 +66,21 @@
       <!-- 国家媒体列表 -->
       <div class="top">
         <div class="media_nav">
-          <span :class="[mediaSwiperCurrentIndex==0?'cur':'']" @click="mediaTab(0)">国家</span>
-          <span :class="[mediaSwiperCurrentIndex==1?'cur':'']" @click="mediaTab(1)">人物</span>
-          <span :class="[mediaSwiperCurrentIndex==2?'cur':'']" @click="mediaTab(2)">媒体</span>
+          <span
+            :class="[mediaSwiperCurrentIndex == 0 ? 'cur' : '']"
+            @click="mediaTab(0)"
+            >国家</span
+          >
+          <span
+            :class="[mediaSwiperCurrentIndex == 1 ? 'cur' : '']"
+            @click="mediaTab(1)"
+            >人物</span
+          >
+          <span
+            :class="[mediaSwiperCurrentIndex == 2 ? 'cur' : '']"
+            @click="mediaTab(2)"
+            >媒体</span
+          >
         </div>
         <div class="media_content">
           <div class="swiper-container" id="swiper2">
@@ -101,46 +117,22 @@
           </div>
         </div>
       </div>
-
       <!-- 24小时 -->
-      <div class="eshour" v-show="eshour"  :class="{'fixed':mainPageScrollTop>=350}">
-        <div class="bt">24小时</div>
-        <div class="content">
-          <ul>
-            <li v-for="(v, i) in hours_24" :key="i">
-              <div class="logo">
-                <img
-                  v-if="!v.media_logo"
-                  src="../../assets/img/media.png"
-                  alt=""
-                />
-                <img v-if="v.media_logo" :src="v.media_logo" alt="" />
-                <span class="ly">
-                  {{ v.media_name }}
-                </span>
-                <span class="sj">
-                  {{ init_time(v.release_time) }}
-                </span>
-              </div>
-              <a href="#">
-                <p>
-                  {{ v.news_title }}
-                  <!-- 美国将中国旅行警告从“请勿前往”下调为“审慎考虑前往” -->
-                </p>
-              </a>
-            </li>
-          </ul>
-          <div class="more">查看更多</div>
-        </div>
-      </div>
+      <hours-24 />
     </div>
     <transition name="el-zoom-in-top">
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
     <div class="fx">
-      <a @click="toTop" class="arrow"><img title="置顶" src="../../assets/img/arrow-right.png" alt="" /></a>
-      <a class="fenxiang" href=""><img title="分享" src="../../assets/img/fenxiang.png" alt="" /></a>
-      <a @click.stop="setTopicShow(true)" class="chat"> <img title="分享到微信" src="../../assets/img/chat.png" alt="" /></a>
+      <a @click="toTop" class="arrow"
+        ><img title="置顶" src="../../assets/img/arrow-right.png" alt=""
+      /></a>
+      <a class="fenxiang" href=""
+        ><img title="分享" src="../../assets/img/fenxiang.png" alt=""
+      /></a>
+      <a @click.stop="setTopicShow(true)" class="chat">
+        <img title="分享到微信" src="../../assets/img/chat.png" alt=""
+      /></a>
     </div>
   </div>
 </template>
@@ -149,9 +141,11 @@
 import Component, { mixins } from "vue-class-component";
 import RecommendCom from "./Recommend";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
+import Hours24 from "@/components/hours24/Hours24.vue"
 @Component({
   components: {
     EditChannel,
+    Hours24
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

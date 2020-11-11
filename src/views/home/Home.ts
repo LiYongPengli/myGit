@@ -6,11 +6,18 @@ export default class HomeCom extends Vue {
     @State('language') language!: string;
     //是否展示聊天工具
     @State('topic_show') topic_show!:boolean;
+    //是否回到顶部
+    @State('suretop') suretop!:boolean;
     
 
     @Mutation('setScrollTop') setScrollTop!:any;
+    @Mutation('setMainPageLoading') setMainPageLoading!:any;
 
-    public mainPageScroll(e:Event){
-        this.setScrollTop((e.target as HTMLElement).scrollTop);
+    public mainPageScroll(e:HTMLElement){
+        this.setScrollTop(e.scrollTop);
+    }
+
+    public toLoading():void{
+        this.setMainPageLoading(true);
     }
 }
