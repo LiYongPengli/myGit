@@ -48,12 +48,12 @@ export default class RecommendCom extends Vue {
         this.finished = false;
         this.get_recommend();
     }
-    @Watch('mainPageLoading')
+    /* @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
         if(newVal&&!this.finished){
             this.loading();
         }
-    }
+    } */
 
     public created(): void {
         this.setMainPageLoading(false);
@@ -89,7 +89,7 @@ export default class RecommendCom extends Vue {
     }
 
 
-    private loading():void{
+    public loading():void{
         this.start++;
         this.get_recommend();
     }
