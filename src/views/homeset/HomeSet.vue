@@ -27,7 +27,7 @@
       </div>
     </header>
     <!-- 国家 -->
-    <div v-if="pageIndex == 0" class="content">
+    <div v-if="pageIndex == 0" class="content ">
       <span class="yx">
         已选:<span v-for="(v, i) in sub_form.country" :key="i">
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
@@ -103,10 +103,7 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <span
-                    style="height: 25px; line-height: 25px"
-                    class="chinese"
-                    >{{ v.name_zh }}</span
+                  <span class="chinese"  >{{ v.name_zh }}</span
                   >
                 </el-tooltip>
                 <el-tooltip

@@ -67,7 +67,6 @@
                 list-style: none;
                 overflow: hidden;
                 li {
-                    position: relative;
                     float: left;
                     height: 70px;
                     width: 200px;
@@ -86,8 +85,8 @@
                             overflow: hidden;
                         }
                         .itmemt_ch {
-                            position: absolute;
-                            top: 12px;
+                            position: relative;
+                            top: -20px;
                             text-align: left;
                             span {
                                 .chinese {
@@ -96,7 +95,7 @@
                             }
                         }
                         .itmemt_en {
-                            position: absolute;
+                            position: relative;
                             top: 28px;
                             text-align: left;
                             margin-left: 0;
@@ -122,12 +121,15 @@
                             position: absolute;
                             top: 28px;
                         }
-                        color: white;
                         text-decoration: none;
+                        color: white;
                         font-size: 16px;
                         .chinese {
-                            position: absolute;
+                            position: relative;
                             top: -20px;
+                            text-align: left;
+                            position: absolute;
+                            // top: -20px;
                             margin-left: 20px;
                             font-size: 15px;
                             // height: 25px;
@@ -250,11 +252,4 @@
             }
         }
     }
-    // .content_mt {
-    //     .content_wrap {
-    //         .mt {
-    //             //height: 250px;
-    //         }
-    //     }
-    // }
 }
