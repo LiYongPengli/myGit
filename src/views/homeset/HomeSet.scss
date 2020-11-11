@@ -109,10 +109,12 @@
                         .itmerw_ch {
                             position: absolute;
                             top: 12px;
+                            text-align: left;
                             span {
                                 .chinese {
                                     height: 20px;
                                     line-height: 20px;
+                                    margin-left: 0;
                                 }
                             }
                         }
@@ -132,7 +134,7 @@
                             // line-height: 25px;
                         }
                         .english {
-                            // margin-left: 20px;
+                            margin-left: 20px;
                             font-size: 13px;
                         }
                     }
@@ -157,8 +159,9 @@
                             margin-left: 20px;
                         }
                         span.chinese {
-                            top: -5px;
+                            top: 10px;
                             font-size: 15px;
+                            overflow: hidden;
                         }
                         span.english {
                             //position: absolute;
@@ -180,7 +183,7 @@
                             margin-top: 8px;
                         }
                         span.chinese {
-                            top: -10px;
+                            top: 10px;
                             font-size: 13px;
                         }
                         span.english {
