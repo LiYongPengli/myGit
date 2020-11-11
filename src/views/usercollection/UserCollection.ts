@@ -85,9 +85,7 @@ export default class UserCollectionCom extends Vue{
             confirmButtonText:'确定',
             cancelButtonText:'取消'
         }).then(()=>{
-            this.axios.delete(baseApi.api2+'/v1/user/favorite/',{
-                data: { name: item.name },
-              }).then(res=>{
+            this.axios.delete(baseApi.api2+'/v1/user/favorite/?name='+item.name).then(res=>{
                   this.getData();
               }).catch(err=>{
                   console.log(err)

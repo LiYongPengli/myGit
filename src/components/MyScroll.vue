@@ -19,6 +19,7 @@
 <script>
 export default {
   name: "my-scroll",
+  
   data() {
     return {
       thumb: 0,
@@ -64,18 +65,39 @@ export default {
 
     me.refresh();
   },
+  watch:{
+    '$store.state.suretop':function(newVal,oldVal){
+      if(newVal){
+        this.toTop();
+      }
+    }
+  },
   methods: {
     mutationCallback(mutationsList) {
       this.refresh();
     },
+    toTop() {
+      let top = this.$refs.vueScroll.scrollTop;
+      let timer = setInterval(() => {
+        this.$refs.vueScroll.scrollTo({ top: (top -= 20) });
+        if (top <= 0) {
+          clearInterval(timer);
+          this.$store.commit('setSureTop',false)
+        }
+      });
+    },
     onscroll() {
       this.top = this.$refs.vueScroll.scrollTop * this.rate; //计算滚动条所在的高度
-      if(this.$refs.vueScroll.clientHeight+this.$refs.vueScroll.scrollTop==this.$refs.vueScroll.scrollHeight){
-        this.$emit('loading','');
+      if (
+        this.$refs.vueScroll.clientHeight + this.$refs.vueScroll.scrollTop ==
+        this.$refs.vueScroll.scrollHeight
+      ) {
+        this.$emit("loading", "");
       }
       if (this.rate < 1) {
         this.eventTrigger(this.top);
       }
+      this.$emit("myscroll", this.$refs.vueScroll);
     },
     refresh() {
       var me = this;
@@ -183,7 +205,7 @@ export default {
       right: 0;
       width: 6px;
       border-radius: 4px;
-      background:rgb(61, 61, 73);
+      background: rgb(61, 61, 73);
       cursor: pointer;
       &:hover {
         background: #bbb;

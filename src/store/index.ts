@@ -15,7 +15,11 @@ export default new Vuex.Store({
     //是否显示搜索页面
     show_intelligent:false,
     //主页面距离顶部距离
-    mainPageScrollTop:0
+    mainPageScrollTop:0,
+    //是否回到顶部
+    suretop:false,
+    //首页分页加载开关
+    mainPageLoading:false
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -35,6 +39,12 @@ export default new Vuex.Store({
     },
     setScrollTop(state,n):void{
       state.mainPageScrollTop = n;
+    },
+    setSureTop(state,n):void{
+      state.suretop = n;
+    },
+    setMainPageLoading(state,n):void{
+      state.mainPageLoading = n;
     }
   },
   actions: {
