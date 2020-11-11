@@ -29,8 +29,8 @@
     <!-- 国家 -->
     <div v-if="pageIndex == 0" class="content">
       <span class="yx">
-        已选:<span v-for="(v, i) in sub_form.country" :key="i"
-          > {{ i ==0? "" : "、" }} {{ v.name }}</span
+        已选:<span v-for="(v, i) in sub_form.country" :key="i">
+          {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
       <div class="content_wrap">
@@ -46,18 +46,21 @@
                 <!-- 50*30 -->
                 <img :src="v.flag" alt="" />
 
-                <span class="chinese">{{ v.name_zh }}</span>
-                <!-- <span class="english">{{ v.name }}</span> -->
-
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="v.name_zh"
+                  placement="right"
+                >
+                  <span style="height:20px" class="chinese">{{ v.name_zh }}</span>
+                </el-tooltip>
                 <el-tooltip
                   class="item"
                   effect="dark"
                   :content="v.name"
                   placement="right"
                 >
-                  <el-button
-                    ><span class="english">{{ v.name }} </span></el-button
-                  >
+                  <span class="english">{{ v.name }} </span>
                 </el-tooltip>
               </a>
             </li>
@@ -76,9 +79,11 @@
     </div>
     <!-- 媒体 -->
     <div v-if="pageIndex == 1" class="content content_mt">
-      <span class="yx"> 已选:<span v-for="(v, i) in sub_form.media" :key="i"
-          > {{ i ==0? "" : "、" }} {{ v.name }}</span
-        > </span>
+      <span class="yx">
+        已选:<span v-for="(v, i) in sub_form.media" :key="i">
+          {{ i == 0 ? "" : "、" }} {{ v.name }}</span
+        >
+      </span>
       <div class="content_wrap" style="height: 250px">
         <span class="qit">近7天内活跃的媒体</span>
         <my-scroll style="content_mt_onescroll">
@@ -98,9 +103,11 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <el-button
-                    ><span style="height:25px;line-height:25px" class="chinese">{{ v.name_zh }}</span>
-                  </el-button>
+                  <span
+                    style="height: 25px; line-height: 25px"
+                    class="chinese"
+                    >{{ v.name_zh }}</span
+                  >
                 </el-tooltip>
                 <el-tooltip
                   class="item itmemt_en"
@@ -108,9 +115,7 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <el-button
-                    ><span class="english">{{ v.name }} </span></el-button
-                  >
+                  <span class="english">{{ v.name }} </span> 
                 </el-tooltip>
               </a>
             </li>
@@ -130,15 +135,19 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-                <el-tooltip style="top:12px"
+                <el-tooltip
+                  style="top: 12px"
                   class="item itmemt_ch"
                   effect="dark"
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <el-button
-                    ><span  style="height:25px;line-height:25px"  class="chinese">{{ v.name_zh }}</span>
-                  </el-button>
+                   <span
+                      style="height: 25px; line-height: 25px"
+                      class="chinese"
+                      >{{ v.name_zh }}</span
+                    >
+                  
                 </el-tooltip>
                 <el-tooltip
                   class="item itmemt_en"
@@ -146,9 +155,7 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <el-button
-                    ><span class="english">{{ v.name }} </span></el-button
-                  >
+                  <span class="english">{{ v.name }} </span>
                 </el-tooltip>
               </a>
             </li>
@@ -168,9 +175,11 @@
     </div>
     <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
-      <span class="yx"> 已选:<span v-for="(v, i) in sub_form.character" :key="i"
-          > {{ i ==0? "" : "、" }} {{ v.name }}</span
-        ></span>
+      <span class="yx">
+        已选:<span v-for="(v, i) in sub_form.character" :key="i">
+          {{ i == 0 ? "" : "、" }} {{ v.name }}</span
+        ></span
+      >
       <div class="content_wrap">
         <my-scroll>
           <ul class="rw">
@@ -184,15 +193,16 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-                <el-tooltip
+               <el-tooltip
                   class="item itmerw_ch"
                   effect="dark"
                   :content="v.name"
                   placement="right"
                 >
-                  <el-button>
-                    <span style="height:20px;line-height:20px;top:0px" class="chinese">{{ v.name }}</span>
-                  </el-button>
+                  <span
+                      style="height: 20px; line-height: 20px"
+                      class="chinese"
+                      >{{ v.name }}</span>
                 </el-tooltip>
                 <span class="english">中国共产党中央委员会总书记</span>
               </a>
