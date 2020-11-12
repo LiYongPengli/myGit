@@ -274,6 +274,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
         .addnew {
           cursor: pointer;
           margin-bottom: 20px;
+          color: white;
         }
         .addnewcontent {
           width: 700px;
