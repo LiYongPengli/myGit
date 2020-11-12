@@ -57,7 +57,49 @@
         .content {
             margin: 0 auto;
             width: 1000px;
+            .searchresults {
+                .path {
+                    height: 26px;
+                    line-height: 26px;
+                    margin-top: 40px;
+                    margin-bottom: 20px;
+                    color: white;
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        font-size: 14px;
+                    }
+                    .searchresult {
+                        // width: 60px;
+                        height: 26px;
+                        display: inline-block;
+                        background-color: #0079ED;
+                        border-radius: 3px;
+                        padding: 0 5px;
+                        text-align: center;
+                        margin: 0 10px;
+                    }
+                }
+            }
             .mj {
+                .country_search_result {
+                    span {
+                        height: 26px;
+                        line-height: 26px;
+                    }
+                    .country_search_result_list {
+                        float: left;
+                        margin-left: 20px;
+                        background: #0079ed;
+                        color: white;
+                        height: 26px;
+                        line-height: 26px;
+                        font-size: 14px;
+                        cursor: pointer;
+                        border-radius: 3px;
+                        padding: 0 5px;
+                    }
+                }
                 .countrymore {
                     ul.zm {
                         margin-top: 30px;
@@ -70,18 +112,23 @@
                             color: white;
                             cursor: pointer;
                             margin-right: 15px;
+                            font-size: 14px;
+                            line-height: 22px;
+                            // opacity: .2;
                         }
                         .cur {
-                            background-color: #0079ed;
+                            // background-color: #0079ed;
+                            font-size: 16px;
+                            opacity: 1
                         }
                     }
                 }
                 // height: 210px;
-                margin-top: 32px;
+                // margin-top: 32px;
                 background-color: #353541;
                 .cz {
                     text-align: center;
-                    padding-bottom: 10px;
+                    padding-bottom: 20px;
                     overflow: hidden;
                     border-bottom: 1px solid #676770;
                     .quanbu,
@@ -96,7 +143,11 @@
                     }
                     .quanbu {
                         margin-left: 410px;
+                        // background-color: #0079ed;
+                    }
+                    .quanbu:hover {
                         background-color: #0079ed;
+                        border-radius: 3px;
                     }
                     .quxiao {
                         margin-left: 20px;
@@ -129,6 +180,7 @@
                         .mtli,
                         .rwli {
                             background-color: #0079ed;
+                            border-radius: 3px;
                         }
                         .all {
                             margin-left: 20px;
@@ -150,6 +202,7 @@
                                 line-height: 26px;
                                 float: left;
                                 cursor: pointer;
+                                margin-bottom: 10px;
                                 p {
                                     color: white;
                                     margin-left: 20px;
@@ -164,6 +217,7 @@
                         }
                         .cur {
                             background-color: #0079ed;
+                            border-radius: 3px;
                         }
                     }
                     .operation {
@@ -245,6 +299,7 @@
                     }
                     .cur {
                         background: #0079ed;
+                        border-radius: 3px;
                     }
                 }
             }
@@ -279,6 +334,7 @@
                     }
                     div.cur {
                         background: #0079ed;
+                        border-radius: 3px;
                     }
                     .releasetimesort {
                         position: relative;
@@ -323,6 +379,7 @@
                         }
                         li.cur {
                             background: #0079ed;
+                            border-radius: 3px;
                         }
                     }
                 }

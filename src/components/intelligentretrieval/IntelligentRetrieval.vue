@@ -13,14 +13,37 @@
               placeholder="美国大选"
             />
             <!-- <img class="sousuo"  src="../../assets/img/sousuo.png" alt=""> -->
-            <img class="sousuo"  src="../../assets/img/sousuo.png" alt="">
+            <img class="sousuo" src="../../assets/img/sousuo.png" alt="" />
           </div>
         </header>
         <div class="content" v-if="searchData">
+          <div class="searchresults">
+            <div class="path">
+              <a style="margin-right: 10px" href="/">全部结果</a> &gt;
+              <a class="searchresult" href="listlm.aspx?clmId=215"
+                >关于我们 X</a
+              >
+              &gt;
+              <a class="searchresult" href="listlm.aspx?clmId=250">章程 X</a>
+            </div>
+          </div>
           <div class="mj">
+            <div class="countrymore country country_search_result">
+                <span>国家：</span>
+                <div class="country_search_result_list">
+                  China(中国)、America(美国)、Canada(加拿大)、Belize(伯利兹)
+                </div>
+              </div>
             <div class="countrymore country">
               <ul v-show="showCountry" style="margin-left: 55px" class="zm">
-                <li :class="{cur:v.choose}" @click="toFilterMenu('country',v)" v-for="(v,i) in filterMenu" :key="i">{{v.name}}</li>
+                <li
+                  :class="{ cur: v.choose }"
+                  @click="toFilterMenu('country', v)"
+                  v-for="(v, i) in filterMenu"
+                  :key="i"
+                >
+                  {{ v.name }}
+                </li>
               </ul>
               <span>国家：</span>
               <div class="list">
@@ -28,11 +51,10 @@
                   @click="chooseitem('country', '')"
                   class="all listqb"
                   :class="{ cur: !filter.country.length }"
-                  
                 >
                   全部
                 </div>
-                <ul :style="{'height':showCountry?'auto':'30px'}">
+                <ul :style="{ height: showCountry ? 'auto' : '30px' }">
                   <li
                     :class="{ countryli: ~filter.country.indexOf(v.name.en) }"
                     @click="chooseitem('country', v)"
@@ -43,11 +65,12 @@
                   </li>
                 </ul>
               </div>
+              
               <div class="operation">
-                <div  @click="showCountry = !showCountry" class="more">
-                {{ "更多" + (showCountry ? "-" : "+") }}
+                <div @click="showCountry = !showCountry" class="more">
+                  {{ "更多" + (showCountry ? "-" : "+") }}
                 </div>
-                  
+
                 <div class="morchoice">多选+</div>
               </div>
             </div>
@@ -58,19 +81,27 @@
             <!-- 媒体 -->
             <div class="countrymore country">
               <ul v-show="showMedia" style="margin-left: 55px" class="zm">
-                <li :class="{cur:v.choose}" class="listqb"  @click="toFilterMenu('media',v)" v-for="(v,i) in filterMenu" :key="i">{{v.name}}</li>
+                <li
+                  :class="{ cur: v.choose }"
+                  class="listqb"
+                  @click="toFilterMenu('media', v)"
+                  v-for="(v, i) in filterMenu"
+                  :key="i"
+                >
+                  {{ v.name }}
+                </li>
               </ul>
               <span>媒体：</span>
               <div class="list">
                 <div
-                class="all"
+                  class="all"
                   :class="{ cur: !filter.media.length }"
                   @click="chooseitem('media', '')"
                 >
                   全部
                 </div>
                 <div class="other">
-                  <ul :style="{'height':showMedia?'auto':'30px'}">
+                  <ul :style="{ height: showMedia ? 'auto' : '30px' }">
                     <li
                       :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
                       @click="chooseitem('media', v)"
@@ -86,9 +117,15 @@
                 <!-- <div v-show="showMedia" @click="showMedia = !showMedia" class="more">更多-</div>
 
                 <div v-show="!showMedia" @click="showMedia = !showMedia" class="more">更多+</div> -->
-                <div @click="showMedia = !showMedia" class="more">{{ "更多" + (showMedia ? "-" : "+") }}</div>
+                <div @click="showMedia = !showMedia" class="more">
+                  {{ "更多" + (showMedia ? "-" : "+") }}
+                </div>
                 <div class="morchoice">多选+</div>
               </div>
+            </div>
+            <div class="cz" v-show="multipleCountry">
+              <div class="quanbu">确定</div>
+              <div class="quxiao">取消</div>
             </div>
             <!-- 人物 -->
             <div class="country">
@@ -102,7 +139,7 @@
                   全部
                 </div>
                 <div class="other">
-                  <ul :style="{'height':showCharacter?'auto':'30px'}">
+                  <ul :style="{ height: showCharacter ? 'auto' : '30px' }">
                     <li
                       @click="chooseitem('character', v)"
                       :class="{ rwli: ~filter.character.indexOf(v) }"
@@ -119,7 +156,7 @@
                   更多+
                 </div> -->
                 <div @click="showCharacter = !showCharacter" class="morepe">
-                  {{"更多"+ (showCharacter?"-":"+")}}
+                  {{ "更多" + (showCharacter ? "-" : "+") }}
                 </div>
               </div>
             </div>
