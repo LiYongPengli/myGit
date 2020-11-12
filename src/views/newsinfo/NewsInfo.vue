@@ -113,30 +113,32 @@
       top="28vh"
       title="附件下载"
     >
-     <my-scroll>
-      <ul class="download_list">
-        <li v-for="(v, i) in newsInfo.attachments" :key="i">
-          <span v-if="v.name" class="file_name">{{ v.name }}</span>
-          <span v-if="!v.name" class="file_name">未知</span>
-          <div class="downimg" @click="todownLoad(v)">
-            <img src="../../assets/img/download.png" alt="" />
-          </div>
-        </li>
-      </ul>
-     </my-scroll>
+      <my-scroll>
+        <ul class="download_list">
+          <li v-for="(v, i) in newsInfo.attachments" :key="i">
+            <span v-if="v.name" class="file_name">{{ v.name }}</span>
+            <span v-if="!v.name" class="file_name">未知</span>
+            <div class="downimg" @click="todownLoad(v)">
+              <img src="../../assets/img/download.png" alt="" />
+            </div>
+          </li>
+        </ul>
+      </my-scroll>
       <span class="downloadClose" @click="showDownLoad = false">取消</span>
     </el-dialog>
     <!-- 收藏夹 -->
     <el-dialog
       :close-on-click-modal="false"
       :visible.sync="showCollection"
-      width="600px"
+      width="800px"
       top="28vh"
       title="收藏到我的"
+      class="sc"
     >
       <div class="collectionList">
-        <ul>
-          <li
+        <my-scroll>
+          <ul>
+            <!-- <li
             @mouseenter="showCollBtn(i)"
             @mouseleave="hideCollBtn(i)"
             v-for="(v, i) in favoriteList"
@@ -152,8 +154,48 @@
                 >收藏</el-button
               >
             </div>
-          </li>
-        </ul>
+          </li> -->
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+            <li data-v-4d6d8465="">
+              <span data-v-4d6d8465="">默认</span>
+              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            </li>
+          </ul>
+        </my-scroll>
+        <span class="addnew">创建新书签</span>
+        <div class="addnewcontent">
+          <div>
+            <span class="name"> 书签名称: </span>
+            <input type="text" placeholder="请输入新书签名称" />
+          </div>
+          <div>
+            <span class="sqfm"> 书签封面: </span>
+            <span style="cursor: pointer"> 点击上传封面 </span>
+          </div>
+        </div>
+        <div class="caozuo">
+          <span>创建并收藏</span>
+          <span>取消创建</span>
+        </div>
       </div>
     </el-dialog>
   </div>
@@ -211,8 +253,78 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
       left: 256px;
       border: 1px solid #676770;
     }
-    .downloadClose:hover{
+    .downloadClose:hover {
       background-color: #0074ff;
+    }
+  }
+  .sc {
+    .el-dialog {
+      width: 800px;
+      height: 470px;
+      .el-dialog__header {
+        .el-dialog__title {
+          font-size: 20px;
+        }
+      }
+      .el-dialog__body {
+        padding: 30px 50px;
+        ul {
+          height: 100px;
+        }
+        .addnew {
+          cursor: pointer;
+          margin-bottom: 20px;
+        }
+        .addnewcontent {
+          width: 700px;
+          height: 110px;
+      margin-top: 20px;
+          background-color: #4d4d5d;
+          div {
+            margin-top: 30px;
+            width: 260px;
+            float: left;
+            height: 50px;
+
+            color: white;
+            margin-left: 30px;
+            span {
+              display: block;
+              margin-bottom: 15px;
+            }
+            input {
+              background-color: #4d4d5d;
+              color: white;
+              border: none;
+              outline: none;
+            }
+          }
+        }
+        .caozuo {
+          margin-top: 20px;
+          text-align: center;
+          span{
+              margin-right: 10px;
+              color: white;
+              cursor: pointer;
+              display: inline-block;
+              width: 100px;
+              height: 40px;
+              line-height: 40px;
+              border-radius: 3px;
+
+          }
+          span:hover {
+            background-color: #0074ff;
+          
+          }
+        }
+        // .caozuo::after {
+        //   content: "";
+        //   display: block;
+        //   clear: both;
+        // }
+      }
     }
   }
 }
