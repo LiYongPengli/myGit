@@ -70,74 +70,37 @@
                     float: left;
                     height: 70px;
                     width: 200px;
-                    line-height: 70px;
                     cursor: pointer;
                     a {
                         img {
-                            // padding-left: 20px;
                             width: 50px;
                             height: 30px;
-                        }
-                        .el-button--default {
-                            background: #272730 !important;
-                            border: 1px solid #272730 !important;
-                            color: white;
-                            overflow: hidden;
-                        }
-                        .itmemt_ch {
-                            position: relative;
-                            top: -20px;
-                            text-align: left;
-                            span {
-                                .chinese {
-                                    margin-left: 0px;
-                                }
-                            }
-                        }
-                        .itmemt_en {
-                            position: relative;
-                            top: 28px;
-                            text-align: left;
-                            margin-left: 0;
-                            span {
-                                .english {
-                                    margin-left: 0px;
-                                }
-                            }
-                        }
-                        .itmerw_ch {
-                            position: absolute;
-                            top: 12px;
-                            text-align: left;
-                            span {
-                                .chinese {
-                                    height: 20px;
-                                    line-height: 20px;
-                                    margin-left: 0;
-                                }
-                            }
-                        }
-                        .itmerw_en {
-                            position: absolute;
-                            top: 28px;
                         }
                         text-decoration: none;
                         color: white;
                         font-size: 16px;
-                        .chinese {
-                            position: relative;
-                            top: -20px;
-                            text-align: left;
+                        position: relative;
+                        .chinese_gj {
+                            height: 20px;
+                            margin-left: 20px;
                             position: absolute;
-                            // top: -20px;
-                            margin-left: 20px;
                             font-size: 15px;
-                            // height: 25px;
-                            // line-height: 25px;
+                            width: 60px;
+                            overflow: hidden;
+                            top: -15px;
+                            overflow: hidden;
                         }
-                        .english {
-                            margin-left: 20px;
+                        .english_gj {
                             font-size: 13px;
+                            width: 100px;
+                            overflow: hidden;
+                            float: right;
+                            width: 60px;
+                            height: 20px;
+                            display: block;
+                            position: absolute;
+                            left: 70px;
+                            top: 5px;
                         }
                     }
                 }
@@ -160,15 +123,17 @@
                             margin-top: 8px;
                             margin-left: 20px;
                         }
-                        span.chinese {
-                            top: 10px;
-                            font-size: 15px;
-                            overflow: hidden;
+                        span.itmemt_ch {
+                            top: -40px;
                         }
-                        span.english {
-                            //position: absolute;
+                        span.itmemt_en {
+                            position: absolute;
                             top: 15px;
                             font-size: 13px;
+                            left: 70px;
+                            top: 20px;
+                            margin-left: 20px;
+                            top: -10px;
                         }
                     }
                 }

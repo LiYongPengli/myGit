@@ -44,7 +44,7 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img :src="v.flag" alt="" />
+                <img style="margin-top:20px" :src="v.flag" alt="" />
 
                 <el-tooltip
                   class="item"
@@ -52,7 +52,7 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <span style="height:20px" class="chinese">{{ v.name_zh }}</span>
+                  <span style="height:20px" class="chinese_gj">{{ v.name_zh }}</span>
                 </el-tooltip>
                 <el-tooltip
                   class="item"
@@ -60,7 +60,7 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <span class="english">{{ v.name }} </span>
+                  <span class="english_gj">{{ v.name }} </span>
                 </el-tooltip>
               </a>
             </li>
@@ -103,7 +103,7 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <span class="chinese"  >{{ v.name_zh }}</span
+                  <span class="chinese_gj mt"  >{{ v.name_zh }}</span
                   >
                 </el-tooltip>
                 <el-tooltip
@@ -112,7 +112,7 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <span class="english">{{ v.name }} </span> 
+                  <span class="english_gj mt">{{ v.name }} </span> 
                 </el-tooltip>
               </a>
             </li>
@@ -133,15 +133,13 @@
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
                 <el-tooltip
-                  style="top: 12px"
                   class="item itmemt_ch"
                   effect="dark"
                   :content="v.name_zh"
                   placement="right"
                 >
                    <span
-                      style="height: 25px; line-height: 25px"
-                      class="chinese"
+                      class="chinese_gj mt"
                       >{{ v.name_zh }}</span
                     >
                   
@@ -152,7 +150,7 @@
                   :content="v.name"
                   placement="right"
                 >
-                  <span class="english">{{ v.name }} </span>
+                  <span class="english_gj mt">{{ v.name }} </span>
                 </el-tooltip>
               </a>
             </li>
@@ -197,11 +195,11 @@
                   placement="right"
                 >
                   <span
-                      style="height: 20px; line-height: 20px"
-                      class="chinese"
+                      style="top:-30px;width:120px"
+                      class="chinese_gj mt"
                       >{{ v.name }}</span>
                 </el-tooltip>
-                <span class="english">中国共产党中央委员会总书记</span>
+                <span style="width:120px" class="english_gj mt">中国共产党中央委员会总书记</span>
               </a>
             </li>
           </ul>
