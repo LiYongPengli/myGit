@@ -67,7 +67,7 @@ export default class IntelligentRetrievalCom extends Vue {
         { name: 'Z', choose: false },
     ];
     public filter = {
-        start: 1 as number,
+        search_after: [] as any[],
         size: 10 as number,
         country: [] as string[],
         language: this.language,
@@ -94,7 +94,7 @@ export default class IntelligentRetrievalCom extends Vue {
         this.axios
             .post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'search_news',
-                paras: { language: this.language, keywords: this.searchText.split(" "), start: this.filter.start, size: this.filter.size },
+                paras: { language: this.language, keywords: this.searchText.split(" "), size: this.filter.size },
             })
             .then((res) => {
                 console.log(res.data);
@@ -103,6 +103,7 @@ export default class IntelligentRetrievalCom extends Vue {
                 this.mediaList = res.data.data.filters.media;
                 this.characterList = res.data.data.filters.character;
                 this.newsList = res.data.data.news;
+                this.filter.search_after = res.data.data.search_after;
             })
             .catch((err) => {
                 console.log(err)
@@ -115,6 +116,8 @@ export default class IntelligentRetrievalCom extends Vue {
             if (this.filter[i].constructor == Array) {
                 if (this.filter[i].length) {
                     filter[i] = this.filter[i]
+                } else if (i == 'search_after') {
+                    filter[i] = this.filter[i]
                 }
             } else if (this.filter[i]) {
                 filter[i] = this.filter[i];
@@ -125,10 +128,11 @@ export default class IntelligentRetrievalCom extends Vue {
             cmd: 'filter_news',
             paras: filter
         }).then(res => {
-            if (this.filter.start == 1) {
+            if (!this.filter.search_after.length) {
                 this.newsList = res.data.data.news;
             } else {
                 this.newsList = this.newsList.concat(res.data.data.news);
+                this.filter.search_after = res.data.data.search_after
             }
             if (!res.data.data.news.length) {
                 this.finished = true;
@@ -147,7 +151,6 @@ export default class IntelligentRetrievalCom extends Vue {
             return;
         }
         this.loading = true;
-        this.filter.start++;
         this.toFilter();
     }
 
@@ -164,6 +167,19 @@ export default class IntelligentRetrievalCom extends Vue {
                 } else {
                     if (!this.multipleCountry) {
                         this.$set(this.filter.country, 0, item.name.en);
+                    } else {
+                        let flag = false;
+                        for (let i = 0; i < this.filter.country.length; i++) {
+                            if (item.name.en == this.filter.country[i]) {
+                                this.$delete(this.filter.country, i);
+                                flag = true;
+                                return;
+                            }
+                        }
+                        if (!flag) {
+                            this.$set(this.filter.country, this.filter.country.length, item.name.en);
+                        }
+                        return;
                     }
                 }
                 break;
@@ -173,6 +189,19 @@ export default class IntelligentRetrievalCom extends Vue {
                 } else {
                     if (!this.multipleMedia) {
                         this.$set(this.filter.media, 0, item.name.en);
+                    } else {
+                        let flag = false;
+                        for (let i = 0; i < this.filter.media.length; i++) {
+                            if (item.name.en == this.filter.media[i]) {
+                                this.$delete(this.filter.media, i);
+                                flag = true;
+                                return;
+                            }
+                        }
+                        if (!flag) {
+                            this.$set(this.filter.media, this.filter.media.length, item.name.en);
+                        }
+                        return;
                     }
                 }
                 break;
@@ -182,11 +211,24 @@ export default class IntelligentRetrievalCom extends Vue {
                 } else {
                     if (!this.multipleCharacter) {
                         this.$set(this.filter.character, 0, item);
+                    } else {
+                        let flag = false;
+                        for (let i = 0; i < this.filter.character.length; i++) {
+                            if (item == this.filter.character[i]) {
+                                this.$delete(this.filter.character, i);
+                                flag = true;
+                                return;
+                            }
+                        }
+                        if (!flag) {
+                            this.$set(this.filter.character, this.filter.character.length, item);
+                        }
+                        return;
                     }
                 }
                 break;
         }
-        this.filter.start = 1;
+        this.filter.search_after = [];
         this.finished = false;
         this.toFilter();
     }
@@ -197,7 +239,7 @@ export default class IntelligentRetrievalCom extends Vue {
     public setLanguage(language: string): void {
         this.language = language;
         this.filter.language = language;
-        this.filter.start = 1;
+        this.filter.search_after = [];
         this.finished = false;
         this.toFilter();
     }
@@ -266,7 +308,7 @@ export default class IntelligentRetrievalCom extends Vue {
                 break;
 
         }
-        this.filter.start = 1;
+        this.filter.search_after = [];
         this.finished = false;
         this.toFilter();
     }
@@ -289,7 +331,7 @@ export default class IntelligentRetrievalCom extends Vue {
             }
         }
         if (this.dateTime.time_from && this.dateTime.time_to) {
-            this.filter.start = 1;
+            this.filter.search_after = [];
             this.finished = false;
             this.dayFilter = false;
             this.weekFilter = false;
@@ -300,7 +342,7 @@ export default class IntelligentRetrievalCom extends Vue {
         } else if (!this.dateTime.time_from && !this.dateTime.time_to) {
             this.filter.time_from = "";
             this.filter.time_to = "";
-            this.filter.start = 1;
+            this.filter.search_after = [];
             this.finished = false;
             this.dayFilter = false;
             this.weekFilter = false;
@@ -314,7 +356,7 @@ export default class IntelligentRetrievalCom extends Vue {
     //相关度和时间排序
     public sortList(type: string): void {
         this.filter.sort_type = type;
-        this.filter.start = 1;
+        this.filter.search_after = [];
         this.finished = false;
         this.toFilter();
     }
@@ -341,7 +383,7 @@ export default class IntelligentRetrievalCom extends Vue {
         this.dayFilter = false;
         this.monthFilter = false;
         this.filter = {
-            start: 1,
+            search_after: [],
             size: 10,
             country: [],
             language: this.language,
@@ -429,5 +471,68 @@ export default class IntelligentRetrievalCom extends Vue {
             }
         }
         filter.choose = !filter.choose;
+    }
+
+    /**
+     * 多选
+     * @param type 类型
+     */
+    public multiple(type: string): void {
+        switch (type) {
+            case 'country':
+                this.showCountry = true;
+                this.multipleCountry = true;
+                break;
+            case 'media':
+                this.showMedia = true;
+                this.multipleMedia = true;
+                break;
+            case 'character':
+                this.showCharacter = true;
+                this.multipleCharacter = true;
+                break;
+        }
+    }
+
+    //取消多选
+    public noMultiple(type: string): void {
+        switch (type) {
+            case 'country':
+                this.multipleCountry = false;
+                this.filter.country = [];
+                break;
+            case 'media':
+                this.multipleMedia = false;
+                this.filter.media = [];
+                break;
+            case 'character':
+                this.multipleCharacter = false;
+                this.filter.character = [];
+                break;
+        }
+        this.filter.search_after = [];
+        this.finished = false;
+        this.toFilter();
+    }
+
+    //多选确定
+    public multipleSure(type: string): void {
+        switch (type) {
+            case 'country':
+                this.showCountry = false;
+                this.multipleCountry = false;
+                break;
+            case 'media':
+                this.showMedia = false;
+                this.multipleMedia = false;
+                break;
+            case 'character':
+                this.showCharacter = false;
+                this.multipleCharacter = false;
+                break;
+        }
+        this.filter.search_after = [];
+        this.finished = false;
+        this.toFilter();
     }
 }

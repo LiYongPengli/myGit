@@ -10,10 +10,8 @@ export default class Hours24Com extends Vue {
     //24小时轮播定时器
     public list_24_auto: any = null;
     public slide_index: number = 4;
-    //起始页数
-    private start: number = 1;
-    //是否加载完成
-    public finished:boolean = false;
+    public count:number = 0;
+    
     public iswheel:boolean = false;
     //24小时列表
     public hours_24: any[] = [];
@@ -23,8 +21,6 @@ export default class Hours24Com extends Vue {
 
     @Watch('language')
     public language_change(): void {
-        this.start = 1;
-        this.finished = false;
         this.get24Hour();
     }
 
@@ -46,18 +42,9 @@ export default class Hours24Com extends Vue {
     private get24Hour(): void {
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
             cmd: 'hours24',
-            paras: { language: this.language, start: this.start, size: 10 }
+            paras: { language: this.language, size: 20 }
         }).then(res => {
-            if (this.start == 1) {
-                this.hours_24 = res.data.data;
-                
-            }else{
-                if(!res.data.data.length){
-                    this.finished = true;
-                    return;
-                }
-                this.hours_24 = this.hours_24.concat(res.data.data);
-            }
+            this.hours_24 = res.data.data;
             setTimeout(() => {
                 this.init_24HourCom();
             }, 200)
@@ -87,10 +74,6 @@ export default class Hours24Com extends Vue {
     private slides(type:string):void{
         if(type=='next'){
             this.list_24.slideNext(1000);
-            if ((this.list_24.activeIndex==this.hours_24.length)&&!this.finished) {
-                this.start++;
-                this.get24Hour();
-            }
         }else{
             this.list_24.slidePrev(1000);
         }
@@ -100,6 +83,11 @@ export default class Hours24Com extends Vue {
     public autoPlay(): void {
         this.list_24_auto = setInterval(() => {
             this.slides('next');
+            this.count++
+            if(this.count>50){
+                this.get24Hour();
+                this.count = 0;
+            }
         }, 3000)
     }
 
