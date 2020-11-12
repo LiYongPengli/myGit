@@ -25,7 +25,7 @@
               >
             </div>
             <div class="right">
-              <span @click="toCollection" class="tool"
+              <span @click="showCollection=true" class="tool"
                 ><i
                   class="el-icon-shoucang"
                   :class="{ actives: newsInfo.favorited }"
@@ -93,18 +93,7 @@
           <!-- 底部操作 -->
           <div class="footer">
             <div class="left">
-              <div class="download_box">
-                <div class="name">附件:</div>
-                <ul class="list">
-                  <li v-for="(v, i) in newsInfo.attachments" :key="i">
-                    <el-tooltip :content="v.name" placement="top">
-                      <span v-if="v.name" class="file_name">{{ v.name }}</span>
-                    </el-tooltip>
-                    <span v-if="!v.name" class="file_name">未知</span>
-                    <a :href="v.url" :download="v.name">下载</a>
-                  </li>
-                </ul>
-              </div>
+              <span @click="showDownLoad=true">附件下载</span>
             </div>
             <div class="right">
               <div class="download_this">
@@ -116,6 +105,32 @@
         </div>
       </my-scroll>
     </div>
+    <!-- 附件下载 -->
+    <el-dialog :close-on-click-modal="false" :visible.sync="showDownLoad" width="600px" top="28vh" title="附件下载">
+      <ul class="download_list">
+        <li v-for="(v, i) in newsInfo.attachments" :key="i">
+          <span  v-if="v.name" class="file_name">{{ v.name }}</span>
+          <span v-if="!v.name" class="file_name">未知</span>
+          <div class="downimg" @click="todownLoad(v)">
+            <img src="../../assets/img/download.png" alt="">
+          </div>
+        </li>
+      </ul>
+      <span class="downloadClose" @click="showDownLoad=false">取消</span>
+    </el-dialog>
+    <!-- 收藏夹 -->
+    <el-dialog :close-on-click-modal="false" :visible.sync="showCollection" width="600px" top="28vh" title="收藏到我的">
+      <div class="collectionList">
+        <ul>
+          <li @mouseenter="showCollBtn(i)" @mouseleave="hideCollBtn(i)" v-for="(v,i) in favoriteList" :key="i">
+            <span>{{v.name}}</span>
+            <div class="collect_btn">
+              <el-button @click="toCollection(v)" v-if="v.show" size="mini" type="primary">收藏</el-button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -137,4 +152,14 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 
 <style lang="scss" scoped>
 @import "./NewsInfo.scss";
+</style>
+<style lang="scss">
+.newsinfo{
+  .el-dialog{
+    background: #3A3A48;
+  }
+  .el-dialog__title{
+    color: white;
+  }
+}
 </style>

@@ -5,14 +5,31 @@ import { State } from 'vuex-class'
 export default class NewsInfoCom extends Vue{
     @State('language') language!:string;
     public newsInfo:any = "";
+    //是否展示下载附件弹框
+    public showDownLoad:boolean = false;
+    //是否展示收藏夹
+    public showCollection:boolean = false;
+    //收藏夹列表
+    public favoriteList:any[] = [];
     //字体大小
     public fontSize:number = 16;
     public created():void{
         this.getData();
+        this.getCollection();
     }
     @Watch('language')
     public listenLanguage(newVal:string,oldVal:string):void{
         this.getData();
+        
+    }
+
+    private getCollection():void{
+        this.axios.get(baseApi.api2+'/v1/user/favorite/').then(res=>{
+            console.log(res.data);
+            this.favoriteList = res.data.data;
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
     private getData():void{
@@ -23,7 +40,7 @@ export default class NewsInfoCom extends Vue{
                 language:this.language
             }
         }).then(res=>{
-            console.log(res.data);
+            //console.log(res.data);
             this.newsInfo = res.data.data;
         }).catch(err=>{
             console.log(err);
@@ -57,16 +74,18 @@ export default class NewsInfoCom extends Vue{
         }
         return str;
     }
-    //收藏或取消收藏
-    public toCollection():void{
+    //收藏
+    public toCollection(item:any):void{
         this.axios.post(baseApi.api2+'/v1/cmd/',{
             cmd:'favorite_news',
             paras:{
+                name:item.name,
                 news_id:this.$route.query.id,
                 news_oper:this.newsInfo.favorited?'undo':'do'
             }
         }).then(res=>{
             this.newsInfo.favorited = !this.newsInfo.favorited;
+            this.showCollection = false;
         }).catch(err=>{
             console.log(err);
         })
@@ -120,8 +139,21 @@ export default class NewsInfoCom extends Vue{
         })
     }
 
+    //附件下载
+    public todownLoad(item:any):void{
+        window.open(item.url)
+    }
+
     //导出world
     public downloadWord():void{
         
+    }
+    //显示收藏按钮
+    public showCollBtn(index:number):void{
+        this.$set(this.favoriteList[index],'show',true);
+    }
+    //隐藏收藏按钮
+    public hideCollBtn(index:number):void{
+        this.$delete(this.favoriteList[index],'show')
     }
 }
