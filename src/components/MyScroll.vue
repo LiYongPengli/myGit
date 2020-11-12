@@ -79,7 +79,7 @@ export default {
     toTop() {
       let top = this.$refs.vueScroll.scrollTop;
       let timer = setInterval(() => {
-        this.$refs.vueScroll.scrollTo({ top: (top -= 20) });
+        this.$refs.vueScroll.scrollTo({ top: (top -= 50) });
         if (top <= 0) {
           clearInterval(timer);
           this.$store.commit('setSureTop',false)
@@ -192,7 +192,7 @@ export default {
   }
   .vue-scrollbar {
     position: absolute;
-    z-index: 1;
+    z-index: 101;
     right: 0;
     top: 0;
     width: 6px;

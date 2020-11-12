@@ -57,7 +57,7 @@
                 <img src="../../assets/img/zhuanfafasong.png" alt="" />
               </div>
             </li>
-            <div v-show="!finished" class="jzgd">更多精彩内容，加载中</div>
+            <div @click="loading" v-show="!finished" class="jzgd">点击加载更多精彩内容</div>
           </ul>
         </div>
       </div>
