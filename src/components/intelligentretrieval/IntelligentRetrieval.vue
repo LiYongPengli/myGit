@@ -17,7 +17,7 @@
           </div>
         </header>
         <div class="content" v-if="searchData">
-          <div class="searchresults">
+          <!-- <div class="searchresults">
             <div class="path">
               <a style="margin-right: 10px" href="/">全部结果</a> &gt;
               <a class="searchresult" href="listlm.aspx?clmId=215"
@@ -26,7 +26,7 @@
               &gt;
               <a class="searchresult" href="listlm.aspx?clmId=250">章程 X</a>
             </div>
-          </div>
+          </div> -->
           <div class="mj">
             <div class="countrymore country country_search_result">
                 <span>国家：</span>

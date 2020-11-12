@@ -1,6 +1,11 @@
 <template>
   <div class="timesearch">
-    <el-date-picker @change="cmd('0')" v-model="value1" type="date" placeholder="开始日期">
+    <el-date-picker
+      @change="cmd('0')"
+      v-model="value1"
+      type="date"
+      placeholder="开始日期"
+    >
     </el-date-picker>
     <span
       style="
@@ -13,7 +18,12 @@
       class="zhi"
       >-</span
     >
-    <el-date-picker @change="cmd('1')" v-model="value2" type="date" placeholder="截止日期">
+    <el-date-picker
+      @change="cmd('1')"
+      v-model="value2"
+      type="date"
+      placeholder="截止日期"
+    >
     </el-date-picker>
   </div>
 </template>
@@ -22,27 +32,27 @@
 import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class TimeSolt extends Vue {
-  @Prop({}) clear!:boolean;
-  public value1: string|Date = "";
-  public value2: string|Date = "";
+  @Prop({}) clear!: boolean;
+  public value1: string | Date = "";
+  public value2: string | Date = "";
 
-  @Watch('clear')
-  listenClear(newVal:boolean,oldVal:boolean):void{
-    console.log(newVal)
-    if(newVal){
+  @Watch("clear")
+  listenClear(newVal: boolean, oldVal: boolean): void {
+    console.log(newVal);
+    if (newVal) {
       this.value1 = "";
       this.value2 = "";
     }
   }
-  @Emit('dateChange')
-  public cmd(index:string):{index:string;value:Date|String}{
+  @Emit("dateChange")
+  public cmd(index: string): { index: string; value: Date | String } {
     let obj = {
-      index:index,
-      value:'' as Date|string
-    }
-    if(index=='0'){
+      index: index,
+      value: "" as Date | string,
+    };
+    if (index == "0") {
       obj.value = this.value1;
-    }else{
+    } else {
       obj.value = this.value2;
     }
     return obj;
@@ -84,6 +94,14 @@ export default class TimeSolt extends Vue {
         }
       }
     }
+  }
+}
+.el-picker-panel {
+  .popper__arrow{
+    border-bottom-color: rosybrown;
+  }
+  .popper__arrow::after {
+    content: none !important;
   }
 }
 .el-button--default {

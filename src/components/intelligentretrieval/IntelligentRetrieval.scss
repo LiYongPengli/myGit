@@ -114,17 +114,19 @@
                             margin-right: 15px;
                             font-size: 14px;
                             line-height: 22px;
-                            // opacity: .2;
+                            opacity: .2;
                         }
                         .cur {
                             // background-color: #0079ed;
                             font-size: 16px;
-                            opacity: 1
+                            opacity: 1;
+                            border-bottom: 1px solid white;
+                            padding-bottom: 5px;
                         }
                     }
                 }
                 // height: 210px;
-                // margin-top: 32px;
+                margin-top: 32px;
                 background-color: #353541;
                 .cz {
                     text-align: center;
@@ -315,6 +317,7 @@
                         line-height: 30px;
                         float: left;
                         font-size: 14px;
+                        opacity: .6;
                         color: white;
                         padding-right: 10px;
                         cursor: pointer;
@@ -333,8 +336,10 @@
                         // }
                     }
                     div.cur {
-                        background: #0079ed;
+                        color: #ffffff;
                         border-radius: 3px;
+                        font-size: 18px;
+                        opacity: 1;
                     }
                     .releasetimesort {
                         position: relative;
@@ -347,6 +352,7 @@
                         padding-right: 10px;
                         cursor: pointer;
                         text-align: center;
+                        opacity: .6;
                         // img.up {
                         //     cursor: pointer;
                         //     position: absolute;
