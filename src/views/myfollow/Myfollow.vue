@@ -3,77 +3,47 @@
   <div class="myfollow">
     <div class="list_wrap">
       <div class="list_nav">
-        <span>全部关注</span>
-        <!-- <span style="margin-left: 20px;" v-for="(v, i) in channel" :key="i">{{
-            
-            v.name
-          }}</span> -->
-        <span class="cur">国家</span>
-        <span>人物</span>
-        <span>媒体</span>
+        <span @click="chooseNav='all'" :class="{'cur':chooseNav=='all'}">全部关注</span>
+        <span @click="chooseNav='country'" :class="{'cur':chooseNav=='country'}">国家</span>
+        <span @click="chooseNav='people'" :class="{'cur':chooseNav=='people'}">人物</span>
+        <span @click="chooseNav='media'" :class="{'cur':chooseNav=='media'}">媒体</span>
       </div>
       <div class="gjlb">
-        <p class="sx">选择相关国家可以进行信息筛选</p>
-        <div class="erhang">
+        <p v-if="chooseNav=='country'" class="sx">选择相关国家可以进行信息筛选</p>
+        <p v-if="chooseNav=='people'" class="sx">选择相关人物可以进行信息筛选</p>
+        <p v-if="chooseNav=='media'" class="sx">选择相关媒体可以进行信息筛选</p>
+        <!-- 筛选栏 -->
+        <!-- 国家 -->
+        <div v-show="chooseNav=='country'" class="erhang">
+          <span class="all">全部</span>
+           <div class="gd">更多+</div>
+          <ul>
+            <!-- <li><a>中国</a>X</li> -->
+            <li v-for="(v,i) in country" :key="i"><a>{{v.name_zh}}</a></li>
+          </ul>
+          
+        </div>
+        <!-- 人物 -->
+        <div v-show="chooseNav=='people'" class="erhang">
           <span class="all">全部</span>
            <div class="gd">更多+</div>
           <ul>
             <li><a>中国</a>X</li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
+            <li v-for="(v,i) in people" :key="i"><a>{{v.name}}</a></li>
           </ul>
           
         </div>
-        <div class="erhang">
+        <!-- 媒体 -->
+        <div v-show="chooseNav=='media'" class="erhang">
           <span class="all">全部</span>
            <div class="gd">更多+</div>
           <ul>
             <li><a>中国</a>X</li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
+            <li v-for="(v,i) in media" :key="i"><a>{{v.name_zh}}</a></li>
           </ul>
           
         </div>
-        <div class="erhang">
-          <span class="all">全部</span>
-           <div class="gd">更多+</div>
-          <ul>
-            <li><a>中国</a>X</li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
-            <li><a>美国</a></li>
-            <li><a>加拿大</a></li>
-            <li><a>伯利兹</a></li>
-            <li><a>墨西哥</a></li>
-            <li><a>古巴</a></li>
-            <li><a>瑞典</a></li>
-          </ul>
-          
-        </div>
+        
       </div>
       <div class="list">
         <ul>
@@ -177,6 +147,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import Component, { mixins } from 'vue-class-component'
+import MyFollowCom from './Myfollow'
+@Component
+export default class MyFollow extends mixins(MyFollowCom) {
+  
+}
+</script>
  
 
 <style lang="scss" scoped>

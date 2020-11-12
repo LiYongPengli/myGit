@@ -28,13 +28,9 @@
             </div>
           </div> -->
           <div class="mj">
-            <div class="countrymore country country_search_result">
-                <span>国家：</span>
-                <div class="country_search_result_list">
-                  China(中国)、America(美国)、Canada(加拿大)、Belize(伯利兹)
-                </div>
-              </div>
+            <!-- 国家 -->
             <div class="countrymore country">
+              <!-- 顶部字母筛选 -->
               <ul v-show="showCountry" style="margin-left: 55px" class="zm">
                 <li
                   :class="{ cur: v.choose }"
@@ -49,12 +45,22 @@
               <div class="list">
                 <div
                   @click="chooseitem('country', '')"
+                  v-show="!multipleCountry && filter.country.length < 2"
                   class="all listqb"
                   :class="{ cur: !filter.country.length }"
                 >
                   全部
                 </div>
-                <ul :style="{ height: showCountry ? 'auto' : '30px' }">
+                <div
+                  v-show="filter.country.length > 1 && !multipleCountry"
+                  class="country_search_result_list"
+                >
+                  {{ filter.country.join("、") }}
+                </div>
+                <ul
+                  v-show="filter.country.length < 2 || multipleCountry"
+                  :style="{ height: showCountry ? 'auto' : '30px' }"
+                >
                   <li
                     :class="{ countryli: ~filter.country.indexOf(v.name.en) }"
                     @click="chooseitem('country', v)"
@@ -65,18 +71,22 @@
                   </li>
                 </ul>
               </div>
-              
+
               <div class="operation">
-                <div @click="showCountry = !showCountry" class="more">
+                <div
+                  v-show="filter.country.length < 2 && !multipleCountry"
+                  @click="showCountry = !showCountry"
+                  class="more"
+                >
                   {{ "更多" + (showCountry ? "-" : "+") }}
                 </div>
 
-                <div class="morchoice">多选+</div>
+                <div @click="multiple('country')" class="morchoice">多选+</div>
               </div>
             </div>
             <div class="cz" v-show="multipleCountry">
-              <div class="quanbu">确定</div>
-              <div class="quxiao">取消</div>
+              <div @click="multipleSure('country')" class="quanbu">确定</div>
+              <div @click="noMultiple('country')" class="quxiao">取消</div>
             </div>
             <!-- 媒体 -->
             <div class="countrymore country">
@@ -95,13 +105,23 @@
               <div class="list">
                 <div
                   class="all"
+                  v-show="!multipleMedia && filter.media.length < 2"
                   :class="{ cur: !filter.media.length }"
                   @click="chooseitem('media', '')"
                 >
                   全部
                 </div>
                 <div class="other">
-                  <ul :style="{ height: showMedia ? 'auto' : '30px' }">
+                  <div
+                    v-show="filter.media.length > 1 && !multipleMedia"
+                    class="country_search_result_list"
+                  >
+                    {{ filter.media.join("、") }}
+                  </div>
+                  <ul
+                    v-show="filter.media.length < 2 || multipleMedia"
+                    :style="{ height: showMedia ? 'auto' : '30px' }"
+                  >
                     <li
                       :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
                       @click="chooseitem('media', v)"
@@ -117,15 +137,15 @@
                 <!-- <div v-show="showMedia" @click="showMedia = !showMedia" class="more">更多-</div>
 
                 <div v-show="!showMedia" @click="showMedia = !showMedia" class="more">更多+</div> -->
-                <div @click="showMedia = !showMedia" class="more">
+                <div v-show="filter.media.length < 2 && !multipleMedia" @click="showMedia = !showMedia" class="more">
                   {{ "更多" + (showMedia ? "-" : "+") }}
                 </div>
-                <div class="morchoice">多选+</div>
+                <div @click="multiple('media')" class="morchoice">多选+</div>
               </div>
             </div>
-            <div class="cz" v-show="multipleCountry">
-              <div class="quanbu">确定</div>
-              <div class="quxiao">取消</div>
+            <div class="cz" v-show="multipleMedia">
+              <div @click="multipleSure('media')" class="quanbu">确定</div>
+              <div @click="noMultiple('media')" class="quxiao">取消</div>
             </div>
             <!-- 人物 -->
             <div class="country">
@@ -134,12 +154,19 @@
                 <div
                   @click="chooseitem('character', '')"
                   class="all listqb"
+                  v-show="!multipleCharacter && filter.character.length < 2"
                   :class="{ cur: !filter.character.length }"
                 >
                   全部
                 </div>
                 <div class="other">
-                  <ul :style="{ height: showCharacter ? 'auto' : '30px' }">
+                  <div
+                  v-show="filter.character.length > 1 && !multipleCharacter"
+                  class="country_search_result_list"
+                >
+                  {{ filter.character.join("、") }}
+                </div>
+                  <ul v-show="filter.character.length < 2 || multipleCharacter" :style="{ height: showCharacter ? 'auto' : '30px' }">
                     <li
                       @click="chooseitem('character', v)"
                       :class="{ rwli: ~filter.character.indexOf(v) }"
@@ -155,10 +182,15 @@
                 <!-- <div @click="showCharacter = !showCharacter" class="morepe">
                   更多+
                 </div> -->
-                <div @click="showCharacter = !showCharacter" class="morepe">
+                <div v-show="filter.character.length < 2 && !multipleCharacter" @click="showCharacter = !showCharacter" class="more">
                   {{ "更多" + (showCharacter ? "-" : "+") }}
                 </div>
+                <div @click="multiple('character')" class="morchoice">多选+</div>
               </div>
+            </div>
+            <div class="cz" v-show="multipleCharacter">
+              <div @click="multipleSure('character')" class="quanbu">确定</div>
+              <div @click="noMultiple('character')" class="quxiao">取消</div>
             </div>
             <!-- 时间 -->
             <div class="time">

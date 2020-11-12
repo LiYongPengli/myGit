@@ -4,7 +4,6 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 15;
     background: #272730;
     .intelligent_wrap {
         height: 100%;
@@ -82,24 +81,6 @@
                 }
             }
             .mj {
-                .country_search_result {
-                    span {
-                        height: 26px;
-                        line-height: 26px;
-                    }
-                    .country_search_result_list {
-                        float: left;
-                        margin-left: 20px;
-                        background: #0079ed;
-                        color: white;
-                        height: 26px;
-                        line-height: 26px;
-                        font-size: 14px;
-                        cursor: pointer;
-                        border-radius: 3px;
-                        padding: 0 5px;
-                    }
-                }
                 .countrymore {
                     ul.zm {
                         margin-top: 30px;
@@ -167,6 +148,18 @@
                     .list {
                         width: 756px;
                         float: left;
+                        .country_search_result_list {
+                            float: left;
+                            margin-left: 20px;
+                            background: #0079ed;
+                            color: white;
+                            height: 26px;
+                            line-height: 26px;
+                            font-size: 14px;
+                            cursor: pointer;
+                            border-radius: 3px;
+                            padding: 0 5px;
+                        }
                         .listqb {
                             margin-left: 20px;
                             font-size: 14px;
