@@ -6,19 +6,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class FooterTwo extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-footer{
+.footertwo {
+  footer {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.4);
     margin-top: 20px;
     margin-bottom: 30px;
-    p{
+    p {
       text-align: center;
     }
+  }
 }
 </style>

@@ -14,9 +14,7 @@
         <div class="wrap">
           <router-view />
         </div>
-        <footer>
-          <p>睿读v2.1.35 2018 © 中经软件</p>
-        </footer>
+        <footer-two />
       </my-scroll>
     </div>
   </div>
@@ -27,10 +25,12 @@ import HomeCom from "./Home";
 import Component, { mixins } from "vue-class-component";
 import HeaderOne from "@/components/HeaderOne.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import FooterTwo from "@/components/FooterTwo.vue"
 @Component({
   components: {
     HeaderOne,
     MyScroll,
+    FooterTwo
   },
 })
 export default class Home extends mixins(HomeCom) {}
