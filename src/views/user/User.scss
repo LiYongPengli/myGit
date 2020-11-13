@@ -51,12 +51,18 @@
                     border-bottom: 1px solid transparent;
                     padding: 0 10px;
                     cursor: pointer;
+                    width: 140px;
+                    justify-content: center;
                 }
                 .user_nav_active {
-                    border-bottom: 1px solid #0079ed;
-                    background: url("../../assets/img/cur.png") no-repeat;
-                    background-size: 200% 100%;
-                    background-position: -40px 0;
+                    // border-bottom: 1px solid #0079ed;
+                    // background: url("../../assets/img/cur.png") no-repeat;
+                    // background-size: 200% 100%;
+                    // background-position: -40px 0;
+                    background-image: url(../../assets/img/cur.png);
+                    background-position: bottom;
+                    background-repeat: no-repeat;
+                    // width: 140px;
                 }
             }
         }
