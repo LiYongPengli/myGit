@@ -95,10 +95,34 @@ export default class TimeSolt extends Vue {
       }
     }
   }
+  .el-year-table {
+    tbody {
+      tr {
+        td {
+          a {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .el-month-table{
+    tbody{
+      tr{
+        td{
+          div{
+            a{
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 .el-picker-panel {
-  .popper__arrow{
-    border-bottom-color: rosybrown;
+  .popper__arrow {
+    border-bottom-color: #494959 !important;
   }
   .popper__arrow::after {
     content: none !important;

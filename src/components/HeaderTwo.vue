@@ -2,7 +2,7 @@
   <!-- 头部2 -->
   <div class="headertwo">
     <div @click="$router.push('/')" class="logo">
-      <img src="../assets/img/logo.png" alt="" />
+      <img src="../assets/img/personalcenter.png" alt="" />
     </div>
     <div class="user">
       <!-- 头部下拉框 -->
@@ -56,6 +56,7 @@ export default class HeaderTwo extends Vue {
   @Mutation("setLanguage") setLanguage!: any;
   //登出
   private logout(): void {
+    
     this.axios
       .post(baseApi.api1 + "/v1/user/login/logout")
       .then((res) => {
