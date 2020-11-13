@@ -9,9 +9,9 @@
         <span @click="chooseNav='media'" :class="{'cur':chooseNav=='media'}">媒体</span>
       </div>
       <div class="gjlb">
-        <p v-if="chooseNav=='country'" class="sx">选择相关国家可以进行信息筛选</p>
-        <p v-if="chooseNav=='people'" class="sx">选择相关人物可以进行信息筛选</p>
-        <p v-if="chooseNav=='media'" class="sx">选择相关媒体可以进行信息筛选</p>
+        <p v-if="chooseNav=='country'" class="sx">选择相关国家可以进行信息筛�/p>
+        <p v-if="chooseNav=='people'" class="sx">选择相关人物可以进行信息筛�/p>
+        <p v-if="chooseNav=='media'" class="sx">选择相关媒体可以进行信息筛�/p>
         <!-- 筛选栏 -->
         <!-- 国家 -->
         <div v-show="chooseNav=='country'" class="erhang">
@@ -28,7 +28,7 @@
           <span :class="{'cur':people_all}" @click="all('people')" class="all">全部</span>
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
-            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click="deleteItem('people',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="choose('people',false,i)" v-show="v.choose">X</span></li>
           </ul>
           
         </div>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="content">
-              <p  class="title"><a @click="$router.push('/newsinfo?id='+v.new_id+'&md_id='+v.media_id)" >{{v.title}}</a></p>
+              <p  class="title"><a @click="toNewsInfo(v)" >{{v.title}}</a></p>
               <div class="ziyuan">
                 <img src="../../assets/img/gztp.png" alt="" />
                 <img src="../../assets/img/gztp.png" alt="" />

@@ -11,6 +11,8 @@ export default class NewsInfoCom extends Vue{
     public showCollection:boolean = false;
     //收藏夹列表
     public favoriteList:any[] = [];
+    //创建新书签
+    public createNewCollection:boolean = false;
     //字体大小
     public fontSize:number = 16;
     public created():void{
