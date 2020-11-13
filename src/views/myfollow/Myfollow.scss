@@ -72,9 +72,10 @@
                             font-size: 15px;
                         }
                     }
-                    li:first-child {
-                        background-color: #0079ed;
-                    }
+                    
+                }
+                .cur {
+                    background-color: #0079ed;
                 }
                 div.gd {
                     cursor: pointer;
@@ -88,6 +89,7 @@
         .list {
             clear: both;
             padding-top: 10px;
+            min-height: 500px;
             ul {
                 list-style: none;
                 li {
