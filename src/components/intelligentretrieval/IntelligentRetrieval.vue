@@ -84,7 +84,7 @@
                   {{ "更多" + (showCountry ? "-" : "+") }}
                 </div> -->
                  <div
-                  :style="{visibility: (filter.country.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"
+                  :style="{visibility: (filter.country.length < 2 && !multipleCountry) ? 'visible' : 'hidden'}"
                   @click="showCountry = !showCountry"
                   class="more"
                 >
@@ -199,7 +199,7 @@
                   更多+
                 </div> -->
                 <!-- :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"  character -->
-                <div :style="{visibility: (filter.character.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}" @click="showCharacter = !showCharacter" class="more">
+                <div :style="{visibility: (filter.character.length < 2 && !multipleCharacter) ? 'visible' : 'hidden'}" @click="showCharacter = !showCharacter" class="more">
                   {{ "更多" + (showCharacter ? "-" : "+") }}
                 </div>
                 
