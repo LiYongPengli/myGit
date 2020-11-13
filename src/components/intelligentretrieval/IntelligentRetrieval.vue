@@ -52,10 +52,11 @@
                   全部
                 </div>
                 <div
+                  @click="noMultiple('country')"
                   v-show="filter.country.length > 1 && !multipleCountry"
                   class="country_search_result_list"
                 >
-                  {{ filter.country.join("、") }}
+                  {{ filter.country.join("、") }}    X
                 </div>
                 <ul
                   v-show="filter.country.length < 2 || multipleCountry"
@@ -73,14 +74,20 @@
               </div>
 
               <div class="operation">
-                <div
+                <!-- <div
                   v-show="filter.country.length < 2 && !multipleCountry"
                   @click="showCountry = !showCountry"
                   class="more"
                 >
                   {{ "更多" + (showCountry ? "-" : "+") }}
+                </div> -->
+                 <div
+                  :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"
+                  @click="showCountry = !showCountry"
+                  class="more"
+                >
+                  {{ "更多" + (showCountry ? "-" : "+") }}
                 </div>
-
                 <div @click="multiple('country')" class="morchoice">多选+</div>
               </div>
             </div>
@@ -137,8 +144,13 @@
                 <!-- <div v-show="showMedia" @click="showMedia = !showMedia" class="more">更多-</div>
 
                 <div v-show="!showMedia" @click="showMedia = !showMedia" class="more">更多+</div> -->
-                <div v-show="filter.media.length < 2 && !multipleMedia" @click="showMedia = !showMedia" class="more">
-                  {{ "更多" + (showMedia ? "-" : "+") }}
+                <!-- :style="{visibility: showMore ? 'visible' : 'hidden'}" -->
+                <div :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}" @click="showMedia = !showMedia" class="more">
+                  {{ "更多" + (showMedia ? "-" : "+") }}  
+
+                     <!-- <div v-show="filter.media.length < 2 && !multipleMedia" @click="showMedia = !showMedia" class="more">
+                  {{ "更多" + (showMedia ? "-" : "+") }} -->
+
                 </div>
                 <div @click="multiple('media')" class="morchoice">多选+</div>
               </div>
