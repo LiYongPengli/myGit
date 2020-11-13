@@ -138,51 +138,27 @@
       <div class="collectionList">
         <my-scroll>
           <ul>
-            <!-- <li
-            @mouseenter="showCollBtn(i)"
-            @mouseleave="hideCollBtn(i)"
-            v-for="(v, i) in favoriteList"
-            :key="i"
-          >
-            <span>{{ v.name }}</span>
-            <div class="collect_btn">
-              <el-button
-                @click="toCollection(v)"
-                v-if="v.show"
-                size="mini"
-                type="primary"
-                >收藏</el-button
-              >
-            </div>
-          </li> -->
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
-            </li>
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
-            </li>
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
-            </li>
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
-            </li>
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
-            </li>
-            <li data-v-4d6d8465="">
-              <span data-v-4d6d8465="">默认</span>
-              <div data-v-4d6d8465="" class="collect_btn"><!----></div>
+            <li
+              @mouseenter="showCollBtn(i)"
+              @mouseleave="hideCollBtn(i)"
+              v-for="(v, i) in favoriteList"
+              :key="i"
+            >
+              <span>{{ v.name }}</span>
+              <div class="collect_btn">
+                <el-button
+                  @click="toCollection(v)"
+                  v-if="v.show"
+                  size="mini"
+                  type="primary"
+                  >收藏</el-button
+                >
+              </div>
             </li>
           </ul>
         </my-scroll>
-        <span class="addnew">创建新书签</span>
-        <div class="addnewcontent">
+        <span @click="createNewCollection=true" class="addnew">创建新书签</span>
+        <div v-show="createNewCollection" class="addnewcontent">
           <div>
             <span class="name"> 书签名称: </span>
             <input type="text" placeholder="请输入新书签名称" />
@@ -192,7 +168,7 @@
             <span style="cursor: pointer"> 点击上传封面 </span>
           </div>
         </div>
-        <div class="caozuo">
+        <div v-show="createNewCollection" class="caozuo">
           <span>创建并收藏</span>
           <span>取消创建</span>
         </div>
@@ -279,7 +255,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
         .addnewcontent {
           width: 700px;
           height: 110px;
-      margin-top: 20px;
+          margin-top: 20px;
           background-color: #4d4d5d;
           div {
             margin-top: 30px;
@@ -304,20 +280,18 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
         .caozuo {
           margin-top: 20px;
           text-align: center;
-          span{
-              margin-right: 10px;
-              color: white;
-              cursor: pointer;
-              display: inline-block;
-              width: 100px;
-              height: 40px;
-              line-height: 40px;
-              border-radius: 3px;
-
+          span {
+            margin-right: 10px;
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 3px;
           }
           span:hover {
             background-color: #0074ff;
-          
           }
         }
         // .caozuo::after {

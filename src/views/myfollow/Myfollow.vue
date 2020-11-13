@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="content">
-              <p  class="title"><a @click="$router.push('/newsinfo?id='+v.new_id+'&md_id='+v.media_id)" >{{v.title}}</a></p>
+              <p  class="title"><a @click="toNewsInfo(v)" >{{v.title}}</a></p>
               <div class="ziyuan">
                 <img src="../../assets/img/gztp.png" alt="" />
                 <img src="../../assets/img/gztp.png" alt="" />
