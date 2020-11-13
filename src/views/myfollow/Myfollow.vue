@@ -28,7 +28,7 @@
           <span :class="{'cur':people_all}" @click="all('people')" class="all">全部</span>
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
-            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="deleteItem('people',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="choose('people',false,i)" v-show="v.choose">X</span></li>
           </ul>
           
         </div>
