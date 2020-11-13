@@ -28,7 +28,7 @@
           <span :class="{'cur':people_all}" @click="all('people')" class="all">全部</span>
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
-            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click="deleteItem('people',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="deleteItem('people',false,i)" v-show="v.choose">X</span></li>
           </ul>
           
         </div>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="content">
-              <p class="title"><a>{{v.title}}</a></p>
+              <p  class="title"><a @click="$router.push('/newsinfo?id='+v.new_id+'&md_id='+v.media_id)" >{{v.title}}</a></p>
               <div class="ziyuan">
                 <img src="../../assets/img/gztp.png" alt="" />
                 <img src="../../assets/img/gztp.png" alt="" />
