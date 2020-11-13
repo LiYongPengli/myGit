@@ -107,6 +107,7 @@
                   >
                 </el-tooltip>
                 <el-tooltip
+                  style="left:74px"
                   class="item itmemt_en"
                   effect="dark"
                   :content="v.name"
@@ -195,11 +196,11 @@
                   placement="right"
                 >
                   <span
-                      style="top:-30px;width:120px"
+                      style="top:-40px;width:120px"
                       class="chinese_gj mt"
                       >{{ v.name }}</span>
                 </el-tooltip>
-                <span style="width:120px" class="english_gj mt">中国共产党中央委员会总书记</span>
+                <span style="width:120px;top:-10px" class="english_gj mt">中国共产党中央委员会总书记</span>
               </a>
             </li>
           </ul>

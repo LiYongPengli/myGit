@@ -51,13 +51,15 @@
                 >
                   全部
                 </div>
+                <!-- <el-tooltip class="item" effect="dark"  placement="top"> -->
                 <div
-                  @click="noMultiple('country')"
                   v-show="filter.country.length > 1 && !multipleCountry"
                   class="country_search_result_list"
                 >
-                  {{ filter.country.join("、") }}    X
+                  {{ filter.country.join("、") }}
+                  <img @click="noMultiple('country')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
                 </div>
+                 <!-- </el-tooltip> -->
                 <ul
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
@@ -124,6 +126,7 @@
                     class="country_search_result_list"
                   >
                     {{ filter.media.join("、") }}
+                       <img @click="noMultiple('media')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
                   </div>
                   <ul
                     v-show="filter.media.length < 2 || multipleMedia"
@@ -177,6 +180,7 @@
                   class="country_search_result_list"
                 >
                   {{ filter.character.join("、") }}
+                   <img @click="noMultiple('character')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
                 </div>
                   <ul v-show="filter.character.length < 2 || multipleCharacter" :style="{ height: showCharacter ? 'auto' : '30px' }">
                     <li
