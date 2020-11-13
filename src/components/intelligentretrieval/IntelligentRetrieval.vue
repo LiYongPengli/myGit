@@ -84,7 +84,7 @@
                   {{ "更多" + (showCountry ? "-" : "+") }}
                 </div> -->
                  <div
-                  :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"
+                  :style="{visibility: (filter.country.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"
                   @click="showCountry = !showCountry"
                   class="more"
                 >
@@ -198,9 +198,13 @@
                 <!-- <div @click="showCharacter = !showCharacter" class="morepe">
                   更多+
                 </div> -->
-                <div v-show="filter.character.length < 2 && !multipleCharacter" @click="showCharacter = !showCharacter" class="more">
+                <!-- :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"  character -->
+                <div :style="{visibility: (filter.character.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}" @click="showCharacter = !showCharacter" class="more">
                   {{ "更多" + (showCharacter ? "-" : "+") }}
                 </div>
+                
+
+
                 <div @click="multiple('character')" class="morchoice">多选+</div>
               </div>
             </div>
