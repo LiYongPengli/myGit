@@ -25,6 +25,7 @@
               >
               &gt;
               <a class="searchresult" href="listlm.aspx?clmId=250">章程 X</a>
+
             </div>
           </div> -->
           <div class="mj">
@@ -43,34 +44,48 @@
               </ul>
               <span>国家：</span>
               <div class="list">
-                <div
-                  @click="chooseitem('country', '')"
-                  v-show="!multipleCountry && filter.country.length < 2"
-                  class="all listqb"
-                  :class="{ cur: !filter.country.length }"
-                >
-                  全部
-                </div>
                 <!-- <el-tooltip class="item" effect="dark"  placement="top"> -->
                 <div
                   v-show="filter.country.length > 1 && !multipleCountry"
                   class="country_search_result_list"
                 >
                   {{ filter.country.join("、") }}
-                  <img @click="noMultiple('country')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
+                  <img
+                    @click="noMultiple('country')"
+                    style="margin-left: 50px; margin-right: 10px"
+                    src="../../assets/img/close.png"
+                    alt=""
+                  />
                 </div>
-                 <!-- </el-tooltip> -->
+                <!-- </el-tooltip> -->
                 <ul
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
                 >
+                  <li>
+                    <p
+                      @click="chooseitem('country', '')"
+                      v-show="!multipleCountry && filter.country.length < 2"
+                      class="all listqb"
+                      :class="{ cur: !filter.country.length }"
+                    >
+                      全部
+                    </p>
+                  </li>
                   <li
                     :class="{ countryli: ~filter.country.indexOf(v.name.en) }"
                     @click="chooseitem('country', v)"
                     v-for="(v, i) in countryList"
                     :key="i"
                   >
-                    <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                    <el-tooltip
+                      class="item itmemt_ch"
+                      effect="dark"
+                      :content="v.name.en"
+                      placement="right-start"
+                    >
+                      <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                    </el-tooltip>
                   </li>
                 </ul>
               </div>
@@ -83,8 +98,13 @@
                 >
                   {{ "更多" + (showCountry ? "-" : "+") }}
                 </div> -->
-                 <div
-                  :style="{visibility: (filter.country.length < 2 && !multipleCountry) ? 'visible' : 'hidden'}"
+                <div
+                  :style="{
+                    visibility:
+                      filter.country.length < 2 && !multipleCountry
+                        ? 'visible'
+                        : 'hidden',
+                  }"
                   @click="showCountry = !showCountry"
                   class="more"
                 >
@@ -112,33 +132,47 @@
               </ul>
               <span>媒体：</span>
               <div class="list">
-                <div
-                  class="all"
-                  v-show="!multipleMedia && filter.media.length < 2"
-                  :class="{ cur: !filter.media.length }"
-                  @click="chooseitem('media', '')"
-                >
-                  全部
-                </div>
                 <div class="other">
                   <div
                     v-show="filter.media.length > 1 && !multipleMedia"
                     class="country_search_result_list"
                   >
                     {{ filter.media.join("、") }}
-                       <img @click="noMultiple('media')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
+                    <img
+                      @click="noMultiple('media')"
+                      style="margin-left: 50px; margin-right: 10px"
+                      src="../../assets/img/close.png"
+                      alt=""
+                    />
                   </div>
                   <ul
                     v-show="filter.media.length < 2 || multipleMedia"
                     :style="{ height: showMedia ? 'auto' : '30px' }"
                   >
+                    <li>
+                      <p
+                        class="all"
+                        v-show="!multipleMedia && filter.media.length < 2"
+                        :class="{ cur: !filter.media.length }"
+                        @click="chooseitem('media', '')"
+                      >
+                        全部
+                      </p>
+                    </li>
                     <li
                       :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
                       @click="chooseitem('media', v)"
                       v-for="(v, i) in mediaList"
                       :key="i"
                     >
+                     <el-tooltip
+                      class="item itmemt_ch"
+                      effect="dark"
+                      :content="v.name.en"
+                      placement="right-start"
+                    >
                       <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                        </el-tooltip>
                     </li>
                   </ul>
                 </div>
@@ -148,12 +182,20 @@
 
                 <div v-show="!showMedia" @click="showMedia = !showMedia" class="more">更多+</div> -->
                 <!-- :style="{visibility: showMore ? 'visible' : 'hidden'}" -->
-                <div :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}" @click="showMedia = !showMedia" class="more">
-                  {{ "更多" + (showMedia ? "-" : "+") }}  
+                <div
+                  :style="{
+                    visibility:
+                      filter.media.length < 2 && !multipleMedia
+                        ? 'visible'
+                        : 'hidden',
+                  }"
+                  @click="showMedia = !showMedia"
+                  class="more"
+                >
+                  {{ "更多" + (showMedia ? "-" : "+") }}
 
-                     <!-- <div v-show="filter.media.length < 2 && !multipleMedia" @click="showMedia = !showMedia" class="more">
+                  <!-- <div v-show="filter.media.length < 2 && !multipleMedia" @click="showMedia = !showMedia" class="more">
                   {{ "更多" + (showMedia ? "-" : "+") }} -->
-
                 </div>
                 <div @click="multiple('media')" class="morchoice">多选+</div>
               </div>
@@ -166,30 +208,48 @@
             <div class="country">
               <span>人物：</span>
               <div class="list">
-                <div
+                
+                <div class="other">
+                  <div
+                    v-show="filter.character.length > 1 && !multipleCharacter"
+                    class="country_search_result_list"
+                  >
+                    {{ filter.character.join("、") }}
+                    <img
+                      @click="noMultiple('character')"
+                      style="margin-left: 50px; margin-right: 10px"
+                      src="../../assets/img/close.png"
+                      alt=""
+                    />
+                  </div>
+                  <ul
+                    v-show="filter.character.length < 2 || multipleCharacter"
+                    :style="{ height: showCharacter ? 'auto' : '30px' }"
+                  >
+                  <li>
+                    <p
                   @click="chooseitem('character', '')"
                   class="all listqb"
                   v-show="!multipleCharacter && filter.character.length < 2"
                   :class="{ cur: !filter.character.length }"
                 >
                   全部
-                </div>
-                <div class="other">
-                  <div
-                  v-show="filter.character.length > 1 && !multipleCharacter"
-                  class="country_search_result_list"
-                >
-                  {{ filter.character.join("、") }}
-                   <img @click="noMultiple('character')" style="margin-left:50px;margin-right:10px" src="../../assets/img/close.png" alt="">
-                </div>
-                  <ul v-show="filter.character.length < 2 || multipleCharacter" :style="{ height: showCharacter ? 'auto' : '30px' }">
+                </p>
+                  </li>
                     <li
                       @click="chooseitem('character', v)"
                       :class="{ rwli: ~filter.character.indexOf(v) }"
                       v-for="(v, i) in characterList"
                       :key="i"
                     >
+                       <el-tooltip
+                      class="item itmemt_ch"
+                      effect="dark"
+                      :content="v"
+                      placement="right-start"
+                    >
                       <p>{{ v }}</p>
+                                </el-tooltip>
                     </li>
                   </ul>
                 </div>
@@ -199,13 +259,22 @@
                   更多+
                 </div> -->
                 <!-- :style="{visibility: (filter.media.length < 2 && !multipleMedia) ? 'visible' : 'hidden'}"  character -->
-                <div :style="{visibility: (filter.character.length < 2 && !multipleCharacter) ? 'visible' : 'hidden'}" @click="showCharacter = !showCharacter" class="more">
+                <div
+                  :style="{
+                    visibility:
+                      filter.character.length < 2 && !multipleCharacter
+                        ? 'visible'
+                        : 'hidden',
+                  }"
+                  @click="showCharacter = !showCharacter"
+                  class="more"
+                >
                   {{ "更多" + (showCharacter ? "-" : "+") }}
                 </div>
-                
 
-
-                <div @click="multiple('character')" class="morchoice">多选+</div>
+                <div @click="multiple('character')" class="morchoice">
+                  多选+
+                </div>
               </div>
             </div>
             <div class="cz" v-show="multipleCharacter">
