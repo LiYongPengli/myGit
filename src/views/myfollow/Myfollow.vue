@@ -9,9 +9,9 @@
         <span @click="chooseNav='media'" :class="{'cur':chooseNav=='media'}">媒体</span>
       </div>
       <div class="gjlb">
-        <p v-if="chooseNav=='country'" class="sx">选择相关国家可以进行信息筛�/p>
-        <p v-if="chooseNav=='people'" class="sx">选择相关人物可以进行信息筛�/p>
-        <p v-if="chooseNav=='media'" class="sx">选择相关媒体可以进行信息筛�/p>
+        <p v-if="chooseNav=='country'" class="sx">选择相关国家可以进行信息筛</p>
+        <p v-if="chooseNav=='people'" class="sx">选择相关人物可以进行信息筛</p>
+        <p v-if="chooseNav=='media'" class="sx">选择相关媒体可以进行信息筛</p>
         <!-- 筛选栏 -->
         <!-- 国家 -->
         <div v-show="chooseNav=='country'" class="erhang">
