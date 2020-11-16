@@ -10,6 +10,7 @@
       <my-scroll v-if="listshow">
         <ul>
           <li
+          @click.stop="toCollectionList(v)"
             @mouseover="showBtn(i)"
             @mouseout="hideBtn(v, i)"
             v-for="(v, i) in favoriteList"
@@ -27,7 +28,7 @@
               }}</span>
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
-                @click="toEdit(v)"
+                @click.stop="toEdit(v)"
                 v-show="v.showControl&&v.name!='默认'"
                 class="edit"
                 type="primary"
@@ -36,7 +37,7 @@
               >
 
               <el-button
-                @click="deleteFav(v)"
+                @click.stop="deleteFav(v)"
                 v-show="v.showControl&&v.name!='默认'"
                 class="delete"
                 type="danger"
@@ -84,19 +85,16 @@
         </div>
       </div>
     </el-dialog>
-    <!-- <zhuan-ti /> -->
   </div>
 </template>
 
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
-import ZhuanTi from "@/components/zhuanti/Zhuanti.vue";
 import MyScroll from "@/components/MyScroll.vue";
 @Component({
   components: {
-    ZhuanTi,
-    MyScroll,
+    MyScroll
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

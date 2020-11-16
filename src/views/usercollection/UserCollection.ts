@@ -145,4 +145,11 @@ export default class UserCollectionCom extends Vue{
             this.editFavorite();
         }
     }
+    /**
+     * 
+     * @param item 收藏夹对象信息
+     */
+    public toCollectionList(item:any):void{
+        this.$router.push('/user/collectioninfo?name='+item.name);
+    }
 }

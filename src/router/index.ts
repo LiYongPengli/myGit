@@ -103,6 +103,12 @@ const routes: RouteConfig[] = [
         name: 'UserCollection',
         component: () => import('../views/usercollection/UserCollection.vue')
       },
+      //我的收藏/新闻列表
+      {
+        path: 'collectioninfo',
+        name: 'CollectionInfo',
+        component: () => import('../views/zhuanti/Zhuanti.vue')
+      },
       //我的关注
       {
         path: 'follow',
