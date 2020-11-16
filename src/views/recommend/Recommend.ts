@@ -129,11 +129,11 @@ export default class RecommendCom extends Vue {
         let paras: any = {};
         switch (this.active_recommend) {
             case 0:
-                paras = { language: this.language,start:this.start, size: 10 };
+                paras = { language: this.language, size: 10 };
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { name: this.active_recommend_name,start:this.start, language: this.language, size: 10 };
+                paras = { name: this.active_recommend_name, language: this.language, size: 10 };
                 break;
         }
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
