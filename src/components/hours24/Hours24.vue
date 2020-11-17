@@ -27,7 +27,7 @@
                     {{ init_time(v.release_time) }}
                   </span>
                 </div>
-                <a href="#">
+                <a @click="toNewsInfo(v)">
                   <p>
                     {{ v.news_title }}
                     <!-- 美国将中国旅行警告从“请勿前往”下调为“审慎考虑前往” -->

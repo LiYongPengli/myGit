@@ -88,7 +88,7 @@
               <!-- 国家 -->
               <div class="swiper-slide">
                 <div class="country">
-                  <div v-for="(v, i) in country" :key="i" class="item">
+                  <div @click="toFollowPage('country',i)" v-for="(v, i) in country" :key="i" class="item">
                     <img :src="v.flag" alt="" />
                     <p class="name">{{ v.name_zh }}</p>
                   </div>
@@ -97,7 +97,7 @@
               <!-- 人物 -->
               <div class="swiper-slide">
                 <div class="country">
-                  <div v-for="(v, i) in people" :key="i" class="item">
+                  <div @click="toFollowPage('people',i)" v-for="(v, i) in people" :key="i" class="item">
                     <img src="../../assets/img/media.png" alt="" />
                     <p class="name">{{ v.name }}</p>
                   </div>
@@ -106,7 +106,7 @@
               <!-- 媒体 -->
               <div class="swiper-slide">
                 <div class="media">
-                  <div v-for="(v, i) in media" :key="i" class="item">
+                  <div @click="toFollowPage('media',i)" v-for="(v, i) in media" :key="i" class="item">
                     <img src="../../assets/img/media.png" alt="" />
 
                     <p class="name">{{ v.name_zh }}</p>
