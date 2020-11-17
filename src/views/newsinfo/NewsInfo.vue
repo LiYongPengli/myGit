@@ -200,107 +200,112 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 .newsinfo {
   .el-dialog {
     background: #3a3a48;
-    height: 345px;
+    // height: 345px;
   }
-  .el-dialog__header {
-    padding-bottom: 20px;
-    padding-right: 15px;
-    border-bottom: 1px solid #4d4d5d;
-  }
+  // .el-dialog__header {
+  //   padding-bottom: 20px;
+  //   padding-right: 15px;
+  //   border-bottom: 1px solid #4d4d5d;
+  // }
   .el-icon-close {
     line-height: 24px;
+    color: white;
+  }
+  .el-icon-close:hover {
+   
+    color: white;
   }
   .el-dialog__title {
     color: white;
     margin-left: 30px;
   }
-  .el-dialog__body {
-    padding: 0;
-    .download_list {
-      height: 180px;
-      margin-top: 20px;
-      li {
-        height: 36px;
-      }
-    }
-    .downloadClose {
-      position: absolute;
-      bottom: 28px;
-      left: 256px;
-      border: 1px solid #676770;
-    }
-    .downloadClose:hover {
-      background-color: #0074ff;
-    }
-  }
+  // .el-dialog__body {
+  //   padding: 0;
+  //   .download_list {
+  //     height: 180px;
+  //     margin-top: 20px;
+  //     li {
+  //       height: 36px;
+  //     }
+  //   }
+  //   .downloadClose {
+  //     position: absolute;
+  //     bottom: 28px;
+  //     left: 256px;
+  //     border: 1px solid #676770;
+  //   }
+  //   .downloadClose:hover {
+  //     background-color: #0074ff;
+  //   }
+  // }
   .sc {
-    .el-dialog {
-      width: 800px;
-      height: 470px;
-      .el-dialog__header {
-        .el-dialog__title {
-          font-size: 20px;
-        }
-      }
-      .el-dialog__body {
-        padding: 30px 50px;
-        ul {
-          height: 100px;
-        }
-        .addnew {
-          cursor: pointer;
-          margin-bottom: 20px;
-          color: white;
-        }
-        .addnewcontent {
-          width: 700px;
-          height: 110px;
-          margin-top: 20px;
-          background-color: #4d4d5d;
-          div {
-            margin-top: 30px;
-            width: 260px;
-            float: left;
-            height: 50px;
+    // .el-dialog {
+    //   width: 800px;
+    //   height: 470px;
+    //   .el-dialog__header {
+    //     .el-dialog__title {
+    //       font-size: 20px;
+    //     }
+    //   }
+    //   .el-dialog__body {
+    //     padding: 30px 50px;
+    //     ul {
+    //       height: 100px;
+    //     }
+    //     .addnew {
+    //       cursor: pointer;
+    //       margin-bottom: 20px;
+    //       color: white;
+    //     }
+    //     .addnewcontent {
+    //       width: 700px;
+    //       height: 110px;
+    //       margin-top: 20px;
+    //       background-color: #4d4d5d;
+    //       div {
+    //         margin-top: 30px;
+    //         width: 260px;
+    //         float: left;
+    //         height: 50px;
 
-            color: white;
-            margin-left: 30px;
-            span {
-              display: block;
-              margin-bottom: 15px;
-            }
-            input {
-              background-color: #4d4d5d;
-              color: white;
-              border: none;
-              outline: none;
-            }
-          }
-        }
-        .caozuo {
-          margin-top: 20px;
-          text-align: center;
-          span {
-            margin-right: 10px;
-            color: white;
-            cursor: pointer;
-            display: inline-block;
-            width: 100px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 3px;
-          }
-          span:hover {
-            background-color: #0074ff;
-          }
-        }
-        // .caozuo::after {
-        //   content: "";
-        //   display: block;
-        //   clear: both;
-        // }
-      }
-    }
+    //         color: white;
+    //         margin-left: 30px;
+    //         span {
+    //           display: block;
+    //           margin-bottom: 15px;
+    //         }
+    //         input {
+    //           background-color: #4d4d5d;
+    //           color: white;
+    //           border: none;
+    //           outline: none;
+    //         }
+    //       }
+    //     }
+    //     .caozuo {
+    //       margin-top: 20px;
+    //       text-align: center;
+    //       span {
+    //         margin-right: 10px;
+    //         color: white;
+    //         cursor: pointer;
+    //         display: inline-block;
+    //         width: 100px;
+    //         height: 40px;
+    //         line-height: 40px;
+    //         border-radius: 3px;
+    //       }
+    //       span:hover {
+    //         background-color: #0074ff;
+    //       }
+    //     }
+    //     // .caozuo::after {
+    //     //   content: "";
+    //     //   display: block;
+    //     //   clear: both;
+    //     // }
+    //   }
+    // }
   }
 }
 </style>
