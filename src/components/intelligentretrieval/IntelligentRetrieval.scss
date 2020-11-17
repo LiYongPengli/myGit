@@ -199,17 +199,16 @@
                                 float: left;
                                 cursor: pointer;
                                 margin-bottom: 10px;
-                                width: 100px;
+                                width: 150px;
                                 overflow: hidden;
                                 p {
                                     color: white;
-                                    // margin-left: 20px;
-                                    // margin-right: 13px;
-                                    // margin-left: 10px;
-                                    // margin-right: 13px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    text-align: center;
                                     text-decoration: none;
                                     font-size: 14px;
-                                    // text-align: center;
                                 }
                             }
                         }
