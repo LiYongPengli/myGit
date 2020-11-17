@@ -189,4 +189,18 @@ export default class RecommendCom extends Vue {
             return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
         }
     }
+
+    /**
+     * 
+     * @param type 关注类型
+     * @param choise 是否选择
+     * @param index 该类型索引
+     */
+    public toFollowPage(type:string,index:number):void{
+        this.$router.push('/myfollow?item='+JSON.stringify({
+            type:type,
+            choise:true,
+            index:index
+        }))
+    }
 }

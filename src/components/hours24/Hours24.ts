@@ -130,4 +130,8 @@ export default class Hours24Com extends Vue {
             return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
         }
     }
+
+    public toNewsInfo(item:any):void{
+        window.open('#/newsinfo?id='+item.news_id+'&md_id='+item.media_id)
+    }
 }

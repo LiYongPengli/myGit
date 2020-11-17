@@ -31,8 +31,9 @@ export default class MyFollowCom extends Vue {
         this.filters.search_after = [];
         this.getList();
     }
-    @Watch('chooseNav')
-    listenChooseNav(newVal: string, oldVal: string): void {
+
+    listenChooseNav(newVal: string): void {
+        this.chooseNav = newVal;
         this.filters.search_after = [];
         switch (newVal) {
             case 'all':
@@ -155,6 +156,12 @@ export default class MyFollowCom extends Vue {
                 //获取媒体列表
                 this.getSubscriptions("media", "sub", (res) => {
                     this.media = res.data.data;
+                    if(this.$route.query.item){
+                        let obj = JSON.parse(this.$route.query.item as string);
+                        this.chooseNav = obj.type;
+                        this.choose(obj.type,obj.choise,obj.index);
+                        return;
+                    }
                     this.getAllData();
                 });
             });
