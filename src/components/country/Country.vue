@@ -232,9 +232,9 @@
           </div>
         </li>
          <li>
-          <div>
+          <div >
             <img src="../../assets/img/followchina.png" alt="">
-            <p>中国<img src="../../assets/img/add.png" alt=""></p>
+            <p >中国1<img v-on:click="deleteli" src="../../assets/img/add.png" alt=""></p>
           </div>
         </li>
         <li>
