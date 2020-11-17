@@ -66,6 +66,10 @@ export default class IntelligentRetrievalCom extends Vue {
         { name: 'Y', choose: false },
         { name: 'Z', choose: false },
     ];
+
+    public cache_country:string[] = [];
+    public cache_media:string[] = [];
+    public cache_character:string[] = [];
     public filter = {
         search_after: [] as any[],
         size: 10 as number,
@@ -115,13 +119,28 @@ export default class IntelligentRetrievalCom extends Vue {
         for (let i in this.filter) {
             if (this.filter[i].constructor == Array) {
                 if (this.filter[i].length) {
-                    filter[i] = this.filter[i]
+                    filter[i] = this.filter[i].slice(0)
                 } else if (i == 'search_after') {
                     filter[i] = this.filter[i]
                 }
             } else if (this.filter[i]) {
                 filter[i] = this.filter[i];
             }
+        }
+        if(filter.country){
+            this.cache_country = filter.country.slice(0);
+        }else{
+            this.cache_country = [];
+        }
+        if(filter.media){
+            this.cache_media = filter.media.slice(0);
+        }else{
+            this.cache_media = [];
+        }
+        if(filter.character){
+            this.cache_character = filter.character.slice(0);
+        }else{
+            this.cache_character = [];
         }
         filter.keywords = this.searchText.split(" ");
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
@@ -499,14 +518,37 @@ export default class IntelligentRetrievalCom extends Vue {
         switch (type) {
             case 'country':
                 this.multipleCountry = false;
+                this.filter.country = this.cache_country.slice(0);
+                break;
+            case 'media':
+                this.multipleMedia = false;
+                this.filter.media = this.cache_media.slice(0);
+                break;
+            case 'character':
+                this.multipleCharacter = false;
+                this.filter.character = this.cache_character.slice(0);
+                break;
+        }
+        // this.filter.search_after = [];
+        // this.finished = false;
+        // this.toFilter();
+    }
+    //清空多选
+    public clearMultiple(type:string):void{
+        switch (type) {
+            case 'country':
+                this.multipleCountry = false;
+                this.showCountry = false;
                 this.filter.country = [];
                 break;
             case 'media':
                 this.multipleMedia = false;
+                this.showMedia = false;
                 this.filter.media = [];
                 break;
             case 'character':
                 this.multipleCharacter = false;
+                this.showCharacter = false;
                 this.filter.character = [];
                 break;
         }
