@@ -19,7 +19,7 @@
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
             <!-- <li><a>中国</a>X</li> -->
-            <li :class="{'cur':v.choose}" @click="choose('country',true,i)" v-for="(v,i) in country" :key="i"><a>{{v.name_zh}}</a><span @click.stop="choose('country',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('country',true,i)" v-for="(v,i) in country" :key="i"><a>{{v.name_zh}}</a><span @click.stop="choose('country',false,i)" v-show="v.choose"><img src="../../assets/img/close.png" alt=""></span></li>
           </ul>
           
         </div>
@@ -28,7 +28,7 @@
           <span :class="{'cur':people_all}" @click="all('people')" class="all">全部</span>
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
-            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="choose('people',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('people',true,i)" v-for="(v,i) in people" :key="i"><a>{{v.name}}</a><span @click.stop="choose('people',false,i)" v-show="v.choose"><img src="../../assets/img/close.png" alt=""></span></li>
           </ul>
           
         </div>
@@ -37,7 +37,7 @@
           <span :class="{'cur':media_all}" @click="all('media')" class="all">全部</span>
            <div v-show="people.length>4" class="gd">更多+</div>
           <ul>
-            <li :class="{'cur':v.choose}" @click="choose('media',true,i)" v-for="(v,i) in media" :key="i"><a>{{v.name_zh}}</a><span @click.stop="choose('media',false,i)" v-show="v.choose">X</span></li>
+            <li :class="{'cur':v.choose}" @click="choose('media',true,i)" v-for="(v,i) in media" :key="i"><a>{{v.name_zh}}</a><span @click.stop="choose('media',false,i)" v-show="v.choose"><img src="../../assets/img/close.png" alt=""></span></li>
           </ul>
           
         </div>
