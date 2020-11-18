@@ -5,8 +5,16 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class CountryCom extends Vue{
     public country_list:any[] = [];
     public country_follow_list:any[] = [];
+    // public countrylist=[
+    //     {
 
+    //     }
+    // ];
 
+    public deleteli():void{
+        this.$el.remove()
+        // console.log(this.$el.innerHTML)
+    }
     public created():void{
         this.getList();
     }

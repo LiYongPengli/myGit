@@ -14,52 +14,63 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { Mutation } from 'vuex-class';
-import { baseApi } from './axios/axios';
+import { Mutation } from "vuex-class";
+import { baseApi } from "./axios/axios";
 @Component
 export default class App extends Vue {
   private isshow = true;
   //设置用户信息
-  @Mutation('setUserMessage') setUserMessage:any;
+  @Mutation("setUserMessage") setUserMessage: any;
 
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
-    if (newVal == "Login" || newVal == "Register" || newVal == "Findpassword" || newVal == "BindAccount") {
+    if (
+      newVal == "Login" ||
+      newVal == "Register" ||
+      newVal == "Findpassword" ||
+      newVal == "BindAccount"
+    ) {
       this.isshow = true;
     } else {
       this.isshow = false;
       this.userLoginType();
     }
   }
-  
-  private created():void{
+
+  private created(): void {
     this.userLoginType();
   }
 
-  private userLoginType():void{
-    this.axios.get(baseApi.api2+'/v1/user/login/').then(res=>{
-      this.getUserInfo(res.data.data.user_id);
-    }).catch(err=>{
-      console.log(err);
-    })
+  private userLoginType(): void {
+    this.axios
+      .get(baseApi.api2 + "/v1/user/login/")
+      .then((res) => {
+        this.getUserInfo(res.data.data.user_id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   /**
    * 获取用户信息
    * @param user_id 用户id
    */
-  private getUserInfo(user_id:string):void{
-    this.axios.post(baseApi.api2+'/v1/cmd/',{
-      cmd:'user_info',
-      paras: { user_id: user_id }
-    }).then(res=>{
-      this.setUserMessage(res.data.data);
-      if(!res.data.data.sub_prompted&&this.$route.name!="HomeSet"){
-        this.$router.push('/homeset');
-      }
-    }).catch(err=>{
-      console.log(err);
-    })
+  private getUserInfo(user_id: string): void {
+    this.axios
+      .post(baseApi.api2 + "/v1/cmd/", {
+        cmd: "user_info",
+        paras: { user_id: user_id },
+      })
+      .then((res) => {
+        this.setUserMessage(res.data.data);
+        if (!res.data.data.sub_prompted && this.$route.name != "HomeSet") {
+          this.$router.push("/homeset");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 </script>
@@ -69,6 +80,12 @@ export default class App extends Vue {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+li{
+  float: left;
 }
 html,
 body {
@@ -96,8 +113,8 @@ body {
 //下拉框样式
 .el-popover {
   background: #2d2d39 !important;
-  border: none!important;
-  color: white!important;
+  border: none !important;
+  color: white !important;
   box-sizing: border-box;
 }
 
@@ -107,10 +124,10 @@ body {
 .el-dropdown-menu li:hover{
   background:  #2d2d39!important;
 } */
-.popper__arrow::after{
-  border-color: #2d2d39!important;
+.popper__arrow::after {
+  border-color: #2d2d39 !important;
 }
-.el-picker-panel__body{
+.el-picker-panel__body {
   background: #494959;
 }
 </style>

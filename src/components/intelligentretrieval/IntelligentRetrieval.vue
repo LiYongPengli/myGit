@@ -81,8 +81,8 @@
                     <el-tooltip
                       class="item itmemt_ch"
                       effect="dark"
-                      :content="v.name.en"
-                      placement="right-start"
+                      :content="v.name.en+'('+v.name['zh-CN']+')'"
+                      placement="top"
                     >
                       <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
                     </el-tooltip>
@@ -168,7 +168,7 @@
                      <el-tooltip
                       class="item itmemt_ch"
                       effect="dark"
-                      :content="v.name.en"
+                     :content="v.name.en+'('+v.name['zh-CN']+')'"
                       placement="right-start"
                     >
                       <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
