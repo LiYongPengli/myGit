@@ -78,6 +78,7 @@ export default class FormFetchCom extends Vue {
             legend: {
                 data: ['本周', '上周'],
                 right: 100,
+                icon:'rect',
                 textStyle: {
                     color: "white"
                 }
@@ -129,6 +130,8 @@ export default class FormFetchCom extends Vue {
             series: [{
                 name: '本周',
                 type: 'line',
+                symbol: 'circle',     //设定为实心点
+                symbolSize: 10,   //设定实心点的大小
                 smooth: true,
                 data: [10000, 120000, 40000, 60000, 70000, 83000, 100000],
                 color: "#19d1ff"
@@ -136,6 +139,8 @@ export default class FormFetchCom extends Vue {
             {
                 name: '上周',
                 type: 'line',
+                symbol: 'circle',     //设定为实心点
+                symbolSize: 10,   //设定实心点的大小
                 smooth: true,
                 data: [300000, 18200, 43400, 79100, 39000, 30000, 90000],
                 color: '#f4516c'
