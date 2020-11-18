@@ -99,5 +99,11 @@ export default class UserUsersAccount extends mixins(UserUsersAccountCom) {}
       }
     }
   }
+  .el-button--primary {
+   
+    background-color: #0074ff;
+    border-color: #409EFF;
+    font-size: 16px;
+}
 }
 </style>

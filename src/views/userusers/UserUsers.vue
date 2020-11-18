@@ -13,7 +13,7 @@
         <p>用户登录名单</p>
         <div class="inputs">
           <input type="text" placeholder="账号/昵称/手机号" />
-          <img src="../../assets/img/sousuo.png" alt="" />
+          <img src="../../assets/img/search.png" alt="" />
         </div>
       </div>
       <!-- 表格 -->
@@ -23,7 +23,10 @@
           <div class="th">昵称</div>
           <div class="th">手机号</div>
           <div class="th">微信昵称</div>
-          <div class="th">注册时间</div>
+          <div class="th zcsj">注册时间
+                <img class="up" src="../../assets/img/up.png" alt="" />
+                <img class="down" src="../../assets/img/down.png" alt="" />
+                </div>
           <div class="th">操作</div>
         </div>
         <div class="tbody">
@@ -33,9 +36,10 @@
               <div class="td">{{v.nickname}}</div>
               <div class="td">{{v.phone_number}}</div>
               <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
-              <div class="td">{{v.registration_date.slice(0,v.registration_date.lastIndexOf('.'))}}</div>
+              <div class="td">{{UserCreatetime(v.registration_date.slice(0,v.registration_date.lastIndexOf('.')))}}</div>
+       
               <div class="td more">
-                <span v-if="user_message.role=='admin'&&v.role!='oper'" @click="setAdmin(v)">设为管理员 |</span> 
+                  <span v-if="user_message.role=='admin'&&v.role!='oper'" @click="setAdmin(v)">设为管理员 |</span> 
                 <span v-if="user_message.role=='admin'&&v.role=='oper'" @click="setAdmin(v)">取消管理员 |</span>
                 <span @click="toEditAccount(v)">管理账号</span>
               </div>
