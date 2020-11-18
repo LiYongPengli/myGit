@@ -8,6 +8,11 @@ export default class UserUsersCom extends Vue {
     public userList:any[] = [];
     public eidtUser:any = "";
     public created():void{
+        if(this.user_message.role=='user'){
+            this.$message.warning('用户权限不足');
+            this.$router.push('/user');
+            return;
+        }
         this.getUserList();
     }
 

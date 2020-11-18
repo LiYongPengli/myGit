@@ -14,7 +14,7 @@
                   </div>
               </div>
               <ul class="user_menu">
-                  <li @click="router_link(v)" v-for="(v,i) in user_nav_list" :key="i" tag="li" :to="v.path" class="item" :class="{'user_nav_active':active_nav==v.path}">{{v.name}}</li>
+                  <li v-show="v.nosee!=user_message.role" @click="router_link(v)" v-for="(v,i) in user_nav_list" :key="i" tag="li" :to="v.path" class="item" :class="{'user_nav_active':active_nav==v.path}">{{v.name}}</li>
               </ul>
           </div>
           <div class="user_content">
