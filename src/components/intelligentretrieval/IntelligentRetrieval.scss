@@ -33,6 +33,7 @@
                     line-height: 40px;
                     cursor: pointer;
                     z-index: 11;
+                    border-radius: 3px;
                 }
                 input {
                     color: white;
@@ -231,6 +232,7 @@
                             box-sizing: border-box;
                             line-height: 25px;
                             text-align: center;
+                            border-radius: 3px;
                         }
                         .more {
                             margin-right: 10px;
@@ -286,6 +288,7 @@
                                         font-size: 14px;
                                         border: 1px solid #676770;
                                         box-sizing: border-box;
+                                        border-radius: 3px;
                                     }
                                 }
                                 li:first-child {
