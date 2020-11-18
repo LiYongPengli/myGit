@@ -1,13 +1,66 @@
 <template>
-    <div class="userusers">
-        11111111113
+  <div class="userusers">
+    <div class="choose_nav">
+      <div class="left">
+        <p>用户管理</p>
+        <p v-if="editAccount">>管理账号</p>
+      </div>
+      <div @click="editAccount=false" v-show="editAccount" class="back">返回></div>
     </div>
+    <!-- 主体 -->
+    <div v-if="!editAccount" class="content">
+      <div class="top">
+        <p>用户登录名单</p>
+        <div class="inputs">
+          <input type="text" placeholder="账号/昵称/手机号" />
+          <img src="../../assets/img/sousuo.png" alt="" />
+        </div>
+      </div>
+      <!-- 表格 -->
+      <div class="table">
+        <div class="thead">
+          <div class="th">账号</div>
+          <div class="th">昵称</div>
+          <div class="th">手机号</div>
+          <div class="th">微信昵称</div>
+          <div class="th">注册时间</div>
+          <div v-show="user_message.role=='admin'" class="th">操作</div>
+        </div>
+        <div class="tbody">
+          <my-scroll>
+            <div v-for="(v, i) in userList" :key="i" class="tr">
+              <div class="td">{{v.account}}</div>
+              <div class="td">{{v.nickname}}</div>
+              <div class="td">{{v.phone_number}}</div>
+              <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
+              <div class="td">{{v.registration_date.slice(0,v.registration_date.lastIndexOf('.'))}}</div>
+              <div v-show="user_message.role=='admin'" class="td more">
+                <span @click="setAdmin(v)" v-show="v.role!='oper'">设为管理员</span> 
+                <span @click="setAdmin(v)" v-show="v.role=='oper'">取消管理员</span> |
+                <span @click="toEditAccount(v)">管理账号</span>
+              </div>
+            </div>
+          </my-scroll>
+        </div>
+      </div>
+    </div>
+    <!-- 管理账号 -->
+    <div v-if="editAccount" class="content">
+        <user-account :user="eidtUser" />
+    </div>
+  </div>
 </template>
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserUsersCom from "./UserUsers";
- 
-@Component
+import MyScroll from "@/components/MyScroll.vue";
+import UserAccount from "@/components/userusersaccount/UserUsersAccount.vue"
+@Component({
+  components: {
+    MyScroll,
+    UserAccount
+  },
+})
 export default class UserCollection extends mixins(UserUsersCom) {}
 </script>
 

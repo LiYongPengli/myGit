@@ -1,0 +1,38 @@
+.userusersaccount{
+    .top{
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #5c5c6b;
+        padding-bottom: 20px;
+        .userIco{
+            width: 70px;
+            height: 70px;
+            overflow: hidden;
+            border-radius: 5px;
+            img{
+                width: 100%;
+            }
+        }
+        .nickname,.wename{
+            margin-left: 30px;
+            span:last-of-type{
+                margin-left: 10px;
+            }
+        }
+        .wename{
+            margin-left: 50px;
+        }
+    }
+    .body{
+        display: flex;
+        margin: 50px 0;
+        .left,.right{
+            p:last-of-type{
+                padding: 20px 0;
+            }
+        }
+        .right{
+            margin-left: 200px;
+        }
+    }
+}
