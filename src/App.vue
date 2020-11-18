@@ -84,9 +84,7 @@ export default class App extends Vue {
 ul {
   list-style: none;
 }
-li{
-  float: left;
-}
+
 html,
 body {
   height: 100%;
