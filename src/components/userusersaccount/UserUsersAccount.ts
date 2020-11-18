@@ -7,6 +7,7 @@ export default class UserUsersAccountCom extends Vue{
     public resPwd:string = "";
     public changePhone:boolean = false;
     public phone:string = "";
+    public success:boolean = false;
 
     public async resetPassword():Promise<void>{
         try{
@@ -59,6 +60,7 @@ export default class UserUsersAccountCom extends Vue{
         }).then(res=>{
             console.log(res.data);
             this.changePhone = false;
+            this.success = true;
         }).catch(err=>{
             console.log(err);
         })

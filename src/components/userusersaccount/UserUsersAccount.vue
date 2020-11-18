@@ -102,7 +102,7 @@
     </el-dialog>
     <!-- 操作成功 -->
     <el-dialog
-      :visible.sync="changePhones"
+      :visible.sync="success"
       title="温馨提示"
       class="czmm"
       width="800px"
@@ -113,7 +113,7 @@
        <p class="reminder_sucess" >操作成功</p>
         
           <el-button
-            @click="resetPwd = false"
+            @click="success = false"
             style="width: 190px; margin-top: 20px"
             type="primary"
             >确认</el-button
