@@ -171,6 +171,7 @@ export default class Search extends Vue {
       border: 1px solid #676770;
       color: #bcc2d5;
       cursor: pointer;
+      border-radius: 3px;
     }
   }
   .historycontent {
