@@ -111,14 +111,14 @@
       <div class="reminder">
        <img  src="../../assets/img/czcg.png" alt="">
        <p class="reminder_sucess" >操作成功</p>
-        <div class="resBtn">
+        
           <el-button
             @click="resetPwd = false"
             style="width: 190px; margin-top: 20px"
             type="primary"
             >确认</el-button
           >
-        </div>
+         
       </div>
     </el-dialog>
 
