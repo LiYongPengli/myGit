@@ -32,21 +32,13 @@ export default class UserUsersCom extends Vue {
     public UserCreatetime(str:any):any{
         let time=new Date(str)
         let year=time.getFullYear()
-        let month=(time.getMonth()+1)+""
+        let month=time.getMonth()
         let date=time.getDate() 
-        let hours=time.getHours()+""
+        let hours=time.getHours()
         let minute=time.getMinutes() 
-        console.log(hours)
-        console.log(String(10))
-        console.log(hours<String(10))
         let second=time.getSeconds() 
-        // if(month<"10"){month='0'+month}
-        // if(date<10){date='0'+date}
-        // if(hours<10){hours='0'+hours}
-        // if(minute<10){minute='0'+minute}
-        // if(second<10){second='0'+second}
 
-        return year+"年"+month+"月"+date+"日"+hours+":"+minute+":"+second;
+        return `${year}年${month+1>10?month:'0'+month}月${date+1>10?date:'0'+date}日${hours+1>10?hours:'0'+hours}:${minute+1>10?minute:'0'+minute}:${second+1>10?second:'0'+second}`;
     }
 
     /**

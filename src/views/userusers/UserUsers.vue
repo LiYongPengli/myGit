@@ -36,7 +36,7 @@
               <div class="td">{{v.nickname}}</div>
               <div class="td">{{v.phone_number}}</div>
               <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
-              <div class="td">{{UserCreatetime(v.registration_date.slice(0,v.registration_date.lastIndexOf('.')))}}</div>
+              <div class="td">{{UserCreatetime(v.registration_date)}}</div>
        
               <div class="td more">
                   <span v-if="user_message.role=='admin'&&v.role!='oper'" @click="setAdmin(v)">设为管理员 |</span> 
