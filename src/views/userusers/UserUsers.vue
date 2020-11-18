@@ -24,7 +24,7 @@
           <div class="th">手机号</div>
           <div class="th">微信昵称</div>
           <div class="th">注册时间</div>
-          <div v-show="user_message.role=='admin'" class="th">操作</div>
+          <div class="th">操作</div>
         </div>
         <div class="tbody">
           <my-scroll>
@@ -34,9 +34,9 @@
               <div class="td">{{v.phone_number}}</div>
               <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
               <div class="td">{{v.registration_date.slice(0,v.registration_date.lastIndexOf('.'))}}</div>
-              <div v-show="user_message.role=='admin'" class="td more">
-                <span @click="setAdmin(v)" v-show="v.role!='oper'">设为管理员</span> 
-                <span @click="setAdmin(v)" v-show="v.role=='oper'">取消管理员</span> |
+              <div class="td more">
+                <span v-if="user_message.role=='admin'&&v.role!='oper'" @click="setAdmin(v)">设为管理员 |</span> 
+                <span v-if="user_message.role=='admin'&&v.role=='oper'" @click="setAdmin(v)">取消管理员 |</span>
                 <span @click="toEditAccount(v)">管理账号</span>
               </div>
             </div>

@@ -18,7 +18,8 @@ export default class UserCom extends Vue {
         },
         {
             path: '/user/users',
-            name: '用户管理'
+            name: '用户管理',
+            nosee:'user'
         },
         {
             path: '/user/follow',
