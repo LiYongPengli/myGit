@@ -10,7 +10,7 @@
       <my-scroll v-if="listshow">
         <ul>
           <li
-          @click.stop="toCollectionList(v)"
+            @click.stop="toCollectionList(v)"
             @mouseover="showBtn(i)"
             @mouseout="hideBtn(v, i)"
             v-for="(v, i) in favoriteList"
@@ -29,7 +29,7 @@
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
                 @click.stop="toEdit(v)"
-                v-show="v.showControl&&v.name!='默认'"
+                v-show="v.showControl && v.name != '默认'"
                 class="edit"
                 type="primary"
                 icon="el-icon-edit-outline"
@@ -38,7 +38,7 @@
 
               <el-button
                 @click.stop="deleteFav(v)"
-                v-show="v.showControl&&v.name!='默认'"
+                v-show="v.showControl && v.name != '默认'"
                 class="delete"
                 type="danger"
                 icon="el-icon-delete"
@@ -64,7 +64,12 @@
     >
       <div class="edit_wrap">
         <span class="name">书签名称：</span>
-        <input v-model="favorite_form.name" class="nr" type="text" placeholder="请输入专题名称" />
+        <input
+          v-model="favorite_form.name"
+          class="nr"
+          type="text"
+          placeholder="请输入专题名称"
+        />
         <span class="fm">书签封面:</span>
         <div v-show="favorite_form.cover" class="sqcj_img">
           <img :src="favorite_form.cover" alt="" />
@@ -72,15 +77,20 @@
         <div class="sqcj">
           <label for="file">
             <img src="../../assets/img/cjqs.png" alt="" />
-            <input @change="chooseFile" ref="fileipt" style="display:none;" accept="image/*" type="file" id="file" />
+            <input
+              @change="chooseFile"
+              ref="fileipt"
+              style="display: none"
+              accept="image/*"
+              type="file"
+              id="file"
+            />
             <span class="scfm">上传封面</span>
           </label>
         </div>
-        
+
         <div class="edit_wrap_footer">
-          <el-button type="primary" @click="toSure"
-            >确 认</el-button
-          >
+          <el-button type="primary" @click="toSure">确 认</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
         </div>
       </div>
@@ -106,7 +116,7 @@ import UpFile from "@/components/upfile/UpFile.vue";
 @Component({
   components: {
     MyScroll,
-    UpFile
+    UpFile,
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
@@ -133,8 +143,26 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
       .el-dialog__headerbtn {
         .el-dialog__close {
           color: #c3c3c7;
+          background: url("../../assets/img/dialogclose.png") left no-repeat !important;
+          margin-right: 30px;
+          top: 30px;
         }
       }
+    }
+    .edit_wrap_footer {
+      .el-button {
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .delete {
+    .el-icon-delete {
+      margin-left: -10px;
+    }
+    span{
+      margin-left: 2px;
     }
   }
 }
