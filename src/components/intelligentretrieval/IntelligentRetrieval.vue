@@ -226,7 +226,7 @@
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"
                   >
-                  <li>
+                  <div>
                     <p
                   @click="chooseitem('character', '')"
                   class="all listqb"
@@ -235,7 +235,7 @@
                 >
                   全部
                 </p>
-                  </li>
+                  </div>
                     <li
                       @click="chooseitem('character', v)"
                       :class="{ rwli: ~filter.character.indexOf(v) }"

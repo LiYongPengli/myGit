@@ -145,7 +145,7 @@
                         color: white;
                         float: left;
                         width: 80px;
-                        text-align: center;
+                        padding-left: 30px;
                         height: 26px;
                         line-height: 26px;
                     }
@@ -199,6 +199,7 @@
                                     padding-right: 0 !important;
                                     float: left;
                                     cursor: pointer;
+                                    margin-left: 20px;
                                 }
                             }
                             li {
@@ -228,7 +229,7 @@
                     }
                     .operation {
                         float: right;
-                        width: 130px;
+                        width: 160px;
                         .morchoice,
                         .more {
                             cursor: pointer;
@@ -272,7 +273,7 @@
                         color: white;
                         float: left;
                         width: 80px;
-                        text-align: center;
+                        padding-left: 30px;
                     }
                     .list {
                         width: 756px;
