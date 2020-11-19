@@ -517,14 +517,17 @@ export default class IntelligentRetrievalCom extends Vue {
     public noMultiple(type: string): void {
         switch (type) {
             case 'country':
+                this.showCountry = false;
                 this.multipleCountry = false;
                 this.filter.country = this.cache_country.slice(0);
                 break;
             case 'media':
+                this.showMedia = false;
                 this.multipleMedia = false;
                 this.filter.media = this.cache_media.slice(0);
                 break;
             case 'character':
+                this.showCharacter = false;
                 this.multipleCharacter = false;
                 this.filter.character = this.cache_character.slice(0);
                 break;

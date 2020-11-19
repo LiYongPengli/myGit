@@ -8,6 +8,7 @@
     <div class="historycontent">
       <input
         v-model="searchText"
+        @blur="blur"
         @keypress="toSearch"
         type="text"
         placeholder="请输入关键词"
@@ -18,6 +19,13 @@
         src="../assets/img/sousuo.png"
         alt=""
       />
+      <div class="searchList" v-show="showSearchList">
+        <my-scroll>
+          <ul>
+            <li @click="clickList(v)" v-for="(v, i) in searchList" :key="i">{{ v }}</li>
+          </ul>
+        </my-scroll>
+      </div>
       <div class="history">
         <p>历史记录</p>
         <span @click="clearHistory" class="clearhistory">清除历史</span>
@@ -38,18 +46,63 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Vue } from "vue-property-decorator";
+import { baseApi } from "@/axios/axios";
+import { Component, Emit, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-@Component
+import MyScroll from "@/components/MyScroll.vue";
+@Component({
+  components: {
+    MyScroll,
+  },
+})
 export default class Search extends Vue {
   @State("user_message") user_message: any;
   @Mutation("setShowIntelligent") setShowIntelligent: any;
   public historyList: string[] = [];
+  public searchList: any[] = [];
+  public showSearchList:boolean = false;
+  public timer: any = null;
   //搜索内容
   public searchText: string = "";
   private created(): void {
     this.getHistory();
   }
+
+  public blur():void{
+    setTimeout(()=>{
+      this.showSearchList=false;
+    },200)
+  }
+
+  @Watch("searchText")
+  public listenSearch(newVal: string, oldVal: string): void {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(() => {
+      this.getSearchList(newVal);
+      this.showSearchList = true;
+    }, 300);
+  }
+
+  private getSearchList(val: string): void {
+    if (!val) {
+      return;
+    }
+    this.axios
+      .post(baseApi.api2 + "/v1/cmd/", {
+        cmd: "search_suggestion",
+        paras: { keyword: val },
+      })
+      .then((res) => {
+        console.log(res);
+        this.searchList = res.data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   //获取历史记录
   private getHistory(): void {
     let user_history = localStorage.getItem("user_history");
@@ -60,6 +113,13 @@ export default class Search extends Vue {
         ];
       }
     }
+  }
+
+  @Emit("tosearch")
+  public clickList(item:string):string{
+    this.searchText = item;
+    this.setHistory();
+    return this.searchText;
   }
   //搜索
   @Emit("tosearch")
@@ -210,6 +270,23 @@ export default class Search extends Vue {
       top: 15px;
       right: 20px;
     }
+    .searchList {
+      width: 900px;
+      height: 400px;
+      position: absolute;
+      left: 0;
+      top: 52px;
+      background: #353541;
+      color: white;
+      z-index: 10;
+      ul {
+        li {
+          border-bottom: 1px solid gray;
+          padding: 10px 0;
+          cursor: pointer;
+        }
+      }
+    }
 
     .history {
       position: relative;
@@ -217,6 +294,23 @@ export default class Search extends Vue {
       p {
         font-size: 20px;
         color: white;
+      }
+      ul {
+        //margin-top: 30px;
+        list-style: none;
+        li {
+          height: 40px;
+          line-height: 40px;
+          float: left;
+          margin-right: 35px;
+          span {
+            font-size: 16px;
+            color: white;
+            padding-right: 20px;
+            //background: url("../assets/img/cha.png") right center no-repeat;
+            cursor: pointer;
+          }
+        }
       }
     }
     .clearhistory {
@@ -226,23 +320,6 @@ export default class Search extends Vue {
       font-size: 14px;
       color: #bcc2d5;
       cursor: pointer;
-    }
-    ul {
-      //margin-top: 30px;
-      list-style: none;
-      li {
-        height: 40px;
-        line-height: 40px;
-        float: left;
-        margin-right: 35px;
-        span {
-          font-size: 16px;
-          color: white;
-          padding-right: 20px;
-          //background: url("../assets/img/cha.png") right center no-repeat;
-          cursor: pointer;
-        }
-      }
     }
   }
 }

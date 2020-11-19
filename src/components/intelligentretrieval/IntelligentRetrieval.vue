@@ -51,7 +51,7 @@
                 >
                   {{ filter.country.join("、") }}
                   <img
-                    @click="noMultiple('country')"
+                    @click="clearMultiple('country')"
                     style="margin-left: 50px; margin-right: 10px"
                     src="../../assets/img/close.png"
                     alt=""
@@ -139,7 +139,7 @@
                   >
                     {{ filter.media.join("、") }}
                     <img
-                      @click="noMultiple('media')"
+                      @click="clearMultiple('media')"
                       style="margin-left: 50px; margin-right: 10px"
                       src="../../assets/img/close.png"
                       alt=""
@@ -216,7 +216,7 @@
                   >
                     {{ filter.character.join("、") }}
                     <img
-                      @click="noMultiple('character')"
+                      @click="clearMultiple('character')"
                       style="margin-left: 50px; margin-right: 10px"
                       src="../../assets/img/close.png"
                       alt=""
