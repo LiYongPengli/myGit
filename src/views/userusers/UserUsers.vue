@@ -41,7 +41,7 @@
               <div class="td more">
                   <span v-if="user_message.role=='admin'&&v.role!='oper'" @click="setAdmin(v)">设为管理员 |</span> 
                 <span v-if="user_message.role=='admin'&&v.role=='oper'" @click="setAdmin(v)">取消管理员 |</span>
-                <span @click="toEditAccount(v)">管理账号</span>
+                <span @click="toEditAccount(v)"> 管理账号</span>
               </div>
             </div>
           </my-scroll>

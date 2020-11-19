@@ -154,6 +154,7 @@ export default class HeaderOne extends Vue {
       border: 0;
       box-sizing: border-box;
       color: white;
+      opacity: .5;
     }
     input:focus {
       outline: none;

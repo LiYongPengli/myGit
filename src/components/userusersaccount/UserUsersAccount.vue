@@ -87,7 +87,7 @@
           <input
             type="number"
             v-model="phone"
-            placeholder="请输入新的手机号码"
+            placeholder="请输入新手机号码"
           />
         </div>
         <div class="changePhone_foot">
