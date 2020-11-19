@@ -32,7 +32,7 @@
             <!-- 国家 -->
             <div class="countrymore country">
               <!-- 顶部字母筛选 -->
-              <ul v-show="showCountry" style="margin-left: 55px" class="zm">
+              <ul v-show="showCountry" style="margin-left: 80px" class="zm">
                 <li
                   :class="{ cur: v.choose }"
                   @click="toFilterMenu('country', v)"
@@ -62,7 +62,7 @@
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
                 >
-                  <li>
+                  <div>
                     <p
                       @click="chooseitem('country', '')"
                       v-show="!multipleCountry && filter.country.length < 2"
@@ -71,7 +71,7 @@
                     >
                       全部
                     </p>
-                  </li>
+                  </div>
                   <li
                     :class="{ countryli: ~filter.country.indexOf(v.name.en) }"
                     @click="chooseitem('country', v)"
@@ -119,7 +119,7 @@
             </div>
             <!-- 媒体 -->
             <div class="countrymore country">
-              <ul v-show="showMedia" style="margin-left: 55px" class="zm">
+              <ul v-show="showMedia" style="margin-left: 80px" class="zm">
                 <li
                   :class="{ cur: v.choose }"
                   class="listqb"
@@ -149,7 +149,7 @@
                     v-show="filter.media.length < 2 || multipleMedia"
                     :style="{ height: showMedia ? 'auto' : '30px' }"
                   >
-                    <li>
+                    <div>
                       <p
                         class="all"
                         v-show="!multipleMedia && filter.media.length < 2"
@@ -158,7 +158,7 @@
                       >
                         全部
                       </p>
-                    </li>
+                    </div>
                     <li
                       :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
                       @click="chooseitem('media', v)"

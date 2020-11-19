@@ -1,5 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import echarts from 'echarts'
+import { mixin } from 'vue/types/umd';
 @Component
 export default class FormFetchCom extends Vue {
 
@@ -98,6 +99,7 @@ export default class FormFetchCom extends Vue {
                         color: 'red'
                     }
                 },
+               
                 axisTick: {
                     show: false
 
@@ -117,6 +119,12 @@ export default class FormFetchCom extends Vue {
                 axisLine: {
                     show: false
                 },
+                splitLine:{show:  true,
+                    lineStyle:{
+                        color: ['#494959'],
+                        width: 1,
+                        type: 'solid'
+                   } }, //去除网格线
                 axisTick: {
                     show: false
 
@@ -133,7 +141,7 @@ export default class FormFetchCom extends Vue {
                 symbol: 'circle',     //设定为实心点
                 symbolSize: 10,   //设定实心点的大小
                 smooth: true,
-                data: [10000, 120000, 40000, 60000, 70000, 83000, 100000],
+                data: [90000, 10000, 30000, 70000, 25000, 83000, 100000],
                 color: "#19d1ff"
             },
             {
@@ -142,7 +150,7 @@ export default class FormFetchCom extends Vue {
                 symbol: 'circle',     //设定为实心点
                 symbolSize: 10,   //设定实心点的大小
                 smooth: true,
-                data: [300000, 18200, 43400, 79100, 39000, 30000, 90000],
+                data: [30000, 18200, 43400, 79100, 39000, 30000, 90000],
                 color: '#f4516c'
             }]
 
