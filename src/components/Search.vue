@@ -188,6 +188,22 @@ export default class Search extends Vue {
       // background: url("../assets/img/sousuo.png") 95% center no-repeat;
       background-color: #353541;
     }
+    input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: white;
+    }
+    input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: white;
+    }
+    input::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: white;
+    }
+    input:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: white;
+    }
     img.sousuo {
       cursor: pointer;
       position: absolute;

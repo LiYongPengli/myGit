@@ -141,7 +141,31 @@ export default class TimeSolt extends Vue {
     color: white;
     cursor: pointer;
   }
+  input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: white;
+    }
+    input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: white;
+    }
+    input::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: white;
+    }
+    input:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: white;
+    }
   .timesearch {
+    .el-date-editor{
+      .el-input__prefix{
+        .el-input__icon{
+          color: white !important;
+        }
+      }
+    }
+    
     .zhi {
       display: inline-block;
       width: 16px;

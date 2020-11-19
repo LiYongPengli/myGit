@@ -19,10 +19,18 @@
         </ul>
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
-            <img v-show="!user_message.wechat_info.head_img" src="../assets/img/tx.png" alt="" />
-            <img v-if="user_message.wechat_info.head_img" :src="user_message.wechat_info.head_img" alt="">
+            <img
+              v-show="!user_message.wechat_info.head_img"
+              src="../assets/img/tx.png"
+              alt=""
+            />
+            <img
+              v-if="user_message.wechat_info.head_img"
+              :src="user_message.wechat_info.head_img"
+              alt=""
+            />
           </div>
-          <span>{{user_message.nickname}}</span>
+          <span>{{ user_message.nickname }}</span>
           <i class="el-icon-arrow-down"></i>
         </div>
       </el-popover>
@@ -35,9 +43,21 @@
       />
     </div>
     <div class="language">
-      <span @click="setLanguage('crawler')" :class="{ 'language_active': language == 'crawler' }">原文</span>
-      <span @click="setLanguage('zh-CN')" :class="{ 'language_active': language == 'zh-CN' }">中文</span>
-      <span @click="setLanguage('en')" :class="{ 'language_active': language == 'en' }">英文</span>
+      <span
+        @click="setLanguage('crawler')"
+        :class="{ language_active: language == 'crawler' }"
+        >原文</span
+      >
+      <span
+        @click="setLanguage('zh-CN')"
+        :class="{ language_active: language == 'zh-CN' }"
+        >中文</span
+      >
+      <span
+        @click="setLanguage('en')"
+        :class="{ language_active: language == 'en' }"
+        >英文</span
+      >
     </div>
   </div>
 </template>
@@ -45,7 +65,7 @@
 <script lang="ts">
 import { baseApi } from "@/axios/axios";
 import { Component, Vue } from "vue-property-decorator";
-import { Mutation, State } from 'vuex-class';
+import { Mutation, State } from "vuex-class";
 @Component
 export default class HeaderTwo extends Vue {
   //当前系统语言
@@ -56,7 +76,6 @@ export default class HeaderTwo extends Vue {
   @Mutation("setLanguage") setLanguage!: any;
   //登出
   private logout(): void {
-    
     this.axios
       .post(baseApi.api1 + "/v1/user/login/logout")
       .then((res) => {
@@ -115,7 +134,7 @@ export default class HeaderTwo extends Vue {
         border-radius: 5px;
         overflow: hidden;
         margin-left: 31px;
-        img{
+        img {
           display: block;
           width: 100%;
         }
@@ -144,6 +163,22 @@ export default class HeaderTwo extends Vue {
       box-sizing: border-box;
       padding-left: 75px;
       color: white;
+    }
+    input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #77777d;
+    }
+    input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #77777d;
+    }
+    input::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #77777d;
+    }
+    input:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #77777d;
     }
     img {
       position: absolute;
