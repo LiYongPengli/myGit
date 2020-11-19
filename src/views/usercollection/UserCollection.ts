@@ -5,6 +5,7 @@ import qs from 'qs';
 export default class UserCollectionCom extends Vue{
     public  dialogVisible=false;
     public dialogTitle:string = "编辑书签";
+    public upLoadPhoto:boolean = false;
     private editItem:any = null;
     public show = true;
     public listshow=true;
@@ -38,6 +39,17 @@ export default class UserCollectionCom extends Vue{
         }).catch(err=>{
             console.log(err);
         })
+    }
+    //选择图片返回结果
+    public upRes(data:any):void{
+        if(data){
+            this.favorite_form.coverFile = data;
+            this.favorite_form.cover = URL.createObjectURL(data);
+        }else{
+            this.favorite_form.coverFile = "";
+            this.favorite_form.cover = "";
+        }
+        this.upLoadPhoto = false;
     }
 
     //创建收藏夹
@@ -123,7 +135,8 @@ export default class UserCollectionCom extends Vue{
         let fileList = file.files as FileList;
         if(fileList[0]){
             this.favorite_form.coverFile = fileList[0];
-            this.favorite_form.cover = URL.createObjectURL(fileList[0]);
+            this.upLoadPhoto = true;
+            file.value = "";
         }
     }
 

@@ -7,10 +7,7 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'swiper/swiper-bundle.min.css';
- 
 
-
-//Vue.use(Vuetify);
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios);
 Vue.config.productionTip = false;

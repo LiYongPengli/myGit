@@ -85,6 +85,16 @@
         </div>
       </div>
     </el-dialog>
+    <!-- 上传封面 -->
+    <el-dialog
+      :visible.sync="upLoadPhoto"
+      :close-on-click-modal="false"
+      title="封面上传"
+      width="800px"
+      top="25vh"
+    >
+      <up-file v-if="upLoadPhoto" @ext="upRes" :img="favorite_form.coverFile" />
+    </el-dialog>
   </div>
 </template>
 
@@ -92,9 +102,11 @@
 import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
+import UpFile from "@/components/upfile/UpFile.vue";
 @Component({
   components: {
-    MyScroll
+    MyScroll,
+    UpFile
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
@@ -107,7 +119,7 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
 .usercollection {
   .el-dialog {
     background: #3a3a48;
-    height: 475px;
+    min-height: 475px;
     .el-dialog__header {
       border-bottom: 1px solid #4d4d5d;
       padding: 0;

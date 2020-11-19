@@ -157,22 +157,37 @@
             </li>
           </ul>
         </my-scroll>
-        <span @click="createNewCollection=true" class="addnew">创建新书签</span>
+        <span @click="createNewCollection = true" class="addnew"
+          >创建新书签</span
+        >
         <div v-show="createNewCollection" class="addnewcontent">
           <div>
             <span class="name"> 书签名称: </span>
-            <input type="text" placeholder="请输入新书签名称" />
+            <input v-model="collection_name" type="text" placeholder="请输入新书签名称" />
           </div>
           <div>
             <span class="sqfm"> 书签封面: </span>
-            <span style="cursor: pointer"> 点击上传封面 </span>
+            <label for="upFile">
+              <input style="display:none;" id="upFile" type="file" ref="upFile" @change="upFile" />
+              <span style="cursor: pointer"> 点击上传封面 </span>
+            </label>
           </div>
         </div>
         <div v-show="createNewCollection" class="caozuo">
-          <span>创建并收藏</span>
-          <span>取消创建</span>
+          <span @click="createCollection">创建并收藏</span>
+          <span @click="extCreateCollection">取消创建</span>
         </div>
       </div>
+    </el-dialog>
+    <!-- 上传封面 -->
+    <el-dialog
+      :visible.sync="upLoadPhoto"
+      :close-on-click-modal="false"
+      title="封面上传"
+      width="800px"
+      top="25vh"
+    >
+      <up-file v-if="upLoadPhoto" @ext="upRes" :img="upimg" />
     </el-dialog>
   </div>
 </template>
@@ -183,11 +198,13 @@ import NewsInfoCom from "./NewsInfo";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyFooter from "@/components/FooterTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import UpFile from '@/components/upfile/UpFile.vue';
 @Component({
   components: {
     HeaderTwo,
     MyFooter,
     MyScroll,
+    UpFile,
   },
 })
 export default class NewsInfo extends mixins(NewsInfoCom) {}
@@ -212,7 +229,6 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
     color: white;
   }
   .el-icon-close:hover {
-   
     color: white;
   }
   .el-dialog__title {
