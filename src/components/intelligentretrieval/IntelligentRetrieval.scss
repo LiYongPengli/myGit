@@ -21,6 +21,28 @@
                     right: 50px;
                     cursor: pointer;
                 }
+                .searchList {
+                    margin: 0 auto;
+                    width: 860px;
+                    height: 400px;
+                    position: absolute;
+                    left: 0;
+                    top: 52px;
+                    background: #353541;
+                    color: white;
+                    z-index: 10;
+                    margin-top: 36px;
+                    display: block;
+                    margin-left: 459.984px;
+                    ul {
+                        li {
+                            border-bottom: 1px solid gray;
+                            padding: 10px 0;
+                            cursor: pointer;
+                            text-align: left;
+                        }
+                    }
+                }
                 .gbjs {
                     float: right;
                     height: 40px;
