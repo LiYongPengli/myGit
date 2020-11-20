@@ -38,6 +38,7 @@
     <div class="search">
       <img src="../assets/img/search.png" alt="" />
       <input
+      @click="setShowIntelligent(true)"
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
       />
@@ -59,6 +60,9 @@
         >英文</span
       >
     </div>
+    <transition name="el-zoom-in-top">
+      <intelligent-retrieval v-if="show_intelligent" />
+    </transition>
   </div>
 </template>
 
@@ -66,7 +70,12 @@
 import { baseApi } from "@/axios/axios";
 import { Component, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-@Component
+import IntelligentRetrieval from '@/components/intelligentretrieval/IntelligentRetrieval.vue'
+@Component({
+  components:{
+    IntelligentRetrieval
+  }
+})
 export default class HeaderTwo extends Vue {
   //当前系统语言
   @State("language") language!: string;
@@ -74,6 +83,9 @@ export default class HeaderTwo extends Vue {
   @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
+  @State('show_intelligent') show_intelligent!:boolean;
+
+  @Mutation('setShowIntelligent') setShowIntelligent:any;
   //登出
   private logout(): void {
     this.axios
