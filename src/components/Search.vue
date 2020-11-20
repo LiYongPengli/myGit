@@ -278,12 +278,13 @@ export default class Search extends Vue {
       top: 52px;
       background: #353541;
       color: white;
-      z-index: 10;
+       z-index: 10;
       ul {
         li {
           border-bottom: 1px solid gray;
           padding: 10px 0;
           cursor: pointer;
+         
         }
       }
     }

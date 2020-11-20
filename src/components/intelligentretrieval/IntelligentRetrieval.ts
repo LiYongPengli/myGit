@@ -1,5 +1,5 @@
 import { baseApi } from '@/axios/axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Emit,Component, Vue,Watch } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 @Component
 export default class IntelligentRetrievalCom extends Vue {
@@ -23,6 +23,10 @@ export default class IntelligentRetrievalCom extends Vue {
     public dayFilter: boolean = false;
     public weekFilter: boolean = false;
     public monthFilter: boolean = false;
+
+    public searchList: any[] = [];
+    public showSearchList: boolean = false;
+    public timer: any = null;
 
     //过滤菜单
     public countryList: any[] = [];
@@ -67,9 +71,9 @@ export default class IntelligentRetrievalCom extends Vue {
         { name: 'Z', choose: false },
     ];
 
-    public cache_country:string[] = [];
-    public cache_media:string[] = [];
-    public cache_character:string[] = [];
+    public cache_country: string[] = [];
+    public cache_media: string[] = [];
+    public cache_character: string[] = [];
     public filter = {
         search_after: [] as any[],
         size: 10 as number,
@@ -84,6 +88,46 @@ export default class IntelligentRetrievalCom extends Vue {
 
     public created(): void {
 
+    }
+    public blur(): void {
+        setTimeout(() => {
+            this.showSearchList = false;
+        }, 200)
+    }
+
+    @Watch("searchText")
+    public listenSearch(newVal: string, oldVal: string): void {
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
+        this.timer = setTimeout(() => {
+            this.getSearchList(newVal);
+            this.showSearchList = true;
+        }, 300);
+    }
+
+    private getSearchList(val: string): void {
+        if (!val) {
+            return;
+        }
+        this.axios
+            .post(baseApi.api2 + "/v1/cmd/", {
+                cmd: "search_suggestion",
+                paras: { keyword: val },
+            })
+            .then((res) => {
+                console.log(res);
+                this.searchList = res.data.data;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    @Emit("tosearch")
+    public clickList(item: string): string {
+        this.searchText = item;
+        this.setHistory();
+        return this.searchText;
     }
 
     public getSearchText(searchText: string): void {
@@ -127,19 +171,19 @@ export default class IntelligentRetrievalCom extends Vue {
                 filter[i] = this.filter[i];
             }
         }
-        if(filter.country){
+        if (filter.country) {
             this.cache_country = filter.country.slice(0);
-        }else{
+        } else {
             this.cache_country = [];
         }
-        if(filter.media){
+        if (filter.media) {
             this.cache_media = filter.media.slice(0);
-        }else{
+        } else {
             this.cache_media = [];
         }
-        if(filter.character){
+        if (filter.character) {
             this.cache_character = filter.character.slice(0);
-        }else{
+        } else {
             this.cache_character = [];
         }
         filter.keywords = this.searchText.split(" ");
@@ -537,7 +581,7 @@ export default class IntelligentRetrievalCom extends Vue {
         // this.toFilter();
     }
     //清空多选
-    public clearMultiple(type:string):void{
+    public clearMultiple(type: string): void {
         switch (type) {
             case 'country':
                 this.multipleCountry = false;

@@ -8,12 +8,26 @@
             <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
             <input
               @keypress="toSearch"
+              @blur="blur"
               v-model="searchText"
               type="text"
               placeholder="美国大选"
             />
             <!-- <img class="sousuo"  src="../../assets/img/sousuo.png" alt=""> -->
             <img class="sousuo" src="../../assets/img/sousuo.png" alt="" />
+            <div class="searchList" v-show="showSearchList">
+              <my-scroll>
+                <ul>
+                  <li
+                    @click="clickList(v)"
+                    v-for="(v, i) in searchList"
+                    :key="i"
+                  >
+                    {{ v }}
+                  </li>
+                </ul>
+              </my-scroll>
+            </div>
           </div>
         </header>
         <div class="content" v-if="searchData">
@@ -81,7 +95,7 @@
                     <el-tooltip
                       class="item itmemt_ch"
                       effect="dark"
-                      :content="v.name.en+'('+v.name['zh-CN']+')'"
+                      :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
                       placement="top"
                     >
                       <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
@@ -165,14 +179,14 @@
                       v-for="(v, i) in mediaList"
                       :key="i"
                     >
-                     <el-tooltip
-                      class="item itmemt_ch"
-                      effect="dark"
-                     :content="v.name.en+'('+v.name['zh-CN']+')'"
-                      placement="right-start"
-                    >
-                      <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
-                        </el-tooltip>
+                      <el-tooltip
+                        class="item itmemt_ch"
+                        effect="dark"
+                        :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
+                        placement="right-start"
+                      >
+                        <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                      </el-tooltip>
                     </li>
                   </ul>
                 </div>
@@ -208,7 +222,6 @@
             <div class="country">
               <span>人物：</span>
               <div class="list">
-                
                 <div class="other">
                   <div
                     v-show="filter.character.length > 1 && !multipleCharacter"
@@ -226,30 +239,32 @@
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"
                   >
-                  <div>
-                    <p
-                  @click="chooseitem('character', '')"
-                  class="all listqb"
-                  v-show="!multipleCharacter && filter.character.length < 2"
-                  :class="{ cur: !filter.character.length }"
-                >
-                  全部
-                </p>
-                  </div>
+                    <div>
+                      <p
+                        @click="chooseitem('character', '')"
+                        class="all listqb"
+                        v-show="
+                          !multipleCharacter && filter.character.length < 2
+                        "
+                        :class="{ cur: !filter.character.length }"
+                      >
+                        全部
+                      </p>
+                    </div>
                     <li
                       @click="chooseitem('character', v)"
                       :class="{ rwli: ~filter.character.indexOf(v) }"
                       v-for="(v, i) in characterList"
                       :key="i"
                     >
-                       <el-tooltip
-                      class="item itmemt_ch"
-                      effect="dark"
-                      :content="v"
-                      placement="right-start"
-                    >
-                      <p>{{ v }}</p>
-                                </el-tooltip>
+                      <el-tooltip
+                        class="item itmemt_ch"
+                        effect="dark"
+                        :content="v"
+                        placement="right-start"
+                      >
+                        <p>{{ v }}</p>
+                      </el-tooltip>
                     </li>
                   </ul>
                 </div>
@@ -383,10 +398,13 @@
 
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
+import { baseApi } from "@/axios/axios";
+
 import IntelligentRetrievalCom from "./IntelligentRetrieval";
 import SearchCom from "@/components/Search.vue";
 import TimeSlot from "@/components/TimeSlot.vue";
 import MyScroll from "@/components/MyScroll.vue";
+
 @Component({
   components: {
     SearchCom,
