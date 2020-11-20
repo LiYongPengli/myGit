@@ -150,6 +150,11 @@ export default class NewsInfoCom extends Vue {
 
     //附件下载
     public todownLoad(item: any): void {
+        let a = document.createElement('a');
+        a.href = item.url;
+        a.download = 'w3logo';
+        a.click();
+        a.remove();
         window.open(item.url)
     }
 

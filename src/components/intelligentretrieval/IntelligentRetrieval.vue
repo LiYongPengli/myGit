@@ -8,6 +8,7 @@
             <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
             <input
               @keypress="toSearch"
+              @input="listenSearch"
               @blur="blur"
               v-model="searchText"
               type="text"
@@ -60,12 +61,13 @@
               <div class="list">
                 <!-- <el-tooltip class="item" effect="dark"  placement="top"> -->
                 <div
+                @click="multiple('country')"
                   v-show="filter.country.length > 1 && !multipleCountry"
                   class="country_search_result_list"
                 >
                   {{ filter.country.join("、") }}
                   <img
-                    @click="clearMultiple('country')"
+                    @click.stop="clearMultiple('country')"
                     style="margin-left: 50px; margin-right: 10px"
                     src="../../assets/img/close.png"
                     alt=""
@@ -76,10 +78,10 @@
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
                 >
-                  <div>
+                  <div v-show="!multipleCountry && filter.country.length < 2">
                     <p
                       @click="chooseitem('country', '')"
-                      v-show="!multipleCountry && filter.country.length < 2"
+                      
                       class="all listqb"
                       :class="{ cur: !filter.country.length }"
                     >
@@ -119,7 +121,7 @@
                         ? 'visible'
                         : 'hidden',
                   }"
-                  @click="showCountry = !showCountry"
+                  @click="showMore('country')"
                   class="more"
                 >
                   {{ "更多" + (showCountry ? "-" : "+") }}
@@ -148,12 +150,13 @@
               <div class="list">
                 <div class="other">
                   <div
+                  @click="multiple('media')"
                     v-show="filter.media.length > 1 && !multipleMedia"
                     class="country_search_result_list"
                   >
                     {{ filter.media.join("、") }}
                     <img
-                      @click="clearMultiple('media')"
+                      @click.stop="clearMultiple('media')"
                       style="margin-left: 50px; margin-right: 10px"
                       src="../../assets/img/close.png"
                       alt=""
@@ -163,10 +166,10 @@
                     v-show="filter.media.length < 2 || multipleMedia"
                     :style="{ height: showMedia ? 'auto' : '30px' }"
                   >
-                    <div>
+                    <div v-show="!multipleMedia && filter.media.length < 2">
                       <p
                         class="all"
-                        v-show="!multipleMedia && filter.media.length < 2"
+                        
                         :class="{ cur: !filter.media.length }"
                         @click="chooseitem('media', '')"
                       >
@@ -203,7 +206,7 @@
                         ? 'visible'
                         : 'hidden',
                   }"
-                  @click="showMedia = !showMedia"
+                  @click="showMore('media')"
                   class="more"
                 >
                   {{ "更多" + (showMedia ? "-" : "+") }}
@@ -224,12 +227,13 @@
               <div class="list">
                 <div class="other">
                   <div
+                  @click="multiple('character')"
                     v-show="filter.character.length > 1 && !multipleCharacter"
                     class="country_search_result_list"
                   >
                     {{ filter.character.join("、") }}
                     <img
-                      @click="clearMultiple('character')"
+                      @click.stop="clearMultiple('character')"
                       style="margin-left: 50px; margin-right: 10px"
                       src="../../assets/img/close.png"
                       alt=""
@@ -239,13 +243,13 @@
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"
                   >
-                    <div>
+                    <div v-show="
+                          !multipleCharacter && filter.character.length < 2
+                        ">
                       <p
                         @click="chooseitem('character', '')"
                         class="all listqb"
-                        v-show="
-                          !multipleCharacter && filter.character.length < 2
-                        "
+                        
                         :class="{ cur: !filter.character.length }"
                       >
                         全部
@@ -281,7 +285,7 @@
                         ? 'visible'
                         : 'hidden',
                   }"
-                  @click="showCharacter = !showCharacter"
+                  @click="showMore('character')"
                   class="more"
                 >
                   {{ "更多" + (showCharacter ? "-" : "+") }}

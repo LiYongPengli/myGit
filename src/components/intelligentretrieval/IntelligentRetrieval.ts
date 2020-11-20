@@ -1,5 +1,5 @@
 import { baseApi } from '@/axios/axios';
-import { Emit,Component, Vue,Watch } from 'vue-property-decorator'
+import { Emit, Component, Vue, Watch } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 @Component
 export default class IntelligentRetrievalCom extends Vue {
@@ -95,13 +95,12 @@ export default class IntelligentRetrievalCom extends Vue {
         }, 200)
     }
 
-    @Watch("searchText")
-    public listenSearch(newVal: string, oldVal: string): void {
+    public listenSearch(): void {
         if (this.timer) {
             clearTimeout(this.timer);
         }
         this.timer = setTimeout(() => {
-            this.getSearchList(newVal);
+            this.getSearchList(this.searchText);
             this.showSearchList = true;
         }, 300);
     }
@@ -536,6 +535,14 @@ export default class IntelligentRetrievalCom extends Vue {
         filter.choose = !filter.choose;
     }
 
+    private clearFilterMenu(): void {
+        for (let i = 0; i < this.filterMenu.length; i++) {
+            this.filterMenu[i].choose = false;
+        }
+        this.countryList = this.searchData.filters.country;
+        this.mediaList = this.searchData.filters.media;
+    }
+
     /**
      * 多选
      * @param type 类型
@@ -545,37 +552,72 @@ export default class IntelligentRetrievalCom extends Vue {
             case 'country':
                 this.showCountry = true;
                 this.multipleCountry = true;
+                this.showMedia = false;
+                this.multipleMedia = false;
+                this.showCharacter = false;
+                this.multipleCharacter = false;
                 break;
             case 'media':
                 this.showMedia = true;
                 this.multipleMedia = true;
+                this.showCountry = false;
+                this.multipleCountry = false;
+                this.showCharacter = false;
+                this.multipleCharacter = false;
                 break;
             case 'character':
                 this.showCharacter = true;
                 this.multipleCharacter = true;
+                this.showMedia = false;
+                this.multipleMedia = false;
+                this.showCountry = false;
+                this.multipleCountry = false;
                 break;
         }
+        this.clearFilterMenu();
+    }
+    //更多
+    public showMore(type: string): void {
+        switch (type) {
+            case 'country':
+                this.showCountry = !this.showCountry;
+                this.showMedia = false;
+                this.showCharacter = false;
+                break;
+            case 'media':
+                this.showMedia = !this.showMedia;
+                this.showCountry = false;
+                this.showCharacter = false;
+                break;
+            case 'character':
+                this.showCharacter = !this.showCharacter;
+                this.showCountry = false;
+                this.showMedia = false;
+                break;
+        }
+        this.clearFilterMenu();
     }
 
     //取消多选
     public noMultiple(type: string): void {
+        this.showCountry = false;
+        this.multipleCountry = false;
+        this.showMedia = false;
+        this.multipleMedia = false;
+        this.showCharacter = false;
+        this.multipleCharacter = false;
         switch (type) {
             case 'country':
-                this.showCountry = false;
-                this.multipleCountry = false;
                 this.filter.country = this.cache_country.slice(0);
                 break;
             case 'media':
-                this.showMedia = false;
-                this.multipleMedia = false;
                 this.filter.media = this.cache_media.slice(0);
                 break;
             case 'character':
-                this.showCharacter = false;
-                this.multipleCharacter = false;
                 this.filter.character = this.cache_character.slice(0);
                 break;
         }
+        this.clearFilterMenu();
         // this.filter.search_after = [];
         // this.finished = false;
         // this.toFilter();
@@ -601,27 +643,21 @@ export default class IntelligentRetrievalCom extends Vue {
         }
         this.filter.search_after = [];
         this.finished = false;
+        this.clearFilterMenu();
         this.toFilter();
     }
 
     //多选确定
     public multipleSure(type: string): void {
-        switch (type) {
-            case 'country':
-                this.showCountry = false;
-                this.multipleCountry = false;
-                break;
-            case 'media':
-                this.showMedia = false;
-                this.multipleMedia = false;
-                break;
-            case 'character':
-                this.showCharacter = false;
-                this.multipleCharacter = false;
-                break;
-        }
+        this.showCountry = false;
+        this.multipleCountry = false;
+        this.showMedia = false;
+        this.multipleMedia = false;
+        this.showCharacter = false;
+        this.multipleCharacter = false;
         this.filter.search_after = [];
         this.finished = false;
         this.toFilter();
+        this.clearFilterMenu();
     }
 }
