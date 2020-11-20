@@ -55,6 +55,7 @@
       </div>
 
       <div class="site">
+        <div>近七天未采集数据的源站点</div>
         <div class="list">
           <el-table
             :data="tableData"
