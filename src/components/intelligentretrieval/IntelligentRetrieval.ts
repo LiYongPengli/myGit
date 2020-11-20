@@ -506,8 +506,9 @@ export default class IntelligentRetrievalCom extends Vue {
             let arr: any[] = [];
             switch (type) {
                 case 'country':
+                    console.log(this.searchData.filters.country)
                     for (let i of this.searchData.filters.country) {
-                        if (i.letter == filter.name) {
+                        if (~i.letter.indexOf(filter.name)) {
                             arr.push(i)
                         }
                     }
@@ -515,7 +516,7 @@ export default class IntelligentRetrievalCom extends Vue {
                     break;
                 case 'media':
                     for (let i of this.searchData.filters.media) {
-                        if (i.letter == filter.name) {
+                        if (~i.letter.indexOf(filter.name)) {
                             arr.push(i)
                         }
                     }
