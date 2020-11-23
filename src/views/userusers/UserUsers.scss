@@ -73,11 +73,26 @@
                         top: 18px;
                         margin-left: 10px;
                     }
+                    img.upact {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 18px;
+                        margin-left: 10px;
+                        transform: rotateZ(180deg);
+                    }
                     img.down {
                         cursor: pointer;
                         position: absolute;
                         bottom: 18px;
                         margin-left: 10px;
+                        transform: rotateZ(180deg);
+                    }
+                    img.downact {
+                        cursor: pointer;
+                        position: absolute;
+                        bottom: 18px;
+                        margin-left: 10px;
+                        
                     }
                 }
                 .th:first-of-type {
