@@ -78,7 +78,7 @@ export default class IntelligentRetrievalCom extends Vue {
         search_after: [] as any[],
         size: 10 as number,
         country: [] as string[],
-        language: this.language,
+        language: 'crawler',
         sort_type: 'r',
         media: [] as string[],
         character: [] as string[],
@@ -141,7 +141,7 @@ export default class IntelligentRetrievalCom extends Vue {
         this.axios
             .post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'search_news',
-                paras: { language: this.language, keywords: this.searchText.split(" "), size: this.filter.size },
+                paras: { language: 'crawler', keywords: this.searchText.split(" "), size: this.filter.size },
             })
             .then((res) => {
                 console.log(res.data);
@@ -300,10 +300,7 @@ export default class IntelligentRetrievalCom extends Vue {
      */
     public setLanguage(language: string): void {
         this.language = language;
-        this.filter.language = language;
-        this.filter.search_after = [];
-        this.finished = false;
-        this.toFilter();
+        
     }
 
     /**
@@ -448,7 +445,7 @@ export default class IntelligentRetrievalCom extends Vue {
             search_after: [],
             size: 10,
             country: [],
-            language: this.language,
+            language: 'crawler',
             sort_type: 'r',
             media: [],
             character: [],
