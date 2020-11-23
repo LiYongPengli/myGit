@@ -1,13 +1,15 @@
 <template>
   <div class="newsinfo">
     <header-two />
-    <div class="wrap">
+    <div class="wrap" v-if="newsInfo">
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
             <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a>
           </div>
-          <p class="title">{{ newsInfo.title }}</p>
+          <p v-show="language=='crawler'" class="title">{{ newsInfo.title.crawler }}</p>
+          <p v-show="language=='en'" class="title">{{ newsInfo.title.en }}</p>
+          <p v-show="language=='zh-CN'" class="title">{{ newsInfo.title['zh-CN'] }}</p>
           <div class="control_wrap">
             <div class="left">
               <span
@@ -81,7 +83,7 @@
               <div class="vvts">
                 <my-scroll>
                   <p
-                    v-for="(v, i) in getYouTubeText(newsInfo.html.content)"
+                    v-for="(v, i) in getYouTubeText(newsInfo.html[language].content)"
                     :key="i"
                   >
                     {{ v.innerHTML }}
