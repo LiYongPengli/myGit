@@ -45,7 +45,9 @@
                 <img :src="v.thumb" alt="" />
               </div>
               <div class="text">
-                <p @click="toNewsInfo(v)" class="title">{{ v.title }}</p>
+                <p v-show="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
+                <p v-show="language=='en'" @click="toNewsInfo(v)" class="title">{{ v.title.en }}</p>
+                <p v-show="language=='zh-CN'" @click="toNewsInfo(v)" class="title">{{ v.title['zh-CN'] }}</p>
                 <span class="mt">媒体: {{ v.media_name }} </span>
                 <span class="time">时间: {{ init_time(v.time) }}</span>
                 <span class="ll">浏览次数: {{ v.pv }}人</span>

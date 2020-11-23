@@ -28,10 +28,9 @@
                   </span>
                 </div>
                 <a @click="toNewsInfo(v)">
-                  <p>
-                    {{ v.news_title }}
-                    <!-- 美国将中国旅行警告从“请勿前往”下调为“审慎考虑前往” -->
-                  </p>
+                  <p v-show="language=='crawler'">{{ v.news_title.crawler }}</p>
+                  <p v-show="language=='en'">{{ v.news_title.en }}</p>
+                  <p v-show="language=='zh-CN'">{{ v.news_title['zh-CN'] }}</p>
                 </a>
                 </div>
               </div>

@@ -41,13 +41,6 @@ export default class RecommendCom extends Vue {
     @Mutation('setTopicShow') setTopicShow!: any;
     @Mutation('setSureTop') setSureTop!: any;
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
-
-    @Watch('language')
-    public language_change(): void {
-        this.start = 1;
-        this.finished = false;
-        this.get_recommend();
-    }
     /* @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
         if(newVal&&!this.finished){
@@ -129,11 +122,11 @@ export default class RecommendCom extends Vue {
         let paras: any = {};
         switch (this.active_recommend) {
             case 0:
-                paras = { language: this.language, size: 10 };
+                paras = { size: 10 };
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { name: this.active_recommend_name, language: this.language, size: 10 };
+                paras = { name: this.active_recommend_name, size: 10 };
                 break;
         }
         this.axios.post(baseApi.api2 + '/v1/cmd/', {

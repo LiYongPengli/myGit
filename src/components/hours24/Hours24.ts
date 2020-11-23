@@ -19,11 +19,6 @@ export default class Hours24Com extends Vue {
     @State('language') language!: string;
     @State('mainPageScrollTop') mainPageScrollTop!: number;
 
-    @Watch('language')
-    public language_change(): void {
-        this.get24Hour();
-    }
-
     @Watch('topic_show')
     public topic_show_change(): void {
         this.eshour = !this.topic_show;
@@ -42,9 +37,10 @@ export default class Hours24Com extends Vue {
     private get24Hour(): void {
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
             cmd: 'hours24',
-            paras: { language: this.language, size: 20 }
+            paras: { size: 20 }
         }).then(res => {
             this.hours_24 = res.data.data;
+            console.log(this.hours_24,"sss")
             setTimeout(() => {
                 this.init_24HourCom();
             }, 200)
