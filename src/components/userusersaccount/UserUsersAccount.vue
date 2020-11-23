@@ -41,7 +41,7 @@
         <p>重置密码</p>
         <p>随机生成8位密码，将通过用户在本平台的手机号进行短信告知</p>
         <el-button
-          @click="resetPassword"
+          @click="showWarinig=true"
           type="primary"
           style="margin-top: 20px; width: 150px"
           >重置密码</el-button
@@ -73,6 +73,10 @@
         </div>
       </div>
     </el-dialog>
+    <!-- 警告框 -->
+    <transition name="el-fade-in-linear">
+      <warning @ext="ext" @sure="sure" v-if="showWarinig" title="温馨提示" text="确认是否进行此操作" top="41vh" />
+    </transition>
     <!-- 更换手机号 -->
     <el-dialog
       :visible.sync="changePhone"
@@ -128,7 +132,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserUsersAccountCom from "./UserUsersAccount";
-@Component
+import Warning from "@/components/Warning.vue";
+@Component({
+  components:{
+    Warning
+  }
+})
 export default class UserUsersAccount extends mixins(UserUsersAccountCom) {}
 </script>
 

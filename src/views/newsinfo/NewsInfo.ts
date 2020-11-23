@@ -26,11 +26,6 @@ export default class NewsInfoCom extends Vue {
         this.getData();
         this.getCollection();
     }
-    @Watch('language')
-    public listenLanguage(newVal: string, oldVal: string): void {
-        this.getData();
-
-    }
 
     private getCollection(): void {
         this.axios.get(baseApi.api2 + '/v1/user/favorite/').then(res => {
@@ -69,7 +64,7 @@ export default class NewsInfoCom extends Vue {
     //获取新闻内容
     public getNewsContent(): string {
         let str = "";
-        for (let i of this.newsInfo.html) {
+        for (let i of this.newsInfo.html[this.language]) {
             if (i.content) {
                 str += `<${i.tag}>${i.content}</${i.tag}>`
             }

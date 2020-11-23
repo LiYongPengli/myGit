@@ -24,8 +24,11 @@
           <div class="th">手机号</div>
           <div class="th">微信昵称</div>
           <div class="th zcsj">注册时间
-                <img class="up" src="../../assets/img/up.png" alt="" />
-                <img class="down" src="../../assets/img/down.png" alt="" />
+                <img v-show="sortType=='up'" class="up" src="../../assets/img/up.png" alt="" />
+                <img v-show="sortType!='up'" @click="sortType='up'" class="upact" src="../../assets/img/down.png" alt="" />
+                
+                <img v-show="sortType!='down'" @click="sortType='down'" class="downact" src="../../assets/img/down.png" alt="" />
+                <img v-show="sortType=='down'" class="down" src="../../assets/img/up.png" alt="" />
                 </div>
           <div class="th">操作</div>
         </div>

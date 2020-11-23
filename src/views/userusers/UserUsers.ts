@@ -1,5 +1,5 @@
 import { baseApi } from '@/axios/axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
 export default class UserUsersCom extends Vue {
@@ -7,6 +7,7 @@ export default class UserUsersCom extends Vue {
     public editAccount: boolean = false;
     public userList:any[] = [];
     public eidtUser:any = "";
+    public sortType:string = "up"
     public created():void{
         if(this.user_message.role=='user'){
             this.$message.warning('用户权限不足');
@@ -14,6 +15,18 @@ export default class UserUsersCom extends Vue {
             return;
         }
         this.getUserList();
+    }
+    @Watch('sortType')
+    public sortList(newVal:string,oldVal:string):void{
+        if(newVal=='up'){
+            this.userList.sort((a,b)=>{
+                return new Date(a.registration_date).getTime()-new Date(b.registration_date).getTime()
+            })
+        }else{
+            this.userList.sort((a,b)=>{
+                return new Date(b.registration_date).getTime()-new Date(a.registration_date).getTime()
+            })
+        }
     }
 
 
@@ -24,6 +37,9 @@ export default class UserUsersCom extends Vue {
             }).then(res => {
                 console.log(res.data);
                 this.userList = res.data.data;
+                this.userList.sort((a,b)=>{
+                    return new Date(a.registration_date).getTime()-new Date(b.registration_date).getTime()
+                })
             }).catch(err => {
                 console.log(err);
             })

@@ -8,7 +8,9 @@ export default class UserUsersAccountCom extends Vue{
     public changePhone:boolean = false;
     public phone:string = "";
     public success:boolean = false;
+    public showWarinig:boolean = false;
 
+    //重置密码
     public async resetPassword():Promise<void>{
         try{
             let res = await this.axios.post(baseApi.api2+'/v1/cmd/', {cmd: 'generate_password'});
@@ -42,6 +44,15 @@ export default class UserUsersAccountCom extends Vue{
             this.$message.success('密码已复制');
         }
         getSelection()?.removeAllRanges();
+    }
+
+    public ext():void{
+        this.showWarinig = false;
+    }
+
+    public async sure(){
+        await this.resetPassword();
+        this.showWarinig = false;
     }
 
     //更换手机号

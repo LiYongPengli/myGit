@@ -62,7 +62,9 @@
               </div>
             </div>
             <div class="content">
-              <p  class="title"><a @click="toNewsInfo(v)" >{{v.title}}</a></p>
+              <p v-show="language=='crawler'" class="title"><a @click="toNewsInfo(v)" >{{v.title.crawler}}</a></p>
+              <p v-show="language=='en'" class="title"><a @click="toNewsInfo(v)" >{{v.title.en}}</a></p>
+              <p v-show="language=='zh-CN'" class="title"><a @click="toNewsInfo(v)" >{{v.title['zh-CN']}}</a></p>
               <div class="ziyuan">
                 <img src="../../assets/img/gztp.png" alt="" />
                 <img src="../../assets/img/gztp.png" alt="" />

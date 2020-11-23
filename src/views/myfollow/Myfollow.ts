@@ -25,13 +25,6 @@ export default class MyFollowCom extends Vue {
 
     public chooseNav: string = 'all';
 
-    @Watch('language')
-    public listenLanguage(newVal: string, oldVal: string): void {
-        this.filters.language = newVal;
-        this.filters.search_after = [];
-        this.getList();
-    }
-
     listenChooseNav(newVal: string): void {
         this.chooseNav = newVal;
         this.filters.search_after = [];
