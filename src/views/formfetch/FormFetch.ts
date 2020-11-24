@@ -28,35 +28,71 @@ export default class FormFetchCom extends Vue {
                 picker.$emit('pick', date);
             }
         }]
-        
+
     }
-    public value1:string = "";
-    public value2:string = "";
+    public value1: string = "";
+    public value2: string = "";
 
 
 
     public tableData = [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
+        number: '1',
+        date: '2016-05-02 10:10:00',
+        name: '王小虎1',
+        // address: '上海市普陀区金沙江路 1518 弄'
     }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
+        number: '2',
+        date: '2016-05-04 10:10:00',
+        name: '王小虎2',
+        // address: '上海市普陀区金沙江路 1517 弄'
     }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
+        number: '3',
+        date: '2016-05-01 10:10:00',
+        name: '王小虎3',
+        // address: '上海市普陀区金沙江路 1519 弄'
     }, {
-        date: '2016-05-03',
+        number: '4',
+        date: '2016-05-03 10:10:00',
+        name: '王小虎4',
+        // address: '上海市普陀区金沙江路 1516 弄'
+    },
+    {
+        number: '5',
+        date: '2016-05-04 10:10:00',
+        name: '王小虎5',
+        // address: '上海市普陀区金沙江路 1517 弄'
+    }, {
+        number: '6',
+        date: '2016-05-01 10:10:00',
+        name: '王小虎6',
+        // address: '上海市普陀区金沙江路 1519 弄'
+    }, {
+        number: '7',
+        date: '2016-05-03 10:10:00',
+        name: '王小虎7',
+        // address: '上海市普陀区金沙江路 1516 弄'
+    }, {
+        number: '8',
+        date: '2016-05-04 10:10:00',
+        name: '王小虎8',
+        // address: '上海市普陀区金沙江路 1517 弄'
+    }, {
+        number: '9',
+        date: '2016-05-01 10:10:00',
+        name: '王小虎9',
+        // address: '上海市普陀区金沙江路 1519 弄'
+    }, {
+        number: '10',
+        date: '2016-05-03 10:10:00',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-    }]
+        // address: '上海市普陀区金沙江路 1516 弄'
+    }
+    ]
 
 
     public mounted(): void {
         this.fetchDataInfo();
-        
+
 
         // this.tableRowClassName();
 
@@ -79,7 +115,7 @@ export default class FormFetchCom extends Vue {
             legend: {
                 data: ['本周', '上周'],
                 right: 100,
-                icon:'rect',
+                icon: 'rect',
                 textStyle: {
                     color: "white"
                 }
@@ -99,7 +135,7 @@ export default class FormFetchCom extends Vue {
                         color: 'red'
                     }
                 },
-                boundaryGap:true,
+                boundaryGap: true,
                 axisTick: {
                     show: false
 
@@ -118,12 +154,14 @@ export default class FormFetchCom extends Vue {
                 axisLine: {
                     show: false
                 },
-                splitLine:{show:  true,
-                    lineStyle:{
+                splitLine: {
+                    show: true,
+                    lineStyle: {
                         color: ['#494959'],
                         width: 1,
                         type: 'solid'
-                   } }, //去除网格线
+                    }
+                }, //去除网格线
                 axisTick: {
                     show: false
 

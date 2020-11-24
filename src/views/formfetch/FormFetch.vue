@@ -20,17 +20,17 @@
       <div class="cjsjs">
         <div class="cjsjs_head">
           <p>采集数据数</p>
-         
-            <el-button>今日</el-button>
-            <el-button type="primary">最近7天</el-button>
-            <el-button class="zjsst" type="primary">最近30天</el-button>
+
+          <el-button>今日</el-button>
+          <el-button type="primary">最近7天</el-button>
+          <el-button class="zjsst" type="primary">最近30天</el-button>
           <el-date-picker v-model="value1" type="date" placeholder="开始日期">
           </el-date-picker>
-             <span class="zhi">-</span>
+          <span class="zhi">-</span>
           <el-date-picker v-model="value2" type="date" placeholder="截止日期">
           </el-date-picker>
           <span class="cjsjs_head_search">
-            <img src="../../assets/img/search.png" alt="">
+            <img src="../../assets/img/search.png" alt="" />
           </span>
         </div>
         <div class="cjsjs_content">
@@ -55,9 +55,10 @@
       </div>
 
       <div class="site">
-        <div class="">近七天未采集数据的源站点</div>
+        <span class="site_p">近七天未采集数据的源站点</span>
+        <span class="site_p_export">导出</span>
         <div class="list">
-          <el-table
+          <!-- <el-table
             :data="tableData"
             style="width: 100%"
             :header-cell-style="{ background: '#3a3a48', color: 'white' }"
@@ -67,7 +68,28 @@
             <el-table-column prop="name" label="姓名" width="180">
             </el-table-column>
             <el-table-column prop="address" label="地址"> </el-table-column>
-          </el-table>
+          </el-table> -->
+
+          <ul>
+            <my-scroll style="content_mt_onescroll">
+              <li class="list_li">
+                <div class="list_li_number">编号</div>
+                <div class="list_li_name">站点名称</div>
+                <div class="list_li_time">最后更新时间</div>
+              </li>
+              <li v-for="(v, k) in tableData" :key="k" :class="{'active':k%2 != 0}">
+                <div class="list_li_number">
+                  {{ v.number }}
+                </div>
+                <div class="list_li_name">
+                  {{ v.name }}
+                </div>
+                <div class="list_li_time">
+                  {{ v.date }}
+                </div>
+              </li>
+            </my-scroll>
+          </ul>
         </div>
       </div>
     </div>
@@ -77,7 +99,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import FormFetchCom from "./FormFetch";
-@Component
+import MyScroll from "@/components/MyScroll.vue";
+@Component({
+  components: {
+    MyScroll,
+  },
+})
 export default class FormFetch extends mixins(FormFetchCom) {}
 </script>
 
@@ -86,84 +113,50 @@ export default class FormFetch extends mixins(FormFetchCom) {}
 </style>
 
 <style lang="scss">
-.el-picker-panel{
+.el-picker-panel {
   border: 0;
 }
- .el-date-picker__header{
-   color: white;
-    background: #494959;
-    margin: 0;
-    padding: 12px;
-    span,button{
-      color: white;
-    }
-  }
-  .el-picker-panel__content{
-    background: #494959;
-      margin: 0;
-    padding: 15px;
+.el-date-picker__header {
+  color: white;
+  background: #494959;
+  margin: 0;
+  padding: 12px;
+  span,
+  button {
     color: white;
-    table{
-      tbody{
-        tr{
-          th{
-            color: white;
-          }
-          span{
-            color: white;
-          }
+  }
+}
+.el-picker-panel__content {
+  background: #494959;
+  margin: 0;
+  padding: 15px;
+  color: white;
+  table {
+    tbody {
+      tr {
+        th {
+          color: white;
+        }
+        span {
+          color: white;
         }
       }
     }
   }
+}
 .formfetch {
-  // .el-table__row{
-  //   background-color: #3a3a48 !important;
-  //   td{
-  //     div
-  //     {
-  //       color: white;
-  //     }
-  //   }
-  // }
-  // .el-table__row:hover{
-  //    background-color: #3a3a48 !important;
-  // }
-  .el-button--default{
+  .el-button--default {
     margin-left: 240px;
     width: 100px;
   }
-  .el-date-editor{
+  .el-date-editor {
     margin-right: 10px;
     width: 140px;
-    input{
+    input {
       background: #494959;
       border: 0;
       color: white;
     }
-  }
-  
-  
-
-  .list /deep/ .el-table--fit {
-    padding: 20px;
-  }
-
-  .list /deep/ .el-table,
-  .el-table__expanded-cell {
-    background-color: transparent;
-  }
-
-  .list /deep/ .el-table__header .has-gutter {
-    background-color: transparent !important;
-  }
-
-  .list /deep/ .el-table tr {
-    background-color: transparent !important;
-  }
-  .list /deep/ .el-table--enable-row-transition .el-table__body td,
-  .el-table .cell {
-    background-color: transparent;
   }
 }
 </style>

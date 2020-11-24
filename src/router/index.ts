@@ -84,11 +84,24 @@ const routes: RouteConfig[] = [
         redirect:'/user/form/fetch',
         component: () => import('../views/userform/UserForm.vue'),
         children:[
+          //数据采集统计
           {
             path:'fetch',
             name:'Fetch',
             component:()=>import('../views/formfetch/FormFetch.vue')
-          }
+          },
+          //平台运行统计
+          {
+            path:'platform',
+            name:'Platform',
+            component:()=>import('../views/platformoperation/PlatformOperation.vue')
+          },
+            //资源使用率统计
+            {
+              path:'resource',
+              name:'Resource',
+              component:()=>import('../views/resourceuse/ResourceUse.vue')
+            }
         ]
       },
       //密码管理

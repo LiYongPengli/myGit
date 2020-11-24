@@ -3,8 +3,8 @@
   <div class="userform">
     <div class="top_nav">
       <router-link tag="div" class="cur" to="/user/form/fetch">数据采集统计</router-link>
-      <router-link tag="div"  to="/user/form/fetch">平台运行统计</router-link>
-      <router-link tag="div"  to="/user/form/fetch">资源使用率说明</router-link>
+      <router-link tag="div"  to="/user/form/platform">平台运行统计</router-link>
+      <router-link tag="div"  to="/user/form/resource">资源使用率说明</router-link>
 
     </div>
     <router-view />
