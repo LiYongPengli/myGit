@@ -3,11 +3,11 @@
     height: 100%;
     display: flex;
     // background-image: url("../../assets/img/bg.png");
-    .topic {
-        width: 45%;
+    .topics {
+        width: 900px;
         height: 100%;
         flex-shrink: 0;
-        background: black;
+        position: relative;
     }
     .body {
         flex: 1;
@@ -43,7 +43,7 @@
     }
     @keyframes show {
         from {
-            margin-left: -37%;
+            margin-left: -900px;
         }
         to {
             margin-left: 0;
