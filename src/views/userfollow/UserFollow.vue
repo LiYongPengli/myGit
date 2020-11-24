@@ -1,12 +1,12 @@
 <template>
-<!-- 个人中心 我的关注 -->
+  <!-- 个人中心 我的关注 -->
   <div class="userfollow">
     <div class="top">
       <ul class="top_nav">
-        <li class="item">国家</li>
-        <li class="item">媒体</li>
-        <li class="item">人物</li>
-        <li class="item">推荐频道</li>
+        <li class="item" @click="pageIndex=0" :class="{active:pageIndex==0}">国家</li>
+        <li class="item" @click="pageIndex=1" :class="{active:pageIndex==1}">媒体</li>
+        <li class="item" @click="pageIndex=2" :class="{active:pageIndex==2}">人物</li>
+        <li class="item" @click="pageIndex=3" :class="{active:pageIndex==3}">推荐频道</li>
       </ul>
       <div class="top_search">
         <input type="text" placeholder="请输入国家名称" />
@@ -14,25 +14,43 @@
     </div>
     <div class="content">
       <!-- 国家 -->
-      <country />
+      <div v-show="pageIndex == 0" class="country">
+        <country />
+      </div>
+
+      <div v-show="pageIndex == 1" class="media">
+        <media />
+      </div>
+
+      <div v-show="pageIndex == 2" class="media">
+        <people />
+      </div>
+
+       <div v-show="pageIndex == 3" class="media">
+        <channel />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Component, { mixins } from 'vue-class-component';
-import UserFollowCom from './UserFollow'
-import Country from '@/components/country/Country.vue'
+import Component, { mixins } from "vue-class-component";
+import UserFollowCom from "./UserFollow";
+import Country from "@/components/country/Country.vue";
+import Media from "@/components/media/Media.vue";
+import People from "@/components/people/People.vue";
+import Channel from "@/components/channel/Channel.vue";
 @Component({
-  components:{
-    Country
-  }
+  components: {
+    Country,
+    Media,
+    People,
+    Channel
+  },
 })
-export default class UserFollow extends mixins(UserFollowCom) {
-
-}
+export default class UserFollow extends mixins(UserFollowCom) {}
 </script>
 
 <style lang="scss" scoped>
-@import './UserFollow.scss';
+@import "./UserFollow.scss";
 </style>
