@@ -1,3 +1,59 @@
-.maybeknow{
-    
+.maybeknow {
+    .content {
+        margin: 50px 32px 0;
+        height: 300px;
+        padding-left: 20px;
+        .title {
+            border-bottom: 1px solid #4d4d5d;
+            margin-right: 40px;
+            margin-left: 20px;
+            .maybetitle {
+                color: white;
+                font-size: 20px;
+                padding-bottom: 33px;
+            }
+        }
+        .content_userlists {
+            margin-top: 30px;
+            ul {
+                height: 500px;
+                li {
+                    padding: 5px 20px;
+                    height: 50px;
+                    margin-bottom: 5px;
+                    .content_userlist {
+                        color: white;
+                        img {
+                            float: left;
+                        }
+                        p {
+                            float: left;
+                        }
+                        .content_userlist_engname,
+                        .content_userlist_chinename,
+                        .content_userlist_add {
+                            width: 40px;
+                            height: 40px;
+                            line-height: 40px;
+                        }
+                        .content_userlist_engname {
+                            background-color: #009688;
+                            text-align: center;
+                        }
+                        .content_userlist_chinename {
+                            margin-left: 25px;
+                        }
+                        .content_userlist_add {
+                            float: right;
+                            cursor: pointer;
+                            text-align: center;
+                        }
+                    }
+                }
+                li.cur {
+                    background: #434a55;
+                }
+            }
+        }
+    }
 }

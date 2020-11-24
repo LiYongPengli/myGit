@@ -1,6 +1,8 @@
 <template>
 <!-- 聊天工具，通讯录 -->
-  <div class="maillist">通讯录</div>
+  <div class="maillist">
+    
+  </div>
 </template>
 
 <script lang="ts">
