@@ -2,8 +2,9 @@
   <div class="home">
     <!-- 聊天工具 -->
     <transition name="topic">
-      <div v-if="topic_show" class="topic">
+      <div v-if="topic_show" class="topics">
         <!-- 聊天工具组件 -->
+        <topic />
       </div>
     </transition>
     <div class="body">
@@ -26,11 +27,13 @@ import Component, { mixins } from "vue-class-component";
 import HeaderOne from "@/components/HeaderOne.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import FooterTwo from "@/components/FooterTwo.vue"
+import Topic from "@/components/topic/Topic.vue"
 @Component({
   components: {
     HeaderOne,
     MyScroll,
-    FooterTwo
+    FooterTwo,
+    Topic
   },
 })
 export default class Home extends mixins(HomeCom) {}
