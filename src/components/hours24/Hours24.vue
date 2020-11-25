@@ -2,7 +2,6 @@
   <!-- 24小时 -->
       <div
         class="hours24"
-        v-show="eshour"
         @mouseover="clearAutoPlay"
         @mouseout="autoPlay"
         :class="{ fixed: mainPageScrollTop >= 350 }"
