@@ -38,8 +38,7 @@ export default class RecommendCom extends Vue {
     public country: { sub_id: string; name: string }[] = [];
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
-    @Mutation('setTopicShow') setTopicShow!: any;
-    @Mutation('setSureTop') setSureTop!: any;
+    
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
     /* @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
@@ -89,10 +88,7 @@ export default class RecommendCom extends Vue {
 
     
 
-    //回到顶部
-    public toTop(): void {
-        this.setSureTop(true);
-    }
+    
 
 
     public mediaTab(index: number): void {

@@ -8,19 +8,49 @@
       loop
       src="./assets/video/index_back.mp4"
     ></video>
-    <router-view />
+    <!-- 聊天工具 -->
+    <transition name="topic">
+      <div v-if="topic_show" class="topics">
+        <!-- 聊天工具组件 -->
+        <topic />
+      </div>
+    </transition>
+    <div class="right_content">
+      <router-view />
+    </div>
+    <!-- 浮窗工具 -->
+    <div class="fx">
+      <a @click="toTop" class="arrow"
+        ><img title="置顶" src="./assets/img/arrow-right.png" alt=""
+      /></a>
+      <a class="fenxiang" href=""
+        ><img title="分享" src="./assets/img/fenxiang.png" alt=""
+      /></a>
+      <a @click.stop="setTopicShow(true)" class="chat">
+        <img title="分享到微信" src="./assets/img/chat.png" alt=""
+      /></a>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { Mutation } from "vuex-class";
+import { Mutation, State } from "vuex-class";
 import { baseApi } from "./axios/axios";
-@Component
+import Topic from "@/components/topic/Topic.vue";
+@Component({
+  components: {
+    Topic,
+  },
+})
 export default class App extends Vue {
   private isshow = true;
+  //是否展示聊天工具
+  @State("topic_show") topic_show!: boolean;
   //设置用户信息
   @Mutation("setUserMessage") setUserMessage: any;
+  @Mutation("setSureTop") setSureTop!: any;
+  @Mutation('setTopicShow') setTopicShow!: any;
 
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
@@ -39,6 +69,11 @@ export default class App extends Vue {
 
   private created(): void {
     this.userLoginType();
+  }
+
+  //回到顶部
+  public toTop(): void {
+    this.setSureTop(true);
   }
 
   private userLoginType(): void {
@@ -91,6 +126,7 @@ body {
 }
 #app {
   height: 100%;
+  display: flex;
   .back_video {
     width: 100%;
     height: 100%;
@@ -99,6 +135,64 @@ body {
     left: 0;
     top: 0;
     z-index: -1;
+  }
+  .right_content {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+  }
+  .fx {
+    top: 163px;
+    right: 50px;
+    position: fixed;
+    border: 1px solid #343441;
+    border-radius: 5px;
+    background-color: #343441;
+    z-index: 100;
+    a {
+      width: 60px;
+      height: 60px;
+      display: block;
+      line-height: 60px;
+      text-align: center;
+      img {
+        margin: 18px auto;
+        width: 24px;
+      }
+    }
+    a.arrow {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+    a.fenxiang {
+      border-top: 1px solid #494958;
+    }
+    a.chat {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top: 1px solid #494958;
+    }
+  }
+  .topics {
+    width: 900px;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+    background-color: #2f343d;
+  }
+  .topic-enter-active {
+    animation: show linear 0.3s;
+  }
+  .topic-leave-active {
+    animation: show linear 0.3s reverse;
+  }
+  @keyframes show {
+    from {
+      margin-left: -900px;
+    }
+    to {
+      margin-left: 0;
+    }
   }
 }
 .clear:after {
