@@ -1,20 +1,25 @@
 import { Component, Vue } from 'vue-property-decorator'
 @Component
 export default class MailList extends Vue {
+    public newfriendid:boolean=false
     public userlists = [{
 
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     },
     {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
 
     },
     {
@@ -22,7 +27,8 @@ export default class MailList extends Vue {
         chinename: '测员1',
         engname: 'ceshiyuan',
         add: '+',
-        num: 1
+        num: 1,
+        remarks:'我是测试员'
 
 
     }, {
@@ -30,64 +36,84 @@ export default class MailList extends Vue {
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
+
+    }, {
+        headportrait: 'C',
+        chinename: '测试员asd',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 2,
+        remarks:'我是测试员',
+        
 
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 2
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
 
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
-
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }, {
         headportrait: 'C',
         chinename: '测试员',
         engname: 'ceshiyuan',
         add: '+',
-        num: 0
-    }, {
-        headportrait: 'C',
-        chinename: '测试员',
-        engname: 'ceshiyuan',
-        add: '+',
-        num: 0
+        num: 0,
+        remarks:'我是测试员',
+        request:'请求添加好友'
     }
     ];
 
