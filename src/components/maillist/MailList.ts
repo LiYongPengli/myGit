@@ -1,5 +1,123 @@
-import { Component,Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 @Component
-export default class MailList extends Vue{
+export default class MailList extends Vue {
+    public userlists = [{
 
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    },
+    {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+
+    },
+    {
+        headportrait: 'C',
+        chinename: '测员1',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 1
+
+
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 2
+
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }, {
+        headportrait: 'C',
+        chinename: '测试员',
+        engname: 'ceshiyuan',
+        add: '+',
+        num: 0
+    }
+    ];
+
+    public zmlist = [
+        { name: 'A' },
+        { name: 'B' },
+        { name: 'C' },
+        { name: 'D' },
+        { name: 'E' },
+        { name: 'F' },
+        { name: 'G' },
+        { name: 'H' },
+        { name: 'I' },
+        { name: 'I' },
+        { name: 'J' },
+        { name: 'K ' },
+        { name: 'L' },
+        { name: 'M ' },
+        { name: 'N' },
+        { name: 'O' },
+        { name: 'P' },
+        { name: ' Q ' },
+        { name: 'R ' },
+        { name: 'S ' },
+        { name: 'T ' },
+        { name: 'U ' },
+        { name: 'V ' },
+        { name: 'W' },
+        { name: 'X' },
+        { name: 'Y' }, 
+        { name: 'Z ' },
+        { name: '其他 ' }]
 }

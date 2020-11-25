@@ -9,12 +9,10 @@
         <ul>
           <!-- <li v-for="(v, k) in tableData" :key="k" :class="{'active':k%2 != 0}"> -->
           <my-scroll style="content_mt_onescroll">
-            <li v-for="(v, k) in userlists" :class="{cur:v.num==1}">
+            <li v-for="(v, k) in userlists" :key="k" :class="{cur:v.num==1}">
               <div class="content_userlist">
                   <img v-if="v.num ==1" src="../../assets/img/tx.png" alt="">
                 <p v-if="v.num ==0" class="content_userlist_engname">
-              <!-- <span v-if="item.type_name == '车商'" class="person_name">{{item.car_title}}</span> -->
-            
                   {{ v.engname }}
                 </p>
                 <p class="content_userlist_chinename">

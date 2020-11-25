@@ -28,6 +28,9 @@
           <p>收起</p>
       </div>
     </div>
+    <div class="chat">
+      
+    </div>
   </div>
 </template>
 

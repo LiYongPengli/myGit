@@ -1,1 +1,200 @@
-.mainlist {}
+    .maillist {
+        .content {
+            margin: 50px 32px 0;
+            height: 300px;
+            padding-left: 20px;
+            .title {
+                .maybetitle {
+                    color: white;
+                    font-size: 20px;
+                    padding-bottom: 33px;
+                }
+                .newfriend {
+                    background: url('../../assets/img/newfriendlogo.png') right top no-repeat;
+                    color: white;
+                    float: right;
+                    font-size: 16px;
+                    width: 105px;
+                    a {
+                        color: white;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .search {
+                margin-top: 20px;
+                // background: #434a55;
+                position: relative;
+                input {
+                    padding-left: 20px;
+                    font-size: 16px;
+                    height: 50px;
+                    line-height: 50px;
+                    width: 100%;
+                    color: white;
+                    background: #434a55;
+                    outline: medium;
+                    box-sizing: border-box;
+                    border: 1px solid #434a55;
+                }
+                input::-webkit-input-placeholder {
+                    /* WebKit browsers */
+                    color: #c1c1c1;
+                }
+                input:-moz-placeholder {
+                    /* Mozilla Firefox 4 to 18 */
+                    color: #c1c1c1;
+                }
+                input::-moz-placeholder {
+                    /* Mozilla Firefox 19+ */
+                    color: #c1c1c1;
+                }
+                input:-ms-input-placeholder {
+                    /* Internet Explorer 10+ */
+                    color: #c1c1c1;
+                }
+                img {
+                    position: absolute;
+                    right: 20px;
+                    top: 15px;
+                    cursor: pointer;
+                }
+            }
+            .content_userlists {
+                margin-top: 30px;
+                ul {
+                    position: relative;
+                    height: 600px;
+                    p {
+                        color: white;
+                        font-size: 14px;
+                        margin-bottom: 15px;
+                    }
+                    .recommend {
+                        background-color: #0074ff;
+                        margin-bottom: 20px;
+                        .new {
+                            .content_userlist_hulve {
+                                float: right !important;
+                                line-height: 40px !important;
+                                cursor: pointer;
+                                img {
+                                    margin-right: 10px;
+                                    padding-top: 10px;
+                                }
+                            }
+                            .content_userlist_fabuqingqiu {
+                                line-height: 40px !important;
+                                cursor: pointer;
+                                margin-left: 65px;
+                                img {
+                                    margin-right: 10px;
+                                    padding-top: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .addnewfriend {
+                        background-color: #0074ff;
+                        margin-bottom: 20px;
+                        .new {
+                            .remarks {
+                                line-height: 40px;
+                                font-size: 14px;
+                            }
+                            .content_userlist_sendmessage,
+                            .content_userlist_share {
+                                width: 60px;
+                            }
+                            .content_userlist_sendmessage {
+                                margin-left: 30px;
+                            }
+                            .content_userlist_share {
+                                margin-left: 0 !important;
+                            }
+                            .content_userlist_hulve {
+                                float: right !important;
+                                line-height: 40px !important;
+                                img {
+                                    margin-right: 10px;
+                                }
+                            }
+                            .content_userlist_fabuqingqiu {
+                                line-height: 40px !important;
+                                img {
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+                    }
+                    li {
+                        width: 95%;
+                        padding: 5px 20px;
+                        height: 50px;
+                        margin-bottom: 5px;
+                        .content_userlist {
+                            color: white;
+                            img {
+                                float: left;
+                            }
+                            p {
+                                float: left;
+                            }
+                            .content_userlist_engname,
+                            .content_userlist_chinename,
+                            .content_userlist_sendmessage,
+                            .content_userlist_share,
+                            .content_userlist_sharehe {
+                                width: 40px;
+                                height: 40px;
+                                line-height: 40px;
+                            }
+                            .content_userlist_engname {
+                                background-color: #009688;
+                                text-align: center;
+                            }
+                            .content_userlist_chinename {
+                                margin-left: 25px;
+                                width: 400px;
+                                font-size: 14px;
+                            }
+                            .content_userlist_sendmessage,
+                            .content_userlist_share,
+                            .content_userlist_sharehe {
+                                cursor: pointer;
+                                img {
+                                    margin-top: 10px;
+                                    padding-left: 10px;
+                                }
+                                width: 90px;
+                                float: right;
+                                text-align: right;
+                            }
+                            .content_userlist_share {
+                                margin-left: 30px;
+                            }
+                        }
+                    }
+                    li.cur {
+                        background: #434a55;
+                    }
+                    .zm {
+                        position: absolute;
+                        float: right;
+                        top: 60px;
+                        right: 0;
+                        a {
+                            display: block;
+                            height: 15px;
+                            line-height: 15px;
+                            width: 40px;
+                            text-align: center;
+                            color: #4f555f;
+                            text-decoration: none;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
