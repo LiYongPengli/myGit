@@ -125,17 +125,7 @@
     <transition name="el-zoom-in-top">
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
-    <div class="fx">
-      <a @click="toTop" class="arrow"
-        ><img title="置顶" src="../../assets/img/arrow-right.png" alt=""
-      /></a>
-      <a class="fenxiang" href=""
-        ><img title="分享" src="../../assets/img/fenxiang.png" alt=""
-      /></a>
-      <a @click.stop="setTopicShow(true)" class="chat">
-        <img title="分享到微信" src="../../assets/img/chat.png" alt=""
-      /></a>
-    </div>
+    
   </div>
 </template>
 
