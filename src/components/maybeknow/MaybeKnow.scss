@@ -25,6 +25,8 @@
                         color: white;
                         img {
                             float: left;
+                            display: block;
+                            width: 40px;
                         }
                         p {
                             float: left;
@@ -50,7 +52,7 @@
                         }
                     }
                 }
-                li.cur {
+                li:hover {
                     background: #434a55;
                 }
             }

@@ -4,7 +4,6 @@ import { State } from 'vuex-class';
 import Swiper from 'swiper'
 @Component
 export default class Hours24Com extends Vue {
-    public eshour: boolean = true;
     //24小时列表滑动组件
     public list_24!: Swiper;
     //24小时轮播定时器
@@ -18,12 +17,6 @@ export default class Hours24Com extends Vue {
     @State('topic_show') topic_show!: boolean;
     @State('language') language!: string;
     @State('mainPageScrollTop') mainPageScrollTop!: number;
-
-    @Watch('topic_show')
-    public topic_show_change(): void {
-        this.eshour = !this.topic_show;
-
-    }
 
     public created(): void {
         this.get24Hour();
