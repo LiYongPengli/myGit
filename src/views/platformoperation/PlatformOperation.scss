@@ -5,6 +5,34 @@
         height: 1230px;
         margin: 0 auto;
         background-color: #3a3a48;
-        border: 1px solid red;
+        // border: 1px solid red;
+    }
+    .menu {
+        margin: 0 60px;
+        padding-top: 5px;
+        color: white;
+        font-size: 16px;
+        ul {
+            height: 77px;
+            line-height: 77px;
+            li {
+                float: left;
+                cursor: pointer;
+                margin-right: 5px;
+            }
+            li.active {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+        ul:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+    }
+    .menu_content {
+        margin: 0 60px;
+        // border-bottom: 1px solid #494959;
     }
 }

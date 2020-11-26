@@ -1,4 +1,5 @@
 <template>
+<!-- 平台运行统计入口页面 -->
   <div class="platformoperation">
     <div class="content">
       <div class="menu">
@@ -8,14 +9,15 @@
             @click="pageIndex = 0"
             :class="{ active: pageIndex == 0 }"
           >
-            国家
+            平台访问数据 /
           </li>
+      
           <li
             class="item"
             @click="pageIndex = 1"
             :class="{ active: pageIndex == 1 }"
           >
-            媒体
+            注册用户数据
           </li>
         </ul>
       </div>
