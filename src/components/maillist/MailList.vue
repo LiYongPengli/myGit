@@ -1,10 +1,10 @@
 <template>
   <!-- 聊天工具，通讯录 -->
   <div class="maillist">
-    <div v-show="newfriendid" class="content">
+    <div v-show="!newfriendid" class="content">
       <div class="title">
         <span class="maybetitle">通讯录</span>
-        <span class="newfriend">
+        <span @click="newfriendid=true" class="newfriend">
           <a href="">+</a>
           新的朋友
         </span>
@@ -105,10 +105,10 @@
       </div>
     </div>
 
-    <div class="newfriendcontent">
+    <div v-show="newfriendid" class="newfriendcontent">
       <div class="title">
         <span class="maybetitle">新的朋友</span>
-        <span class="newfriend">
+        <span @click="newfriendid=false" class="newfriend">
           返回
           <a href="">></a>
         </span>
