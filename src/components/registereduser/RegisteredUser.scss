@@ -1,0 +1,220 @@
+.registereduser {
+    .content {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: #3a3a48;
+        margin-left: -60px;
+        .content_tu {
+            border-bottom: 1px solid #494959;
+            .cjsjs {
+                padding-left: 60px;
+                //float: right;
+                .cjsjs_head {
+                    margin-top: 40px;
+                    p {
+                        font-size: 20px;
+                        color: white;
+                        display: inline;
+                    }
+                    .el-row {
+                        float: right;
+                        margin-right: 400px;
+                        padding-bottom: 20px;
+                        button {
+                            width: 100px;
+                        }
+                    }
+                    .zhi {
+                        display: inline-block;
+                        width: 16px;
+                        font-weight: bold;
+                    }
+                    .zjsst {
+                        margin-right: 30px;
+                    }
+                    .cjsjs_head_search {
+                        display: inline-block;
+                        height: 40px;
+                        width: 50px;
+                        // float: right;
+                        margin-right: 60px;
+                        text-align: center;
+                        border: 1px solid #494959;
+                        cursor: pointer;
+                        img {
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+            .cjsjs:after {
+                display: block;
+                clear: both;
+                content: '';
+            }
+            .cjsjs_content {
+                width: 1080px;
+                margin-top: 40px;
+                background-color: #494959;
+                text-align: center;
+                margin-left: 60px;
+                div {
+                    float: left;
+                    margin-left: 49px;
+                    margin-right: 74px;
+                    height: 150px;
+                    position: relative;
+                    width: 100px;
+                }
+                div p:first-child {
+                    position: absolute;
+                    // line-height: 130px;
+                    font-size: 30px;
+                    top: 35px;
+                }
+                div p:nth-child(2) {
+                    position: absolute;
+                    top: 80px;
+                    font-size: 14px;
+                }
+                .inline {
+                    float: right;
+                    border-left: 1px solid red;
+                }
+            }
+            .cjsjs_content::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .hdyhqst {
+                margin-top: 45px;
+                padding-left: 60px;
+                .small {
+                    .myChart3 {
+                        width: 1200px;
+                        height: 290px;
+                    }
+                }
+            }
+        }
+        .content_form {
+            margin-top: 40px;
+            height: 500px;
+            padding: 0 60px;
+            .content_form_one {
+                .namelist {
+                    font-size: 20px;
+                }
+                .export {
+                    width: 100px;
+                    display: inline-block;
+                    height: 40px;
+                    background-color: #494959;
+                    text-align: center;
+                    line-height: 40px;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 14px;
+                    border-radius: 3px;
+                }
+                .searchdate {
+                    cursor: pointer;
+                    margin-right: 30px;
+                    display: inline-block;
+                    width: 50px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    background-color: #494959;
+                    border-radius: 3px;
+                    img {
+                        position: relative;
+                        top: 10px;
+                        left: 800px;
+                        // margin-top: 10px;
+                    }
+                }
+                input {
+                    float: right;
+                    height: 40px;
+                    width: 200px;
+                    line-height: 40px;
+                    background-color: #494959;
+                    border: none;
+                    outline: none;
+                    color: #cdd6e5;
+                    padding-left: 25px;
+                    border-radius: 3px;
+                }
+                input::-webkit-input-placeholder {
+                    /* WebKit browsers */
+                    color: #cdd6e5;
+                }
+                input:-moz-placeholder {
+                    /* Mozilla Firefox 4 to 18 */
+                    color: #cdd6e5;
+                }
+                input::-moz-placeholder {
+                    /* Mozilla Firefox 19+ */
+                    color: #cdd6e5;
+                }
+                input:-ms-input-placeholder {
+                    /* Internet Explorer 10+ */
+                    color: #cdd6e5;
+                }
+                .searchinput {
+                    position: relative;
+                    top: 10px;
+                    left: 800px;
+                    cursor: pointer;
+                }
+                .export {
+                    float: right;
+                    margin-left: 25px;
+                }
+            }
+            .content_form_list {
+                ul {
+                    background-color: #494959;
+                    margin-top: 25px;
+                    height: 300px;
+                    // padding-left: 60px;
+                    li:nth-child(1) {
+                        border-bottom: 1px solid #5c5c6b;
+                    }
+                    li {
+                        height: 50px;
+                        line-height: 50px;
+                        .list_li_accountnumber,
+                        .list_li_name,
+                        .list_li_time,
+                        .list_li_phone,
+                        .list_li_count {
+                            float: left;
+                            color: white;
+                            font-size: 14px;
+                        }
+                        .list_li_accountnumber {
+                            width: 80px;
+                            margin-left: 60px;
+                        }
+                        .list_li_name {
+                            width: 220px;
+                            text-align: center;
+                        }
+                        .list_li_phone,
+                        .list_li_count,
+                        .list_li_time {
+                            width: 220px;
+                            text-align: center;
+                        }
+                    }
+                    li.active {
+                        background: #4f4f5f;
+                    }
+                }
+            }
+        }
+    }
+}
