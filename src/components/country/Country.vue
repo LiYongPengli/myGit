@@ -13,141 +13,142 @@
             <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
         </li>
-        
+        <!-- <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followchina.png" alt="" />
+            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/img/followjnd.png" alt="" />
+            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
+          </div>
+        </li> -->
       </ul>
     </div>
     <!-- 未关注 -->
     <div class="noattention">
       <p class="noattention_p">未关注</p>
-      <p class="open">
-        展开
-        <img src="../../assets/img/open.png" alt="" />
+      <p class="open" @click="showAll = !showAll">
+      {{word}}
+
+        <img v-if="word=='展开'" src="../../assets/img/open.png" alt="" />
+          <img v-else  src="../../assets/img/close.png" alt="" />
       </p>
       <ul>
-        <li>
+        <li v-for="(v1,k1) in showlist" :key="k1">
           <div>
             <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>
-              中国1<img
-                v-on:click="deleteli"
-                src="../../assets/img/add.png"
-                alt=""
-              />
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/add.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/add.png" alt="" /></p>
+            <p>{{v1.number}}--{{v1.name}}<img  src="../../assets/img/add.png" alt="" /></p>
           </div>
         </li>
       </ul>
