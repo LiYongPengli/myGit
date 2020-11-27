@@ -1,12 +1,11 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Vue } from 'vue-property-decorator'
-import { use } from 'vue/types/umd';
 @Component
 export default class MaybeKnowCom extends Vue {
-    public dialogVisible: boolean = false;
     public userlists: any[] = []
-    public sendUser: any = "";
     public message: string = "";
+    public inv_userInfo:any = "";
+    public remark_name:string = "";
 
     public created(): void {
         this.getData();
@@ -32,17 +31,22 @@ export default class MaybeKnowCom extends Vue {
         this.axios
             .post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
-                paras: { user_id: this.sendUser.user_id, message: this.message },
+                paras: { user_id: this.inv_userInfo.user_id, message: this.message },
             }).then(res=>{
                 this.$message.success('验证消息发送成功');
-                this.dialogVisible = false;
             }).catch(err=>{
                 console.log(err);
             })
     }
 
     public toAdd(user: any): void {
-        this.dialogVisible = true;
-        this.sendUser = user;
+        this.inv_userInfo = user;
+    }
+
+    //请求添加好友详情显示
+    public showInvInfo(user:any):void{
+        this.remark_name = "";
+        this.message = "";
+        this.inv_userInfo = user;
     }
 }
