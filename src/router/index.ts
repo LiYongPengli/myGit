@@ -94,13 +94,13 @@ const routes: RouteConfig[] = [
           {
             path:'platform',
             name:'Platform',
-            component:()=>import('../views/platformoperation/PlatformOperation.vue')
+            component:()=>import('../views/platformoperations/PlatformOperations.vue')
           },
             //资源使用率统计
             {
               path:'resource',
               name:'Resource',
-              component:()=>import('../views/resourceuse/ResourceUse.vue')
+              component:()=>import('../views/resourceuses/ResourceUses.vue')
             }
         ]
       },

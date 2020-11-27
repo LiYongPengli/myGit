@@ -7,9 +7,15 @@
             font-size: 16px;
             color: white;
             cursor: pointer;
+            height: 26px;
         }
-        div.cur {
+        div.router-link-active {
             font-size: 20px;
         }
+    }
+    .top_nav:after {
+        display: block;
+        content: '';
+        clear: both;
     }
 }
