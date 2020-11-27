@@ -14,7 +14,7 @@ export default class MailListCom extends Vue{
     //验证消息
     public inv_message:string = "";
 
-    public zmlist = [
+    /* public zmlist = [
         { name: 'A' },
         { name: 'B' },
         { name: 'C' },
@@ -42,7 +42,7 @@ export default class MailListCom extends Vue{
         { name: 'X' },
         { name: 'Y' },
         { name: 'Z ' },
-        { name: '其他 ' }]
+        { name: '其他 ' }] */
 
     public created():void{
         this.getNewFriendsList();
@@ -61,12 +61,12 @@ export default class MailListCom extends Vue{
             console.log(err);
         })
     }
-
+    //显示分享名片
     public showShare(index:number):void{
         this.$set(this.userlists[index],'share',true);
         this.$set(this.userlists[index],'send',true);
     }
-
+    //隐藏分享名片
     public hideShare(index:number):void{
         this.$delete(this.userlists[index],'share')
         this.$delete(this.userlists[index],'send')
@@ -104,7 +104,21 @@ export default class MailListCom extends Vue{
           cmd: 'process_add_friend',
           paras: { user_id: user.user_id, oper: 'accepted' },
         }).then(res=>{
+            user.status="accepted"
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+    //拒绝
+    public toReject(user:any):void{
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'process_add_friend',
+          paras: { user_id: user.user_id, oper: 'rejected' },
+        }).then(res=>{
             console.log(res.data);
+            user.status="rejected"
         }).catch(err=>{
             console.log(err);
         })
@@ -128,10 +142,6 @@ export default class MailListCom extends Vue{
 
     //添加到通讯录
     public async toAddMaiList(){
-        if(!this.inv_message){
-            this.$message.error('请输入验证消息');
-            return;
-        }
         try{
             await this.axios.post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',

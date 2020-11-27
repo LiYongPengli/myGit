@@ -3,7 +3,7 @@
   <div class="maillistcom">
     <div class="title">
       <span class="maybetitle">通讯录</span>
-      <span @click="$emit('update:visable',2)" class="newfriend">
+      <span @click="$emit('update:visable', 2)" class="newfriend">
         <a href="">+</a>
         新的朋友
       </span>
@@ -16,16 +16,45 @@
       <ul>
         <my-scroll>
           <!-- 接收到的分享名片 -->
-          <li v-show="v.status=='pending'" v-for="(v,keys,i) in cardList" :index="i" :key="keys" class="recommend">
+          <li
+            v-show="v.status == 'pending'"
+            v-for="(v, keys, i) in cardList"
+            :index="i"
+            :key="keys"
+            class="recommend"
+          >
             <div class="content_userlist new">
-              <p class="content_userlist_engname">{{v.recommended.nickname.slice(0,1)}}</p>
-              <p class="content_userlist_chinename">{{v.recommended.nickname}}</p>
-              <p class="remarks">"{{v.recommender.nickname}}"将"{{v.recommended.nickname}}"的名片推荐给你</p>
-              <p @click="showInvInfo(v.recommended)" class="content_userlist_fabuqingqiu">
+              <img
+                class="header"
+                v-if="v.recommended.headimg"
+                :src="v.recommended.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!v.recommended.headimg && v.recommended.wechat_info.head_img"
+                :src="v.recommended.wechat_info.head_img"
+                alt=""
+              />
+              <p v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img" class="content_userlist_engname">
+                {{ v.recommended.nickname.slice(0, 1) }}
+              </p>
+              <p class="content_userlist_chinename">
+                {{ v.recommended.nickname }}
+              </p>
+              <p class="remarks">
+                "{{ v.recommender.nickname }}"将"{{
+                  v.recommended.nickname
+                }}"的名片推荐给你
+              </p>
+              <p
+                @click="showInvInfo(v.recommended)"
+                class="content_userlist_fabuqingqiu"
+              >
                 <img src="../../assets/img/fabuqingqiu.png" alt="" />
                 请求添加好友
               </p>
-              <p @click="igron(v,keys)" class="content_userlist_hulve">
+              <p @click="igron(v, keys)" class="content_userlist_hulve">
                 <img src="../../assets/img/hulve.png" alt="" />
                 忽略
               </p>
@@ -39,15 +68,29 @@
             class="addnewfriend"
           >
             <div class="content_userlist new">
-              <p class="content_userlist_engname">{{v.nickname.slice(0,1)}}</p>
-              <p class="content_userlist_chinename">{{v.nickname}}</p>
+              <img
+                class="header"
+                v-if="!v.headimg && !v.wechat_info.head_img"
+                :src="v.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!v.headimg && v.wechat_info.head_img"
+                :src="v.wechat_info.head_img"
+                alt=""
+              />
+              <p class="content_userlist_engname">
+                {{ v.nickname.slice(0, 1) }}
+              </p>
+              <p class="content_userlist_chinename">{{ v.nickname }}</p>
               <!-- 备注 -->
-              <p class="remarks">{{v.message}}</p>
-              <p class="content_userlist_sendmessage">
+              <p class="remarks">{{ v.message }}</p>
+              <p @click.stop="toReject(v)" class="content_userlist_sendmessage">
                 <img src="../../assets/img/refuse.png" alt="" />
                 拒绝
               </p>
-              <p class="content_userlist_share">
+              <p @click.stop="toAgree(v)" class="content_userlist_share">
                 <img src="../../assets/img/accept.png" alt="" />
                 接受
               </p>
@@ -62,13 +105,13 @@
           >
             <div class="content_userlist">
               <img
-              class="header"
+                class="header"
                 v-if="!v.headimg && !v.wechat_info.head_img"
                 :src="v.headimg"
                 alt=""
               />
               <img
-              class="header"
+                class="header"
                 v-if="!v.headimg && v.wechat_info.head_img"
                 :src="v.wechat_info.head_img"
                 alt=""
@@ -83,7 +126,11 @@
                 {{ v.nickname
                 }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
               </p>
-              <p @click="toShare(v)" v-show="v.share" class="content_userlist_share">
+              <p
+                @click="toShare(v)"
+                v-show="v.share"
+                class="content_userlist_share"
+              >
                 <img src="../../assets/img/share.png" alt="" />
                 分享名片
               </p>
@@ -97,28 +144,40 @@
                 </p> -->
             </div>
           </li>
-          <div class="zm">
+          <!-- <div class="zm">
             <a v-for="(v1, k1) in zmlist" :key="k1" href="">{{ v1.name }}</a>
-          </div>
+          </div> -->
         </my-scroll>
       </ul>
     </div>
     <!-- 用户信息 -->
     <div v-if="userInfo" class="chat">
       <div class="chatcontent">
-        <div @click="userInfo=''" class="close">
+        <div @click="userInfo = ''" class="close">
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
-          <p class="head">{{userInfo.nickname.slice(0,1)}}</p>
-          <p class="name">{{userInfo.nickname}}</p>
+          <img
+                class="header"
+                v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
+                :src="userInfo.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
+                :src="userInfo.wechat_info.head_img"
+                alt=""
+              />
+          <p v-if="!userInfo.headimg && !userInfo.wechat_info.head_img" class="head">{{ userInfo.nickname.slice(0, 1) }}</p>
+          <p class="name">{{ userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">
           <span class="remarks_name">备注名：</span>
           <input class="remarks_value" type="text" placeholder="设置备注" />
         </div>
         <span class="nick_name">昵称：</span>
-        <span class="nick_value">{{userInfo.nickname}}</span>
+        <span class="nick_value">{{ userInfo.nickname }}</span>
         <div class="sendmes">发送消息</div>
       </div>
     </div>
@@ -126,20 +185,42 @@
     <!-- 用户验证信息 -->
     <div v-if="inv_userInfo" class="chat">
       <div class="chatcontent">
-        <div @click="inv_userInfo=''" class="close">
+        <div @click="inv_userInfo = ''" class="close">
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
-          <p class="head">{{inv_userInfo.nickname.slice(0,1)}}</p>
-          <p class="name">{{inv_userInfo.nickname}}</p>
+          <img
+                class="header"
+                v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img"
+                :src="inv_userInfo.recommended.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!inv_userInfo.recommended.headimg && inv_userInfo.recommended.wechat_info.head_img"
+                :src="inv_userInfo.recommended.wechat_info.head_img"
+                alt=""
+              />
+          <p v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img" class="head">{{ inv_userInfo.recommended.nickname.slice(0, 1) }}</p>
+          <p class="name">{{ inv_userInfo.recommended.nickname }}</p>
         </div>
         <div class="remarks_div">
           <span class="remarks_name">备注名：</span>
-          <input class="remarks_value" v-model="remark_name" type="text" placeholder="设置备注" />
+          <input
+            class="remarks_value"
+            v-model="remark_name"
+            type="text"
+            placeholder="设置备注"
+          />
         </div>
         <div class="remarks_div">
           <span class="remarks_name">验证消息：</span>
-          <input class="remarks_value" v-model="inv_message" type="text" placeholder="请输入验证消息" />
+          <input
+            class="remarks_value"
+            v-model="inv_message"
+            type="text"
+            placeholder="请输入验证消息"
+          />
         </div>
         <!-- <span class="nick_name">昵称：</span>
         <span class="nick_value">{{inv_userInfo.nickname}}</span> -->
@@ -150,17 +231,17 @@
 </template>
 
 <script lang="ts">
-import Component, { mixins } from 'vue-class-component';
-import MailListComs from './MailListCom';
-import MyScroll from '@/components/MyScroll.vue';
+import Component, { mixins } from "vue-class-component";
+import MailListComs from "./MailListCom";
+import MyScroll from "@/components/MyScroll.vue";
 @Component({
-    components:{
-        MyScroll
-    }
+  components: {
+    MyScroll,
+  },
 })
-export default class MailListCom extends mixins(MailListComs) {};
+export default class MailListCom extends mixins(MailListComs) {}
 </script>
 
 <style lang="scss" scoped>
-@import './MailListCom.scss';
+@import "./MailListCom.scss";
 </style>

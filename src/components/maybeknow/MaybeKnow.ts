@@ -24,16 +24,12 @@ export default class MaybeKnowCom extends Vue {
     }
 
     public sendMessage(): void {
-        if (!this.message) {
-            this.$message.error('请输入验证消息');
-            return;
-        }
         this.axios
             .post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
                 paras: { user_id: this.inv_userInfo.user_id, message: this.message },
             }).then(res=>{
-                this.$message.success('验证消息发送成功');
+                this.$message.success('验证发送成功，等待对方通过!');
             }).catch(err=>{
                 console.log(err);
             })
