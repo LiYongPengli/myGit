@@ -1,21 +1,25 @@
 .userform {
     .top_nav {
-        margin-top: 50px;
-        div {
-            float: left;
-            width: 200px;
-            font-size: 16px;
-            color: white;
-            cursor: pointer;
-            height: 26px;
+        margin-top: 16px;
+        height: 80px;
+        line-height: 80px;
+        ul {
+            li {
+                float: left;
+                width: 163px;
+                font-size: 16px;
+                color: white;
+                cursor: pointer;
+            }
+            li.router-link-active {
+                font-size: 20px;
+                border-bottom: 1px solid red;
+            }
         }
-        div.router-link-active {
-            font-size: 20px;
+        ul:after {
+            display: block;
+            content: '';
+            clear: both;
         }
-    }
-    .top_nav:after {
-        display: block;
-        content: '';
-        clear: both;
     }
 }

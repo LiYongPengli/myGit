@@ -5,15 +5,99 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class CountryCom extends Vue{
     public country_list:any[] = [];
     public country_follow_list:any[] = [];
-    // public countrylist=[
-    //     {
+    public countrylist=[
+        {
+            number:1,
+            name:'中国'
+        },{
+            number:2,
+            name:'中国'
+        }
+        ,{
+            number:3,
+            name:'中国'
+        }
+        ,{
+            number:4,
+            name:'中国'
+        }
+        ,{
+            number:5,
+            name:'中国'
+        }
+        ,{
+            number:6,
+            name:'中国'
+        }
+        ,{
+            number:7,
+            name:'中国'
+        }
+        ,{
+            number:8,
+            name:'中国'
+        }
+        ,{
+            number:9,
+            name:'中国'
+        }
+        ,{
+            number:10,
+            name:'中国'
+        }
+        ,{
+            number:11,
+            name:'中国'
+        }
+        ,{
+            number:12,
+            name:'中国'
+        },{
+            number:13,
+            name:'中国'
+        }
+        ,{
+            number:14,
+            name:'中国'
+        }
+        ,{
+            number:15,
+            name:'中国'
+        }
+        ,{
+            number:16,
+            name:'中国'
+        }
+        ,{
+            number:17,
+            name:'中国'
+        }
+        ,{
+            number:18,
+            name:'中国'
+        },{
+            number:19,
+            name:'中国'
+        }
+        ,{
+            number:20,
+            name:'中国'
+        }
+    ];
 
-    //     }
-    // ];
+    public del(k:number):void{
+        var index=this.countrylist.findIndex(item=>{
+            if(item.number==k){
+                return true
+            }
+        })
+        this.countrylist.splice(index,1);
+
+    }
 
     public deleteli():void{
         this.$el.remove()
-        // console.log(this.$el.innerHTML)
+         console.log(this.$el.innerHTML)
     }
     public created():void{
         this.getList();
