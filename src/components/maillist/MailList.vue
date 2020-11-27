@@ -1,236 +1,26 @@
 <template>
   <!-- 聊天工具，通讯录 -->
   <div class="maillist">
-    <div v-show="!newfriendid" class="content">
-      <div class="title">
-        <span class="maybetitle">通讯录</span>
-        <span @click="newfriendid=true" class="newfriend">
-          <a href="">+</a>
-          新的朋友
-        </span>
-      </div>
-      <div class="search">
-        <input type="text" placeholder="搜索好友" />
-        <img src="../../assets/img/search.png" alt="" />
-      </div>
-      <div class="content_userlists">
-        <ul>
-          <!-- <li v-for="(v, k) in tableData" :key="k" :class="{'active':k%2 != 0}"> -->
-          <my-scroll>
-            <p>"王天驰"将"李湘"的名片推给您</p>
-            <li class="recommend">
-              <div class="content_userlist new">
-                <p class="content_userlist_engname">L</p>
-                <p class="content_userlist_chinename">李湘</p>
-                <p class="content_userlist_fabuqingqiu">
-                  <img src="../../assets/img/fabuqingqiu.png" alt="" />
-                  请求添加好友
-                </p>
-                <p class="content_userlist_hulve">
-                  <img src="../../assets/img/hulve.png" alt="" />
-                  忽略
-                </p>
-              </div>
-            </li>
-            <li class="addnewfriend">
-              <div class="content_userlist new">
-                <p class="content_userlist_engname">L</p>
-                <p class="content_userlist_chinename">李湘</p>
-                <!-- 备注 -->
-                <p class="remarks">我是中联部李湘</p>
-                <p class="content_userlist_sendmessage">
-                  <img src="../../assets/img/refuse.png" alt="" />
-                  拒绝
-                </p>
-                <p class="content_userlist_share">
-                  <img src="../../assets/img/accept.png" alt="" />
-                  接受
-                </p>
-              </div>
-            </li>
-            <li
-              v-for="(v, k) in userlists"
-              :key="k"
-              :class="{ cur: v.num == 1 || v.num == 2 }"
-            >
-              <div class="content_userlist">
-                <img
-                  v-if="v.num == 1 || v.num == 2"
-                  src="../../assets/img/tx.png"
-                  alt=""
-                />
-                <p v-if="v.num == 0" class="content_userlist_engname">
-                  {{ v.headportrait }}
-                </p>
-                <p class="content_userlist_chinename">
-                  {{ v.chinename }} ({{ v.engname }})
-                </p>
-                <p v-show="v.num == 1" class="content_userlist_share">
-                  <img src="../../assets/img/share.png" alt="" />
-                  分享名片
-                </p>
-                <p v-show="v.num == 1" class="content_userlist_sendmessage">
-                  <img src="../../assets/img/sendmessage.png" alt="" />
-                  发送消息
-                </p>
-                <p v-show="v.num == 2" class="content_userlist_sharehe">
-                  <img src="../../assets/img/share.png" alt="" />
-                  分享给他
-                </p>
-              </div>
-            </li>
-            <div class="zm">
-              <a v-for="(v1, k1) in zmlist" :key="k1" href="">{{ v1.name }}</a>
-            </div>
-          </my-scroll>
-        </ul>
-      </div>
-      <div class="chat">
-        <div class="chatcontent">
-          <div class="close">
-            <img src="../../assets/img/chatclose.png" alt="" />
-          </div>
-          <div class="username">
-            <p class="head">Y</p>
-            <p class="name">石头</p>
-          </div>
-          <div class="remarks_div">
-            <span class="remarks_name">备注名：</span>
-            <input class="remarks_value" type="text" placeholder="设置备注" />
-          </div>
-          <span class="nick_name">昵称：</span>
-          <span class="nick_value">石头</span>
-          <div class="sendmes">发送消息</div>
-        </div>
-      </div>
-    </div>
-
-    <div v-show="newfriendid" class="newfriendcontent">
-      <div class="title">
-        <span class="maybetitle">新的朋友</span>
-        <span @click="newfriendid=false" class="newfriend">
-          返回
-          <a href="">></a>
-        </span>
-      </div>
-      <div class="search">
-        <input type="text" placeholder="搜索您想要添加的账号/手机号/微信名" />
-        <img src="../../assets/img/search.png" alt="" />
-      </div>
-      <div class="content_userlists">
-        <ul>
-          <!-- <li v-for="(v, k) in tableData" :key="k" :class="{'active':k%2 != 0}"> -->
-          <my-scroll>
-            <li>
-              <div class="content_userlist">
-                <p class="content_userlist_engname">H</p>
-                <p class="content_userlist_chinename">李湘</p>
-                <p class="content_userlist_request request">
-                  <img src="../../assets/img/fabuqingqiu.png" alt="" />
-                  请求添加好友
-                </p>
-                <p class="content_userlist_hulve hulve">
-                  <img src="../../assets/img/hulve.png" alt="" />
-                  忽略
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="content_userlist">
-                <p class="content_userlist_engname">H</p>
-                <p class="content_userlist_chinename">李湘</p>
-                <p class="remarks_p">
-                  我是中联部-李湘
-                </p>
-               <p class="content_userlist_hulve hulve">
-                  <img src="../../assets/img/refuse.png" alt="" />
-                  拒绝
-                </p>
-                <p class="content_userlist_share share">
-                  <img src="../../assets/img/accept.png" alt="" />
-                  接受
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="content_userlist">
-                <p class="content_userlist_engname">H</p>
-                <p class="content_userlist_chinename">李湘</p>
-                <p class="content_userlist_hulve hulve">
-                  <img src="../../assets/img/refuse.png" alt="" />
-                  拒绝
-                </p>
-                <p class="content_userlist_share share">
-                  <img src="../../assets/img/accept.png" alt="" />
-                  接受
-                </p>
-              </div>
-            </li>
-            <li
-              v-for="(v, k) in userlists"
-              :key="k"
-              :class="{ cur: v.num == 0 }"
-            >
-              <div class="content_userlist">
-                <img
-                  v-if="v.num == 1 || v.num == 2"
-                  src="../../assets/img/tx.png"
-                  alt=""
-                />
-                <p v-if="v.num == 0" class="content_userlist_engname">
-                  {{ v.headportrait }}
-                </p>
-                <p class="content_userlist_chinename">
-                  {{ v.chinename }} ({{ v.engname }})
-                </p>
-                <p v-show="v.num == 1" class="content_userlist_share">已接收</p>
-                <p v-show="v.num == 1" class="content_userlist_sendmessage">
-                  {{ v.remarks }}
-                </p>
-                <p v-show="v.num == 0" class="content_userlist_request">
-                  <img src="../../assets/img/fabuqingqiu.png" alt="" />
-                  {{ v.request }}
-                </p>
-
-                <p v-show="v.num == 0" class="content_userlist_sharehe">
-                  已拒绝
-                </p>
-              </div>
-            </li>
-          </my-scroll>
-        </ul>
-      </div>
-      <div class="chat">
-        <div class="chatcontent">
-          <div class="close">
-            <img src="../../assets/img/chatclose.png" alt="" />
-          </div>
-          <div class="username">
-            <p class="head">Y</p>
-            <p class="name">石头</p>
-          </div>
-          <div class="remarks_div">
-            <span class="remarks_name">备注名：</span>
-            <input class="remarks_value" type="text" placeholder="设置备注" />
-          </div>
-          <div class="nick_div">
-            <span class="nick_name">备注信息：</span>
-            <input class="nick_value" type="text" placeholder="填写备注信息" />
-          </div>
-          <div class="sendmes">添加到通讯录</div>
-        </div>
-      </div>
-    </div>
+    <!-- 通讯录 -->
+    <mail-list-coms @share="shareMethod" v-if="newfriendid==1" :visable.sync="newfriendid" />
+    <!-- 新朋友 -->
+    <new-friends  v-if="newfriendid==2" :visable.sync="newfriendid" />
+    <!-- 分享给Ta -->
+    <share v-if="newfriendid==3" :user="shareUser" :visable.sync="newfriendid" />
   </div>
 </template>
 
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import MailListCom from "./MailList";
-import MyScroll from "@/components/MyScroll.vue";
+import MailListComs from "@/components/maillistcom/MailListCom.vue"
+import NewFriends from "@/components/newfriends/NewFriends.vue"
+import Share from '@/components/share/Share.vue'
 @Component({
   components: {
-    MyScroll,
+    MailListComs,
+    NewFriends,
+    Share
   },
 })
 export default class MailList extends mixins(MailListCom) {}

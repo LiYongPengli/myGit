@@ -33,17 +33,30 @@
         </ul>
       </div>
     </div>
-    <el-dialog :modal="false" :close-on-click-modal="false" :visible.sync="dialogVisible" title="提示" width="500px" top="25vh">
-      <el-form>
-        <el-form-item label="请输入验证消息:" >
-          <el-input v-model="message" type="text" />
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="sendMessage">确 定</el-button>
-      </span>
-    </el-dialog>
+
+    <!-- 用户验证信息 -->
+    <div v-if="inv_userInfo" class="chat">
+      <div class="chatcontent">
+        <div @click="inv_userInfo=''" class="close">
+          <img src="../../assets/img/chatclose.png" alt="" />
+        </div>
+        <div class="username">
+          <p class="head">{{inv_userInfo.nickname.slice(0,1)}}</p>
+          <p class="name">{{inv_userInfo.nickname}}</p>
+        </div>
+        <div class="remarks_div">
+          <span class="remarks_name">备注名：</span>
+          <input class="remarks_value" v-model="remark_name" type="text" placeholder="设置备注" />
+        </div>
+        <div class="remarks_div">
+          <span class="remarks_name">验证消息：</span>
+          <input class="remarks_value" v-model="message" type="text" placeholder="请输入验证消息" />
+        </div>
+        <!-- <span class="nick_name">昵称：</span>
+        <span class="nick_value">{{inv_userInfo.nickname}}</span> -->
+        <div @click="sendMessage" class="sendmes">添加到通讯录</div>
+      </div>
+    </div>
   </div>
 </template>
 
