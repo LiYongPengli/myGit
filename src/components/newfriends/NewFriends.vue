@@ -17,6 +17,18 @@
         <my-scroll>
           <li v-for="(v,keys,i) in cardList" :index="i" :key="keys">
             <div class="content_userlist">
+              <img
+                class="header"
+                v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img"
+                :src="v.recommended.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!v.recommended.headimg && v.recommended.wechat_info.head_img"
+                :src="v.recommended.wechat_info.head_img"
+                alt=""
+              />
               <p class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p>
               <p class="content_userlist_chinename">{{v.recommended.nickname}}</p>
               <p class="remarks_p">
@@ -26,7 +38,7 @@
                 <img src="../../assets/img/fabuqingqiu.png" alt="" />
                 请求添加好友
               </p>
-              <p @click="igron(v,keys)" v-show="v.status=='pending'" class="content_userlist_hulve hulve">
+              <p @click.stop="igron(v,keys)" v-show="v.status=='pending'" class="content_userlist_hulve hulve">
                 <img src="../../assets/img/hulve.png" alt="" />
                 忽略
               </p>
@@ -41,6 +53,18 @@
           <!-- 新朋友列表 -->
           <li @click="showInfo(v)" v-for="(v, i) in newFriendList" :key="i">
             <div class="content_userlist">
+              <img
+                class="header"
+                v-if="!v.headimg && !v.wechat_info.head_img"
+                :src="v.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!v.headimg && v.wechat_info.head_img"
+                :src="v.wechat_info.head_img"
+                alt=""
+              />
               <p class="content_userlist_engname">
                 {{ v.nickname.slice(0, 1) }}
               </p>
@@ -49,7 +73,7 @@
                 {{ v.message }}
               </p>
               <p
-              @click="toReject(v)"
+              @click.stop="toReject(v)"
                 v-show="v.status == 'pending'"
                 class="content_userlist_hulve hulve"
               >
@@ -82,6 +106,18 @@
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
+          <img
+                class="header"
+                v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
+                :src="userInfo.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
+                :src="userInfo.wechat_info.head_img"
+                alt=""
+              />
           <p class="head">{{userInfo.nickname.slice(0,1)}}</p>
           <p class="name">{{userInfo.nickname}}</p>
         </div>
@@ -101,6 +137,18 @@
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
+          <img
+                class="header"
+                v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img"
+                :src="inv_userInfo.recommended.headimg"
+                alt=""
+              />
+              <img
+                class="header"
+                v-if="!inv_userInfo.recommended.headimg && inv_userInfo.recommended.wechat_info.head_img"
+                :src="inv_userInfo.recommended.wechat_info.head_img"
+                alt=""
+              />
           <p class="head">{{inv_userInfo.recommended.nickname.slice(0,1)}}</p>
           <p class="name">{{inv_userInfo.recommended.nickname}}</p>
         </div>

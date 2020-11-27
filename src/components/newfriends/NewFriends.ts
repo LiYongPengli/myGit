@@ -98,6 +98,9 @@ export default class NewFriendsCom extends Vue{
 
     //显示用户详细信息
     public showInfo(user:any):void{
+        if(user.status=='pending'||user.status=='rejected'){
+            return;
+        }
         this.inv_userInfo = "";
         this.remark_name = "";
         this.inv_message = "";
@@ -115,10 +118,6 @@ export default class NewFriendsCom extends Vue{
 
     //添加到通讯录
     public async toAddMaiList(){
-        if(!this.inv_message){
-            this.$message.error('请输入验证消息');
-            return;
-        }
         try{
             await this.axios.post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
