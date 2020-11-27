@@ -29,7 +29,7 @@
                 :src="v.recommended.wechat_info.head_img"
                 alt=""
               />
-              <p class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p>
+              <p v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img" class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p>
               <p class="content_userlist_chinename">{{v.recommended.nickname}}</p>
               <p class="remarks_p">
                 "{{v.recommender.nickname}}"将"{{v.recommended.nickname}}"的名片推荐给你
@@ -65,7 +65,7 @@
                 :src="v.wechat_info.head_img"
                 alt=""
               />
-              <p class="content_userlist_engname">
+              <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">
                 {{ v.nickname.slice(0, 1) }}
               </p>
               <p class="content_userlist_chinename">{{ v.nickname }}</p>
@@ -118,7 +118,7 @@
                 :src="userInfo.wechat_info.head_img"
                 alt=""
               />
-          <p class="head">{{userInfo.nickname.slice(0,1)}}</p>
+          <p v-if="!userInfo.headimg && !userInfo.wechat_info.head_img" class="head">{{userInfo.nickname.slice(0,1)}}</p>
           <p class="name">{{userInfo.nickname}}</p>
         </div>
         <div class="remarks_div">
@@ -149,7 +149,7 @@
                 :src="inv_userInfo.recommended.wechat_info.head_img"
                 alt=""
               />
-          <p class="head">{{inv_userInfo.recommended.nickname.slice(0,1)}}</p>
+          <p v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img" class="head">{{inv_userInfo.recommended.nickname.slice(0,1)}}</p>
           <p class="name">{{inv_userInfo.recommended.nickname}}</p>
         </div>
         <div class="remarks_div">

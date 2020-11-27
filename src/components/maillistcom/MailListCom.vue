@@ -48,7 +48,7 @@
                 }}"的名片推荐给你
               </p>
               <p
-                @click="showInvInfo(v.recommended)"
+                @click="showInvInfo(v)"
                 class="content_userlist_fabuqingqiu"
               >
                 <img src="../../assets/img/fabuqingqiu.png" alt="" />
@@ -80,7 +80,7 @@
                 :src="v.wechat_info.head_img"
                 alt=""
               />
-              <p class="content_userlist_engname">
+              <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">
                 {{ v.nickname.slice(0, 1) }}
               </p>
               <p class="content_userlist_chinename">{{ v.nickname }}</p>

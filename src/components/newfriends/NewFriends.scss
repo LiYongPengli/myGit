@@ -73,6 +73,9 @@
           img {
             float: left;
           }
+          img.header{
+            width: 40px;
+          }
           p {
             float: left;
           }
@@ -122,7 +125,7 @@
           }
           .content_userlist_chinename {
             margin-left: 25px;
-            width: 200px;
+            width: 180px;
             font-size: 14px;
           }
           .content_userlist_sendmessage,
@@ -195,6 +198,9 @@
       margin-top: 80px;
       text-align: center;
       color: white;
+      img.header{
+        width: 40px;
+      }
       .head {
         width: 40px;
         height: 40px;

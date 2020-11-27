@@ -2,7 +2,7 @@
   <!-- 聊天工具 -->
   <div class="topic">
     <div class="topic_wrap">
-      <iframe v-if="status==1" src="http://zlbxxcj.bjceis.com:58889/" frameborder="0"></iframe>
+      <iframe v-if="status==1" src="http://zlbxxcj.bjceis.com/im" frameborder="0"></iframe>
       <!-- 通讯录 -->
       <mail-list v-if="status==2" />
       <!-- 可能认识 -->
