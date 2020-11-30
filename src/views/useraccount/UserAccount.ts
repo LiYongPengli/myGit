@@ -1,6 +1,8 @@
 import { Component, Vue } from 'vue-property-decorator'
+import { State } from 'vuex-class';
 @Component
 export default class UserAccountCom extends Vue{
+    @State('user_message') user_message!:any;
     public bangding:boolean=false;
     // 昵称修改
     public ninameupdate:boolean=false;
@@ -16,6 +18,9 @@ export default class UserAccountCom extends Vue{
             return;
         }
         
+    }
+    public created():void{
+        console.log(this.user_message)
     }
 
      //更换头像

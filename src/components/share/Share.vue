@@ -18,11 +18,13 @@
           >
             <div class="content_userlist">
               <img
+              class="ico"
                 v-if="!v.headimg && !v.wechat_info.head_img"
                 :src="v.headimg"
                 alt=""
               />
               <img
+              class="ico"
                 v-if="!v.headimg && v.wechat_info.head_img"
                 :src="v.wechat_info.head_img"
                 alt=""
@@ -199,6 +201,10 @@ export default class Share extends Vue {
             color: white;
             img {
               float: left;
+              
+            }
+            img.ico{
+              width: 40px;
             }
             p {
               float: left;

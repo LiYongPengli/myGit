@@ -1,15 +1,16 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
-export default class NewFriendsCom extends Vue{
-    @Prop({}) visable!:boolean;
-    public newFriendList:any[] = [];
-
-    public userInfo:any = "";
-    public inv_userInfo:any = "";
-    public remark_name:string = "";
-    public inv_message:string = "";
-    public cardList:any = "";
+export default class NewFriendsCom extends Vue {
+    @Prop({}) visable!: boolean;
+    public newFriendList: any[] = [];
+    //是否修改备注
+    public remark:boolean = false;
+    public userInfo: any = "";
+    public inv_userInfo: any = "";
+    public remark_name: string = "";
+    public inv_message: string = "";
+    public cardList: any = "";
     public zmlist = [
         { name: 'A' },
         { name: 'B' },
@@ -40,9 +41,29 @@ export default class NewFriendsCom extends Vue{
         { name: 'Z ' },
         { name: '其他 ' }]
 
-    public created():void{
+    public created(): void {
         this.getNewFriendsList();
         this.getCardList();
+    }
+
+    //修改备注
+    public changeRemark():void{
+        if(!this.remark_name){
+            this.remark = false;
+            return;
+        }
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'set_friend_remark_name',
+          paras: {
+            user_id: this.userInfo.user_id,
+            remark_name: this.remark_name
+          }
+        }).then(res=>{
+            this.userInfo.remark_name = this.remark_name;
+            this.$message.success('设置备注成功!');
+            this.remark = false;
+        })
     }
 
     //获取新朋友列表
@@ -58,57 +79,57 @@ export default class NewFriendsCom extends Vue{
     }
 
     //
-    private getCardList():void{
+    private getCardList(): void {
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
-          cmd: 'recommended_friends',
-        }).then(res=>{
-            console.log(res.data);
-            this.cardList = res.data.data;
-        }).catch(err=>{
-            console.log(err);
-        })
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'recommended_friends',
+            }).then(res => {
+                console.log(res.data);
+                this.cardList = res.data.data;
+            }).catch(err => {
+                console.log(err);
+            })
     }
-    
+
     //接受
-    public toAgree(user:any):void{
+    public toAgree(user: any): void {
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
-          cmd: 'process_add_friend',
-          paras: { user_id: user.user_id, oper: 'accepted' },
-        }).then(res=>{
-            console.log(res.data);
-            user.status="accepted"
-        }).catch(err=>{
-            console.log(err);
-        })
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'process_add_friend',
+                paras: { user_id: user.user_id, oper: 'accepted' },
+            }).then(res => {
+                console.log(res.data);
+                user.status = "accepted"
+            }).catch(err => {
+                console.log(err);
+            })
     }
-    public toReject(user:any):void{
+    public toReject(user: any): void {
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
-          cmd: 'process_add_friend',
-          paras: { user_id: user.user_id, oper: 'rejected' },
-        }).then(res=>{
-            console.log(res.data);
-            user.status="rejected"
-        }).catch(err=>{
-            console.log(err);
-        })
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'process_add_friend',
+                paras: { user_id: user.user_id, oper: 'rejected' },
+            }).then(res => {
+                console.log(res.data);
+                user.status = "rejected"
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
     //显示用户详细信息
-    public showInfo(user:any):void{
-        if(user.status=='pending'||user.status=='rejected'){
+    public showInfo(user: any): void {
+        if (user.status == 'pending' || user.status == 'rejected') {
             return;
         }
         this.inv_userInfo = "";
         this.remark_name = "";
         this.inv_message = "";
-        this.userInfo=user;
+        this.userInfo = user;
     }
 
     //请求添加好友详情显示
-    public showInvInfo(user:any,key:string):void{
+    public showInvInfo(user: any, key: string): void {
         this.userInfo = "";
         this.remark_name = "";
         this.inv_message = "";
@@ -117,51 +138,43 @@ export default class NewFriendsCom extends Vue{
     }
 
     //添加到通讯录
-    public async toAddMaiList(){
-        try{
-            await this.axios.post(baseApi.api2+'/v1/cmd/', {
+    public async toAddMaiList() {
+        try {
+            await this.axios.post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'request_add_friend',
-                paras: { user_id: this.inv_userInfo.recommended.user_id, message: this.inv_message }
-              })
-              this.$message.success('验证消息发送成功');
-            await this.axios
-            .post(baseApi.api2+'/v1/cmd/', {
-              cmd: 'process_recommend_friend',
-              paras: {
-                r_id: this.inv_userInfo.id,
-                oper: 'requested',
-              },
+                paras: { 
+                    user_id: this.inv_userInfo.recommended.user_id, 
+                    message: this.inv_message,
+                    remark_name: this.remark_name,
+                    r_id:this.inv_userInfo.id 
+                }
             })
-        }catch(err){
+            this.$message.success('验证消息发送成功');
+            await this.axios
+                .post(baseApi.api2 + '/v1/cmd/', {
+                    cmd: 'process_recommend_friend',
+                    paras: {
+                        r_id: this.inv_userInfo.id,
+                        oper: 'requested',
+                    },
+                })
+            this.inv_userInfo.status = 'requested'
+        } catch (err) {
             console.log(err);
             return;
-        }
-        if(this.remark_name){
-            try{
-                await this.axios
-                .post(baseApi.api2+'/v1/cmd/', {
-                  cmd: 'set_friend_remark_name',
-                  paras: {
-                    user_id: this.inv_userInfo.user_id,
-                    remark_name: this.remark_name,
-                  },
-                })
-            }catch(err){
-                console.log(err);
-            }
         }
     }
 
     //忽略
-    public igron(user:any,key:string):void{
+    public igron(user: any, key: string): void {
         this.axios
-            .post(baseApi.api2+'/v1/cmd/', {
-              cmd: 'process_recommend_friend',
-              paras: {
-                r_id: key,
-                oper: 'ignored',
-              },
-            }).then(res=>{
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'process_recommend_friend',
+                paras: {
+                    r_id: key,
+                    oper: 'ignored',
+                },
+            }).then(res => {
                 user.status = 'ignored';
                 this.$message.success('已忽略')
             })

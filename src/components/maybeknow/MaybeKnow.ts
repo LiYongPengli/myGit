@@ -27,7 +27,12 @@ export default class MaybeKnowCom extends Vue {
         this.axios
             .post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
-                paras: { user_id: this.inv_userInfo.user_id, message: this.message },
+                paras: { 
+                    user_id: this.inv_userInfo.user_id, 
+                    message: this.message,
+                    remark_name:this.remark_name,
+                    r_id:'' 
+                }
             }).then(res=>{
                 this.$message.success('验证发送成功，等待对方通过!');
             }).catch(err=>{

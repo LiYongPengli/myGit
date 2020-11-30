@@ -5,6 +5,8 @@ export default class MailListCom extends Vue{
     @Prop({}) visable!:boolean;
     public newFriendList:any[] = [];
     public cardList:any = "";
+    //是否修改备注
+    public remark:boolean = false;
     public userlists:any[] = [];
     //请求添加的用户信息
     public inv_userInfo:any = "";
@@ -48,6 +50,26 @@ export default class MailListCom extends Vue{
         this.getNewFriendsList();
         this.getCardList();
         this.getMailList();
+    }
+
+    //修改备注
+    public changeRemark():void{
+        if(!this.remark_name){
+            this.remark = false;
+            return;
+        }
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'set_friend_remark_name',
+          paras: {
+            user_id: this.userInfo.user_id,
+            remark_name: this.remark_name
+          }
+        }).then(res=>{
+            this.userInfo.remark_name = this.remark_name;
+            this.$message.success('设置备注成功!');
+            this.remark = false;
+        })
     }
 
     //获取通讯录列表
@@ -127,7 +149,7 @@ export default class MailListCom extends Vue{
     //显示用户详细信息
     public showInfo(user:any):void{
         this.inv_userInfo = "";
-        this.remark_name = "";
+        this.remark_name = user.remark_name;
         this.inv_message = "";
         this.userInfo=user;
     }
@@ -145,26 +167,16 @@ export default class MailListCom extends Vue{
         try{
             await this.axios.post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
-                paras: { user_id: this.inv_userInfo.user_id, message: this.inv_message }
+                paras: { 
+                    user_id: this.inv_userInfo.user_id, 
+                    message: this.inv_message,
+                    remark_name:this.remark_name,
+                    r_id:this.inv_userInfo.id
+                }
               })
               this.$message.success('验证消息发送成功');
         }catch(err){
             console.log(err);
-            return;
-        }
-        if(this.remark_name){
-            try{
-                await this.axios
-                .post(baseApi.api2+'/v1/cmd/', {
-                  cmd: 'set_friend_remark_name',
-                  paras: {
-                    user_id: this.inv_userInfo.user_id,
-                    remark_name: this.remark_name,
-                  },
-                })
-            }catch(err){
-                console.log(err);
-            }
         }
     }
     //忽略

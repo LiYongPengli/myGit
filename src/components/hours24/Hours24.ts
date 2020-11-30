@@ -33,7 +33,6 @@ export default class Hours24Com extends Vue {
             paras: { size: 20 }
         }).then(res => {
             this.hours_24 = res.data.data;
-            console.log(this.hours_24,"sss")
             setTimeout(() => {
                 this.init_24HourCom();
             }, 200)

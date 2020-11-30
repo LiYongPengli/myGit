@@ -4,7 +4,6 @@
     <div class="title">
       <span class="maybetitle">通讯录</span>
       <span @click="$emit('update:visable', 2)" class="newfriend">
-        <a href="">+</a>
         新的朋友
       </span>
     </div>
@@ -174,7 +173,11 @@
         </div>
         <div class="remarks_div">
           <span class="remarks_name">备注名：</span>
-          <input class="remarks_value" type="text" placeholder="设置备注" />
+          <div v-show="remark" class="controls">
+            <span @click.stop="changeRemark">确定</span>
+            <span @click="remark=false;remark_name=userInfo.remark_name">取消</span>
+          </div>
+          <input @input="remark=true" v-model="remark_name" class="remarks_value" type="text" placeholder="设置备注" />
         </div>
         <span class="nick_name">昵称：</span>
         <span class="nick_value">{{ userInfo.nickname }}</span>

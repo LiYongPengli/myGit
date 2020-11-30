@@ -1,291 +1,294 @@
-.maillistcom {
-    margin: 50px 32px 0;
-    height: 300px;
-    padding-left: 20px;
-    .title {
-        .maybetitle {
-            color: white;
-            font-size: 20px;
-            padding-bottom: 33px;
-        }
-        .newfriend {
-            background: url("../../assets/img/newfriendlogo.png") right top no-repeat;
-            color: white;
-            float: right;
-            font-size: 16px;
-            width: 105px;
-            cursor: pointer;
-            a {
+        .maillistcom {
+        margin: 50px 32px 0;
+        height: 300px;
+        padding-left: 20px;
+        .title {
+            .maybetitle {
                 color: white;
-                text-decoration: none;
+                font-size: 20px;
+                padding-bottom: 33px;
+            }
+            .newfriend {
+                background: url("../../assets/img/newfriendlogo.png") right top no-repeat;
+                color: white;
+                float: right;
+                font-size: 16px;
+                width: 80px;
+                cursor: pointer;
             }
         }
-    }
-    .search {
-        margin-top: 20px;
-        // background: #434a55;
-        position: relative;
-        input {
-            padding-left: 20px;
-            font-size: 16px;
-            height: 50px;
-            line-height: 50px;
-            width: 100%;
-            color: white;
-            background: #434a55;
-            outline: medium;
-            box-sizing: border-box;
-            border: 1px solid #434a55;
-        }
-        input::-webkit-input-placeholder {
-            /* WebKit browsers */
-            color: #c1c1c1;
-        }
-        input:-moz-placeholder {
-            /* Mozilla Firefox 4 to 18 */
-            color: #c1c1c1;
-        }
-        input::-moz-placeholder {
-            /* Mozilla Firefox 19+ */
-            color: #c1c1c1;
-        }
-        input:-ms-input-placeholder {
-            /* Internet Explorer 10+ */
-            color: #c1c1c1;
-        }
-        img {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            cursor: pointer;
-        }
-    }
-    .content_userlists {
-        margin-top: 30px;
-        ul {
+        .search {
+            margin-top: 20px;
+            // background: #434a55;
             position: relative;
-            height: 600px;
-            li:hover {
-                background: #434a55;
-            }
-            p {
+            input {
+                padding-left: 20px;
+                font-size: 16px;
+                height: 50px;
+                line-height: 50px;
+                width: 100%;
                 color: white;
-                font-size: 14px;
-                margin-bottom: 15px;
+                background: #434a55;
+                outline: medium;
+                box-sizing: border-box;
+                border: 1px solid #434a55;
             }
-            .recommend {
-                background-color: #0074ff;
-                margin-bottom: 20px;
-                .remarks {
-                    line-height: 40px;
+            input::-webkit-input-placeholder {
+                /* WebKit browsers */
+                color: #c1c1c1;
+            }
+            input:-moz-placeholder {
+                /* Mozilla Firefox 4 to 18 */
+                color: #c1c1c1;
+            }
+            input::-moz-placeholder {
+                /* Mozilla Firefox 19+ */
+                color: #c1c1c1;
+            }
+            input:-ms-input-placeholder {
+                /* Internet Explorer 10+ */
+                color: #c1c1c1;
+            }
+            img {
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                cursor: pointer;
+            }
+        }
+        .content_userlists {
+            margin-top: 30px;
+            ul {
+                position: relative;
+                height: 600px;
+                li:hover {
+                    background: #434a55;
+                }
+                p {
+                    color: white;
                     font-size: 14px;
+                    margin-bottom: 15px;
                 }
-                .new {
-                    .content_userlist_hulve {
-                        float: right !important;
-                        line-height: 40px !important;
-                        cursor: pointer;
-                        img {
-                            margin-right: 10px;
-                            padding-top: 10px;
-                        }
-                    }
-                    .content_userlist_fabuqingqiu {
-                        line-height: 40px !important;
-                        cursor: pointer;
-                        margin-left: 65px;
-                        img {
-                            margin-right: 10px;
-                            padding-top: 10px;
-                        }
-                    }
-                }
-            }
-            .addnewfriend {
-                background-color: #0074ff;
-                margin-bottom: 20px;
-                .new {
+                .recommend {
+                    background-color: #0074ff;
+                    margin-bottom: 20px;
                     .remarks {
                         line-height: 40px;
                         font-size: 14px;
                     }
-                    .content_userlist_sendmessage,
-                    .content_userlist_share {
-                        width: 60px;
-                    }
-                    .content_userlist_sendmessage {
-                        margin-left: 30px;
-                    }
-                    .content_userlist_share {
-                        margin-left: 0 !important;
-                    }
-                    .content_userlist_hulve {
-                        float: right !important;
-                        line-height: 40px !important;
-                        img {
-                            margin-right: 10px;
+                    .new {
+                        .content_userlist_hulve {
+                            float: right !important;
+                            line-height: 40px !important;
+                            cursor: pointer;
+                            img {
+                                margin-right: 10px;
+                                padding-top: 10px;
+                            }
                         }
-                    }
-                    .content_userlist_fabuqingqiu {
-                        line-height: 40px !important;
-                        img {
-                            margin-right: 10px;
+                        .content_userlist_fabuqingqiu {
+                            line-height: 40px !important;
+                            cursor: pointer;
+                            margin-left: 65px;
+                            img {
+                                margin-right: 10px;
+                                padding-top: 10px;
+                            }
                         }
                     }
                 }
-            }
-            li {
-                width: 95%;
-                padding: 5px 20px;
-                height: 50px;
-                margin-bottom: 5px;
-                .content_userlist {
-                    color: white;
-                    img {
-                        float: left;
+                .addnewfriend {
+                    background-color: #0074ff;
+                    margin-bottom: 20px;
+                    .new {
+                        .remarks {
+                            line-height: 40px;
+                            font-size: 14px;
+                        }
+                        .content_userlist_sendmessage,
+                        .content_userlist_share {
+                            width: 60px;
+                        }
+                        .content_userlist_sendmessage {
+                            margin-left: 30px;
+                        }
+                        .content_userlist_share {
+                            margin-left: 0 !important;
+                        }
+                        .content_userlist_hulve {
+                            float: right !important;
+                            line-height: 40px !important;
+                            img {
+                                margin-right: 10px;
+                            }
+                        }
+                        .content_userlist_fabuqingqiu {
+                            line-height: 40px !important;
+                            img {
+                                margin-right: 10px;
+                            }
+                        }
                     }
+                }
+                li {
+                    width: 95%;
+                    padding: 5px 20px;
+                    height: 50px;
+                    margin-bottom: 5px;
+                    .content_userlist {
+                        color: white;
+                        img {
+                            float: left;
+                        }
+                        img.header {
+                            width: 40px;
+                        }
+                        p {
+                            float: left;
+                        }
+                        .content_userlist_engname,
+                        .content_userlist_chinename,
+                        .content_userlist_sendmessage,
+                        .content_userlist_share,
+                        .content_userlist_sharehe {
+                            width: 40px;
+                            height: 40px;
+                            line-height: 40px;
+                        }
+                        .content_userlist_engname {
+                            background-color: #009688;
+                            text-align: center;
+                        }
+                        .content_userlist_chinename {
+                            margin-left: 25px;
+                            width: 200px;
+                            font-size: 14px;
+                        }
+                        .content_userlist_sendmessage,
+                        .content_userlist_share,
+                        .content_userlist_sharehe {
+                            cursor: pointer;
+                            img {
+                                margin-top: 10px;
+                                padding-left: 10px;
+                            }
+                            width: 90px;
+                            float: right;
+                            text-align: right;
+                        }
+                        .content_userlist_share {
+                            margin-left: 30px;
+                        }
+                    }
+                }
+                li.cur {
+                    background: #434a55;
+                }
+                .zm {
+                    position: absolute;
+                    float: right;
+                    top: 60px;
+                    right: 0;
+                    a {
+                        display: block;
+                        height: 15px;
+                        line-height: 15px;
+                        width: 40px;
+                        text-align: center;
+                        color: #4f555f;
+                        text-decoration: none;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        .chat {
+            width: 380px;
+            height: 100%;
+            position: absolute;
+            background: #2f343d;
+            left: 800px;
+            top: 0;
+            border-left: 1px solid #5e656e;
+            .chatcontent {
+                margin: 50px 30px 0;
+                overflow: hidden;
+                .close {
+                    img {
+                        width: 15px;
+                        height: 15px;
+                        float: right;
+                        cursor: pointer;
+                    }
+                }
+                .username {
+                    margin-top: 80px;
+                    text-align: center;
+                    color: white;
                     img.header {
                         width: 40px;
                     }
-                    p {
-                        float: left;
-                    }
-                    .content_userlist_engname,
-                    .content_userlist_chinename,
-                    .content_userlist_sendmessage,
-                    .content_userlist_share,
-                    .content_userlist_sharehe {
+                    .head {
                         width: 40px;
                         height: 40px;
+                        background: #4caf50;
                         line-height: 40px;
-                    }
-                    .content_userlist_engname {
-                        background-color: #009688;
                         text-align: center;
+                        margin-left: 139px;
                     }
-                    .content_userlist_chinename {
-                        margin-left: 25px;
-                        width: 200px;
-                        font-size: 14px;
+                    .name {
+                        margin-top: 20px;
+                        font-size: 20px;
                     }
-                    .content_userlist_sendmessage,
-                    .content_userlist_share,
-                    .content_userlist_sharehe {
+                }
+                .remarks_div {
+                    margin-top: 60px;
+                    color: white;
+                    font-size: 16px;
+                    input {
+                        background-color: #2f343d;
+                        outline: none;
+                        border: none;
+                        padding-left: 20px;
+                    }
+                }
+                .nick_name,
+                .nick_value {
+                    margin-top: 20px;
+                    display: inline-block;
+                    color: white;
+                    font-size: 16px;
+                    text-align: right;
+                }
+                .nick_name {
+                    margin-left: 16px;
+                }
+            }
+            .remarks_div {
+                margin-top: 60px;
+                color: white;
+                font-size: 16px;
+                position: relative;
+                .controls {
+                    position: absolute;
+                    color: gray;
+                    font-size: 12px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 10px;
+                    span {
                         cursor: pointer;
-                        img {
-                            margin-top: 10px;
-                            padding-left: 10px;
-                        }
-                        width: 90px;
-                        float: right;
-                        text-align: right;
                     }
-                    .content_userlist_share {
-                        margin-left: 30px;
+                    span:last-of-type {
+                        margin-left: 10px;
                     }
                 }
-            }
-            li.cur {
-                background: #434a55;
-            }
-            .zm {
-                position: absolute;
-                float: right;
-                top: 60px;
-                right: 0;
-                a {
-                    display: block;
-                    height: 15px;
-                    line-height: 15px;
-                    width: 40px;
-                    text-align: center;
-                    color: #4f555f;
-                    text-decoration: none;
-                    font-size: 13px;
+                input {
+                    background-color: #2f343d;
+                    outline: none;
+                    border: none;
+                    padding-left: 20px;
+                    color: white;
                 }
             }
         }
-    }
-    .chat {
-        width: 380px;
-        height: 100%;
-        position: fixed;
-        background: #2f343d;
-        left: 900px;
-        top: 0;
-        border-left: 1px solid #5e656e;
-        .chatcontent {
-            margin: 50px 30px 0;
-            overflow: hidden;
-            .close {
-                img {
-                    width: 15px;
-                    height: 15px;
-                    float: right;
-                    cursor: pointer;
-                }
-            }
-            img:after {
-                display: block;
-                content: "";
-                clear: both;
-            }
-        }
-        .username {
-            margin-top: 80px;
-            text-align: center;
-            color: white;
-            img.header {
-                width: 40px;
-            }
-            .head {
-                width: 40px;
-                height: 40px;
-                background: #4caf50;
-                line-height: 40px;
-                text-align: center;
-                margin-left: 139px;
-            }
-            .name {
-                margin-top: 20px;
-                font-size: 20px;
-            }
-        }
-        .remarks_div {
-            margin-top: 60px;
-            color: white;
-            font-size: 16px;
-            input {
-                background-color: #2f343d;
-                outline: none;
-                border: none;
-                padding-left: 20px;
-            }
-        }
-        .nick_name,
-        .nick_value {
-            margin-top: 20px;
-            display: inline-block;
-            color: white;
-            font-size: 16px;
-            text-align: right;
-        }
-        .nick_name {
-            margin-left: 16px;
-        }
-        .nick_value {
-            padding-left: 20px;
-        }
-        .sendmes {
-            height: 60px;
-            line-height: 60px;
-            background-color: #0074ff;
-            text-align: center;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 80px;
-        }
-    }
-}

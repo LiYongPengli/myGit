@@ -19,7 +19,7 @@
       <router-view />
     </div>
     <!-- 浮窗工具 -->
-    <div class="fx">
+    <div v-show="show_fx" class="fx">
       <a @click="toTop" class="arrow"
         ><img title="置顶" src="./assets/img/arrow-right.png" alt=""
       /></a>
@@ -45,6 +45,7 @@ import Topic from "@/components/topic/Topic.vue";
 })
 export default class App extends Vue {
   private isshow = true;
+  public show_fx = true;
   //是否展示聊天工具
   @State("topic_show") topic_show!: boolean;
   //设置用户信息
@@ -61,8 +62,10 @@ export default class App extends Vue {
       newVal == "BindAccount"
     ) {
       this.isshow = true;
+      this.show_fx = false;
     } else {
       this.isshow = false;
+      this.show_fx = true;
       this.userLoginType();
     }
   }
@@ -174,7 +177,7 @@ body {
     }
   }
   .topics {
-    width: 900px;
+    width: 800px;
     height: 100%;
     flex-shrink: 0;
     position: relative;
