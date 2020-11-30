@@ -34,7 +34,7 @@
               <p class="remarks_p">
                 "{{v.recommender.nickname}}"将"{{v.recommended.nickname}}"的名片推荐给你
               </p>
-              <p v-show="v.status!='requested'" @click="showInvInfo(v,keys)" class="content_userlist_request request">
+              <p v-show="v.status=='ignored'||v.status=='pending'" @click="showInvInfo(v,keys)" class="content_userlist_request request">
                 <img src="../../assets/img/fabuqingqiu.png" alt="" />
                 请求添加好友
               </p>
@@ -46,7 +46,13 @@
                 已忽略
               </p>
               <p v-show="v.status == 'requested'" class="content_userlist_share">
+                待验证
+              </p>
+              <p v-show="v.status == 'accepted'" class="content_userlist_share">
                 已添加
+              </p>
+              <p v-show="v.status == 'rejected'" class="content_userlist_share">
+                已拒绝
               </p>
             </div>
           </li>
@@ -89,7 +95,7 @@
                 接受
               </p>
               <p v-show="v.status == 'accepted'" class="content_userlist_share">
-                已接受
+                已添加
               </p>
               <p v-show="v.status == 'rejected'" class="content_userlist_share">
                 已拒绝
@@ -123,7 +129,11 @@
         </div>
         <div class="remarks_div">
           <span class="remarks_name">备注名：</span>
-          <input class="remarks_value" type="text" placeholder="设置备注" />
+          <div v-show="remark" class="controls">
+            <span @click.stop="changeRemark">确定</span>
+            <span @click="remark=false;remark_name=userInfo.remark_name">取消</span>
+          </div>
+          <input @input="remark=true" v-model="remark_name" class="remarks_value" type="text" placeholder="设置备注" />
         </div>
         <span class="nick_name">昵称：</span>
         <span class="nick_value">{{userInfo.nickname}}</span>

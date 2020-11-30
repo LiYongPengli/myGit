@@ -177,7 +177,7 @@ body {
     }
   }
   .topics {
-    width: 900px;
+    width: 800px;
     height: 100%;
     flex-shrink: 0;
     position: relative;

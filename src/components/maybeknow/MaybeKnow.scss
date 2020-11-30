@@ -61,9 +61,9 @@
     .chat {
         width: 380px;
         height: 100%;
-        position: fixed;
+        position: absolute;
         background: #2f343d;
-        left: 900px;
+        left: 800px;
         top: 0;
         border-left: 1px solid #5e656e;
         .chatcontent {
