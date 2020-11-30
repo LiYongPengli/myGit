@@ -4,134 +4,15 @@
         margin: 0 auto;
         background-color: #3a3a48;
         margin-left: -60px;
-        .content_num {
-            padding: 0 60px;
-            padding-bottom: 50px;
-            border-bottom: 1px solid #494959;
-            ul {
-                li {
-                    float: left;
-                    width: 250px;
-                    height: 202px;
-                    margin-right: 26px;
-                    background-color: #494959;
-                    .peoplenum {
-                        text-align: center;
-                        border-bottom: 1px solid #5c5c6b;
-                        .num {
-                            margin-top: 35px;
-                            font-size: 40px;
-                            height: 40px;
-                            line-height: 40px;
-                            // margin-top: 10px;
-                        }
-                        .name {
-                            margin-top: 10px;
-                            margin-bottom: 20px;
-                            font-size: 14px;
-                        }
-                    }
-                    .yesterday {
-                        text-align: center;
-                        .name {
-                            font-size: 14px;
-                            margin-top: 10px;
-                        }
-                        .num {
-                            font-size: 16px;
-                            margin-top: 10px;
-                            color: #f4516c;
-                        }
-                    }
-                }
-                li:last-child {
-                    margin-right: 0;
-                }
-            }
-            ul:after {
-                display: block;
-                content: '';
-                clear: both;
-            }
-        }
-        .content_tu {
-            border-bottom: 1px solid #494959;
-            .cjsjs {
-                padding-left: 60px;
-                //float: right;
-                margin-left: 370px;
-                .cjsjs_head {
-                    margin-top: 40px;
-                    p {
-                        font-size: 20px;
-                        color: white;
-                        display: inline;
-                    }
-                    .el-row {
-                        float: right;
-                        margin-right: 400px;
-                        padding-bottom: 20px;
-                        button {
-                            width: 100px;
-                        }
-                    }
-                    .zhi {
-                        display: inline-block;
-                        width: 16px;
-                        font-weight: bold;
-                    }
-                    .zjsst {
-                        margin-right: 30px;
-                    }
-                    .cjsjs_head_search {
-                        display: inline-block;
-                        height: 40px;
-                        width: 50px;
-                        // float: right;
-                        margin-right: 60px;
-                        text-align: center;
-                        border: 1px solid #494959;
-                        cursor: pointer;
-                        img {
-                            margin-top: 10px;
-                        }
-                    }
-                }
-            }
-            .cjsjs:after {
-                display: block;
-                clear: both;
-                content: '';
-            }
-            .cjsjqst {
-                margin-top: 45px;
-                padding-left: 60px;
-                .small {
-                    .myChart2 {
-                        width: 1200px;
-                        height: 290px;
-                    }
-                }
-            }
-            .hdyhqst {
-                margin-top: 45px;
-                padding-left: 60px;
-                .small {
-                    .myChart3 {
-                        width: 1200px;
-                        height: 290px;
-                    }
-                }
-            }
-        }
         .content_form {
             margin-top: 40px;
-            height: 500px;
+            height: 280px;
             padding: 0 60px;
             .content_form_one {
                 .namelist {
                     font-size: 20px;
                 }
+                .today,
                 .Cumulative,
                 .export {
                     width: 100px;
@@ -145,8 +26,12 @@
                     font-size: 14px;
                     border-radius: 3px;
                 }
+                .today {
+                    margin-left: 189px;
+                    margin-right: 10px;
+                    background: #0074ff;
+                }
                 .Cumulative {
-                    margin-left: 100px;
                     margin-right: 30px;
                 }
                 .searchdate {
@@ -165,42 +50,9 @@
                         // margin-top: 10px;
                     }
                 }
-                input {
-                    height: 40px;
-                    width: 200px;
-                    line-height: 40px;
-                    background-color: #494959;
-                    border: none;
-                    outline: none;
-                    color: #cdd6e5;
-                    padding-left: 25px;
-                    border-radius: 3px;
-                }
-                input::-webkit-input-placeholder {
-                    /* WebKit browsers */
-                    color: #cdd6e5;
-                }
-                input:-moz-placeholder {
-                    /* Mozilla Firefox 4 to 18 */
-                    color: #cdd6e5;
-                }
-                input::-moz-placeholder {
-                    /* Mozilla Firefox 19+ */
-                    color: #cdd6e5;
-                }
-                input:-ms-input-placeholder {
-                    /* Internet Explorer 10+ */
-                    color: #cdd6e5;
-                }
-                .searchinput {
-                    position: relative;
-                    left: -35px;
-                    top: 5px;
-                    cursor: pointer;
-                }
-                .export {
-                    margin-left: 25px;
-                }
+                // .export {
+                //     margin-left: 25px;
+                // }
             }
             .content_form_list {
                 ul {
@@ -224,18 +76,29 @@
                             font-size: 14px;
                         }
                         .list_li_accountnumber {
-                            width: 80px;
-                            margin-left: 60px;
+                            margin: 0 60px;
                         }
                         .list_li_name {
-                            width: 220px;
-                            text-align: center;
+                            width: 789px;
+                            text-align: left;
+                            overflow: hidden;
+                            /*超出部分隐藏*/
+                            white-space: nowrap;
+                            /*不换行*/
+                            text-overflow: ellipsis;
+                            /*超出部分文字以...显示*/
                         }
                         .list_li_phone,
                         .list_li_count,
                         .list_li_time {
-                            width: 220px;
-                            text-align: center;
+                            width: 141px;
+                            text-align: left;
+                        }
+                        .list_li_phone {
+                            float: right;
+                        }
+                        .value {
+                            padding-left: 10px;
                         }
                     }
                     li.active {
@@ -243,6 +106,12 @@
                     }
                 }
             }
+        }
+        .Fabulous {
+            margin-top: 10px;
+        }
+        .browse {
+            height: 500px;
         }
     }
 }
