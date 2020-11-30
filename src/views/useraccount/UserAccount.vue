@@ -1,7 +1,7 @@
 <template>
   <div class="useraccount">
     <div class="usermanage">账号管理</div>
-    <div class="useraccountlist">
+    <div class="useraccountlist" v-if="user_message">
       <div class="telephone">
         <img
           class="telephoneimg"
@@ -10,14 +10,14 @@
         />
         <div class="left">
           <p>手机号码</p>
-          <p>176****9003</p>
+          <p>{{user_message.phone_number.slice(0,3)}}****{{user_message.phone_number.slice(7)}}</p>
         </div>
         <div class="right">
           <p>如需更换手机号请联系运维人员</p>
           <p>0452-1212454</p>
         </div>
       </div>
-      <div class="telephone" :class="{ bangding: !bangding }">
+      <div class="telephone" :class="{ bangding: !user_message.wechat_info.binding }">
         <img
           class="wechatimg"
           src="../../assets/img/useraccountweixin.png"
@@ -25,11 +25,11 @@
         />
         <div class="left">
           <p>微信昵称</p>
-          <p>{{ bangding ? "Tc.Wang" : "赞未绑定微信" }}</p>
+          <p>{{ user_message.wechat_info.binding ? user_message.wechat_info.nickname : "赞未绑定微信" }}</p>
         </div>
         <div class="right">
           <span @click="binding = true">{{
-            bangding ? "解绑 >" : "绑定 >"
+            user_message.wechat_info.binding ? "解绑 >" : "绑定 >"
           }}</span>
         </div>
       </div>
@@ -43,7 +43,7 @@
         />
         <div class="left">
           <p>昵称</p>
-          <p>Tc.Wang</p>
+          <p>{{user_message.nickname}}</p>
         </div>
         <div class="right">
           <span @click="ninameupdate = true">修改></span>
