@@ -6,10 +6,11 @@
       <span @click="$emit('update:visable', 2)" class="newfriend">
         新的朋友
       </span>
+      <span @click="$emit('update:visable', 4)" class="addfriend">+添加好友</span>
     </div>
     <div class="search">
-      <input type="text" placeholder="搜索好友" />
-      <img src="../../assets/img/search.png" alt="" />
+      <input type="text" v-model="keyword" placeholder="通过账户/用户昵称/手机号/微信昵称搜索好友" />
+      <img @click="searchFriends" src="../../assets/img/search.png" alt="" />
     </div>
     <div class="content_userlists">
       <ul>
@@ -95,7 +96,9 @@
               </p>
             </div>
           </li>
+          <!-- 好友列表 -->
           <li
+          v-show="!letterSearch||letterSearch==v.letter"
             @click="showInfo(v)"
             @mouseover="showShare(k)"
             @mouseout="hideShare(k)"
@@ -143,9 +146,9 @@
                 </p> -->
             </div>
           </li>
-          <!-- <div class="zm">
-            <a v-for="(v1, k1) in zmlist" :key="k1" href="">{{ v1.name }}</a>
-          </div> -->
+          <div class="zm">
+            <a :style="{'color':v1.name==letterSearch?'white':''}" @click="setLetterSearch(v1)" v-for="(v1, k1) in zmlist" :key="k1">{{ v1.name }}</a>
+          </div>
         </my-scroll>
       </ul>
     </div>

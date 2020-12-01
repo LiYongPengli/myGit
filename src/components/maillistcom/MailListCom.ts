@@ -5,6 +5,9 @@ export default class MailListCom extends Vue{
     @Prop({}) visable!:boolean;
     public newFriendList:any[] = [];
     public cardList:any = "";
+    public letterSearch:string = "";
+    //搜索好友关键字
+    public keyword:string = "";
     //是否修改备注
     public remark:boolean = false;
     public userlists:any[] = [];
@@ -16,7 +19,7 @@ export default class MailListCom extends Vue{
     //验证消息
     public inv_message:string = "";
 
-    /* public zmlist = [
+    public zmlist = [
         { name: 'A' },
         { name: 'B' },
         { name: 'C' },
@@ -25,7 +28,6 @@ export default class MailListCom extends Vue{
         { name: 'F' },
         { name: 'G' },
         { name: 'H' },
-        { name: 'I' },
         { name: 'I' },
         { name: 'J' },
         { name: 'K ' },
@@ -44,7 +46,7 @@ export default class MailListCom extends Vue{
         { name: 'X' },
         { name: 'Y' },
         { name: 'Z ' },
-        { name: '其他 ' }] */
+        { name: '其他 ' }]
 
     public created():void{
         this.getNewFriendsList();
@@ -69,6 +71,31 @@ export default class MailListCom extends Vue{
             this.userInfo.remark_name = this.remark_name;
             this.$message.success('设置备注成功!');
             this.remark = false;
+        })
+    }
+    //拼音首字母筛选
+    public setLetterSearch(letter:{name:string}):void{
+        if(letter.name==this.letterSearch){
+            this.letterSearch = "";
+        }else{
+            this.letterSearch = letter.name;
+        }
+    }
+
+    //搜索好友
+    public searchFriends():void{
+        if(!this.keyword){
+            this.getMailList();
+            return;
+        }
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'search_friend',
+          paras: { keyword: this.keyword }
+        }).then(res=>{
+            this.userlists = res.data.data;
+        }).catch(err=>{
+            console.log(err);
         })
     }
 

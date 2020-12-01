@@ -10,8 +10,8 @@ export default class SiteResourcesCom extends Vue {
     public value2: string = "";
     public mounted(): void {
 
-        this.fetchDataInfo();
-        this.fetchDataInfo1();
+        // this.fetchDataInfo();
+        // this.fetchDataInfo1();
 
 
         // this.tableRowClassName();
