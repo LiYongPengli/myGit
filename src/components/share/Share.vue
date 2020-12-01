@@ -193,7 +193,7 @@ export default class Share extends Vue {
           margin-bottom: 15px;
         }
         li {
-          width: 95%;
+          // width: 95%;
           padding: 5px 20px;
           height: 50px;
           margin-bottom: 5px;
