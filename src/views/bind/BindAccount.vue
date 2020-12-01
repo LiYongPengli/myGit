@@ -129,7 +129,7 @@ export default class BindAccount extends Vue {
           password: this.form.password,
         };
         let res = await this.axios.post(
-          baseApi.api1 + "/v1/user/login/",
+          baseApi.api1 + "/v1/user/wechat/bind",
           qs.stringify(data)
         );
         if (!res.data.status) {

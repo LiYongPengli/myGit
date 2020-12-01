@@ -136,7 +136,7 @@
                 <img src="../../assets/img/share.png" alt="" />
                 分享名片
               </p>
-              <p v-show="v.send" class="content_userlist_sendmessage">
+              <p @click.stop="sendMessage(v)" v-show="v.send" class="content_userlist_sendmessage">
                 <img src="../../assets/img/sendmessage.png" alt="" />
                 发送消息
               </p>
