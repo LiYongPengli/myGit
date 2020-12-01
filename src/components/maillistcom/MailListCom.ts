@@ -98,6 +98,18 @@ export default class MailListCom extends Vue{
             console.log(err);
         })
     }
+    //发送消息
+    public sendMessage(user:any):void{
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'im_create',
+          paras: { account: user.account }
+        }).then(res=>{
+            console.log(res.data)
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
 
     //获取通讯录列表
     private getMailList():void{
