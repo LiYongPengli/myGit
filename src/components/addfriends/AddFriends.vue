@@ -19,49 +19,6 @@
             <div class="content_userlist">
               <img
                 class="header"
-                v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img"
-                :src="v.recommended.headimg"
-                alt=""
-              />
-              <img
-                class="header"
-                v-if="!v.recommended.headimg && v.recommended.wechat_info.head_img"
-                :src="v.recommended.wechat_info.head_img"
-                alt=""
-              />
-              <p v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img" class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p>
-              <p class="content_userlist_chinename">{{v.recommended.nickname}}</p>
-              <p class="remarks_p">
-                "{{v.recommender.nickname}}"将"{{v.recommended.nickname}}"的名片推荐给你
-              </p>
-              <p v-show="v.status=='ignored'||v.status=='pending'" @click="showInvInfo(v,keys)" class="content_userlist_request request">
-                <img src="../../assets/img/fabuqingqiu.png" alt="" />
-                请求添加好友
-              </p>
-              <p @click.stop="igron(v,keys)" v-show="v.status=='pending'" class="content_userlist_hulve hulve">
-                <img src="../../assets/img/hulve.png" alt="" />
-                忽略
-              </p>
-              <p v-show="v.status == 'ignored'" class="content_userlist_share">
-                已忽略
-              </p>
-              <p v-show="v.status == 'requested'" class="content_userlist_share">
-                待验证
-              </p>
-              <p v-show="v.status == 'accepted'" class="content_userlist_share">
-                已添加
-              </p>
-              <p v-show="v.status == 'rejected'" class="content_userlist_share">
-                已拒绝
-              </p>
-            </div>
-          </li>
-            </my-scroll>
-          <!-- 新朋友列表 -->
-          <!-- <li @click="showInfo(v)" v-for="(v, i) in newFriendList" :key="i">
-            <div class="content_userlist">
-              <img
-                class="header"
                 v-if="!v.headimg && !v.wechat_info.head_img"
                 :src="v.headimg"
                 alt=""
@@ -72,38 +29,16 @@
                 :src="v.wechat_info.head_img"
                 alt=""
               />
-              <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">
-                {{ v.nickname.slice(0, 1) }}
-              </p>
-              <p class="content_userlist_chinename">{{ v.nickname }}</p>
-              <p class="remarks_p">
-                {{ v.message }}
-              </p>
-              <p
-              @click.stop="toReject(v)"
-                v-show="v.status == 'pending'"
-                class="content_userlist_hulve hulve"
-              >
-                <img src="../../assets/img/refuse.png" alt="" />
-                拒绝
-              </p>
-              <p
-                @click.stop="toAgree(v)"
-                v-show="v.status == 'pending'"
-                class="content_userlist_share share"
-              >
-                <img src="../../assets/img/accept.png" alt="" />
-                接受
-              </p>
-              <p v-show="v.status == 'accepted'" class="content_userlist_share">
-                已添加
-              </p>
-              <p v-show="v.status == 'rejected'" class="content_userlist_share">
-                已拒绝
-              </p>
+              <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">{{ v.nickname.slice(0, 1) }}</p>
+              <p class="content_userlist_chinename">{{v.nickname}}</p>
+              <!-- <p class="remarks_p">
+                "{{v.nickname}}"将"{{v.nickname}}"的名片推荐给你
+              </p> -->
+            
             </div>
-          </li> 
-        </my-scroll>-->
+          </li>
+            </my-scroll>
+         
       </ul>
     </div>
 

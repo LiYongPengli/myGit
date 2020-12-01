@@ -9,12 +9,8 @@ export default class AddFriendsCom extends Vue{
 
      //搜索好友
      public searchFriends():void{
-        // if(!this.keyword){
-        //     this.getMailList();
-        //     return;
-        // }
         this.axios
-        .post('/v1/cmd/', {
+        .post(baseApi.api2+'/v1/cmd/', {
             cmd: 'search_user',
             paras: { keyword: this.keyword },
           }).then(res=>{
