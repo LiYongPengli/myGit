@@ -15,7 +15,10 @@
     <div class="content_userlists">
       <ul>
         <my-scroll>
-          <li v-for="(v,keys,i) in userlists" :index="i" :key="keys">
+          <li v-for="(v,keys,i) in userlists" :index="i" :key="keys"
+           @mouseover="showShare(keys)"
+           @mouseout="hideShare(keys)"
+          >
             <div class="content_userlist">
               <img
                 class="header"
@@ -34,6 +37,33 @@
               <!-- <p class="remarks_p">
                 "{{v.nickname}}"将"{{v.nickname}}"的名片推荐给你
               </p> -->
+              <p
+                @click="toShare(v)"
+                v-if="v.is_friend"
+                class="content_userlist_share"
+              >
+                <img src="../../assets/img/share.png" alt="" />
+                分享名片
+              </p>
+              <p
+               @click="igron(v, keys)"
+                v-if="!v.is_friend"
+                class="content_userlist_share"
+              >
+                <img src="../../assets/img/share.png" alt="" />
+                忽略
+              </p>
+              <!-- /&& v.send -->
+               <p @click.stop="sendMessage(v)" v-if="v.is_friend" class="content_userlist_sendmessage">
+                <img src="../../assets/img/sendmessage.png" alt="" />
+                发送消息
+              </p>
+                <p @click="showInvInfo(v)" v-if="!v.is_friend " class="content_userlist_sendmessage">
+                <img src="../../assets/img/sendmessage.png" alt="" />
+                添加朋友
+              </p>
+
+
             
             </div>
           </li>
