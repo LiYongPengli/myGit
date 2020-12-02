@@ -1,11 +1,12 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class';
 @Component
 export default class NewFriendsCom extends Vue {
     @Prop({}) visable!: boolean;
     public newFriendList: any[] = [];
     //是否修改备注
-    public remark:boolean = false;
+    public remark: boolean = false;
     public userInfo: any = "";
     public inv_userInfo: any = "";
     public remark_name: string = "";
@@ -41,29 +42,48 @@ export default class NewFriendsCom extends Vue {
         { name: 'Z ' },
         { name: '其他 ' }]
 
+    @Mutation("setTopicUrl") setTopicUrl: any;
+    @Mutation("setTopicStatus") setTopicStatus: any;
+
     public created(): void {
         this.getNewFriendsList();
         this.getCardList();
     }
 
     //修改备注
-    public changeRemark():void{
-        if(!this.remark_name){
+    public changeRemark(): void {
+        if (!this.remark_name) {
             this.remark = false;
             return;
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
-          cmd: 'set_friend_remark_name',
-          paras: {
-            user_id: this.userInfo.user_id,
-            remark_name: this.remark_name
-          }
-        }).then(res=>{
-            this.userInfo.remark_name = this.remark_name;
-            this.$message.success('设置备注成功!');
-            this.remark = false;
-        })
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'set_friend_remark_name',
+                paras: {
+                    user_id: this.userInfo.user_id,
+                    remark_name: this.remark_name
+                }
+            }).then(res => {
+                this.userInfo.remark_name = this.remark_name;
+                this.$message.success('设置备注成功!');
+                this.remark = false;
+            })
+    }
+
+
+    //发送消息
+    public sendMessage(user: any): void {
+        this.axios
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'im_create',
+                paras: { account: user.account }
+            }).then(res => {
+                console.log(res.data)
+                this.setTopicUrl("http://zlbxxcj.bjceis.com/im/direct/" + res.data.data.room.rid)
+                this.setTopicStatus(1);
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
     //获取新朋友列表
@@ -142,11 +162,11 @@ export default class NewFriendsCom extends Vue {
         try {
             await this.axios.post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'request_add_friend',
-                paras: { 
-                    user_id: this.inv_userInfo.recommended.user_id, 
+                paras: {
+                    user_id: this.inv_userInfo.recommended.user_id,
                     message: this.inv_message,
                     remark_name: this.remark_name,
-                    r_id:this.inv_userInfo.id 
+                    r_id: this.inv_userInfo.id
                 }
             })
             this.$message.success('验证消息发送成功');

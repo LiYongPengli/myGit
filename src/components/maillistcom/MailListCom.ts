@@ -1,5 +1,6 @@
 import { baseApi } from '@/axios/axios';
 import { Component,Emit,Prop,Vue } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class';
 @Component
 export default class MailListCom extends Vue{
     @Prop({}) visable!:boolean;
@@ -19,34 +20,37 @@ export default class MailListCom extends Vue{
     //验证消息
     public inv_message:string = "";
 
+    @Mutation("setTopicUrl") setTopicUrl:any;
+    @Mutation("setTopicStatus") setTopicStatus:any;
+
     public zmlist = [
-        { name: 'A' },
-        { name: 'B' },
-        { name: 'C' },
-        { name: 'D' },
-        { name: 'E' },
-        { name: 'F' },
-        { name: 'G' },
-        { name: 'H' },
-        { name: 'I' },
-        { name: 'J' },
-        { name: 'K ' },
-        { name: 'L' },
-        { name: 'M ' },
-        { name: 'N' },
-        { name: 'O' },
-        { name: 'P' },
-        { name: ' Q ' },
-        { name: 'R ' },
-        { name: 'S ' },
-        { name: 'T ' },
-        { name: 'U ' },
-        { name: 'V ' },
-        { name: 'W' },
-        { name: 'X' },
-        { name: 'Y' },
-        { name: 'Z ' },
-        { name: '其他 ' }]
+        { name: 'A',value:'A' },
+        { name: 'B',value:'B' },
+        { name: 'C',value:'C' },
+        { name: 'D',value:'D' },
+        { name: 'E',value:'E' },
+        { name: 'F',value:'F' },
+        { name: 'G',value:'G' },
+        { name: 'H',value:'H' },
+        { name: 'I',value:'I' },
+        { name: 'J',value:'J' },
+        { name: 'K',value:'K' },
+        { name: 'L',value:'L' },
+        { name: 'M',value:'M' },
+        { name: 'N',value:'N' },
+        { name: 'O',value:'O' },
+        { name: 'P',value:'P' },
+        { name: 'Q',value:'Q' },
+        { name: 'R',value:'R' },
+        { name: 'S',value:'S' },
+        { name: 'T',value:'T' },
+        { name: 'U',value:'U' },
+        { name: 'V',value:'V' },
+        { name: 'W',value:'W' },
+        { name: 'X',value:'X' },
+        { name: 'Y',value:'Y' },
+        { name: 'Z',value:'Z' },
+        { name: '其他 ',value:'OTHER' }]
 
     public created():void{
         this.getNewFriendsList();
@@ -74,11 +78,11 @@ export default class MailListCom extends Vue{
         })
     }
     //拼音首字母筛选
-    public setLetterSearch(letter:{name:string}):void{
-        if(letter.name==this.letterSearch){
+    public setLetterSearch(letter:{name:string;value:string}):void{
+        if(letter.value==this.letterSearch){
             this.letterSearch = "";
         }else{
-            this.letterSearch = letter.name;
+            this.letterSearch = letter.value;
         }
     }
 
@@ -106,6 +110,8 @@ export default class MailListCom extends Vue{
           paras: { account: user.account }
         }).then(res=>{
             console.log(res.data)
+            this.setTopicUrl("http://zlbxxcj.bjceis.com/im/direct/"+res.data.data.room.rid)
+            this.setTopicStatus(1);
         }).catch(err=>{
             console.log(err);
         })

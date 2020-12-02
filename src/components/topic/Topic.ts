@@ -1,8 +1,10 @@
 import { Component,Vue } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class';
+import { Mutation, State } from 'vuex-class';
 @Component
 export default class TopicCom extends Vue{
-    public status:number = 1;
+    @State('topic_url') topic_url!:string;
+    @State('topic_status') topic_status!:number;
 
     @Mutation('setTopicShow') setTopicShow!: any;
+    @Mutation('setTopicStatus') setTopicStatus!: any;
 }
