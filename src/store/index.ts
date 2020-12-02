@@ -19,7 +19,11 @@ export default new Vuex.Store({
     //是否回到顶部
     suretop:false,
     //首页分页加载开关
-    mainPageLoading:false
+    mainPageLoading:false,
+    //聊天工具iframe地址
+    topic_url:'http://zlbxxcj.bjceis.com/im',
+    //聊天工具状态切换
+    topic_status:1
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -45,6 +49,12 @@ export default new Vuex.Store({
     },
     setMainPageLoading(state,n):void{
       state.mainPageLoading = n;
+    },
+    setTopicUrl(state,n):void{
+      state.topic_url = n;
+    },
+    setTopicStatus(state,n):void{
+      state.topic_status = n;
     }
   },
   actions: {

@@ -137,7 +137,7 @@
         </div>
         <span class="nick_name">昵称：</span>
         <span class="nick_value">{{userInfo.nickname}}</span>
-        <div class="sendmes">发送消息</div>
+        <div @click="sendMessage(userInfo)" class="sendmes">发送消息</div>
       </div>
     </div>
     <!-- 用户验证信息 -->

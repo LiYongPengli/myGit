@@ -2,23 +2,23 @@
   <!-- 聊天工具 -->
   <div class="topic">
     <div class="topic_wrap">
-      <iframe v-if="status==1" src="http://zlbxxcj.bjceis.com/im" frameborder="0"></iframe>
+      <iframe v-if="topic_status==1" :src="topic_url" frameborder="0"></iframe>
       <!-- 通讯录 -->
-      <mail-list v-if="status==2" />
+      <mail-list v-if="topic_status==2" />
       <!-- 可能认识 -->
-      <maybe-know v-if="status==3" />
+      <maybe-know v-if="topic_status==3" />
     </div>
     <div class="topic_foot">
       <div class="left_menu">
-          <div @click="status=1" class="item" :class="{'active':status==1}">
+          <div @click="setTopicStatus(1)" class="item" :class="{'active':topic_status==1}">
               <img src="../../assets/img/message.png" alt="">
               <p>消息</p>
           </div>
-          <div @click="status=2" class="item" :class="{'active':status==2}">
+          <div @click="setTopicStatus(2)" class="item" :class="{'active':topic_status==2}">
               <img src="../../assets/img/tongxunlu.png" alt="">
               <p>通讯录</p>
           </div>
-          <div @click="status=3" class="item" :class="{'active':status==3}">
+          <div @click="setTopicStatus(3)" class="item" :class="{'active':topic_status==3}">
               <img src="../../assets/img/qunzu.png" alt="">
               <p>可能认识</p>
           </div>
