@@ -98,7 +98,7 @@
               </div>
               <!-- 人物 -->
               <div class="swiper-slide">
-                <div class="country">
+                <div class="country people">
                   <div @click="toFollowPage('people',i)" v-for="(v, i) in people" :key="i" class="item">
                     <img src="../../assets/img/media.png" alt="" />
                     <p class="name">{{ v.name }}</p>

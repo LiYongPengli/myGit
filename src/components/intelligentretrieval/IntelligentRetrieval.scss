@@ -36,10 +36,14 @@
                     display: block;
                     margin-left: 459.984px;
                     ul {
+                        padding-top: 10px;
+                        padding-left: 10px;
+                        padding-bottom: 20px;
                         li {
-                            border-bottom: 1px solid gray;
-                            padding: 10px 0;
+                            padding: 10px;
                             cursor: pointer;
+                            color: white;
+                            font-size: 14px;
                             text-align: left;
                         }
                     }

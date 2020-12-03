@@ -219,7 +219,7 @@
                         display: flex;
                         flex-wrap: wrap;
                         overflow-y: auto;
-                        padding-top: 6px;
+                        padding: 6px 20px 0;
                         .item {
                             width: 25%;
                             cursor: pointer;
@@ -240,6 +240,25 @@
                                 font-family: "PingFangSC";
                                 color: rgb(255, 255, 255);
                                 // padding: 10px 0;
+                            }
+                        }
+                    }
+                    .people,
+                    .country {
+                        padding: 20px;
+                        .item {
+                            height: 80px;
+                            img {
+                                width: 50px;
+                                height: 50px;
+                            }
+                            .name {
+                                margin-top: 10px;
+                                height: 20px;
+                                line-height: 20px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             }
                         }
                     }

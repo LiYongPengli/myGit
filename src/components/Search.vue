@@ -22,7 +22,9 @@
       <div class="searchList" v-show="showSearchList">
         <my-scroll>
           <ul>
-            <li @click="clickList(v)" v-for="(v, i) in searchList" :key="i">{{ v }}</li>
+            <li @click="clickList(v)" v-for="(v, i) in searchList" :key="i">
+              {{ v }}
+            </li>
           </ul>
         </my-scroll>
       </div>
@@ -60,7 +62,7 @@ export default class Search extends Vue {
   @Mutation("setShowIntelligent") setShowIntelligent: any;
   public historyList: string[] = [];
   public searchList: any[] = [];
-  public showSearchList:boolean = false;
+  public showSearchList: boolean = false;
   public timer: any = null;
   //搜索内容
   public searchText: string = "";
@@ -68,10 +70,10 @@ export default class Search extends Vue {
     this.getHistory();
   }
 
-  public blur():void{
-    setTimeout(()=>{
-      this.showSearchList=false;
-    },200)
+  public blur(): void {
+    setTimeout(() => {
+      this.showSearchList = false;
+    }, 200);
   }
 
   @Watch("searchText")
@@ -116,7 +118,7 @@ export default class Search extends Vue {
   }
 
   @Emit("tosearch")
-  public clickList(item:string):string{
+  public clickList(item: string): string {
     this.searchText = item;
     this.setHistory();
     return this.searchText;
@@ -277,14 +279,18 @@ export default class Search extends Vue {
       left: 0;
       top: 52px;
       background: #353541;
-      color: white;
-       z-index: 10;
+
+      z-index: 10;
       ul {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 20px;
         li {
-          border-bottom: 1px solid gray;
-          padding: 10px 0;
+          // border-bottom: 1px solid gray;
+          padding: 10px;
           cursor: pointer;
-         
+          color: white;
+          font-size: 14px;
         }
       }
     }
