@@ -1,6 +1,6 @@
 import { baseApi } from '@/axios/axios'
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import { State } from 'vuex-class'
+import { Mutation, State } from 'vuex-class'
 @Component
 export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
@@ -22,6 +22,9 @@ export default class NewsInfoCom extends Vue {
     public img_pv:string = "";
     //创建的收藏夹名称
     public collection_name:string = "";
+    @Mutation('setShareNews') setShareNews:any;
+
+
     public created(): void {
         this.getData();
         this.getCollection();
@@ -46,6 +49,7 @@ export default class NewsInfoCom extends Vue {
         }).then(res => {
             //console.log(res.data);
             this.newsInfo = res.data.data;
+            this.setShareNews(this.newsInfo);
         }).catch(err => {
             console.log(err);
         })
