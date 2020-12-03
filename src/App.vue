@@ -283,6 +283,9 @@ body {
   display: flex;
   .el-dialog{
     background: #2d2d39;
+    .el-dialog__title{
+      color: white;
+    }
   }
   .share_wrap{
     color: white;
