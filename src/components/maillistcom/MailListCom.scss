@@ -191,34 +191,18 @@
                             .content_userlist_three {
                                 position: relative;
                                 cursor: pointer;
-                                img.qq {
-                                    top: 10px;
-                                    position: absolute;
-                                    right: 145px;
-                                }
-                                img.hl {
-                                    top: 10px;
-                                    position: absolute;
-                                    right: 30px;
-                                }
-                                img.fs {
-                                    top: 10px;
-                                    position: absolute;
-                                    right: 150px;
-                                }
+                                img.qq {}
+                                img.hl {}
+                                img.fs {}
                                 .content_userlist_sendmessage {
                                     line-height: 40px;
                                 }
-                                img.fxx {
-                                    top: 10px;
-                                    position: absolute;
-                                    right: 50px;
-                                }
+                                img.fxx {}
                                 .content_userlist_hulve {
-                                    margin-left: 45px;
+                                    //margin-left: 45px;
                                 }
                                 .content_userlist_share {
-                                    margin-left: 40px;
+                                    //margin-left: 40px;
                                 }
                             }
                         }
