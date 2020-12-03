@@ -8,7 +8,7 @@
                     font-size: 20px;
                     padding-bottom: 33px;
                 }
-                .addfriend{
+                .addfriend {
                     color: white;
                     float: right;
                     font-size: 16px;
@@ -26,7 +26,6 @@
             }
             .search {
                 margin-top: 20px;
-                // background: #434a55;
                 position: relative;
                 input {
                     padding-left: 20px;
@@ -96,7 +95,7 @@
                             .content_userlist_fabuqingqiu {
                                 line-height: 40px !important;
                                 cursor: pointer;
-                                margin-left: 22px;
+                                // margin-left: 22px;
                                 img {
                                     margin-right: 10px;
                                     padding-top: 10px;
@@ -144,69 +143,104 @@
                         margin-bottom: 5px;
                         .content_userlist {
                             color: white;
-                            img {
-                                float: left;
-                            }
-                            img.header {
-                                width: 40px;
-                            }
-                            p {
-                                float: left;
-                            }
-                            .content_userlist_engname,
-                            .content_userlist_chinename,
-                            .content_userlist_sendmessage,
-                            .content_userlist_share,
-                            .content_userlist_sharehe {
-                                width: 40px;
-                                height: 40px;
-                                line-height: 40px;
-                            }
-                            .content_userlist_engname {
-                                background-color: #009688;
-                                text-align: center;
-                            }
-                            .content_userlist_chinename {
-                                margin-left: 25px;
-                                width: 200px;
-                                font-size: 14px;
-                            }
-                            .content_userlist_sendmessage,
-                            .content_userlist_share,
-                            .content_userlist_sharehe {
-                                cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            .content_userlist_one {
                                 img {
-                                    margin-top: 10px;
-                                    padding-left: 10px;
+                                    float: left;
                                 }
-                                width: 90px;
-                                float: right;
-                                text-align: right;
+                                img.header {
+                                    width: 40px;
+                                }
+                                p {
+                                    float: left;
+                                }
+                                .content_userlist_engname,
+                                .content_userlist_chinename,
+                                .content_userlist_sendmessage,
+                                .content_userlist_share,
+                                .content_userlist_sharehe {
+                                    width: 40px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                }
+                                .content_userlist_engname {
+                                    background-color: #009688;
+                                    text-align: center;
+                                }
+                                .content_userlist_chinename {
+                                    margin-left: 25px;
+                                    font-size: 14px;
+                                }
+                                .content_userlist_sendmessage,
+                                .content_userlist_share,
+                                .content_userlist_sharehe {
+                                    cursor: pointer;
+                                    img {
+                                        margin-top: 10px;
+                                        padding-left: 10px;
+                                    }
+                                    // width: 90px;
+                                    // float: right;
+                                    // text-align: right;
+                                }
+                                .content_userlist_share {
+                                    margin-left: 30px;
+                                }
                             }
-                            .content_userlist_share {
-                                margin-left: 30px;
+                            .content_userlist_three {
+                                position: relative;
+                                cursor: pointer;
+                                img.qq {
+                                    top: 10px;
+                                    position: absolute;
+                                    right: 145px;
+                                }
+                                img.hl {
+                                    top: 10px;
+                                    position: absolute;
+                                    right: 30px;
+                                }
+                                img.fs {
+                                    top: 10px;
+                                    position: absolute;
+                                    right: 150px;
+                                }
+                                .content_userlist_sendmessage {
+                                    line-height: 40px;
+                                }
+                                img.fxx {
+                                    top: 10px;
+                                    position: absolute;
+                                    right: 50px;
+                                }
+                                .content_userlist_hulve {
+                                    margin-left: 45px;
+                                }
+                                .content_userlist_share {
+                                    margin-left: 40px;
+                                }
                             }
                         }
                     }
                     li.cur {
                         background: #434a55;
                     }
-                    .zm {
-                        position: absolute;
-                        float: right;
-                        top: 60px;
-                        right: 0;
-                        a {
-                            display: block;
-                            height: 15px;
-                            line-height: 15px;
-                            width: 40px;
-                            text-align: center;
-                            color: #4f555f;
-                            text-decoration: none;
-                            font-size: 13px;
-                            cursor: pointer;
-                        }
+                }
+                .zm {
+                    position: absolute;
+                    top: 250px;
+                    right: 5px;
+                    a {
+                        display: block;
+                        height: 15px;
+                        line-height: 15px;
+                        width: 40px;
+                        text-align: center;
+                        color: #4f555f;
+                        text-decoration: none;
+                        font-size: 13px;
+                        cursor: pointer;
                     }
                 }
             }
