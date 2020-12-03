@@ -219,10 +219,13 @@
                         display: flex;
                         flex-wrap: wrap;
                         overflow-y: auto;
+                        padding-top: 6px;
                         .item {
                             width: 25%;
                             cursor: pointer;
-                            margin-top: 20px;
+                            // margin-top: 20px;
+                            line-height: 55px;
+                            height: 55px;
                             img {
                                 display: block;
                                 width: 54px;
@@ -236,7 +239,7 @@
                                 font-size: 15px;
                                 font-family: "PingFangSC";
                                 color: rgb(255, 255, 255);
-                                padding: 10px 0;
+                                // padding: 10px 0;
                             }
                         }
                     }
@@ -247,5 +250,4 @@
             }
         }
     }
-    
 }

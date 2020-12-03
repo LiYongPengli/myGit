@@ -109,7 +109,7 @@
               <div class="swiper-slide">
                 <div class="media">
                   <div @click="toFollowPage('media',i)" v-for="(v, i) in media" :key="i" class="item">
-                    <img src="../../assets/img/media.png" alt="" />
+                    <!-- <img src="../../assets/img/media.png" alt="" /> -->
 
                     <p class="name">{{ v.name_zh }}</p>
                   </div>

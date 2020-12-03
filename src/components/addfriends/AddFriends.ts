@@ -3,6 +3,13 @@ import { Component, Emit,Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class AddFriendsCom extends Vue{
      @Prop({}) visable!:number;
+
+     public remark: boolean = false;
+     public userInfo: any = "";
+     public inv_userInfo: any = "";
+     public remark_name: string = "";
+     public inv_message: string = "";
+     public cardList: any = "";
      //搜索好友关键字
      public keyword:string = "";
     public userlists:any[] = [];
