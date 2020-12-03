@@ -23,13 +23,82 @@
       <a @click="toTop" class="arrow"
         ><img title="置顶" src="./assets/img/arrow-right.png" alt=""
       /></a>
-      <a class="fenxiang" href=""
-        ><img title="分享" src="./assets/img/fenxiang.png" alt=""
-      /></a>
+      <el-popover
+        @after-enter="getFriendList"
+        placement="left"
+        width="400"
+        trigger="click"
+      >
+        <ul id="appfriendlist">
+          <li class="friendlist_item" v-for="(v, i) in friend_list" :key="i">
+            <div class="left">
+              <img v-if="v.headimg" :src="v.headimg" alt="" />
+              <img
+                v-if="!v.headimg && v.wechat_info.head_img"
+                :src="v.headimg"
+                alt=""
+              />
+              <div class="user_ico">{{ v.nickname.slice(0, 1) }}</div>
+              <p class="user_name">
+                {{ v.nickname
+                }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
+              </p>
+            </div>
+            <div @click="setShare(v)" class="right">
+              <img src="./assets/img/share.png" alt="" />
+              <span
+                >分享给他(她)</span
+              >
+            </div>
+          </li>
+        </ul>
+        <a
+          slot="reference"
+          v-show="$route.name == 'NewsInfo'"
+          class="fenxiang"
+          ><img title="分享" src="./assets/img/fenxiang.png" alt=""
+        /></a>
+      </el-popover>
       <a @click.stop="setTopicShow(true)" class="chat">
-        <img title="分享到微信" src="./assets/img/chat.png" alt=""
+        <img title="聊天工具" src="./assets/img/chat.png" alt=""
       /></a>
     </div>
+    <el-dialog
+      title="分享"
+      :close-on-click-modal="false"
+      :visible.sync="shareWindow"
+      width="800px"
+      top="25vh"
+    >
+      <div v-if="share_user" class="share_wrap">
+        <p>分享给:</p>
+        <div class="share_user">
+          <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
+          <img
+            v-if="!share_user.headimg && share_user.wechat_info.head_img"
+            :src="share_user.headimg"
+            alt=""
+          />
+          <p class="user_ico">{{ share_user.nickname.slice(0, 1) }}</p>
+          <p class="user_name">
+            {{ share_user.nickname
+            }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
+          </p>
+        </div>
+        <p>内容:</p>
+        <p v-if="language=='crawler'" class="news_content">{{shareNews.title.crawler}}</p>
+        <p v-if="language=='en'" class="news_content">{{shareNews.title.en}}</p>
+        <p v-if="language=='zh-CN'" class="news_content">{{shareNews.title['zh-CN']}}</p>
+        <p>附加消息:</p>
+        <div class="message">
+          <textarea v-model="sharetext" placeholder="说点什么吧" cols="100" rows="5"></textarea>
+        </div>
+        <div style="text-align:right;" class="footer">
+          <el-button @click="shareMessage" style="width:100px;" size="mini" type="primary">分享</el-button>
+          <el-button @click="shareWindow=false" style="width:100px;" size="mini">取消</el-button>
+        </div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -46,12 +115,20 @@ import Topic from "@/components/topic/Topic.vue";
 export default class App extends Vue {
   private isshow = true;
   public show_fx = true;
+  public friend_list: any[] = [];
+  public shareWindow: boolean = false;
+  public share_user: any = "";
+  //附加消息
+  public sharetext:string = "";
   //是否展示聊天工具
   @State("topic_show") topic_show!: boolean;
+  @State("language") language!: string;
+  //被分享的新闻
+  @State("shareNews") shareNews!: any;
   //设置用户信息
   @Mutation("setUserMessage") setUserMessage: any;
   @Mutation("setSureTop") setSureTop!: any;
-  @Mutation('setTopicShow') setTopicShow!: any;
+  @Mutation("setTopicShow") setTopicShow!: any;
 
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
@@ -72,6 +149,46 @@ export default class App extends Vue {
 
   private created(): void {
     this.userLoginType();
+  }
+
+  //显示分享弹窗
+  setShare(user:any):void{
+    this.share_user = user;
+    this.shareWindow = true;
+  }
+
+  //分享新闻
+  public shareMessage(): void {
+    this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'share_news',
+          paras: {
+            account: this.share_user.account,
+            news_id: this.shareNews.news_id,
+            url:
+              'http://zlbxxcj.bjceis.com/#/newsinfo?id='+this.shareNews.news_id+'&md_id='+this.shareNews.media_id,
+            message: this.sharetext,
+          },
+        }).then(res=>{
+          this.$message.success("分享成功");
+          this.shareWindow = false;
+        }).catch(err=>{
+          console.log(err);
+        })
+  }
+
+  public getFriendList(): void {
+    this.axios
+      .post(baseApi.api2 + "/v1/cmd/", {
+        cmd: "my_friends",
+      })
+      .then((res) => {
+        this.friend_list = res.data.data;
+        console.log(this.friend_list);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //回到顶部
@@ -127,9 +244,82 @@ html,
 body {
   height: 100%;
 }
+#appfriendlist {
+  li {
+    padding: 5px 20px;
+    height: 50px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    .left,
+    .right {
+      display: flex;
+      align-items: center;
+    }
+    .left {
+      .user_ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 3px;
+        background: #009688;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .user_name {
+        margin-left: 5px;
+      }
+    }
+    .right {
+      cursor: pointer;
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+}
 #app {
   height: 100%;
   display: flex;
+  .el-dialog{
+    background: #2d2d39;
+  }
+  .share_wrap{
+    color: white;
+    .share_user{
+      padding: 5px 0;
+      padding-left: 30px;
+      display: flex;
+      align-items: center;
+      .user_ico,img{
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: #009688;
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+      .user_ico{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .news_content{
+      padding: 5px 0;
+      text-indent: 2em;
+    }
+    .message{
+      padding: 5px 0;
+      padding-left: 30px;
+      textarea{
+        background: none;
+        outline: none;
+        color: white;
+        padding: 5px;
+      }
+    }
+  }
   .back_video {
     width: 100%;
     height: 100%;

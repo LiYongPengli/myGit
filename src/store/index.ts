@@ -23,7 +23,9 @@ export default new Vuex.Store({
     //聊天工具iframe地址
     topic_url:'http://zlbxxcj.bjceis.com/im',
     //聊天工具状态切换
-    topic_status:1
+    topic_status:1,
+    //被分享的新闻
+    shareNews:null
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -55,6 +57,9 @@ export default new Vuex.Store({
     },
     setTopicStatus(state,n):void{
       state.topic_status = n;
+    },
+    setShareNews(state,n):void{
+      state.shareNews = n;
     }
   },
   actions: {
