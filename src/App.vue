@@ -177,7 +177,7 @@ body {
     }
   }
   .topics {
-    width: 800px;
+    width: 820px;
     height: 100%;
     flex-shrink: 0;
     position: relative;
@@ -191,7 +191,7 @@ body {
   }
   @keyframes show {
     from {
-      margin-left: -900px;
+      margin-left: -820px;
     }
     to {
       margin-left: 0;

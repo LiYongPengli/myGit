@@ -50,7 +50,7 @@ export default class MailListCom extends Vue{
         { name: 'X',value:'X' },
         { name: 'Y',value:'Y' },
         { name: 'Z',value:'Z' },
-        { name: '其他 ',value:'OTHER' }]
+        { name: '其他 ',value:'Other' }]
 
     public created():void{
         this.getNewFriendsList();

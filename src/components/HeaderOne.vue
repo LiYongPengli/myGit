@@ -27,8 +27,9 @@
             </li>
           </ul>
           <div slot="reference" class="user_info_wrap">
-            <button v-if="user_message.wechat_info.head_img" :style="{'background-image':'url('+user_message.wechat_info.head_img+')'}" value="" title="头像"></button>
-            <button v-show="!user_message.wechat_info.head_img" :style="{'background-image':'url(../assets/img/tx.png)'}" value="" title="头像"></button>
+            <button v-if="user_message.headimg" :style="{'background-image':'url('+user_message.headimg+')'}" value="" title="头像"></button>
+            <button v-if="user_message.wechat_info.head_img&&!user_message.headimg" :style="{'background-image':'url('+user_message.wechat_info.head_img+')'}" value="" title="头像"></button>
+            <button v-if="!user_message.wechat_info.head_img&&user_message.headimg" :style="{'background-image':'url(../assets/img/tx.png)'}" value="" title="头像"></button>
             <span>{{user_message.nickname}}</span>
             <i class="el-icon-arrow-down"></i>
           </div>
