@@ -73,7 +73,6 @@
                     p {
                         color: white;
                         font-size: 14px;
-                        margin-bottom: 15px;
                     }
                     .recommend {
                         background-color: #0074ff;
@@ -189,20 +188,19 @@
                                 }
                             }
                             .content_userlist_three {
-                                position: relative;
+                                display: flex;
+                                align-items: center;
                                 cursor: pointer;
-                                img.qq {}
-                                img.hl {}
-                                img.fs {}
+                                .qq,
+                                .fs {
+                                    margin: 0 10px;
+                                }
+                                .hl,
+                                .fxx {
+                                    margin: 0 10px 0 20px;
+                                }
                                 .content_userlist_sendmessage {
                                     line-height: 40px;
-                                }
-                                img.fxx {}
-                                .content_userlist_hulve {
-                                    //margin-left: 45px;
-                                }
-                                .content_userlist_share {
-                                    //margin-left: 40px;
                                 }
                             }
                         }
