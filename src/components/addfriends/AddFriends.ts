@@ -81,12 +81,10 @@ export default class AddFriendsCom extends Vue {
         this.inv_message = "";
         this.inv_userInfo = user;
         this.inv_userInfo.id = key;
-        alert(key);
+       
     }
     //添加到通讯录
     public async toAddMaiList(){
-        alert(this.remark_name);
-        alert(this.inv_userInfo.id);
         try{
             await this.axios.post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
@@ -96,7 +94,7 @@ export default class AddFriendsCom extends Vue {
               
                     message: this.inv_message,
                     remark_name:this.remark_name,
-                    r_id:this.inv_userInfo.id
+                    r_id:''
                 }
               })
               this.$message.success('验证消息发送成功');
