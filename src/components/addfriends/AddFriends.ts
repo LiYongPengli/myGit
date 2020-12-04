@@ -1,5 +1,6 @@
 import { baseApi } from '@/axios/axios';
-import { Component, Emit,Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit,Prop, Vue } from 'vue-property-decorator';
+import { Mutation } from 'vuex-class';
 @Component
 export default class AddFriendsCom extends Vue{
      @Prop({}) visable!:number;
@@ -13,6 +14,17 @@ export default class AddFriendsCom extends Vue{
      //搜索好友关键字
      public keyword:string = "";
     public userlists:any[] = [];
+    @Mutation("setTopicUrl") setTopicUrl:any;
+    @Mutation("setTopicStatus") setTopicStatus:any;
+
+
+     //显示用户详细信息
+     public showInfo(user:any):void{
+        this.inv_userInfo = "";
+        this.remark_name = user.remark_name;
+        this.inv_message = "";
+        this.userInfo=user;
+    }
 
      //搜索好友
      public searchFriends():void{
@@ -38,7 +50,7 @@ export default class AddFriendsCom extends Vue{
         this.$delete(this.userlists[index],'send')
     }
 
-    //发送消息
+   //发送消息
     public sendMessage(user:any):void{
         this.axios
         .post(baseApi.api2+'/v1/cmd/', {
@@ -46,6 +58,8 @@ export default class AddFriendsCom extends Vue{
           paras: { account: user.account }
         }).then(res=>{
             console.log(res.data)
+            this.setTopicUrl("http://zlbxxcj.bjceis.com/im/direct/"+res.data.data.room.rid)
+            this.setTopicStatus(1);
         }).catch(err=>{
             console.log(err);
         })

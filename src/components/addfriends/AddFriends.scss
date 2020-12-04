@@ -83,11 +83,13 @@
                     .content_userlist_chinename,
                     .content_userlist_sendmessage,
                     .content_userlist_share,
+                    .content_userlist_hulue,
                     .content_userlist_request,
                     .content_userlist_sharehe {
                         width: 40px;
                         height: 40px;
                         line-height: 40px;
+                        cursor: pointer;
                     }
                     .content_userlist_request {
                         width: 110px;
@@ -130,6 +132,7 @@
                     }
                     .content_userlist_sendmessage,
                     .content_userlist_share,
+                    .content_userlist_hulue,
                     .content_userlist_sharehe {
                         cursor: pointer;
                         img {
@@ -147,6 +150,9 @@
                     .content_userlist_share {
                         margin-left: 10px;
                         //width: 40px;
+                    }
+                    .content_userlist_hulue {
+                        width: 65px;
                     }
                     .share {
                         text-align: center;
@@ -220,7 +226,7 @@
             font-size: 16px;
             position: relative;
             .remarks_name {
-                margin-left: 20px;
+                margin-left: 35px;
             }
             .controls {
                 position: absolute;
@@ -231,6 +237,11 @@
                 right: 10px;
                 span {
                     cursor: pointer;
+                    background: #0074ff;
+                    height: 21px;
+                    line-height: 21px;
+                    color: white;
+                    font-size: 16px;
                 }
                 span:last-of-type {
                     margin-left: 10px;

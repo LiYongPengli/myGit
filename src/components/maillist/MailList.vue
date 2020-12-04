@@ -6,7 +6,7 @@
     <!-- 新朋友 -->
     <new-friends  v-if="newfriendid==2" :visable.sync="newfriendid" />
     <!-- 添加朋友 -->
-    <add-friends v-if="newfriendid==4" :visable.sync="newfriendid" />
+    <add-friends @share="shareMethod" v-if="newfriendid==4" :visable.sync="newfriendid" />
     <!-- 分享给Ta -->
     <share v-if="newfriendid==3" :user="shareUser" :visable.sync="newfriendid" />
   </div>
