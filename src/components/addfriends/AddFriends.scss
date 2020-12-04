@@ -69,7 +69,13 @@
                 height: 50px;
                 margin-bottom: 5px;
                 .content_userlist {
+                    display: flex;
+                    justify-content: space-between;
                     color: white;
+                    .content_userlist_two {
+                        display: flex;
+                        align-items: center;
+                    }
                     img {
                         float: left;
                     }
@@ -86,7 +92,6 @@
                     .content_userlist_hulue,
                     .content_userlist_request,
                     .content_userlist_sharehe {
-                        width: 40px;
                         height: 40px;
                         line-height: 40px;
                         cursor: pointer;
@@ -139,17 +144,21 @@
                             margin-top: 10px;
                             padding-left: 10px;
                         }
-                        width: 90px;
+                        // width: 90px;
                         float: right;
                         text-align: right;
                         color: #88898a;
                     }
                     .content_userlist_sharehe {
-                        width: 40px !important;
+                        // width: 40px !important;
                     }
-                    .content_userlist_share {
+                    .content_userlist_share,
+                    .content_userlist_sendmessage {
                         margin-left: 10px;
                         //width: 40px;
+                    }
+                    .content_userlist_sendmessage {
+                        margin-right: 20px;
                     }
                     .content_userlist_hulue {
                         width: 65px;
