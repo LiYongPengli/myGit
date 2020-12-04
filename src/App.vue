@@ -23,82 +23,15 @@
       <a @click="toTop" class="arrow"
         ><img title="置顶" src="./assets/img/arrow-right.png" alt=""
       /></a>
-      <el-popover
-        @after-enter="getFriendList"
-        placement="left"
-        width="400"
-        trigger="click"
-      >
-        <ul id="appfriendlist">
-          <li class="friendlist_item" v-for="(v, i) in friend_list" :key="i">
-            <div class="left">
-              <img v-if="v.headimg" :src="v.headimg" alt="" />
-              <img
-                v-if="!v.headimg && v.wechat_info.head_img"
-                :src="v.headimg"
-                alt=""
-              />
-              <div class="user_ico">{{ v.nickname.slice(0, 1) }}</div>
-              <p class="user_name">
-                {{ v.nickname
-                }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
-              </p>
-            </div>
-            <div @click="setShare(v)" class="right">
-              <img src="./assets/img/share.png" alt="" />
-              <span
-                >分享给他(她)</span
-              >
-            </div>
-          </li>
-        </ul>
-        <a
-          slot="reference"
-          v-show="$route.name == 'NewsInfo'"
-          class="fenxiang"
-          ><img title="分享" src="./assets/img/fenxiang.png" alt=""
-        /></a>
-      </el-popover>
+      <share-content type="news" :content="shareNews">
+        <a v-show="$route.name == 'NewsInfo'" class="fenxiang" >
+          <img title="分享" src="./assets/img/fenxiang.png" alt="" />
+        </a>
+      </share-content>
       <a @click.stop="setTopicShow(true)" class="chat">
         <img title="聊天工具" src="./assets/img/chat.png" alt=""
       /></a>
     </div>
-    <el-dialog
-      title="分享"
-      :close-on-click-modal="false"
-      :visible.sync="shareWindow"
-      width="800px"
-      top="25vh"
-    >
-      <div v-if="share_user" class="share_wrap">
-        <p>分享给:</p>
-        <div class="share_user">
-          <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
-          <img
-            v-if="!share_user.headimg && share_user.wechat_info.head_img"
-            :src="share_user.headimg"
-            alt=""
-          />
-          <p class="user_ico">{{ share_user.nickname.slice(0, 1) }}</p>
-          <p class="user_name">
-            {{ share_user.nickname
-            }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
-          </p>
-        </div>
-        <p>内容:</p>
-        <p v-if="language=='crawler'" class="news_content">{{shareNews.title.crawler}}</p>
-        <p v-if="language=='en'" class="news_content">{{shareNews.title.en}}</p>
-        <p v-if="language=='zh-CN'" class="news_content">{{shareNews.title['zh-CN']}}</p>
-        <p>附加消息:</p>
-        <div class="message">
-          <textarea v-model="sharetext" placeholder="说点什么吧" cols="100" rows="5"></textarea>
-        </div>
-        <div style="text-align:right;" class="footer">
-          <el-button @click="shareMessage" style="width:100px;" size="mini" type="primary">分享</el-button>
-          <el-button @click="shareWindow=false" style="width:100px;" size="mini">取消</el-button>
-        </div>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
@@ -107,9 +40,11 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import { baseApi } from "./axios/axios";
 import Topic from "@/components/topic/Topic.vue";
+import ShareContent from "@/components/sharecontent/ShareContent.vue"
 @Component({
   components: {
     Topic,
+    ShareContent
   },
 })
 export default class App extends Vue {
@@ -244,49 +179,9 @@ html,
 body {
   height: 100%;
 }
-#appfriendlist {
-  li {
-    padding: 5px 20px;
-    height: 50px;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-    .left,
-    .right {
-      display: flex;
-      align-items: center;
-    }
-    .left {
-      .user_ico {
-        width: 30px;
-        height: 30px;
-        border-radius: 3px;
-        background: #009688;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .user_name {
-        margin-left: 5px;
-      }
-    }
-    .right {
-      cursor: pointer;
-      span {
-        margin-left: 5px;
-      }
-    }
-  }
-}
 #app {
   height: 100%;
   display: flex;
-  .el-dialog{
-    background: #2d2d39;
-    .el-dialog__title{
-      color: white;
-    }
-  }
   .share_wrap{
     color: white;
     .share_user{

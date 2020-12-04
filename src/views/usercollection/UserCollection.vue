@@ -4,12 +4,17 @@
     <div v-if="show" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <input type="text" placeholder="请输入关键词" />
-      <span class="plfx">批量分享</span>
+      <span class="plfx" v-show="!isShare">批量分享</span>
+      <div v-show="isShare" class="share_control">
+        <el-button>取消分享</el-button>
+        <el-button>确认分享</el-button>
+      </div>
     </div>
     <div class="collectionlist">
       <my-scroll v-if="listshow">
-        <ul>
+        <ul class="collectionlist_wrap">
           <li
+            :style="{ background: isShare ? '#409EFF' : ' #3a3a48' }"
             @click.stop="toCollectionList(v)"
             @mouseover="showBtn(i)"
             @mouseout="hideBtn(v, i)"
@@ -23,9 +28,12 @@
                 alt=""
               />
               <img v-if="v.name != '默认'" :src="v.cover" alt="" />
-              <span class="name">{{
-                v.name == "默认" ? "默认标签" : v.name
-              }}</span>
+              <div class="name">
+                {{ v.name == "默认" ? "默认标签" : v.name }}
+                <share-content :content="v" type="collection">
+                  <img @click.stop="()=>{}" src="../../assets/img/sczhuanfa.png" alt=""/>
+                </share-content>
+              </div>
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
                 @click.stop="toEdit(v)"
@@ -35,7 +43,6 @@
                 icon="el-icon-edit-outline"
                 >编辑</el-button
               >
-
               <el-button
                 @click.stop="deleteFav(v)"
                 v-show="v.showControl && v.name != '默认'"
@@ -47,7 +54,7 @@
               </el-button>
             </div>
           </li>
-          <li @click="toCreateFavorite">
+          <li style="background:#3a3a48;" @click="toCreateFavorite">
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
               <span class="cjsqmz">拜登系列</span>
@@ -56,6 +63,7 @@
         </ul>
       </my-scroll>
     </div>
+    <!-- 创建书签 -->
     <el-dialog
       top="25vh"
       width="800px"
@@ -113,10 +121,12 @@ import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
+import ShareContent from "@/components/sharecontent/ShareContent.vue"
 @Component({
   components: {
     MyScroll,
     UpFile,
+    ShareContent
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
@@ -161,7 +171,7 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
     .el-icon-delete {
       margin-left: -10px;
     }
-    span{
+    span {
       margin-left: 2px;
     }
   }

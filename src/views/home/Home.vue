@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div :style="{'padding-left':topic_show?'40px':''}" class="home">
     <my-scroll @loading="toLoading" @myscroll="mainPageScroll" class="sydht">
       <div class="body">
         <!-- 头部导航 -->
