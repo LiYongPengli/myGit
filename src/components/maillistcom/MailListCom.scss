@@ -265,7 +265,8 @@
                             font-size: 20px;
                         }
                     }
-                    .remarks_div {
+                    .remarks_div,
+                    .remarks_yanzheng {
                         margin-top: 60px;
                         color: white;
                         font-size: 16px;
@@ -274,14 +275,15 @@
                             outline: none;
                             border: none;
                             padding-left: 20px;
+                            color: white;
                         }
                     }
-                    .remarks_div:first-child {
+                    .remarks_div {
                         .remarks_name {
                             margin-left: 15px;
                         }
                     }
-                    .yanzheng {
+                    .remarks_yanzheng {
                         margin-top: 20px !important;
                     }
                     .sendmes {
@@ -304,7 +306,7 @@
                         text-align: right;
                     }
                     .nick_name {
-                        margin-left: 16px;
+                        margin-left: 30px;
                     }
                     .nick_value {
                         padding-left: 20px;

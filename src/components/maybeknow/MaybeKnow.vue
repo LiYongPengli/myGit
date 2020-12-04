@@ -48,7 +48,7 @@
           <span class="remarks_name">备注名：</span>
           <input class="remarks_value" v-model="remark_name" type="text" placeholder="设置备注" />
         </div>
-        <div class="remarks_div">
+        <div class="remarks_yanzheng">
           <span class="remarks_name">验证消息：</span>
           <input class="remarks_value" v-model="message" type="text" placeholder="请输入验证消息" />
         </div>

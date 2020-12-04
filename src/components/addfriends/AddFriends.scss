@@ -149,9 +149,6 @@
                         text-align: right;
                         color: #88898a;
                     }
-                    .content_userlist_sharehe {
-                        // width: 40px !important;
-                    }
                     .content_userlist_share,
                     .content_userlist_sendmessage {
                         margin-left: 10px;
@@ -229,7 +226,8 @@
                 font-size: 20px;
             }
         }
-        .remarks_div {
+        .remarks_div,
+        .remarks_yanzheng {
             margin-top: 60px;
             color: white;
             font-size: 16px;
@@ -264,6 +262,14 @@
                 color: white;
             }
         }
+        .remarks_div {
+            .remarks_name {
+                margin-left: 50px;
+            }
+        }
+        .remarks_yanzheng {
+            margin-top: 20px;
+        }
         .nick_div {
             margin-top: 25px;
             color: white;
@@ -287,7 +293,7 @@
             text-align: right;
         }
         .nick_name {
-            margin-left: 20px;
+            margin-left: 33px;
         }
         .nick_value {
             padding-left: 20px;

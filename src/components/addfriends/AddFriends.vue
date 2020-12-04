@@ -186,7 +186,7 @@
             placeholder="设置备注"
           />
         </div>
-        <div class="remarks_div">
+        <div class="remarks_yanzheng">
           <span class="remarks_name">验证消息：</span>
           <input
             class="remarks_value"
