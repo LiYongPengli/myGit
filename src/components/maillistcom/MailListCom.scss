@@ -155,7 +155,6 @@
                                     float: left;
                                 }
                                 .content_userlist_engname,
-                                .content_userlist_chinename,
                                 .content_userlist_sendmessage,
                                 .content_userlist_share,
                                 .content_userlist_sharehe {
@@ -170,6 +169,7 @@
                                 .content_userlist_chinename {
                                     margin-left: 25px;
                                     font-size: 14px;
+                                    line-height: 40px;
                                 }
                                 .content_userlist_sendmessage,
                                 .content_userlist_share,
@@ -313,6 +313,11 @@
                         right: 10px;
                         span {
                             cursor: pointer;
+                            background: #0074ff;
+                            color: white;
+                            height: 21px;
+                            line-height: 21px;
+                            font-size: 16px;
                         }
                         span:last-of-type {
                             margin-left: 10px;

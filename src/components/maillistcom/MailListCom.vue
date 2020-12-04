@@ -155,7 +155,7 @@
                 >
                   {{ v.nickname.slice(0, 1) }}
                 </p>
-
+                  <!-- content_userlist_chinename -->
                 <p class="content_userlist_chinename">
                   {{ v.nickname
                   }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
