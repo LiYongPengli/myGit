@@ -27,9 +27,9 @@
             </li>
           </ul>
           <div slot="reference" class="user_info_wrap">
-            <button v-if="user_message.headimg" :style="{'background-image':'url('+user_message.headimg+')'}" value="" title="头像"></button>
-            <button v-if="user_message.wechat_info.head_img&&!user_message.headimg" :style="{'background-image':'url('+user_message.wechat_info.head_img+')'}" value="" title="头像"></button>
-            <button v-if="!user_message.wechat_info.head_img&&user_message.headimg" :style="{'background-image':'url(../assets/img/tx.png)'}" value="" title="头像"></button>
+            <img v-if="user_message.headimg" :src="user_message.headimg" alt="头像" />
+            <img v-if="user_message.wechat_info.head_img&&!user_message.headimg" :src="user_message.wechat_info.head_img" alt="头像" />
+            <img v-if="!user_message.wechat_info.head_img&&!user_message.headimg" src="../assets/img/tx.png" alt="头像" />
             <span>{{user_message.nickname}}</span>
             <i class="el-icon-arrow-down"></i>
           </div>
@@ -177,14 +177,15 @@ export default class HeaderOne extends Vue {
         align-items: center;
         color: white;
         border-right: 1px solid #3a3a48;
-        button {
+        margin-top: 12px;
+        img {
           margin-left: 30px;
           background: center no-repeat #272731;
           background-size: 100%;
           border: none;
           cursor: pointer;
           border: 0;
-          height: 65px;
+          height: 39px;
           width: 39px;
           float: left;
           outline: none;

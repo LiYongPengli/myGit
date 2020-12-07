@@ -133,7 +133,7 @@ export default class BindAccount extends Vue {
           qs.stringify(data)
         );
         if (!res.data.status) {
-          this.$message.error(res.data.msg);
+          this.$message.error(res.data.data.msg);
           return;
         }
         this.$message.success("登录成功!");
