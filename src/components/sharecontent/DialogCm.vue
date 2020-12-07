@@ -138,11 +138,15 @@ export default class DialogCm extends Vue {
     let obj:any = {
       account: this.share_user.account,
       share_type: this.names.length ? "many" : "one",
-      
       message: this.sharetext,
     };
     if(this.names.length){
-      obj.many = this.names;
+      obj.many = [];
+      for(let i of this.names){
+        if(i){
+          obj.many.push(i)
+        }
+      }
     }else{
       obj.one = this.content.name;
     }
