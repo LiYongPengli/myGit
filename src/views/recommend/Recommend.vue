@@ -45,9 +45,27 @@
                 <img :src="v.thumb" alt="" />
               </div>
               <div class="text">
-                <p v-show="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
-                <p v-show="language=='en'" @click="toNewsInfo(v)" class="title">{{ v.title.en }}</p>
-                <p v-show="language=='zh-CN'" @click="toNewsInfo(v)" class="title">{{ v.title['zh-CN'] }}</p>
+                <p
+                  v-show="language == 'crawler'"
+                  @click="toNewsInfo(v)"
+                  class="title"
+                >
+                  {{ v.title.crawler }}
+                </p>
+                <p
+                  v-show="language == 'en'"
+                  @click="toNewsInfo(v)"
+                  class="title"
+                >
+                  {{ v.title.en }}
+                </p>
+                <p
+                  v-show="language == 'zh-CN'"
+                  @click="toNewsInfo(v)"
+                  class="title"
+                >
+                  {{ v.title["zh-CN"] }}
+                </p>
                 <span class="mt">媒体: {{ v.media_name }} </span>
                 <span class="time">时间: {{ init_time(v.time) }}</span>
                 <span class="ll">浏览次数: {{ v.pv }}人</span>
@@ -59,7 +77,9 @@
                 <img src="../../assets/img/zhuanfafasong.png" alt="" />
               </div>
             </li>
-            <div @click="loading" v-show="!finished" class="jzgd">点击加载更多精彩内容</div>
+            <div @click="loading" v-show="!finished" class="jzgd">
+              点击加载更多精彩内容
+            </div>
           </ul>
         </div>
       </div>
@@ -69,17 +89,17 @@
       <div class="top">
         <div class="media_nav">
           <span
-            :class="[mediaSwiperCurrentIndex == 0 ? 'cur' : '']"
+            :class="{ cur: mediaSwiperCurrentIndex == 0 }"
             @click="mediaTab(0)"
             >国家</span
           >
           <span
-            :class="[mediaSwiperCurrentIndex == 1 ? 'cur' : '']"
+            :class="{ cur: mediaSwiperCurrentIndex == 1 }"
             @click="mediaTab(1)"
             >人物</span
           >
           <span
-            :class="[mediaSwiperCurrentIndex == 2 ? 'cur' : '']"
+            :class="{ cur: mediaSwiperCurrentIndex == 2 }"
             @click="mediaTab(2)"
             >媒体</span
           >
@@ -90,7 +110,12 @@
               <!-- 国家 -->
               <div class="swiper-slide">
                 <div class="country">
-                  <div @click="toFollowPage('country',i)" v-for="(v, i) in country" :key="i" class="item">
+                  <div
+                    @click="toFollowPage('country', i)"
+                    v-for="(v, i) in country"
+                    :key="i"
+                    class="item"
+                  >
                     <img :src="v.flag" alt="" />
                     <p class="name">{{ v.name_zh }}</p>
                   </div>
@@ -99,7 +124,12 @@
               <!-- 人物 -->
               <div class="swiper-slide">
                 <div class="country people">
-                  <div @click="toFollowPage('people',i)" v-for="(v, i) in people" :key="i" class="item">
+                  <div
+                    @click="toFollowPage('people', i)"
+                    v-for="(v, i) in people"
+                    :key="i"
+                    class="item"
+                  >
                     <img src="../../assets/img/media.png" alt="" />
                     <p class="name">{{ v.name }}</p>
                   </div>
@@ -108,7 +138,12 @@
               <!-- 媒体 -->
               <div class="swiper-slide">
                 <div class="media">
-                  <div @click="toFollowPage('media',i)" v-for="(v, i) in media" :key="i" class="item">
+                  <div
+                    @click="toFollowPage('media', i)"
+                    v-for="(v, i) in media"
+                    :key="i"
+                    class="item"
+                  >
                     <!-- <img src="../../assets/img/media.png" alt="" /> -->
 
                     <p class="name">{{ v.name_zh }}</p>
@@ -125,7 +160,6 @@
     <transition name="el-zoom-in-top">
       <edit-channel :follow_channel="channel" v-if="index_channel_window" />
     </transition>
-    
   </div>
 </template>
 
@@ -133,11 +167,11 @@
 import Component, { mixins } from "vue-class-component";
 import RecommendCom from "./Recommend";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
-import Hours24 from "@/components/hours24/Hours24.vue"
+import Hours24 from "@/components/hours24/Hours24.vue";
 @Component({
   components: {
     EditChannel,
-    Hours24
+    Hours24,
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}
