@@ -1,7 +1,7 @@
 <template>
   <!-- 我的收藏 -->
   <div class="usercollection">
-    <div v-if="show" class="ss">
+    <div v-if="show==1" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
         <input type="text" placeholder="请输入关键词" />
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div class="collectionlist">
+    <div v-if="show==1" class="collectionlist">
       <my-scroll v-if="listshow">
         <ul class="collectionlist_wrap">
           <li
@@ -52,11 +52,8 @@
                 <share-content v-show="!isShare" :content="v" type="collection">
                   <img src="../../assets/img/sczhuanfa.png" alt="" />
                 </share-content>
-                <el-checkbox
-                  :true-label="v.name"
-                  v-model="shares[i]"
-                  v-show="isShare"
-                ></el-checkbox>
+                <img @click.stop="$set(shares,i,v.name)" v-show="!shares[i]&&isShare" src="../../assets/img/checkbox.png" alt="">
+                <img @click.stop="$set(shares,i,null)" v-show="shares[i]&&isShare" src="../../assets/img/checked.png" alt="">
               </div>
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
@@ -87,6 +84,8 @@
         </ul>
       </my-scroll>
     </div>
+    <!-- 分享的收藏夹 -->
+    <share-collection v-if="show==2" :rf_id="$route.query.rf_id" />
     <!-- 创建书签 -->
     <el-dialog
       top="25vh"
@@ -146,11 +145,13 @@ import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import ShareCollection from "@/components/sharecollection/ShareCollection.vue"
 @Component({
   components: {
     MyScroll,
     UpFile,
     ShareContent,
+    ShareCollection
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

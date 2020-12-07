@@ -1,6 +1,5 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import qs from 'qs';
 @Component
 export default class UserCollectionCom extends Vue {
     public dialogVisible = false;
@@ -11,7 +10,8 @@ export default class UserCollectionCom extends Vue {
     public dialogTitle: string = "编辑书签";
     public upLoadPhoto: boolean = false;
     private editItem: any = null;
-    public show = true;
+    //控制展示组件1:个人收藏夹,2:分享的收藏夹,3:收藏夹新闻列表
+    public show:number = 1;
     public listshow = true;
     public favoriteList: any[] = [];
     //好友列表
@@ -20,6 +20,15 @@ export default class UserCollectionCom extends Vue {
         name: '',
         cover: '',
         coverFile: '' as any
+    }
+
+    @Watch('$route.query')
+    public rout_change(newVal:any,oldVal:any):void{
+        if(newVal.rf_id){
+            this.show = 2;
+        }else{
+            this.show = 1;
+        }
     }
 
     @Watch("dialogVisible")
@@ -36,6 +45,9 @@ export default class UserCollectionCom extends Vue {
     public created(): void {
         //this.createFavorite();
         this.getData();
+        if(this.$route.query.rf_id){
+            this.show = 2;
+        }
     }
 
     private getData(): void {

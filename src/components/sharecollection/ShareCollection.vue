@@ -1,13 +1,10 @@
 <template>
-<!-- 查看分享的收藏夹 -->
+  <!-- 查看分享的收藏夹 -->
   <div class="sharecollection">
-      <div class="collectionlist">
+    <div class="collectionlist">
       <my-scroll>
         <ul class="collectionlist_wrap">
-          <li
-            v-for="(v, i) in favoriteList"
-            :key="i"
-          >
+          <li v-for="(v, i) in favoriteList" :key="i">
             <div class="collection">
               <img
                 v-if="v.name == '默认'"
@@ -28,30 +25,30 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from '@/axios/axios';
-import { Component,Vue } from 'vue-property-decorator'
+import { baseApi } from "@/axios/axios";
+import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class ShareCollection extends Vue {
+  @Prop({}) rf_id!: string;
+  public created(): void {
+    this.getList();
+  }
 
-    public created():void{
-
-    }
-
-    private getList():void{
-        this.axios.post(baseApi.api1+"/v1/cmd/",{
-            cmd:'examine_favorite',
-            paras:{}
+  private getList(): void {
+    this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'receive_favorite',
+          paras: { rf_id: this.rf_id }
         }).then(res=>{
-            console.log(res.data);
+          console.log(res.data)
         }).catch(err=>{
-            console.log(err);
+          console.log(err);
         })
-    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.sharecollection{
-
+.sharecollection {
 }
 </style>
