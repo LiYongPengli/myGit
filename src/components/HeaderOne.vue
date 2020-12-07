@@ -105,13 +105,12 @@ export default class HeaderOne extends Vue {
 <style lang="scss" scoped>
 .headerone {
   width: 100%;
-  height: 10vh;
+  // border: 1px solid;
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100;
-  // border: 1px solid;
   height: 130px;
+  z-index: 102;
   background-image: linear-gradient(to bottom, #31313d, #272730);
   .logo {
     position: absolute;

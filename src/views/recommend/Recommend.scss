@@ -1,7 +1,7 @@
 .recommend {
     display: flex;
     justify-content: space-between;
-    padding-top: 163px;
+    padding-top: 20px;
     .mainpage {
         width: 1030px;
         // border: 1px solid;
@@ -200,7 +200,7 @@
                     text-align: center;
                 }
                 .cur {
-                    background-image: url("/img/cur.0d28872f.png");
+                    background-image: url("../../assets/img/cur.png");
                     background-position: center bottom;
                     background-repeat: no-repeat;
                     width: 140px;

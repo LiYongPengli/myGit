@@ -1,9 +1,9 @@
 <template>
-  <div :style="{'padding-left':topic_show?'10px':''}" class="home">
+  <div :style="{ 'padding-left': topic_show ? '10px' : '' }" class="home">
+    <!-- 头部导航 -->
+    <header-one />
     <my-scroll @loading="toLoading" @myscroll="mainPageScroll" class="sydht">
       <div class="body">
-        <!-- 头部导航 -->
-        <header-one />
         <!-- 内容主体 -->
         <router-view />
         <footer-two />

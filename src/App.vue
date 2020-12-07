@@ -228,6 +228,8 @@ body {
     z-index: -1;
   }
   .right_content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     overflow: hidden;
     height: 100%;
