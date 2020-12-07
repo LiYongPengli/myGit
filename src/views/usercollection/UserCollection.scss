@@ -2,56 +2,72 @@
   .ss {
     height: 95px;
     line-height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     p {
       font-size: 20px;
       color: #fff;
       display: inline;
-      margin-top: 45px;
+      //margin-top: 45px;
     }
-    input {
-      margin-left: 760px;
-      background-color: #494959;
-      border: none;
-      outline: none;
-      box-sizing: border-box;
-      color: white;
-      height: 30px;
-      width: 200px;
-      padding-left: 20px;
-      background: url("../../assets//img/scsearch.png") 90% 50% no-repeat
-        #494959;
-      cursor: pointer;
-    }
-    input::-webkit-input-placeholder {
-      /* WebKit browsers */
-      color: white;
-    }
-    input:-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: white;
-    }
-    input::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: white;
-    }
-    input:-ms-input-placeholder {
-      /* Internet Explorer 10+ */
-      color: white;
-    }
-    .plfx {
-      float: right;
-      margin-right: 0;
-      height: 30px;
-      width: 110px;
-      line-height: 30px;
-      border: 1px solid #676770;
-      margin-top: 35px;
-      box-sizing: border-box;
-      padding-left: 40px;
-      font-size: 14px;
-      background: url("../../assets/img/sczhuanfa.png") 14px no-repeat;
-      cursor: pointer;
-      // height: 110px;
+    .right {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      input {
+        background-color: #494959;
+        margin-top: 5px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        color: white;
+        height: 30px;
+        width: 200px;
+        padding-left: 20px;
+        background: url("../../assets//img/scsearch.png") 90% 50% no-repeat
+          #494959;
+        cursor: pointer;
+      }
+      input::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: white;
+      }
+      input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: white;
+      }
+      input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: white;
+      }
+      input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: white;
+      }
+      .share_control {
+        width: 200px;
+        padding-left: 20px;
+        display: flex;
+        .ext_share{
+          margin-right: 10px;
+        }
+      }
+      .plfx {
+        height: 30px;
+        width: 110px;
+        margin-top: 5px;
+        line-height: 30px;
+        border: 1px solid #676770;
+        box-sizing: border-box;
+        padding-left: 40px;
+        margin-left: 60px;
+        font-size: 14px;
+        background: url("../../assets/img/sczhuanfa.png") 14px no-repeat;
+        cursor: pointer;
+        // height: 110px;
+      }
     }
   }
   .collectionlist {

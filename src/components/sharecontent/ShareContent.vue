@@ -2,7 +2,7 @@
   <div class="sharecontent" @click.stop="()=>{}">
       <el-popover
         @after-enter="getFriendList"
-        placement="left"
+        placement="left-start"
         width="400"
         trigger="click"
       >
@@ -20,7 +20,7 @@
       width="800px"
       top="25vh"
     >
-      <dialog-cm :type="type" @close="shareWindow=false" v-if="share_user" :share_user="share_user" :content="content" />
+      <dialog-cm :type="type" @close="shareWindow=false" v-if="share_user" :share_user="share_user" :names="names" :content="content" />
       
     </el-dialog>
   </div>

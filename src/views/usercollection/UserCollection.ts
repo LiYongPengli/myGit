@@ -6,6 +6,8 @@ export default class UserCollectionCom extends Vue {
     public dialogVisible = false;
     //是否开启分享
     public isShare: boolean = false;
+    //分享的书签
+    public shares:string[] = [];
     public dialogTitle: string = "编辑书签";
     public upLoadPhoto: boolean = false;
     private editItem: any = null;
@@ -129,6 +131,9 @@ export default class UserCollectionCom extends Vue {
     }
 
     public showBtn(index: number): void {
+        if(this.isShare){
+            return;
+        }
         this.$set(this.favoriteList[index], 'showControl', true);
     }
     public hideBtn(item: any, index: number): void {
@@ -186,6 +191,9 @@ export default class UserCollectionCom extends Vue {
      * @param item 收藏夹对象信息
      */
     public toCollectionList(item: any): void {
+        if(this.isShare){
+            return;
+        }
         this.$router.push('/user/collectioninfo?name=' + item.name);
     }
 }

@@ -4,6 +4,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class ShareContentCom extends Vue {
     @Prop({ default: '' }) type!: string;
     @Prop({}) content!: any;
+    @Prop({default(){return []}}) names!: string[];
     
     
     public friend_list: any[] = [];

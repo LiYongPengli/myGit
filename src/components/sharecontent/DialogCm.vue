@@ -5,10 +5,15 @@
       <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
       <img
         v-if="!share_user.headimg && share_user.wechat_info.head_img"
-        :src="share_user.headimg"
+        :src="share_user.wechat_info.head_img"
         alt=""
       />
-      <p class="user_ico">{{ share_user.nickname.slice(0, 1) }}</p>
+      <p
+        v-if="!share_user.headimg && !share_user.wechat_info.head_img"
+        class="user_ico"
+      >
+        {{ share_user.nickname.slice(0, 1) }}
+      </p>
       <p class="user_name">
         {{ share_user.nickname
         }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
@@ -24,7 +29,12 @@
     <p v-if="language == 'zh-CN' && type == 'news'" class="news_content">
       {{ content.title["zh-CN"] }}
     </p>
-    <p v-if="type == 'collection'" class="news_content">{{ content.name }}</p>
+    <p v-if="type == 'collection' && content" class="news_content">
+      {{ content.name }}
+    </p>
+    <p v-if="type == 'collection' && !content" class="news_content">
+      {{ showNames() }}
+    </p>
     <p>附加消息:</p>
     <div class="message">
       <textarea
@@ -42,10 +52,7 @@
         type="primary"
         >分享</el-button
       >
-      <el-button
-        @click.stop="close"
-        style="width: 100px"
-        size="mini"
+      <el-button @click.stop="close" style="width: 100px" size="mini"
         >取消</el-button
       >
     </div>
@@ -61,6 +68,12 @@ import { State } from "vuex-class";
 export default class DialogCm extends Vue {
   @Prop({ default: "" }) type!: string;
   @Prop({}) content!: any;
+  @Prop({
+    default() {
+      return [];
+    },
+  })
+  names!: string[];
   @Prop({}) share_user!: any;
   @State("language") language!: string;
   //被分享的新闻
@@ -68,9 +81,6 @@ export default class DialogCm extends Vue {
 
   //附加消息
   public sharetext: string = "";
-  public created():void{
-      console.log(this.content)
-  }
   //分享新闻
   public shareMessage(): void {
     switch (this.type) {
@@ -86,6 +96,16 @@ export default class DialogCm extends Vue {
   @Emit("close")
   public close(): boolean {
     return false;
+  }
+
+  public showNames():string{
+    let arr = [];
+    for(let i of this.names){
+      if(i){
+        arr.push(i)
+      }
+    }
+    return arr.join(',');
   }
 
   //分享新闻
@@ -115,16 +135,21 @@ export default class DialogCm extends Vue {
 
   //分享单个收藏夹
   private requestCollection(): void {
+    let obj:any = {
+      account: this.share_user.account,
+      share_type: this.names.length ? "many" : "one",
+      
+      message: this.sharetext,
+    };
+    if(this.names.length){
+      obj.many = this.names;
+    }else{
+      obj.one = this.content.name;
+    }
     this.axios
       .post(baseApi.api2 + "/v1/cmd/", {
         cmd: "share_favorite",
-        paras: {
-          account: this.share_user.account,
-          share_type: "one",
-          one: this.content.name,
-          //many: ['拜登', '奥巴马', '默认'],
-          message: this.sharetext,
-        },
+        paras: obj,
       })
       .then((res) => {
         this.$message.success("分享成功");
@@ -177,10 +202,10 @@ export default class DialogCm extends Vue {
 }
 </style>
 <style lang="scss">
-.el-dialog{
-    background: #2d2d39!important;
-    .el-dialog__title{
-      color: white;
-    }
+.el-dialog {
+  background: #2d2d39 !important;
+  .el-dialog__title {
+    color: white;
   }
+}
 </style>

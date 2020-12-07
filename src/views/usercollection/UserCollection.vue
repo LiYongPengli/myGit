@@ -3,18 +3,37 @@
   <div class="usercollection">
     <div v-if="show" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
-      <input type="text" placeholder="请输入关键词" />
-      <span class="plfx" v-show="!isShare">批量分享</span>
-      <div v-show="isShare" class="share_control">
-        <el-button>取消分享</el-button>
-        <el-button>确认分享</el-button>
+      <div class="right">
+        <input type="text" placeholder="请输入关键词" />
+        <span @click="isShare = true" class="plfx" v-show="!isShare"
+          >批量分享</span
+        >
+        <div v-show="isShare" class="share_control">
+          <div class="ext_share">
+            <el-button
+            @click="
+              isShare = false;
+              shares = [];
+            "
+            style="width: 80px"
+            size="mini"
+            type="danger"
+            >取消分享</el-button
+          >
+          </div>
+          <share-content :names="shares" v-show="isShare" type="collection">
+            <el-button type="primary" :disabled="!shares.join('')" style="width: 80px" size="mini">确认分享</el-button>
+          </share-content>
+        </div>
       </div>
     </div>
     <div class="collectionlist">
       <my-scroll v-if="listshow">
         <ul class="collectionlist_wrap">
           <li
-            :style="{ background: isShare ? '#409EFF' : ' #3a3a48' }"
+            :style="{
+              background: shares[i] == v.name ? '#409EFF' : ' #3a3a48',
+            }"
             @click.stop="toCollectionList(v)"
             @mouseover="showBtn(i)"
             @mouseout="hideBtn(v, i)"
@@ -28,11 +47,16 @@
                 alt=""
               />
               <img v-if="v.name != '默认'" :src="v.cover" alt="" />
-              <div class="name">
+              <div @click.stop="() => {}" class="name">
                 {{ v.name == "默认" ? "默认标签" : v.name }}
-                <share-content :content="v" type="collection">
-                  <img @click.stop="()=>{}" src="../../assets/img/sczhuanfa.png" alt=""/>
+                <share-content v-show="!isShare" :content="v" type="collection">
+                  <img src="../../assets/img/sczhuanfa.png" alt="" />
                 </share-content>
+                <el-checkbox
+                  :true-label="v.name"
+                  v-model="shares[i]"
+                  v-show="isShare"
+                ></el-checkbox>
               </div>
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
@@ -54,7 +78,7 @@
               </el-button>
             </div>
           </li>
-          <li style="background:#3a3a48;" @click="toCreateFavorite">
+          <li style="background: #3a3a48" @click="toCreateFavorite">
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
               <span class="cjsqmz">拜登系列</span>
@@ -121,12 +145,12 @@ import Component, { mixins } from "vue-class-component";
 import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
-import ShareContent from "@/components/sharecontent/ShareContent.vue"
+import ShareContent from "@/components/sharecontent/ShareContent.vue";
 @Component({
   components: {
     MyScroll,
     UpFile,
-    ShareContent
+    ShareContent,
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

@@ -10,7 +10,7 @@
     ></video>
     <!-- 聊天工具 -->
     <transition name="topic">
-      <div v-if="topic_show" class="topics">
+      <div v-show="topic_show" class="topics">
         <!-- 聊天工具组件 -->
         <topic />
       </div>
