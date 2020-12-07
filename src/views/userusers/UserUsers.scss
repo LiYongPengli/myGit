@@ -19,7 +19,7 @@
     .content {
         padding: 40px 60px;
         background: #3a3a48;
-        height: 440px;
+        height: 500px;
         .top {
             display: flex;
             justify-content: space-between;
@@ -92,7 +92,6 @@
                         position: absolute;
                         bottom: 18px;
                         margin-left: 10px;
-                        
                     }
                 }
                 .th:first-of-type {
@@ -106,7 +105,7 @@
                 }
             }
             .tbody {
-                height: 400px;
+                height: 300px;
                 .tr {
                     display: flex;
                     padding-left: 52px;
