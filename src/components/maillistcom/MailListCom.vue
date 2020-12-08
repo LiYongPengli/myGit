@@ -66,7 +66,7 @@
               <div class="content_userlist_three">
                  <img class="qq" src="../../assets/img/fabuqingqiu.png" alt="" />
                 <span
-                  @click="showInvInfo(v)"
+                  @click="showInvInfo(v,keys)"
                   class="content_userlist_fabuqingqiu"
                 >
                  

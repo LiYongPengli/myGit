@@ -70,6 +70,12 @@ const routes: RouteConfig[] = [
     name: 'NewsInfo',
     component: () => import('../views/newsinfo/NewsInfo.vue')
   },
+  //分享的收藏夹
+  {
+    path:'/fromshare',
+    name:'FromShare',
+    component:()=>import('../views/fromshare/FromShare.vue')
+  },
   //个人中心
   {
     path: '/user',

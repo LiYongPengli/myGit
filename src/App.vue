@@ -28,7 +28,7 @@
           <img title="分享" src="./assets/img/fenxiang.png" alt="" />
         </a>
       </share-content>
-      <a @click.stop="setTopicShow(true)" class="chat">
+      <a @click="setTopicShow(true)" class="chat">
         <img title="聊天工具" src="./assets/img/chat.png" alt=""
       /></a>
     </div>

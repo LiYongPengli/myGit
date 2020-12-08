@@ -209,11 +209,12 @@ export default class MailListCom extends Vue{
 
     //添加到通讯录
     public async toAddMaiList(){
+        console.log(this.inv_userInfo)
         try{
             await this.axios.post(baseApi.api2+'/v1/cmd/', {
                 cmd: 'request_add_friend',
                 paras: { 
-                    user_id: this.inv_userInfo.user_id, 
+                    user_id: this.inv_userInfo.recommended.user_id, 
                     message: this.inv_message,
                     remark_name:this.remark_name,
                     r_id:this.inv_userInfo.id
