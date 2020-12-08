@@ -29,18 +29,23 @@
             <input type="text" placeholder="请输入关键词" />
           </div>
         </div>
-        <vue-scroll>
-          <div class="channel_list">
-            <span
-              style="margin: auto; width: max-content"
-              v-show="!channel.length"
-              >暂无要推荐的频道</span
-            >
-            <span @click="tofollow(v, i)" v-for="(v, i) in channel" :key="i">{{
-              v.name
-            }}</span>
-          </div>
-        </vue-scroll>
+        <div class="channel_list_warp">
+          <my-scroll>
+            <div class="channel_list">
+              <span
+                style="margin: auto; width: max-content"
+                v-show="!channel.length"
+                >暂无要推荐的频道</span
+              >
+              <span
+                @click="tofollow(v, i)"
+                v-for="(v, i) in channel"
+                :key="i"
+                >{{ v.name }}</span
+              >
+            </div>
+          </my-scroll>
+        </div>
       </div>
     </div>
   </div>
@@ -49,7 +54,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import EditChannelCom from "./EditChannel";
-@Component
+import MyScroll from "@/components/MyScroll.vue";
+@Component({
+  components: {
+    MyScroll,
+  },
+})
 export default class EditChannel extends mixins(EditChannelCom) {}
 </script>
 

@@ -1,6 +1,10 @@
 <template>
   <ul class="friendslist">
-    <li class="friendlist_item" v-for="(v, i) in friend_list" :key="i">
+    <li class="friendslist_search">
+      <input type="text" v-model="search" />
+      <img src="../../assets/img/scsearch.png" alt="">
+    </li>
+    <li v-show="~v.nickname.indexOf(search)" class="friendlist_item" v-for="(v, i) in friend_list" :key="i">
       <div class="left">
         <img v-if="v.headimg" :src="v.headimg" alt="" />
         <img
@@ -26,6 +30,7 @@ import { Component,Emit,Prop,Vue } from 'vue-property-decorator';
 @Component
 export default class FriendsList extends Vue {
     @Prop({}) friend_list!:any[];
+    public search:string = "";
 
     @Emit('show')
     public setShare(user:any):any{
@@ -36,6 +41,26 @@ export default class FriendsList extends Vue {
 
 <style lang="scss" scoped>
 .friendslist {
+  &_search{
+    position: relative;
+    input{
+      background: none;
+      border: 1px solid gray;
+      border-radius: 3px;
+      width: 100%;
+      color: white;
+      padding-right: 35px;
+      padding-left: 10px;
+      outline: none;
+    }
+    img{
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
     li {
       padding: 5px 20px;
       height: 50px;

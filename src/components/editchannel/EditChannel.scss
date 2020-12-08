@@ -4,7 +4,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 102;
   background: #2a2a34;
   .window_wrap {
     width: 1000px;
@@ -101,20 +101,22 @@
           }
         }
       }
-      &_list {
+      .channel_list_warp {
         height: 400px;
         margin-top: 38px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        padding-bottom: 40px;
-        span {
-          display: block;
-          width: 120px;
-          color: white;
-          margin: 19px 40px 19px 0;
-          cursor: pointer;
-          white-space: nowrap;
+        .channel_list {
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          padding-bottom: 40px;
+          span {
+            display: block;
+            width: 120px;
+            color: white;
+            margin: 19px 40px 19px 0;
+            cursor: pointer;
+            white-space: nowrap;
+          }
         }
       }
     }
