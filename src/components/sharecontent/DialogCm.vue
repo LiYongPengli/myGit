@@ -46,13 +46,13 @@
     </div>
     <div style="text-align: right" class="footer">
       <el-button
-        @click.stop="shareMessage"
+        @click="shareMessage"
         style="width: 100px"
         size="mini"
         type="primary"
         >分享</el-button
       >
-      <el-button @click.stop="close" style="width: 100px" size="mini"
+      <el-button @click="close" style="width: 100px" size="mini"
         >取消</el-button
       >
     </div>
@@ -76,8 +76,6 @@ export default class DialogCm extends Vue {
   names!: string[];
   @Prop({}) share_user!: any;
   @State("language") language!: string;
-  //被分享的新闻
-  @State("shareNews") shareNews!: any;
 
   //附加消息
   public sharetext: string = "";
@@ -115,12 +113,12 @@ export default class DialogCm extends Vue {
         cmd: "share_news",
         paras: {
           account: this.share_user.account,
-          news_id: this.shareNews.news_id,
+          news_id: this.content.news_id,
           url:
             "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
-            this.shareNews.news_id +
+            this.content.news_id +
             "&md_id=" +
-            this.shareNews.media_id,
+            this.content.media_id,
           message: this.sharetext,
         },
       })

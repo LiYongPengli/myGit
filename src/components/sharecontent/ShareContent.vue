@@ -1,5 +1,5 @@
 <template>
-  <div class="sharecontent" @click.stop="()=>{}">
+  <div class="sharecontent">
       <el-popover
         @after-enter="getFriendList"
         placement="left-start"
