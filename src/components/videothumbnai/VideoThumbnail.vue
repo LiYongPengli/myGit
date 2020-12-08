@@ -11,7 +11,7 @@
     <video
       ref="video"
       style="display: none"
-      src="../../assets/video/index_back.mp4"
+      :src="video_url"
     ></video>
     <canvas
       width="200"

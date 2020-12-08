@@ -84,8 +84,6 @@
         </ul>
       </my-scroll>
     </div>
-    <!-- 分享的收藏夹 -->
-    <share-collection v-if="show==2" :rf_id="$route.query.rf_id" />
     <!-- 创建书签 -->
     <el-dialog
       top="25vh"
@@ -145,13 +143,11 @@ import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
-import ShareCollection from "@/components/sharecollection/ShareCollection.vue"
 @Component({
   components: {
     MyScroll,
     UpFile,
-    ShareContent,
-    ShareCollection
+    ShareContent
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

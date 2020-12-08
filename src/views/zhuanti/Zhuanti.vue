@@ -5,11 +5,13 @@
         <li class="L">
           <a @click="$router.push('/user/collection')"> 我的收藏 </a>
           >
-          <a> 特朗普系列 </a>
+          <a> {{$route.query.name}} </a>
           <span class="tongji"> 共{{ list.length }}篇文章 </span>
         </li>
       </ul>
-      <span class="plfx right">批量分享</span>
+      <share-content :content="{name:$route.query.name}" type="collection">
+        <span class="plfx right">分享书签</span>
+      </share-content>
     </div>
     <div class="list">
       <my-scroll>
@@ -19,9 +21,9 @@
               <img src="../../assets/img/sylbtp.png" alt="" />
             </div>
             <div class="text">
-              <p @click="toNewsInfo(v)" class="title">
-                {{ v.title }}
-              </p>
+              <p v-if="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
+              <p v-if="language=='en'" @click="toNewsInfo(v)" class="title">{{ v.title.en }}</p>
+              <p v-if="language=='zh-CN'" @click="toNewsInfo(v)" class="title">{{ v.title['zh-CN'] }}</p>
               <span class="mt">媒体: {{ v.media_name }} </span>
               <span class="time">时间: {{ init_time(v.time) }}</span>
               <span class="ll">浏览次数: {{ v.pv }}</span>
@@ -29,7 +31,9 @@
 
             <div class="zan">
               <span @click="toDelete(v, i)" class="shanchu"> 删除</span>
-              <span class="fenxiang">分享</span>
+              <share-content :content="v" type="news">
+                <span class="fenxiang">分享</span>
+              </share-content>
             </div>
           </li>
           <!-- <div class="jzgd">更多精彩内容，加载中</div> -->
@@ -54,10 +58,12 @@ import Component, { mixins } from "vue-class-component";
 import ZhuantiCom from "./Zhuanti";
 import MyScroll from "@/components/MyScroll.vue";
 import Warning from "@/components/Warning.vue";
+import ShareContent from "@/components/sharecontent/ShareContent.vue";
 @Component({
   components: {
     MyScroll,
     Warning,
+    ShareContent
   },
 })
 export default class Zhuanti extends mixins(ZhuantiCom) {}
