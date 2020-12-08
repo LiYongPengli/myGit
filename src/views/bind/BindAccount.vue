@@ -132,7 +132,7 @@ export default class BindAccount extends Vue {
           baseApi.api1 + "/v1/user/wechat/bind",
           qs.stringify(data)
         );
-        if (!res.data.status) {
+        if (res.data.status==0) {
           this.$message.error(res.data.data.msg);
           return;
         }

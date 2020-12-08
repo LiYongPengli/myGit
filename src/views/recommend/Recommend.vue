@@ -45,6 +45,7 @@
                 <img :src="v.thumb" alt="" />
               </div>
               <div class="text">
+                
                 <p
                   v-show="language == 'crawler'"
                   @click="toNewsInfo(v)"
@@ -74,7 +75,9 @@
               <div class="zan">
                 <img src="../../assets/img/zanpress.png" alt="" />
                 <span>{{ v.like }}</span>
-                <img src="../../assets/img/zhuanfafasong.png" alt="" />
+                <share-content :content="v" type="news">
+                  <img src="../../assets/img/sczhuanfa.png" alt="" />
+                </share-content>
               </div>
             </li>
             <div @click="loading" v-show="!finished" class="jzgd">
@@ -168,10 +171,12 @@ import Component, { mixins } from "vue-class-component";
 import RecommendCom from "./Recommend";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
 import Hours24 from "@/components/hours24/Hours24.vue";
+import ShareContent from "@/components/sharecontent/ShareContent.vue";
 @Component({
   components: {
     EditChannel,
     Hours24,
+    ShareContent
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

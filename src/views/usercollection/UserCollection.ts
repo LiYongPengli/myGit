@@ -45,9 +45,6 @@ export default class UserCollectionCom extends Vue {
     public created(): void {
         //this.createFavorite();
         this.getData();
-        if(this.$route.query.rf_id){
-            this.show = 2;
-        }
     }
 
     private getData(): void {

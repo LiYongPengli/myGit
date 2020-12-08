@@ -9,10 +9,10 @@
       src="./assets/video/index_back.mp4"
     ></video>
     <!-- 聊天工具 -->
-    <transition name="topic">
+    <transition @after-enter="load_topic=true" @after-leave="load_topic=false" name="topic">
       <div v-show="topic_show" class="topics">
         <!-- 聊天工具组件 -->
-        <topic />
+        <topic v-if="load_topic" />
       </div>
     </transition>
     <div class="right_content">
@@ -28,7 +28,7 @@
           <img title="分享" src="./assets/img/fenxiang.png" alt="" />
         </a>
       </share-content>
-      <a @click.stop="setTopicShow(true)" class="chat">
+      <a @click="setTopicShow(true)" class="chat">
         <img title="聊天工具" src="./assets/img/chat.png" alt=""
       /></a>
     </div>
@@ -53,6 +53,8 @@ export default class App extends Vue {
   public friend_list: any[] = [];
   public shareWindow: boolean = false;
   public share_user: any = "";
+  //是否加载聊天窗口
+  public load_topic:boolean = false;
   //附加消息
   public sharetext:string = "";
   //是否展示聊天工具

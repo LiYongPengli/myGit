@@ -142,12 +142,17 @@
                         }
                         .zan {
                             float: right;
+                            display: flex;
+                            align-items: center;
                             margin-right: 40px;
                             span {
                                 margin-left: 10px;
                                 margin-right: 20px;
                                 font-size: 13px;
                                 color: #bcc2d5;
+                            }
+                            img{
+                                display: block;
                             }
                         }
                     }

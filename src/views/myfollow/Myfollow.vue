@@ -58,7 +58,9 @@
               <div class="zan">
                 <img src="../../assets/img/zanpress.png" alt="" />
                 <span>{{v.like}}</span>
-                <img src="../../assets/img/zhuanfafasong.png" alt="" />
+                <share-content :content="v" type="news">
+                  <img src="../../assets/img/sczhuanfa.png" alt="" />
+                </share-content>
               </div>
             </div>
             <div class="content">
@@ -81,7 +83,12 @@
 <script lang="ts">
 import Component, { mixins } from 'vue-class-component'
 import MyFollowCom from './Myfollow'
-@Component
+import ShareContent from "@/components/sharecontent/ShareContent.vue";
+@Component({
+  components:{
+    ShareContent
+  }
+})
 export default class MyFollow extends mixins(MyFollowCom) {
   
 }
