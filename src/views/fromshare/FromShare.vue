@@ -31,7 +31,7 @@
           <ul>
             <li v-for="(v, i) in favorite.news" :key="i">
               <div class="pic">
-                <video-thum-bnail v-if="v.cover.type=='video'" :video_url="v.cover.url" />
+                <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
                 <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
               </div>
               <div class="text">
@@ -58,10 +58,12 @@
               </div>
 
               <div class="zan">
-                <span class="shanchu">收藏</span>
-                <share-content :content="v" type="news">
+                <span @click="collectionId=v.news_id;showCollection=true" v-show="!v.favorited" class="nocollection">收藏</span>
+                <span @click="collectionId=v.news_id;showCollection=true" v-show="v.favorited" class="collected">已收藏</span>
+                <!-- <span class="shanchu">已收藏</span> -->
+                <!-- <share-content :content="v" type="news">
                   <span class="fenxiang">分享</span>
-                </share-content>
+                </share-content> -->
               </div>
             </li>
           </ul>
@@ -69,6 +71,17 @@
       </div>
       <div class="footer"></div>
     </div>
+    <!-- 收藏夹 -->
+    <el-dialog
+      :close-on-click-modal="false"
+      :visible.sync="showCollection"
+      width="800px"
+      top="28vh"
+      title="收藏到我的"
+      class="sc"
+    >
+      <add-collection :id="collectionId" v-if="showCollection" @status="getCollectionStatus" />
+    </el-dialog>
   </div>
 </template>
 
@@ -77,6 +90,7 @@ import Component, { mixins } from "vue-class-component";
 import FromShareCom from "./FromShare";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import AddCollection from '@/components/addcollection/AddCollection.vue'
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
 @Component({
@@ -84,7 +98,8 @@ import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
     HeaderTwo,
     MyScroll,
     VideoThumBnail,
-    ShareContent
+    ShareContent,
+    AddCollection
   },
 })
 export default class FromShare extends mixins(FromShareCom) {}

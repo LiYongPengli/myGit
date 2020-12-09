@@ -5,7 +5,7 @@
       class="img"
       @mouseenter="play"
       @mouseleave="stop"
-      src="../../assets/img/sylbtp.png"
+      :src="video_photo"
       v-if="!showVideo"
     />
     <video
@@ -28,7 +28,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class VideoThumbnail extends Vue {
   //视频封面
-  @Prop({}) public video_photo!: string;
+  @Prop({}) public video_photo!:string;
   //视频地址
   @Prop({}) public video_url!: string;
   //是否展示视频动画
@@ -42,15 +42,12 @@ export default class VideoThumbnail extends Vue {
   private timeout:any = null;
 
   private mounted(): void {
-    let that = this;
     this.videoCtx = this.$refs.videoCtx as HTMLCanvasElement;
     this.video = this.$refs.video as HTMLVideoElement;
-    let ctx = this.videoCtx.getContext("2d") as CanvasRenderingContext2D;
   }
 
   //播放视频缩略动画
   private play(): void {
-    console.log('start')
     this.timeout = setTimeout(() => {
       if (this.interval) {
         clearInterval(this.interval);
@@ -68,12 +65,11 @@ export default class VideoThumbnail extends Vue {
       this.showVideo = true;
       this.video.volume = 0;
       this.video.play();
-    },1000);
+    },200);
   }
 
   //停止播放
   private stop(): void {
-    console.log('stop')
     if(this.timeout){
       clearTimeout(this.timeout);
     }

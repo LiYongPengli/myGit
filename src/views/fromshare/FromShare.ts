@@ -5,6 +5,9 @@ import { State } from 'vuex-class';
 export default class FromShareCom extends Vue{
     @State('language') language!:string;
     public favorite:any = "";
+    public collectionId:string = "";
+    //是否展示收藏夹列表
+    public showCollection:boolean = false;
 
     public created():void{
         this.getCollectionList();
@@ -28,7 +31,16 @@ export default class FromShareCom extends Vue{
         window.open('#/newsinfo?id=' + item.news_id+'&md_id='+item.media_id);
     }
     public toAddCollection():void{
-        
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'receive_favorite',
+          paras: { rf_id: this.$route.query.rf_id }
+        }).then(res=>{
+            console.log(res.data);
+            this.favorite.status = "received"
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
     /**
@@ -52,6 +64,13 @@ export default class FromShareCom extends Vue{
             return `${parseInt(time / 60 / 60 / 24 / 30 + '')}月前`
         } else {
             return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
+        }
+    }
+
+    public getCollectionStatus(status:boolean):void{
+        if(status){
+            this.showCollection = false;
+            this.$message.success('收藏成功');
         }
     }
 }

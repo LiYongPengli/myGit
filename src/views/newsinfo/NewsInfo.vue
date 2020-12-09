@@ -1,6 +1,7 @@
 <template>
   <div class="newsinfo">
     <header-two />
+    
     <div class="wrap" v-if="newsInfo">
       <my-scroll>
         <div class="wrap_content">
@@ -137,59 +138,7 @@
       title="收藏到我的"
       class="sc"
     >
-      <div class="collectionList">
-        <my-scroll>
-          <ul>
-            <li
-              @mouseenter="showCollBtn(i)"
-              @mouseleave="hideCollBtn(i)"
-              v-for="(v, i) in favoriteList"
-              :key="i"
-            >
-              <span>{{ v.name }}</span>
-              <div class="collect_btn">
-                <el-button
-                  @click="toCollection(v)"
-                  v-if="v.show"
-                  size="mini"
-                  type="primary"
-                  >收藏</el-button
-                >
-              </div>
-            </li>
-          </ul>
-        </my-scroll>
-        <span @click="createNewCollection = true" class="addnew"
-          >创建新书签</span
-        >
-        <div v-show="createNewCollection" class="addnewcontent">
-          <div>
-            <span class="name"> 书签名称: </span>
-            <input v-model="collection_name" type="text" placeholder="请输入新书签名称" />
-          </div>
-          <div>
-            <span class="sqfm"> 书签封面: </span>
-            <label for="upFile">
-              <input style="display:none;" id="upFile" type="file" ref="upFile" @change="upFile" />
-              <span style="cursor: pointer"> 点击上传封面 </span>
-            </label>
-          </div>
-        </div>
-        <div v-show="createNewCollection" class="caozuo">
-          <span @click="createCollection">创建并收藏</span>
-          <span @click="extCreateCollection">取消创建</span>
-        </div>
-      </div>
-    </el-dialog>
-    <!-- 上传封面 -->
-    <el-dialog
-      :visible.sync="upLoadPhoto"
-      :close-on-click-modal="false"
-      title="封面上传"
-      width="800px"
-      top="25vh"
-    >
-      <up-file v-if="upLoadPhoto" @ext="upRes" :img="upimg" />
+      <add-collection :id="$route.query.id" v-if="showCollection" @status="getCollectionStatus" />
     </el-dialog>
   </div>
 </template>
@@ -200,13 +149,13 @@ import NewsInfoCom from "./NewsInfo";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyFooter from "@/components/FooterTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
-import UpFile from '@/components/upfile/UpFile.vue';
+import AddCollection from '@/components/addcollection/AddCollection.vue'
 @Component({
   components: {
     HeaderTwo,
     MyFooter,
     MyScroll,
-    UpFile,
+    AddCollection
   },
 })
 export default class NewsInfo extends mixins(NewsInfoCom) {}
