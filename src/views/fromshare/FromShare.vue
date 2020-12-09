@@ -4,22 +4,25 @@
     <header-two />
     <div class="collectionlist_wrap">
       <div class="collection_header">
-        <div class="left">
-          <img
+        <!-- <div class="left"> -->
+          <!-- <img
             v-if="favorite.name == '默认'"
             src="../../assets/img/scmr.png"
             alt=""
           />
-          <img v-if="favorite.name != '默认'" :src="favorite.cover" alt="" />
+          <img v-if="favorite.name != '默认'" :src="favorite.cover" alt="" /> -->
           <div class="collection_info">
-            <p class="name">
+            <span class="name">
               {{ favorite.name == "默认" ? "默认标签" : favorite.name }}
-            </p>
+            </span>
+            <span class="fxr">
+              (王洋分享的标签) 
+            </span>
             <span class="length">共{{ favorite.news.length }}篇文章</span>
-            <span class="create_time"
+            <!-- <span class="create_time"
               >{{ favorite.share_time.split(".")[0] }} 创建</span
-            >
-          </div>
+            > -->
+          <!-- </div> -->
         </div>
         <div class="right">
           <div @click="toAddCollection" v-show="favorite.status=='pending'" class="collect">收藏书签</div>
