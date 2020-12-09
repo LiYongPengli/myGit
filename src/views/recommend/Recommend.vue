@@ -41,8 +41,9 @@
         <div class="list">
           <ul>
             <li v-for="(v, i) in newsList" :key="i">
-              <div v-if="v.thumb" class="pic">
-                <img :src="v.thumb" alt="" />
+              <div class="pic">
+                <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
+                <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
               </div>
               <div class="text">
                 
@@ -172,11 +173,13 @@ import RecommendCom from "./Recommend";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
 import Hours24 from "@/components/hours24/Hours24.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
 @Component({
   components: {
     EditChannel,
     Hours24,
-    ShareContent
+    ShareContent,
+    VideoThumBnail
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}
