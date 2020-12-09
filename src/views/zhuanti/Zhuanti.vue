@@ -5,11 +5,11 @@
         <li class="L">
           <a @click="$router.push('/user/collection')"> 我的收藏 </a>
           >
-          <a> {{$route.query.name}} </a>
+          <a> {{ $route.query.name }} </a>
           <span class="tongji"> 共{{ list.length }}篇文章 </span>
         </li>
       </ul>
-      <share-content :content="{name:$route.query.name}" type="collection">
+      <share-content :content="{ name: $route.query.name }" type="collection">
         <span class="plfx right">分享书签</span>
       </share-content>
     </div>
@@ -18,12 +18,31 @@
         <ul>
           <li v-for="(v, i) in list" :key="i">
             <div class="pic">
-              <img src="../../assets/img/sylbtp.png" alt="" />
+              <video-thum-bnail
+                v-if="v.cover.type == 'video'"
+                :video_photo="v.cover.url"
+                :video_url="v.cover.video"
+              />
+              <img v-if="v.cover.type == 'image'" :src="v.cover.url" alt="" />
             </div>
             <div class="text">
-              <p v-if="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
-              <p v-if="language=='en'" @click="toNewsInfo(v)" class="title">{{ v.title.en }}</p>
-              <p v-if="language=='zh-CN'" @click="toNewsInfo(v)" class="title">{{ v.title['zh-CN'] }}</p>
+              <p
+                v-if="language == 'crawler'"
+                @click="toNewsInfo(v)"
+                class="title"
+              >
+                {{ v.title.crawler }}
+              </p>
+              <p v-if="language == 'en'" @click="toNewsInfo(v)" class="title">
+                {{ v.title.en }}
+              </p>
+              <p
+                v-if="language == 'zh-CN'"
+                @click="toNewsInfo(v)"
+                class="title"
+              >
+                {{ v.title["zh-CN"] }}
+              </p>
               <span class="mt">媒体: {{ v.media_name }} </span>
               <span class="time">时间: {{ init_time(v.time) }}</span>
               <span class="ll">浏览次数: {{ v.pv }}</span>
@@ -59,11 +78,13 @@ import ZhuantiCom from "./Zhuanti";
 import MyScroll from "@/components/MyScroll.vue";
 import Warning from "@/components/Warning.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
 @Component({
   components: {
     MyScroll,
     Warning,
-    ShareContent
+    ShareContent,
+    VideoThumBnail
   },
 })
 export default class Zhuanti extends mixins(ZhuantiCom) {}
