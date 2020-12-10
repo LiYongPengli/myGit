@@ -377,7 +377,8 @@
               <ul>
                 <li v-for="(v, i) in newsList" :key="i">
                   <div class="pic">
-                    <img src="../../assets/img/sylbtp.png" alt="" />
+                    <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
+                    <video-thumbnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
                   </div>
                   <div class="text">
                     <p v-show="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
@@ -408,12 +409,14 @@ import IntelligentRetrievalCom from "./IntelligentRetrieval";
 import SearchCom from "@/components/Search.vue";
 import TimeSlot from "@/components/TimeSlot.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
 
 @Component({
   components: {
     SearchCom,
     TimeSlot,
     MyScroll,
+    VideoThumbnail
   },
 })
 export default class IntelligentRetrieval extends mixins(

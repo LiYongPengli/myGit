@@ -6,6 +6,7 @@ import { State } from 'vuex-class';
 export default class UserCom extends Vue {
     //用户信息
     @State('user_message') user_message!:any;
+    @State('topic_show') topic_show!:boolean;
     //国家
     public country: any[] = [];
     //人物

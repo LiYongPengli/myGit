@@ -1,7 +1,7 @@
 <template>
   <!-- 我的收藏 -->
   <div class="usercollection">
-    <div v-if="show==1" class="ss">
+    <div v-if="show == 1" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
         <input type="text" placeholder="请输入关键词" />
@@ -11,23 +11,29 @@
         <div v-show="isShare" class="share_control">
           <div class="ext_share">
             <el-button
-            @click="
-              isShare = false;
-              shares = [];
-            "
-            style="width: 80px"
-            size="mini"
-            type="danger"
-            >取消分享</el-button
-          >
+              @click="
+                isShare = false;
+                shares = [];
+              "
+              style="width: 80px"
+              size="mini"
+              type="danger"
+              >取消分享</el-button
+            >
           </div>
           <share-content :names="shares" v-show="isShare" type="collection">
-            <el-button type="primary" :disabled="!shares.join('')" style="width: 80px" size="mini">确认分享</el-button>
+            <el-button
+              type="primary"
+              :disabled="!shares.join('')"
+              style="width: 80px"
+              size="mini"
+              >确认分享</el-button
+            >
           </share-content>
         </div>
       </div>
     </div>
-    <div v-if="show==1" class="collectionlist">
+    <div v-if="show == 1" class="collectionlist">
       <my-scroll v-if="listshow">
         <ul class="collectionlist_wrap">
           <li
@@ -41,19 +47,32 @@
             :key="i"
           >
             <div class="collection">
-              <img
-                v-if="v.name == '默认'"
-                src="../../assets/img/scmr.png"
-                alt=""
-              />
-              <img v-if="v.name != '默认'" :src="v.cover" alt="" />
+              <div class="img_wrap">
+                <img
+                  v-if="v.name == '默认'"
+                  src="../../assets/img/scmr.png"
+                  alt=""
+                />
+                <img v-if="v.name != '默认'" :src="v.cover" alt="" />
+              </div>
+
               <div @click.stop="() => {}" class="name">
                 {{ v.name == "默认" ? "默认标签" : v.name }}
                 <share-content v-show="!isShare" :content="v" type="collection">
                   <img src="../../assets/img/sczhuanfa.png" alt="" />
                 </share-content>
-                <img @click.stop="$set(shares,i,v.name)" v-show="!shares[i]&&isShare" src="../../assets/img/checkbox.png" alt="">
-                <img @click.stop="$set(shares,i,null)" v-show="shares[i]&&isShare" src="../../assets/img/checked.png" alt="">
+                <img
+                  @click.stop="$set(shares, i, v.name)"
+                  v-show="!shares[i] && isShare"
+                  src="../../assets/img/checkbox.png"
+                  alt=""
+                />
+                <img
+                  @click.stop="$set(shares, i, null)"
+                  v-show="shares[i] && isShare"
+                  src="../../assets/img/checked.png"
+                  alt=""
+                />
               </div>
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
@@ -78,7 +97,7 @@
           <li style="background: #3a3a48" @click="toCreateFavorite">
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
-              <span class="cjsqmz">拜登系列</span>
+              <!-- <span class="cjsqmz">拜登系列</span> -->
             </div>
           </li>
         </ul>
@@ -147,7 +166,7 @@ import ShareContent from "@/components/sharecontent/ShareContent.vue";
   components: {
     MyScroll,
     UpFile,
-    ShareContent
+    ShareContent,
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
