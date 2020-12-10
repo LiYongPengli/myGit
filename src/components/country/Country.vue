@@ -4,11 +4,11 @@
     <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-      <ul>
-        <li v-for="(v, k) in countrylist" :key="k" >
+      <ul v-loading="loading">
+        <li v-for="(v, k) in country_follow_list" :key="k" >
           <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>{{v.number}}-{{v.name}}<img @click.prevent="del(v.number)" src="../../assets/img/close.png" alt="" />
+            <img class="flag" :src="v.flag" alt="" />
+            <p>{{k+1}}-{{v.name_zh}}<img @click.stop="unsub(v,k)" src="../../assets/img/close.png" alt="" />
             </p>
             <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
@@ -144,11 +144,11 @@
         <img v-if="word=='展开'" src="../../assets/img/open.png" alt="" />
           <img v-else  src="../../assets/img/close.png" alt="" />
       </p>
-      <ul>
+      <ul v-loading="loadFollow">
         <li v-for="(v1,k1) in showlist" :key="k1">
           <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>{{v1.number}}--{{v1.name}}<img  src="../../assets/img/add.png" alt="" /></p>
+            <img class="flag" :src="v1.flag" alt="" />
+            <p>{{k1+1}}--{{v1.name}}<img @click="addFollow(v1,k1)"  src="../../assets/img/add.png" alt="" /></p>
           </div>
         </li>
       </ul>
