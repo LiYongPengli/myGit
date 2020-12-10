@@ -186,7 +186,7 @@
             flex-direction: column;
             border-radius: 3px;
             width: 440px;
-            //加投影
+            //加投�
             background-image: linear-gradient(to bottom, #3a3a48, #262630);
             //background-image: linear-gradient(to bottom, red, yellow);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -228,7 +228,7 @@
                     .media {
                         width: 457px;
                         height: 230px;
-                        min-height: 230px;
+                        scrollbar-width: none;
                         padding: 6px 20px 0;
                         // align-content: baseline;
                         overflow-y: scroll;
@@ -237,9 +237,7 @@
                             float: left;
                             width: 25%;
                             cursor: pointer;
-                            // margin-top: 20px;
-                            line-height: 55px;
-                            height: 55px;
+                            padding: 10px 0;
                             img {
                                 display: block;
                                 width: 54px;

@@ -40,7 +40,6 @@
       <textarea
         v-model="sharetext"
         placeholder="说点什么吧"
-        cols="100"
         rows="5"
       ></textarea>
     </div>
@@ -195,10 +194,12 @@ export default class DialogCm extends Vue {
     padding: 5px 0;
     padding-left: 30px;
     textarea {
+      width: 700px;
       background: none;
       outline: none;
       color: white;
       padding: 5px;
+      border: 1px solid gray;
     }
   }
 }

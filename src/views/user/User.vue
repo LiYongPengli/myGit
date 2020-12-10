@@ -3,7 +3,7 @@
     <header-two />
     <div class="user_scroll">
       <my-scroll>
-        <div class="user_wrap">
+        <div :style="{'width':(topic_show?1000:1200)+'px'}" class="user_wrap">
           <div class="user_header">
             <div class="user_info" v-if="user_message">
               <div class="user_img">

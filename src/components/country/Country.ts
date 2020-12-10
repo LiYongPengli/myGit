@@ -5,85 +5,9 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class CountryCom extends Vue {
     public country_list: any[] = [];
     public country_follow_list: any[] = [];
-    public countrylist = [
-        {
-            number: 1,
-            name: '中国'
-        }, {
-            number: 2,
-            name: '中国'
-        }
-        , {
-            number: 3,
-            name: '中国'
-        }
-        , {
-            number: 4,
-            name: '中国'
-        }
-        , {
-            number: 5,
-            name: '中国'
-        }
-        , {
-            number: 6,
-            name: '中国'
-        }
-        , {
-            number: 7,
-            name: '中国'
-        }
-        , {
-            number: 8,
-            name: '中国'
-        }
-        , {
-            number: 9,
-            name: '中国'
-        }
-        , {
-            number: 10,
-            name: '中国'
-        }
-        , {
-            number: 11,
-            name: '中国'
-        }
-        , {
-            number: 12,
-            name: '中国'
-        }, {
-            number: 13,
-            name: '中国'
-        }
-        , {
-            number: 14,
-            name: '中国'
-        }
-        , {
-            number: 15,
-            name: '中国'
-        }
-        , {
-            number: 16,
-            name: '中国'
-        }
-        , {
-            number: 17,
-            name: '中国'
-        }
-        , {
-            number: 18,
-            name: '中国'
-        }, {
-            number: 19,
-            name: '中国'
-        }
-        , {
-            number: 20,
-            name: '中国'
-        }
-    ];
+    //加载中
+    public loading:boolean = true;
+    public loadFollow:boolean = true;
 
     //定义数据是否需要完全显示的属性
     public showAll: boolean = false;
@@ -92,18 +16,18 @@ export default class CountryCom extends Vue {
 
         if (this.showAll == false) {
             let showlist: any = [];
-            if (this.countrylist.length > 10) {
+            if (this.country_list.length > 10) {
                 for (var i = 0; i < 10; i++) {
-                    showlist.push(this.countrylist[i])
+                    showlist.push(this.country_list[i])
                 }
             }
             else {
-                showlist = this.countrylist
+                showlist = this.country_list
             }
             return showlist;
         }
         else {
-            return this.countrylist;
+            return this.country_list;
         }
     }
 
@@ -116,34 +40,53 @@ export default class CountryCom extends Vue {
         }
     }
 
-
-
-    //删除单个
-    public del(k: number): void {
-        var index = this.countrylist.findIndex(item => {
-            if (item.number == k) {
-                return true
-            }
-        })
-        this.countrylist.splice(index, 1);
-
-    }
     public created(): void {
         this.getList();
     }
     private getList(): void {
         this.getSubscriptions('country', 'sub', res => {
             console.log(res.data)
+            this.country_follow_list = res.data.data;
+            this.loading = false;
         });
-        this.getSubscriptions('country', 'ussub', res => {
-            console.log(res.data)
+        this.getSubscriptions('country', 'unsub', res => {
+            this.country_list = res.data.data;
+            this.loadFollow = false;
         });
     }
-    //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10').then(res => {
+     //获取频道等列表
+     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0').then(res => {
             call(res);
         }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    //取消关注
+    public unsub(item:any,index:number):void{
+        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+            sub_id: item.sub_id,
+            sub_type: 'country',
+            sub_oper_type: 'unsub',
+        }).then(res=>{
+            this.country_list.push(item);
+            this.country_follow_list.splice(index,1);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+    //添加到关注
+    public addFollow(item:any,index:number):void{
+        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+            sub_id: item.sub_id,
+            sub_type: 'country',
+            sub_oper_type: 'sub',
+        }).then(res=>{
+            this.country_follow_list.push(item);
+            this.country_list.splice(index,1);
+        }).catch(err=>{
             console.log(err);
         })
     }

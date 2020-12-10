@@ -14,19 +14,19 @@
     </div>
     <div class="content">
       <!-- 国家 -->
-      <div v-show="pageIndex == 0" class="country">
+      <div v-if="pageIndex == 0" class="country">
         <country />
       </div>
 
-      <div v-show="pageIndex == 1" class="media">
+      <div v-if="pageIndex == 1" class="media">
         <media />
       </div>
 
-      <div v-show="pageIndex == 2" class="media">
+      <div v-if="pageIndex == 2" class="media">
         <people />
       </div>
 
-       <div v-show="pageIndex == 3" class="media">
+       <div v-if="pageIndex == 3" class="media">
         <channel />
       </div>
     </div>
