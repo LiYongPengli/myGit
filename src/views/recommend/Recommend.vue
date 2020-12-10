@@ -76,7 +76,7 @@
               <div class="zan">
                 <img src="../../assets/img/zanpress.png" alt="" />
                 <span>{{ v.like }}</span>
-                <share-content :content="v" type="news">
+                <share-content :content="v" type="news" class="sczhuanfa">
                   <img src="../../assets/img/sczhuanfa.png" alt="" />
                 </share-content>
               </div>
