@@ -27,9 +27,17 @@
           <span>重新选择</span>
         </label>
       </div>
-      <el-button @click="$refs.cropper.refresh()">恢复默认</el-button>
-      <el-button @click="sure">确定</el-button>
-      <el-button @click="ext">取消</el-button>
+      <div class="other_btn">
+        <el-button style="width:200px;" @click="$refs.cropper.refresh()"
+          >恢复默认</el-button
+        >
+      </div>
+      <div class="other_btn">
+        <el-button style="width:200px;" type="primary" @click="sure">确定</el-button>
+      </div>
+      <div class="other_btn">
+        <el-button style="width:200px;" @click="ext">取消</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -51,7 +59,7 @@ export default class UpFile extends Vue {
     canMoveBox: false,
     autoCropWidth: 400,
     autoCropHeight: 223,
-    outputType:'png'
+    outputType: "png",
   };
 
   public created(): void {
@@ -68,7 +76,7 @@ export default class UpFile extends Vue {
   }
   public sure(): void {
     (this.$refs.cropper as any).getCropBlob((data: Blob) => {
-        this.$emit('ext',data);
+      this.$emit("ext", data);
     });
   }
 
@@ -92,9 +100,18 @@ export default class UpFile extends Vue {
     text-align: center;
     .upfile_btn {
       span {
-        color: white;
+        display: block;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        background: white;
         cursor: pointer;
+        margin: auto;
+        border-radius: 3px;
       }
+    }
+    .other_btn{
+      margin: 20px 0;
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <ul class="friendslist">
     <li class="friendslist_search">
-      <input type="text" v-model="search" />
+      <input placeholder="根据用户昵称进行搜索" type="text" v-model="search" />
       <img src="../../assets/img/scsearch.png" alt="">
     </li>
     <li v-show="~v.nickname.indexOf(search)" class="friendlist_item" v-for="(v, i) in friend_list" :key="i">
