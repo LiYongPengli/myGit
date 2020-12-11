@@ -1,5 +1,6 @@
 import router from '@/router';
 import axios from 'axios'
+import { Message } from 'element-ui';
 
 let api = {api1:'',api2:''};
 switch (process.env.VUE_APP_MODE) {
@@ -28,6 +29,9 @@ axios.interceptors.response.use(res=>{
             if(err.response.data.msg=='请登录后操作！'){
                 router.push('/login').catch(err=>{});
             }
+            break;
+        case 400:
+            Message.error(err.response.data.message._schema[0]);
             break;
     }
     return Promise.reject(err);
