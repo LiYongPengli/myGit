@@ -15,9 +15,9 @@
             <span class="name">
               {{ favorite.name == "默认" ? "默认标签" : favorite.name }}
             </span>
-            <span class="fxr">
+            <!-- <span class="fxr">
               (王洋分享的标签) 
-            </span>
+            </span> -->
             <span class="length">共{{ favorite.news.length }}篇文章</span>
             <!-- <span class="create_time"
               >{{ favorite.share_time.split(".")[0] }} 创建</span

@@ -33,7 +33,7 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.recommended.nickname"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.recommended.account"
                   alt=""
                 />
                 <!-- <img
@@ -90,7 +90,7 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.account"
                   alt=""
                 />
                 <!-- <img
@@ -137,7 +137,7 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.account"
                   alt=""
                 />
                 <!-- <img
@@ -208,7 +208,7 @@
           <img
             class="header"
             
-            :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.nickname"
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.account"
             alt=""
           />
           <!-- <img
@@ -261,7 +261,7 @@
           <img
             class="header"
             
-            :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.nickname"
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.account"
             alt=""
           />
          <!--  <img

@@ -27,7 +27,7 @@
             </li>
           </ul>
           <div slot="reference" class="user_info_wrap">
-            <img :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.nickname" alt="头像" />
+            <img :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.account" alt="头像" />
             <!-- <img v-if="user_message.wechat_info.head_img&&!user_message.headimg" :src="user_message.wechat_info.head_img" alt="头像" />
             <img v-if="!user_message.wechat_info.head_img&&!user_message.headimg" src="../assets/img/tx.png" alt="头像" /> -->
             <span>{{user_message.nickname}}</span>

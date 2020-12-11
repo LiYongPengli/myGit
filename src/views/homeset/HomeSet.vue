@@ -33,7 +33,7 @@
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
-      <div class="content_wrap">
+      <div class="content_wrap" v-loading="loadCountry" element-loading-background="rgba(0, 0, 0, 0.1)">
         <my-scroll>
           <ul>
             <li
