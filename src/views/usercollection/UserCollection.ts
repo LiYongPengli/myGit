@@ -3,6 +3,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 @Component
 export default class UserCollectionCom extends Vue {
     public dialogVisible = false;
+    public isUpFile:boolean = false;
     //是否开启分享
     public isShare: boolean = false;
     //分享的书签
@@ -99,8 +100,10 @@ export default class UserCollectionCom extends Vue {
                 cover: '',
                 coverFile: ''
             }
+            this.isUpFile = false;
             this.getData();
         }).catch(err => {
+            this.isUpFile = false;
             console.log(err)
         })
     }
@@ -120,19 +123,21 @@ export default class UserCollectionCom extends Vue {
                 cover: '',
                 coverFile: ''
             }
+            this.isUpFile = false;
             this.getData();
         }).catch(err => {
+            this.isUpFile = false;
             console.log(err)
         })
     }
     //删除收藏夹
-    public deleteFav(item: any): void {
+    public deleteFav(item: any,index:number): void {
         this.$confirm('确定要删除该收藏夹吗?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消'
         }).then(() => {
             this.axios.delete(baseApi.api2 + '/v1/user/favorite/?name=' + item.name).then(res => {
-                this.getData();
+                this.favoriteList.splice(index,1);
             }).catch(err => {
                 console.log(err)
             })
@@ -140,6 +145,7 @@ export default class UserCollectionCom extends Vue {
     }
 
     public showBtn(index: number): void {
+        console.log(this.favoriteList[index])
         if(this.isShare){
             return;
         }
@@ -189,6 +195,7 @@ export default class UserCollectionCom extends Vue {
             this.$message.error('请选择封面图片');
             return;
         }
+        this.isUpFile = true;
         if (this.dialogTitle == '创建书签') {
             this.createFavorite();
         } else {

@@ -129,8 +129,8 @@ export default class TimeSolt extends Vue {
   }
 }
 .el-button--default {
-  margin-left: 240px;
-  width: 100px;
+  //margin-left: 240px;
+  //width: 100px;
 }
 .el-date-editor {
   margin-right: 10px;
