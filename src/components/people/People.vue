@@ -9,7 +9,7 @@
           <img src="../../assets/img/tx.png" alt="" />
           <span>{{v.name}}</span>
           <p>中国共产党中央委员会总书记</p>
-          <img @click="unsub(v,i)" src="../../assets/img/close.png" alt="" />
+          <img @click="unsub(v,i)" src="../../assets/img/shouqil.png" alt="" />
         </div>
       </div>
     </div>

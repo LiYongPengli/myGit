@@ -26,7 +26,7 @@
         {{ word }}
 
         <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
-        <img v-else src="../../assets/img/close.png" alt="" />
+        <img v-else src="../../assets/img/shouqil.png" alt="" />
       </p>
        <ul>
         <li v-for="(v,i) in showlist" :key="i">

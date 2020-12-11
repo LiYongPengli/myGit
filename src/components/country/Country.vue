@@ -152,7 +152,7 @@
         {{ word }}
 
         <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
-        <img v-else src="../../assets/img/close.png" alt="" />
+        <img v-else src="../../assets/img/shouqil.png" alt="" />
       </p>
       <ul v-loading="loadFollow">
         <li v-for="(v1, k1) in showlist" :key="k1">
