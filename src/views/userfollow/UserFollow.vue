@@ -30,6 +30,7 @@
         <channel />
       </div>
     </div>
+ 
   </div>
 </template>
 

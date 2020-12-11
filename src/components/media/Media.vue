@@ -3,7 +3,7 @@
          <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-      <ul v-loading="loadFollow">
+      <ul v-loading="loadFollow"  element-loading-background="rgba(58, 58, 72, 0.5)" >
         <li v-for="(v,i) in mediaFollowList" :key="v.sub_id">
           <div>
             <img class="flag" src="../../assets/img/followchina.png" alt="">
@@ -31,7 +31,7 @@
        <ul v-loading="loading">
         <li v-for="(v,i) in showlist" :key="v.sub_id">
           <div>
-            <img src="../../assets/img/followchina.png" alt="">
+            <img class="flag" src="../../assets/img/followchina.png" alt="">
             <!-- <p>{{v.name_zh}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p> -->
              <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
               <p>

@@ -4,7 +4,7 @@
     <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-      <ul v-loading="loading">
+      <ul element-loading-background="rgba(58, 58, 72, 0.5)"  v-loading="loading">
         <li v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />

@@ -3,8 +3,8 @@
     <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-
-      <div class="concernedlists">
+    
+      <div class="concernedlists"  element-loading-background="rgba(58, 58, 72, 0.5)"  v-loading="loading">
         <div v-for="(v,i) in characterFollowList" :key="i" class="concernedlist">
           <img src="../../assets/img/xdd.png" alt="" />
           <span>{{v.name}}</span>
