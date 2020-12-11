@@ -6,7 +6,7 @@
     
       <div class="concernedlists"  element-loading-background="rgba(58, 58, 72, 0.5)"  v-loading="loading">
         <div v-for="(v,i) in characterFollowList" :key="i" class="concernedlist">
-          <img src="../../assets/img/xdd.png" alt="" />
+          <img src="../../assets/img/tx.png" alt="" />
           <span>{{v.name}}</span>
           <p>中国共产党中央委员会总书记</p>
           <img @click="unsub(v,i)" src="../../assets/img/close.png" alt="" />
@@ -19,7 +19,7 @@
       <p class="noattention_list">还没有找到想关注的人物？</p>
       <div class="noattentionlists">
         <div v-for="(v,i) in characterList" :key="i" class="noattentionlist">
-          <img src="../../assets/img/xdd.png" alt="" />
+          <img src="../../assets/img/tx.png" alt="" />
           <span>{{v.name}}</span>
           <p>中国共产党中央委员会总书记</p>
           <img @click="addFollow(v,i)" src="../../assets/img/add.png" alt="" />
