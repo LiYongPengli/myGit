@@ -41,8 +41,8 @@
               background: shares[i] == v.name ? '#409EFF' : ' #3a3a48',
             }"
             @click.stop="toCollectionList(v)"
-            @mouseover="showBtn(i)"
-            @mouseout="hideBtn(v, i)"
+            @mouseenter="showBtn(i)"
+            @mouseleave="hideBtn(v, i)"
             v-for="(v, i) in favoriteList"
             :key="i"
           >
@@ -84,7 +84,7 @@
                 >编辑</el-button
               >
               <el-button
-                @click.stop="deleteFav(v)"
+                @click.stop="deleteFav(v,i)"
                 v-show="v.showControl && v.name != '默认'"
                 class="delete"
                 type="danger"
@@ -107,6 +107,8 @@
     <el-dialog
       top="25vh"
       width="800px"
+      element-loading-background="rgba(0, 0, 0, 0.2)" 
+      v-loading="isUpFile"
       :title="dialogTitle"
       :visible.sync="dialogVisible"
     >
