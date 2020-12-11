@@ -84,3 +84,14 @@ export default class Register extends mixins(RegisterCom) {}
 <style lang="scss" scoped>
 @import "./Register.scss";
 </style>
+<style lang="scss">
+.register{
+  .el-dialog{
+    background:white!important;
+    
+  }
+  .el-dialog__title{
+    color: black!important;
+  }
+}
+</style>

@@ -134,7 +134,7 @@
                     :key="i"
                     class="item"
                   >
-                    <img src="../../assets/img/media.png" alt="" />
+                    <img src="../../assets/img/tx.png" alt="" />
                     <p class="name">{{ v.name }}</p>
                   </div>
                 </div>

@@ -386,7 +386,7 @@
                 <li v-for="(v, i) in newsList" :key="i">
                   <div class="pic">
                     <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
-                    <video-thumbnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
+                    <video-thumbnail style="width:200px;margin-right: 30px;" v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
                   </div>
                   <div class="text">
                     <p v-show="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>

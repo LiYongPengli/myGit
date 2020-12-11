@@ -91,3 +91,14 @@ export default class Findpassword extends mixins(FindPasswordCom) {}
 <style lang="scss" scoped>
 @import "./FindPassword.scss";
 </style>
+<style lang="scss">
+.findpassword{
+  .el-dialog{
+    background:white!important;
+    
+  }
+  .el-dialog__title{
+    color: black!important;
+  }
+}
+</style>

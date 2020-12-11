@@ -174,3 +174,14 @@ export default class Login extends mixins(LoginCom){
 <style lang="scss" scoped>
 @import "./Login.scss";
 </style>
+<style lang="scss">
+.login{
+  .el-dialog{
+    background:white!important;
+    
+  }
+  .el-dialog__title{
+    color: black!important;
+  }
+}
+</style>
