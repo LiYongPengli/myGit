@@ -20,7 +20,7 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
-              :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.nickname"
+              :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.account"
               alt=""
             />
             <!-- <img
@@ -153,6 +153,7 @@ export default class HeaderTwo extends Vue {
         img {
           display: block;
           width: 100%;
+          height: 100%;
         }
       }
       .user_name {

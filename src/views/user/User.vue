@@ -8,15 +8,14 @@
             <div class="user_info" v-if="user_message">
               <div class="user_img">
                 <img
-                  v-show="!user_message.wechat_info.head_img"
-                  src="../../assets/img/tx.png"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.account"
                   alt=""
                 />
-                <img
+                <!-- <img
                   v-if="user_message.wechat_info.head_img"
                   :src="user_message.wechat_info.head_img"
                   alt=""
-                />
+                />-->
               </div>
               <div class="user_message">
                 <p class="user_name">{{ user_message.nickname }}</p>
