@@ -15,17 +15,25 @@
                 width: 108px;
                 float: left;
                 div {
-                    .flag{
-                        width: 50px;
+                    .flag {
                         height: 30px;
+                        display: block;
+                        margin-left: 20px;
                     }
                     p {
                         font-size: 15px;
                         margin-top: 20px;
-                        img {
-                            cursor: pointer;
-                            margin-left: 10px;
-                        }
+                        width: 60px;
+                        // 是禁止换行。
+                        white-space: nowrap;
+                        display: inline-block;
+                        overflow: hidden;
+                        text-align: center;
+                        margin-left: 10px;
+                    }
+                    img.close {
+                        cursor: pointer;
+                        margin-left: 10px;
                     }
                 }
             }
@@ -53,17 +61,25 @@
                 width: 108px;
                 float: left;
                 div {
-                    .flag{
-                        width: 50px;
+                    .flag {
                         height: 30px;
+                        display: block;
+                        margin-left: 20px;
                     }
                     p {
                         font-size: 15px;
                         margin-top: 20px;
-                        img {
-                            cursor: pointer;
-                            margin-left: 10px;
-                        }
+                        width: 60px;
+                        // 是禁止换行。
+                        white-space: nowrap;
+                        display: inline-block;
+                        overflow: hidden;
+                        text-align: center;
+                        margin-left: 10px;
+                    }
+                    img.add {
+                        cursor: pointer;
+                        margin-left: 10px;
                     }
                 }
             }

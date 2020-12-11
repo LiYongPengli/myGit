@@ -6,8 +6,15 @@
       <ul>
         <li v-for="(v,i) in channelFollowList" :key="i">
           <div>
-            <img src="../../assets/img/followchina.png" alt="">
-            <p>{{v.name}}<img @click="unsub(v,i)" src="../../assets/img/close.png" alt=""></p>
+            <img class="flag" src="../../assets/img/followchina.png" alt="">
+            <!-- <p>{{v.name}}</p> -->
+              <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
+              <p>
+                {{ v.name
+                }}
+              </p>
+              </el-tooltip>
+              <img class="close" @click="unsub(v,i)" src="../../assets/img/close.png" alt="">
           </div>
         </li>
       </ul>
@@ -15,15 +22,24 @@
     <!-- 未关注 -->
     <div class="noattention">
       <p class="noattention_p">推荐频道未关注</p>
-      <p class="open">
-        展开
-        <img src="../../assets/img/open.png" alt="">
+      <p class="open" @click="showAll = !showAll">
+        {{ word }}
+
+        <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
+        <img v-else src="../../assets/img/close.png" alt="" />
       </p>
        <ul>
-        <li v-for="(v,i) in channelList" :key="i">
+        <li v-for="(v,i) in showlist" :key="i">
           <div>
             <img src="../../assets/img/followchina.png" alt="">
-            <p>{{v.name}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p>
+            <!-- <p>{{v.name}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p> -->
+              <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
+              <p>
+                {{ v.name
+                }}
+              </p>
+              </el-tooltip>
+              <img class="add" @click="addFollow(v,i)" src="../../assets/img/add.png" alt="">
           </div>
         </li>
       </ul>

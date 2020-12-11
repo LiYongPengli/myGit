@@ -5,11 +5,21 @@
     <div class="concerned">
       <p class="concerned_p">已关注</p>
       <ul v-loading="loading">
-        <li v-for="(v, k) in country_follow_list" :key="k" >
+        <li v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />
-            <p>{{k+1}}-{{v.name_zh}}<img @click.stop="unsub(v,k)" src="../../assets/img/close.png" alt="" />
-            </p>
+            <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
+              <p>
+                {{ v.name }}
+              </p>
+            </el-tooltip>
+            <img
+              class="close"
+              @click.stop="unsub(v, k)"
+              src="../../assets/img/close.png"
+              alt=""
+            />
+
             <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
         </li>
@@ -139,16 +149,26 @@
     <div class="noattention">
       <p class="noattention_p">未关注</p>
       <p class="open" @click="showAll = !showAll">
-      {{word}}
+        {{ word }}
 
-        <img v-if="word=='展开'" src="../../assets/img/open.png" alt="" />
-          <img v-else  src="../../assets/img/close.png" alt="" />
+        <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
+        <img v-else src="../../assets/img/close.png" alt="" />
       </p>
       <ul v-loading="loadFollow">
-        <li v-for="(v1,k1) in showlist" :key="k1">
+        <li v-for="(v1, k1) in showlist" :key="k1">
           <div>
             <img class="flag" :src="v1.flag" alt="" />
-            <p>{{k1+1}}--{{v1.name}}<img @click="addFollow(v1,k1)"  src="../../assets/img/add.png" alt="" /></p>
+            <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">
+              <p>
+                {{ v1.name }}
+              </p>
+            </el-tooltip>
+            <img
+              class="add"
+              @click="addFollow(v1, k1)"
+              src="../../assets/img/add.png"
+              alt=""
+            />
           </div>
         </li>
       </ul>

@@ -9,6 +9,38 @@ export default class MediaCom extends Vue{
     public loading:boolean = true;
     public loadFollow:boolean = true;
 
+
+    //定义数据是否需要完全显示的属性
+    public showAll: boolean = false;
+    
+    public get showlist(): any {
+
+        if (this.showAll == false) {
+            let showlist: any = [];
+            if (this.mediaList.length > 10) {
+                for (var i = 0; i < 10; i++) {
+                    showlist.push(this.mediaList[i])
+                }
+            }
+            else {
+                showlist = this.mediaList
+            }
+            return showlist;
+        }
+        else {
+            return this.mediaList;
+        }
+    }
+
+    public get word(): any {
+        if (this.showAll == false) {
+            return '展开'
+        }
+        else {
+            return '收起'
+        }
+    }
+
     public created():void{
         this.getSubscriptions('media', 'sub', res => {
             console.log(res.data)

@@ -10,6 +10,37 @@ export default class ChannelCom extends Vue{
     public loading:boolean = true;
     public loadFollow:boolean = true;
 
+    //定义数据是否需要完全显示的属性
+    public showAll: boolean = false;
+    
+    public get showlist(): any {
+
+        if (this.showAll == false) {
+            let showlist: any = [];
+            if (this.channelList.length > 10) {
+                for (var i = 0; i < 10; i++) {
+                    showlist.push(this.channelList[i])
+                }
+            }
+            else {
+                showlist = this.channelList
+            }
+            return showlist;
+        }
+        else {
+            return this.channelList;
+        }
+    }
+
+    public get word(): any {
+        if (this.showAll == false) {
+            return '展开'
+        }
+        else {
+            return '收起'
+        }
+    }
+
     public created():void{
         this.getSubscriptions('channel', 'sub', res => {
             console.log(res.data)
