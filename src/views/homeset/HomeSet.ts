@@ -5,6 +5,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 export default class HomeSetCom extends Vue {
     public show = false;
     public searchText: string = "";
+    public loadCountry:boolean = true;
     //搜索防抖
     private search_timeout: any = null;
     //目前所处的页码
@@ -62,6 +63,7 @@ export default class HomeSetCom extends Vue {
         this.getSubscriptions("country", "unsub", res => {
             this.country_list = res.data.data;
             this.page_data.country_list = res.data.data;
+            this.loadCountry = false;
         })
     }
 
