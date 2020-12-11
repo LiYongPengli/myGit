@@ -20,11 +20,10 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
-              v-if="user_message.headimg"
-              :src="user_message.headimg"
+              :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.nickname"
               alt=""
             />
-            <img
+            <!-- <img
               v-if="user_message.wechat_info.head_img&&!user_message.headimg"
               :src="user_message.wechat_info.head_img"
               alt=""
@@ -33,7 +32,7 @@
               v-if="!user_message.wechat_info.head_img&&!user_message.headimg"
               src="../assets/img/tx.png"
               alt=""
-            />
+            /> -->
           </div>
           <span>{{ user_message.nickname }}</span>
           <i class="el-icon-arrow-down"></i>

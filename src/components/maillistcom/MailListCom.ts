@@ -172,6 +172,7 @@ export default class MailListCom extends Vue{
           paras: { user_id: user.user_id, oper: 'accepted' },
         }).then(res=>{
             user.status="accepted"
+            this.getMailList();
         }).catch(err=>{
             console.log(err);
         })

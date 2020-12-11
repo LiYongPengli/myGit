@@ -19,17 +19,17 @@
             <div class="content_userlist">
               <img
                 class="header"
-                v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img"
-                :src="v.recommended.headimg"
+                
+                :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
                 alt=""
               />
-              <img
+              <!-- <img
                 class="header"
                 v-if="!v.recommended.headimg && v.recommended.wechat_info.head_img"
                 :src="v.recommended.wechat_info.head_img"
                 alt=""
               />
-              <p v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img" class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p>
+              <p v-if="!v.recommended.headimg && !v.recommended.wechat_info.head_img" class="content_userlist_engname">{{ v.recommended.nickname.slice(0, 1) }}</p> -->
               <p class="content_userlist_chinename">{{v.recommended.nickname}}</p>
               <p class="remarks_p">
                 "{{v.recommender.nickname}}"将"{{v.recommended.nickname}}"的名片推荐给你
@@ -61,11 +61,11 @@
             <div class="content_userlist">
               <img
                 class="header"
-                v-if="!v.headimg && !v.wechat_info.head_img"
-                :src="v.headimg"
+                style="height:40px;"
+                :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
                 alt=""
               />
-              <img
+              <!-- <img
                 class="header"
                 v-if="!v.headimg && v.wechat_info.head_img"
                 :src="v.wechat_info.head_img"
@@ -73,7 +73,7 @@
               />
               <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">
                 {{ v.nickname.slice(0, 1) }}
-              </p>
+              </p> -->
               <p class="content_userlist_chinename">{{ v.nickname }}</p>
               <p class="remarks_p">
                 {{ v.message }}
@@ -114,17 +114,16 @@
         <div class="username">
           <img
                 class="header"
-                v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
-                :src="userInfo.headimg"
+                :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.nickname"
                 alt=""
               />
-              <img
+              <!-- <img
                 class="header"
                 v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
                 :src="userInfo.wechat_info.head_img"
                 alt=""
               />
-          <p v-if="!userInfo.headimg && !userInfo.wechat_info.head_img" class="head">{{userInfo.nickname.slice(0,1)}}</p>
+          <p v-if="!userInfo.headimg && !userInfo.wechat_info.head_img" class="head">{{userInfo.nickname.slice(0,1)}}</p> -->
           <p class="name">{{userInfo.nickname}}</p>
         </div>
         <div class="remarks_div">
@@ -149,17 +148,16 @@
         <div class="username">
           <img
                 class="header"
-                v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img"
-                :src="inv_userInfo.recommended.headimg"
+                :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.nickname"
                 alt=""
               />
-              <img
+              <!-- <img
                 class="header"
                 v-if="!inv_userInfo.recommended.headimg && inv_userInfo.recommended.wechat_info.head_img"
                 :src="inv_userInfo.recommended.wechat_info.head_img"
                 alt=""
               />
-          <p v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img" class="head">{{inv_userInfo.recommended.nickname.slice(0,1)}}</p>
+          <p v-if="!inv_userInfo.recommended.headimg && !inv_userInfo.recommended.wechat_info.head_img" class="head">{{inv_userInfo.recommended.nickname.slice(0,1)}}</p> -->
           <p class="name">{{inv_userInfo.recommended.nickname}}</p>
         </div>
         <div class="remarks_div">

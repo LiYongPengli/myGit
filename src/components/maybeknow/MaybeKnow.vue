@@ -11,8 +11,8 @@
           <my-scroll style="content_mt_onescroll">
             <li v-for="(v, k) in userlists" :key="k">
               <div class="content_userlist">
-                <img v-if="v.headimg" :src="v.headimg" alt="" />
-                <img
+                <img style="height:40px;" :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname" alt="" />
+                <!-- <img
                   v-if="!v.headimg && v.wechat_info.head_img"
                   :src="v.wechat_info.head_img"
                   alt=""
@@ -22,7 +22,7 @@
                   class="content_userlist_engname"
                 >
                   {{ v.nickname.slice(0, 1) }}
-                </p>
+                </p> -->
                 <p class="content_userlist_chinename">
                   {{ v.nickname }}
                 </p>
@@ -41,7 +41,8 @@
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
-          <p class="head">{{inv_userInfo.nickname.slice(0,1)}}</p>
+          <img :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.nickname" alt="">
+          <!-- <p class="head">{{inv_userInfo.nickname.slice(0,1)}}</p> -->
           <p class="name">{{inv_userInfo.nickname}}</p>
         </div>
         <div class="remarks_div">

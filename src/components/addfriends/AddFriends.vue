@@ -31,11 +31,11 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  v-if="!v.headimg && !v.wechat_info.head_img"
-                  :src="v.headimg"
+                  
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
                   alt=""
                 />
-                <img
+                <!-- <img
                   class="header"
                   v-if="!v.headimg && v.wechat_info.head_img"
                   :src="v.wechat_info.head_img"
@@ -46,7 +46,7 @@
                   class="content_userlist_engname"
                 >
                   {{ v.nickname.slice(0, 1) }}
-                </p>
+                </p> -->
                 <p class="content_userlist_chinename">
                   {{ v.nickname }}{{ v.remark_name }}
                 </p>
@@ -106,11 +106,11 @@
         <div class="username">
           <img
             class="header"
-            v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
-            :src="userInfo.headimg"
+            
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.nickname"
             alt=""
           />
-          <img
+          <!-- <img
             class="header"
             v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
             :src="userInfo.wechat_info.head_img"
@@ -121,7 +121,7 @@
             class="head"
           >
             {{ userInfo.nickname.slice(0, 1) }}
-          </p>
+          </p> -->
           <p class="name">{{ userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">
@@ -159,11 +159,11 @@
         <div class="username">
           <img
             class="header"
-            v-if="!inv_userInfo.headimg && !inv_userInfo.wechat_info.head_img"
-            :src="inv_userInfo.headimg"
+            
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.nickname"
             alt=""
           />
-          <img
+          <!-- <img
             class="header"
             v-if="!inv_userInfo.headimg && inv_userInfo.wechat_info.head_img"
             :src="inv_userInfo.wechat_info.head_img"
@@ -174,7 +174,7 @@
             class="head"
           >
             {{ inv_userInfo.nickname.slice(0, 1) }}
-          </p>
+          </p> -->
           <p class="name">{{ inv_userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">
