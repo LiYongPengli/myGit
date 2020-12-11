@@ -345,6 +345,14 @@
                 <!-- <img class="up" src="../../assets/img/up.png" alt="" />
                 <img class="down" src="../../assets/img/down.png" alt="" /> -->
               </div>
+               <div
+                @click="sortList('v')"
+                :class="{ cur: filter.sort_type == 'v' }"
+                class="releasetimesort"
+              >
+                热度排序
+                
+              </div>
               <ul>
                 <li
                   @click="setLanguage('crawler')"
