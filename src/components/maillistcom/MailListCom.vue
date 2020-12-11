@@ -33,11 +33,10 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  v-if="v.recommended.headimg"
-                  :src="v.recommended.headimg"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.recommended.nickname"
                   alt=""
                 />
-                <img
+                <!-- <img
                   class="header"
                   v-if="
                     !v.recommended.headimg && v.recommended.wechat_info.head_img
@@ -53,7 +52,7 @@
                   class="content_userlist_engname"
                 >
                   {{ v.recommended.nickname.slice(0, 1) }}
-                </p>
+                </p> -->
                 <p class="content_userlist_chinename">
                   {{ v.recommended.nickname }}
                 </p>
@@ -91,11 +90,10 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  v-if="!v.headimg && !v.wechat_info.head_img"
-                  :src="v.headimg"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
                   alt=""
                 />
-                <img
+                <!-- <img
                   class="header"
                   v-if="!v.headimg && v.wechat_info.head_img"
                   :src="v.wechat_info.head_img"
@@ -106,7 +104,7 @@
                   class="content_userlist_engname"
                 >
                   {{ v.nickname.slice(0, 1) }}
-                </p>
+                </p> -->
                 <p class="content_userlist_chinename">{{ v.nickname }}</p>
               </div>
               <!-- 备注 -->
@@ -139,11 +137,10 @@
               <div class="content_userlist_one">
                 <img
                   class="header"
-                  v-if="!v.headimg && !v.wechat_info.head_img"
-                  :src="v.headimg"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.nickname"
                   alt=""
                 />
-                <img
+                <!-- <img
                   class="header"
                   v-if="!v.headimg && v.wechat_info.head_img"
                   :src="v.wechat_info.head_img"
@@ -154,7 +151,7 @@
                   class="content_userlist_engname"
                 >
                   {{ v.nickname.slice(0, 1) }}
-                </p>
+                </p> -->
                   <!-- content_userlist_chinename -->
                 <p class="content_userlist_chinename">
                   {{ v.nickname
@@ -210,11 +207,11 @@
         <div class="username">
           <img
             class="header"
-            v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
-            :src="userInfo.headimg"
+            
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.nickname"
             alt=""
           />
-          <img
+          <!-- <img
             class="header"
             v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
             :src="userInfo.wechat_info.head_img"
@@ -225,7 +222,7 @@
             class="head"
           >
             {{ userInfo.nickname.slice(0, 1) }}
-          </p>
+          </p> -->
           <p class="name">{{ userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">
@@ -263,14 +260,11 @@
         <div class="username">
           <img
             class="header"
-            v-if="
-              !inv_userInfo.recommended.headimg &&
-              !inv_userInfo.recommended.wechat_info.head_img
-            "
-            :src="inv_userInfo.recommended.headimg"
+            
+            :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.nickname"
             alt=""
           />
-          <img
+         <!--  <img
             class="header"
             v-if="
               !inv_userInfo.recommended.headimg &&
@@ -287,7 +281,7 @@
             class="head"
           >
             {{ inv_userInfo.recommended.nickname.slice(0, 1) }}
-          </p>
+          </p> -->
           <p class="name">{{ inv_userInfo.recommended.nickname }}</p>
         </div>
         <div class="remarks_div">

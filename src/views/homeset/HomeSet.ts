@@ -21,15 +21,17 @@ export default class HomeSetCom extends Vue {
         channel_list: [] as any[],
         media_list: {
             week: [] as any[],
-            month: [] as any[]
+            month: [] as any[],
+            other:[]  as any[]
         },
     }
     public country_list: any[] = [];
     public character_list: any[] = [];
     public channel_list: any[] = [];
-    public media_list: { week: any[]; month: any[] } = {
+    public media_list: { week: any[]; month: any[],other:any[] } = {
         week: [],
-        month: []
+        month: [],
+        other:[]
     }
 
     @Watch('searchText')
@@ -97,7 +99,8 @@ export default class HomeSetCom extends Vue {
         let reg_zh = /[\u4e00-\u9fa5]+/g;
         let obj = {
             week: [] as any[],
-            month: [] as any[]
+            month: [] as any[],
+            other:[] as any[]
         }
         if (reg_zh.test(str)) {
             for (let i of this.page_data.media_list.week) {
@@ -110,6 +113,11 @@ export default class HomeSetCom extends Vue {
                     obj.month.push(i)
                 }
             }
+            for (let i of this.page_data.media_list.other) {
+                if (~i.name_zh.indexOf(str)) {
+                    obj.other.push(i)
+                }
+            }
         } else {
             for (let i of this.page_data.media_list.week) {
                 if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
@@ -119,6 +127,11 @@ export default class HomeSetCom extends Vue {
             for (let i of this.page_data.media_list.month) {
                 if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
                     obj.month.push(i)
+                }
+            }
+            for (let i of this.page_data.media_list.other) {
+                if (~i.name.toLowerCase().indexOf(str.toLowerCase())) {
+                    obj.other.push(i)
                 }
             }
         }
@@ -174,9 +187,12 @@ export default class HomeSetCom extends Vue {
                     this.media_list.week.push(media_list[i])
                 } else if(new Date(media_list[i].update_time).getTime()>month) {
                     this.media_list.month.push(media_list[i])
+                }else{
+                    this.media_list.other.push(media_list[i])
                 }
             }
             this.page_data.media_list = this.media_list;
+            console.log(media_list)
         })
     }
 
@@ -198,7 +214,7 @@ export default class HomeSetCom extends Vue {
                 } else {
                     this.$set(this.country_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.country.length; i++) {
-                        if (item.name == this.sub_form.country[i]) {
+                        if (item.name == this.sub_form.country[i].name) {
                             this.$delete(this.sub_form.country, i)
                         }
                     }
@@ -214,7 +230,7 @@ export default class HomeSetCom extends Vue {
                 } else {
                     this.$set(this.character_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.character.length; i++) {
-                        if (item.name == this.sub_form.character[i]) {
+                        if (item.name == this.sub_form.character[i].name) {
                             this.$delete(this.sub_form.character, i)
                         }
                     }
@@ -230,7 +246,7 @@ export default class HomeSetCom extends Vue {
                 } else {
                     this.$set(this.channel_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.channel.length; i++) {
-                        if (item.name == this.sub_form.channel[i]) {
+                        if (item.name == this.sub_form.channel[i].name) {
                             this.$delete(this.sub_form.channel, i)
                         }
                     }
@@ -255,12 +271,12 @@ export default class HomeSetCom extends Vue {
             } else {
                 this.$set(this.media_list.week[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
-                    if (item.name == this.sub_form.media[i]) {
+                    if (item.name == this.sub_form.media[i].name) {
                         this.$delete(this.sub_form.media, i)
                     }
                 }
             }
-        } else {
+        } else if(type=='month'){
             if (!this.media_list.month[index].choose) {
                 this.$set(this.media_list.month[index], 'choose', !this.media_list.month[index].choose);
                 this.sub_form.media.push({
@@ -270,7 +286,22 @@ export default class HomeSetCom extends Vue {
             } else {
                 this.$set(this.media_list.month[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
-                    if (item.name == this.sub_form.media[i]) {
+                    if (item.name == this.sub_form.media[i].name) {
+                        this.$delete(this.sub_form.media, i)
+                    }
+                }
+            }
+        }else{
+            if (!this.media_list.other[index].choose) {
+                this.$set(this.media_list.other[index], 'choose', !this.media_list.other[index].choose);
+                this.sub_form.media.push({
+                    name:item.name,
+                    id:item.sub_id
+                });
+            } else {
+                this.$set(this.media_list.other[index], 'choose', false);
+                for (let i = 0; i < this.sub_form.media.length; i++) {
+                    if (item.name == this.sub_form.media[i].name) {
                         this.$delete(this.sub_form.media, i)
                     }
                 }

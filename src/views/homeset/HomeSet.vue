@@ -84,7 +84,8 @@
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
-      <div class="content_wrap" style="height: 250px">
+      <!-- 7天活跃 -->
+      <div v-show="media_list.week.length" class="content_wrap" style="height: 200px">
         <span class="qit">近7天内活跃的媒体</span>
         <my-scroll style="content_mt_onescroll">
           <ul class="mt">
@@ -120,13 +121,53 @@
           </ul>
         </my-scroll>
       </div>
-      <div class="content_wrap" style="height: 250px">
+      <!-- 30天活跃 -->
+      <div v-show="media_list.month.length" class="content_wrap" style="height: 200px">
         <span class="sst">近30天内活跃的媒体</span>
         <my-scroll>
           <ul class="mt">
             <li
               @click="chooseMediaItem('month', v, i)"
               v-for="(v, i) in media_list.month"
+              :key="i"
+              :class="{ cur: v.choose }"
+            >
+              <a>
+                <!-- 50*30 -->
+                <img src="../../assets/img/morentx.png" alt="" />
+                <el-tooltip
+                  class="item itmemt_ch"
+                  effect="dark"
+                  :content="v.name_zh"
+                  placement="right"
+                >
+                   <span
+                      class="chinese_gj mt"
+                      >{{ v.name_zh }}</span
+                    >
+                  
+                </el-tooltip>
+                <el-tooltip
+                  class="item itmemt_en"
+                  effect="dark"
+                  :content="v.name"
+                  placement="right"
+                >
+                  <span class="english_gj mt">{{ v.name }} </span>
+                </el-tooltip>
+              </a>
+            </li>
+          </ul>
+        </my-scroll>
+      </div>
+      <!-- 其他 -->
+      <div v-show="!media_list.month.length" class="content_wrap">
+        <span class="sst">30天前活跃媒体</span>
+        <my-scroll>
+          <ul class="mt">
+            <li
+              @click="chooseMediaItem('other', v, i)"
+              v-for="(v, i) in media_list.other"
               :key="i"
               :class="{ cur: v.choose }"
             >
