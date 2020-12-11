@@ -2,7 +2,7 @@
     <div class="channel">
          <!-- 已关注 -->
     <div class="concerned">
-      <p class="concerned_p">推荐频道已关注</p>
+      <p class="concerned_p">已关注</p>
       <ul>
         <li v-for="(v,i) in channelFollowList" :key="i">
           <div>
@@ -21,7 +21,7 @@
     </div>
     <!-- 未关注 -->
     <div class="noattention">
-      <p class="noattention_p">推荐频道未关注</p>
+      <p class="noattention_p">未关注</p>
       <p class="open" @click="showAll = !showAll">
         {{ word }}
 

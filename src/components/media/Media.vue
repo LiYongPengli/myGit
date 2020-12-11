@@ -2,7 +2,7 @@
     <div class="media">
          <!-- 已关注 -->
     <div class="concerned">
-      <p class="concerned_p">媒体已关注</p>
+      <p class="concerned_p">已关注</p>
       <ul v-loading="loadFollow">
         <li v-for="(v,i) in mediaFollowList" :key="v.sub_id">
           <div>
@@ -21,7 +21,7 @@
     </div>
     <!-- 未关注 -->
     <div class="noattention">
-      <p class="noattention_p">媒体未关注</p>
+      <p class="noattention_p">未关注</p>
       <p class="open" @click="showAll = !showAll">
         {{ word }}
 
