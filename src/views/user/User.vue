@@ -40,6 +40,9 @@
           <div class="user_content">
             <router-view />
           </div>
+          <div style="background:red;height:200px" class="user_footer">
+            11111111111
+          </div>
         </div>
       </my-scroll>
     </div>
