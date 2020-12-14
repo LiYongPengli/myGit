@@ -52,6 +52,8 @@ import VueCropper from "../../../node_modules/vue-cropper/src/vue-cropper.vue";
 })
 export default class UpFile extends Vue {
   @Prop({}) img!: any;
+  @Prop({}) width!: number;
+  @Prop({}) height!: number;
   public options = {
     img: "",
     autoCrop: true,
