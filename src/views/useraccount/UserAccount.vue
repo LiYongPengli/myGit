@@ -28,9 +28,8 @@
           <p>{{ user_message.wechat_info.binding ? user_message.wechat_info.nickname : "赞未绑定微信" }}</p>
         </div>
         <div class="right">
-          <span @click="binding = true">{{
-            user_message.wechat_info.binding ? "解绑 >" : "绑定 >"
-          }}</span>
+          <span v-show="user_message.wechat_info.binding" @click="unbinding = true">解绑></span>
+          <span v-show="!user_message.wechat_info.binding" @click="binding = true">绑定></span>
         </div>
       </div>
       <!-- 头像 -->
@@ -51,19 +50,33 @@
       </div>
     </div>
     <div class="body">
+      <!-- 上传头像 -->
+    <el-dialog
+      :visible.sync="upLoadPhoto"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+      title="头像上传"
+      width="800px"
+      top="25vh"
+    >
+      <up-file v-if="upLoadPhoto" @ext="upRes" :img="upimg" />
+    </el-dialog>
       <!-- 头像修改 -->
       <el-dialog
         :visible.sync="headportraitupdate"
         title="头像修改"
         class="ghsjh"
         width="800px"
-        top="40vh"
+        top="25vh"
       >
         <div class="niname">
           <div class="ninam_top">
             <span>头像:</span>
-            <div class="headportraitchoice">
-              <img src="../../assets/img/cjqs.png" alt="" />
+            <div v-show="!headerPhoto" class="headportraitchoice">
+              <label for="up">
+                <input ref="file" style="display:none;" type="file" id="up" name="">
+                <img src="../../assets/img/cjqs.png" alt="" />
+              </label>
               <p>上传头像</p>
             </div>
           </div>
@@ -83,14 +96,14 @@
       <!-- 微信绑定 -->
       <el-dialog
         :visible.sync="binding"
+        @opened="bindWechat"
         title="微信绑定"
         class="ghsjh wbind"
         width="800px"
-        top="40vh"
+        top="25vh"
       >
         <div class="wchatimg">
-          <img src="../../assets/img/wchatbind.png" alt="" />
-          <p>请使用微信扫描二维码</p>
+          <wxlogin v-if="wx_data" :state="wx_data.state" :theme="'white'" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"></wxlogin>
         </div>
       </el-dialog>
       <!-- 昵称修改 -->
@@ -116,6 +129,10 @@
           </div>
         </div>
       </el-dialog>
+      <!-- 警告 -->
+      <transition name="el-zoom-in-top">
+        <warning @ext="unbinding=false" @sure="unbindingWechat" v-if="unbinding" title="提示" top="25vh" text="确定要解绑微信账号吗?" />
+      </transition>
     </div>
   </div>
 </template>
@@ -123,8 +140,16 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserAccountCom from "./UserAccount";
-
-@Component
+import Warning from "@/components/Warning.vue"
+import wxlogin from '@/components/vue-wxlogin.vue'
+import UpFile from '@/components/upfile/UpFile.vue'
+@Component({
+  components:{
+    Warning,
+    wxlogin,
+    UpFile
+  }
+})
 export default class UserCollection extends mixins(UserAccountCom) {}
 </script>
 
