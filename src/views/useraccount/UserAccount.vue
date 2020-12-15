@@ -10,14 +10,21 @@
         />
         <div class="left">
           <p>手机号码</p>
-          <p>{{user_message.phone_number.slice(0,3)}}****{{user_message.phone_number.slice(7)}}</p>
+          <p>
+            {{ user_message.phone_number.slice(0, 3) }}****{{
+              user_message.phone_number.slice(7)
+            }}
+          </p>
         </div>
         <div class="right">
           <p>如需更换手机号请联系运维人员</p>
           <p>0452-1212454</p>
         </div>
       </div>
-      <div class="telephone" :class="{ bangding: !user_message.wechat_info.binding }">
+      <div
+        class="telephone"
+        :class="{ bangding: !user_message.wechat_info.binding }"
+      >
         <img
           class="wechatimg"
           src="../../assets/img/useraccountweixin.png"
@@ -25,11 +32,25 @@
         />
         <div class="left">
           <p>微信昵称</p>
-          <p>{{ user_message.wechat_info.binding ? user_message.wechat_info.nickname : "赞未绑定微信" }}</p>
+          <p>
+            {{
+              user_message.wechat_info.binding
+                ? user_message.wechat_info.nickname
+                : "赞未绑定微信"
+            }}
+          </p>
         </div>
         <div class="right">
-          <span v-show="user_message.wechat_info.binding" @click="unbinding = true">解绑></span>
-          <span v-show="!user_message.wechat_info.binding" @click="binding = true">绑定></span>
+          <span
+            v-show="user_message.wechat_info.binding"
+            @click="unbinding = true"
+            >解绑></span
+          >
+          <span
+            v-show="!user_message.wechat_info.binding"
+            @click="binding = true"
+            >绑定></span
+          >
         </div>
       </div>
       <!-- 头像 -->
@@ -42,7 +63,7 @@
         />
         <div class="left">
           <p>昵称</p>
-          <p>{{user_message.nickname}}</p>
+          <p>{{ user_message.nickname }}</p>
         </div>
         <div class="right">
           <span @click="ninameupdate = true">修改></span>
@@ -51,19 +72,26 @@
     </div>
     <div class="body">
       <!-- 上传头像 -->
-    <el-dialog
-      :visible.sync="upLoadPhoto"
-      :close-on-click-modal="false"
-      :append-to-body="true"
-      title="头像上传"
-      width="800px"
-      top="25vh"
-    >
-      <up-file v-if="upLoadPhoto" @ext="upRes" :img="upimg" />
-    </el-dialog>
+      <el-dialog
+        :visible.sync="upLoadPhoto"
+        :close-on-click-modal="false"
+        :append-to-body="true"
+        title="头像上传"
+        width="800px"
+        top="25vh"
+      >
+        <up-file
+          v-if="upLoadPhoto"
+          @ext="upRes"
+          :width="70"
+          :height="70"
+          :img="headerPhotoPrv"
+        />
+      </el-dialog>
       <!-- 头像修改 -->
       <el-dialog
         :visible.sync="headportraitupdate"
+        :close-on-click-modal="false"
         title="头像修改"
         class="ghsjh"
         width="800px"
@@ -72,13 +100,24 @@
         <div class="niname">
           <div class="ninam_top">
             <span>头像:</span>
-            <div v-show="!headerPhoto" class="headportraitchoice">
-              <label for="up">
-                <input ref="file" style="display:none;" type="file" id="up" name="">
+            <label for="up">
+              <div v-if="headerPhoto" class="headportraitchoice1">
+                <img :src="headerPhotoURL" alt="" />
+              </div>
+              <div v-show="!headerPhoto" class="headportraitchoice">
+                <input
+                  @change="setHeaderPhoto"
+                  ref="file"
+                  style="display: none"
+                  type="file"
+                  id="up"
+                  name=""
+                />
                 <img src="../../assets/img/cjqs.png" alt="" />
-              </label>
-              <p>上传头像</p>
-            </div>
+
+                <p>上传头像</p>
+              </div>
+            </label>
           </div>
           <div class="niname_foot">
             <el-button
@@ -103,12 +142,20 @@
         top="25vh"
       >
         <div class="wchatimg">
-          <wxlogin v-if="wx_data" :state="wx_data.state" :theme="'white'" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"></wxlogin>
+          <wxlogin
+            v-if="wx_data"
+            :state="wx_data.state"
+            :theme="'white'"
+            :redirect_uri="wx_data.redirect_uri"
+            :appid="wx_data.appid"
+            :scope="wx_data.scope"
+          ></wxlogin>
         </div>
       </el-dialog>
       <!-- 昵称修改 -->
       <el-dialog
         :visible.sync="ninameupdate"
+        :close-on-click-modal="false"
         title="昵称修改"
         class="ghsjh"
         width="800px"
@@ -131,7 +178,14 @@
       </el-dialog>
       <!-- 警告 -->
       <transition name="el-zoom-in-top">
-        <warning @ext="unbinding=false" @sure="unbindingWechat" v-if="unbinding" title="提示" top="25vh" text="确定要解绑微信账号吗?" />
+        <warning
+          @ext="unbinding = false"
+          @sure="unbindingWechat"
+          v-if="unbinding"
+          title="提示"
+          top="25vh"
+          text="确定要解绑微信账号吗?"
+        />
       </transition>
     </div>
   </div>
@@ -140,15 +194,15 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import UserAccountCom from "./UserAccount";
-import Warning from "@/components/Warning.vue"
-import wxlogin from '@/components/vue-wxlogin.vue'
-import UpFile from '@/components/upfile/UpFile.vue'
+import Warning from "@/components/Warning.vue";
+import wxlogin from "@/components/vue-wxlogin.vue";
+import UpFile from "@/components/upfile/UpFile.vue";
 @Component({
-  components:{
+  components: {
     Warning,
     wxlogin,
-    UpFile
-  }
+    UpFile,
+  },
 })
 export default class UserCollection extends mixins(UserAccountCom) {}
 </script>
@@ -232,22 +286,28 @@ export default class UserCollection extends mixins(UserAccountCom) {}
               /* Internet Explorer 10+ */
               color: white;
             }
-            span{
-                position: absolute;
-                top: 0;
+            span {
+              position: absolute;
+              top: 0;
             }
-            .headportraitchoice{
-                height: 112px;
-                width: 112px;
-                
-                display: inline-block;
-                border: 1px dashed #9499aa;
-                margin-left: 50px;
-                text-align: center;
-                img{
+            .headportraitchoice {
+              height: 112px;
+              width: 112px;
+              display: inline-block;
+              border: 1px dashed #9499aa;
+              margin-left: 50px;
+              text-align: center;
+              img {
                 margin-top: 22px;
-                }
-                
+              }
+            }
+            .headportraitchoice1 {
+              height: 72px;
+              width: 72px;
+              display: inline-block;
+              border: 1px dashed #9499aa;
+              margin-left: 50px;
+              text-align: center;
             }
           }
         }

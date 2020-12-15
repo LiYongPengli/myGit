@@ -5,7 +5,12 @@ import { Mutation, State } from 'vuex-class';
 export default class UserAccountCom extends Vue {
     @State('user_message') user_message!: any;
     public bangding: boolean = false;
-    public headerPhoto:any = "";
+	//头像图片
+    public headerPhoto:Blob|null = null;
+    //处理后的头像地址
+    public headerPhotoURL:string = "";
+    //预处理头像
+    public headerPhotoPrv:any = "";
     public upLoadPhoto:boolean = false;
     //微信登录需要的信息
     public wx_data: any = "";
@@ -63,9 +68,47 @@ export default class UserAccountCom extends Vue {
                 console.log(err);
             })
     }
+	
+	//设置用户头像
+	public setHeaderPhoto():void{
+		let ipt = this.$refs.file as HTMLInputElement;
+		let file = (ipt.files as FileList)[0]
+		if(file){
+			this.headerPhotoPrv = file;
+			this.upLoadPhoto = true;
+		}
+	}
+	
+	public upRes(data:Blob):void{
+		if(data){
+            this.headerPhoto = data;
+        }
+        (this.$refs.file as HTMLInputElement).value = "";
+        this.headerPhotoURL = URL.createObjectURL(this.headerPhoto);
+        this.upLoadPhoto = false;
+	}
 
     //更换头像
     public changeheadportrait(): void {
-
+        if(!this.headerPhoto){
+            this.$message.error('请上传用户头像!');
+            return;
+        }
+        let formData = new FormData()
+        formData.append('cmd', 'user_modify_avatar')
+        formData.append('img', this.headerPhoto as any);
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }).then(res=>{
+            console.log(res.data);
+            this.headportraitupdate = false;
+            this.$message.success('头像修改成功');
+            this.$router.go(0);
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 }
