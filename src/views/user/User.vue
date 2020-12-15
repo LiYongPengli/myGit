@@ -3,12 +3,12 @@
     <header-two />
     <div class="user_scroll">
       <my-scroll>
-        <div :style="{'width':(topic_show?1000:1200)+'px'}" class="user_wrap">
+        <div :style="{ width: (topic_show ? 1000 : 1200) + 'px' }" class="user_wrap">
           <div class="user_header">
             <div class="user_info" v-if="user_message">
               <div class="user_img">
                 <img
-                  :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.account"
+                  :src="'http://zlbxxcj.bjceis.com/avatar/' + user_message.account"
                   alt=""
                 />
                 <!-- <img
@@ -40,8 +40,8 @@
           <div class="user_content">
             <router-view />
           </div>
-          <div style="background:red;height:200px" class="user_footer">
-            11111111111
+          <div class="user_footer">
+            睿读v2.1.35 2018 © 中经软件
           </div>
         </div>
       </my-scroll>
