@@ -24,7 +24,7 @@
           </li>
         </ul>
       </my-scroll>
-      <span @click="createNewCollection = true" class="addnew">创建新书签</span>
+      <!-- <span @click="createNewCollection = true" class="addnew">创建新书签</span> -->
       <div v-show="createNewCollection" class="addnewcontent">
         <div>
           <span class="name"> 书签名称: </span>
@@ -32,6 +32,7 @@
             v-model="collection_name"
             type="text"
             placeholder="请输入新书签名称"
+           style=" border-bottom:1px solid #979797"
           />
         </div>
         <div>
@@ -44,7 +45,7 @@
               ref="upFile"
               @change="upFile"
             />
-            <span style="cursor: pointer"> 点击上传封面 </span>
+            <span  style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
           </label>
         </div>
       </div>

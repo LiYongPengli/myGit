@@ -1,22 +1,19 @@
 <template>
   <div class="newsinfo">
     <header-two />
-    
+
     <div class="wrap" v-if="newsInfo">
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
             <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a>
           </div>
-          <p v-show="language=='crawler'" class="title">{{ newsInfo.title.crawler }}</p>
-          <p v-show="language=='en'" class="title">{{ newsInfo.title.en }}</p>
-          <p v-show="language=='zh-CN'" class="title">{{ newsInfo.title['zh-CN'] }}</p>
+          <p v-show="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
+          <p v-show="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
+          <p v-show="language == 'zh-CN'" class="title">{{ newsInfo.title["zh-CN"] }}</p>
           <div class="control_wrap">
             <div class="left">
-              <span
-                @click="tofollow"
-                v-if="!newsInfo.subscribed"
-                class="unfollow"
+              <span @click="tofollow" v-if="!newsInfo.subscribed" class="unfollow"
                 >关注</span
               >
               <span @click="tofollow" v-if="newsInfo.subscribed" class="follow"
@@ -29,10 +26,7 @@
             </div>
             <div class="right">
               <span @click="showCollection = true" class="tool"
-                ><i
-                  class="el-icon-shoucang"
-                  :class="{ actives: newsInfo.favorited }"
-                ></i
+                ><i class="el-icon-shoucang" :class="{ actives: newsInfo.favorited }"></i
                 >收藏</span
               >
               <span @click="likes" class="tool"
@@ -51,24 +45,16 @@
                   @click="fontSize = 14"
                   :class="{ fontActive: fontSize == 14 }"
                   >小</span
-                ><span
-                  @click="fontSize = 16"
-                  :class="{ fontActive: fontSize == 16 }"
+                ><span @click="fontSize = 16" :class="{ fontActive: fontSize == 16 }"
                   >中</span
-                ><span
-                  @click="fontSize = 20"
-                  :class="{ fontActive: fontSize == 20 }"
+                ><span @click="fontSize = 20" :class="{ fontActive: fontSize == 20 }"
                   >大</span
                 >】
               </div>
             </div>
           </div>
           <!-- 文章主体 -->
-          <div
-            v-if="newsInfo"
-            class="content"
-            :style="{ 'font-size': fontSize + 'px' }"
-          >
+          <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
             <div
               v-if="newsInfo.media_name != 'YouTube'"
               v-html="getNewsContent()"
@@ -138,7 +124,11 @@
       title="收藏到我的"
       class="sc"
     >
-      <add-collection :id="$route.query.id" v-if="showCollection" @status="getCollectionStatus" />
+      <add-collection
+        :id="$route.query.id"
+        v-if="showCollection"
+        @status="getCollectionStatus"
+      />
     </el-dialog>
   </div>
 </template>
@@ -149,13 +139,13 @@ import NewsInfoCom from "./NewsInfo";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyFooter from "@/components/FooterTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
-import AddCollection from '@/components/addcollection/AddCollection.vue'
+import AddCollection from "@/components/addcollection/AddCollection.vue";
 @Component({
   components: {
     HeaderTwo,
     MyFooter,
     MyScroll,
-    AddCollection
+    AddCollection,
   },
 })
 export default class NewsInfo extends mixins(NewsInfoCom) {}
@@ -168,13 +158,25 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 .newsinfo {
   .el-dialog {
     background: #3a3a48;
-    // height: 345px;
+    height: 633px;
+    .el-dialog__header {
+      height: 80px;
+      line-height: 80px;
+      padding: 0;
+      padding-left: 20px;
+      border-bottom: 1px solid #4D4D5D;
+      .el-dialog__title {
+        font-size: 20px;
+      }
+      .el-dialog__headerbtn {
+        right: 50px;
+      }
+    }
+    .el-dialog__body {
+      padding: 20px 50px;
+    }
   }
-  // .el-dialog__header {
-  //   padding-bottom: 20px;
-  //   padding-right: 15px;
-  //   border-bottom: 1px solid #4d4d5d;
-  // }
+
   .el-icon-close {
     line-height: 24px;
     color: white;
@@ -185,94 +187,6 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
   .el-dialog__title {
     color: white;
     margin-left: 30px;
-  }
-  // .el-dialog__body {
-  //   padding: 0;
-  //   .download_list {
-  //     height: 180px;
-  //     margin-top: 20px;
-  //     li {
-  //       height: 36px;
-  //     }
-  //   }
-  //   .downloadClose {
-  //     position: absolute;
-  //     bottom: 28px;
-  //     left: 256px;
-  //     border: 1px solid #676770;
-  //   }
-  //   .downloadClose:hover {
-  //     background-color: #0074ff;
-  //   }
-  // }
-  .sc {
-    // .el-dialog {
-    //   width: 800px;
-    //   height: 470px;
-    //   .el-dialog__header {
-    //     .el-dialog__title {
-    //       font-size: 20px;
-    //     }
-    //   }
-    //   .el-dialog__body {
-    //     padding: 30px 50px;
-    //     ul {
-    //       height: 100px;
-    //     }
-    //     .addnew {
-    //       cursor: pointer;
-    //       margin-bottom: 20px;
-    //       color: white;
-    //     }
-    //     .addnewcontent {
-    //       width: 700px;
-    //       height: 110px;
-    //       margin-top: 20px;
-    //       background-color: #4d4d5d;
-    //       div {
-    //         margin-top: 30px;
-    //         width: 260px;
-    //         float: left;
-    //         height: 50px;
-
-    //         color: white;
-    //         margin-left: 30px;
-    //         span {
-    //           display: block;
-    //           margin-bottom: 15px;
-    //         }
-    //         input {
-    //           background-color: #4d4d5d;
-    //           color: white;
-    //           border: none;
-    //           outline: none;
-    //         }
-    //       }
-    //     }
-    //     .caozuo {
-    //       margin-top: 20px;
-    //       text-align: center;
-    //       span {
-    //         margin-right: 10px;
-    //         color: white;
-    //         cursor: pointer;
-    //         display: inline-block;
-    //         width: 100px;
-    //         height: 40px;
-    //         line-height: 40px;
-    //         border-radius: 3px;
-    //       }
-    //       span:hover {
-    //         background-color: #0074ff;
-    //       }
-    //     }
-    //     // .caozuo::after {
-    //     //   content: "";
-    //     //   display: block;
-    //     //   clear: both;
-    //     // }
-    //   }
-    // }
   }
 }
 </style>

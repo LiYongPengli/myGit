@@ -13,7 +13,7 @@ export default class AddCollectionCom extends Vue {
     public upimg: any = "";
     public upLoadPhoto: boolean = false;
     //创建新书签
-    public createNewCollection: boolean = false;
+    public createNewCollection: boolean = true;
 
     public created(): void {
         this.getCollection();
