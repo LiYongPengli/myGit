@@ -4,6 +4,8 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 export default class UserCollectionCom extends Vue {
     public dialogVisible = false;
     public isUpFile:boolean = false;
+    //搜索内容
+    public searchText:string = "";
     //是否开启分享
     public isShare: boolean = false;
     //分享的书签
@@ -191,10 +193,10 @@ export default class UserCollectionCom extends Vue {
             this.$message.error('请输入书签名称!');
             return;
         }
-        if (!this.favorite_form.cover) {
+        /* if (!this.favorite_form.cover) {
             this.$message.error('请选择封面图片');
             return;
-        }
+        } */
         this.isUpFile = true;
         if (this.dialogTitle == '创建书签') {
             this.createFavorite();

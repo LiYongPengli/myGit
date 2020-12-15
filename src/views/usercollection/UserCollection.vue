@@ -4,7 +4,7 @@
     <div v-if="show == 1" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
-        <input type="text" placeholder="请输入关键词" />
+        <input v-model="searchText" type="text" placeholder="请输入收藏夹名称" />
         <span @click="isShare = true" class="plfx" v-show="!isShare"
           >批量分享</span
         >
@@ -37,6 +37,7 @@
       <my-scroll v-if="listshow">
         <ul class="collectionlist_wrap">
           <li
+          v-show="~v.name.indexOf(searchText)"
             :style="{
               background: shares[i] == v.name ? '#409EFF' : ' #3a3a48',
             }"

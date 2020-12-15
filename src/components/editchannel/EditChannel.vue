@@ -26,7 +26,8 @@
             <span>点击添加频道</span>
           </div>
           <div class="right">
-            <input type="text" placeholder="请输入关键词" />
+            <img src="../../assets/img/sousuo.png" alt="">
+            <input v-model="search_channel" type="text" placeholder="请输入关键词" />
           </div>
         </div>
         <div class="channel_list_warp">
@@ -38,6 +39,7 @@
                 >暂无要推荐的频道</span
               >
               <span
+              v-show="showChannelName(v.name)"
                 @click="tofollow(v, i)"
                 v-for="(v, i) in channel"
                 :key="i"

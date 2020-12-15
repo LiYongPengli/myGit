@@ -80,6 +80,14 @@
           }
         }
         .right {
+          position: relative;
+          img{
+            position: absolute;
+            width: 20px;
+            top: 50%;
+            transform: translateY(-60%);
+            right: 10px;
+          }
           input {
             width: 199px;
             height: 30px;
@@ -90,6 +98,7 @@
             padding: 9px 0 9px 19px;
             color: white;
             font-size: 14px;
+            padding-right: 40px;
           }
           input::-webkit-placeholder {
             font-family: PingFangSC-Regular;

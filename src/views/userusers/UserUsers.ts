@@ -6,6 +6,8 @@ export default class UserUsersCom extends Vue {
     @State('user_message') user_message!:any;
     public editAccount: boolean = false;
     public userList:any[] = [];
+    //搜索的用户
+    public search_user:string = "";
     public eidtUser:any = "";
     public sortType:string = "up"
     public created():void{
@@ -27,6 +29,29 @@ export default class UserUsersCom extends Vue {
                 return new Date(b.registration_date).getTime()-new Date(a.registration_date).getTime()
             })
         }
+    }
+
+    //过滤用户信息
+    public showUsers(user:any):boolean{
+        let flag = false;
+        let ch = /[\u4E00-\u9FA5]+/;
+        let nm = /[0-9]+/
+        if(ch.test(this.search_user)){
+            if(~user.nickname.indexOf(this.search_user)){
+                flag = true;
+            }
+        }else{
+            if(nm.test(this.search_user)){
+                if(user.phone_number==this.search_user){
+                    flag = true;
+                }
+            }else{
+                if(user.account==this.search_user||(~user.nickname.indexOf(this.search_user))){
+                    flag = true;
+                }
+            }
+        }
+        return flag;
     }
 
 
