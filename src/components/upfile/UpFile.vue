@@ -66,8 +66,10 @@ export default class UpFile extends Vue {
 
   public created(): void {
     this.options.img = URL.createObjectURL(this.img);
-	this.options.autoCropWidth = this.width;
-	this.options.autoCropHeight = this.height;
+    if(this.width){
+      this.options.autoCropWidth = this.width;
+      this.options.autoCropHeight = this.height;
+    }
 	
   }
 
