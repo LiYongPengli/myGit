@@ -3,7 +3,7 @@ import qs from 'qs';
 import { baseApi } from '@/axios/axios';
 @Component
 export default class LoginCom extends Vue {
-    public remember_password: boolean = false;
+    public remember_login: boolean = false;
     //微信登录需要的信息
     public wx_data: any = "";
     //base64图片验证码
@@ -47,7 +47,7 @@ export default class LoginCom extends Vue {
     //获取图片验证码
     public async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img');
+            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img?t='+new Date().getTime());
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
@@ -56,7 +56,6 @@ export default class LoginCom extends Vue {
     //获取手机验证码
     private getPhoneCode(phoneNumber: string): void {
         this.axios.get(baseApi.api1 + '/v1/verify/telphone?tel=' + phoneNumber).then(res => {
-            console.log(res.data);
             this.send_code = true;
             this.show_vc_code = false;
             this.$message.success("验证码发送成功");
@@ -178,7 +177,8 @@ export default class LoginCom extends Vue {
             try {
                 let data = {
                     account: this.form.account,
-                    password: this.form.password
+                    password: this.form.password,
+                    remember:this.remember_login
                 }
                 let res = await this.axios.post(baseApi.api1 + '/v1/user/login/', qs.stringify(data));
                 if (!res.data.status) {
@@ -247,7 +247,7 @@ export default class LoginCom extends Vue {
             return;
         }
         try {
-            let res = await this.axios.post(baseApi.api1 + '/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel }));
+            let res = await this.axios.post(baseApi.api1 + '/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel,remember:this.remember_login }));
             if (!res.data.status) {
                 this.$message.success(res.data.msg);
                 return;

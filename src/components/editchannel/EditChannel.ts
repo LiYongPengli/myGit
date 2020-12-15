@@ -7,6 +7,8 @@ export default class EditChannelCom extends Vue{
     //频道列表
     @Prop({}) follow_channel!:any[];
     public channel:any[] = [];
+    //搜索频道
+    public search_channel:string = "";
     //是否显示频道编辑框
     @Mutation('setIndexChannelWindow') setEditChannel:any;
 
@@ -20,11 +22,29 @@ export default class EditChannelCom extends Vue{
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=10').then(res => {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=0').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    //匹配频道
+    public showChannelName(name:string):boolean{
+        let res = false;
+        let ch = /[\u4E00-\u9FA5]+/;
+        if(ch.test(name)){
+            if(~name.indexOf(this.search_channel)){
+                res = true;
+            }
+        }else{
+            let rname = name.toLowerCase()
+            let sname = this.search_channel.toLowerCase();
+            if(~rname.indexOf(sname)){
+                res = true;
+            }
+        }
+        return res;
     }
 
     

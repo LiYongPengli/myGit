@@ -12,7 +12,7 @@
       <div class="top">
         <p>用户登录名单</p>
         <div class="inputs">
-          <input type="text" placeholder="账号/昵称/手机号" />
+          <input v-model="search_user" type="text" placeholder="账号/昵称/手机号" />
           <img src="../../assets/img/search.png" alt="" />
         </div>
       </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="tbody">
           <my-scroll>
-            <div v-for="(v, i) in userList" :key="i" class="tr">
+            <div v-show="showUsers(v)" v-for="(v, i) in userList" :key="i" class="tr">
               <div class="td">{{v.account}}</div>
               <div class="td">{{v.nickname}}</div>
               <div class="td">{{v.phone_number}}</div>
