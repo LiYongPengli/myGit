@@ -120,7 +120,7 @@
       :close-on-click-modal="false"
       :visible.sync="showCollection"
       width="800px"
-      top="28vh"
+      top="20vh"
       title="收藏到我的"
       class="sc"
     >
@@ -158,7 +158,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 .newsinfo {
   .el-dialog {
     background: #3a3a48;
-    height: 633px;
+    height: 660px;
     .el-dialog__header {
       height: 80px;
       line-height: 80px;

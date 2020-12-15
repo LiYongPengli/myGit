@@ -111,7 +111,8 @@ export default class AddCollectionCom extends Vue {
     public extCreateCollection(): void {
         this.collection_name = "";
         this.upimg = "";
-        this.createNewCollection = false;
+         this.img_pv = "";
+        this.createNewCollection = true;
     }
 
     //文件上传返回结果
