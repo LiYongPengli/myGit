@@ -10,7 +10,7 @@
           >平台运行统计</router-link
         >
         <router-link tag="li" to="/user/form/resource"
-          >资源使用率说明</router-link
+          >资源使用率统计</router-link
         >
       </ul>
     </div>

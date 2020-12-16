@@ -33,16 +33,18 @@
                         margin-right: 30px;
                     }
                     .cjsjs_head_search {
-                        display: inline-block;
                         height: 40px;
                         width: 50px;
-                        // float: right;
                         margin-right: 60px;
                         text-align: center;
                         border: 1px solid #494959;
                         cursor: pointer;
+                        float: right;
+                        margin-right: 462px;
+                        background: #494959;
                         img {
-                            margin-top: 10px;
+                            margin-top: 9px;
+                            text-align: center;
                         }
                     }
                 }
@@ -78,8 +80,13 @@
                     font-size: 14px;
                 }
                 .inline {
-                    float: right;
-                    border-left: 1px solid red;
+                    width: 360px;
+                    display: flex;
+                    justify-content: space-between;
+                    border-left: 1px solid #5c5c6b;
+                    /* align-items: center; */
+                    margin: 0;
+                    justify-content: center;
                 }
             }
             .cjsjs_content::after {
