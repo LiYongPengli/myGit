@@ -4,7 +4,7 @@
       <div class="header">
         <h1>选择您感兴趣的选项</h1>
 
-        <span> 至少选择3个，后期可以调整 </span>
+        <span> 至少选择3个 </span>
         <div class="tab">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item
@@ -324,10 +324,7 @@ export default class HomeSet extends mixins(HomeSetCom) {}
   .el-row {
     text-align: center;
     margin-top: 80px;
-    .el-button {
-      width: 280px;
-      height: 60px;
-    }
+    
     .up {
       width: 140px;
       height: 60px;

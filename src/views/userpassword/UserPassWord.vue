@@ -6,7 +6,7 @@
     </div>
     <div class="userpassword_wrap">
       <!-- 普通找回密码 -->
-      <el-form class="normal" v-show="!fogetpwd" ref="form" size="small" :model="form" :rules="rules" label-width="97px" label-position="left">
+      <el-form class="normal" v-if="!fogetpwd" ref="form" size="small" :model="form" :rules="rules" label-width="97px" label-position="left">
         <el-form-item class="item" label="旧密码:" prop="oldpwd">
           <el-input
             v-model="form.oldpwd"

@@ -36,7 +36,7 @@
             {{
               user_message.wechat_info.binding
                 ? user_message.wechat_info.nickname
-                : "赞未绑定微信"
+                : "暂未绑定微信"
             }}
           </p>
         </div>
@@ -137,7 +137,6 @@
         :visible.sync="binding"
         @opened="bindWechat"
         title="微信绑定"
-        class="ghsjh wbind"
         width="800px"
         top="25vh"
       >
@@ -209,118 +208,4 @@ export default class UserCollection extends mixins(UserAccountCom) {}
 
 <style lang="scss" scoped>
 @import "./UserAccount.scss";
-</style>
-<style lang="scss">
-.useraccount {
-  .wbind {
-    .el-dialog {
-      top: 15px;
-      .el-dialog__body {
-        padding-top: 40px !important;
-        .wchatimg {
-          text-align: center !important;
-          padding-bottom: 50px;
-          p {
-            color: white;
-            font: 16px;
-            padding-top: 20px;
-          }
-        }
-      }
-    }
-  }
-  .ghsjh {
-    .el-dialog {
-      background: #3a3a48;
-      //   height: 330px;
-      .el-dialog__header {
-        padding-top: 30px;
-        height: 80px;
-        padding-left: 50px;
-        border-bottom: 1px solid #4d4d5d;
-        .el-dialog__title {
-          font-size: 20px;
-          color: white;
-        }
-        .el-dialog__headerbtn {
-          margin-right: 30px;
-          color: white;
-          top: 30px;
-          color: #c3c3c7;
-          background: url("../../assets/img/dialogclose.png") left no-repeat !important;
-        }
-      }
-      .el-dialog__body {
-        padding: 60px 100px 0;
-
-        .niname {
-          .ninam_top {
-            font-size: 16px;
-            color: white;
-            position: relative;
-            input {
-              margin-left: 40px;
-              background: #3a3a48;
-              outline: none;
-              border: none;
-              color: white;
-              height: 35px;
-              padding-bottom: 16px;
-              border-bottom: 1px solid #4d4d5d;
-              width: 400px;
-              font-size: 16px;
-            }
-            input::-webkit-input-placeholder {
-              /* WebKit browsers */
-              color: white;
-            }
-            input:-moz-placeholder {
-              /* Mozilla Firefox 4 to 18 */
-              color: white;
-            }
-            input::-moz-placeholder {
-              /* Mozilla Firefox 19+ */
-              color: white;
-            }
-            input:-ms-input-placeholder {
-              /* Internet Explorer 10+ */
-              color: white;
-            }
-            span {
-              position: absolute;
-              top: 0;
-            }
-            .headportraitchoice {
-              height: 112px;
-              width: 112px;
-              display: inline-block;
-              border: 1px dashed #9499aa;
-              margin-left: 50px;
-              text-align: center;
-              img {
-                margin-top: 22px;
-              }
-            }
-            .headportraitchoice1 {
-              height: 72px;
-              width: 72px;
-              display: inline-block;
-              border: 1px dashed #9499aa;
-              margin-left: 50px;
-              text-align: center;
-            }
-          }
-        }
-        .niname_foot {
-          padding-bottom: 50px;
-          margin-top: 60px;
-          text-align: center;
-          button {
-            height: 50px;
-          }
-        }
-      }
-    }
-  }
-}
 </style>
