@@ -35,7 +35,7 @@
            style=" border-bottom:1px solid #979797"
           />
         </div>
-        <div>
+        <div class="sqfm">
           <span class="sqfm"> 书签封面: </span>
           <label for="upFile">
             <input
@@ -45,7 +45,10 @@
               ref="upFile"
               @change="upFile"
             />
-            <span  style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
+              <span :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
+            <img v-show="img_pv" style="width:160px;height:90px;margin-top: -20px" :src="img_pv" alt="">
+          
+            
           </label>
         </div>
       </div>
