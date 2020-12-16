@@ -6,7 +6,7 @@
     </div>
     <div class="userpassword_wrap">
       <!-- 普通找回密码 -->
-      <el-form class="normal" v-if="!fogetpwd" ref="form" size="small" :model="form" :rules="rules" label-width="97px" label-position="left">
+      <el-form class="normal" v-show="!fogetpwd" ref="form" size="small" :model="form" :rules="rules" label-width="97px" label-position="left">
         <el-form-item class="item" label="旧密码:" prop="oldpwd">
           <el-input
             v-model="form.oldpwd"
@@ -35,7 +35,7 @@
       </el-form>
       <!-- 忘记原密码 -->
       <el-form ref="fogetform" :rules="fogetRules" :model="fogetForm" label-width="97px" label-position="left" size="small" class="foget" v-show="fogetpwd">
-        <el-form-item class="item" label="手机号:" prop="tel">
+        <el-form-item :error="showTelError" :show-message="true" class="item" label="手机号:" prop="tel">
           <el-input class="usrpwd" v-model="fogetForm.tel" placeholder="请输入手机号" />
         </el-form-item>
         <el-form-item class="item" label="验证码:" prop="vc">
@@ -45,17 +45,17 @@
           }}</span>
         </el-form-item>
         <el-form-item class="item" label="新密码:" prop="newpwd">
-          <el-input class="usrpwd"  v-model="fogetForm.newpwd" placeholder="请输入新密码" />
+          <el-input class="usrpwd" type="password"  v-model="fogetForm.newpwd" placeholder="请输入新密码" />
         </el-form-item>
         <el-form-item class="item" label="确认密码:" prop="surenewpwd">
-          <el-input class="usrpwd" v-model="fogetForm.surenewpwd" placeholder="请输入确认密码" />
+          <el-input class="usrpwd" type="password" v-model="fogetForm.surenewpwd" placeholder="请输入确认密码" />
         </el-form-item>
       </el-form>
     </div>
     <div class="footer">
       <el-button @click="toEditPassword" style="width:280px;" type="primary">确认修改</el-button>
     </div>
-    <el-dialog width="800px" top="30vh" :visible.sync="show_vc_code">
+    <el-dialog :close-on-click-modal="false" title="获取验证码" width="800px" top="30vh" :visible.sync="show_vc_code">
       <div class="img_code_wrap">
         <div class="img_code_item">
           <span>图片验证码:</span>

@@ -52,7 +52,7 @@
         </div>
         <div class="other">
           <div class="rember_pwd">
-            <el-checkbox v-model="remember_login">七天内免登录</el-checkbox>
+            <el-checkbox :true-label="1" :false-label="0" v-model="remember_login">七天内免登录</el-checkbox>
           </div>
           <div @click="$router.push('/findpassword')" class="foget_pwd">忘记密码?</div>
         </div>

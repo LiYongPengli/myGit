@@ -3,7 +3,7 @@ import qs from 'qs';
 import { baseApi } from '@/axios/axios';
 @Component
 export default class LoginCom extends Vue {
-    public remember_login: boolean = false;
+    public remember_login: number = 0;
     //微信登录需要的信息
     public wx_data: any = "";
     //base64图片验证码

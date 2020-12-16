@@ -1,11 +1,12 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import qs from 'qs'
-import { ElSelect } from 'element-ui/types/select';
 @Component
 export default class UserPassWordCom extends Vue {
     //忘记原密码
     public fogetpwd: boolean = false;
+    //否展示手机号错误信息
+    public showTelError:string = "";
     //是否发送验证码
     public send_code: boolean = false;
     public img_vc_code: string = "";
@@ -41,6 +42,12 @@ export default class UserPassWordCom extends Vue {
     public fogetPwdChange(newVal: boolean, oldVal: boolean): void {
         this.form = {
             oldpwd: '',
+            newpwd: '',
+            surenewpwd: ''
+        }
+        this.fogetForm = {
+            tel: '',
+            vc: '',
             newpwd: '',
             surenewpwd: ''
         }
@@ -83,9 +90,16 @@ export default class UserPassWordCom extends Vue {
             callback(new Error('请输入确认密码!'));
             return;
         }
-        if (value != this.form.newpwd) {
-            callback(new Error('两次输入密码不一致!'));
-            return;
+        if(this.fogetpwd){
+            if(value!=this.fogetForm.newpwd){
+                callback(new Error('两次输入密码不一致!'));
+                return;
+            }
+        }else{
+            if (value != this.form.newpwd) {
+                callback(new Error('两次输入密码不一致!'));
+                return;
+            }
         }
         callback();
     }
@@ -164,6 +178,9 @@ export default class UserPassWordCom extends Vue {
 
     //点击获取手机验证码
     public get_code(): void {
+        if(!this.is_send_img_code){
+            this.showTelError = "手机号格式有误!";
+        }
         if (this.is_send_img_code && !this.send_code) {
             this.show_vc_code = true;
             this.getImgCode();
@@ -171,6 +188,40 @@ export default class UserPassWordCom extends Vue {
 
         }
 
+    }
+
+    //手机验证码确认
+    private async phoneCodeSure(phoneNumber:string,vc:string):Promise<boolean>{
+        try{
+            let data = qs.stringify({
+                tel:phoneNumber,
+                vc:vc,
+                type:2
+            })
+            let res = await this.axios.put(baseApi.api1+'/v1/verify/telphone',data);
+            if(!res.data.status){
+                this.$message.error(res.data.msg);
+                return false;
+            }
+            return true;
+        }catch(code_err){
+            if (code_err.response.status == 401 && code_err.response.data.message) {
+                if (code_err.response.data.message == 'Verification code is uncorrect.') {
+                    this.$message.error('手机验证码有误');
+                    return false;
+                }
+                if (code_err.response.data.message == 'Verification code is out of date.') {
+                    this.$message.error('手机验证码已过期,请重新发送');
+                    return false;
+                }
+            }
+            if (code_err.response.status == 429) {
+                this.$message.error('验证码已经发送,请一分钟后再试');
+                return false;
+            }
+            console.log(code_err);
+            return false
+        }
     }
 
     //最终表单验证
@@ -212,17 +263,36 @@ export default class UserPassWordCom extends Vue {
         }
         try {
             if (!this.fogetpwd) {
-                let res = await this.axios.post(baseApi.api2 + '/v1/cmd/', {
+                await this.axios.post(baseApi.api2 + '/v1/cmd/', {
                     cmd: 'user_modify_pw_by_pw',
                     paras: { old_pw: this.form.oldpwd, new_pw: this.form.newpwd },
                 })
-                if (!res.data.status) {
-                    this.$message.error(res.data.msg);
-                    return;
-                }
                 this.$message.success('密码修改成功');
             } else {
-
+                let phone_vc = await this.phoneCodeSure(this.fogetForm.tel,this.fogetForm.vc);
+                if(phone_vc){
+                    let data = {
+                        password:this.fogetForm.newpwd
+                    }
+                    this.axios.put(baseApi.api1+'/v1/user/account/resetpw',qs.stringify(data)).then(res=>{
+                        if(res.data.status==0){
+                            this.$message.error(res.data.msg);
+                            return;
+                        }
+                        this.$message.success('密码重置成功!');
+                        this.fogetForm = {
+                            tel:'',
+                            vc:'',
+                            newpwd:'',
+                            surenewpwd:''
+                        }
+                    }).catch(err=>{
+                        if(err.response.status==403){
+                            this.$message.error(err.response.message);
+                        }
+                        console.log(err);
+                    })
+                }
             }
 
         } catch (err) {
