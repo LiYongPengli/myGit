@@ -44,6 +44,12 @@ export default class UserPassWordCom extends Vue {
             newpwd: '',
             surenewpwd: ''
         }
+        this.fogetForm = {
+            tel: '',
+            vc: '',
+            newpwd: '',
+            surenewpwd: ''
+        }
     }
 
     /**
@@ -216,10 +222,6 @@ export default class UserPassWordCom extends Vue {
                     cmd: 'user_modify_pw_by_pw',
                     paras: { old_pw: this.form.oldpwd, new_pw: this.form.newpwd },
                 })
-                if (!res.data.status) {
-                    this.$message.error(res.data.msg);
-                    return;
-                }
                 this.$message.success('密码修改成功');
             } else {
 
