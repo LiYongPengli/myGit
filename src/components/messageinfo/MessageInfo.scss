@@ -4,7 +4,10 @@
         height: 70px;
         line-height: 70px;
         border-bottom: 1px solid #3a3a48;
+        display: flex;
+        justify-content: space-between;
         .position {
+            display: flex;
             float: left;
             // width: 1090px;
             list-style: none;
