@@ -156,7 +156,7 @@
         :visible.sync="ninameupdate"
         :close-on-click-modal="false"
         title="昵称修改"
-        class="ghsjh"
+        class="ghsjh  nc"
         width="800px"
         top="40vh"
       >
@@ -208,4 +208,13 @@ export default class UserCollection extends mixins(UserAccountCom) {}
 
 <style lang="scss" scoped>
 @import "./UserAccount.scss";
+</style>
+<style lang="scss">
+.useraccount{
+.nc{
+  .el-dialog{
+  background: #3a3a48 !important;
+  }
+}
+}
 </style>

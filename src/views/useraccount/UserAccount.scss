@@ -1,140 +1,147 @@
 .useraccount {
-  padding-top: 50px;
-  .usermanage {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .useraccountlist {
-    margin-top: 30px;
-    height: 430px;
-    background-color: #3a3a48;
-    .telephone {
-      margin: 0 auto;
-      //width: 1078px;
-      padding-left: 50px;
-      border-bottom: 1px solid #4d4d5d;
-      padding-bottom: 30px;
-      padding-top: 50px;
-      padding-right: 45px;
-      img {
-        float: left;
-        margin-right: 30px;
-        // width: 47px;
-      }
-      .wechatimg {
-        margin-right: 10px !important;
-      }
-      .ninameing {
-        margin-right: 20px !important;
-      }
-      .left {
-        float: left;
-        font-size: 16px;
-        p:nth-child(2) {
-          margin-top: 15px;
+    padding-top: 50px;
+    .usermanage {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .useraccountlist {
+        margin-top: 30px;
+        height: 430px;
+        background-color: #3a3a48;
+        .telephone {
+            margin: 0 auto;
+            //width: 1078px;
+            padding-left: 50px;
+            border-bottom: 1px solid #4d4d5d;
+            padding-bottom: 30px;
+            padding-top: 50px;
+            padding-right: 45px;
+            img {
+                float: left;
+                margin-right: 30px;
+                // width: 47px;
+            }
+            .wechatimg {
+                margin-right: 10px !important;
+            }
+            .ninameing {
+                margin-right: 20px !important;
+            }
+            .left {
+                float: left;
+                font-size: 16px;
+                p:nth-child(2) {
+                    margin-top: 15px;
+                }
+                p:nth-child(1) {
+                    margin-top: -10px;
+                }
+            }
+            .right {
+                float: right;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            .right {
+                p {
+                    color: #bcc2d5;
+                    text-align: right;
+                }
+            }
         }
-        p:nth-child(1) {
-          margin-top: -10px;
+        .bangding {
+            color: #bcc2d5;
         }
-      }
-      .right {
-        float: right;
-        font-size: 14px;
-        cursor: pointer;
-      }
-      .right {
+        .telephone:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+    .wchatimg {
+        padding-top: 40px;
+        text-align: center !important;
+        padding-bottom: 50px;
         p {
-          color: #bcc2d5;
-          text-align: right;
+            color: white;
+            font: 16px;
+            padding-top: 20px;
         }
-      }
     }
-    .bangding {
-      color: #bcc2d5;
-    }
-    .telephone:after {
-      display: block;
-      content: "";
-      clear: both;
-    }
-  }
-  .wchatimg {
-    padding-top: 40px;
-    text-align: center !important;
-    padding-bottom: 50px;
-    p {
-      color: white;
-      font: 16px;
-      padding-top: 20px;
-    }
-  }
-  .niname {
-    padding: 60px 100px 0;
-    .ninam_top {
-      font-size: 16px;
-      color: white;
-      display: flex;
-      align-items: center;
-      span {
-        display: block;
-        margin-left: 40px;
-        padding-bottom: 5px;
-      }
-      input {
-        margin-left: 10px;
-        padding-left: 10px;
-        background: #3a3a48;
-        outline: none;
-        border: none;
-        color: white;
-        height: 35px;
-        border-bottom: 1px solid #4d4d5d;
-        width: 400px;
-        font-size: 16px;
-      }
-      input::-webkit-input-placeholder {
-        /* WebKit browsers */
-        color: white;
-      }
-      input:-moz-placeholder {
-        /* Mozilla Firefox 4 to 18 */
-        color: white;
-      }
-      input::-moz-placeholder {
-        /* Mozilla Firefox 19+ */
-        color: white;
-      }
-      input:-ms-input-placeholder {
-        /* Internet Explorer 10+ */
-        color: white;
-      }
-      .headportraitchoice {
-        height: 112px;
-        width: 112px;
-        display: inline-block;
-        border: 1px dashed #9499aa;
-        margin-left: 50px;
-        text-align: center;
-        img {
-          margin-top: 22px;
+    .niname {
+        padding: 60px 80px 0;
+        .ninam_top {
+            font-size: 16px;
+            color: white;
+            display: flex;
+            align-items: center;
+            span {
+                display: block;
+                padding-bottom: 5px;
+                vertical-align: top;
+                height: 42px;
+            }
+            input {
+                margin-left: 40px;
+                padding-left: 10px;
+                background: #3a3a48;
+                outline: none;
+                border: none;
+                color: white;
+                height: 40px;
+                border-bottom: 1px solid #4d4d5d;
+                width: 400px;
+                font-size: 16px;
+                vertical-align: top;
+                padding-bottom: 20px;
+            }
+            input::-webkit-input-placeholder {
+                /* WebKit browsers */
+                color: white;
+                outline: none;
+            }
+            input:-moz-placeholder {
+                /* Mozilla Firefox 4 to 18 */
+                color: white;
+                outline: none;
+            }
+            input::-moz-placeholder {
+                /* Mozilla Firefox 19+ */
+                color: white;
+                outline: none;
+            }
+            input:-ms-input-placeholder {
+                /* Internet Explorer 10+ */
+                color: white;
+                outline: none;
+            }
+            .headportraitchoice {
+                height: 112px;
+                width: 112px;
+                display: inline-block;
+                border: 1px dashed #9499aa;
+                margin-left: 50px;
+                text-align: center;
+                img {
+                    margin-top: 22px;
+                }
+            }
+            .headportraitchoice1 {
+                height: 72px;
+                width: 72px;
+                display: inline-block;
+                border: 1px dashed #9499aa;
+                margin-left: 50px;
+                text-align: center;
+            }
         }
-      }
-      .headportraitchoice1 {
-        height: 72px;
-        width: 72px;
-        display: inline-block;
-        border: 1px dashed #9499aa;
-        margin-left: 50px;
-        text-align: center;
-      }
+        .niname_foot {
+            padding-bottom: 50px;
+            margin-top: 60px;
+            text-align: center;
+            button {
+                height: 50px;
+            }
+        }
     }
-    .niname_foot {
-      padding-bottom: 50px;
-      margin-top: 60px;
-      text-align: center;
-      button {
-        height: 50px;
-      }
-    }
-  }
 }
