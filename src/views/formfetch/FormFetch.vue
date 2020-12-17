@@ -58,18 +58,6 @@
         <span class="site_p">近七天未采集数据的源站点</span>
         <span class="site_p_export">导出</span>
         <div class="list">
-          <!-- <el-table
-            :data="tableData"
-            style="width: 100%"
-            :header-cell-style="{ background: '#3a3a48', color: 'white' }"
-          >
-            <el-table-column prop="date" label="日期" width="180">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="180">
-            </el-table-column>
-            <el-table-column prop="address" label="地址"> </el-table-column>
-          </el-table> -->
-
           <ul>
             <my-scroll style="content_mt_onescroll">
               <li class="list_li">

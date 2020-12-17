@@ -6,7 +6,7 @@
         border-bottom: 1px solid #3a3a48;
         .position {
             float: left;
-            width: 1090px;
+            // width: 1090px;
             list-style: none;
             .L {
                 a {
@@ -40,6 +40,8 @@
             color: white;
             font-size: 32px;
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
         .time {
             color: #bcc2d5;
@@ -48,12 +50,16 @@
             display: block;
             margin-top: 20px;
             margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
         }
         p {
             font-size: 16px;
             color: white;
             margin-bottom: 10px;
             text-indent: 2em;
+            display: flex;
+            justify-content: center;
         }
         .btn {
             div {
