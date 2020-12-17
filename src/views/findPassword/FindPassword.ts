@@ -8,9 +8,12 @@ export default class FindPasswordCom extends Vue {
     public index:number = 0;
     public time: number = 59;
     public password:string = "";
-    public surepassword:string = "";
     public show_vc_code:boolean = false;
     public send_code:boolean = false;
+    public phoneerr:string = "";
+    public vcerr:string = "";
+    //手机号是否通过验证
+    public is_init_phone: boolean = false;
     //图片验证码的base64数据
     public img_vc:string = "";
     //存放图片验证码
@@ -18,12 +21,70 @@ export default class FindPasswordCom extends Vue {
     public phone_form = {
         tel:'',
         tel_vc:'',
-        password:''
+        password:'',
+        surepassword:''
+    }
+    public phoneRules = {
+        tel: [{ validator: this.inittel, trigger: 'blur' }],
+    }
+
+    public pwdRules = {
+        password:[{ validator: this.initpassword, trigger: 'blur' }],
+        surepassword:[{ validator: this.initsurepassword, trigger: 'blur' }],
     }
 
     @Watch('phone_form.tel')
-    listenPhoneChanged(newVal:string,oldVal:string):void{
+    public listenTel(newVal:string,oldVal:string):void{
         this.verified = false;
+        let num = /^[0-9]*$/;
+        if(!num.test(newVal)){
+            this.phone_form.tel = oldVal;
+            return;
+        }
+    }
+
+    //手机号校验
+    private inittel(rule: any, value: string, callback: any): void {
+        this.is_init_phone = false;
+        if (!value) {
+            callback(new Error('请输入手机号'));
+            return;
+        }
+        if (!/^1(3|4|5|6|7|8|9)\d{9}$/.test(value)) {
+            callback(new Error('手机号格式有误'));
+            return;
+        }
+        this.is_init_phone = true;
+        callback();
+    }
+
+    private initpassword(rule: any, value: string, callback: any):void{
+        if(!value){
+            callback(new Error('请输入密码'));
+            return;
+        }
+        if(!(/^[a-zA-Z0-9_]{0,}$/.test(value))){
+            callback(new Error('密码中不可有汉字或其他特殊字符'));
+            return;
+        }
+        if(value.length<8){
+            callback(new Error('密码长度最小为8位'));
+            return;
+        }
+        if(!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(value))){
+            callback(new Error('密码强度过低，必须同时包含字母和数字'));
+            return;
+        }
+        callback();
+    }
+
+    //确认密码校验
+    private initsurepassword(rule: any, value: string, callback: any):void{
+        if(value!=this.phone_form.password){
+            callback(new Error('两次输入密码不一致'));
+            return;
+        }
+        callback();
     }
 
     //获取图片验证码
@@ -90,23 +151,23 @@ export default class FindPasswordCom extends Vue {
             })
             let res = await this.axios.put(baseApi.api1+'/v1/verify/telphone',data);
             if(!res.data.status){
-                this.$message.error(res.data.msg);
+                this.vcerr = res.data.msg;
                 return false;
             }
             return true;
         }catch(code_err){
             if (code_err.response.status == 401 && code_err.response.data.message) {
                 if (code_err.response.data.message == 'Verification code is uncorrect.') {
-                    this.$message.error('手机验证码有误');
+                    this.vcerr = '手机验证码有误';
                     return false;
                 }
                 if (code_err.response.data.message == 'Verification code is out of date.') {
-                    this.$message.error('手机验证码已过期,请重新发送');
+                    this.vcerr = '手机验证码已过期,请重新发送';
                     return false;
                 }
             }
             if (code_err.response.status == 429) {
-                this.$message.error('验证码已经发送,请一分钟后再试');
+                this.vcerr = '验证码已经发送,请一分钟后再试';
                 return false;
             }
             console.log(code_err);
@@ -119,15 +180,42 @@ export default class FindPasswordCom extends Vue {
         if (this.send_code) {
             return;
         }
-        if(!this.phone_form.tel){
-            this.$message.error('请输入手机号!');
-            return;
-        }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phone_form.tel))){
-            this.$message.error('请输入正确的手机号!');
+        if(!this.is_init_phone){
+            if(!this.phone_form.tel){
+                this.phoneerr = "请输入手机号";
+            }
             return;
         }
         this.show_vc_code = true;
         await this.getImgCode();
+    }
+
+    private async init_phone_form(){
+        return new Promise((resolve, reject) => {
+            (this.$refs['phone_form'] as any).validate(async (valid: any) => {
+                if (!valid) {
+                    reject(new Error(''));
+                    return;
+                }
+                if(!await this.phoneCodeSure(this.phone_form.tel, this.phone_form.tel_vc)){
+                    reject(new Error(''));
+                    return;
+                }
+                resolve('');
+            })
+        })
+    }
+
+    private async init_pwd_form(){
+        return new Promise((resolve, reject) => {
+            (this.$refs['pwdform'] as any).validate(async (valid: any) => {
+                if (!valid) {
+                    reject(new Error(''));
+                    return;
+                }
+                resolve('');
+            })
+        })
     }
     //下一步
     public async next():Promise<void>{
@@ -135,46 +223,21 @@ export default class FindPasswordCom extends Vue {
             this.index = 1;
             return;
         }
-        if(!this.phone_form.tel){
-            this.$message.error('请输入手机号!');
-            return;
-        }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phone_form.tel))){
-            this.$message.error('请输入正确的手机号!');
-            return;
-        }
-        if(!this.phone_form.tel_vc){
-            this.$message.error('请输入验证码');
+        try{
+            await this.init_phone_form()
+        }catch(err){
+            console.log(err);
             return;
         }
-        if(await this.phoneCodeSure(this.phone_form.tel,this.phone_form.tel_vc)){
-            this.index++;
-            this.verified = true;
-        }
+        this.index++;
+        this.verified = true;
     }
     //手机验证
-    public phong_login():void{
-        if(!this.phone_form.password){
-            this.$message.error('请输入密码!');
-            return;
-        }
-        if(this.phone_form.password.length<8){
-            this.$message.error('密码长度最小为8位!');
-            return;
-        }
-        if(!(/^[a-zA-Z0-9_]{0,}$/.test(this.phone_form.password))){
-            this.$message.error('密码中不可有汉字或其他特殊字符');
-            return;
-        }
-        if(!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(this.phone_form.password))){
-            this.$message.error('密码强度过低，必须同时包含字母和数字');
-            return;
-        }
-        if(!this.surepassword){
-            this.$message.error('请输入确认密码!');
-            return;
-        }
-        if(this.phone_form.password!=this.surepassword){
-            this.$message.error('两次输入密码不一致');
+    public async phong_login(){
+        try{
+            await this.init_pwd_form();
+        }catch(err){
+            console.log(err);
             return;
         }
         let data = {

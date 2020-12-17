@@ -7,56 +7,7 @@
       </div>
       <p class="title">欢迎登录大数据采集系统</p>
       <!-- 账号密码登录的输入框 -->
-      <div v-if="account" class="inputs">
-        <div class="item username">
-          <span class="icon el-icon-user"></span>
-          <input
-            type="text"
-            v-model="form.account"
-            placeholder="请输入账号/手机号"
-          />
-        </div>
-        <div class="item password">
-          <span class="icon el-icon-lock"></span>
-          <span
-            @click="show_password = !show_password"
-            class="show el-icon-view"
-          ></span>
-          <input
-            v-show="show_password"
-            type="text"
-            v-model="form.password"
-            placeholder="请输入密码"
-          />
-          <input
-            v-show="!show_password"
-            type="password"
-            v-model="form.password"
-            placeholder="请输入密码"
-          />
-        </div>
-        <div class="item VerificationCode">
-          <span class="icon el-icon-warning-outline"></span>
-          <input
-            type="text"
-            v-model="form.vc"
-            placeholder="请输入验证码"
-          />
-          <img @click="getImgCode" class="code" :src="img_vc" alt="">
-        </div>
-        <div class="sub_btn">
-          <el-button @click="toLogin" style="flex: 3" type="primary"
-            >登录</el-button
-          >
-          <el-button @click="toRegister" style="flex: 1" type="danger">注册</el-button>
-        </div>
-        <div class="other">
-          <div class="rember_pwd">
-            <el-checkbox :true-label="1" :false-label="0" v-model="remember_login">七天内免登录</el-checkbox>
-          </div>
-          <div @click="$router.push('/findpassword')" class="foget_pwd">忘记密码?</div>
-        </div>
-      </div>
+      <account-login v-if="account" :account.sync="account" :bindAccount.sync="bindAccount" />
       <!-- 是否绑定微信的组件框 -->
       <div v-if="bindAccount" class="bindAccount">
         <div class="top">
@@ -71,36 +22,24 @@
             >立即绑定</el-button
           >
         </div>
-        <div class="footer"><span @click="noBindWeichat">暂不绑定,</span>可通过个人中心绑定或解绑</div>
+        <div class="footer">
+          <span @click="noBindWeichat">暂不绑定,</span>可通过个人中心绑定或解绑
+        </div>
       </div>
       <!-- 微信登录 -->
       <div v-if="weiChatLogin" class="weiChatLogin">
         <div class="code">
-          <wxlogin :state="wx_data.state" :theme="'white'" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"></wxlogin>
-          <!-- <wx-login :state="wx_data.state" :redirect_uri="wx_data.redirect_uri" :appid="wx_data.appid" :scope="wx_data.scope"/> -->
+          <wxlogin
+            :state="wx_data.state"
+            :theme="'white'"
+            :redirect_uri="wx_data.redirect_uri"
+            :appid="wx_data.appid"
+            :scope="wx_data.scope"
+          ></wxlogin>
         </div>
-        <!-- <div class="text">
-          <p>请使用微信扫描二维码</p>
-          <p>登录睿读数据采集平台</p>
-        </div> -->
       </div>
       <!-- 手机登录 -->
-      <div v-if="phoneLogin" class="phoneLogin">
-        <div class="item username">
-          <span class="icon el-icon-mobile-phone"></span>
-          <input type="text" v-model="phone_form.tel" placeholder="请输入手机号" />
-        </div>
-        <div class="item VerificationCode">
-          <span class="icon el-icon-warning-outline"></span>
-          <input type="text" v-model="phone_form.tel_vc" placeholder="请输入验证码" />
-          <span @click="get_code" class="get_code">{{
-            send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
-          }}</span>
-        </div>
-        <div style="margin-top:20px;">
-          <el-button @click="phong_login" type="primary" style="width:100%;">登录</el-button>
-        </div>
-      </div>
+      <phone-login v-if="phoneLogin" />
       <!-- 底部登录按钮 -->
       <footer v-show="account">
         <div @click="toWeiChatLogin" class="weixin">
@@ -133,55 +72,36 @@
         </div>
       </footer>
     </div>
-    <el-dialog
-      :destroy-on-close="true"
-      top="40vh"
-      center
-      :close-on-click-modal="false"
-      title="请输入图片验证码"
-      :visible.sync="show_vc_code"
-      width="400px"
-    >
-      <div class="code_wrap">
-        <span class="icon el-icon-warning-outline"></span>
-        <input v-model="img_vc_code" type="text" placeholder="请输入验证码" />
-        <img @click="getImgCode" class="code" :src="img_vc" alt="" />
-      </div>
-      <el-button
-        @click="img_srue"
-        style="width: 100%; margin-top: 20px"
-        type="primary"
-        >确认</el-button
-      >
-    </el-dialog>
+    
   </div>
 </template>
 
 <script lang="ts">
-import Component, { mixins } from 'vue-class-component';
+import Component, { mixins } from "vue-class-component";
 import LoginCom from "./Login";
-import wxlogin from '@/components/vue-wxlogin.vue'
+import AccountLogin from "@/components/accountlogin/AccountLogin.vue"
+import PhoneLogin from "@/components/phonelogin/PhoneLogin.vue"
+import wxlogin from "@/components/vue-wxlogin.vue";
 @Component({
-  components:{wxlogin}
+  components: {
+    wxlogin,
+    AccountLogin,
+    PhoneLogin
+  },
 })
-export default class Login extends mixins(LoginCom){
-  private created():void{
-    this.getImgCode();
-  }
-}
+export default class Login extends mixins(LoginCom) {}
 </script>
 
 <style lang="scss" scoped>
 @import "./Login.scss";
 </style>
 <style lang="scss">
-.login{
-  .el-dialog{
-    background:white!important;
-    
+.login {
+  .el-dialog {
+    background: white !important;
   }
-  .el-dialog__title{
-    color: black!important;
+  .el-dialog__title {
+    color: black !important;
   }
 }
 </style>

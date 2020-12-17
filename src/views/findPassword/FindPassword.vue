@@ -14,18 +14,18 @@
         ></span>
       </div>
       <!-- 手机登录 -->
-      <div v-if="index == 0" class="phoneLogin">
-        <div class="item username">
-          <span class="icon el-icon-mobile-phone"></span>
-          <input
+      <el-form :model="phone_form" :rules="phoneRules" ref="phone_form" v-if="index == 0" class="phoneLogin">
+        <el-form-item :error="phoneerr" class="iptitem" prop="tel">
+          <el-input
+            prefix-icon="el-icon-mobile-phone"
             type="text"
             v-model="phone_form.tel"
             placeholder="请输入手机号"
           />
-        </div>
-        <div class="item VerificationCode">
-          <span class="icon el-icon-warning-outline"></span>
-          <input
+        </el-form-item>
+        <el-form-item :error="vcerr" class="iptitem" prop="tel_vc">
+          <el-input
+            prefix-icon="el-icon-warning-outline"
             type="text"
             v-model="phone_form.tel_vc"
             placeholder="请输入验证码"
@@ -33,29 +33,39 @@
           <span @click="get_code" class="get_code">{{
             send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
           }}</span>
-        </div>
+        </el-form-item>
         <div style="margin-top: 20px">
           <el-button @click="next" type="danger" style="width: 100%"
             >下一步</el-button
           >
         </div>
-      </div>
+      </el-form>
       <!-- 重置密码 -->
-      <div class="restpassword" v-if="index == 1">
-        <div class="item password">
-          <span class="icon el-icon-lock"></span>
-          <input type="password" v-model="phone_form.password" placeholder="请输入新密码" />
-        </div>
-        <div class="item password">
-          <span class="icon el-icon-lock"></span>
-          <input type="password" v-model="surepassword" placeholder="请再次输入密码" />
-        </div>
+      <el-form :model="phone_form" ref="pwdform" :rules="pwdRules" class="restpassword" v-if="index == 1">
+        <el-form-item class="iptitem" prop="password">
+          <el-input
+            prefix-icon="el-icon-lock"
+            show-password
+            type="password"
+            v-model="phone_form.password"
+            placeholder="请输入新密码"
+          />
+        </el-form-item>
+        <el-form-item class="iptitem" prop="surepassword">
+          <el-input
+            prefix-icon="el-icon-lock"
+            type="password"
+            v-model="phone_form.surepassword"
+            placeholder="请再次输入密码"
+          />
+        </el-form-item>
         <div style="margin-top: 20px">
           <el-button @click="phong_login" type="danger" style="width: 100%"
             >确认重置</el-button
           >
         </div>
-      </div>
+      </el-form>
+      <!--  -->
     </div>
     <el-dialog
       :destroy-on-close="true"
@@ -92,13 +102,37 @@ export default class Findpassword extends mixins(FindPasswordCom) {}
 @import "./FindPassword.scss";
 </style>
 <style lang="scss">
-.findpassword{
-  .el-dialog{
-    background:white!important;
-    
+.findpassword {
+  .el-dialog {
+    background: white !important;
   }
-  .el-dialog__title{
-    color: black!important;
+  .el-dialog__title {
+    color: black !important;
+  }
+  .iptitem {
+    position: relative;
+    .code {
+      width: 100px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .el-input__inner {
+      background: none;
+      border: none;
+      border-bottom: 1px solid gray;
+      border-radius: 0;
+      color: white;
+    }
+    .el-input__icon {
+      font-size: 18px;
+      color: white;
+    }
+    .el-form-item__error {
+      left: 30px;
+    }
   }
 }
 </style>

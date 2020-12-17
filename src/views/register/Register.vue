@@ -6,49 +6,76 @@
       </div>
       <div class="register_title">
         <h3>账号注册</h3>
-        <span @click="$router.back()">返回登录<i class="el-icon-arrow-right"></i></span>
+        <span @click="$router.back()"
+          >返回登录<i class="el-icon-arrow-right"></i
+        ></span>
       </div>
       <!-- 表单主体 -->
-      <div class="form">
-        <div class="item account">
-          <span class="icon el-icon-user"></span>
-          <input type="text" v-model="form.account" placeholder="请输入账户" />
-        </div>
-        <div class="item username">
-          <span class="icon el-icon-bank-card"></span>
-          <input
+      <el-form :model="form" ref="form" :rules="rules" class="form">
+        <el-form-item class="iptitem" prop="account">
+          <el-input
+            prefix-icon="el-icon-user"
+            type="text"
+            v-model="form.account"
+            placeholder="请输入账户"
+          />
+        </el-form-item>
+
+        <el-form-item class="iptitem" prop="nickname">
+          <el-input
+            prefix-icon="el-icon-bank-card"
             type="text"
             v-model="form.nickname"
             placeholder="请输入用户昵称"
           />
-        </div>
-        <div class="item password">
-          <span class="icon el-icon-lock"></span>
-          <input type="password" v-model="form.password" placeholder="请输入密码" />
-        </div>
-        <div class="item surepassword">
-          <span class="icon el-icon-lock"></span>
-          <input
+        </el-form-item>
+
+        <el-form-item class="iptitem" prop="password">
+          <el-input
+            show-password
+            prefix-icon="el-icon-lock"
             type="password"
-            v-model="surepassword"
+            v-model="form.password"
+            placeholder="请输入密码"
+          />
+        </el-form-item>
+
+        <el-form-item class="iptitem" prop="surepassword">
+          <el-input
+            prefix-icon="el-icon-lock"
+            type="password"
+            v-model="form.surepassword"
             placeholder="请再次输入密码"
           />
-        </div>
-        <div class="item phone">
-          <span class="icon el-icon-mobile-phone"></span>
-          <input type="text" v-model="form.tel" placeholder="请输入手机号" />
+        </el-form-item>
+
+        <el-form-item :error="phoneerr" class="iptitem" prop="tel">
+          <el-input
+            prefix-icon="el-icon-mobile-phone"
+            type="text"
+            v-model="form.tel"
+            placeholder="请输入手机号"
+          />
           <span @click="get_code" class="get_code">{{
             send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
           }}</span>
-        </div>
-        <div class="item VerificationCode">
-          <span class="icon el-icon-warning-outline"></span>
-          <input type="text" v-model="form.tel_vc" placeholder="请输入验证码" />
-        </div>
+        </el-form-item>
+
+        <el-form-item :error="vcerr" class="iptitem" prop="tel_vc">
+          <el-input
+            prefix-icon="el-icon-warning-outline"
+            type="text"
+            v-model="form.tel_vc"
+            placeholder="请输入验证码"
+          />
+        </el-form-item>
         <div class="submit">
-          <el-button @click="toRegister" style="width: 100%" type="danger">确认注册</el-button>
+          <el-button @click="toRegister" style="width: 100%" type="danger"
+            >确认注册</el-button
+          >
         </div>
-      </div>
+      </el-form>
+      <!--  -->
     </div>
     <el-dialog
       :destroy-on-close="true"
@@ -85,13 +112,37 @@ export default class Register extends mixins(RegisterCom) {}
 @import "./Register.scss";
 </style>
 <style lang="scss">
-.register{
-  .el-dialog{
-    background:white!important;
-    
+.register {
+  .el-dialog {
+    background: white !important;
   }
-  .el-dialog__title{
-    color: black!important;
+  .el-dialog__title {
+    color: black !important;
+  }
+  .iptitem {
+    position: relative;
+    .code {
+      width: 100px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .el-input__inner {
+      background: none;
+      border: none;
+      border-bottom: 1px solid gray;
+      border-radius: 0;
+      color: white;
+    }
+    .el-input__icon {
+      font-size: 18px;
+      color: white;
+    }
+    .el-form-item__error {
+      left: 30px;
+    }
   }
 }
 </style>
