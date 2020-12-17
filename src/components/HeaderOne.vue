@@ -94,7 +94,6 @@ export default class HeaderOne extends Vue {
         if (res.data.status == 1) {
           this.$router.push("/login");
           this.$message.success("已登出");
-          document.cookie = "rc_token=;rc_uid=;";
         }
       })
       .catch((err) => {
