@@ -75,11 +75,15 @@ export default class RegisterCom extends Vue {
             return;
         }
         if(!(/^[a-zA-Z0-9_]{0,}$/.test(value))){
-            callback(new Error('密码中不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
             return;
         }
         if(value.length<8){
-            callback(new Error('密码长度最小为8位'));
+            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
+            return;
+        }
+        if(value.length>16){
+            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
             return;
         }
         if(!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(value))){
@@ -91,7 +95,7 @@ export default class RegisterCom extends Vue {
     //确认密码校验
     private initsurepassword(rule: any, value: string, callback: any):void{
         if(value!=this.form.password){
-            callback(new Error('两次输入密码不一致'));
+            callback(new Error('两次密码输入不一致,请重新输入'));
             return;
         }
         callback();
