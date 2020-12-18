@@ -24,7 +24,7 @@
           </li>
         </ul>
       </my-scroll>
-      <!-- <span @click="createNewCollection = true" class="addnew">创建新书签</span> -->
+      <span @click="createNewCollection = true" class="addnew">创建新书签</span>
       <div v-show="createNewCollection" class="addnewcontent">
         <div>
           <span class="name"> 书签名称: </span>

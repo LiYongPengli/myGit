@@ -13,7 +13,7 @@ export default class AddCollectionCom extends Vue {
     public upimg: any = "";
     public upLoadPhoto: boolean = false;
     //创建新书签
-    public createNewCollection: boolean = true;
+    public createNewCollection: boolean = false;
 
     public created(): void {
         this.getCollection();
@@ -112,7 +112,7 @@ export default class AddCollectionCom extends Vue {
         this.collection_name = "";
         this.upimg = "";
          this.img_pv = "";
-        this.createNewCollection = true;
+        this.createNewCollection = false;
     }
 
     //文件上传返回结果

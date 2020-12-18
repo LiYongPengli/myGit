@@ -47,7 +47,7 @@ export default class NewsInfoCom extends Vue {
         let str = "";
         for (let i of this.newsInfo.html[this.language]) {
             if (i.content) {
-                str += `<${i.tag}>${i.content}</${i.tag}>`
+                str += `<${i.tag} style="text-indent: 2em;line-height:30px;margin-bottom:20px">${i.content}</${i.tag}>`
             }
             if (i.id) {
                 for (let j of this.newsInfo.attachments) {

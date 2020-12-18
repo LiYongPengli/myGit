@@ -6,9 +6,7 @@
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
-            <a @click="$router.push('/')">首页</a><b>&gt;</b>
-            <a v-if="newsInfo.media_name == 'YouTube'">视频详情</a>
-            <a v-else>新闻详情</a>
+            <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a>
           </div>
           <p v-show="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
           <p v-show="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
@@ -71,7 +69,6 @@
               </div>
               <div class="vvts">
                 <my-scroll>
-                  <div class="spzm">视频字幕</div>
                   <p
                     v-for="(v, i) in getYouTubeText(newsInfo.html[language].content)"
                     :key="i"
@@ -161,13 +158,13 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 .newsinfo {
   .el-dialog {
     background: #3a3a48;
-    height: 660px;
+    min-height: 450px;
     .el-dialog__header {
       height: 80px;
       line-height: 80px;
       padding: 0;
       padding-left: 20px;
-      border-bottom: 1px solid #4d4d5d;
+      border-bottom: 1px solid #4D4D5D;
       .el-dialog__title {
         font-size: 20px;
       }
