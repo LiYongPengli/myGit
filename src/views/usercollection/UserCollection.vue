@@ -98,7 +98,7 @@
           <li style="background: #3a3a48" @click="toCreateFavorite">
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
-              <!-- <span class="cjsqmz">拜登系列</span> -->
+              <span class="cjsqmz">创建书签</span>
             </div>
           </li>
         </ul>

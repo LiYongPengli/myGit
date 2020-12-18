@@ -171,6 +171,7 @@
             />
           </div>
         </li>
+        <div style="display:blcok;content:'';clear:both"></div>
       </ul>
     </div>
   </div>
