@@ -1,8 +1,10 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import qs from 'qs'
+import { State } from 'vuex-class';
 @Component
 export default class UserPassWordCom extends Vue {
+    @State('user_message') user_message!:any;
     //忘记原密码
     public fogetpwd: boolean = false;
     //否展示手机号错误信息
@@ -32,24 +34,70 @@ export default class UserPassWordCom extends Vue {
         surenewpwd: [{ validator: this.initSurePwd, trigger: 'blur' }],
     }
     public fogetRules = {
-        tel: [{ validator: this.initTel, trigger: 'blur' }],
         vc: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
         newpwd: [{ validator: this.initNewPwd, trigger: 'blur' }],
         surenewpwd: [{ validator: this.initSurePwd, trigger: 'blur' }]
     }
 
+    public created():void{
+        let phone = this.user_message.phone_number as string;
+        this.fogetForm.tel = phone.slice(0,3)+'****'+phone.slice(7,11);
+    }
+
     @Watch('fogetpwd')
     public fogetPwdChange(newVal: boolean, oldVal: boolean): void {
-        this.form = {
-            oldpwd: '',
-            newpwd: '',
-            surenewpwd: ''
+        (this.$refs['form'] as any).resetFields();
+        (this.$refs['fogetform'] as any).resetFields();
+    }
+
+    @Watch('form.oldpwd')
+    public formoldPwdChange(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.form.oldpwd = oldVal;
+            return;
         }
-        this.fogetForm = {
-            tel: '',
-            vc: '',
-            newpwd: '',
-            surenewpwd: ''
+    }
+
+    @Watch('form.newpwd')
+    public formNewPwdChange(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.form.newpwd = oldVal;
+            return;
+        }
+    }
+    @Watch('form.surenewpwd')
+    public formNewPwdsChange(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.form.surenewpwd = oldVal;
+            return;
+        }
+    }
+    @Watch('fogetForm.newpwd')
+    public fogetformNewPwdChange(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.fogetForm.newpwd = oldVal;
+            return;
+        }
+    }
+    @Watch('fogetForm.surenewpwd')
+    public fogetformNewPwdsChange(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.fogetForm.surenewpwd = oldVal;
+            return;
+        }
+    }
+
+    @Watch('fogetForm.vc')
+    public listenTel(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.fogetForm.vc = oldVal;
+            return;
         }
     }
 
@@ -102,23 +150,6 @@ export default class UserPassWordCom extends Vue {
             }
         }
         callback();
-    }
-
-
-    //验证手机号
-    private initTel(rule: any, value: string, callback: any): void {
-        if (!value) {
-            this.is_send_img_code = false;
-            callback(new Error('请输入手机号!'));
-            return;
-        } else if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(value))) {
-            this.is_send_img_code = false;
-            callback(new Error('手机号格式有误!'));
-            return;
-        }
-        this.is_send_img_code = true;
-        callback();
-
     }
 
     //获取图片验证码
@@ -269,7 +300,7 @@ export default class UserPassWordCom extends Vue {
                 })
                 this.$message.success('密码修改成功');
             } else {
-                let phone_vc = await this.phoneCodeSure(this.fogetForm.tel,this.fogetForm.vc);
+                let phone_vc = await this.phoneCodeSure(this.user_message.phone_number,this.fogetForm.vc);
                 if(phone_vc){
                     let data = {
                         password:this.fogetForm.newpwd

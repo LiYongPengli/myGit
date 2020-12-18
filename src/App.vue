@@ -12,7 +12,7 @@
     <transition @after-enter="load_topic=true" @after-leave="load_topic=false" name="topic">
       <div v-show="topic_show" class="topics">
         <!-- 聊天工具组件 -->
-        <topic v-if="load_topic" />
+        <topic v-show="load_topic" />
       </div>
     </transition>
     <div class="right_content">

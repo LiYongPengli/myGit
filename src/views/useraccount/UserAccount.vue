@@ -176,7 +176,7 @@
         </div>
       </el-dialog>
       <!-- 警告 -->
-      <transition name="el-zoom-in-top">
+      <transition name="el-fade-in-linear">
         <warning
           @ext="unbinding = false"
           @sure="unbindingWechat"

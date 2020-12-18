@@ -36,7 +36,7 @@
       <!-- 忘记原密码 -->
       <el-form ref="fogetform" :rules="fogetRules" :model="fogetForm" label-width="97px" label-position="left" size="small" class="foget" v-show="fogetpwd">
         <el-form-item :error="showTelError" :show-message="true" class="item" label="手机号:" prop="tel">
-          <el-input class="usrpwd" v-model="fogetForm.tel" placeholder="请输入手机号" />
+          <el-input readonly class="usrpwd" v-model="fogetForm.tel" placeholder="请输入手机号" />
         </el-form-item>
         <el-form-item class="item" label="验证码:" prop="vc">
           <el-input class="usrpwd" v-model="fogetForm.vc" placeholder="请输入验证码" />
