@@ -81,7 +81,7 @@ export default class FindPasswordCom extends Vue {
     //确认密码校验
     private initsurepassword(rule: any, value: string, callback: any):void{
         if(value!=this.phone_form.password){
-            callback(new Error('两次输入密码不一致'));
+            callback(new Error('两次密码输入不一致,请重新输入'));
             return;
         }
         callback();
