@@ -82,9 +82,9 @@ export default class UserAccountCom extends Vue {
 	public upRes(data:Blob):void{
 		if(data){
             this.headerPhoto = data;
+            this.headerPhotoURL = URL.createObjectURL(this.headerPhoto);
         }
         (this.$refs.file as HTMLInputElement).value = "";
-        this.headerPhotoURL = URL.createObjectURL(this.headerPhoto);
         this.upLoadPhoto = false;
 	}
 

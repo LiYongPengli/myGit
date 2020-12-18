@@ -13,8 +13,8 @@
               <p>{{text}}</p>
           </div>
           <div class="footer">
-              <el-button @click="sure" style="width:190px;" type="primary" size="small">确认</el-button>
-              <el-button @click="ext" style="width:190px;" size="small">取消</el-button>
+              <el-button @click="sure" style="width:190px;" type="primary">确认</el-button>
+              <el-button @click="ext" style="width:190px;">取消</el-button>
           </div>
       </div>
   </div>
