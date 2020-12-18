@@ -18,7 +18,7 @@ export default class MediaCom extends Vue{
         if (this.showAll == false) {
             let showlist: any = [];
             if (this.mediaList.length > 10) {
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < 20; i++) {
                     showlist.push(this.mediaList[i])
                 }
             }

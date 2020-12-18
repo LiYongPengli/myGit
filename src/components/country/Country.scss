@@ -42,7 +42,7 @@
         }
     }
     .noattention {
-        height: 320px;
+        // min-height: 320px;
         padding-top: 40px;
         .noattention_p,
         .open {
@@ -58,6 +58,10 @@
             }
         }
         ul {
+            display: flex;
+            // 显示不开就换行
+            flex-wrap: wrap;
+            padding-bottom: 20px;
             li {
                 margin-top: 40px;
                 width: 108px;
