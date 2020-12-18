@@ -20,7 +20,9 @@ export default class FindPasswordCom extends Vue {
     public img_vc_code:string = "";
     public phone_form = {
         tel:'',
-        tel_vc:'',
+        tel_vc:''
+    }
+    public pwd_form = {
         password:'',
         surepassword:''
     }
@@ -39,6 +41,14 @@ export default class FindPasswordCom extends Vue {
         let num = /^[0-9]*$/;
         if(!num.test(newVal)){
             this.phone_form.tel = oldVal;
+            return;
+        }
+    }
+    @Watch('phone_form.tel_vc')
+    public listenTelVc(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.phone_form.tel_vc = oldVal;
             return;
         }
     }
@@ -64,11 +74,15 @@ export default class FindPasswordCom extends Vue {
             return;
         }
         if(!(/^[a-zA-Z0-9_]{0,}$/.test(value))){
-            callback(new Error('密码中不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if(value.length<8){
-            callback(new Error('密码长度最小为8位'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
+            return;
+        }
+        if(value.length>16){
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if(!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(value))){
@@ -80,7 +94,7 @@ export default class FindPasswordCom extends Vue {
 
     //确认密码校验
     private initsurepassword(rule: any, value: string, callback: any):void{
-        if(value!=this.phone_form.password){
+        if(value!=this.pwd_form.password){
             callback(new Error('两次密码输入不一致,请重新输入'));
             return;
         }
@@ -220,6 +234,7 @@ export default class FindPasswordCom extends Vue {
     //下一步
     public async next():Promise<void>{
         if(this.verified){
+            (this.$refs['pwdform'] as any).resetFields();
             this.index = 1;
             return;
         }
@@ -229,6 +244,7 @@ export default class FindPasswordCom extends Vue {
             console.log(err);
             return;
         }
+        this.vcerr = "";
         this.index++;
         this.verified = true;
     }
@@ -241,7 +257,7 @@ export default class FindPasswordCom extends Vue {
             return;
         }
         let data = {
-            password:this.phone_form.password
+            password:this.pwd_form.password
         }
         this.axios.put(baseApi.api1+'/v1/user/account/resetpw',qs.stringify(data)).then(res=>{
             if(res.data.status==0){

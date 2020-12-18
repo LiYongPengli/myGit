@@ -36,6 +36,14 @@ export default class phoneLoginCom extends Vue {
             return;
         }
     }
+    @Watch('phone_form.tel_vc')
+    public listenTel_vc(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.phone_form.tel_vc = oldVal;
+            return;
+        }
+    }
 
     //手机号校验
     private inittel(rule: any, value: string, callback: any): void {

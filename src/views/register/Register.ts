@@ -67,6 +67,30 @@ export default class RegisterCom extends Vue {
             return;
         }
     }
+    @Watch('form.password')
+    public listenPassword(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.form.password = oldVal;
+            return;
+        }
+    }
+    @Watch('form.surepassword')
+    public listenSurepassword(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.form.surepassword = oldVal;
+            return;
+        }
+    }
+    @Watch('form.tel_vc')
+    public listenVc(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.form.tel_vc = oldVal;
+            return;
+        }
+    }
 
     //密码校验
     private initpassword(rule: any, value: string, callback: any):void{
@@ -75,15 +99,15 @@ export default class RegisterCom extends Vue {
             return;
         }
         if(!(/^[a-zA-Z0-9_]{0,}$/.test(value))){
-            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if(value.length<8){
-            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if(value.length>16){
-            callback(new Error('密码长度为8到16位且不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if(!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(value))){

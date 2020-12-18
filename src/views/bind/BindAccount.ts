@@ -31,6 +31,10 @@ export default class BindAccountCom extends Vue {
             this.form.account = oldVal;
             return;
         }
+        if(newVal.length>30){
+            this.form.account = oldVal;
+            return;
+        }
     }
 
     @Watch('form.password')
@@ -38,6 +42,14 @@ export default class BindAccountCom extends Vue {
         let space = /(^\s+)|(\s+$)|\s+/g;
         if (space.test(newVal)) {
             this.form.password = oldVal;
+            return;
+        }
+    }
+    @Watch('form.vc')
+    public listenVc(newVal: string, oldVal: string): void {
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if (space.test(newVal)) {
+            this.form.vc = oldVal;
             return;
         }
     }
@@ -124,6 +136,7 @@ export default class BindAccountCom extends Vue {
             );
             if (res.data.data.status == 0) {
                 this.$message.error(res.data.data.msg);
+                this.getImgCode();
                 return;
             }
             this.$message.success("登录成功!");

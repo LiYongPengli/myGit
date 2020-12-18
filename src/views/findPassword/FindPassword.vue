@@ -14,7 +14,7 @@
         ></span>
       </div>
       <!-- 手机登录 -->
-      <el-form :model="phone_form" :rules="phoneRules" ref="phone_form" v-if="index == 0" class="phoneLogin">
+      <el-form :model="phone_form" :rules="phoneRules" ref="phone_form" v-show="index == 0" class="phoneLogin">
         <el-form-item :error="phoneerr" class="iptitem" prop="tel">
           <el-input
             prefix-icon="el-icon-mobile-phone"
@@ -41,13 +41,13 @@
         </div>
       </el-form>
       <!-- 重置密码 -->
-      <el-form :model="phone_form" ref="pwdform" :rules="pwdRules" class="restpassword" v-if="index == 1">
+      <el-form :model="pwd_form" ref="pwdform" :rules="pwdRules" class="restpassword" v-show="index == 1">
         <el-form-item class="iptitem" prop="password">
           <el-input
             prefix-icon="el-icon-lock"
             show-password
             type="password"
-            v-model="phone_form.password"
+            v-model="pwd_form.password"
             placeholder="请输入新密码"
           />
         </el-form-item>
@@ -55,7 +55,7 @@
           <el-input
             prefix-icon="el-icon-lock"
             type="password"
-            v-model="phone_form.surepassword"
+            v-model="pwd_form.surepassword"
             placeholder="请再次输入密码"
           />
         </el-form-item>

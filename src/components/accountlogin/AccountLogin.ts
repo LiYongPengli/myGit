@@ -35,6 +35,10 @@ export default class AccountLoginCom extends Vue {
             this.form.account = oldVal;
             return;
         }
+        if(newVal.length>30){
+            this.form.account = oldVal;
+            return;
+        }
     }
 
     @Watch('form.password')
@@ -42,6 +46,14 @@ export default class AccountLoginCom extends Vue {
         let space = /(^\s+)|(\s+$)|\s+/g;
         if(space.test(newVal)){
             this.form.password = oldVal;
+            return;
+        }
+    }
+    @Watch('form.vc')
+    public listenVc(newVal:string,oldVal:string):void{
+        let space = /(^\s+)|(\s+$)|\s+/g;
+        if(space.test(newVal)){
+            this.form.vc = oldVal;
             return;
         }
     }
