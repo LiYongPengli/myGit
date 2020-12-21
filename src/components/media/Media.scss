@@ -12,32 +12,43 @@
         }
         ul {
             overflow: hidden;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
             li {
-                margin-top: 40px;
-                width: 108px;
-                float: left;
+                margin-top: 30px;
+                display: flex;
+                margin-right: 40px;
                 div {
-                    .flag {
-                        height: 30px;
-                        display: block;
-                        margin-left: 20px;
-                    }
+                    width: 184px;
+                    height: 40px;
+                    background: #71718A;
+                    align-items: center;
                     p {
                         font-size: 15px;
-                        margin-top: 20px;
-                        width: 60px;
-                        // 是禁止换行。
+                        width: 139px;
                         white-space: nowrap;
                         display: inline-block;
                         overflow: hidden;
-                        text-align: center;
-                        margin-left: 10px;
+                        padding-left: 15px;
+                        height: 40px;
+                        line-height: 40px;
                     }
-                    img.close {
-                        cursor: pointer;
-                        margin-left: 10px;
+                    .i_mg {
+                        width: 45px;
+                        height: 40px;
+                        padding: 0;
+                        background: #555566;
+                        img.close {
+                            cursor: pointer;
+                            margin-left: 17.6px;
+                        }
                     }
                 }
+            }
+            li:nth-child(5n) {
+                margin-right: 0;
             }
         }
     }
@@ -49,6 +60,7 @@
             font-size: 20px;
             font-weight: bold;
             display: inline-block;
+            cursor: pointer;
         }
         .open {
             float: right;
@@ -57,35 +69,51 @@
             }
         }
         ul {
+            overflow: hidden;
             display: flex;
+            justify-content: flex-start;
             flex-wrap: wrap;
             padding-bottom: 20px;
             li {
-                margin-top: 40px;
-                width: 108px;
-                float: left;
+                margin-top: 30px;
+                display: flex;
+                margin-right: 40px;
                 div {
-                    .flag {
-                        height: 30px;
-                        display: block;
-                        margin-left: 20px;
-                    }
-                    p {
+                    position: relative;
+                    width: 184px;
+                    height: 40px;
+                    align-items: center;
+                    border: 1px solid #979797;
+                    box-sizing: border-box;
+                    p.pname {
                         font-size: 15px;
-                        margin-top: 20px;
-                        width: 60px;
-                        // 是禁止换行。
+                        width: 139px;
                         white-space: nowrap;
                         display: inline-block;
                         overflow: hidden;
-                        text-align: center;
-                        margin-left: 10px;
+                        padding-left: 15px;
+                        height: 40px;
+                        line-height: 40px;
                     }
-                    img.add {
-                        cursor: pointer;
-                        margin-left: 10px;
+                    .i_mg {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 43px;
+                        height: 40px;
+                        line-height: 40px;
+                        padding: 0;
+                        display: inline-block;
+                        border-left: 1px solid #979797;
+                        img.add {
+                            cursor: pointer;
+                            margin-left: 17.6px;
+                        }
                     }
                 }
+            }
+            li:nth-child(5n) {
+                margin-right: 0;
             }
         }
     }
