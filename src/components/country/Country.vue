@@ -8,11 +8,11 @@
         <li v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />
-            <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
-              <p>
+            <!-- <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
+            </el-tooltip> -->
+             <p>
                 {{ v.name }}
               </p>
-            </el-tooltip>
             <img
               class="close"
               @click.stop="unsub(v, k)"
@@ -23,126 +23,6 @@
             <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
         </li>
-        <!-- <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followchina.png" alt="" />
-            <p>中国<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="../../assets/img/followjnd.png" alt="" />
-            <p>加拿大<img src="../../assets/img/close.png" alt="" /></p>
-          </div>
-        </li> -->
       </ul>
     </div>
     <!-- 未关注 -->
@@ -158,11 +38,11 @@
         <li v-for="(v1, k1) in showlist" :key="k1">
           <div>
             <img class="flag" :src="v1.flag" alt="" />
-            <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">
-              <p>
+            <!-- <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">
+            </el-tooltip> -->
+             <p>
                 {{ v1.name }}
               </p>
-            </el-tooltip>
             <img
               class="add"
               @click="addFollow(v1, k1)"
