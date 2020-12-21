@@ -97,7 +97,9 @@
                 .th:first-of-type {
                     text-align: left;
                 }
-                .th:nth-of-type(5) {
+                .th:nth-of-type(2) {
+                    text-align: left;
+                }.th:nth-of-type(5) {
                     flex: 2;
                 }
                 .th:nth-of-type(6) {
@@ -118,6 +120,9 @@
                         font-size: 14px;
                     }
                     .td:first-of-type {
+                        text-align: left;
+                    }
+                    .td:nth-of-type(2) {
                         text-align: left;
                     }
                     .td:nth-of-type(5) {

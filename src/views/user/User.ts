@@ -15,7 +15,8 @@ export default class UserCom extends Vue {
     public user_nav_list = [
         {
             path: '/user/form',
-            name: '统计报表'
+            name: '统计报表',
+            nosee:'user'
         },
         {
             path: '/user/users',

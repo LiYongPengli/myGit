@@ -35,8 +35,12 @@
         <div class="tbody">
           <my-scroll>
             <div v-show="showUsers(v)" v-for="(v, i) in userList" :key="i" class="tr">
-              <div class="td">{{v.account}}</div>
-              <div class="td">{{v.nickname}}</div>
+              <div class="td">
+                <speed-text width="100px" height="100%">{{v.account}}</speed-text>
+              </div>
+              <div class="td">
+                <speed-text width="100%" height="100%">{{v.nickname}}</speed-text>
+              </div>
               <div class="td">{{v.phone_number}}</div>
               <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
               <div class="td">{{UserCreatetime(v.registration_date)}}</div>
@@ -62,10 +66,12 @@ import Component, { mixins } from "vue-class-component";
 import UserUsersCom from "./UserUsers";
 import MyScroll from "@/components/MyScroll.vue";
 import UserAccount from "@/components/userusersaccount/UserUsersAccount.vue"
+import SpeedText from "@/components/SpeedText.vue";
 @Component({
   components: {
     MyScroll,
-    UserAccount
+    UserAccount,
+    SpeedText
   },
 })
 export default class UserCollection extends mixins(UserUsersCom) {}

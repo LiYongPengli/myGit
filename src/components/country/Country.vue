@@ -34,7 +34,7 @@
         <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
         <img v-else src="../../assets/img/shouqil.png" alt="" />
       </p>
-      <ul v-loading="loadFollow">
+      <ul element-loading-background="rgba(58, 58, 72, 0.5)" v-loading="loadFollow">
         <li v-for="(v1, k1) in showlist" :key="k1">
           <div>
             <img class="flag" :src="v1.flag" alt="" />

@@ -52,7 +52,7 @@ export default class NewsInfoCom extends Vue {
             if (i.id) {
                 for (let j of this.newsInfo.attachments) {
                     if (j.position == i.id) {
-                        str += `<img style="display:block;margin:39px auto;" src="${j.url}" />`
+                        str += `<img style="display:block;margin:39px auto;max-width:100%;" src="${j.url}" />`
                     }
                 }
             }

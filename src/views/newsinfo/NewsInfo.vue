@@ -120,7 +120,7 @@
       :close-on-click-modal="false"
       :visible.sync="showCollection"
       width="800px"
-      top="20vh"
+      top="10vh"
       title="收藏到我的"
       class="sc"
     >
