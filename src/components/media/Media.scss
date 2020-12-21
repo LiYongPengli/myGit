@@ -85,15 +85,18 @@
                     align-items: center;
                     border: 1px solid #979797;
                     box-sizing: border-box;
-                    p.pname {
+                    div.pname {
                         font-size: 15px;
                         width: 139px;
                         white-space: nowrap;
-                        display: inline-block;
+                        // display: inline-block;
                         overflow: hidden;
-                        padding-left: 15px;
+                        // padding-left: 15px;
                         height: 40px;
                         line-height: 40px;
+                        .dom {
+                            left: 15px !important;
+                        }
                     }
                     .i_mg {
                         position: absolute;

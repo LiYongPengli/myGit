@@ -6,7 +6,10 @@
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
-            <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a>
+            <!-- <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a> -->
+            <a @click="$router.push('/')">首页</a><b>&gt;</b>
+            <a v-if="newsInfo.media_name == 'YouTube'">视频详情</a>
+            <a v-else>新闻详情</a>
           </div>
           <p v-show="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
           <p v-show="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
@@ -69,6 +72,7 @@
               </div>
               <div class="vvts">
                 <my-scroll>
+                   <div class="spzm">视频字幕</div>
                   <p
                     v-for="(v, i) in getYouTubeText(newsInfo.html[language].content)"
                     :key="i"
