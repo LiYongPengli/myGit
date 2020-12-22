@@ -132,46 +132,4 @@ export default class TimeSolt extends Vue {
   //margin-left: 240px;
   //width: 100px;
 }
-.el-date-editor {
-  margin-right: 10px;
-  width: 140px !important;
-  input {
-    background: #494959;
-    border: 0;
-    color: white;
-    cursor: pointer;
-  }
-  input::-webkit-input-placeholder {
-      /* WebKit browsers */
-      color: white;
-    }
-    input:-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: white;
-    }
-    input::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: white;
-    }
-    input:-ms-input-placeholder {
-      /* Internet Explorer 10+ */
-      color: white;
-    }
-  .timesearch {
-    .el-date-editor{
-      .el-input__prefix{
-        .el-input__icon{
-          color: white !important;
-        }
-      }
-    }
-    
-    .zhi {
-      display: inline-block;
-      width: 16px;
-      font-weight: bold;
-      float: none !important;
-    }
-  }
-}
 </style>

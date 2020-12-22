@@ -1,0 +1,105 @@
+.newsresourceitem {
+    margin-top: 40px;
+    height: 380px;
+    padding: 0 60px;
+    .content_form_one {
+      .namelist {
+        font-size: 20px;
+      }
+      .today,
+      .Cumulative,
+      .export {
+        width: 100px;
+        display: inline-block;
+        height: 40px;
+        background-color: #494959;
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 3px;
+      }
+      .dateActive {
+        background: #0074ff;
+      }
+      .today {
+        margin-left: 189px;
+        margin-right: 10px;
+      }
+      .Cumulative {
+        margin-right: 30px;
+      }
+      .searchdate {
+        cursor: pointer;
+        margin-right: 30px;
+        display: inline-block;
+        width: 50px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #494959;
+        border-radius: 3px;
+        img {
+          position: relative;
+          top: 5px;
+          // margin-top: 10px;
+        }
+      }
+      // .export {
+      //     margin-left: 25px;
+      // }
+    }
+    .content_form_list {
+      ul {
+        background-color: #494959;
+        margin-top: 25px;
+        height: 300px;
+        // padding-left: 60px;
+        li:nth-child(1) {
+          border-bottom: 1px solid #5c5c6b;
+        }
+        li {
+          height: 50px;
+          line-height: 50px;
+          .list_li_accountnumber,
+          .list_li_name,
+          .list_li_time,
+          .list_li_phone,
+          .list_li_count {
+            float: left;
+            color: white;
+            font-size: 14px;
+          }
+          .list_li_accountnumber {
+            margin: 0 60px;
+          }
+          .list_li_name {
+            width: 789px;
+            text-align: left;
+            overflow: hidden;
+            /*超出部分隐藏*/
+            white-space: nowrap;
+            /*不换行*/
+            text-overflow: ellipsis;
+            /*超出部分文字以...显示*/
+          }
+          .list_li_phone,
+          .list_li_count,
+          .list_li_time {
+            width: 142px;
+            text-align: left;
+          }
+          .list_li_phone {
+            float: right;
+          }
+          .value {
+            padding-left: 10px;
+          }
+        }
+        li.active {
+          background: #4f4f5f;
+        }
+      }
+    }
+  }
