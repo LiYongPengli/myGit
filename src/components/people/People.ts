@@ -6,6 +6,9 @@ export default class PeopleCom extends Vue {
     public characterList:any[] = [];
     public characterFollowList:any[] = [];
 
+    //搜索更多人物标志
+    public searchpeople:boolean=false;
+
     //加载中
     public loading:boolean = true;
     public loadFollow:boolean = true;

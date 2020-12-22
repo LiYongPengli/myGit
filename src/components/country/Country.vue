@@ -17,8 +17,6 @@
               src="../../assets/img/close.png"
               alt=""
             />
-
-            <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
         </li>
       </ul>
