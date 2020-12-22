@@ -10,8 +10,8 @@
       <ul>
         <li v-for="(v, i) in mediaFollowList" :key="v.sub_id">
           <div>
-            <speed-text class="pname" width="124px" height="40px">
-              {{ v.name_zh }}
+            <speed-text class="pname" width="124px" height="40px" :text="v.name_zh">
+          
             </speed-text>
             <p class="i_mg">
               <img
@@ -42,8 +42,8 @@
         <li v-for="(v, i) in showlist" :key="v.sub_id">
           <div class="no_noattention">
             <!-- <p>{{v.name_zh}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p> -->
-            <speed-text class="pname" width="124px" height="40px">
-              {{ v.name }}
+            <speed-text class="pname" width="124px" height="40px" :text="v.name">
+              
             </speed-text>
             <!-- <p class="pname"> -->
 

@@ -10,8 +10,8 @@
       <ul>
         <li v-for="(v, i) in channelFollowList" :key="i">
           <div>
-            <speed-text class="pname" width="124px" height="40px">
-              {{ v.name }}
+            <speed-text class="pname" width="124px" height="40px"  :text="v.name">
+            
             </speed-text>
             <p class="i_mg">
               <img
@@ -39,8 +39,7 @@
       <ul>
         <li v-for="(v, i) in showlist" :key="i">
           <div class="no_noattention">
-            <speed-text class="pname" width="124px" height="40px">
-              {{ v.name }}
+            <speed-text class="pname" width="124px" height="40px"  :text="v.name">
             </speed-text>
             <p class="i_mg">
               <img
