@@ -40,7 +40,7 @@
             }}
           </p>
         </div>
-        <div class="right">
+        <div class="right  right_p">
           <span
             v-show="user_message.wechat_info.binding"
             @click="unbinding = true"
@@ -65,7 +65,7 @@
           <p>昵称</p>
           <p>{{ user_message.nickname }}</p>
         </div>
-        <div class="right">
+        <div class="right  right_p">
           <span @click="ninameupdate = true">修改></span>
         </div>
       </div>

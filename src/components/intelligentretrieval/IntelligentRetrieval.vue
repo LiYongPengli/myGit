@@ -318,7 +318,16 @@
                     >
                       <div>一月内</div>
                     </li>
-                    <time-slot :clear="clearDate" @dateChange="dateChange" />
+                    <!-- <time-slot :clear="clearDate" @dateChange="dateChange" /> -->
+                     <el-date-picker
+        @change="setFormdate"
+        style="width: 250px; margin-right: 20px"
+        v-model="share_date"
+        type="daterange"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期"
+      >
+      </el-date-picker>
                   </ul>
                 </div>
               </div>
