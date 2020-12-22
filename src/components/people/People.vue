@@ -60,6 +60,7 @@
        <a class="search_a" href="#" @click="searchpeople = false">返回</a>
        <div class="search_input">
          <input type="text" placeholder="请输入想要搜索的人物名称">
+         <img class="sousuo" src="../../assets/img/sousuo.png" alt="" />
        </div>
         <ul class="noattentionlists">
         <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
