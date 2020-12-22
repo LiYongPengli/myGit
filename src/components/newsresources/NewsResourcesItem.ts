@@ -3,7 +3,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class NewsResourcesItemCom extends Vue {
     @Prop({}) type!:string;
+    @Prop({}) cells!:string[];
     @Prop({}) title!:string;
+    @Prop({default:1}) page!:number;
     //转发次数统计
     public share_data: any[] = [];
     public share_date: Date[] = [];
@@ -15,7 +17,11 @@ export default class NewsResourcesItemCom extends Vue {
 
     public created(): void {
         this.form.stat_type = this.type;
-        this.usage_rate();
+        if(this.page==1){
+            this.usage_rate();
+        }else{
+            this.site_usage();
+        }
     }
     //新闻资源使用率
     private usage_rate(): void {
@@ -37,6 +43,25 @@ export default class NewsResourcesItemCom extends Vue {
                 console.log(err);
             });
     }
+
+    //站点资源使用率统计
+    private site_usage():void{
+        let data: any = {};
+        for (let i in this.form) {
+            if (this.form[i]&&i!='stat_type') {
+                data[i] = this.form[i];
+            }
+        }
+        this.axios
+        .post(baseApi.api2+'/v1/cmd/', {
+          cmd: 'media_usage_stat',
+          paras: data
+        }).then(res=>{
+            this.share_data = res.data.data;
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
     //新闻转发次数设置自定义时间筛选
     public setFormdate(): void {
         if (this.share_date) {
@@ -46,7 +71,11 @@ export default class NewsResourcesItemCom extends Vue {
             this.form.time_from = ""
             this.form.time_to = ""
         }
-        this.usage_rate();
+        if(this.page==1){
+            this.usage_rate();
+        }else{
+            this.site_usage();
+        }
     }
     public setDate(type: string): void {
         switch (type) {
@@ -58,6 +87,10 @@ export default class NewsResourcesItemCom extends Vue {
                 break;
         }
         this.share_date = [];
-        this.usage_rate();
+        if(this.page==1){
+            this.usage_rate();
+        }else{
+            this.site_usage();
+        }
     }
 }

@@ -33,12 +33,12 @@
       <span class="export">导出</span>
     </div>
     <div class="content_form_list">
-      <ul>
+      <ul v-if="cells">
         <my-scroll style="content_mt_onescroll">
           <li class="list_li">
-            <div class="list_li_accountnumber">排名</div>
-            <div class="list_li_name">新闻名称</div>
-            <div class="list_li_phone">转发次数</div>
+            <div class="list_li_accountnumber">{{cells[0]}}</div>
+            <div class="list_li_name">{{cells[1]}}</div>
+            <div class="list_li_phone">{{cells[2]}}</div>
           </li>
           <li
             v-for="(v, k) in share_data"
@@ -49,7 +49,7 @@
               {{ k + 1 }}
             </div>
             <div class="list_li_name">
-              {{ v.title }}
+              {{ v.title?v.title:v.name_zh }}
             </div>
             <div class="list_li_phone value">
               {{ v.count }}
