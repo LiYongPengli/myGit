@@ -8,8 +8,8 @@
         <li v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />
-            <speed-text width="60px" height="20px">
-                {{ v.name }}
+            <speed-text width="60px" height="20px" :text=" v.name">
+              
             </speed-text>
             <img
               class="close"
@@ -17,8 +17,6 @@
               src="../../assets/img/close.png"
               alt=""
             />
-
-            <!-- <a @click.prevent="del(v.number)" href="">删除</a> -->
           </div>
         </li>
       </ul>
@@ -38,8 +36,7 @@
             <img class="flag" :src="v1.flag" alt="" />
             <!-- <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">
             </el-tooltip> -->
-           <speed-text width="60px" height="20px">
-              {{ v1.name }}
+           <speed-text width="60px" height="20px" :text="v1.name">
            </speed-text>
             <img
               class="add"

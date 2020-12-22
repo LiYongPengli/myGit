@@ -4,7 +4,7 @@
     .concerned {
         min-height: 320px;
         padding-top: 40px;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         border-bottom: 1px solid #5c5c6b;
         .concerned_p {
             font-size: 20px;
@@ -19,12 +19,15 @@
             li {
                 margin-top: 30px;
                 display: flex;
-                margin-right: 40px;
+                width: 216px;
                 div {
                     width: 184px;
                     height: 40px;
                     background: #71718A;
                     align-items: center;
+                    position: relative;
+                    line-height: 40px;
+                    padding-left: 15px;
                     p {
                         font-size: 15px;
                         width: 139px;
@@ -36,9 +39,19 @@
                         line-height: 40px;
                     }
                     .i_mg {
-                        width: 45px;
+                        // width: 45px;
+                        // height: 40px;
+                        // padding: 0;
+                        // background: #555566;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 43px;
                         height: 40px;
+                        line-height: 40px;
                         padding: 0;
+                        display: inline-block;
+                        border-left: 1px solid #979797;
                         background: #555566;
                         img.close {
                             cursor: pointer;
@@ -77,15 +90,16 @@
             li {
                 margin-top: 30px;
                 display: flex;
-                margin-right: 40px;
-                div {
+                width: 216px;
+                div.no_noattention {
                     position: relative;
                     width: 184px;
                     height: 40px;
                     align-items: center;
                     border: 1px solid #979797;
                     box-sizing: border-box;
-                    div.pname {
+                    padding-left: 15px;
+                    .pname {
                         font-size: 15px;
                         width: 139px;
                         white-space: nowrap;

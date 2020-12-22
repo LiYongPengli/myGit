@@ -3,7 +3,7 @@
     padding: 0 60px;
     background: #3A3A48;
     .concerned {
-        min-height: 435px;
+        min-height: 320px;
         border-bottom: 1px solid #5c5c6b;
         .concerned_p {
             font-size: 20px;
@@ -11,38 +11,43 @@
             padding-top: 40px;
             padding-bottom: 40px;
         }
-        .concernedlists {
-            .concernedlist {
-                width: 33.33%;
-                float: left;
-                position: relative;
-                margin-bottom: 40px;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                width: 270px;
+                margin-bottom: 20px;
                 padding-right: 20px;
-                img:first-child {
-                    width: 54px;
-                    height: 54px;
-                    margin-right: 20px;
-                }
-                span {
-                    position: absolute;
-                    height: 21px;
-                    line-height: 21px;
-                    font-size: 15px;
-                    top: 5px;
-                }
-                p {
-                    position: absolute;
-                    height: 18px;
-                    line-height: 18px;
-                    font-size: 13px;
-                    left: 73px;
-                    top: 35px;
-                }
-                img:last-child {
-                    position: absolute;
-                    right: 80px;
-                    top: 27px;
-                    cursor: pointer;
+                display: flex;
+                align-items: center;
+                .concernedlistdiv {
+                    width: 270px;
+                    position: relative;
+                    img:first-child {
+                        width: 54px;
+                        height: 54px;
+                        margin-right: 20px;
+                    }
+                    span {
+                        position: absolute;
+                        height: 21px;
+                        line-height: 21px;
+                        font-size: 15px;
+                        top: 5px;
+                    }
+                    .concernedname {
+                        position: absolute;
+                        width: 145px;
+                        top: 30px;
+                        left: 70px;
+                        overflow: hidden;
+                    }
+                    img:last-child {
+                        position: absolute;
+                        right: 10px;
+                        top: 27px;
+                        cursor: pointer;
+                    }
                 }
             }
             .concernedlist:nth-child(3n) {
@@ -70,40 +75,141 @@
             display: inline-block;
             cursor: pointer;
         }
-        .noattentionlists {
+        ul {
             overflow: hidden;
             margin-top: 40px;
-            .noattentionlist {
-                width: 33.33%;
-                float: left;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                width: 270px;
                 position: relative;
                 margin-bottom: 20px;
                 padding-right: 20px;
-                img:first-child {
-                    width: 54px;
-                    height: 54px;
-                    margin-right: 20px;
+                display: flex;
+                align-items: center;
+                .concernedlistdiv {
+                    width: 270px;
+                    position: relative;
+                    img:first-child {
+                        width: 54px;
+                        height: 54px;
+                        margin-right: 20px;
+                    }
+                    span {
+                        position: absolute;
+                        height: 21px;
+                        line-height: 21px;
+                        font-size: 15px;
+                        top: 5px;
+                    }
+                    .concernedname {
+                        position: absolute;
+                        width: 145px;
+                        top: 30px;
+                        left: 70px;
+                        overflow: hidden;
+                    }
+                    img:last-child {
+                        position: absolute;
+                        right: 10px;
+                        top: 27px;
+                        cursor: pointer;
+                    }
                 }
-                span {
-                    position: absolute;
-                    height: 21px;
-                    line-height: 21px;
-                    font-size: 15px;
-                    top: 5px;
-                }
-                p {
-                    position: absolute;
-                    height: 18px;
-                    line-height: 18px;
-                    font-size: 13px;
-                    left: 73px;
-                    top: 35px;
-                }
-                img:last-child {
-                    position: absolute;
-                    right: 80px;
-                    top: 27px;
-                    cursor: pointer;
+            }
+        }
+    }
+    .searchpeoplelist {
+        min-height: 300px;
+        background-color: #3a3a48;
+        .search_a {
+            margin-top: 40px;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            width: 100%;
+            font-size: 20px;
+            padding-left: 15px;
+            background: url("../../assets/img/searchpeoplereturn.png") left center no-repeat;
+        }
+        .search_input {
+            margin-top: 50px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            input {
+                height: 40px;
+                background-color: #3a3a48;
+                outline: none;
+                border: 1px solid #979797;
+                width: 600px;
+                padding-left: 20px;
+                border-radius: 3px;
+                color: white;
+            }
+            .sousuo {
+                position: relative;
+                top: 5px;
+                right: 40px;
+                cursor: pointer;
+            }
+            input::-webkit-input-placeholder {
+                /* WebKit browsers */
+                color: white;
+            }
+            input:-moz-placeholder {
+                /* Mozilla Firefox 4 to 18 */
+                color: white;
+            }
+            input::-moz-placeholder {
+                /* Mozilla Firefox 19+ */
+                color: white;
+            }
+            input:-ms-input-placeholder {
+                /* Internet Explorer 10+ */
+                color: white;
+            }
+        }
+        ul {
+            overflow: hidden;
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                width: 270px;
+                position: relative;
+                margin-bottom: 20px;
+                padding-right: 20px;
+                display: flex;
+                align-items: center;
+                .concernedlistdiv {
+                    width: 270px;
+                    position: relative;
+                    img:first-child {
+                        width: 54px;
+                        height: 54px;
+                        margin-right: 20px;
+                    }
+                    span {
+                        position: absolute;
+                        height: 21px;
+                        line-height: 21px;
+                        font-size: 15px;
+                        top: 5px;
+                    }
+                    .concernedname {
+                        position: absolute;
+                        width: 145px;
+                        top: 30px;
+                        left: 70px;
+                        overflow: hidden;
+                    }
+                    img:last-child {
+                        position: absolute;
+                        right: 10px;
+                        top: 27px;
+                        cursor: pointer;
+                    }
                 }
             }
         }

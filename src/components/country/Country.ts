@@ -17,7 +17,7 @@ export default class CountryCom extends Vue {
         if (this.showAll == false) {
             let showlist: any = [];
             if (this.country_list.length > 10) {
-                for (var i = 0; i < 20; i++) {
+                for (var i = 0; i < 16; i++) {
                     showlist.push(this.country_list[i])
                 }
             }
