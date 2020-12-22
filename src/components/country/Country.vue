@@ -4,15 +4,13 @@
     <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-      <ul element-loading-background="rgba(58, 58, 72, 0.5)"  v-loading="loading">
+      <ul element-loading-background="rgba(58, 58, 72, 0.5)" v-loading="loading">
         <li v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />
-            <!-- <el-tooltip class="item" effect="dark" :content="v.name" placement="top">
-            </el-tooltip> -->
-             <p>
+            <speed-text width="60px" height="20px">
                 {{ v.name }}
-              </p>
+            </speed-text>
             <img
               class="close"
               @click.stop="unsub(v, k)"
@@ -40,9 +38,9 @@
             <img class="flag" :src="v1.flag" alt="" />
             <!-- <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">
             </el-tooltip> -->
-             <p>
-                {{ v1.name }}
-              </p>
+           <speed-text width="60px" height="20px">
+              {{ v1.name }}
+           </speed-text>
             <img
               class="add"
               @click="addFollow(v1, k1)"
@@ -51,7 +49,7 @@
             />
           </div>
         </li>
-        <div style="display:blcok;content:'';clear:both"></div>
+        <div style="display: blcok; content: ''; clear: both"></div>
       </ul>
     </div>
   </div>
@@ -60,7 +58,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import CountryCom from "./Country";
-@Component
+import SpeedText from "@/components/SpeedText.vue";
+@Component({
+  components: {
+    SpeedText,
+  },
+})
 export default class Country extends mixins(CountryCom) {}
 </script>
 

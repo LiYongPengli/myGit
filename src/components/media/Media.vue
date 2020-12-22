@@ -10,6 +10,7 @@
       <ul>
         <li v-for="(v, i) in mediaFollowList" :key="v.sub_id">
           <div>
+
             <p>{{ v.name_zh }}</p>
             <p class="i_mg">
               <img
@@ -40,10 +41,13 @@
         <li v-for="(v, i) in showlist" :key="v.sub_id">
           <div>
             <!-- <p>{{v.name_zh}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p> -->
-            <p class="pname">
-              {{ v.name }}
+             <speed-text class="pname" width="139px" height="40px">
+               {{ v.name }}
+             </speed-text>
+            <!-- <p class="pname"> -->
+              
             
-            </p>
+            <!-- </p> -->
              <p class="i_mg">
               <img
                 class="add"
@@ -61,7 +65,12 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import MediaCom from "./Media";
-@Component
+import SpeedText from "@/components/SpeedText.vue";
+@Component({
+  components: {
+    SpeedText,
+  },
+})
 export default class Media extends mixins(MediaCom) {}
 </script>
 <style lang="scss" scoped>
