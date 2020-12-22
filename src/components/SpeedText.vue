@@ -6,28 +6,47 @@
     :style="{ width: width, height: height }"
   >
     <div class="dom" ref="dom">
-      <slot></slot>
+      {{ text }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class SpeedText extends Vue {
   @Prop({}) width!: string;
   @Prop({}) height!: string;
+  @Prop({}) text!: string;
   @Prop({ default: 0.3, type: Number }) speed!: number;
   //子元素与父元素宽度差值
   public offset: number = 0;
   //滚动定时器
   public timer: number | null = null;
 
+  @Watch("text")
+  public textChg(newVal: string, oldVal: string): void {
+    setTimeout(() => {
+      let dom = <HTMLElement>this.$refs.dom;
+      let width = ~this.width.indexOf("%")
+        ? this.width.slice(0, this.width.length - 1)
+        : this.width.slice(0, this.width.length - 2);
+      if (dom.offsetWidth > Number(width)) {
+        this.offset = dom.offsetWidth - Number(width);
+      } else {
+        this.offset = 0;
+      }
+    }, 100);
+  }
   public mounted(): void {
     let dom = <HTMLElement>this.$refs.dom;
-    let width = ~this.width.indexOf("%")?this.width.slice(0,this.width.length-1):this.width.slice(0,this.width.length-2);
+    let width = ~this.width.indexOf("%")
+      ? this.width.slice(0, this.width.length - 1)
+      : this.width.slice(0, this.width.length - 2);
     if (dom.offsetWidth > Number(width)) {
       this.offset = dom.offsetWidth - Number(width);
+    } else {
+      this.offset = 0;
     }
   }
 
@@ -44,9 +63,9 @@ export default class SpeedText extends Vue {
         flag = true;
       }
       if (!flag) {
-          left+=this.speed
+        left += this.speed;
       } else {
-          left -=this.speed
+        left -= this.speed;
       }
       dom.style.left = left + "px";
     }, 10);

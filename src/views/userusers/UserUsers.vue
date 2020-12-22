@@ -36,10 +36,10 @@
           <my-scroll>
             <div v-show="showUsers(v)" v-for="(v, i) in userList" :key="i" class="tr">
               <div class="td">
-                <speed-text width="100px" height="100%">{{v.account}}</speed-text>
+                <speed-text width="100px" height="100%" :text="v.account" />
               </div>
               <div class="td">
-                <speed-text width="100%" height="100%">{{v.nickname}}</speed-text>
+                <speed-text width="100%" height="100%" :text="v.nickname" />
               </div>
               <div class="td">{{v.phone_number}}</div>
               <div class="td">{{v.wechat_info.binding?v.wechat_info.nickname:'未绑定'}}</div>
