@@ -121,7 +121,7 @@
                     class="item"
                   >
                     <img :src="v.flag" alt="" />
-                    <p class="name">{{ v.name_zh }}</p>
+                    <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
               </div>
@@ -135,13 +135,13 @@
                     class="item"
                   >
                     <img src="../../assets/img/tx.png" alt="" />
-                    <p class="name">{{ v.name }}</p>
+                    <p :title="v.name_zh" class="name">{{ v.name }}</p>
                   </div>
                 </div>
               </div>
               <!-- 媒体 -->
               <div class="swiper-slide">
-                <div class="media">
+                <div class="media" style="width:457px">
                   <div
                     @click="toFollowPage('media', i)"
                     v-for="(v, i) in media"
@@ -150,7 +150,7 @@
                   >
                     <!-- <img src="../../assets/img/media.png" alt="" /> -->
 
-                    <p class="name">{{ v.name_zh }}</p>
+                    <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
               </div>
