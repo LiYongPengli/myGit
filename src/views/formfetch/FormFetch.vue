@@ -4,15 +4,15 @@
     <div class="content">
       <div class="count">
         <div class="cjgj">
-          <p class="sl">153</p>
+          <p class="sl">{{ init_number(result_data.country) }}</p>
           <p class="name">采集覆盖国家数</p>
         </div>
         <div class="cjzd">
-          <p class="sl">1,257</p>
+          <p class="sl">{{ init_number(result_data.media) }}</p>
           <p class="name">采集覆盖站点数</p>
         </div>
         <div class="cjtj">
-          <p class="sl">3,695,452</p>
+          <p class="sl">{{ init_number(result_data.news) }}</p>
           <p class="name">累计采集数据</p>
         </div>
       </div>
@@ -21,29 +21,52 @@
         <div class="cjsjs_head">
           <p>采集数据数</p>
 
-          <el-button>今日</el-button>
-          <el-button type="primary">最近7天</el-button>
-          <el-button class="zjsst" type="primary">最近30天</el-button>
-          <el-date-picker v-model="value1" type="date" placeholder="开始日期">
+          <el-button
+            @click="setDay('today')"
+            style="margin-left: 240px;"
+            :type="search_form.stat_type == 'today' ? 'primary' : ''"
+            >今日</el-button
+          >
+          <el-button
+            @click="setDay('7')"
+            :type="search_form.stat_type == '7' ? 'primary' : ''"
+            >最近7天</el-button
+          >
+          <el-button
+            @click="setDay('30')"
+            class="zjsst"
+            :type="search_form.stat_type == '30' ? 'primary' : ''"
+            >最近30天</el-button
+          >
+          <el-date-picker
+            @change="setDate"
+            style="width: 250px; margin-right: 20px"
+            v-model="dates"
+            type="daterange"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          >
+          </el-date-picker>
+          <!-- <el-date-picker v-model="value1" type="date" placeholder="开始日期">
           </el-date-picker>
           <span class="zhi">-</span>
           <el-date-picker v-model="value2" type="date" placeholder="截止日期">
-          </el-date-picker>
+          </el-date-picker> -->
           <span class="cjsjs_head_search">
             <img src="../../assets/img/search.png" alt="" />
           </span>
         </div>
         <div class="cjsjs_content">
           <div class="jqt">
-            <p>3,695,452</p>
+            <p>{{ init_number(result_data.recent) }}</p>
             <p>近7天采集数</p>
           </div>
           <div class="sqt">
-            <p>1,125,837</p>
+            <p>{{ init_number(result_data.last) }}</p>
             <p>上7天采集数</p>
           </div>
           <div>
-            <p>-22.25%</p>
+            <p>{{ (result_data.rate * 100).toFixed(2) }}%</p>
             <p>变化趋势</p>
           </div>
         </div>
@@ -59,21 +82,25 @@
         <span class="site_p_export">导出</span>
         <div class="list">
           <ul>
+            <li class="list_li">
+              <div class="list_li_number">编号</div>
+              <div class="list_li_name">站点名称</div>
+              <div class="list_li_time">最后更新时间</div>
+            </li>
             <my-scroll style="content_mt_onescroll">
-              <li class="list_li">
-                <div class="list_li_number">编号</div>
-                <div class="list_li_name">站点名称</div>
-                <div class="list_li_time">最后更新时间</div>
-              </li>
-              <li v-for="(v, k) in tableData" :key="k" :class="{'active':k%2 != 0}">
+              <li
+                v-for="(v, k) in result_data.not_updated"
+                :key="k"
+                :class="{ active: k % 2 != 0 }"
+              >
                 <div class="list_li_number">
-                  {{ v.number }}
+                  {{ k + 1 }}
                 </div>
                 <div class="list_li_name">
-                  {{ v.name }}
+                  {{ v.name_zh }}
                 </div>
                 <div class="list_li_time">
-                  {{ v.date }}
+                  {{ v.last_update }}
                 </div>
               </li>
             </my-scroll>
