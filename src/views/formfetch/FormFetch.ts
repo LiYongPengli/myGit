@@ -243,7 +243,7 @@ export default class FormFetchCom extends Vue {
     //格式化数据格式
     public init_number(number: number): string {
         if (!number) {
-            return "";
+            return "0";
         }
         let str = ""
         let num = number + '';
@@ -263,24 +263,6 @@ export default class FormFetchCom extends Vue {
         }
         return str;
     }
-
-
-
-
-
-
-
-
-
-
-    // private tableRowClassName(row, rowIndex){
-    //     if (rowIndex === 1) {
-    //         return 'warning-row';
-    //       } else if (rowIndex === 3) {
-    //         return 'success-row';
-    //       }
-    //       return '';
-    // }
 
 
 }

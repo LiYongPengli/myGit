@@ -4,35 +4,51 @@
       <div class="content_tu">
         <div class="cjsjs">
           <div class="cjsjs_head">
-            <el-button>今日</el-button>
-            <el-button type="primary">最近7天</el-button>
-            <el-button class="zjsst" type="primary">最近30天</el-button>
-            <el-date-picker v-model="value1" type="date" placeholder="开始日期">
-            </el-date-picker>
-            <span class="zhi">-</span>
-            <el-date-picker v-model="value2" type="date" placeholder="截止日期">
+            <el-button
+              :type="search_form.stat_type == 'today' ? 'primary' : ''"
+              @click="setDay('today')"
+              >今日</el-button
+            >
+            <el-button
+              :type="search_form.stat_type == '7' ? 'primary' : ''"
+              @click="setDay('7')"
+              >最近7天</el-button
+            >
+            <el-button
+              :type="search_form.stat_type == '30' ? 'primary' : ''"
+              @click="setDay('30')"
+              >最近30天</el-button
+            >
+            <el-date-picker
+              @change="setDate"
+              style="width: 250px; margin: 0 20px"
+              v-model="dates"
+              type="daterange"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            >
             </el-date-picker>
             <span class="cjsjs_head_search">
               <img src="../../assets/img/search.png" alt="" />
             </span>
           </div>
         </div>
-       <div class="cjsjs_content">
+        <div class="cjsjs_content">
           <div class="jqt">
-            <p>72</p>
+            <p>{{ init_number(result_data.recent) }}</p>
             <p>本周注册人数</p>
           </div>
           <div class="sqt">
-            <p>46</p>
+            <p>{{ init_number(result_data.last) }}</p>
             <p>上周注册人数</p>
           </div>
           <div>
-            <p>22.25% </p>
+            <p>{{ (result_data.rate * 100).toFixed(2) }}%</p>
             <p>增长率</p>
           </div>
           <div class="inline">
-              <p>1,983</p>
-              <p>当前在线人数</p>
+            <p>{{ init_number(result_data.reg_total) }}</p>
+            <p>当前注册人数</p>
           </div>
         </div>
         <!-- 采集数据数图 -->
@@ -52,38 +68,42 @@
         <div class="content_form_one">
           <span class="namelist">注册用户名单</span>
           <span class="export">导出</span>
-          <input type="text" placeholder="账号/昵称/手机号" />
+          <input v-model="search_user" type="text" placeholder="账号/昵称/手机号" />
           <img class="searchinput" src="../../assets/img/search.png" alt="" />
         </div>
+        <!-- 用户列表 -->
         <div class="content_form_list">
           <ul>
+            <li class="list_li">
+              <div class="list_li_accountnumber">账号</div>
+              <div class="list_li_name">昵称</div>
+              <div class="list_li_phone">手机号</div>
+              <div class="list_li_count">微信昵称</div>
+              <div class="list_li_time">注册时间</div>
+            </li>
             <my-scroll style="content_mt_onescroll">
-              <li class="list_li">
-                <div class="list_li_accountnumber">账号</div>
-                <div class="list_li_name">昵称</div>
-                <div class="list_li_phone">手机号</div>
-                <div class="list_li_count">微信昵称</div>
-                <div class="list_li_time">注册时间</div>
-              </li>
               <li
-                v-for="(v, k) in tableData"
+              v-show="showUsers(v)"
+                v-for="(v, k) in result_data.users"
                 :key="k"
                 :class="{ active: k % 2 != 0 }"
               >
                 <div class="list_li_accountnumber">
-                  {{ v.accountnumber }}
+                  {{ v.account }}
                 </div>
                 <div class="list_li_name">
-                  {{ v.name }}
+                  {{ v.nickname }}
                 </div>
                 <div class="list_li_phone">
-                  {{ v.phone }}
+                  {{ v.phone_number }}
                 </div>
                 <div class="list_li_count">
-                  {{ v.wechatnickname }}
+                  {{
+                    v.wechat_info.binding ? v.wechat_info.nickname : "未绑定"
+                  }}
                 </div>
                 <div class="list_li_time">
-                  {{ v.time }}
+                  {{ v.registration_date.split(".")[0] }}
                 </div>
               </li>
             </my-scroll>
