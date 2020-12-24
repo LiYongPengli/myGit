@@ -6,7 +6,6 @@ export default class IntelligentRetrievalCom extends Vue {
     @State("user_message") user_message: any;
     @Mutation('setShowIntelligent') setShowIntelligent: any;
     public searchText: string = "";
-    public clearDate: boolean = false;
     //加载中
     public loading: boolean = false;
     //加载完成
@@ -37,10 +36,7 @@ export default class IntelligentRetrievalCom extends Vue {
     //初次检索后的数据
     public searchData: any = "";
     public newsList: any[] = [];
-    private dateTime = {
-        time_from: '',
-        time_to: '',
-    }
+    private dateTime: Date[] = [];
     public showSearch = true;
     public filterMenu = [
         { name: 'A', choose: false },
@@ -300,7 +296,7 @@ export default class IntelligentRetrievalCom extends Vue {
      */
     public setLanguage(language: string): void {
         this.language = language;
-        
+
     }
 
     /**
@@ -328,7 +324,6 @@ export default class IntelligentRetrievalCom extends Vue {
 
     //指定日期筛选
     public setFilterTime(days: number): void {
-        this.clearDate = true;
         switch (days) {
             case 0:
                 this.weekFilter = false;
@@ -373,43 +368,19 @@ export default class IntelligentRetrievalCom extends Vue {
     }
 
     //自定义日期筛选
-    public dateChange(obj: { index: string; value: Date | String }): void {
-        let date = obj.value as Date;
-        this.clearDate = false;
-        if (obj.index == '0') {
-            try {
-                this.dateTime.time_from = date.toLocaleDateString();
-            } catch (error) {
-                this.dateTime.time_from = ""
-            }
+    public dateChange(): void {
+        if (!this.dateTime) {
+            this.filter.time_from = this.filter.time_to = "";
         } else {
-            try {
-                this.dateTime.time_to = date.toLocaleDateString();
-            } catch (error) {
-                this.dateTime.time_to = ""
-            }
+            this.filter.time_from = this.dateTime[0].toLocaleDateString();
+            this.filter.time_to = this.dateTime[1].toLocaleDateString();
         }
-        if (this.dateTime.time_from && this.dateTime.time_to) {
-            this.filter.search_after = [];
-            this.finished = false;
-            this.dayFilter = false;
-            this.weekFilter = false;
-            this.monthFilter = false;
-            this.filter.time_from = this.dateTime.time_from;
-            this.filter.time_to = this.dateTime.time_to;
-            this.toFilter();
-        } else if (!this.dateTime.time_from && !this.dateTime.time_to) {
-            this.filter.time_from = "";
-            this.filter.time_to = "";
-            this.filter.search_after = [];
-            this.finished = false;
-            this.dayFilter = false;
-            this.weekFilter = false;
-            this.monthFilter = false;
-            this.filter.time_from = this.dateTime.time_from;
-            this.filter.time_to = this.dateTime.time_to;
-            this.toFilter();
-        }
+        this.filter.search_after = [];
+        this.finished = false;
+        this.dayFilter = false;
+        this.weekFilter = false;
+        this.monthFilter = false;
+        this.toFilter();
     }
 
     //相关度和时间排序
