@@ -118,11 +118,10 @@ export default class IntelligentRetrievalCom extends Vue {
                 console.log(err);
             });
     }
-    @Emit("tosearch")
-    public clickList(item: string): string {
+    public clickList(item: string): void {
         this.searchText = item;
         this.setHistory();
-        return this.searchText;
+        this.searchNews();
     }
 
     public getSearchText(searchText: string): void {
@@ -405,6 +404,15 @@ export default class IntelligentRetrievalCom extends Vue {
             this.clearFilter();
             this.searchNews();
         }
+    }
+    //去搜索
+    public toClickSearch(): void {
+        if (!this.searchText) {
+            return;
+        }
+        this.setHistory();
+        this.clearFilter();
+        this.searchNews();
     }
 
     //清空过滤条件

@@ -15,7 +15,7 @@
               placeholder="美国大选"
             />
             <!-- <img class="sousuo"  src="../../assets/img/sousuo.png" alt=""> -->
-            <img class="sousuo" src="../../assets/img/sousuo.png" alt="" />
+            <img @click="toClickSearch" class="sousuo" src="../../assets/img/sousuo.png" alt="" />
             <div class="searchList" v-show="showSearchList">
               <my-scroll>
                 <ul>
