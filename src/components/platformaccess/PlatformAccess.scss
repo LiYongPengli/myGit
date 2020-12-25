@@ -41,6 +41,15 @@
                             font-size: 16px;
                             margin-top: 10px;
                             color: #f4516c;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img{
+                                margin-left: 5px;
+                            }
+                        }
+                        .upnum{
+                            color: rgb(43, 134, 47)!important;
                         }
                     }
                 }
@@ -133,6 +142,7 @@
                     font-size: 20px;
                 }
                 .Cumulative,
+                .Cumulative1,
                 .export {
                     width: 100px;
                     display: inline-block;
@@ -148,6 +158,11 @@
                 .Cumulative {
                     margin-left: 100px;
                     margin-right: 30px;
+                }
+                .Cumulative1 {
+                }
+                .CumulativeActive{
+                    background: #007aff;
                 }
                 .searchdate {
                     cursor: pointer;
@@ -198,9 +213,7 @@
                     top: 5px;
                     cursor: pointer;
                 }
-                .export {
-                    margin-left: 25px;
-                }
+                
             }
             .content_form_list {
                 ul {

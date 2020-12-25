@@ -6,42 +6,98 @@
         <ul>
           <li>
             <div class="peoplenum">
-              <p class="num">983</p>
+              <p class="num">{{userBehavior?init_number(userBehavior.online.recent):0 }}</p>
               <p class="name">当前在线人数</p>
             </div>
             <div class="yesterday">
-              <p class="name">昨日同时:671</p>
-              <p class="num">56.00%</p>
+              <p class="name">
+                昨日同时:{{ userBehavior?init_number(userBehavior.online.last):0 }}
+              </p>
+              <div v-if="userBehavior" :class="{ upnum: userBehavior.online.rate < 0 }" class="num">
+                {{ (Math.abs(userBehavior.online.rate) * 100).toFixed(2) }}%
+                <img
+                  v-show="userBehavior.online.rate < 0"
+                  src="../../assets/img/ptdown.png"
+                  alt=""
+                />
+                <img
+                  v-show="userBehavior.online.rate >= 0"
+                  src="../../assets/img/ptup.png"
+                  alt=""
+                />
+              </div>
             </div>
           </li>
           <li>
             <div class="peoplenum">
-              <p class="num">983</p>
-              <p class="name">当前在线人数</p>
+              <p class="num">{{ userBehavior?init_number(userBehavior.visit.recent):0 }}</p>
+              <p class="name">今日浏览量</p>
             </div>
             <div class="yesterday">
-              <p class="name">昨日同时:671</p>
-              <p class="num">56.00%</p>
+              <p class="name">
+                昨日浏览量:{{ userBehavior?init_number(userBehavior.visit.last):0 }}
+              </p>
+              <div v-if="userBehavior" :class="{ upnum: userBehavior.visit.rate < 0 }" class="num">
+                {{ (Math.abs(userBehavior.visit.rate) * 100).toFixed(2) }}%
+                <img
+                  v-show="userBehavior.visit.rate < 0"
+                  src="../../assets/img/ptdown.png"
+                  alt=""
+                />
+                <img
+                  v-show="userBehavior.visit.rate >= 0"
+                  src="../../assets/img/ptup.png"
+                  alt=""
+                />
+              </div>
             </div>
           </li>
           <li>
             <div class="peoplenum">
-              <p class="num">983</p>
-              <p class="name">当前在线人数</p>
+              <p class="num">{{ userBehavior?init_number(userBehavior.active.recent):0 }}</p>
+              <p class="name">今日活动用户数</p>
             </div>
             <div class="yesterday">
-              <p class="name">昨日同时:671</p>
-              <p class="num">56.00%</p>
+              <p class="name">
+                昨日活动用户数:{{ userBehavior?init_number(userBehavior.active.last):0 }}
+              </p>
+              <div v-if="userBehavior" :class="{ upnum: userBehavior.active.rate < 0 }" class="num">
+                {{ (Math.abs(userBehavior.active.rate) * 100).toFixed(2) }}%
+                <img
+                  v-show="userBehavior.active.rate < 0"
+                  src="../../assets/img/ptdown.png"
+                  alt=""
+                />
+                <img
+                  v-show="userBehavior.active.rate >= 0"
+                  src="../../assets/img/ptup.png"
+                  alt=""
+                />
+              </div>
             </div>
           </li>
           <li>
             <div class="peoplenum">
-              <p class="num">983</p>
-              <p class="name">当前在线人数</p>
+              <p class="num">{{ userBehavior?userBehavior.stay.recent.split(".")[0]:0 }}</p>
+              <p class="name">平均停留时长</p>
             </div>
             <div class="yesterday">
-              <p class="name">昨日同时:671</p>
-              <p class="num">56.00%</p>
+              <p class="name">
+                昨日时长:{{ userBehavior?userBehavior.stay.last.split(".")[0]:0 }}
+              </p>
+              <div v-if="userBehavior" :class="{ upnum: userBehavior.stay.rate < 0 }" class="num">
+                {{ (Math.abs(userBehavior.stay.rate) * 100).toFixed(2) }}%
+                <img
+                  v-show="userBehavior.stay.rate < 0"
+                  src="../../assets/img/ptdown.png"
+                  alt=""
+                />
+                <img
+                  v-show="userBehavior.stay.rate >= 0"
+                  src="../../assets/img/ptup.png"
+                  alt=""
+                />
+              </div>
             </div>
           </li>
         </ul>
@@ -49,77 +105,103 @@
       <div class="content_tu">
         <div class="cjsjs">
           <div class="cjsjs_head">
-            <el-button>今日</el-button>
-            <el-button type="primary">最近7天</el-button>
-            <el-button class="zjsst" type="primary">最近30天</el-button>
-            <el-date-picker v-model="value1" type="date" placeholder="开始日期">
+            <el-button
+              :type="form.stat_type == 'today' ? 'primary' : ''"
+              @click="setDay('today')"
+              >今日</el-button
+            >
+            <el-button
+              :type="form.stat_type == '7' ? 'primary' : ''"
+              @click="setDay('7')"
+              >最近7天</el-button
+            >
+            <el-button
+              :type="form.stat_type == '30' ? 'primary' : ''"
+              @click="setDay('30')"
+              >最近30天</el-button
+            >
+            <el-date-picker
+              @change="setDate"
+              style="width: 250px; margin: 0 20px"
+              v-model="dates"
+              type="daterange"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            >
             </el-date-picker>
-            <span class="zhi">-</span>
-            <el-date-picker v-model="value2" type="date" placeholder="截止日期">
-            </el-date-picker>
-            <span class="cjsjs_head_search">
+            <!-- <span class="cjsjs_head_search">
               <img src="../../assets/img/search.png" alt="" />
-            </span>
+            </span> -->
           </div>
         </div>
         <!-- 采集数据数图 -->
         <div class="cjsjqst">
           <div class="small">
-            <div ref="myChart2" class="myChart2"></div>
+            <div ref="myChart1" class="myChart2"></div>
           </div>
         </div>
         <!-- 活动用户数趋势图 -->
         <div class="hdyhqst">
           <div class="small">
-            <div ref="myChart3" class="myChart3"></div>
+            <div ref="myChart2" class="myChart3"></div>
           </div>
         </div>
       </div>
       <div class="content_form">
         <div class="content_form_one">
           <span class="namelist">用户登录名单</span>
-          <span class="Cumulative">累计</span>
-          <el-date-picker v-model="value1" type="date" placeholder="开始日期">
+          <span @click="setUserDay('today')" :class="{'CumulativeActive':user_status=='today'}" class="Cumulative">今日</span>
+          <span @click="setUserDay('all')" :class="{'CumulativeActive':user_status=='all'}" class="Cumulative1">累计</span>
+          <el-date-picker
+            @change="setUserDate"
+            style="width: 250px; margin: 0 20px"
+            v-model="userdates"
+            type="daterange"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          >
           </el-date-picker>
-          <span class="zhi">-</span>
-          <el-date-picker v-model="value2" type="date" placeholder="截止日期">
-          </el-date-picker>
-          <div class="searchdate">
+          <!-- <div class="searchdate">
             <img src="../../assets/img/search.png" alt="" />
-          </div>
-          <input type="text" placeholder="账号/昵称/手机号" />
+          </div> -->
+          <input
+            v-model="search_user"
+            type="text"
+            placeholder="账号/昵称/手机号"
+          />
           <img class="searchinput" src="../../assets/img/search.png" alt="" />
           <span class="export">导出</span>
         </div>
         <div class="content_form_list">
           <ul>
+            <li class="list_li">
+              <div class="list_li_accountnumber">账号</div>
+              <div class="list_li_name">昵称</div>
+              <div class="list_li_phone">手机号</div>
+              <div class="list_li_count">累计登录次数</div>
+              <div class="list_li_time">最后登录时间</div>
+            </li>
             <my-scroll style="content_mt_onescroll">
-              <li class="list_li">
-                <div class="list_li_accountnumber">账号</div>
-                <div class="list_li_name">昵称</div>
-                <div class="list_li_phone">手机号</div>
-                <div class="list_li_count">累计登录次数</div>
-                <div class="list_li_time">最后登录时间</div>
-              </li>
               <li
-                v-for="(v, k) in tableData"
+                v-show="showUsers(v)"
+                v-for="(v, k) in userLoginList"
                 :key="k"
                 :class="{ active: k % 2 != 0 }"
               >
                 <div class="list_li_accountnumber">
-                  {{ v.accountnumber }}
+                  {{ v.account }}
                 </div>
                 <div class="list_li_name">
-                  {{ v.name }}
+                  {{ v.nickname }}
                 </div>
                 <div class="list_li_phone">
-                  {{ v.phone }}
+                  {{ v.phone_number }}
                 </div>
-                 <div class="list_li_count">
-                  {{ v.count }}
+                <div class="list_li_count">
+                  {{ v.login_times }}
                 </div>
-                 <div class="list_li_time">
-                  {{ v.time }}
+                <div class="list_li_time">
+                  {{ new Date(v.last_login_date).toLocaleString() }}
                 </div>
               </li>
             </my-scroll>

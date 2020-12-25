@@ -5,12 +5,10 @@
     <div class="concerned">
       <p class="concerned_p">已关注</p>
       <ul element-loading-background="rgba(58, 58, 72, 0.5)" v-loading="loading">
-        <li v-for="(v, k) in country_follow_list" :key="k">
+        <li v-show="showItem(v.name)" v-for="(v, k) in country_follow_list" :key="k">
           <div>
             <img class="flag" :src="v.flag" alt="" />
-            <speed-text width="60px" height="20px" :text=" v.name">
-              
-            </speed-text>
+            <speed-text width="60px" height="20px" :text=" v.name" />
             <img
               class="close"
               @click.stop="unsub(v, k)"
@@ -30,8 +28,8 @@
         <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
         <img v-else src="../../assets/img/shouqil.png" alt="" />
       </p>
-      <ul element-loading-background="rgba(58, 58, 72, 0.5)" v-loading="loadFollow">
-        <li v-for="(v1, k1) in showlist" :key="k1">
+      <ul :style="{'height':showAll?'auto':265+'px'}" element-loading-background="rgba(58, 58, 72, 0.5)" v-loading="loadFollow">
+        <li v-show="showItem(v1.name)" v-for="(v1, k1) in country_list" :key="k1">
           <div>
             <img class="flag" :src="v1.flag" alt="" />
             <!-- <el-tooltip class="item" effect="dark" :content="v1.name" placement="top">

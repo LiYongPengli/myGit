@@ -1,8 +1,9 @@
 import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class CountryCom extends Vue {
+    @Prop({}) search!:string;
     public country_list: any[] = [];
     public country_follow_list: any[] = [];
     //加载中
@@ -11,26 +12,6 @@ export default class CountryCom extends Vue {
 
     //定义数据是否需要完全显示的属性
     public showAll: boolean = false;
-    
-    public get showlist(): any {
-
-        if (this.showAll == false) {
-            let showlist: any = [];
-            if (this.country_list.length > 10) {
-                for (var i = 0; i < 16; i++) {
-                    showlist.push(this.country_list[i])
-                }
-            }
-            else {
-                showlist = this.country_list
-            }
-            return showlist;
-        }
-        else {
-            return this.country_list;
-        }
-    }
-
     public get word(): any {
         if (this.showAll == false) {
             return '展开'
@@ -47,10 +28,16 @@ export default class CountryCom extends Vue {
         this.getSubscriptions('country', 'sub', res => {
             console.log(res.data)
             this.country_follow_list = res.data.data;
+            this.country_follow_list.sort((a,b)=>{
+                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+            })
             this.loading = false;
         });
         this.getSubscriptions('country', 'unsub', res => {
             this.country_list = res.data.data;
+            this.country_list.sort((a,b)=>{
+                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+            })
             this.loadFollow = false;
         });
     }
@@ -72,6 +59,9 @@ export default class CountryCom extends Vue {
         }).then(res=>{
             this.country_list.push(item);
             this.country_follow_list.splice(index,1);
+            this.country_list.sort((a,b)=>{
+                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+            })
         }).catch(err=>{
             console.log(err);
         })
@@ -86,8 +76,19 @@ export default class CountryCom extends Vue {
         }).then(res=>{
             this.country_follow_list.push(item);
             this.country_list.splice(index,1);
+            this.country_follow_list.sort((a,b)=>{
+                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
+            })
         }).catch(err=>{
             console.log(err);
         })
+    }
+
+    //搜索匹配
+    public showItem(name:string):boolean{
+        if(~name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+            return true;
+        }
+        return false;
     }
 }

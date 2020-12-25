@@ -9,25 +9,25 @@
         <li class="item" @click="pageIndex=3" :class="{active:pageIndex==3}">推荐频道</li>
       </ul>
       <div class="top_search">
-        <input type="text" placeholder="请输入国家名称" />
+        <input v-model="searchText" type="text" :placeholder="getPlaceHolder()" />
       </div>
     </div>
     <div class="content">
       <!-- 国家 -->
       <div v-if="pageIndex == 0" class="country">
-        <country />
+        <country :search="searchText" />
       </div>
 
       <div v-if="pageIndex == 1" class="media">
-        <media />
+        <media :search="searchText" />
       </div>
 
       <div v-if="pageIndex == 2" class="media">
-        <people />
+        <people :search="searchText" />
       </div>
 
        <div v-if="pageIndex == 3" class="media">
-        <channel />
+        <channel :search="searchText" />
       </div>
     </div>
  
