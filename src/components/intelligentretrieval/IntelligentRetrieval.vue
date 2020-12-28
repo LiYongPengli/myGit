@@ -2,7 +2,7 @@
   <!-- 智能检索 -->
   <div class="intelligentretrieval">
     <div v-if="!showSearch" class="intelligent_wrap">
-      <my-scroll @loading="loadMore">
+      <my-scroll>
         <header>
           <div class="search">
             <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
@@ -15,7 +15,12 @@
               placeholder="美国大选"
             />
             <!-- <img class="sousuo"  src="../../assets/img/sousuo.png" alt=""> -->
-            <img @click="toClickSearch" class="sousuo" src="../../assets/img/sousuo.png" alt="" />
+            <img
+              @click="toClickSearch"
+              class="sousuo"
+              src="../../assets/img/sousuo.png"
+              alt=""
+            />
             <div class="searchList" v-show="showSearchList">
               <my-scroll>
                 <ul>
@@ -61,7 +66,7 @@
               <div class="list">
                 <!-- <el-tooltip class="item" effect="dark"  placement="top"> -->
                 <div
-                @click="multiple('country')"
+                  @click="multiple('country')"
                   v-show="filter.country.length > 1 && !multipleCountry"
                   class="country_search_result_list"
                 >
@@ -81,7 +86,6 @@
                   <div v-show="!multipleCountry && filter.country.length < 2">
                     <p
                       @click="chooseitem('country', '')"
-                      
                       class="all listqb"
                       :class="{ cur: !filter.country.length }"
                     >
@@ -150,7 +154,7 @@
               <div class="list">
                 <div class="other">
                   <div
-                  @click="multiple('media')"
+                    @click="multiple('media')"
                     v-show="filter.media.length > 1 && !multipleMedia"
                     class="country_search_result_list"
                   >
@@ -169,7 +173,6 @@
                     <div v-show="!multipleMedia && filter.media.length < 2">
                       <p
                         class="all"
-                        
                         :class="{ cur: !filter.media.length }"
                         @click="chooseitem('media', '')"
                       >
@@ -227,7 +230,7 @@
               <div class="list">
                 <div class="other">
                   <div
-                  @click="multiple('character')"
+                    @click="multiple('character')"
                     v-show="filter.character.length > 1 && !multipleCharacter"
                     class="country_search_result_list"
                   >
@@ -243,13 +246,12 @@
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"
                   >
-                    <div v-show="
-                          !multipleCharacter && filter.character.length < 2
-                        ">
+                    <div
+                      v-show="!multipleCharacter && filter.character.length < 2"
+                    >
                       <p
                         @click="chooseitem('character', '')"
                         class="all listqb"
-                        
                         :class="{ cur: !filter.character.length }"
                       >
                         全部
@@ -319,15 +321,15 @@
                       <div>一月内</div>
                     </li>
                     <!-- <time-slot :clear="clearDate" @dateChange="dateChange" /> -->
-                     <el-date-picker
-                        @change="dateChange"
-                        style="width: 250px; margin-right: 20px"
-                        v-model="dateTime"
-                        type="daterange"
-                        start-placeholder="开始日期"
-                        end-placeholder="结束日期"
-                      >
-                      </el-date-picker>
+                    <el-date-picker
+                      @change="dateChange"
+                      style="width: 250px; margin-right: 20px"
+                      v-model="dateTime"
+                      type="daterange"
+                      start-placeholder="开始日期"
+                      end-placeholder="结束日期"
+                    >
+                    </el-date-picker>
                   </ul>
                 </div>
               </div>
@@ -354,13 +356,12 @@
                 <!-- <img class="up" src="../../assets/img/up.png" alt="" />
                 <img class="down" src="../../assets/img/down.png" alt="" /> -->
               </div>
-               <div
+              <div
                 @click="sortList('v')"
                 :class="{ cur: filter.sort_type == 'v' }"
                 class="releasetimesort"
               >
                 热度排序
-                
               </div>
               <ul>
                 <li
@@ -394,19 +395,56 @@
               <ul>
                 <li v-for="(v, i) in newsList" :key="i">
                   <div class="pic">
-                    <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
-                    <video-thumbnail style="width:200px;margin-right: 30px;" v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
+                    <img
+                      v-if="v.cover.type == 'image'"
+                      :src="v.cover.url"
+                      alt=""
+                    />
+                    <video-thumbnail
+                      style="width: 200px; margin-right: 30px"
+                      v-if="v.cover.type == 'video'"
+                      :video_photo="v.cover.url"
+                      :video_url="v.cover.video"
+                    />
                   </div>
                   <div class="text">
-                    <p v-show="language=='crawler'" @click="toNewsInfo(v)" class="title">{{ v.title.crawler }}</p>
-                    <p v-show="language=='en'" @click="toNewsInfo(v)" class="title">{{ v.title.en }}</p>
-                    <p v-show="language=='zh-CN'" @click="toNewsInfo(v)" class="title">{{ v.title['zh-CN'] }}</p>
+                    <p
+                      v-show="language == 'crawler'"
+                      @click="toNewsInfo(v)"
+                      class="title"
+                    >
+                      {{ v.title.crawler }}
+                    </p>
+                    <p
+                      v-show="language == 'en'"
+                      @click="toNewsInfo(v)"
+                      class="title"
+                    >
+                      {{ v.title.en }}
+                    </p>
+                    <p
+                      v-show="language == 'zh-CN'"
+                      @click="toNewsInfo(v)"
+                      class="title"
+                    >
+                      {{ v.title["zh-CN"] }}
+                    </p>
                     <span class="mt">媒体: {{ v.media_name }} </span>
                     <span class="time">时间: {{ init_time(v.time) }}</span>
                     <span class="ll">浏览次数: {{ v.pv }}人</span>
                   </div>
                 </li>
-                <div v-show="!finished" class="jzgd">更多精彩内容，加载中</div>
+                <div
+                  element-loading-text="拼命加载中"
+                  
+                  element-loading-background="rgba(0, 0, 0, 0)"
+                  v-loading="loading"
+                  @click="loadMore"
+                  v-show="!finished"
+                  class="jzgd"
+                >
+                  {{loading?'':'点击加载更多内容'}}
+                </div>
               </ul>
             </div>
           </div>
@@ -433,7 +471,7 @@ import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
     SearchCom,
     TimeSlot,
     MyScroll,
-    VideoThumbnail
+    VideoThumbnail,
   },
 })
 export default class IntelligentRetrieval extends mixins(

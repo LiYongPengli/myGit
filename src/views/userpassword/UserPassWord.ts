@@ -13,7 +13,7 @@ export default class UserPassWordCom extends Vue {
     public send_code: boolean = false;
     public img_vc_code: string = "";
     public show_vc_code: boolean = false;
-    private is_send_img_code: boolean = false;
+    private is_send_img_code: boolean = true;
     private time: number = 59;
     //图片验证码数据
     public img_vc: string = "";
@@ -183,7 +183,7 @@ export default class UserPassWordCom extends Vue {
     //点击确认校验图片验证码
     public async img_srue(): Promise<void> {
         if (await this.imgCodeSure(this.img_vc_code)) {
-            this.getPhoneCode(this.fogetForm.tel);
+            this.getPhoneCode(this.user_message.phone_number);
         }
     }
 
@@ -298,6 +298,9 @@ export default class UserPassWordCom extends Vue {
                     cmd: 'user_modify_pw_by_pw',
                     paras: { old_pw: this.form.oldpwd, new_pw: this.form.newpwd },
                 })
+                this.form.newpwd = "";
+                this.form.oldpwd = "";
+                this.form.surenewpwd = "";
                 this.$message.success('密码修改成功');
             } else {
                 let phone_vc = await this.phoneCodeSure(this.user_message.phone_number,this.fogetForm.vc);
@@ -310,7 +313,7 @@ export default class UserPassWordCom extends Vue {
                             this.$message.error(res.data.msg);
                             return;
                         }
-                        this.$message.success('密码重置成功!');
+                        this.$message.success('密码修改成功!');
                         this.fogetForm = {
                             tel:'',
                             vc:'',

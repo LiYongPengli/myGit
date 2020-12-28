@@ -1,6 +1,7 @@
 import { baseApi } from '@/axios/axios'
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
+import Page2Word from '@/libs/Page2Word'
 @Component
 export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
@@ -25,7 +26,7 @@ export default class NewsInfoCom extends Vue {
             }
         }).then(res => {
             //console.log(res.data);
-            this.newsInfo = res.data.data;
+            this.newsInfo = res.data.data.news_detail;
             this.setShareNews(this.newsInfo);
         }).catch(err => {
             console.log(err);
@@ -110,12 +111,18 @@ export default class NewsInfoCom extends Vue {
 
     //附件下载
     public todownLoad(item: any): void {
-        let a = document.createElement('a');
-        a.href = item.url;
-        a.download = 'w3logo';
-        a.click();
-        a.remove();
-        window.open(item.url)
+        let img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.src = item.url;
+        let canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        img.onload = function(){
+            canvas.width = img.width;
+            canvas.height = img.height;
+            let ctx = canvas.getContext('2d');
+            ctx?.drawImage(img,0,0,img.width,img.height);
+            console.log(ctx?.getImageData(0,0,img.width,img.height))
+        }
     }
 
     //获取收藏状态
@@ -129,6 +136,6 @@ export default class NewsInfoCom extends Vue {
 
     //导出world
     public downloadWord(): void {
-
+        Page2Word(this.newsInfo.title['zh-CN']+'-'+new Date().toLocaleDateString(),<HTMLElement>this.$refs['newsWrap']);
     }
 }

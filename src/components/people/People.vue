@@ -45,14 +45,13 @@
             <img src="../../assets/img/tx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
-              <speed-text width="150px" height="20px" :text="'中国共产党中央委员会总书记'">
-          
-              </speed-text>
+              <speed-text width="150px" height="20px" :text="'中国共产党中央委员会总书记'" />
             </div>
             <img @click="addFollow(v, i)" src="../../assets/img/add.png" alt="" />
           </div>
         </li>
       </ul>
+      <div>加载更多</div>
       <!-- 还没有找到想关注的人物列表 -->
      
     </div>

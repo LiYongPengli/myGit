@@ -7,6 +7,7 @@ export default class EditChannelCom extends Vue{
     //频道列表
     @Prop({}) follow_channel!:any[];
     public channel:any[] = [];
+    public unSubStart:number = 0;
     //搜索频道
     public search_channel:string = "";
     //是否显示频道编辑框
@@ -20,9 +21,16 @@ export default class EditChannelCom extends Vue{
         });
     }
 
+    public loadingUnSub():void{
+        this.getSubscriptions("channel", "unsub", (res) => {
+            console.log(res.data);
+            this.channel = this.channel.concat(res.data.data);
+        },this.unSubStart+=100);
+    }
+
     //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=0').then(res => {
+    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=100&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);

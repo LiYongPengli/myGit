@@ -57,7 +57,7 @@
             </div>
           </div>
           <!-- 文章主体 -->
-          <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
+          <div ref="newsWrap" v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
             <div
               v-if="newsInfo.media_name != 'YouTube'"
               v-html="getNewsContent()"
@@ -86,7 +86,7 @@
           <!-- 底部操作 -->
           <div class="footer">
             <div class="left">
-              <span @click="showDownLoad = true">附件下载</span>
+              <span v-show="newsInfo.attachments.length" @click="showDownLoad = true">附件下载</span>
             </div>
             <div class="right">
               <div class="download_this">
@@ -109,7 +109,8 @@
       <my-scroll>
         <ul class="download_list">
           <li v-for="(v, i) in newsInfo.attachments" :key="i">
-            <span v-if="v.name" class="file_name">{{ v.name }}</span>
+            <speed-text width="350px" :text="v.name" />
+            <!-- <span v-if="v.name" class="file_name">{{ v.name }}</span> -->
             <span v-if="!v.name" class="file_name">未知</span>
             <div class="downimg" @click="todownLoad(v)">
               <img src="../../assets/img/download.png" alt="" />
@@ -144,12 +145,14 @@ import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyFooter from "@/components/FooterTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import AddCollection from "@/components/addcollection/AddCollection.vue";
+import SpeedText from "@/components/SpeedText.vue";
 @Component({
   components: {
     HeaderTwo,
     MyFooter,
     MyScroll,
     AddCollection,
+    SpeedText
   },
 })
 export default class NewsInfo extends mixins(NewsInfoCom) {}

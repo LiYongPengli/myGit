@@ -6,6 +6,10 @@ export default class HomeSetCom extends Vue {
     public show = false;
     public searchText: string = "";
     public loadCountry:boolean = true;
+    public countryStart:number = 0;
+    public mediaStart:number = 0;
+    public characterStart:number = 0;
+    public channelStart:number = 0;
     //搜索防抖
     private search_timeout: any = null;
     //目前所处的页码
@@ -68,12 +72,39 @@ export default class HomeSetCom extends Vue {
     }
 
     //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0').then(res => {
+    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=100&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    //分页加载国家列表
+    public loadingCountry():void{
+        this.getSubscriptions("country", "unsub", res => {
+            this.country_list = this.country_list.concat(res.data.data);
+            this.page_data.country_list = this.country_list;
+        },this.countryStart+=100)
+    }
+    //分页加载人物列表
+    public loadingCharacter():void{
+        this.getSubscriptions("character", "unsub", res => {
+            this.character_list = this.character_list.concat(res.data.data);
+            this.page_data.character_list = this.character_list;
+        },this.characterStart+=100)
+    }
+    //分页加载人物列表
+    public loadingChannel():void{
+        this.getSubscriptions("channel", "unsub", res => {
+            this.channel_list = this.channel_list.concat(res.data.data);
+            this.page_data.channel_list = this.channel_list;
+        },this.characterStart+=100)
+    }
+
+    //分页加载媒体
+    public loadingMedia():void{
+        this.getMedia_list(100);
     }
 
     //搜索匹配国家
@@ -179,7 +210,7 @@ export default class HomeSetCom extends Vue {
         this.channel_list = arr;
     }
 
-    private getMedia_list(): void {
+    private getMedia_list(num:number): void {
         this.getSubscriptions("media", "unsub", (res) => {
             let media_list = res.data.data as any[];
             let week = new Date().getTime()-(7*24*60*60*1000);
@@ -194,8 +225,7 @@ export default class HomeSetCom extends Vue {
                 }
             }
             this.page_data.media_list = this.media_list;
-            console.log(media_list)
-        })
+        },this.mediaStart+=num)
     }
 
     /**
@@ -316,7 +346,7 @@ export default class HomeSetCom extends Vue {
         switch (this.pageIndex++) {
             case 0:
                 if (!this.media_list.week.length || !this.media_list.month.length)
-                    this.getMedia_list()
+                    this.getMedia_list(0)
                 break;
             case 1:
                 if (!this.character_list.length) {

@@ -17,7 +17,7 @@ export default class Table2Xlsx {
         workbook.Sheets[sheetName] = sheet;
         let wbout = xlsx.write(workbook, {
             bookType: 'xlsx', // 要生成的文件类型
-            bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+            bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容�
             type: 'binary'
         });
         let blob = new Blob([this.string2arraybuffer(wbout)], { type: "application/octet-stream" });
@@ -34,9 +34,9 @@ export default class Table2Xlsx {
     }
 
     /**
-* 通用的打开下载对话框方法，没有测试过具体兼容性
-* @param blob 下载地址，也可以是一个blob对象，必选
-* @param saveName 保存文件名，可选
+* 通用的打开下载对话框方法，没有测试过具体兼容�
+* @param blob 下载地址，也可以是一个blob对象，必�
+* @param saveName 保存文件名，可�
 */
     private openDownloadDialog(blob: Blob, saveName: string) {
         let url: string = "";
@@ -45,7 +45,7 @@ export default class Table2Xlsx {
         }
         let aLink = document.createElement('a');
         aLink.href = url;
-        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生�
         let event;
         if (window.MouseEvent) event = new MouseEvent('click');
         else {
@@ -53,5 +53,6 @@ export default class Table2Xlsx {
             event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         }
         aLink.dispatchEvent(event);
+        aLink.remove();
     }
 }

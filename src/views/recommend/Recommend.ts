@@ -1,6 +1,6 @@
 import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import Swiper from 'swiper'
 import { Mutation, State } from 'vuex-class';
 @Component
@@ -26,7 +26,9 @@ export default class RecommendCom extends Vue {
     //新闻列表
     public newsList: any[] = [];
     //起始页码
-    public start:number = 1;
+    public start = {
+        pageStart:0
+    }
     
     //关注频道列表
     public channel: { sub_id: string; name: string }[] = [];
@@ -82,7 +84,7 @@ export default class RecommendCom extends Vue {
 
 
     public loading():void{
-        this.start++;
+        this.start.pageStart+=10;
         this.get_recommend();
     }
 
@@ -102,8 +104,8 @@ export default class RecommendCom extends Vue {
 
 
     //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0').then(res => {
+    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=10').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -118,18 +120,18 @@ export default class RecommendCom extends Vue {
         let paras: any = {};
         switch (this.active_recommend) {
             case 0:
-                paras = { size: 10 };
+                paras = { start:this.start.pageStart,size: 10 };
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { name: this.active_recommend_name, size: 10 };
+                paras = { start:this.start.pageStart,name: this.active_recommend_name, size: 10 };
                 break;
         }
         this.axios.post(baseApi.api2 + '/v1/cmd/', {
             cmd: cmd,
             paras: paras,
         }).then(res => {
-            if(this.start==1){
+            if(this.start.pageStart==0){
                 this.newsList = res.data.data;
             }else{
                 if(!res.data.data.length){
@@ -152,6 +154,8 @@ export default class RecommendCom extends Vue {
     public change_recommend(index: number, name: string): void {
         this.active_recommend = index;
         this.active_recommend_name = name;
+        this.start.pageStart = 0;
+        this.finished = false;
         this.get_recommend();
     }
 

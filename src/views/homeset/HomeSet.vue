@@ -34,7 +34,7 @@
         >
       </span>
       <div class="content_wrap" v-loading="loadCountry" element-loading-background="rgba(0, 0, 0, 0.1)">
-        <my-scroll>
+        <my-scroll @loading="loadingCountry">
           <ul>
             <li
               @click="chooseItem('country', v, i)"
@@ -87,7 +87,7 @@
       <!-- 7天活跃 -->
       <div v-show="media_list.week.length" class="content_wrap" style="height: 200px">
         <span class="qit">近7天内活跃的媒体</span>
-        <my-scroll style="content_mt_onescroll">
+        <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
           <ul class="mt">
             <li
               @click="chooseMediaItem('week', v, i)"
@@ -124,7 +124,7 @@
       <!-- 30天活跃 -->
       <div v-show="media_list.month.length" class="content_wrap" style="height: 200px">
         <span class="sst">近30天内活跃的媒体</span>
-        <my-scroll>
+        <my-scroll @loading="loadingMedia">
           <ul class="mt">
             <li
               @click="chooseMediaItem('month', v, i)"
@@ -218,7 +218,7 @@
         ></span
       >
       <div class="content_wrap">
-        <my-scroll>
+        <my-scroll @loading="loadingCharacter">
           <ul class="rw">
             <li
               @click="chooseItem('character', v, i)"
@@ -262,7 +262,7 @@
     <!-- 推荐频道 -->
     <div v-if="pageIndex == 3" class="content">
       <div class="content_wrap">
-        <my-scroll>
+        <my-scroll @loading="loadingChannel">
           <ul class="tjpd">
             <li
               @click="chooseItem('channel', v, i)"
