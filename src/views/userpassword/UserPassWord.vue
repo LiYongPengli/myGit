@@ -55,7 +55,7 @@
     <div class="footer">
       <el-button @click="toEditPassword" style="width:280px;" type="primary">确认修改</el-button>
     </div>
-    <el-dialog :close-on-click-modal="false" title="获取验证码" width="800px" top="30vh" :visible.sync="show_vc_code">
+    <el-dialog :close-on-click-modal="false" title="获取验证码" width="600px" top="30vh" :visible.sync="show_vc_code">
       <div class="img_code_wrap">
         <div class="img_code_item">
           <span>图片验证码:</span>
@@ -63,7 +63,7 @@
           <img @click="getImgCode" :src="img_vc" alt="">
         </div>
         <div class="footer">
-          <el-button @click="img_srue" style="width:200px;" size="mini" type="primary">确定</el-button>
+          <el-button @click="img_srue" style="width:200px;" type="primary">确定</el-button>
         </div>
       </div>
     </el-dialog>

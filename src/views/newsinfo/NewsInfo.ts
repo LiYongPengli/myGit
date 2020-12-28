@@ -26,7 +26,7 @@ export default class NewsInfoCom extends Vue {
             }
         }).then(res => {
             //console.log(res.data);
-            this.newsInfo = res.data.data;
+            this.newsInfo = res.data.data.news_detail;
             this.setShareNews(this.newsInfo);
         }).catch(err => {
             console.log(err);
@@ -136,6 +136,6 @@ export default class NewsInfoCom extends Vue {
 
     //导出world
     public downloadWord(): void {
-        Page2Word(this.newsInfo.title+'-'+new Date().toLocaleDateString(),<HTMLElement>this.$refs['newsWrap']);
+        Page2Word(this.newsInfo.title['zh-CN']+'-'+new Date().toLocaleDateString(),<HTMLElement>this.$refs['newsWrap']);
     }
 }

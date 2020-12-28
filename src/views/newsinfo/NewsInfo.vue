@@ -2,7 +2,7 @@
   <div class="newsinfo">
     <header-two />
 
-    <div ref="newsWrap" class="wrap" v-if="newsInfo">
+    <div class="wrap" v-if="newsInfo">
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
@@ -57,7 +57,7 @@
             </div>
           </div>
           <!-- 文章主体 -->
-          <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
+          <div ref="newsWrap" v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
             <div
               v-if="newsInfo.media_name != 'YouTube'"
               v-html="getNewsContent()"
@@ -86,7 +86,7 @@
           <!-- 底部操作 -->
           <div class="footer">
             <div class="left">
-              <span @click="showDownLoad = true">附件下载</span>
+              <span v-show="newsInfo.attachments.length" @click="showDownLoad = true">附件下载</span>
             </div>
             <div class="right">
               <div class="download_this">

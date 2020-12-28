@@ -108,6 +108,7 @@
     <el-dialog
       top="25vh"
       width="800px"
+      :close-on-click-modal="false"
       element-loading-background="rgba(0, 0, 0, 0.2)" 
       v-loading="isUpFile"
       :title="dialogTitle"

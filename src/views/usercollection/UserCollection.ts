@@ -53,7 +53,7 @@ export default class UserCollectionCom extends Vue {
     private getData(): void {
         this.axios.get(baseApi.api2 + '/v1/user/favorite/').then(res => {
             console.log(res.data);
-            this.favoriteList = res.data.data;
+            this.favoriteList = res.data.data.favorite;
         }).catch(err => {
             console.log(err);
         })
@@ -82,7 +82,6 @@ export default class UserCollectionCom extends Vue {
             })
             .then((res) => {
                 this.friend_list = res.data.data;
-                console.log(this.friend_list);
             })
             .catch((err) => {
                 console.log(err);
@@ -147,7 +146,6 @@ export default class UserCollectionCom extends Vue {
     }
 
     public showBtn(index: number): void {
-        console.log(this.favoriteList[index])
         if(this.isShare){
             return;
         }

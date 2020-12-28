@@ -1,5 +1,5 @@
 import { baseApi } from '@/axios/axios';
-import { Emit, Component, Vue, Watch } from 'vue-property-decorator'
+import {  Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 @Component
 export default class IntelligentRetrievalCom extends Vue {
@@ -136,7 +136,7 @@ export default class IntelligentRetrievalCom extends Vue {
         this.axios
             .post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'search_news',
-                paras: { language: 'crawler', keywords: this.searchText.split(" "), size: this.filter.size },
+                paras: { language: 'crawler', keywords: this.searchText.split(" ")},
             })
             .then((res) => {
                 console.log(res.data);
