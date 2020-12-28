@@ -136,7 +136,7 @@ export default class IntelligentRetrievalCom extends Vue {
         this.axios
             .post(baseApi.api2 + '/v1/cmd/', {
                 cmd: 'search_news',
-                paras: { language: 'crawler', keywords: this.searchText.split(" ")},
+                paras: { keywords: this.searchText.split(" ")},
             })
             .then((res) => {
                 console.log(res.data);
@@ -144,8 +144,9 @@ export default class IntelligentRetrievalCom extends Vue {
                 this.countryList = res.data.data.filters.country;
                 this.mediaList = res.data.data.filters.media;
                 this.characterList = res.data.data.filters.character;
-                this.newsList = res.data.data.news;
-                this.filter.search_after = res.data.data.search_after;
+                this.toFilter();
+                // this.newsList = res.data.data.news;
+                // this.filter.search_after = res.data.data.search_after;
             })
             .catch((err) => {
                 console.log(err)
