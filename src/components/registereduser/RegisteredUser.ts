@@ -11,7 +11,7 @@ export default class RegisteredUserCom extends Vue {
     private chart: ECharts | null = null;
     private charts_option = {
         title: {
-            text: '数据采集趋势图',
+            text: '注册数量走势图',
             subtext: '',
             textStyle: {
                 color: 'white'
@@ -44,6 +44,9 @@ export default class RegisteredUserCom extends Vue {
                 }
 
             }
+        },
+        grid:{
+            left:50,
         },
         legend: {
             data: ['本期', '上期'],

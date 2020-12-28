@@ -100,7 +100,7 @@
                   {{ v.name_zh }}
                 </div>
                 <div class="list_li_time">
-                  {{ v.last_update }}
+                  {{ new Date(v.last_update).toLocaleString() }}
                 </div>
               </li>
             </my-scroll>

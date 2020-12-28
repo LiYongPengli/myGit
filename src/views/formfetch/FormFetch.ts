@@ -74,6 +74,9 @@ export default class FormFetchCom extends Vue {
 
             }
         },
+        grid:{
+            left:50,
+        },
         legend: {
             data: ['本期', '上期'],
             right: 100,

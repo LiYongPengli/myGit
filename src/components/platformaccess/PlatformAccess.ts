@@ -64,6 +64,9 @@ export default class PlatformAccessCom extends Vue {
                 saveAsImage: { show: true }
             }
         },
+        grid:{
+            left:50,
+        },
         xAxis: {
             type: 'category',
             axisLine: {
@@ -165,6 +168,9 @@ export default class PlatformAccessCom extends Vue {
                 }
 
             }
+        },
+        grid:{
+            left:50,
         },
         legend: {
             data: ['本期', '上期'],

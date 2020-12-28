@@ -28,9 +28,9 @@
               end-placeholder="结束日期"
             >
             </el-date-picker>
-            <span class="cjsjs_head_search">
+            <!-- <span class="cjsjs_head_search">
               <img src="../../assets/img/search.png" alt="" />
-            </span>
+            </span> -->
           </div>
         </div>
         <div class="cjsjs_content">
@@ -103,7 +103,7 @@
                   }}
                 </div>
                 <div class="list_li_time">
-                  {{ v.registration_date.split(".")[0] }}
+                  {{ new Date(v.registration_date).toLocaleString() }}
                 </div>
               </li>
             </my-scroll>
