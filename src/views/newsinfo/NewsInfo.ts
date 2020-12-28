@@ -1,6 +1,7 @@
 import { baseApi } from '@/axios/axios'
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
+import Page2Word from '@/libs/Page2Word'
 @Component
 export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
@@ -135,6 +136,6 @@ export default class NewsInfoCom extends Vue {
 
     //导出world
     public downloadWord(): void {
-
+        Page2Word(this.newsInfo.title+'-'+new Date().toLocaleDateString(),<HTMLElement>this.$refs['newsWrap']);
     }
 }

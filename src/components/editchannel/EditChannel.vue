@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="channel_list_warp">
-          <my-scroll>
+          <my-scroll @loading="loadingUnSub">
             <div class="channel_list">
               <span
                 style="margin: auto; width: max-content"

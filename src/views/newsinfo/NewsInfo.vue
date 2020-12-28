@@ -2,7 +2,7 @@
   <div class="newsinfo">
     <header-two />
 
-    <div class="wrap" v-if="newsInfo">
+    <div ref="newsWrap" class="wrap" v-if="newsInfo">
       <my-scroll>
         <div class="wrap_content">
           <div class="crumbs">
