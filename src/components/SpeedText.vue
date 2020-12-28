@@ -3,7 +3,7 @@
     @mouseleave="reset"
     @mouseenter="move"
     class="speedtext"
-    :style="{ width: width, height: height }"
+    :style="{ 'width': width, height: height }"
   >
     <div class="dom" ref="dom">
       {{ text }}
@@ -16,7 +16,7 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class SpeedText extends Vue {
   @Prop({}) width!: string;
-  @Prop({}) height!: string;
+  @Prop({default:"30px"}) height!: string;
   @Prop({}) text!: string;
   @Prop({ default: 0.3, type: Number }) speed!: number;
   //子元素与父元素宽度差值

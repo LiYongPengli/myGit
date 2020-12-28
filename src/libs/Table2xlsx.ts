@@ -53,5 +53,6 @@ export default class Table2Xlsx {
             event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         }
         aLink.dispatchEvent(event);
+        aLink.remove();
     }
 }
