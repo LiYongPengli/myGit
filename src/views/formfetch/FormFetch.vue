@@ -79,7 +79,7 @@
 
       <div class="site">
         <span class="site_p">近七天未采集数据的源站点</span>
-        <span class="site_p_export">导出</span>
+        <span @click="toExport" class="site_p_export">导出</span>
         <div class="list">
           <ul>
             <li class="list_li">

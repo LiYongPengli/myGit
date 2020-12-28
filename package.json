@@ -36,6 +36,7 @@
         "vue-cropper": "^0.5.5",
         "vue-template-compiler": "^2.6.11",
         "vue-wxlogin": "^1.0.2",
-        "vuex-class": "^0.3.2"
+        "vuex-class": "^0.3.2",
+        "xlsx": "^0.16.9"
     }
 }
