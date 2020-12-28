@@ -1,6 +1,7 @@
 import { baseApi } from '@/axios/axios';
 import echarts, { ECharts } from 'echarts'
 import { Component, Vue } from 'vue-property-decorator'
+import Table2Xlsx from '@/libs/Table2xlsx';
 @Component
 export default class PlatformAccessCom extends Vue {
     public dates: Date[] = [];
@@ -444,6 +445,21 @@ export default class PlatformAccessCom extends Vue {
             }
         }
         return flag;
+    }
+    //导出xlsx
+    public toExport(): void {
+        let outdata:any[] = [];
+        for(let i of this.userLoginList){
+            let obj = {
+                '账号':i.account,
+                '昵称':i.nickname,
+                '手机号':i.phone_number,
+                '累计登录次数':i.login_times,
+                '最后登录时间':new Date(i.last_login_date).toLocaleString(),
+            }
+            outdata.push(obj);
+        }
+        new Table2Xlsx(outdata,"用户登录名单-"+new Date().toLocaleDateString());
     }
 
 }

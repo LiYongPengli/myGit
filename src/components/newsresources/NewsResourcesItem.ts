@@ -1,11 +1,15 @@
 import { baseApi } from '@/axios/axios';
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import Table2Xlsx from '@/libs/Table2xlsx';
 @Component
 export default class NewsResourcesItemCom extends Vue {
-    @Prop({}) type!:string;
-    @Prop({}) cells!:string[];
-    @Prop({}) title!:string;
-    @Prop({default:1}) page!:number;
+    @Prop({}) type!: string;
+    @Prop({}) cells!: string[];
+    @Prop({}) title!: string;
+    @Prop({ default: 1 }) page!: number;
+
+    //判断数据是否为空
+    public isnulldata: boolean = true;
     //转发次数统计
     public share_data: any[] = [];
     public share_date: Date[] = [];
@@ -17,9 +21,9 @@ export default class NewsResourcesItemCom extends Vue {
 
     public created(): void {
         this.form.stat_type = this.type;
-        if(this.page==1){
+        if (this.page == 1) {
             this.usage_rate();
-        }else{
+        } else {
             this.site_usage();
         }
     }
@@ -28,6 +32,7 @@ export default class NewsResourcesItemCom extends Vue {
         let data: any = {};
         for (let i in this.form) {
             if (this.form[i]) {
+                // console.log(this.form[i])
                 data[i] = this.form[i];
             }
         }
@@ -38,6 +43,13 @@ export default class NewsResourcesItemCom extends Vue {
             })
             .then((res) => {
                 this.share_data = res.data.data;
+                let arr = Object.keys(this.share_data);
+                if (arr.length == 0) {
+                    this.isnulldata = true;
+                }
+                else {
+                    this.isnulldata = false;
+                }
             })
             .catch((err) => {
                 console.log(err);
@@ -45,22 +57,29 @@ export default class NewsResourcesItemCom extends Vue {
     }
 
     //站点资源使用率统计
-    private site_usage():void{
+    private site_usage(): void {
         let data: any = {};
         for (let i in this.form) {
-            if (this.form[i]&&i!='stat_type') {
+            if (this.form[i] && i != 'stat_type') {
                 data[i] = this.form[i];
             }
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
-          cmd: 'media_usage_stat',
-          paras: data
-        }).then(res=>{
-            this.share_data = res.data.data;
-        }).catch(err=>{
-            console.log(err);
-        })
+            .post(baseApi.api2 + '/v1/cmd/', {
+                cmd: 'media_usage_stat',
+                paras: data
+            }).then(res => {
+                this.share_data = res.data.data;
+                let arr = Object.keys(this.share_data);
+                if (arr.length == 0) {
+                    this.isnulldata = true;
+                }
+                else {
+                    this.isnulldata = false;
+                }
+            }).catch(err => {
+                console.log(err);
+            })
     }
     //新闻转发次数设置自定义时间筛选
     public setFormdate(): void {
@@ -71,9 +90,9 @@ export default class NewsResourcesItemCom extends Vue {
             this.form.time_from = ""
             this.form.time_to = ""
         }
-        if(this.page==1){
+        if (this.page == 1) {
             this.usage_rate();
-        }else{
+        } else {
             this.site_usage();
         }
     }
@@ -87,10 +106,65 @@ export default class NewsResourcesItemCom extends Vue {
                 break;
         }
         this.share_date = [];
-        if(this.page==1){
+        if (this.page == 1) {
             this.usage_rate();
-        }else{
+
+        } else {
             this.site_usage();
         }
+    }
+    //导出xlsx
+    public toExport(page: number, types: string): void {
+        console.log(types);
+        console.log(page);
+        let outdata: any[] = [];
+        //page 1  新闻资源使用率  2站点资源使用率
+        //types share 新闻转发次数统计    like新闻点赞次数统计    view 新闻浏览次数统计
+        if (page == 1) {
+
+            if (types == "share") {
+                for (let i of this.share_data) {
+                    let obj = {
+                        '新闻名称': i.title ? i.title : i.name_zh,
+                        '转发次数': i.count,
+                    }
+                    outdata.push(obj);
+                }
+                new Table2Xlsx(outdata, "新闻资源使用率-新闻转发次数统计-" + new Date().toLocaleDateString());
+            }
+            else if(types == "like"){
+                for (let i of this.share_data) {
+                    let obj = {
+                        '新闻名称': i.title ? i.title : i.name_zh,
+                        '转发次数': i.count,
+                    }
+                    outdata.push(obj);
+                }
+                new Table2Xlsx(outdata, "新闻资源使用率-新闻点赞次数统计-" + new Date().toLocaleDateString());
+            }
+            else{
+                for (let i of this.share_data) {
+                    let obj = {
+                        '新闻名称': i.title ? i.title : i.name_zh,
+                        '转发次数': i.count,
+                    }
+                    outdata.push(obj);
+                }
+                new Table2Xlsx(outdata, "新闻资源使用率-新闻浏览次数统计-" + new Date().toLocaleDateString());
+            }
+        }
+        else{
+            for (let i of this.share_data) {
+                let obj = {
+                    '新闻名称': i.title ? i.title : i.name_zh,
+                    '转发次数': i.count,
+                }
+                outdata.push(obj);
+            }
+            new Table2Xlsx(outdata, "站点资源使用率-站点浏览次数统计" + new Date().toLocaleDateString());
+        }
+
+
+
     }
 }

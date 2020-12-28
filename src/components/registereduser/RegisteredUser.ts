@@ -2,6 +2,7 @@ import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
 import echarts, { ECharts } from 'echarts'
 import { Component, Vue } from 'vue-property-decorator'
+import Table2Xlsx from '@/libs/Table2xlsx';
 @Component
 export default class RegisteredUserCom extends Vue {
     public search_user: string = "";
@@ -319,5 +320,20 @@ export default class RegisteredUserCom extends Vue {
             }
         }
         return flag;
+    }
+    //导出xlsx
+    public toExport(): void {
+        let outdata:any[] = [];
+        for(let i of this.result_data.users){
+            let obj = {
+                '账号':i.account,
+                '昵称':i.nickname,
+                '手机号':i.phone_number,
+                '微信昵称':i.wechat_info.binding ? i.wechat_info.nickname : "未绑定",
+                '注册时间':new Date(i.registration_date).toLocaleString() ,
+            }
+            outdata.push(obj);
+        }
+        new Table2Xlsx(outdata,"注册用户名单-"+new Date().toLocaleDateString());
     }
 }

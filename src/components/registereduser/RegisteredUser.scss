@@ -1,14 +1,12 @@
 .registereduser {
+    display: flex;
     .content {
-        width: 1200px;
+        width: 100%;
         margin: 0 auto;
         background-color: #3a3a48;
-        margin-left: -60px;
         .content_tu {
             border-bottom: 1px solid #494959;
             .cjsjs {
-                padding-left: 60px;
-                //float: right;
                 .cjsjs_head {
                     margin-top: 40px;
                     p {
@@ -55,18 +53,19 @@
                 content: '';
             }
             .cjsjs_content {
-                width: 1080px;
+                width: 100%;
                 margin-top: 40px;
                 background-color: #494959;
                 text-align: center;
-                margin-left: 60px;
+                display: flex;
+                justify-content: space-between;
                 div {
-                    float: left;
                     margin-left: 49px;
-                    margin-right: 74px;
                     height: 150px;
                     position: relative;
                     width: 100px;
+                    display: flex;
+                    justify-content: center;
                 }
                 div p:first-child {
                     position: absolute;
@@ -85,7 +84,6 @@
                     justify-content: space-between;
                     border-left: 1px solid #5c5c6b;
                     /* align-items: center; */
-                    margin: 0;
                     justify-content: center;
                 }
             }
@@ -108,8 +106,9 @@
         .content_form {
             margin-top: 40px;
             height: 400px;
-            padding: 0 60px;
             .content_form_one {
+                display: flex;
+                justify-content: space-between;
                 .namelist {
                     font-size: 20px;
                 }
@@ -139,11 +138,9 @@
                         position: relative;
                         top: 10px;
                         left: 800px;
-                        // margin-top: 10px;
                     }
                 }
                 input {
-                    float: right;
                     height: 40px;
                     width: 200px;
                     line-height: 40px;
@@ -155,25 +152,21 @@
                     border-radius: 3px;
                 }
                 input::-webkit-input-placeholder {
-                    /* WebKit browsers */
                     color: #cdd6e5;
                 }
                 input:-moz-placeholder {
-                    /* Mozilla Firefox 4 to 18 */
                     color: #cdd6e5;
                 }
                 input::-moz-placeholder {
-                    /* Mozilla Firefox 19+ */
                     color: #cdd6e5;
                 }
                 input:-ms-input-placeholder {
-                    /* Internet Explorer 10+ */
                     color: #cdd6e5;
                 }
                 .searchinput {
                     position: relative;
-                    top: 10px;
-                    left: 800px;
+                    top: 5px;
+                    right: 26px;
                     cursor: pointer;
                 }
                 .export {
@@ -186,35 +179,44 @@
                     background-color: #494959;
                     margin-top: 25px;
                     height: 300px;
-                    // padding-left: 60px;
+                    overflow: hidden;
                     li:nth-child(1) {
                         border-bottom: 1px solid #5c5c6b;
+                        display: flex;
+                        justify-content: space-between;
                     }
                     li {
                         height: 50px;
                         line-height: 50px;
+                        display: flex;
+                        justify-content: space-between;
                         .list_li_accountnumber,
                         .list_li_name,
                         .list_li_time,
                         .list_li_phone,
                         .list_li_count {
-                            float: left;
                             color: white;
                             font-size: 14px;
                         }
                         .list_li_accountnumber {
-                            width: 80px;
+                            width: 5%;
                             margin-left: 60px;
                         }
                         .list_li_name {
-                            width: 220px;
+                            width: 10%;
                             text-align: center;
                         }
                         .list_li_phone,
                         .list_li_count,
                         .list_li_time {
-                            width: 220px;
                             text-align: center;
+                        }
+                        .list_li_phone {
+                            width: 15%;
+                        }
+                        .list_li_time {
+                            margin-right: 60px;
+                            width: 30%;
                         }
                     }
                     li.active {

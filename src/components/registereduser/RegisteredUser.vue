@@ -7,6 +7,7 @@
             <el-button
               :type="search_form.stat_type == 'today' ? 'primary' : ''"
               @click="setDay('today')"
+              style="width:91px"
               >今日</el-button
             >
             <el-button
@@ -67,9 +68,11 @@
       <div class="content_form">
         <div class="content_form_one">
           <span class="namelist">注册用户名单</span>
-          <span class="export">导出</span>
+          <div>
           <input v-model="search_user" type="text" placeholder="账号/昵称/手机号" />
           <img class="searchinput" src="../../assets/img/search.png" alt="" />
+           <span @click="toExport" class="export">导出</span>
+           </div>
         </div>
         <!-- 用户列表 -->
         <div class="content_form_list">

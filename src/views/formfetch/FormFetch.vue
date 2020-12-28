@@ -20,10 +20,9 @@
       <div class="cjsjs">
         <div class="cjsjs_head">
           <p>采集数据数</p>
-
+          <div class="cjsjs_head_right">
           <el-button
             @click="setDay('today')"
-            style="margin-left: 240px;"
             :type="search_form.stat_type == 'today' ? 'primary' : ''"
             >今日</el-button
           >
@@ -40,21 +39,14 @@
           >
           <el-date-picker
             @change="setDate"
-            style="width: 250px; margin-right: 20px"
+            style="width: 250px;"
             v-model="dates"
             type="daterange"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
           >
           </el-date-picker>
-          <!-- <el-date-picker v-model="value1" type="date" placeholder="开始日期">
-          </el-date-picker>
-          <span class="zhi">-</span>
-          <el-date-picker v-model="value2" type="date" placeholder="截止日期">
-          </el-date-picker> -->
-          <span class="cjsjs_head_search">
-            <img src="../../assets/img/search.png" alt="" />
-          </span>
+          </div>
         </div>
         <div class="cjsjs_content">
           <div class="jqt">

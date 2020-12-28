@@ -122,7 +122,7 @@
             >
             <el-date-picker
               @change="setDate"
-              style="width: 250px; margin: 0 20px"
+              style="width: 250px; margin-left:20px"
               v-model="dates"
               type="daterange"
               start-placeholder="开始日期"
@@ -150,7 +150,8 @@
       <div class="content_form">
         <div class="content_form_one">
           <span class="namelist">用户登录名单</span>
-          <span @click="setUserDay('today')" :class="{'CumulativeActive':user_status=='today'}" class="Cumulative">今日</span>
+          <div>
+            <span @click="setUserDay('today')" :class="{'CumulativeActive':user_status=='today'}" class="Cumulative">今日</span>
           <span @click="setUserDay('all')" :class="{'CumulativeActive':user_status=='all'}" class="Cumulative1">累计</span>
           <el-date-picker
             @change="setUserDate"
@@ -161,16 +162,14 @@
             end-placeholder="结束日期"
           >
           </el-date-picker>
-          <!-- <div class="searchdate">
-            <img src="../../assets/img/search.png" alt="" />
-          </div> -->
           <input
             v-model="search_user"
             type="text"
             placeholder="账号/昵称/手机号"
           />
           <img class="searchinput" src="../../assets/img/search.png" alt="" />
-          <span class="export">导出</span>
+          <span @click="toExport" class="export">导出</span>
+          </div>
         </div>
         <div class="content_form_list">
           <ul>
