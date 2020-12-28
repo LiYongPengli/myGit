@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import echarts, { ECharts } from 'echarts'
 import { baseApi } from '@/axios/axios';
+import Table2Xlsx from '@/libs/Table2xlsx';
 @Component
 export default class FormFetchCom extends Vue {
 
@@ -30,7 +31,7 @@ export default class FormFetchCom extends Vue {
         }]
 
     }
-    public dates:Date[] = [];
+    public dates: Date[] = [];
     public value1: string = "";
     public value2: string = "";
     public day_data: string[] = []
@@ -74,8 +75,8 @@ export default class FormFetchCom extends Vue {
 
             }
         },
-        grid:{
-            left:50,
+        grid: {
+            left: 50,
         },
         legend: {
             data: ['本期', '上期'],
@@ -164,15 +165,15 @@ export default class FormFetchCom extends Vue {
     }
 
     //今天，7天，30天
-    public setDay(type:string): void {
+    public setDay(type: string): void {
         this.search_form.stat_type = type;
         this.search_form.time_from = "";
         this.search_form.time_to = "";
         this.getData();
     }
 
-    public setDate():void{
-        if(!this.dates){
+    public setDate(): void {
+        if (!this.dates) {
             this.setDay('today');
             return;
         }
@@ -266,6 +267,25 @@ export default class FormFetchCom extends Vue {
         }
         return str;
     }
+
+    //导出xlsx
+    public toExport(): void {
+        let outdata:any[] = [];
+        for(let i of this.result_data.not_updated){
+            let obj = {
+                '站点名称':i.name_zh,
+                '最后更新时间':i.last_update
+            }
+            outdata.push(obj);
+        }
+        new Table2Xlsx(outdata,"近七天未采集数据的源站点-"+new Date().toLocaleDateString());
+    }
+
+
+
+    
+
+   
 
 
 }
