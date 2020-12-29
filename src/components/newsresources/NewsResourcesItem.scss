@@ -59,15 +59,9 @@
     .content_form_list {
         width: 100%;
         ul {
-            position: relative;
             background-color: #494959;
             margin-top: 25px;
             height: 300px;
-            .zwsj {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-            }
             li:nth-child(1) {
                 border-bottom: 1px solid #5c5c6b;
             }
