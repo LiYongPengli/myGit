@@ -36,14 +36,14 @@
     </div>
     <div class="content_form_list">
       <ul v-if="cells">
-        <div v-show="isnulldata" class="zwsj">暂无数据</div>
+ 
         <my-scroll style="content_mt_onescroll">
-          <li class="list_li">
+          <li  class="list_li">
             <div class="list_li_accountnumber">{{ cells[0] }}</div>
             <div class="list_li_name">{{ cells[1] }}</div>
             <div class="list_li_phone">{{ cells[2] }}</div>
           </li>
-          <li v-for="(v, k) in share_data" :key="k" :class="{ active: k % 2 != 0 }">
+          <li v-show="!isnulldata" v-for="(v, k) in share_data" :key="k" :class="{ active: k % 2 != 0 }">
             <div class="list_li_accountnumber">
               {{ k + 1 }}
             </div>
@@ -53,6 +53,9 @@
             <div class="list_li_phone value">
               {{ v.count }}
             </div>
+          </li>
+          <li style="width: 100%; height: 250px; justify-content: center; align-items: center;"  v-show="isnulldata">
+            <div>暂无数据</div>
           </li>
         </my-scroll>
       </ul>
