@@ -74,7 +74,7 @@
                 <my-scroll>
                    <div class="spzm">视频字幕</div>
                   <p
-                    v-for="(v, i) in getYouTubeText(newsInfo.html[language].content)"
+                    v-for="(v, i) in getYouTubeText(newsInfo.html[language][0].content)"
                     :key="i"
                   >
                     {{ v.innerHTML }}

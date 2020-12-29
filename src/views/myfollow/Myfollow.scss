@@ -1,188 +1,194 @@
 .myfollow {
-    .list_wrap {
-        // margin: auto 445px;
-        background: red;
-        background-color: #262630;
-        background-image: linear-gradient(to right, #262630, #2b2b35);
-        width: 1030px;
-        margin: auto;
-        margin-top: 20px;
-        .list_nav {
-            font-size: 16px;
-            font-family: "PingFangSC";
-            color: rgb(255, 255, 255);
-            height: 70px;
-            border-bottom: 1px solid #3a3a48;
-            box-sizing: content-box;
-            span {
-                position: relative;
-                // top: 20px;
-                font-size: 16px;
-                line-height: 70px;
-                height: 70px;
-                display: inline-block;
-                cursor: pointer;
-                width: 140px;
-                text-align: center;
-            }
-            span.cur {
-                background-image: url("../../assets/img/cur.png");
-                background-position: bottom;
-                background-repeat: no-repeat;
-                font-size: 20px;
-            }
-            span:first-child {
-                margin: 0px 60px 0px 30px;
-                font-weight: bold;
-                width: 140px;
-                text-align: center;
-            }
-        }
-        .gjlb {
-            background-color: #3a3a48;
-            position: relative;
-            p.sx {
-                margin-top: 10px;
-                margin-left: 30px;
-                padding-top: 30px;
-                color: #bcc2d5;
-                font-size: 14px;
-            }
-            .erhang {
-                margin-top: 15px;
-                // border-bottom: 1px solid #676770;
-                height: 26px;
-                line-height: 26px;
-                padding-bottom: 60px;
-                color: white;
-                span.all {
-                    float: left;
-                    margin-left: 50px;
-                    font-size: 14px;
-                    cursor: pointer;
-                    padding: 0 10px;
-                }
-                ul {
-                    overflow: hidden;
-                    list-style: none;
-                    li {
-                        cursor: pointer;
-                        float: left;
-                        margin-left: 25px;
-                        margin-right: 25px;
-                        a {
-                            padding: 0 10px;
-                            font-size: 15px;
-                        }
-                        span {
-                            margin-right: 5px;
-                        }
-                    }
-                }
-                .cur {
-                    background-color: #0079ed;
-                    border-radius: 3px;
-                }
-                div.gd {
-                    cursor: pointer;
-                    float: right;
-                    margin-right: 30px;
-                    padding: 0 10px;
-                    border: 1px solid #676770;
-                }
-            }
-        }
-        .list {
-            clear: both;
-            padding-top: 10px;
-            min-height: 500px;
-            ul {
-                list-style: none;
-                li {
-                    margin-top: 30px;
-                    padding-left: 40px;
-                    padding-bottom: 30px;
-                    overflow: hidden;
-                    // border-bottom: 1px solid #3a3a48;
-                    // box-sizing: border-box;
-                    border-bottom: 1px solid #3a3a48;
-                    .ly {
-                        overflow: hidden;
-                        .tx {
-                            float: left;
-                            width: 54px;
-                        }
-                        .sjrs {
-                            float: left;
-                            // height: 54px;
-                            // border: 1px solid red;
-                            margin-left: 20px;
-                            // width: 780px;
-                            .time,
-                            .ll {
-                                color: #bcc2d5;
-                                font-size: 13px;
-                                color: #bcc2d5;
-                            }
-                            .time {
-                                margin-right: 25px;
-                            }
-                            .mt {
-                                font-size: 16px;
-                                color: white;
-                                display: block;
-                                margin-bottom: 15px;
-                            }
-                        }
-                    }
-                    .content {
-                        margin-top: 15px;
-                        .title {
-                            font-size: 16px;
-                            a {
-                                color: white;
-                                text-decoration: none;
-                                cursor: pointer;
-                            }
-                        }
-                        .ziyuan {
-                            margin-top: 20px;
-                            img {
-                                margin-right: 20px;
-                            }
-                        }
-                    }
-                    .text {
-                        float: left;
-                        width: 633px;
-                        .title {
-                            font-size: 16px;
-                            color: #e2e2e4;
-                        }
-                    }
-                    .zan {
-                        float: right;
-                        margin-right: 40px;
-                        display: flex;
-                        align-items: center;
-                        span {
-                            margin-left: 10px;
-                            margin-right: 20px;
-                            font-size: 13px;
-                            color: #bcc2d5;
-                        }
-                        img{
-                            display: block;
-                        }
-                    }
-                }
-                .jzgd {
-                    padding: 20px 0;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #bcc2d5;
-                }
-            }
-        }
+  .list_wrap {
+    // margin: auto 445px;
+    background: red;
+    background-color: #262630;
+    background-image: linear-gradient(to right, #262630, #2b2b35);
+    width: 1030px;
+    margin: auto;
+    margin-top: 20px;
+    .list_nav {
+      font-size: 16px;
+      font-family: "PingFangSC";
+      color: rgb(255, 255, 255);
+      height: 70px;
+      border-bottom: 1px solid #3a3a48;
+      box-sizing: content-box;
+      span {
+        position: relative;
+        // top: 20px;
+        font-size: 16px;
+        line-height: 70px;
+        height: 70px;
+        display: inline-block;
+        cursor: pointer;
+        width: 140px;
+        text-align: center;
+      }
+      span.cur {
+        background-image: url("../../assets/img/cur.png");
+        background-position: bottom;
+        background-repeat: no-repeat;
+        font-size: 20px;
+      }
+      span:first-child {
+        margin: 0px 60px 0px 30px;
+        font-weight: bold;
+        width: 140px;
+        text-align: center;
+      }
     }
+    .gjlb {
+      background-color: #3a3a48;
+      position: relative;
+      p.sx {
+        margin-top: 10px;
+        margin-left: 30px;
+        padding-top: 30px;
+        color: #bcc2d5;
+        font-size: 14px;
+      }
+      .erhang {
+        margin-top: 15px;
+        // border-bottom: 1px solid #676770;
+        height: 26px;
+        line-height: 26px;
+        padding-bottom: 60px;
+        color: white;
+        span.all {
+          float: left;
+          margin-left: 50px;
+          font-size: 14px;
+          cursor: pointer;
+          padding: 0 10px;
+        }
+        ul {
+          overflow: hidden;
+          list-style: none;
+          li {
+            cursor: pointer;
+            float: left;
+            margin-left: 25px;
+            margin-right: 25px;
+            a {
+              padding: 0 10px;
+              font-size: 15px;
+            }
+            span {
+              margin-right: 5px;
+            }
+          }
+        }
+        .cur {
+          background-color: #0079ed;
+          border-radius: 3px;
+        }
+        div.gd {
+          cursor: pointer;
+          float: right;
+          margin-right: 30px;
+          padding: 0 10px;
+          border: 1px solid #676770;
+        }
+      }
+    }
+
+    .list {
+      clear: both;
+      padding-top: 10px;
+      min-height: 500px;
+      .nodata {
+        color: white;
+        text-align: center;
+        margin-top: 20%;
+      }
+      ul {
+        list-style: none;
+        li {
+          margin-top: 30px;
+          padding-left: 40px;
+          padding-bottom: 30px;
+          overflow: hidden;
+          // border-bottom: 1px solid #3a3a48;
+          // box-sizing: border-box;
+          border-bottom: 1px solid #3a3a48;
+          .ly {
+            overflow: hidden;
+            .tx {
+              float: left;
+              width: 54px;
+            }
+            .sjrs {
+              float: left;
+              // height: 54px;
+              // border: 1px solid red;
+              margin-left: 20px;
+              // width: 780px;
+              .time,
+              .ll {
+                color: #bcc2d5;
+                font-size: 13px;
+                color: #bcc2d5;
+              }
+              .time {
+                margin-right: 25px;
+              }
+              .mt {
+                font-size: 16px;
+                color: white;
+                display: block;
+                margin-bottom: 15px;
+              }
+            }
+          }
+          .content {
+            margin-top: 15px;
+            .title {
+              font-size: 16px;
+              a {
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+              }
+            }
+            .ziyuan {
+              margin-top: 20px;
+              img {
+                margin-right: 20px;
+              }
+            }
+          }
+          .text {
+            float: left;
+            width: 633px;
+            .title {
+              font-size: 16px;
+              color: #e2e2e4;
+            }
+          }
+          .zan {
+            float: right;
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            span {
+              margin-left: 10px;
+              margin-right: 20px;
+              font-size: 13px;
+              color: #bcc2d5;
+            }
+            img {
+              display: block;
+            }
+          }
+        }
+        .jzgd {
+          padding: 20px 0;
+          text-align: center;
+          font-size: 14px;
+          color: #bcc2d5;
+        }
+      }
+    }
+  }
 }

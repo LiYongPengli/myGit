@@ -186,12 +186,13 @@ export default class IntelligentRetrievalCom extends Vue {
             cmd: 'filter_news',
             paras: filter
         }).then(res => {
-            if (!this.filter.search_after.length) {
+            if (!res.data.data.search_after.length) {
                 this.newsList = res.data.data.news;
             } else {
+                console.log(res.data.data.search_after)
                 this.newsList = this.newsList.concat(res.data.data.news);
-                this.filter.search_after = res.data.data.search_after
             }
+            this.filter.search_after = res.data.data.search_after
             if (!res.data.data.news.length) {
                 this.finished = true;
             }
