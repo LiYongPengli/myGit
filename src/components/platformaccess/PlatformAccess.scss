@@ -116,7 +116,6 @@
             }
             .cjsjqst {
                 margin-top: 45px;
-                padding-left: 60px;
                 .small {
                     .myChart2 {
                         width: 1200px;
@@ -126,7 +125,6 @@
             }
             .hdyhqst {
                 margin-top: 45px;
-                padding-left: 60px;
                 .small {
                     .myChart3 {
                         width: 1200px;
@@ -219,7 +217,8 @@
                 ul {
                     background-color: #494959;
                     margin-top: 25px;
-                    // padding-left: 60px;
+                    height: 300px;
+                    overflow: hidden;
                     li:nth-child(1) {
                         border-bottom: 1px solid #5c5c6b;
                         display: flex;
