@@ -25,7 +25,7 @@ export default class AddCollectionCom extends Vue {
             .get(baseApi.api2 + "/v1/user/favorite/")
             .then((res) => {
                 console.log(res.data);
-                this.favoriteList = res.data.data;
+                this.favoriteList = res.data.data.favorite;
             })
             .catch((err) => {
                 console.log(err);

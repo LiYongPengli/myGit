@@ -2,9 +2,9 @@
   <div class="newsinfo">
     <header-two />
 
-    <div class="wrap" v-if="newsInfo">
+    <div class="wrap" v-if="newsInfo" >
       <my-scroll>
-        <div class="wrap_content">
+        <div class="wrap_content" :style="{'width':topic_show?'1000px':'1200px'}">
           <div class="crumbs">
             <!-- <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a> -->
             <a @click="$router.push('/')">首页</a><b>&gt;</b>
@@ -115,6 +115,9 @@
             <div class="downimg" @click="todownLoad(v)">
               <img src="../../assets/img/download.png" alt="" />
             </div>
+            <div class="downimg" @click="todownLoad2(v)">
+              <img src="../../assets/img/download.png" alt="" />
+            </div>
           </li>
         </ul>
       </my-scroll>
@@ -163,7 +166,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 </style>
 <style lang="scss">
 .newsinfo {
-  .el-dialog {
+  /* .el-dialog {
     background: #3a3a48;
     min-height: 450px;
     .el-dialog__header {
@@ -179,9 +182,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
         right: 50px;
       }
     }
-    .el-dialog__body {
-      padding: 20px 50px;
-    }
+    
   }
 
   .el-icon-close {
@@ -194,6 +195,6 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
   .el-dialog__title {
     color: white;
     margin-left: 30px;
-  }
+  } */
 }
 </style>
