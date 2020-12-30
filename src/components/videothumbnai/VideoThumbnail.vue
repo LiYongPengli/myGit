@@ -3,6 +3,7 @@
   <div class="videoThumbnail">
     <img
       class="img"
+      @error="imgError"
       @mouseenter="play"
       @mouseleave="stop"
       :src="video_photo"
@@ -44,6 +45,11 @@ export default class VideoThumbnail extends Vue {
   private mounted(): void {
     this.videoCtx = this.$refs.videoCtx as HTMLCanvasElement;
     this.video = this.$refs.video as HTMLVideoElement;
+  }
+
+  //图片加载失败
+  public imgError():void{
+    this.video_photo = "../../assets/img/404.jpg"
   }
 
   //播放视频缩略动画

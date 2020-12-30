@@ -82,6 +82,10 @@ export default class RecommendCom extends Vue {
         this.media_swiper = new Swiper('#swiper2')
     }
 
+    public loadErr(index:number):void{
+        this.$set(this.newsList[index],'error',true);
+    }
+
 
     public loading():void{
         this.start.pageStart+=10;
