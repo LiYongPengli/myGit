@@ -9,6 +9,7 @@
       <input
         v-model="searchText"
         @blur="blur"
+        @focus="focus"
         @keypress="toSearch"
         type="text"
         placeholder="请输入关键词"
@@ -74,6 +75,15 @@ export default class Search extends Vue {
     setTimeout(() => {
       this.showSearchList = false;
     }, 200);
+  }
+  public focus():void{
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(() => {
+      this.getSearchList(this.searchText);
+      this.showSearchList = true;
+    }, 300);
   }
 
   @Watch("searchText")

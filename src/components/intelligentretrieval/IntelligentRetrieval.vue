@@ -9,6 +9,7 @@
             <input
               @keypress="toSearch"
               @input="listenSearch"
+              @focus="listenSearch"
               @blur="blur"
               v-model="searchText"
               type="text"

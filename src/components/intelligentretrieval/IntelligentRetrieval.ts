@@ -85,6 +85,11 @@ export default class IntelligentRetrievalCom extends Vue {
     public created(): void {
 
     }
+    public focus():void{
+        setTimeout(() => {
+            this.showSearchList = true;
+        }, 200)
+    }
     public blur(): void {
         setTimeout(() => {
             this.showSearchList = false;
@@ -119,6 +124,7 @@ export default class IntelligentRetrievalCom extends Vue {
             });
     }
     public clickList(item: string): void {
+        this.filter.search_after = [];
         this.searchText = item;
         this.setHistory();
         this.searchNews();
@@ -186,7 +192,7 @@ export default class IntelligentRetrievalCom extends Vue {
             cmd: 'filter_news',
             paras: filter
         }).then(res => {
-            if (!res.data.data.search_after.length) {
+            if (!this.filter.search_after.length) {
                 this.newsList = res.data.data.news;
             } else {
                 console.log(res.data.data.search_after)
@@ -405,6 +411,7 @@ export default class IntelligentRetrievalCom extends Vue {
             this.setHistory();
             this.clearFilter();
             this.searchNews();
+            this.showSearchList = false;
         }
     }
     //去搜索

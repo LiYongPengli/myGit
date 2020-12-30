@@ -26,7 +26,7 @@ export default class MyFollowCom extends Vue {
 
     public chooseNav: string = 'all';
 
-    listenChooseNav(newVal: string): void {
+    public listenChooseNav(newVal: string): void {
         this.chooseNav = newVal;
         this.filters.search_after = [];
         this.isfinished = false;
@@ -159,6 +159,11 @@ export default class MyFollowCom extends Vue {
         this.getList();
     }
 
+    //资源加载失败
+    public loaderr(index:number):void{
+        this.$set(this.list[index],'error',true);
+    }
+
     public created(): void {
         //获取国家列表
         this.getSubscriptions("country", "sub", (res) => {
@@ -232,6 +237,9 @@ export default class MyFollowCom extends Vue {
                 this.list = this.list.concat(res.data.data.news);
             }else{
                 this.list = res.data.data.news;
+            }
+            if(!res.data.data.news.length){
+                this.isfinished = true;
             }
         }).catch(err => {
             console.log(err);

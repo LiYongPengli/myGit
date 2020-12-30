@@ -1,10 +1,11 @@
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import echarts, { ECharts } from 'echarts'
 import { baseApi } from '@/axios/axios';
 import Table2Xlsx from '@/libs/Table2xlsx';
+import { State } from 'vuex-class';
 @Component
 export default class FormFetchCom extends Vue {
-
+    @State('topic_show') topic_show!:boolean;
     public pickerOptions = {
         disabledDate(time: any) {
             return time.getTime() > Date.now();
@@ -162,6 +163,11 @@ export default class FormFetchCom extends Vue {
         stat_type: 'today',
         time_from: '',
         time_to: '',
+    }
+
+    @Watch('topic_show')
+    setChartSize():void{
+        this.chart?.resize();
     }
 
     //今天，7天，30天

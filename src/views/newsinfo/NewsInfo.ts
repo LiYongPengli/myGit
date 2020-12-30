@@ -112,7 +112,6 @@ export default class NewsInfoCom extends Vue {
     //附件下载
     public todownLoad(item: any): void {
         let img = new Image();
-        img.crossOrigin = "Anonymous";
         img.src = item.url;
         let canvas = document.createElement('canvas');
         document.body.appendChild(canvas);
