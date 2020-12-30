@@ -115,9 +115,6 @@
             <div class="downimg" @click="todownLoad(v)">
               <img src="../../assets/img/download.png" alt="" />
             </div>
-            <div class="downimg" @click="todownLoad2(v)">
-              <img src="../../assets/img/download.png" alt="" />
-            </div>
           </li>
         </ul>
       </my-scroll>

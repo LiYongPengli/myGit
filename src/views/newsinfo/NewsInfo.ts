@@ -130,26 +130,6 @@ export default class NewsInfoCom extends Vue {
         })
         
     }
-    //附件下载
-    public todownLoad2(item: any): void {
-        //http://bj.zlbxxcj.bjceis.com/attachments/2020/12/30/b32388ac76028e80cb474809a884265795cf8756.jpg
-        //http://bj.zlbxxcj.bjceis.com/attachments/2020/12/30/aba387b17b96f5b3f4eab68a224c71570fc690df.jpg
-        this.axios.get('http://bj.zlbxxcj.bjceis.com/attachments/2020/12/30/b32388ac76028e80cb474809a884265795cf8756.jpg',{
-            responseType:'blob'
-        }).then(res=>{
-            let buffer:Blob = res.data;
-            let url = URL.createObjectURL(buffer);
-            let a = document.createElement('a');
-            a.href = url;
-            a.download = 'bbbb';
-            a.click();
-            a.remove();
-            console.log(res.data);
-        }).catch(err=>{
-            console.log(err);
-        })
-        
-    }
 
     //获取收藏状态
     public getCollectionStatus(status: boolean): void {
