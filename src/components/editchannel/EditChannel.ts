@@ -63,6 +63,10 @@ export default class EditChannelCom extends Vue{
             sub_type: 'channel',
             sub_oper_type: 'unsub',
           }).then(res=>{
+              if(res.data.data.msg=='操作失败'){
+                  this.$message.warning('操作过于频繁请稍后再试!');
+                  return;
+              }
               this.channel.push({
                 name:item.name,
                 sub_id:item.sub_id
@@ -80,6 +84,10 @@ export default class EditChannelCom extends Vue{
             sub_type: 'channel',
             sub_oper_type: 'sub',
           }).then(res=>{
+            if(res.data.data.msg=='操作失败'){
+                this.$message.warning('操作过于频繁请稍后再试!');
+                return;
+            }
             this.follow_channel.push({
                 name:item.name,
                 sub_id:item.sub_id

@@ -9,6 +9,7 @@
             <input
               @keypress="toSearch"
               @input="listenSearch"
+              @focus="listenSearch"
               @blur="blur"
               v-model="searchText"
               type="text"
@@ -458,8 +459,6 @@
 
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
-import { baseApi } from "@/axios/axios";
-
 import IntelligentRetrievalCom from "./IntelligentRetrieval";
 import SearchCom from "@/components/Search.vue";
 import TimeSlot from "@/components/TimeSlot.vue";

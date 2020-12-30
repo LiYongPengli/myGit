@@ -1,6 +1,6 @@
 import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
 export default class MyFollowCom extends Vue {
@@ -9,6 +9,7 @@ export default class MyFollowCom extends Vue {
     public people: any[] = [];
     public media: any[] = [];
     public list: any[] = [];
+    public isfinished:boolean = false;
 
     public country_all: boolean = false;
     public media_all: boolean = false;
@@ -25,11 +26,17 @@ export default class MyFollowCom extends Vue {
 
     public chooseNav: string = 'all';
 
-    listenChooseNav(newVal: string): void {
+    public listenChooseNav(newVal: string): void {
         this.chooseNav = newVal;
         this.filters.search_after = [];
+        this.isfinished = false;
+        this.list = [];
         switch (newVal) {
             case 'all':
+                if(!this.country.length&&!this.media.length&&!this.people.length){
+                    this.isfinished = true;
+                    return;
+                }
                 this.getAllData();
                 break;
             case 'country':
@@ -37,6 +44,10 @@ export default class MyFollowCom extends Vue {
                 this.filters.media = [];
                 this.filters.country = []
                 this.country_all = true;
+                if(!this.country.length){
+                    this.isfinished = true;
+                    return;
+                }
                 for (let i of this.country) {
                     this.filters.country.push(i.name);
                     i.choose = false;
@@ -48,6 +59,10 @@ export default class MyFollowCom extends Vue {
                 this.filters.media = [];
                 this.filters.country = []
                 this.media_all = true;
+                if(!this.media.length){
+                    this.isfinished = true;
+                    return;
+                }
                 for (let i of this.media) {
                     this.filters.media.push(i.sub_id);
                     i.choose = false;
@@ -59,6 +74,10 @@ export default class MyFollowCom extends Vue {
                 this.filters.media = [];
                 this.filters.country = []
                 this.people_all = true;
+                if(!this.people.length){
+                    this.isfinished = true;
+                    return;
+                }
                 for (let i of this.people) {
                     this.filters.character.push(i.name);
                     i.choose = false;
@@ -135,8 +154,14 @@ export default class MyFollowCom extends Vue {
                 }
                 break;
         }
+        this.list = [];
         this.filters.search_after = [];
         this.getList();
+    }
+
+    //资源加载失败
+    public loaderr(index:number):void{
+        this.$set(this.list[index],'error',true);
     }
 
     public created(): void {
@@ -208,7 +233,14 @@ export default class MyFollowCom extends Vue {
         }).then(res => {
             console.log(res.data);
             this.filters.search_after = res.data.data.search_after;
-            this.list = res.data.data.news;
+            if(res.data.data.search_after.length){
+                this.list = this.list.concat(res.data.data.news);
+            }else{
+                this.list = res.data.data.news;
+            }
+            if(!res.data.data.news.length){
+                this.isfinished = true;
+            }
         }).catch(err => {
             console.log(err);
         })

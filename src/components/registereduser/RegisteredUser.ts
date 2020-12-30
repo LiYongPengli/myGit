@@ -1,10 +1,12 @@
 import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
 import echarts, { ECharts } from 'echarts'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import Table2Xlsx from '@/libs/Table2xlsx';
+import { State } from 'vuex-class';
 @Component
 export default class RegisteredUserCom extends Vue {
+    @State('topic_show') topic_show!:boolean;
     public search_user: string = "";
     public dates: Date[] = [];
     public date_data: string[] = [];
@@ -48,10 +50,11 @@ export default class RegisteredUserCom extends Vue {
         },
         grid:{
             left:50,
+            right:0
         },
         legend: {
             data: ['本期', '上期'],
-            right: 100,
+            right: 0,
             icon: 'rect',
             textStyle: {
                 color: "white"
@@ -140,70 +143,11 @@ export default class RegisteredUserCom extends Vue {
         this.getData();
 
     }
-    public tableData = [{
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-        // address: '上海市普陀区金沙江路 1518 弄'
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    },
-    {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
-    }, {
-        accountnumber: '张三',
-        name: 'Seekingalpha.com',
-        phone: '13011825913',
-        time: '2016-05-02 10:10:00',
-        wechatnickname: 'Tc.Wang',
+    
+    @Watch('topic_show')
+    public ChartsResize():void{
+        this.chart?.resize();
     }
-    ]
 
     private getData(): void {
         let data: any = {};
@@ -219,7 +163,9 @@ export default class RegisteredUserCom extends Vue {
             }).then(res => {
                 console.log(res.data);
                 this.result_data = res.data.data;
-                this.setChartsData();
+                setTimeout(()=>{
+                    this.setChartsData();
+                },200)
             }).catch(err => {
                 console.log(err);
             })

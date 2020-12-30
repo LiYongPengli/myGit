@@ -111,18 +111,9 @@ export default class NewsInfoCom extends Vue {
 
     //附件下载
     public todownLoad(item: any): void {
-        let img = new Image();
-        img.crossOrigin = "Anonymous";
-        img.src = item.url;
-        let canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
-        img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            let ctx = canvas.getContext('2d');
-            ctx?.drawImage(img,0,0,img.width,img.height);
-            console.log(ctx?.getImageData(0,0,img.width,img.height))
-        }
+        this.axios.get(item.url).then(res=>{
+            console.log(res.data)
+        })
     }
 
     //获取收藏状态

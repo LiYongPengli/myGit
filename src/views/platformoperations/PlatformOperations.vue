@@ -22,11 +22,11 @@
         </ul>
       </div>
       <div class="menu_content">
-        <div v-show="pageIndex == 0" class="country">
+        <div v-if="pageIndex == 0" class="country">
           <platform-access />
         </div>
 
-        <div v-show="pageIndex == 1" class="media">
+        <div v-if="pageIndex == 1" class="media">
           <registered-user />
         </div>
       </div>

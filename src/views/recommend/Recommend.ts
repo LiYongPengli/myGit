@@ -82,6 +82,10 @@ export default class RecommendCom extends Vue {
         this.media_swiper = new Swiper('#swiper2')
     }
 
+    public loadErr(index:number):void{
+        this.$set(this.newsList[index],'error',true);
+    }
+
 
     public loading():void{
         this.start.pageStart+=10;
@@ -105,7 +109,7 @@ export default class RecommendCom extends Vue {
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=10').then(res => {
+        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=0').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
