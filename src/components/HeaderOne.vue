@@ -36,8 +36,7 @@
         </el-popover>
       </div>
       <div class="nav">
-        <router-link to="/myfollow">我的关注</router-link
-        >&nbsp;&nbsp;&nbsp;&nbsp;
+        <router-link to="/myfollow">我的关注</router-link>
         <router-link to="/recommend">热门推荐</router-link>
       </div>
       <div class="lang">
@@ -211,11 +210,13 @@ export default class HeaderOne extends Vue {
         text-decoration: none;
         display: inline-block;
       }
+      a:last-of-type{
+        margin-left: 50px;
+      }
       a.router-link-active {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
-        width: 140px;
         text-align: center;
       }
     }
