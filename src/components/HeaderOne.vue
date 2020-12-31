@@ -5,16 +5,16 @@
       <a></a>
     </div>
     <div class="search">
-      <button value="" title="检索"></button>
+      <button value="" title="检�></button>
       <!-- <input
         type="text"
-        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
+        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�
       /> -->
-      <div @click="setShowIntelligent(true)" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策</div>
+      <div @click="setShowIntelligent(true)" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�/div>
     </div>
     <div class="bottom">
       <div class="user_info" v-if="user_message">
-        <!-- 头部下拉框 -->
+        <!-- 头部下拉�-->
         <el-popover placement="bottom-start" width="265" trigger="click">
           <ul id="setting_list">
             <router-link to="/user" tag="li">
@@ -23,7 +23,7 @@
             </router-link>
             <li @click="logout">
               <img src="../assets/img/icon_loginout.png" alt="" />
-              <span>退出登录</span>
+              <span>退出登�/span>
             </li>
           </ul>
           <div slot="reference" class="user_info_wrap">
@@ -91,7 +91,7 @@ export default class HeaderOne extends Vue {
         console.log(res.data);
         if (res.data.status == 1) {
           this.$router.push("/login");
-          this.$message.success("已登出");
+          this.$message.success("已登�);
         }
       })
       .catch((err) => {
@@ -208,6 +208,7 @@ export default class HeaderOne extends Vue {
         margin-right: 70px;
         text-decoration: none;
         display: inline-block;
+        // width: 70px;
       }
       a:last-of-type{
         margin-left: 50px;
@@ -216,6 +217,7 @@ export default class HeaderOne extends Vue {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
+        //  width: 70px;
         text-align: center;
       }
     }
