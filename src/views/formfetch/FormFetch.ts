@@ -165,6 +165,11 @@ export default class FormFetchCom extends Vue {
         time_to: '',
     }
 
+    public fetch_text = {
+        last:'昨天',
+        now:'今天'
+    }
+
     @Watch('topic_show')
     setChartSize():void{
         this.chart?.resize();
@@ -172,6 +177,26 @@ export default class FormFetchCom extends Vue {
 
     //今天，7天，30天
     public setDay(type: string): void {
+        switch(type){
+            case 'today':
+                this.fetch_text = {
+                    last:'昨天',
+                    now:'今天'
+                }
+                break;
+                case '7':
+                this.fetch_text = {
+                    last:'上7天',
+                    now:'近7天'
+                }
+                break;
+                case '30':
+                this.fetch_text = {
+                    last:'上30天',
+                    now:'近30天'
+                }
+                break;
+        }
         this.search_form.stat_type = type;
         this.dates = null;
         this.search_form.time_from = "";
@@ -183,6 +208,10 @@ export default class FormFetchCom extends Vue {
         if (!this.dates) {
             this.setDay('today');
             return;
+        }
+        this.fetch_text = {
+            last:'上期',
+            now:'本期'
         }
         this.search_form.stat_type = 'custom'
         this.search_form.time_from = this.dates[0].toLocaleDateString();
