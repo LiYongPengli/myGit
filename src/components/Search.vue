@@ -49,7 +49,6 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from "@/axios/axios";
 import { Component, Emit, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import MyScroll from "@/components/MyScroll.vue";
@@ -102,7 +101,7 @@ export default class Search extends Vue {
       return;
     }
     this.axios
-      .post(baseApi.api2 + "/v1/cmd/", {
+      .post("/v1/cmd/", {
         cmd: "search_suggestion",
         paras: { keyword: val },
       })

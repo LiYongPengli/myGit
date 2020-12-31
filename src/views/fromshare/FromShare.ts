@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios'
+
 import { Component,Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
@@ -16,7 +16,7 @@ export default class FromShareCom extends Vue{
     //获取收藏夹列表
     private getCollectionList():void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'examine_favorite',
           paras: { rf_id: this.$route.query.rf_id }
         }).then(res=>{
@@ -32,7 +32,7 @@ export default class FromShareCom extends Vue{
     }
     public toAddCollection():void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'receive_favorite',
           paras: { rf_id: this.$route.query.rf_id }
         }).then(res=>{

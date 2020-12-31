@@ -1,5 +1,5 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { baseApi } from '@/axios/axios';
+
 @Component
 export default class LoginCom extends Vue {
     //微信登录需要的信息
@@ -14,7 +14,7 @@ export default class LoginCom extends Vue {
     public weiChatLogin: boolean = false;
     //绑定微信
     public bindWechat(): void {
-        this.axios.post(baseApi.api1 + '/v1/user/wechat/').then(res => {
+        this.axios.post('/v1/user/wechat/').then(res => {
             this.wx_data = res.data.data;
             this.bindAccount = false;
             this.weiChatLogin = true;
@@ -23,7 +23,7 @@ export default class LoginCom extends Vue {
     }
     //不绑定微信直接账号登录
     public noBindWeichat(): void {
-        this.axios.put(baseApi.api1 + '/v1/user/wechat/').then(res => {
+        this.axios.put('/v1/user/wechat/').then(res => {
             this.bindAccount = false;
             this.$router.push('/');
         }).catch(err => {
@@ -32,7 +32,7 @@ export default class LoginCom extends Vue {
     }
     //微信登录(导航切换)
     public toWeiChatLogin(): void {
-        this.axios.post(baseApi.api1 + '/v1/user/wechat/').then(res => {
+        this.axios.post('/v1/user/wechat/').then(res => {
             this.wx_data = res.data.data;
             this.weiChatLogin = true;
             this.account = false;

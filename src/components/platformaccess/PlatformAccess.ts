@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import echarts, { ECharts } from 'echarts'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Table2Xlsx from '@/libs/Table2xlsx';
@@ -6,7 +6,7 @@ import { State } from 'vuex-class';
 @Component
 export default class PlatformAccessCom extends Vue {
     @State('topic_show') topic_show!:boolean;
-    public dates: Date[] = [];
+    public dates: Date[]|null = [];
     public user_status:string = 'today';
     public userdates: Date[]|null = null;
     public date_data:string[] = [];
@@ -284,6 +284,7 @@ export default class PlatformAccessCom extends Vue {
     //今天，7天，30天
     public setDay(type: string): void {
         this.form.stat_type = type;
+        this.dates = null;
         this.form.time_from = "";
         this.form.time_to = "";
         this.getUserBehavior();
@@ -303,10 +304,12 @@ export default class PlatformAccessCom extends Vue {
     public setUserDay(type:string):void{
         if(type=='today'){
             let date = new Date().toLocaleDateString()
+            
             this.getUserLoginList(date,date);
         }else{
             this.getUserLoginList('','');
         }
+        this.userdates = null;
         this.user_status = type;
     }
 
@@ -366,7 +369,7 @@ export default class PlatformAccessCom extends Vue {
             }
         }
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'user_behavior_stat',
                 paras: data,
             }).then(res => {
@@ -387,7 +390,7 @@ export default class PlatformAccessCom extends Vue {
             data.time_to = time_to;
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'user_login_stat',
           paras: data
         }).then(res=>{

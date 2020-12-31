@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { AxiosResponse } from 'axios';
 import { Component,Prop,Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class';
@@ -30,7 +30,7 @@ export default class EditChannelCom extends Vue{
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=100&start='+start).then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type+'&limit=100&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -58,7 +58,7 @@ export default class EditChannelCom extends Vue{
     
     //取消订阅频道
     public unfollow(item:any,index:number):void{
-        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+        this.axios.post('/v1/user/sub/',{
             sub_id: item.sub_id,
             sub_type: 'channel',
             sub_oper_type: 'unsub',
@@ -79,7 +79,7 @@ export default class EditChannelCom extends Vue{
 
     //频道订阅
     public tofollow(item:any,index:number):void{
-        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+        this.axios.post('/v1/user/sub/',{
             sub_id: item.sub_id,
             sub_type: 'channel',
             sub_oper_type: 'sub',

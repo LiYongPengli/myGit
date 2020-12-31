@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue } from 'vue-property-decorator'
 @Component
 export default class MaybeKnowCom extends Vue {
@@ -13,7 +13,7 @@ export default class MaybeKnowCom extends Vue {
 
     private getData(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'people_you_may_know',
             }).then(res => {
                 console.log(res.data);
@@ -25,7 +25,7 @@ export default class MaybeKnowCom extends Vue {
 
     public sendMessage(): void {
         this.axios
-            .post(baseApi.api2+'/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'request_add_friend',
                 paras: { 
                     user_id: this.inv_userInfo.user_id, 

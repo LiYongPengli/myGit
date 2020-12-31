@@ -1,4 +1,3 @@
-import { baseApi } from '@/axios/axios';
 import { AxiosResponse } from 'axios';
 import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
@@ -43,7 +42,7 @@ export default class CountryCom extends Vue {
     }
      //获取频道等列表
      public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -52,7 +51,7 @@ export default class CountryCom extends Vue {
 
     //取消关注
     public unsub(item:any,index:number):void{
-        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+        this.axios.post('/v1/user/sub/',{
             sub_id: item.sub_id,
             sub_type: 'country',
             sub_oper_type: 'unsub',
@@ -69,7 +68,7 @@ export default class CountryCom extends Vue {
 
     //添加到关注
     public addFollow(item:any,index:number):void{
-        this.axios.post(baseApi.api2+'/v1/user/sub/',{
+        this.axios.post('/v1/user/sub/',{
             sub_id: item.sub_id,
             sub_type: 'country',
             sub_oper_type: 'sub',

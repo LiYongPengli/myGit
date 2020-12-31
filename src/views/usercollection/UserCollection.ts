@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator';
 @Component
 export default class UserCollectionCom extends Vue {
@@ -51,7 +51,7 @@ export default class UserCollectionCom extends Vue {
     }
 
     private getData(): void {
-        this.axios.get(baseApi.api2 + '/v1/user/favorite/').then(res => {
+        this.axios.get('/v1/user/favorite/').then(res => {
             console.log(res.data);
             this.favoriteList = res.data.data.favorite;
         }).catch(err => {
@@ -77,7 +77,7 @@ export default class UserCollectionCom extends Vue {
     //获取好友列表
     public getFriendList(): void {
         this.axios
-            .post(baseApi.api2 + "/v1/cmd/", {
+            .post("/v1/cmd/", {
                 cmd: "my_friends",
             })
             .then((res) => {
@@ -93,7 +93,7 @@ export default class UserCollectionCom extends Vue {
         let formdata = new FormData();
         formdata.append('name', this.favorite_form.name);
         formdata.append('cover', this.favorite_form.coverFile);
-        this.axios.post(baseApi.api2 + '/v1/user/favorite/', formdata).then(res => {
+        this.axios.post('/v1/user/favorite/', formdata).then(res => {
             this.$message.success(res.data.data.msg);
             this.dialogVisible = false;
             this.favorite_form = {
@@ -116,7 +116,7 @@ export default class UserCollectionCom extends Vue {
         if (this.favorite_form.coverFile) {
             formdata.append('cover', this.favorite_form.coverFile);
         }
-        this.axios.put(baseApi.api2 + '/v1/user/favorite/', formdata).then(res => {
+        this.axios.put('/v1/user/favorite/', formdata).then(res => {
             this.$message.success(res.data.data.msg);
             this.dialogVisible = false;
             this.favorite_form = {
@@ -137,7 +137,7 @@ export default class UserCollectionCom extends Vue {
             confirmButtonText: '确定',
             cancelButtonText: '取消'
         }).then(() => {
-            this.axios.delete(baseApi.api2 + '/v1/user/favorite/?name=' + item.name).then(res => {
+            this.axios.delete('/v1/user/favorite/?name=' + item.name).then(res => {
                 this.favoriteList.splice(index,1);
             }).catch(err => {
                 console.log(err)

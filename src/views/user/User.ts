@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios'
+
 import { AxiosResponse } from 'axios';
 import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class';
@@ -74,7 +74,7 @@ export default class UserCom extends Vue {
         }); */
     }
     public add_follow(): void {
-        this.axios.post(baseApi.api2 + '/v1/user/sub/', {
+        this.axios.post('/v1/user/sub/', {
             sub_id: "5f8848a35e3d43b0e0fcc6f3",
             sub_type: "character",
             sub_oper_type: 'sub',
@@ -93,7 +93,7 @@ export default class UserCom extends Vue {
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10').then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);

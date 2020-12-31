@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class';
 @Component
@@ -57,7 +57,7 @@ export default class NewFriendsCom extends Vue {
             return;
         }
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'set_friend_remark_name',
                 paras: {
                     user_id: this.userInfo.user_id,
@@ -74,7 +74,7 @@ export default class NewFriendsCom extends Vue {
     //发送消息
     public sendMessage(user: any): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'im_create',
                 paras: { account: user.account }
             }).then(res => {
@@ -89,7 +89,7 @@ export default class NewFriendsCom extends Vue {
     //获取新朋友列表
     private getNewFriendsList(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'new_friends'
             }).then(res => {
                 this.newFriendList = res.data.data;
@@ -101,7 +101,7 @@ export default class NewFriendsCom extends Vue {
     //
     private getCardList(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'recommended_friends',
             }).then(res => {
                 console.log(res.data);
@@ -114,7 +114,7 @@ export default class NewFriendsCom extends Vue {
     //接受
     public toAgree(user: any): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'process_add_friend',
                 paras: { user_id: user.user_id, oper: 'accepted' },
             }).then(res => {
@@ -126,7 +126,7 @@ export default class NewFriendsCom extends Vue {
     }
     public toReject(user: any): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'process_add_friend',
                 paras: { user_id: user.user_id, oper: 'rejected' },
             }).then(res => {
@@ -160,7 +160,7 @@ export default class NewFriendsCom extends Vue {
     //添加到通讯录
     public async toAddMaiList() {
         try {
-            await this.axios.post(baseApi.api2 + '/v1/cmd/', {
+            await this.axios.post('/v1/cmd/', {
                 cmd: 'request_add_friend',
                 paras: {
                     user_id: this.inv_userInfo.recommended.user_id,
@@ -171,7 +171,7 @@ export default class NewFriendsCom extends Vue {
             })
             this.$message.success('验证消息发送成功');
             await this.axios
-                .post(baseApi.api2 + '/v1/cmd/', {
+                .post('/v1/cmd/', {
                     cmd: 'process_recommend_friend',
                     paras: {
                         r_id: this.inv_userInfo.id,
@@ -188,7 +188,7 @@ export default class NewFriendsCom extends Vue {
     //忽略
     public igron(user: any, key: string): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'process_recommend_friend',
                 paras: {
                     r_id: key,

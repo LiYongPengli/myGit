@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { AxiosResponse } from 'axios';
 import { Component, Vue } from 'vue-property-decorator'
 import { State } from 'vuex-class';
@@ -190,7 +190,7 @@ export default class MyFollowCom extends Vue {
 
     //获取频道等列表
     private getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10&start='+start).then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -227,7 +227,7 @@ export default class MyFollowCom extends Vue {
                 filters[i] = this.filters[i];
             }
         }
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'my_sub_news',
             paras: filters
         }).then(res => {

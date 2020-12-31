@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Table2Xlsx from '@/libs/Table2xlsx';
 @Component
@@ -37,7 +37,7 @@ export default class NewsResourcesItemCom extends Vue {
             }
         }
         this.axios
-            .post(baseApi.api2 + "/v1/cmd/", {
+            .post("/v1/cmd/", {
                 cmd: "news_usage_stat",
                 paras: data,
             })
@@ -65,7 +65,7 @@ export default class NewsResourcesItemCom extends Vue {
             }
         }
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'media_usage_stat',
                 paras: data
             }).then(res => {

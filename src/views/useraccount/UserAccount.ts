@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class';
 @Component
@@ -31,7 +31,7 @@ export default class UserAccountCom extends Vue {
             return;
         }
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'user_modify_nickname',
                 paras: { nickname: this.niname }
             }).then(res => {
@@ -50,7 +50,7 @@ export default class UserAccountCom extends Vue {
 
     //绑定微信
     public bindWechat(): void {
-        this.axios.post(baseApi.api1 + '/v1/user/wechat/').then(res => {
+        this.axios.post('/v1/user/wechat/').then(res => {
             this.wx_data = res.data.data;
         }).catch(err => { })
 
@@ -59,7 +59,7 @@ export default class UserAccountCom extends Vue {
     //解绑微信号
     public unbindingWechat(): void {
         this.axios
-            .delete(baseApi.api1 + '/v1/user/wechat/').then(res => {
+            .delete('/v1/user/wechat/').then(res => {
                 this.user_message.wechat_info = {binding:false}
                 this.setUserMessage(this.user_message);
                 this.unbinding = false;
@@ -98,7 +98,7 @@ export default class UserAccountCom extends Vue {
         formData.append('cmd', 'user_modify_avatar')
         formData.append('img', this.headerPhoto as any);
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', formData, {
+        .post('/v1/cmd/', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

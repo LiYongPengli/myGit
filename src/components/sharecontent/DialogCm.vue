@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from "@/axios/axios";
+
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { State } from "vuex-class";
 
@@ -108,7 +108,7 @@ export default class DialogCm extends Vue {
   //分享新闻
   private requestMessage(): void {
     this.axios
-      .post(baseApi.api2 + "/v1/cmd/", {
+      .post("/v1/cmd/", {
         cmd: "share_news",
         paras: {
           account: this.share_user.account,
@@ -148,7 +148,7 @@ export default class DialogCm extends Vue {
       obj.one = this.content.name;
     }
     this.axios
-      .post(baseApi.api2 + "/v1/cmd/", {
+      .post("/v1/cmd/", {
         cmd: "share_favorite",
         paras: obj,
       })

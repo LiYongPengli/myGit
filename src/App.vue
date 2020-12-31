@@ -38,7 +38,6 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-import { baseApi } from "./axios/axios";
 import Topic from "@/components/topic/Topic.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue"
 @Component({
@@ -97,7 +96,7 @@ export default class App extends Vue {
   //分享新闻
   public shareMessage(): void {
     this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'share_news',
           paras: {
             account: this.share_user.account,
@@ -116,7 +115,7 @@ export default class App extends Vue {
 
   public getFriendList(): void {
     this.axios
-      .post(baseApi.api2 + "/v1/cmd/", {
+      .post("/v1/cmd/", {
         cmd: "my_friends",
       })
       .then((res) => {
@@ -135,7 +134,7 @@ export default class App extends Vue {
 
   private userLoginType(): void {
     this.axios
-      .get(baseApi.api2 + "/v1/user/login/")
+      .get("/v1/user/login/")
       .then((res) => {
         this.getUserInfo(res.data.data.user_id);
       })
@@ -150,7 +149,7 @@ export default class App extends Vue {
    */
   private getUserInfo(user_id: string): void {
     this.axios
-      .post(baseApi.api2 + "/v1/cmd/", {
+      .post("/v1/cmd/", {
         cmd: "user_info",
         paras: { user_id: user_id },
       })

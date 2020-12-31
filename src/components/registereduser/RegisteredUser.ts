@@ -1,5 +1,4 @@
-import { baseApi } from '@/axios/axios';
-import { AxiosResponse } from 'axios';
+
 import echarts, { ECharts } from 'echarts'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Table2Xlsx from '@/libs/Table2xlsx';
@@ -8,7 +7,7 @@ import { State } from 'vuex-class';
 export default class RegisteredUserCom extends Vue {
     @State('topic_show') topic_show!:boolean;
     public search_user: string = "";
-    public dates: Date[] = [];
+    public dates: Date[]|null = [];
     public date_data: string[] = [];
     public result_data: any = "";
     private chart: ECharts | null = null;
@@ -157,7 +156,7 @@ export default class RegisteredUserCom extends Vue {
             }
         }
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'reg_user_stat',
                 paras: data
             }).then(res => {
@@ -174,6 +173,7 @@ export default class RegisteredUserCom extends Vue {
     //今天，7天，30天
     public setDay(type: string): void {
         this.search_form.stat_type = type;
+        this.dates = null;
         this.search_form.time_from = "";
         this.search_form.time_to = "";
         this.getData();

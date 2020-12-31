@@ -1,4 +1,3 @@
-import { baseApi } from '@/axios/axios';
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class AddCollectionCom extends Vue {
@@ -22,7 +21,7 @@ export default class AddCollectionCom extends Vue {
 
     private getCollection(): void {
         this.axios
-            .get(baseApi.api2 + "/v1/user/favorite/")
+            .get("/v1/user/favorite/")
             .then((res) => {
                 console.log(res.data);
                 this.favoriteList = res.data.data.favorite;
@@ -54,13 +53,13 @@ export default class AddCollectionCom extends Vue {
         formdata.append("name", this.collection_name);
         formdata.append("cover", this.upimg);
         try {
-            await this.axios.post(baseApi.api2 + "/v1/user/favorite/", formdata);
+            await this.axios.post("/v1/user/favorite/", formdata);
         } catch (err) {
             console.log(err);
             return;
         }
         try {
-            await this.axios.post(baseApi.api2 + "/v1/cmd/", {
+            await this.axios.post("/v1/cmd/", {
                 cmd: "favorite_news",
                 paras: {
                     name: this.collection_name,
@@ -77,7 +76,7 @@ export default class AddCollectionCom extends Vue {
 
     //收藏
     public toCollection(item: any): void {
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'favorite_news',
             paras: {
                 name: item.name,

@@ -8,10 +8,12 @@
       @mouseenter="play"
       @mouseleave="stop"
       :src="video_photo"
-      v-if="!showVideo"
+      v-if="!showVideo&&!video_err"
     />
-     <img  v-if="!showVideo" class="dianbo" src="../../assets/img/dianbo.png" alt="">
+     <img  v-if="!showVideo&&!video_err" class="dianbo" src="../../assets/img/dianbo.png" alt="">
+     <img  v-if="video_err" class="dianbo" src="../../assets/img/404.jpg" alt="">
     <video
+      @error="imgError"
       ref="video"
       style="display: none"
       :src="video_url"
@@ -20,7 +22,7 @@
       width="200"
       height="112"
       @mouseleave="stop"
-      v-show="showVideo"
+      v-show="showVideo&&!video_err"
       ref="videoCtx"
     ></canvas>
   </div>
@@ -40,6 +42,7 @@ export default class VideoThumbnail extends Vue {
   private videoCtx!: HTMLCanvasElement;
   //视频组件
   private video!: HTMLVideoElement;
+  private video_err:boolean = false;
   //定时器
   private interval: any = null;
   private timeout:any = null;
@@ -51,7 +54,7 @@ export default class VideoThumbnail extends Vue {
 
   //图片加载失败
   public imgError():void{
-    this.video_photo = "../../assets/img/404.jpg"
+    this.video_err = true;
   }
 
   //播放视频缩略动画

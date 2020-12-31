@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from '@/axios/axios';
+
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import MyScroll from '@/components/MyScroll.vue'
 @Component({
@@ -76,7 +76,7 @@ export default class Share extends Vue {
     //获取通讯录列表
     private getMailList():void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'my_friends',
         }).then(res=>{
             this.userlists = res.data.data;
@@ -100,7 +100,7 @@ export default class Share extends Vue {
 
     public toShare(user:any):void{
       this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'recommend_friend',
           paras: {
             recommended_id: this.user.user_id,

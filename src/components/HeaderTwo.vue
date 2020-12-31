@@ -71,7 +71,6 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from "@/axios/axios";
 import { Component, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import IntelligentRetrieval from '@/components/intelligentretrieval/IntelligentRetrieval.vue'
@@ -93,7 +92,7 @@ export default class HeaderTwo extends Vue {
   //登出
   private logout(): void {
     this.axios
-      .post(baseApi.api1 + "/v1/user/login/logout")
+      .post("/v1/user/login/logout")
       .then((res) => {
         console.log(res.data);
         if (res.data.status == 1) {

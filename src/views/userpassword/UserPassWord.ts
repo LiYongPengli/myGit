@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import qs from 'qs'
 import { State } from 'vuex-class';
@@ -155,7 +155,7 @@ export default class UserPassWordCom extends Vue {
     //获取图片验证码
     private async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img');
+            let res = await this.axios.get('/v1/verify/img');
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
@@ -163,7 +163,7 @@ export default class UserPassWordCom extends Vue {
     }
     //获取手机验证码
     private getPhoneCode(phoneNumber: string): void {
-        this.axios.get(baseApi.api1 + '/v1/verify/telphone?tel=' + phoneNumber).then(res => {
+        this.axios.get('/v1/verify/telphone?tel=' + phoneNumber).then(res => {
             console.log(res.data);
             this.send_code = true;
             this.show_vc_code = false;
@@ -194,7 +194,7 @@ export default class UserPassWordCom extends Vue {
             return false;
         }
         try {
-            await this.axios.put(baseApi.api1 + '/v1/verify/img', qs.stringify({ vc: img_code }));
+            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }));
             return true;
         } catch (code_err) {
             if (code_err.response.data.message == 'Verification code is uncorrect.') {
@@ -229,7 +229,7 @@ export default class UserPassWordCom extends Vue {
                 vc:vc,
                 type:2
             })
-            let res = await this.axios.put(baseApi.api1+'/v1/verify/telphone',data);
+            let res = await this.axios.put('/v1/verify/telphone',data);
             if(!res.data.status){
                 this.$message.error(res.data.msg);
                 return false;
@@ -294,7 +294,7 @@ export default class UserPassWordCom extends Vue {
         }
         try {
             if (!this.fogetpwd) {
-                await this.axios.post(baseApi.api2 + '/v1/cmd/', {
+                await this.axios.post('/v1/cmd/', {
                     cmd: 'user_modify_pw_by_pw',
                     paras: { old_pw: this.form.oldpwd, new_pw: this.form.newpwd },
                 })
@@ -308,7 +308,7 @@ export default class UserPassWordCom extends Vue {
                     let data = {
                         password:this.fogetForm.newpwd
                     }
-                    this.axios.put(baseApi.api1+'/v1/user/account/resetpw',qs.stringify(data)).then(res=>{
+                    this.axios.put('/v1/user/account/resetpw',qs.stringify(data)).then(res=>{
                         if(res.data.status==0){
                             this.$message.error(res.data.msg);
                             return;

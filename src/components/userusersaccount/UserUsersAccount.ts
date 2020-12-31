@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component,Prop,Vue } from 'vue-property-decorator'
 @Component
 export default class UserUsersAccountCom extends Vue{
@@ -13,13 +13,13 @@ export default class UserUsersAccountCom extends Vue{
     //重置密码
     public async resetPassword():Promise<void>{
         try{
-            let res = await this.axios.post(baseApi.api2+'/v1/cmd/', {cmd: 'generate_password'});
+            let res = await this.axios.post('/v1/cmd/', {cmd: 'generate_password'});
             this.resPwd = res.data.data.password;
         }catch(err){
             console.log(err);
         }
         try{
-            let res = await this.axios.post(baseApi.api2+'/v1/cmd/', {
+            let res = await this.axios.post('/v1/cmd/', {
               cmd: 'reset_password',
               paras: {
                 user_id: this.user.user_id,
@@ -62,7 +62,7 @@ export default class UserUsersAccountCom extends Vue{
             return;
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'change_phone_number',
           paras: {
             user_id: this.user.user_id,

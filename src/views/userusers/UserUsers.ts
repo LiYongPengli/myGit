@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
@@ -56,7 +56,7 @@ export default class UserUsersCom extends Vue {
 
     private getUserList(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'user_info_list',
             }).then(res => {
                 console.log(res.data);
@@ -93,7 +93,7 @@ export default class UserUsersCom extends Vue {
             role = 'oper'
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'change_user_role',
           paras: {
             user_id: user.user_id,

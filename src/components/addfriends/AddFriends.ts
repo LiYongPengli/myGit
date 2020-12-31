@@ -1,4 +1,3 @@
-import { baseApi } from '@/axios/axios';
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
 @Component
@@ -38,7 +37,7 @@ export default class AddFriendsCom extends Vue {
     //搜索好友
     public searchFriends(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'search_user',
                 paras: { keyword: this.keyword },
             }).then(res => {
@@ -62,7 +61,7 @@ export default class AddFriendsCom extends Vue {
     //发送消息
     public sendMessage(user: any): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'im_create',
                 paras: { account: user.account }
             }).then(res => {
@@ -86,7 +85,7 @@ export default class AddFriendsCom extends Vue {
     //添加到通讯录
     public async toAddMaiList(){
         try{
-            await this.axios.post(baseApi.api2+'/v1/cmd/', {
+            await this.axios.post('/v1/cmd/', {
                 cmd: 'request_add_friend',
                 
                 paras: { 
@@ -106,7 +105,7 @@ export default class AddFriendsCom extends Vue {
     //忽略
     public igron(user: any, key: string): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'process_recommend_friend',
                 paras: {
                     r_id: key,

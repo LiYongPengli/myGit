@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { baseApi } from "@/axios/axios";
+
 
 import qs from "qs";
 import Component, { mixins } from "vue-class-component";

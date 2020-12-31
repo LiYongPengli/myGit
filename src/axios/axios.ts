@@ -5,20 +5,13 @@ import { Message } from 'element-ui';
 let api = {api1:'',api2:''};
 switch (process.env.VUE_APP_MODE) {
     case 'development':
-        api = {
-            // api1: '/api',
-            api1: '/aps',
-            api2: '/aps'
-        }
+        axios.defaults.baseURL = '/aps'
         break;
     case 'production':
-        api = {
-            api1: '',
-            api2: ''
-        }
+        axios.defaults.baseURL = '/'
         break;
 }
-axios.defaults.baseURL = process.env.BASE_URL
+
 export const baseApi = api;
 
 axios.interceptors.response.use(res=>{

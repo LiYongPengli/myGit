@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class ShareContentCom extends Vue {
@@ -13,7 +13,7 @@ export default class ShareContentCom extends Vue {
 
     public getFriendList(): void {
         this.axios
-            .post(baseApi.api2 + "/v1/cmd/", {
+            .post("/v1/cmd/", {
                 cmd: "my_friends",
             })
             .then((res) => {

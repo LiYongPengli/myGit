@@ -11,12 +11,11 @@
       >
         <li v-for="(v, i) in characterFollowList" :key="i" class="concernedlist">
           <div class="concernedlistdiv">
-            <img src="../../assets/img/tx.png" alt="" />
+            <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
-              <speed-text width="150px" height="20px" :text="'中国共产党中央委员会总书记'">
-
-              </speed-text>
+              <speed-text width="150px" height="20px" :text="v.description" />
             </div>
             <!-- <p>中国共产党中央委员会总书记</p> -->
 
@@ -42,48 +41,31 @@
       <ul class="noattentionlists">
         <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
           <div class="concernedlistdiv">
-            <img src="../../assets/img/tx.png" alt="" />
+            <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
-              <speed-text width="150px" height="20px" :text="'中国共产党中央委员会总书记'" />
+              <speed-text width="150px" height="20px" :text="v.description" />
             </div>
             <img @click="addFollow(v, i)" src="../../assets/img/add.png" alt="" />
           </div>
         </li>
       </ul>
       <div>加载更多</div>
-      <!-- 还没有找到想关注的人物列表 -->
-     
     </div>
-     <div class="searchpeoplelist" v-show="searchpeople">
-       <a class="search_a" href="#" @click="searchpeople = false">返回</a>
-       <div class="search_input">
-         <input type="text" placeholder="请输入想要搜索的人物名称">
-         <img class="sousuo" src="../../assets/img/sousuo.png" alt="" />
-       </div>
-        <ul class="noattentionlists">
-        <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
-          <div class="concernedlistdiv">
-            <img src="../../assets/img/tx.png" alt="" />
-            <span>{{ v.name }}</span>
-            <div class="concernedname">
-              <speed-text width="150px" height="20px" :text="'中国共产党中央委员会总书记'">
-              </speed-text>
-            </div>
-            <img @click="addFollow(v, i)" src="../../assets/img/add.png" alt="" />
-          </div>
-        </li>
-        </ul>
-      </div>
+      <!-- 还没有找到想关注的人物列表 -->
+     <no-people @follow="noPeopleFollow" @close="searchpeople=false" v-if="searchpeople" />
   </div>
 </template>
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import PeopleCom from "./People";
 import SpeedText from "@/components/SpeedText.vue";
+import NoPeople from "./NoPeople.vue";
 @Component({
   components: {
     SpeedText,
+    NoPeople
   },
 })
 export default class People extends mixins(PeopleCom) {}

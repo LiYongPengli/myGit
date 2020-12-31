@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import qs from 'qs'
 @Component
@@ -64,7 +64,7 @@ export default class phoneLoginCom extends Vue {
     //获取图片验证码
     public async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img?t=' + new Date().getTime());
+            let res = await this.axios.get('/v1/verify/img?t=' + new Date().getTime());
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
@@ -88,7 +88,7 @@ export default class phoneLoginCom extends Vue {
 
     //获取手机验证码
     private getPhoneCode(phoneNumber: string): void {
-        this.axios.get(baseApi.api1 + '/v1/verify/telphone?tel=' + phoneNumber).then(res => {
+        this.axios.get('/v1/verify/telphone?tel=' + phoneNumber).then(res => {
             this.send_code = true;
             this.show_vc_code = false;
             this.$message.success("验证码发送成功");
@@ -108,7 +108,7 @@ export default class phoneLoginCom extends Vue {
     public async imgCodeSure(img_code: string): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {
-                await this.axios.put(baseApi.api1 + '/v1/verify/img', qs.stringify({ vc: img_code }));
+                await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }));
                 resolve(true)
             } catch (code_err) {
                 reject(code_err.response.data.message);
@@ -140,7 +140,7 @@ export default class phoneLoginCom extends Vue {
         })
         return new Promise(async (resolve, reject) => {
             try {
-                let res = await this.axios.put(baseApi.api1 + '/v1/verify/telphone', data);
+                let res = await this.axios.put('/v1/verify/telphone', data);
                 if (!res.data.status) {
                     reject(new Error(res.data.msg))
                     return false;
@@ -199,7 +199,7 @@ export default class phoneLoginCom extends Vue {
             return;
         }
         try {
-            let res = await this.axios.post(baseApi.api1 + '/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel,remember:0 }));
+            let res = await this.axios.post('/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel,remember:0 }));
             if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 return;

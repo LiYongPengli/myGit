@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 import Swiper from 'swiper'
@@ -28,7 +28,7 @@ export default class Hours24Com extends Vue {
 
     //获取24小时数据
     private get24Hour(): void {
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'hours24',
             paras: { size: 20 }
         }).then(res => {

@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios'
+
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
@@ -21,7 +21,7 @@ export default class ZhuantiCom extends Vue{
     }
 
     private getList():void{
-        this.axios.post(baseApi.api2+'/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'favorite_preview',
             paras: {
               name: this.$route.query.name,
@@ -74,7 +74,7 @@ export default class ZhuantiCom extends Vue{
 
     //确定
     public sure():void{
-        this.axios.post(baseApi.api2+'/v1/cmd/',{
+        this.axios.post('/v1/cmd/',{
             cmd:'favorite_news',
             paras:{
                 name:this.$route.query.name,

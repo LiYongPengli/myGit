@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { AxiosResponse } from 'axios';
 import { Component, Vue } from 'vue-property-decorator'
 import Swiper from 'swiper'
@@ -109,7 +109,7 @@ export default class RecommendCom extends Vue {
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get(baseApi.api2 + '/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=0').then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=0').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -131,7 +131,7 @@ export default class RecommendCom extends Vue {
                 paras = { start:this.start.pageStart,name: this.active_recommend_name, size: 10 };
                 break;
         }
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: cmd,
             paras: paras,
         }).then(res => {

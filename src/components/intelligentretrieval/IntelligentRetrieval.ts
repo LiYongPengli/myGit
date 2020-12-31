@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import {  Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 @Component
@@ -111,7 +111,7 @@ export default class IntelligentRetrievalCom extends Vue {
             return;
         }
         this.axios
-            .post(baseApi.api2 + "/v1/cmd/", {
+            .post("/v1/cmd/", {
                 cmd: "search_suggestion",
                 paras: { keyword: val },
             })
@@ -140,7 +140,7 @@ export default class IntelligentRetrievalCom extends Vue {
 
     private searchNews() {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'search_news',
                 paras: { keywords: this.searchText.split(" ")},
             })
@@ -188,7 +188,7 @@ export default class IntelligentRetrievalCom extends Vue {
             this.cache_character = [];
         }
         filter.keywords = this.searchText.split(" ");
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'filter_news',
             paras: filter
         }).then(res => {

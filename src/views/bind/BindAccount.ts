@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import qs from 'qs';
 @Component
@@ -74,7 +74,7 @@ export default class BindAccountCom extends Vue {
     //获取图片验证码
     public async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1 + "/v1/verify/img");
+            let res = await this.axios.get("/v1/verify/img");
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
@@ -84,7 +84,7 @@ export default class BindAccountCom extends Vue {
     public async imgCodeSure(img_code: string): Promise<boolean> {
         try {
             await this.axios.put(
-                baseApi.api1 + "/v1/verify/img",
+                "/v1/verify/img",
                 qs.stringify({ vc: img_code })
             );
             this.vcerr = ""
@@ -131,7 +131,7 @@ export default class BindAccountCom extends Vue {
                 password: this.form.password,
             };
             let res = await this.axios.post(
-                baseApi.api1 + "/v1/user/wechat/bind",
+                "/v1/user/wechat/bind",
                 qs.stringify(data)
             );
             if (res.data.data.status == 0) {
@@ -141,7 +141,7 @@ export default class BindAccountCom extends Vue {
             }
             this.$message.success("登录成功!");
             //重置登录状态
-            this.axios.put(baseApi.api1 + "/v1/user/wechat/");
+            this.axios.put("/v1/user/wechat/");
             this.$router.push("/");
         } catch (err) {
             console.log(err);

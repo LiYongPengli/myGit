@@ -1,6 +1,6 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import qs from 'qs';
-import { baseApi } from '@/axios/axios';
+
 @Component
 export default class RegisterCom extends Vue {
     //图片验证码的base64数据
@@ -145,7 +145,7 @@ export default class RegisterCom extends Vue {
     //获取图片验证码
     private async getImgCode():Promise<void>{
         try{
-            let res = await this.axios.get(baseApi.api1+'/v1/verify/img');
+            let res = await this.axios.get('/v1/verify/img');
             this.img_vc = res.data.data;
         }catch(err){
             console.log(err);
@@ -153,7 +153,7 @@ export default class RegisterCom extends Vue {
     }
     //获取手机验证码
     private getPhoneCode(phoneNumber:string):void{
-        this.axios.get(baseApi.api1+'/v1/verify/telphone?tel='+phoneNumber).then(res=>{
+        this.axios.get('/v1/verify/telphone?tel='+phoneNumber).then(res=>{
             console.log(res.data);
             this.send_code = true;
             this.show_vc_code = false;
@@ -178,7 +178,7 @@ export default class RegisterCom extends Vue {
                 vc:vc,
                 type:1
             })
-            let res = await this.axios.put(baseApi.api1+'/v1/verify/telphone',data);
+            let res = await this.axios.put('/v1/verify/telphone',data);
             if(!res.data.status){
                 this.vcerr = res.data.msg
                 return false;
@@ -234,7 +234,7 @@ export default class RegisterCom extends Vue {
             return false;
         }
         try {
-            await this.axios.put(baseApi.api1+'/v1/verify/img', qs.stringify({ vc: img_code }));
+            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }));
             return true;
         } catch (code_err) {
             if (code_err.response.data.message == 'Verification code is uncorrect.') {
@@ -276,7 +276,7 @@ export default class RegisterCom extends Vue {
             tel:this.form.tel,
             nickname:this.form.nickname
         }
-        this.axios.post(baseApi.api1+'/v1/user/account/signup',qs.stringify(data)).then(res=>{
+        this.axios.post('/v1/user/account/signup',qs.stringify(data)).then(res=>{
             if(res.data.status==0){
                 this.$message.error(res.data.msg);
                 return;

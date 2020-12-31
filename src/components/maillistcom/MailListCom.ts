@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios';
+
 import { Component,Emit,Prop,Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class';
 @Component
@@ -65,7 +65,7 @@ export default class MailListCom extends Vue{
             return;
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'set_friend_remark_name',
           paras: {
             user_id: this.userInfo.user_id,
@@ -93,7 +93,7 @@ export default class MailListCom extends Vue{
             return;
         }
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'search_friend',
           paras: { keyword: this.keyword }
         }).then(res=>{
@@ -105,7 +105,7 @@ export default class MailListCom extends Vue{
     //发送消息
     public sendMessage(user:any):void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'im_create',
           paras: { account: user.account }
         }).then(res=>{
@@ -120,7 +120,7 @@ export default class MailListCom extends Vue{
     //获取通讯录列表
     private getMailList():void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'my_friends',
         }).then(res=>{
             this.userlists = res.data.data;
@@ -142,7 +142,7 @@ export default class MailListCom extends Vue{
     //获取新朋友列表
     private getNewFriendsList(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'new_friends'
             }).then(res => {
                 this.newFriendList = res.data.data;
@@ -154,7 +154,7 @@ export default class MailListCom extends Vue{
     //获取名片列表
     private getCardList():void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'recommended_friends',
         }).then(res=>{
             console.log(res.data);
@@ -167,7 +167,7 @@ export default class MailListCom extends Vue{
     //接受
     public toAgree(user:any):void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'process_add_friend',
           paras: { user_id: user.user_id, oper: 'accepted' },
         }).then(res=>{
@@ -181,7 +181,7 @@ export default class MailListCom extends Vue{
     //拒绝
     public toReject(user:any):void{
         this.axios
-        .post(baseApi.api2+'/v1/cmd/', {
+        .post('/v1/cmd/', {
           cmd: 'process_add_friend',
           paras: { user_id: user.user_id, oper: 'rejected' },
         }).then(res=>{
@@ -212,7 +212,7 @@ export default class MailListCom extends Vue{
     public async toAddMaiList(){
         console.log(this.inv_userInfo)
         try{
-            await this.axios.post(baseApi.api2+'/v1/cmd/', {
+            await this.axios.post('/v1/cmd/', {
                 cmd: 'request_add_friend',
                 paras: { 
                     user_id: this.inv_userInfo.recommended.user_id, 
@@ -229,7 +229,7 @@ export default class MailListCom extends Vue{
     //忽略
     public igron(user:any,key:string):void{
         this.axios
-            .post(baseApi.api2+'/v1/cmd/', {
+            .post('/v1/cmd/', {
               cmd: 'process_recommend_friend',
               paras: {
                 r_id: key,

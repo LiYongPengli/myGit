@@ -1,4 +1,3 @@
-import { baseApi } from '@/axios/axios';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import qs from 'qs'
 @Component
@@ -101,7 +100,7 @@ export default class AccountLoginCom extends Vue {
     //获取图片验证码
     public async getImgCode(): Promise<void> {
         try {
-            let res = await this.axios.get(baseApi.api1 + '/v1/verify/img?t=' + new Date().getTime());
+            let res = await this.axios.get('/v1/verify/img?t=' + new Date().getTime());
             this.img_vc = res.data.data;
         } catch (err) {
             console.log(err);
@@ -117,7 +116,7 @@ export default class AccountLoginCom extends Vue {
                     return;
                 }
                 try {
-                    await this.axios.put(baseApi.api1 + '/v1/verify/img', qs.stringify({ vc: this.form.vc }));
+                    await this.axios.put('/v1/verify/img', qs.stringify({ vc: this.form.vc }));
                 } catch (err) {
                     if (err.response.data.message == 'Verification code is uncorrect.') {
                         reject(new Error('图片验证码错误'))
@@ -151,7 +150,7 @@ export default class AccountLoginCom extends Vue {
                 password: this.form.password,
                 remember: this.remember_login
             }
-            let res = await this.axios.post(baseApi.api1 + '/v1/user/login/', qs.stringify(data));
+            let res = await this.axios.post('/v1/user/login/', qs.stringify(data));
             if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 this.getImgCode();

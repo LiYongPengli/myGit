@@ -1,4 +1,4 @@
-import { baseApi } from '@/axios/axios'
+
 import { Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 import Page2Word from '@/libs/Page2Word'
@@ -19,7 +19,7 @@ export default class NewsInfoCom extends Vue {
         this.getData();
     }
     private getData(): void {
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'news_detail',
             paras: {
                 news_id: this.$route.query.id,
@@ -65,7 +65,7 @@ export default class NewsInfoCom extends Vue {
     //不感兴趣或取消不感兴趣
     public notInterested(): void {
         this.axios
-            .post(baseApi.api2 + '/v1/cmd/', {
+            .post('/v1/cmd/', {
                 cmd: 'not_interest_news',
                 paras: {
                     news_id: this.$route.query.id,
@@ -83,7 +83,7 @@ export default class NewsInfoCom extends Vue {
 
     //点赞或取消点赞
     public likes(): void {
-        this.axios.post(baseApi.api2 + '/v1/cmd/', {
+        this.axios.post('/v1/cmd/', {
             cmd: 'like_news',
             paras: {
                 news_id: this.$route.query.id,
@@ -99,7 +99,7 @@ export default class NewsInfoCom extends Vue {
 
     //关注或取消关注
     public tofollow(): void {
-        this.axios.post(baseApi.api2 + '/v1/user/sub/', {
+        this.axios.post('/v1/user/sub/', {
             sub_id: this.$route.query.md_id,
             sub_type: 'media',
             sub_oper_type: this.newsInfo.subscribed ? 'unsub' : 'sub',
