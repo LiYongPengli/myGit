@@ -6,12 +6,12 @@
     </div>
     <div class="search">
       <button value="" title=""></button>
-      <input
+      <!-- <input
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
-      />
+      /> -->
       <div @click="setShowIntelligent(true)" class="ss">
-        大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�/div>
+    <div @click="setShowIntelligent(true)" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策</div>
       </div>
       <div class="bottom">
         <div class="user_info" v-if="user_message">
@@ -168,7 +168,7 @@ export default class HeaderOne extends Vue {
     }
   }
   .bottom {
-    margin-left: 210px;
+    // margin-left: 210px;
     height: 65px;
     background: #282832;
     border-top: 1px solid #3a3a48;
