@@ -210,12 +210,14 @@ export default class HeaderOne extends Vue {
         margin-right: 70px;
         text-decoration: none;
         display: inline-block;
+        // width: 70px;
       }
       a.router-link-active {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
-        width: 140px;
+        // width: 140px;
+        //  width: 70px;
         text-align: center;
       }
     }

@@ -138,10 +138,11 @@
                             .mt,
                             .time,
                             .ll {
-                                margin-top: 16px;
+                                margin-top: 10px;
                                 display: block;
                                 font-size: 13px;
-                                color: #6d6f7e;
+                                color: #bcc2d5;
+                                ;
                             }
                         }
                         .zan {
@@ -244,7 +245,7 @@
                                 width: 54px;
                                 height: 54px;
                                 margin: auto;
-                                border-radius: 50%;
+                                // border-radius: 50%;
                                 overflow: hidden;
                             }
                             p {
