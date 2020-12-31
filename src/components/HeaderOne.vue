@@ -5,70 +5,77 @@
       <a></a>
     </div>
     <div class="search">
-      <button value="" title="检�></button>
-      <!-- <input
+      <button value="" title=""></button>
+      <input
         type="text"
-        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�
-      /> -->
-      <div @click="setShowIntelligent(true)" class="ss">大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�/div>
-    </div>
-    <div class="bottom">
-      <div class="user_info" v-if="user_message">
-        <!-- 头部下拉�-->
-        <el-popover placement="bottom-start" width="265" trigger="click">
-          <ul id="setting_list">
-            <router-link to="/user" tag="li">
-              <img src="../assets/img/shezhi.png" alt="" />
-              <span>个人中心</span>
-            </router-link>
-            <li @click="logout">
-              <img src="../assets/img/icon_loginout.png" alt="" />
-              <span>退出登�/span>
-            </li>
-          </ul>
-          <div slot="reference" class="user_info_wrap">
-            <img :src="'http://zlbxxcj.bjceis.com/avatar/'+user_message.account" alt="头像" />
-            <!-- <img v-if="user_message.wechat_info.head_img&&!user_message.headimg" :src="user_message.wechat_info.head_img" alt="头像" />
+        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
+      />
+      <div @click="setShowIntelligent(true)" class="ss">
+        大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�/div>
+      </div>
+      <div class="bottom">
+        <div class="user_info" v-if="user_message">
+          <!-- 头部下拉-->
+          <el-popover placement="bottom-start" width="265" trigger="click">
+            <ul id="setting_list">
+              <router-link to="/user" tag="li">
+                <img src="../assets/img/shezhi.png" alt="" />
+                <span>个人中心</span>
+              </router-link>
+              <li @click="logout">
+                <img src="../assets/img/icon_loginout.png" alt="" />
+                <span>退出登录</span>
+              </li>
+            </ul>
+            <div slot="reference" class="user_info_wrap">
+              <img
+                :src="
+                  'http://zlbxxcj.bjceis.com/avatar/' + user_message.account
+                "
+                alt="头像"
+              />
+              <!-- <img v-if="user_message.wechat_info.head_img&&!user_message.headimg" :src="user_message.wechat_info.head_img" alt="头像" />
             <img v-if="!user_message.wechat_info.head_img&&!user_message.headimg" src="../assets/img/tx.png" alt="头像" /> -->
-            <span>{{user_message.nickname}}</span>
-            <i class="el-icon-arrow-down"></i>
-          </div>
-        </el-popover>
+              <span>{{ user_message.nickname }}</span>
+              <i class="el-icon-arrow-down"></i>
+            </div>
+          </el-popover>
+        </div>
+        <div class="nav">
+          <router-link to="/myfollow">我的关注</router-link>
+          <router-link to="/recommend">热门推荐</router-link>
+        </div>
+        <div class="lang">
+          <span
+            @click="setLanguage('crawler')"
+            :class="{ cur: language == 'crawler' }"
+            >原文</span
+          >
+          <span
+            @click="setLanguage('zh-CN')"
+            :class="{ cur: language == 'zh-CN' }"
+            >中文</span
+          >
+          <span @click="setLanguage('en')" :class="{ cur: language == 'en' }"
+            >英文</span
+          >
+        </div>
       </div>
-      <div class="nav">
-        <router-link to="/myfollow">我的关注</router-link>
-        <router-link to="/recommend">热门推荐</router-link>
-      </div>
-      <div class="lang">
-        <span
-          @click="setLanguage('crawler')"
-          :class="{ 'cur': language == 'crawler' }"
-          >原文</span
-        >
-        <span
-          @click="setLanguage('zh-CN')"
-          :class="{ 'cur': language == 'zh-CN' }"
-          >中文</span
-        >
-        <span @click="setLanguage('en')" :class="{ 'cur': language == 'en' }"
-          >英文</span
-        >
-      </div>
+      <transition name="el-zoom-in-top">
+        <intelligent-retrieval v-if="show_intelligent" />
+      </transition>
     </div>
-    <transition name="el-zoom-in-top">
-      <intelligent-retrieval v-if="show_intelligent" />
-    </transition>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-import IntelligentRetrieval from '@/components/intelligentretrieval/IntelligentRetrieval.vue'
+import IntelligentRetrieval from "@/components/intelligentretrieval/IntelligentRetrieval.vue";
 @Component({
-  components:{
-    IntelligentRetrieval
-  }
+  components: {
+    IntelligentRetrieval,
+  },
 })
 export default class HeaderOne extends Vue {
   //当前系统语言
@@ -78,11 +85,10 @@ export default class HeaderOne extends Vue {
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
 
-  @State('show_intelligent') show_intelligent!:boolean;
+  @State("show_intelligent") show_intelligent!: boolean;
 
-  @Mutation('setShowIntelligent') setShowIntelligent:any;
+  @Mutation("setShowIntelligent") setShowIntelligent: any;
 
-  
   //登出
   public logout(): void {
     this.axios
@@ -91,7 +97,7 @@ export default class HeaderOne extends Vue {
         console.log(res.data);
         if (res.data.status == 1) {
           this.$router.push("/login");
-          this.$message.success("已登�);
+          this.$message.success("已登录");
         }
       })
       .catch((err) => {
@@ -144,16 +150,16 @@ export default class HeaderOne extends Vue {
       color: white;
       // margin-left: 10px;
     }
-    .ss{
-        // width: calc(100% - 75px);
+    .ss {
+      // width: calc(100% - 75px);
       background-color: #272731;
-      
+
       height: 65px;
       line-height: 65px;
       border: 0;
       box-sizing: border-box;
       color: white;
-      opacity: .5;
+      opacity: 0.5;
     }
     input:focus {
       outline: none;
@@ -210,7 +216,7 @@ export default class HeaderOne extends Vue {
         display: inline-block;
         // width: 70px;
       }
-      a:last-of-type{
+      a:last-of-type {
         margin-left: 50px;
       }
       a.router-link-active {
@@ -253,8 +259,8 @@ export default class HeaderOne extends Vue {
     justify-content: center;
     cursor: pointer;
     padding: 15px 0;
-    span{
-        margin-left: 14px;
+    span {
+      margin-left: 14px;
     }
   }
 }
