@@ -5,6 +5,7 @@ import Page2Word from '@/libs/Page2Word'
 @Component
 export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
+    @State('topic_show') topic_show!: boolean;
     public newsInfo: any = "";
     //是否展示下载附件弹框
     public showDownLoad: boolean = false;
@@ -111,9 +112,12 @@ export default class NewsInfoCom extends Vue {
 
     //附件下载
     public todownLoad(item: any): void {
-        this.axios.get(item.url).then(res=>{
-            console.log(res.data)
-        })
+        let a = document.createElement('a');
+        a.href = item.url;
+        a.download = (<string>item.name).split('.')[0];
+        a.click();
+        a.remove();
+
     }
 
     //获取收藏状态
@@ -127,6 +131,6 @@ export default class NewsInfoCom extends Vue {
 
     //导出world
     public downloadWord(): void {
-        Page2Word(this.newsInfo.title['zh-CN']+'-'+new Date().toLocaleDateString(),<HTMLElement>this.$refs['newsWrap']);
+        Page2Word(this.newsInfo.title['zh-CN'] + '-' + new Date().toLocaleDateString(), <HTMLElement>this.$refs['newsWrap']);
     }
 }

@@ -43,7 +43,7 @@
             <li v-for="(v, i) in newsList" :key="i">
               <div class="pic">
                 <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
-                <img @error="loadErr(i)" v-if="v.cover.type=='image'&!v.error" :src="v.cover.url" alt="" />
+                <img @error="loadErr(i)" v-if="v.cover.type=='image'&!v.error" :src="v.cover.url[0]" alt="" />
                 <img v-if="v.cover.type=='image'&&v.error" src="../../assets/img/404.jpg" alt="" />
               </div>
               <div class="text">

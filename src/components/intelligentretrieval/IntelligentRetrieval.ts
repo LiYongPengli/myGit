@@ -253,11 +253,11 @@ export default class IntelligentRetrievalCom extends Vue {
                     this.$set(this.filter, 'media', [])
                 } else {
                     if (!this.multipleMedia) {
-                        this.$set(this.filter.media, 0, item.name.en);
+                        this.$set(this.filter.media, 0, item.media_id);
                     } else {
                         let flag = false;
                         for (let i = 0; i < this.filter.media.length; i++) {
-                            if (item.name.en == this.filter.media[i]) {
+                            if (item.media_id == this.filter.media[i]) {
                                 this.$delete(this.filter.media, i);
                                 flag = true;
                                 return;

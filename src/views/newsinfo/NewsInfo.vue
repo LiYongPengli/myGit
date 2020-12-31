@@ -2,9 +2,9 @@
   <div class="newsinfo">
     <header-two />
 
-    <div class="wrap" v-if="newsInfo">
+    <div class="wrap" v-if="newsInfo" >
       <my-scroll>
-        <div class="wrap_content">
+        <div class="wrap_content" :style="{'width':topic_show?'1000px':'1200px'}">
           <div class="crumbs">
             <!-- <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a> -->
             <a @click="$router.push('/')">首页</a><b>&gt;</b>
@@ -23,7 +23,7 @@
                 >已关注</span
               >
               <span class="info"
-                >{{ newsInfo.media_name }} 丨 {{ newsInfo.time }} 丨
+                >{{ newsInfo.media_name }} 丨 <span v-time>{{ newsInfo.time }}</span> 丨
                 {{ newsInfo.favorite }}人收藏 丨 {{ newsInfo.pv }}次浏览量</span
               >
             </div>
@@ -66,8 +66,8 @@
             <div v-if="newsInfo.media_name == 'YouTube'" class="youtube">
               <div class="video_wrap">
                 <video :src="newsInfo.attachments[1].url" controls>
-                  <track :src="newsInfo.attachments[2].url" label="中文" />
-                  <track :src="newsInfo.attachments[3].url" label="原文" />
+                  <track v-if="newsInfo.attachments[2]" :src="newsInfo.attachments[2].url" label="中文" />
+                  <track v-if="newsInfo.attachments[3]" :src="newsInfo.attachments[3].url" label="原文" />
                 </video>
               </div>
               <div class="vvts">
@@ -88,7 +88,7 @@
             <div class="left">
               <span v-show="newsInfo.attachments.length" @click="showDownLoad = true">附件下载</span>
             </div>
-            <div class="right">
+            <div v-if="newsInfo.media_name != 'YouTube'" class="right">
               <div class="download_this">
                 <span @click="downloadWord"><i></i>下载到本地</span>
               </div>
@@ -163,7 +163,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 </style>
 <style lang="scss">
 .newsinfo {
-  .el-dialog {
+  /* .el-dialog {
     background: #3a3a48;
     min-height: 450px;
     .el-dialog__header {
@@ -179,9 +179,7 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
         right: 50px;
       }
     }
-    .el-dialog__body {
-      padding: 20px 50px;
-    }
+    
   }
 
   .el-icon-close {
@@ -194,6 +192,6 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
   .el-dialog__title {
     color: white;
     margin-left: 30px;
-  }
+  } */
 }
 </style>

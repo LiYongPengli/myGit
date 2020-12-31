@@ -181,7 +181,7 @@
                       </p>
                     </div>
                     <li
-                      :class="{ mtli: ~filter.media.indexOf(v.name.en) }"
+                      :class="{ mtli: ~filter.media.indexOf(v.media_id) }"
                       @click="chooseitem('media', v)"
                       v-for="(v, i) in mediaList"
                       :key="i"
