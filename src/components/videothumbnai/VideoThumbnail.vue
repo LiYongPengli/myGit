@@ -1,6 +1,7 @@
 <template>
   <!-- 视频缩略图 -->
   <div class="videoThumbnail">
+    
     <img
       class="img"
       @error="imgError"
@@ -9,6 +10,7 @@
       :src="video_photo"
       v-if="!showVideo"
     />
+     <img  v-if="!showVideo" class="dianbo" src="../../assets/img/dianbo.png" alt="">
     <video
       ref="video"
       style="display: none"
@@ -92,9 +94,15 @@ export default class VideoThumbnail extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .videoThumbnail {
+  position: relative;
   width: 100%;
   .img {
     width: 100%;
+  }
+  .dianbo{
+    position: absolute;
+    top: 25%;
+    left: 35%;
   }
 }
 </style>
