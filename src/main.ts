@@ -17,6 +17,23 @@ Vue.directive('time',{
   inserted:init_time
 })
 
+router.beforeEach((to,from,next)=>{
+  if(to.matched.some(res=>res.meta.auth)){
+    let user_message = store.state.user_message;
+    if(!user_message){
+      next();
+    }else{
+      if(user_message.role=='user'){
+        next({path:'/user/follow'});
+      }else{
+        next();
+      }
+    }
+  }else{
+    next();
+  }
+})
+
 new Vue({
   router,
   store,

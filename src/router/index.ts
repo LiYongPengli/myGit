@@ -87,6 +87,7 @@ const routes: RouteConfig[] = [
       {
         path: 'form',
         name: 'UserForm',
+        meta:{auth:true},
         redirect:'/user/form/fetch',
         component: () => import('../views/userform/UserForm.vue'),
         children:[
@@ -150,6 +151,7 @@ const routes: RouteConfig[] = [
       //用户管理
       {
         path: "users",
+        meta:{auth:true},
         name: "UserUsers",
         component: () => import('../views/userusers/UserUsers.vue')
       }
