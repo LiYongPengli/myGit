@@ -41,9 +41,9 @@
         <div class="list">
           <ul>
             <li v-for="(v, i) in newsList" :key="i">
-              <div class="pic">
+              <div v-if="v.cover.type!='text'" class="pic">
                 <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
-                <img @error="loadErr(i)" v-if="v.cover.type=='image'&!v.error" :src="v.cover.url[0]" alt="" />
+                <img @load="imgLoad" @error="loadErr(i)" v-if="v.cover.type=='image'&!v.error" :src="v.cover.url[0]" alt="" />
                 <img v-if="v.cover.type=='image'&&v.error" src="../../assets/img/404.jpg" alt="" />
               </div>
               <div class="text">
@@ -135,7 +135,8 @@
                     :key="i"
                     class="item"
                   >
-                    <img style="border-radius:50%" src="../../assets/img/tx.png" alt="" />
+                    <img style="border-radius:50%" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+                    <img v-if="v.avatar==-1||v.avatar==null" style="border-radius:50%" src="../../assets/img/tx.png" alt="" />
                     <p :title="v.name" class="name">{{ v.name }}</p>
                   </div>
                 </div>

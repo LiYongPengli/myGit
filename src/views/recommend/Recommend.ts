@@ -67,6 +67,13 @@ export default class RecommendCom extends Vue {
         this.get_recommend();
     }
 
+    public imgLoad(e:any):void{
+        let img = <HTMLImageElement>e.path[0]
+        if(img.offsetHeight<112){
+            img.style.height = 132+'px';
+        }
+    }
+
     public mounted(): void {
         //获取频道列表
         this.getSubscriptions("channel", "sub", (res) => {
@@ -78,8 +85,14 @@ export default class RecommendCom extends Vue {
                 observeSlideChildren: true,
             })
         });
-
-        this.media_swiper = new Swiper('#swiper2')
+        let that = this;
+        this.media_swiper = new Swiper('#swiper2',{
+            on:{
+                slideChange(swiper){
+                    that.mediaSwiperCurrentIndex = swiper.activeIndex;
+                }
+            }
+        })
     }
 
     public loadErr(index:number):void{

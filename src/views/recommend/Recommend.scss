@@ -120,6 +120,8 @@
                             margin-right: 30px;
                             position: relative;
                             width: 200px;
+                            height: 112px;
+                            overflow: hidden;
                             img {
                                 width: 100%;
                             }
@@ -243,7 +245,7 @@
                             img {
                                 display: block;
                                 width: 54px;
-                                height: 54px;
+                                height: 35px;
                                 margin: auto;
                                 // border-radius: 50%;
                                 overflow: hidden;
@@ -297,7 +299,16 @@
                             }
                         }
                     }
-                    .country::-webkit-scrollbar {
+                    .people{
+                        .item{
+                            img{
+                                height: 54px;
+                            }
+                        }
+                    }
+                    .country::-webkit-scrollbar,
+                    .media::-webkit-scrollbar,
+                    .people::-webkit-scrollbar {
                         display: none;
                     }
                 }
