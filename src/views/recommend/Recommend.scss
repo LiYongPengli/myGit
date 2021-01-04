@@ -253,6 +253,9 @@
                                 font-size: 15px;
                                 font-family: "PingFangSC";
                                 color: rgb(255, 255, 255);
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                                 // padding: 10px 0;
                             }
                         }
@@ -265,8 +268,9 @@
                         .item {
                             height: 115px;
                             img {
-                                width: 50px;
-                                height: 50px;
+                                border-radius: 50%;
+                                //     width: 50px;
+                                //     height: 50px;
                             }
                             .name {
                                 margin-top: 10px;
@@ -275,6 +279,21 @@
                                 white-space: nowrap;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
+                            }
+                        }
+                    }
+                    .country {
+                        .item {
+                            height: 110px;
+                            img {
+                                border-radius: 0;
+                            }
+                        }
+                    }
+                    .media {
+                        .item {
+                            p {
+                                text-align: left;
                             }
                         }
                     }

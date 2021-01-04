@@ -39,7 +39,7 @@
           >
           <el-date-picker
             @change="setDate"
-            style="width: 250px;"
+            style="width: 250px;border:1px solid #3a3a48"
             v-model="dates"
             type="daterange"
             start-placeholder="开始日期"

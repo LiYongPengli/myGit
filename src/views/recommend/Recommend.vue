@@ -135,8 +135,8 @@
                     :key="i"
                     class="item"
                   >
-                    <img src="../../assets/img/tx.png" alt="" />
-                    <p :title="v.name_zh" class="name">{{ v.name }}</p>
+                    <img style="border-radius:50%" src="../../assets/img/tx.png" alt="" />
+                    <p :title="v.name" class="name">{{ v.name }}</p>
                   </div>
                 </div>
               </div>

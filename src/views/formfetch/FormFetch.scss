@@ -152,22 +152,30 @@
                         li {
                             height: 50px;
                             line-height: 50px;
+                            display: flex;
+                            justify-content: space-between;
                             .list_li_number,
                             .list_li_name,
                             .list_li_time {
-                                float: left;
                                 color: white;
                                 font-size: 14px;
                             }
                             .list_li_number {
                                 width: 200px;
                                 margin-left: 65px;
+                                flex: .3;
                             }
                             .list_li_name {
                                 width: 300px;
+                                flex: 3.5;
+                                display: flex;
+                                justify-content: center;
                             }
                             .list_li_time {
-                                // width: 500px;
+                                margin-right: 65px;
+                                flex: 1;
+                                display: flex;
+                                justify-content: center;
                             }
                         }
                         li.active {
