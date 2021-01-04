@@ -8,7 +8,7 @@ switch (process.env.VUE_APP_MODE) {
         axios.defaults.baseURL = '/aps'
         break;
     case 'production':
-        axios.defaults.baseURL = '/'
+        axios.defaults.baseURL = ''
         break;
 }
 
