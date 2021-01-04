@@ -23,6 +23,7 @@
                         .sl {
                             font-size: 40px;
                             margin-top: 25px;
+                            font-family: "PingFangSC-Semibold";
                         }
                         .name {
                             margin-top: 5px;
@@ -161,21 +162,21 @@
                                 font-size: 14px;
                             }
                             .list_li_number {
-                                width: 200px;
                                 margin-left: 65px;
-                                flex: .3;
+                                width: 10%;
                             }
                             .list_li_name {
-                                width: 300px;
+                                width: 60%;
                                 flex: 3.5;
                                 display: flex;
-                                justify-content: center;
+                                // justify-content: center;
                             }
                             .list_li_time {
                                 margin-right: 65px;
                                 flex: 1;
                                 display: flex;
-                                justify-content: center;
+                                width: 25%;
+                                // justify-content: center;
                             }
                         }
                         li.active {

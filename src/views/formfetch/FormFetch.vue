@@ -165,5 +165,22 @@ export default class FormFetch extends mixins(FormFetchCom) {}
       color: white;
     }
   }
+  .cjsjs_head_right{
+    button{
+      width: 100px;
+    }
+    button:hover{
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+    .el-button--primary{
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+
+  }
+
 }
 </style>

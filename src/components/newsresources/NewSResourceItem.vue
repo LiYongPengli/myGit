@@ -21,7 +21,7 @@
         >
         <el-date-picker
           @change="setFormdate"
-          style="width: 250px; margin-right: 20px"
+          style="width: 250px; margin-right: 20px;border:1px solid rgb(58, 58, 72)"
           v-model="share_date"
           type="daterange"
           start-placeholder="开始日期"

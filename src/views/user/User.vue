@@ -41,7 +41,8 @@
             <router-view />
           </div>
           <div class="user_footer">
-            睿读v2.1.35 2018 © 中经软件
+            <!-- 睿读v2.1.35 2018 © 中经软件 -->
+            睿读v3.0 2020 © 中经软件
           </div>
         </div>
       </my-scroll>

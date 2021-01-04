@@ -13,6 +13,11 @@
         .namelist {
             font-size: 20px;
         }
+        div {
+            span:hover {
+                background: #007aff;
+            }
+        }
         .today,
         .Cumulative,
         .export {

@@ -196,13 +196,14 @@
                         .list_li_count {
                             color: white;
                             font-size: 14px;
+                            width: 25%;
                         }
                         .list_li_accountnumber {
-                            width: 5%;
+                            width: 10%;
                             margin-left: 60px;
                         }
                         .list_li_name {
-                            width: 10%;
+                            width: 20%;
                             text-align: center;
                         }
                         .list_li_phone,
@@ -211,11 +212,11 @@
                             text-align: center;
                         }
                         .list_li_phone {
-                            width: 15%;
+                            width: 10%;
                         }
                         .list_li_time {
                             margin-right: 60px;
-                            width: 30%;
+                            width: 25%;
                         }
                     }
                     li.active {

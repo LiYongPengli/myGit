@@ -6,10 +6,11 @@
         background-color: #3a3a48;
     }
     .menu {
-        margin: 0 60px;
+        padding: 0 60px;
         padding-top: 5px;
         color: white;
         font-size: 16px;
+        border-bottom: 1px solid #494959;
         ul {
             height: 77px;
             line-height: 77px;
@@ -37,8 +38,9 @@
                 width: 100%;
                 margin: 0 auto;
                 background-color: #3a3a48;
+                padding-bottom: 30px;
                 .Fabulous {
-                    margin-top: 10px;
+                    margin-top: 40px;
                 }
                 .browse {
                     height: 400px;

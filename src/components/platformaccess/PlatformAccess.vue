@@ -122,7 +122,7 @@
             >
             <el-date-picker
               @change="setDate"
-              style="width: 250px; margin-left:20px"
+              style="width: 250px; margin-left:20px;border:1px solid rgb(58, 58, 72)"
               v-model="dates"
               type="daterange"
               start-placeholder="开始日期"
@@ -155,7 +155,7 @@
           <span @click="setUserDay('all')" :class="{'CumulativeActive':user_status=='all'}" class="Cumulative1">累计</span>
           <el-date-picker
             @change="setUserDate"
-            style="width: 250px; margin: 0 20px"
+            style="width: 250px; margin: 0 20px;border:1px solid rgb(58, 58, 72)"
             v-model="userdates"
             type="daterange"
             start-placeholder="开始日期"
@@ -224,4 +224,24 @@ export default class PlatformAccess extends mixins(PlatformAccessCom) {}
 
 <style lang="scss" scoped>
 @import "./PlatformAccess.scss";
+</style>
+<style lang="scss">
+.platformaccess{
+  .cjsjs_head{
+    button{
+      width: 100px;
+    }
+    button:hover{
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+    .el-button--primary{
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+
+  }
+}
 </style>

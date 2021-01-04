@@ -7,7 +7,7 @@
             <el-button
               :type="search_form.stat_type == 'today' ? 'primary' : ''"
               @click="setDay('today')"
-              style="width:91px"
+              style="width: 91px"
               >今日</el-button
             >
             <el-button
@@ -22,7 +22,7 @@
             >
             <el-date-picker
               @change="setDate"
-              style="width: 250px; margin: 0 20px"
+              style="width: 250px; margin: 0 20px; border: 1px solid rgb(58, 58, 72)"
               v-model="dates"
               type="daterange"
               start-placeholder="开始日期"
@@ -69,10 +69,10 @@
         <div class="content_form_one">
           <span class="namelist">注册用户名单</span>
           <div>
-          <input v-model="search_user" type="text" placeholder="账号/昵称/手机号" />
-          <img class="searchinput" src="../../assets/img/search.png" alt="" />
-           <span @click="toExport" class="export">导出</span>
-           </div>
+            <input v-model="search_user" type="text" placeholder="账号/昵称/手机号" />
+            <img class="searchinput" src="../../assets/img/search.png" alt="" />
+            <span @click="toExport" class="export">导出</span>
+          </div>
         </div>
         <!-- 用户列表 -->
         <div class="content_form_list">
@@ -86,7 +86,7 @@
             </li>
             <my-scroll style="content_mt_onescroll">
               <li
-              v-show="showUsers(v)"
+                v-show="showUsers(v)"
                 v-for="(v, k) in result_data.users"
                 :key="k"
                 :class="{ active: k % 2 != 0 }"
@@ -101,9 +101,7 @@
                   {{ v.phone_number }}
                 </div>
                 <div class="list_li_count">
-                  {{
-                    v.wechat_info.binding ? v.wechat_info.nickname : "未绑定"
-                  }}
+                  {{ v.wechat_info.binding ? v.wechat_info.nickname : "未绑定" }}
                 </div>
                 <div class="list_li_time">
                   {{ new Date(v.registration_date).toLocaleString() }}
@@ -131,4 +129,23 @@ export default class RegisteredUser extends mixins(RegisteredUserCom) {}
 
 <style lang="scss" scoped>
 @import "./RegisteredUser.scss";
+</style>
+<style lang="scss">
+.registereduser {
+  .cjsjs_head {
+    button {
+      width: 100px;
+    }
+    button:hover {
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+    .el-button--primary {
+      background-color: #0074ff;
+      border: 1px solid #0074ff;
+      color: white;
+    }
+  }
+}
 </style>
