@@ -11,7 +11,8 @@
       >
         <li v-for="(v, i) in characterFollowList" :key="i" class="concernedlist">
           <div class="concernedlistdiv">
-            <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img @error="imgError('f',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />
             <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
@@ -41,7 +42,8 @@
       <ul class="noattentionlists">
         <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
           <div class="concernedlistdiv">
-            <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img @error="imgError('u',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+            <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />
             <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">

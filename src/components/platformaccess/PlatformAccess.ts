@@ -18,7 +18,7 @@ export default class PlatformAccessCom extends Vue {
     //采集数据趋势图
     private charts1_option = {
         title: {
-            text: '采集数据趋势图',
+            text: '浏览量数据趋势图',
             subtext: '',
             textStyle: {
                 color: 'white'

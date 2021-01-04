@@ -51,11 +51,11 @@
         <div class="cjsjs_content">
           <div class="jqt">
             <p>{{ init_number(result_data.recent) }}</p>
-            <p>近7天采集数</p>
+            <p>{{fetch_text.now}}采集数</p>
           </div>
           <div class="sqt">
             <p>{{ init_number(result_data.last) }}</p>
-            <p>上7天采集数</p>
+            <p>{{fetch_text.last}}采集数</p>
           </div>
           <div>
             <p>{{ (result_data.rate * 100).toFixed(2) }}%</p>

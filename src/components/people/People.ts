@@ -66,4 +66,16 @@ export default class PeopleCom extends Vue {
     public noPeopleFollow(item:any):void{
         this.characterFollowList.push(item);
     }
+
+    //图片加载失败
+    public imgError(type:string,index:number):void{
+        switch(type){
+            case 'f':
+                this.$set(this.characterFollowList[index],'error',true);
+                break;
+            case 'u':
+                this.$set(this.characterList[index],'error',true);
+                break;
+        }
+    }
 }
