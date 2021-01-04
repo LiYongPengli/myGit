@@ -11,7 +11,7 @@
     <div class="topic_foot">
       <div class="left_menu">
           <div @click="setTopicStatus(1)" class="item" :class="{'active':topic_status==1}">
-              <img src="../../assets/img/message.png" alt="">
+              <img src="../../assets/img/chatxz.png" alt="">
               <p>消息</p>
           </div>
           <div @click="setTopicStatus(2)" class="item" :class="{'active':topic_status==2}">
@@ -19,7 +19,7 @@
               <p>通讯录</p>
           </div>
           <div @click="setTopicStatus(3)" class="item" :class="{'active':topic_status==3}">
-              <img src="../../assets/img/qunzu.png" alt="">
+              <img src="../../assets/img/connection.png" alt="">
               <p>可能认识</p>
           </div>
       </div>
