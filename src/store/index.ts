@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     //用户信息
-    user_message:'',
+    user_message:'' as any,
     index_channel_window:false,
     //文章语言
     language:'crawler',

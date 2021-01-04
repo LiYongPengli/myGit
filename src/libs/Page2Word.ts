@@ -1,6 +1,5 @@
 import $ from 'jquery'
 import { saveAs } from 'file-saver';
-import axios from '../axios/axios';
 
 let wordExport=async function(fileName:string,ele:HTMLElement){
     fileName = typeof fileName !== 'undefined' ? fileName : "jQuery-Word-Export";
@@ -35,8 +34,6 @@ let wordExport=async function(fileName:string,ele:HTMLElement){
             var canvas = document.createElement("canvas");
             canvas.width = w;
             canvas.height = h;
-            let imgblob = await (await axios.get(img[i].src,{responseType:'blob'})).data;
-            img[i].src = URL.createObjectURL(imgblob);
             // Draw image to canvas
             var context = <CanvasRenderingContext2D>canvas.getContext('2d');
             context.drawImage(img[i], 0, 0, w, h);
