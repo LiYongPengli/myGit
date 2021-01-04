@@ -1,7 +1,8 @@
 <template>
   <!-- 底部 -->
   <div class="footertwo">
-    <footer><p>睿读v2.1.35 2018 © 中经软件</p></footer>
+    <!-- <footer><p>睿读v2.1.35 2018 © 中经软件</p></footer> -->
+    <footer><p>睿读v3.0 2020 © 中经软件</p></footer>
   </div>
 </template>
 

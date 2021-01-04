@@ -52,6 +52,7 @@
                   v-show="language == 'crawler'"
                   @click="toNewsInfo(v)"
                   class="title"
+                  :title="v.title.crawler"
                 >
                   {{ v.title.crawler }}
                 </p>
