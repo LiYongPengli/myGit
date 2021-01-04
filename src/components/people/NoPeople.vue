@@ -20,7 +20,15 @@
         <div class="concernedlistdiv">
           <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
             <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
-          <span>{{ v.name }}</span>
+          <span>
+            <!-- {{ v.name }} -->
+            <speed-text
+              width="152px"
+              height="20px"
+              :text="v.name ? v.name : '暂无'"
+            >
+            </speed-text>
+            </span>
           <div class="concernedname">
             <speed-text
               width="152px"
@@ -118,6 +126,7 @@ export default class NoPeople extends Vue {
 .nopeople {
   min-height: 300px;
   background-color: #3a3a48;
+  padding-bottom: 30px;
   .search_a {
     margin-top: 40px;
     color: white;

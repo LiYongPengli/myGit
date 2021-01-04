@@ -53,7 +53,7 @@
           </div>
         </li>
       </ul>
-      <div>加载更多</div>
+      
     </div>
       <!-- 还没有找到想关注的人物列表 -->
      <no-people @follow="noPeopleFollow" @close="searchpeople=false" v-if="searchpeople" />

@@ -133,6 +133,9 @@
                                 font-size: 16px;
                                 color: #e2e2e4;
                                 cursor: pointer;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             }
                             .title:hover {
                                 text-decoration: underline;
@@ -299,9 +302,9 @@
                             }
                         }
                     }
-                    .people{
-                        .item{
-                            img{
+                    .people {
+                        .item {
+                            img {
                                 height: 54px;
                             }
                         }
