@@ -1,7 +1,8 @@
 <template>
   <div class="dialogcm">
     <p>分享给:</p>
-    <div class="share_user">
+    <!-- 好友信息 -->
+    <div v-if="share_type == 'user'" class="share_user">
       <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
       <img
         v-if="!share_user.headimg && share_user.wechat_info.head_img"
@@ -12,12 +13,27 @@
         v-if="!share_user.headimg && !share_user.wechat_info.head_img"
         class="user_ico"
       >
-        {{ share_user.nickname.slice(0, 1) }}
+        {{
+          share_user.nickname
+            ? share_user.nickname.slice(0, 1)
+            : share_user.name.slice(0, 1)
+        }}
       </p>
       <p class="user_name">
         {{ share_user.nickname
         }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
       </p>
+    </div>
+    <!-- 群组信息 -->
+    <div v-if="share_type == 'group'" class="share_user">
+      <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
+      <p v-if="!share_user.headimg" class="user_ico">
+        {{ share_user.name.slice(0, 1) }}
+      </p>
+      <p class="user_name">
+        {{ share_user.name }}
+      </p>
+      <p class="user_name">{{ share_user.name }}</p>
     </div>
     <p>内容:</p>
     <p v-if="language == 'crawler' && type == 'news'" class="news_content">
@@ -59,13 +75,13 @@
 </template>
 
 <script lang="ts">
-
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { State } from "vuex-class";
 
 @Component
 export default class DialogCm extends Vue {
   @Prop({ default: "" }) type!: string;
+  @Prop({}) share_type!: string;
   @Prop({}) content!: any;
   @Prop({
     default() {
@@ -95,31 +111,36 @@ export default class DialogCm extends Vue {
     return false;
   }
 
-  public showNames():string{
+  public showNames(): string {
     let arr = [];
-    for(let i of this.names){
-      if(i){
-        arr.push(i)
+    for (let i of this.names) {
+      if (i) {
+        arr.push(i);
       }
     }
-    return arr.join(',');
+    return arr.join(",");
   }
 
   //分享新闻
   private requestMessage(): void {
+    let obj:any = {
+      news_id: this.content.news_id,
+      url:
+        "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
+        this.content.news_id +
+        "&md_id=" +
+        this.content.media_id,
+      message: this.sharetext,
+    };
+    if(this.share_type=="user"){
+      obj.account = this.share_user.account
+    }else{
+      obj.room_id = this.share_user.room_id
+    }
     this.axios
       .post("/v1/cmd/", {
         cmd: "share_news",
-        paras: {
-          account: this.share_user.account,
-          news_id: this.content.news_id,
-          url:
-            "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
-            this.content.news_id +
-            "&md_id=" +
-            this.content.media_id,
-          message: this.sharetext,
-        },
+        paras: obj,
       })
       .then((res) => {
         this.$message.success("分享成功");
@@ -132,20 +153,24 @@ export default class DialogCm extends Vue {
 
   //分享单个收藏夹
   private requestCollection(): void {
-    let obj:any = {
-      account: this.share_user.account,
+    let obj: any = {
       share_type: this.names.length ? "many" : "one",
       message: this.sharetext,
     };
-    if(this.names.length){
+    if (this.names.length) {
       obj.many = [];
-      for(let i of this.names){
-        if(i){
-          obj.many.push(i)
+      for (let i of this.names) {
+        if (i) {
+          obj.many.push(i);
         }
       }
-    }else{
+    } else {
       obj.one = this.content.name;
+    }
+    if(this.share_type=="user"){
+      obj.account = this.share_user.account
+    }else{
+      obj.room_id = this.share_user.room_id
     }
     this.axios
       .post("/v1/cmd/", {

@@ -1,12 +1,12 @@
 <template>
   <div class="sharecontent">
       <el-popover
-        @after-enter="getFriendList"
+        @after-enter="getDataList"
         placement="left-start"
         width="400"
         trigger="click"
       >
-        <friends-list :friend_list="friend_list" @show="setShare" />
+        <friends-list :grop_list="grop_list" :friend_list="friend_list" @show="setShare" />
         <slot slot="reference"></slot>
         <!-- <p slot="reference">11111111111</p> -->
       </el-popover>
@@ -20,7 +20,7 @@
       width="800px"
       top="25vh"
     >
-      <dialog-cm :type="type" @close="shareWindow=false" v-if="share_user" :share_user="share_user" :names="names" :content="content" />
+      <dialog-cm :type="type" @close="shareWindow=false" :share_type="share_type" v-if="share_user" :share_user="share_user" :names="names" :content="content" />
       
     </el-dialog>
   </div>

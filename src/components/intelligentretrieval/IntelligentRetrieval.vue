@@ -100,6 +100,8 @@
                     :key="i"
                   >
                     <el-tooltip
+                      :enterable="false"
+                      :open-delay="800"
                       class="item itmemt_ch"
                       effect="dark"
                       :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
@@ -187,6 +189,8 @@
                       :key="i"
                     >
                       <el-tooltip
+                        :enterable="false"
+                        :open-delay="800"
                         class="item itmemt_ch"
                         effect="dark"
                         :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
@@ -265,6 +269,8 @@
                       :key="i"
                     >
                       <el-tooltip
+                        :enterable="false"
+                        :open-delay="800"
                         class="item itmemt_ch"
                         effect="dark"
                         :content="v"
