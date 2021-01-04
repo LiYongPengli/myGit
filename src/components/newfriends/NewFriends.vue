@@ -8,10 +8,10 @@
         <a>></a>
       </span>
     </div>
-    <div class="search">
+    <!-- <div class="search">
       <input type="text" placeholder="搜索您想要添加的账号/手机号/微信名" />
       <img src="../../assets/img/search.png" alt="" />
-    </div>
+    </div> -->
     <div class="content_userlists">
       <ul>
         <my-scroll>

@@ -21,7 +21,7 @@ export default class AddFriendsCom extends Vue {
     //显示用户详细信息
     public showInfo(user: any): void {
 
-        this.remark_name = user.remark_name;
+        this.remark_name = user.remark_name?user.remark_name:'';
         this.inv_message = "";
 
         if (user.is_friend == true) {
@@ -35,7 +35,15 @@ export default class AddFriendsCom extends Vue {
     }
 
     //搜索好友
-    public searchFriends(): void {
+    public searchFriends(e:KeyboardEvent): void {
+        if(e.keyCode){
+            if(e.keyCode!=13){
+                return;
+            }
+        }
+        if(!this.keyword){
+            return;
+        }
         this.axios
             .post('/v1/cmd/', {
                 cmd: 'search_user',
@@ -87,10 +95,8 @@ export default class AddFriendsCom extends Vue {
         try{
             await this.axios.post('/v1/cmd/', {
                 cmd: 'request_add_friend',
-                
                 paras: { 
                     user_id: this.inv_userInfo.user_id, 
-              
                     message: this.inv_message,
                     remark_name:this.remark_name,
                     r_id:''

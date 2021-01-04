@@ -2,7 +2,7 @@
   <!-- 添加好友 -->
   <div class="addfriends">
     <div class="title">
-      <span class="maybetitle">新的朋友</span>
+      <span class="maybetitle">添加朋友</span>
       <span @click="$emit('update:visable', 1)" class="newfriend">
         返回
         <a>></a>
@@ -11,6 +11,7 @@
     <div class="search">
       <input
         type="text"
+        @keypress="searchFriends"
         v-model="keyword"
         placeholder="搜索您想要添加的账号/手机号/微信名"
       />
@@ -32,7 +33,7 @@
                 <img
                   class="header"
                   
-                  :src="'http://zlbxxcj.bjceis.com/avatar/'+v.account"
+                  :src="axios.defaults.baseURL+'/avatar/'+v.account"
                   alt=""
                 />
                 <!-- <img
@@ -84,7 +85,7 @@
                   alt=""
                 />
                 <p
-                  @click="showInvInfo(v)"
+                  @click="showInvInfo(v,keys)"
                   v-if="!v.is_friend"
                   class="content_userlist_sendmessage"
                 >
@@ -107,7 +108,7 @@
           <img
             class="header"
             
-            :src="'http://zlbxxcj.bjceis.com/avatar/'+userInfo.account"
+            :src="axios.defaults.baseURL+'/avatar/'+userInfo.account"
             alt=""
           />
           <!-- <img
@@ -159,22 +160,9 @@
         <div class="username">
           <img
             class="header"
-            
-            :src="'http://zlbxxcj.bjceis.com/avatar/'+inv_userInfo.account"
+            :src="axios.defaults.baseURL+'/avatar/'+inv_userInfo.account"
             alt=""
           />
-          <!-- <img
-            class="header"
-            v-if="!inv_userInfo.headimg && inv_userInfo.wechat_info.head_img"
-            :src="inv_userInfo.wechat_info.head_img"
-            alt=""
-          />
-          <p
-            v-if="!inv_userInfo.headimg && !inv_userInfo.wechat_info.head_img"
-            class="head"
-          >
-            {{ inv_userInfo.nickname.slice(0, 1) }}
-          </p> -->
           <p class="name">{{ inv_userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">
