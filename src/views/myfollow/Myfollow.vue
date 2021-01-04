@@ -25,7 +25,7 @@
         >
       </div>
       <div class="gjlb">
-        <p v-if="chooseNav == 'country' && country.length" class="sx">
+        <!-- <p v-if="chooseNav == 'country' && country.length" class="sx">
           选择相关国家可以进行信息筛
         </p>
         <p v-if="chooseNav == 'people' && people.length" class="sx">
@@ -33,7 +33,7 @@
         </p>
         <p v-if="chooseNav == 'media' && media.length" class="sx">
           选择相关媒体可以进行信息筛
-        </p>
+        </p> -->
         <!-- 筛选栏 -->
         <!-- 国家 -->
         <div v-show="chooseNav == 'country' && country.length" class="erhang">
