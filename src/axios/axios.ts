@@ -1,4 +1,5 @@
 import router from '@/router';
+import store from '@/store';
 import axios from 'axios'
 import { Message } from 'element-ui';
 
@@ -15,6 +16,8 @@ switch (process.env.VUE_APP_MODE) {
 export const baseApi = api;
 
 axios.interceptors.response.use(res=>{
+    if(!store.state.iframeShow)
+        store.commit('setIframeShow',true);
     return res;
 },err=>{
     switch(err.response.status){
@@ -22,6 +25,7 @@ axios.interceptors.response.use(res=>{
             if(err.response.data.msg=='请登录后操作！'){
                 document.cookie = "rc_token=;rc_uid=;";
                 router.push('/login').catch(err=>{});
+                store.commit('setIframeShow',false);
             }
             break;
         case 400:

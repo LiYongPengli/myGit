@@ -2,7 +2,7 @@
   <!-- 聊天工具 -->
   <div class="topic">
     <div class="topic_wrap">
-      <iframe v-if="topic_status==1" :src="topic_url" frameborder="0"></iframe>
+      <iframe v-show="topic_status==1" v-if="iframeShow" :src="topic_url" frameborder="0"></iframe>
       <!-- 通讯录 -->
       <mail-list v-if="topic_status==2" />
       <!-- 可能认识 -->

@@ -222,6 +222,18 @@ export default class IntelligentRetrievalCom extends Vue {
         this.toFilter();
     }
 
+    public getFilterMedia():string{
+        let arr:string[] = [];
+        for(let i of this.filter.media){
+            for(let j of this.mediaList){
+                if(i==j.media_id){
+                    arr.push(j.name.en)
+                }
+            }
+        }
+        return arr.join('、');
+    }
+
     /**
      * 
      * @param type 筛选类型
@@ -267,7 +279,7 @@ export default class IntelligentRetrievalCom extends Vue {
                             }
                         }
                         if (!flag) {
-                            this.$set(this.filter.media, this.filter.media.length, item.name.en);
+                            this.$set(this.filter.media, this.filter.media.length, item.media_id);
                         }
                         return;
                     }

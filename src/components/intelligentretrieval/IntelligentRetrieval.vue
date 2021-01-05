@@ -161,7 +161,7 @@
                     v-show="filter.media.length > 1 && !multipleMedia"
                     class="country_search_result_list"
                   >
-                    {{ filter.media.join("、") }}
+                    {{ getFilterMedia() }}
                     <img
                       @click.stop="clearMultiple('media')"
                       style="margin-left: 50px; margin-right: 10px"
@@ -183,7 +183,7 @@
                       </p>
                     </div>
                     <li
-                      :class="{ mtli: ~filter.media.indexOf(v.media_id) }"
+                      :class="{ 'mtli': ~filter.media.indexOf(v.media_id) }"
                       @click="chooseitem('media', v)"
                       v-for="(v, i) in mediaList"
                       :key="i"

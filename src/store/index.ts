@@ -25,7 +25,9 @@ export default new Vuex.Store({
     //聊天工具状态切换
     topic_status:1,
     //被分享的新闻
-    shareNews:null
+    shareNews:null,
+    //是否将聊天框插入到dom中
+    iframeShow:false
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -60,6 +62,9 @@ export default new Vuex.Store({
     },
     setShareNews(state,n):void{
       state.shareNews = n;
+    },
+    setIframeShow(state,n):void{
+      state.iframeShow = n;
     }
   },
   actions: {
