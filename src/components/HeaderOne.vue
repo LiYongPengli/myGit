@@ -207,22 +207,26 @@ export default class HeaderOne extends Vue {
       float: left;
       height: 65px;
       line-height: 65px;
-      padding-left: 60px;
+      padding-left: 40px;
       a {
+        display: block;
+        width: 150px;
+        text-align: center;
         color: white;
         font-size: 16px;
-        margin-right: 70px;
+        margin-right: 60px;
         text-decoration: none;
         display: inline-block;
         // width: 70px;
       }
       a:last-of-type {
-        margin-left: 50px;
+        margin-left: 10px;
       }
       a.router-link-active {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
+        background-size: 100%;
         //  width: 70px;
         text-align: center;
       }

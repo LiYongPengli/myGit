@@ -15,7 +15,7 @@
           prefix-icon="el-icon-warning-outline"
           type="text"
           v-model="phone_form.tel_vc"
-          placeholder="请输入验证码"
+          placeholder="请输入手机验证码"
         />
         <span @click="get_code" class="get_code">{{
           send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"

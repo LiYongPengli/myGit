@@ -72,7 +72,7 @@ export default class UserUsersCom extends Vue {
     public UserCreatetime(str:any):any{
         let time=new Date(str)
         let year=time.getFullYear()
-        let month=time.getMonth()
+        let month=time.getMonth()+1
         let date=time.getDate() 
         let hours=time.getHours()
         let minute=time.getMinutes() 

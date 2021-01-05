@@ -29,12 +29,13 @@
                 background-image: url("../../assets/img/cur.png");
                 background-position: bottom;
                 background-repeat: no-repeat;
+                background-size: 100%;
                 font-size: 20px;
             }
             span:first-child {
-                margin: 0px 60px 0px 30px;
+                margin: 0px 60px 0px 10px;
                 font-weight: bold;
-                width: 140px;
+                width: 170px;
                 text-align: center;
             }
         }
