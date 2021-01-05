@@ -65,9 +65,9 @@
             ></div>
             <div v-if="newsInfo.media_name == 'YouTube'" class="youtube">
               <div class="video_wrap">
-                <video :src="newsInfo.attachments[1].url" controls>
-                  <track v-if="newsInfo.attachments[3]" :src="newsInfo.attachments[2].url" label="中文" />
-                  <track v-if="newsInfo.attachments[2]" :src="newsInfo.attachments[3].url" label="原文" />
+                <video :src="'http://hk.zlbxxcj.bjceis.com'+newsInfo.attachments[1].url" controls>
+                  <track v-if="newsInfo.attachments[2]" :src="newsInfo.attachments[2].url" label="原文" />
+                  <track v-if="newsInfo.attachments[3]" :src="newsInfo.attachments[3].url" label="中文" />
                 </video>
               </div>
               <div class="vvts">

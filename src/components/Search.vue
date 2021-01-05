@@ -52,6 +52,7 @@
 import { Component, Emit, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import MyScroll from "@/components/MyScroll.vue";
+import { ElStep } from "element-ui/types/step";
 @Component({
   components: {
     MyScroll,
@@ -81,7 +82,6 @@ export default class Search extends Vue {
     }
     this.timer = setTimeout(() => {
       this.getSearchList(this.searchText);
-      this.showSearchList = true;
     }, 300);
   }
 
@@ -92,7 +92,6 @@ export default class Search extends Vue {
     }
     this.timer = setTimeout(() => {
       this.getSearchList(newVal);
-      this.showSearchList = true;
     }, 300);
   }
 
@@ -108,6 +107,11 @@ export default class Search extends Vue {
       .then((res) => {
         console.log(res);
         this.searchList = res.data.data;
+        if(this.searchList.length){
+          this.showSearchList = true;
+        }else{
+          this.showSearchList = false;
+        }
       })
       .catch((err) => {
         console.log(err);

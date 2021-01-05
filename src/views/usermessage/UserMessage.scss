@@ -10,6 +10,11 @@
     }
     .list {
         width: 1200px;
+        .nodata{
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+        }
         ul {
             list-style: none;
             li {
@@ -28,6 +33,7 @@
                 .name {
                     text-decoration: none;
                     color: white;
+                    cursor: pointer;
                     font-size: 16px;
                     margin-top: 30px;
                     display: inline-block;
@@ -38,6 +44,9 @@
                     font-size: 13px;
                     color: #bcc2d5;
                 }
+            }
+            li:hover{
+                background-color: #3a3a48;
             }
             .jzgd {
                 padding: 20px 0;

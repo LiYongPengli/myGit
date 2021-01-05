@@ -12,7 +12,7 @@
     <transition @after-enter="load_topic=true" @after-leave="load_topic=false" name="topic">
       <div v-show="topic_show" class="topics">
         <!-- 聊天工具组件 -->
-        <topic v-show="load_topic" />
+        <topic v-if="load_topic" />
       </div>
     </transition>
     <div class="right_content">
@@ -83,9 +83,9 @@ export default class App extends Vue {
     }
   }
 
-  private created(): void {
+  /* private created(): void {
     this.userLoginType();
-  }
+  } */
 
   //显示分享弹窗
   setShare(user:any):void{

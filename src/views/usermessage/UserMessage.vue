@@ -1,36 +1,27 @@
 <template>
   <div class="usermessage">
-    <div v-show="show" class="mymessage">
+    <div v-show="!showInfo" class="mymessage">
       <el-row>
         <span> 我的消息 </span>
-        <el-button class="yidu" type="info">全部已读</el-button>
-        <el-button class="clear" type="info">全部清空</el-button>
+        <el-button @click="allRead" class="yidu" type="info">全部已读</el-button>
+        <el-button @click="clearMessage" class="clear" type="info">全部清空</el-button>
       </el-row>
     </div>
-    <div v-show="listshow" class="list">
+    <div v-show="!showInfo" class="list">
+      <div class="nodata" v-show="!messageList.length">暂无消息</div>
       <ul>
-        <li>
-          <span class="weidu"> 未读 </span>
-          <a class="name" href=""> 了解清楚文章到底是一种怎么样的存在 </a>
-          <span class="time"> 时间：2020年10月13日16:26:33 </span>
-        </li>
-        <li>
-          <span v-if="show" class="weidu"> 已读 </span>
-          <a class="name" href="">了解清楚文章到底是一种怎么样的存在</a>
-          <span class="time"> 时间：2020年10月13日16:26:33 </span>
-        </li>
-        <li class="cur">
-          <span class="weidu"> 未读 </span>
-          <a class="name" href="">了解清楚文章到底是一种怎么样的存在</a>
-          <span class="time"> 时间：2020年10月13日16:26:33 </span>
-          <el-button class="shanchu" type="primary" icon="el-icon-delete"
+        <li @mouseenter="$set(messageList[i],'delete',true)" @mouseleave="$delete(messageList[i],'delete')" v-for="(v,i) in messageList" :key="i">
+          <span class="weidu"> {{v.status=='unread'?'未读':'已读'}} </span>
+          <a @click="toInfo(v)" class="name"> {{v.title}} </a>
+          <span class="time"> 时间：<span v-time>{{v.time}}</span> </span>
+          <el-button v-show="v.delete" class="shanchu" type="primary" icon="el-icon-delete"
             >删除</el-button
           >
         </li>
-        <div class="jzgd">更多精彩内容，加载中</div>
+        <!-- <div class="jzgd">更多精彩内容，加载中</div> -->
       </ul>
     </div>
-      <message-info />
+      <message-info @ext="back" :message="chooseMessage" v-if="showInfo" />
   </div>
       
 </template>
@@ -66,7 +57,6 @@ export default class UserCollection extends mixins(UserMessageCom) {}
     ul {
       li {
         position: relative;
-
         .shanchu {
           position: absolute;
           right: 30px;
@@ -74,11 +64,7 @@ export default class UserCollection extends mixins(UserMessageCom) {}
           background-color: #3a3a48;
           border: 0;
           font-size: 14px;
-
         }
-      }
-      li.cur {
-        background-color: #3a3a48;
       }
     }
   }

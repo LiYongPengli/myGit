@@ -102,7 +102,6 @@ export default class IntelligentRetrievalCom extends Vue {
         }
         this.timer = setTimeout(() => {
             this.getSearchList(this.searchText);
-            this.showSearchList = true;
         }, 300);
     }
 
@@ -116,8 +115,12 @@ export default class IntelligentRetrievalCom extends Vue {
                 paras: { keyword: val },
             })
             .then((res) => {
-                console.log(res);
                 this.searchList = res.data.data;
+                if(this.searchList.length){
+                    this.showSearchList = true;
+                }else{
+                    this.showSearchList = false;
+                }
             })
             .catch((err) => {
                 console.log(err);
