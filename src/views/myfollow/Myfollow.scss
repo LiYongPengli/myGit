@@ -82,6 +82,12 @@
                         }
                         span {
                             margin-right: 5px;
+                            position: relative;
+                            img {
+                                position: absolute;
+                                top: 7px;
+                                left: -5px;
+                            }
                         }
                     }
                 }
