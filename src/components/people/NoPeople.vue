@@ -19,7 +19,7 @@
       <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
         <div class="concernedlistdiv">
           <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
-            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
+            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/zwtx.png" alt="" />
           <span>
             <!-- {{ v.name }} -->
             <speed-text
