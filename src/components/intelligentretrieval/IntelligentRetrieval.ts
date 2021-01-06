@@ -1,4 +1,5 @@
 
+import IDBDriver from '@/libs/IdbDriver';
 import {  Component, Vue } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 @Component
@@ -459,35 +460,22 @@ export default class IntelligentRetrievalCom extends Vue {
 
     //记录搜索历史
     public setHistory(): void {
-        let user_history = localStorage.getItem("user_history");
-        if (user_history) {
-            let user_history_parse = JSON.parse(user_history);
-            if (user_history_parse[this.user_message.phone_number]) {
-                if (
-                    !~user_history_parse[this.user_message.phone_number].indexOf(
-                        this.searchText
-                    )
-                ) {
-                    if (user_history_parse[this.user_message.phone_number].length >= 10) {
-                        user_history_parse[this.user_message.phone_number].pop();
-                        user_history_parse[this.user_message.phone_number].unshift(
-                            this.searchText
-                        );
-                    } else {
-                        user_history_parse[this.user_message.phone_number].unshift(
-                            this.searchText
-                        );
-                    }
+        let idbdriver = IDBDriver.getInstance();
+        idbdriver.read(this.user_message.phone_number).then(res=>{
+            let historyList = <string[]>res?.historys;
+            for(let i of historyList){
+                if(i==this.searchText){
+                  return;
                 }
-            } else {
-                user_history_parse[this.user_message.phone_number] = [this.searchText];
-            }
-            localStorage.setItem("user_history", JSON.stringify(user_history_parse));
-        } else {
-            let obj: any = {};
-            obj[this.user_message.phone_number] = [this.searchText];
-            localStorage.setItem("user_history", JSON.stringify(obj));
-        }
+              }
+              if(historyList.length>=10){
+                historyList.pop();
+              }
+              historyList.unshift(this.searchText);
+              idbdriver.put(this.user_message.phone_number,historyList).catch(err=>{
+                console.log(err);
+              })
+        })
     }
 
     /**

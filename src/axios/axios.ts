@@ -16,8 +16,6 @@ switch (process.env.VUE_APP_MODE) {
 export const baseApi = api;
 
 axios.interceptors.response.use(res=>{
-    if(!store.state.iframeShow)
-        store.commit('setIframeShow',true);
     return res;
 },err=>{
     switch(err.response.status){

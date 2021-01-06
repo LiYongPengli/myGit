@@ -53,6 +53,7 @@ import { Component, Emit, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import MyScroll from "@/components/MyScroll.vue";
 import { ElStep } from "element-ui/types/step";
+import IDBDriver from "@/libs/IdbDriver";
 @Component({
   components: {
     MyScroll,
@@ -65,9 +66,12 @@ export default class Search extends Vue {
   public searchList: any[] = [];
   public showSearchList: boolean = false;
   public timer: any = null;
+  private db!:IDBDriver;
   //搜索内容
   public searchText: string = "";
-  private created(): void {
+  private async created() {
+    this.db = IDBDriver.getInstance();
+    await this.db.connect('zlbxxcj','userHistory');
     this.getHistory();
   }
 
@@ -76,7 +80,7 @@ export default class Search extends Vue {
       this.showSearchList = false;
     }, 200);
   }
-  public focus():void{
+  public focus(): void {
     if (this.timer) {
       clearTimeout(this.timer);
     }
@@ -107,9 +111,9 @@ export default class Search extends Vue {
       .then((res) => {
         console.log(res);
         this.searchList = res.data.data;
-        if(this.searchList.length){
+        if (this.searchList.length) {
           this.showSearchList = true;
-        }else{
+        } else {
           this.showSearchList = false;
         }
       })
@@ -120,14 +124,17 @@ export default class Search extends Vue {
 
   //获取历史记录
   private getHistory(): void {
-    let user_history = localStorage.getItem("user_history");
-    if (user_history) {
-      if (JSON.parse(user_history)[this.user_message.phone_number]) {
-        this.historyList = JSON.parse(user_history)[
-          this.user_message.phone_number
-        ];
+    this.db.read(this.user_message.phone_number).then(res=>{
+      if(res){
+        this.historyList = res.historys
+      }else{
+        this.db.add(this.user_message.phone_number,[]).catch(err=>{
+          console.log(err);
+        })
       }
-    }
+    }).catch(err=>{
+      console.log(err);
+    })
   }
 
   @Emit("tosearch")
@@ -164,59 +171,34 @@ export default class Search extends Vue {
 
   //删除某条历史记录
   public deleteItemHistory(index: number): void {
-    let user_history = JSON.parse(localStorage.user_history);
-    user_history[this.user_message.phone_number].splice(index, 1);
     this.historyList.splice(index, 1);
-    localStorage.user_history = JSON.stringify(user_history);
+    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
+      console.log(err);
+    })
   }
 
   //记录搜索历史
   public setHistory(): void {
-    let user_history = localStorage.getItem("user_history");
-    if (user_history) {
-      let user_history_parse = JSON.parse(user_history);
-      if (user_history_parse[this.user_message.phone_number]) {
-        if (
-          !~user_history_parse[this.user_message.phone_number].indexOf(
-            this.searchText
-          )
-        ) {
-          if (user_history_parse[this.user_message.phone_number].length >= 10) {
-            user_history_parse[this.user_message.phone_number].pop();
-            user_history_parse[this.user_message.phone_number].unshift(
-              this.searchText
-            );
-          } else {
-            user_history_parse[this.user_message.phone_number].unshift(
-              this.searchText
-            );
-          }
-        }
-      } else {
-        user_history_parse[this.user_message.phone_number] = [this.searchText];
+    for(let i of this.historyList){
+      if(i==this.searchText){
+        return;
       }
-      localStorage.setItem("user_history", JSON.stringify(user_history_parse));
-    } else {
-      let obj: any = {};
-      obj[this.user_message.phone_number] = [this.searchText];
-      localStorage.setItem("user_history", JSON.stringify(obj));
     }
+    if(this.historyList.length>=10){
+      this.historyList.pop();
+    }
+    this.historyList.unshift(this.searchText);
+    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
+      console.log(err);
+    })
   }
 
   //清空历史记录
   public clearHistory(): void {
-    let user_history = localStorage.getItem("user_history");
-    if (user_history) {
-      let user_history_parse = JSON.parse(user_history);
-      if (user_history_parse[this.user_message.phone_number]) {
-        delete user_history_parse[this.user_message.phone_number];
-        localStorage.setItem(
-          "user_history",
-          JSON.stringify(user_history_parse)
-        );
-        this.historyList = [];
-      }
-    }
+    this.historyList = [];
+    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
+      console.log(err);
+    })
   }
 }
 </script>

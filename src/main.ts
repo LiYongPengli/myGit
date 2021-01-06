@@ -18,6 +18,11 @@ Vue.directive('time',{
 })
 
 router.beforeEach((to,from,next)=>{
+  if(to.path=='/login'||to.path=='/register'||to.path=='/findpassword'){
+    store.commit('setIframeShow',false);
+  }else{
+    store.commit('setIframeShow',true);
+  }
   if(to.matched.some(res=>res.meta.auth)){
     let user_message = store.state.user_message;
     if(!user_message){
