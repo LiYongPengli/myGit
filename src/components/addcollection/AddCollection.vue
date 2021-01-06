@@ -46,7 +46,7 @@
               @change="upFile"
             />
               <span :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
-            <img v-show="img_pv" style="width:160px;height:90px;margin-top: -10px" :src="img_pv" alt="">
+            <img v-show="img_pv" style="width:160px;height:90px;margin-top: -20px" :src="img_pv" alt="">
           
             
           </label>
