@@ -15,7 +15,7 @@
           prefix-icon="el-icon-warning-outline"
           type="text"
           v-model="phone_form.tel_vc"
-          placeholder="请输入手机验证码"
+          placeholder="请输入短信验证码"
         />
         <span @click="get_code" class="get_code">{{
           send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
@@ -38,7 +38,7 @@
     >
       <div class="code_wrap">
         <span class="icon el-icon-warning-outline"></span>
-        <input v-model="img_vc_code" type="text" placeholder="请输入验证码" />
+        <input v-model="img_vc_code" type="text" placeholder="请输入图片验证码" />
         <img @click="getImgCode" class="code" :src="img_vc" alt="" />
       </div>
       <el-button

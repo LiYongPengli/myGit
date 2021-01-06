@@ -30,7 +30,7 @@
             prefix-icon="el-icon-warning-outline"
             type="text"
             v-model="form.vc"
-            placeholder="请输入验证码"
+            placeholder="请输入图片验证码"
           />
           <img @click="getImgCode" class="code" :src="img_vc" alt="" />
         </el-form-item>

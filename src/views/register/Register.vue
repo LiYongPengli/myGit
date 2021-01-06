@@ -66,7 +66,7 @@
             prefix-icon="el-icon-warning-outline"
             type="text"
             v-model="form.tel_vc"
-            placeholder="请输入验证码"
+            placeholder="请输入短信验证码"
           />
         </el-form-item>
         <div class="submit">
@@ -88,7 +88,7 @@
     >
       <div class="code_wrap">
         <span class="icon el-icon-warning-outline"></span>
-        <input v-model="img_vc_code" type="text" placeholder="请输入验证码" />
+        <input v-model="img_vc_code" type="text" placeholder="请输入图片验证码" />
         <img @click="getImgCode" class="code" :src="img_vc" alt="" />
       </div>
       <el-button
