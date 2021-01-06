@@ -5,25 +5,20 @@
       <div class="logo">
         <img src="../../assets/logo.png" alt="" />
       </div>
-      <p class="title">欢迎登录睿读</p>
+      <p class="title">欢迎登录大数据采集系统</p>
       <!-- 账号密码登录的输入框 -->
       <account-login v-if="account" :account.sync="account" :bindAccount.sync="bindAccount" />
       <!-- 是否绑定微信的组件框 -->
       <div v-if="bindAccount" class="bindAccount">
-         <p class="bdwxtitle">绑定微信后可使用微信快捷登录并通过微信昵称搜索睿读好友</p>
         <div class="top">
-          <div class="left_log">
-            <img src="../../assets/img/zhuanhuaruidu.png" />
-          </div>
-          <div class="zhuanhua">
-            <img src="../../assets/img/zhuanhua.png" />
-          </div>
+          <div class="left_log"></div>
+          <div class="center_ico el-icon-sort"></div>
           <div class="right_log">
-            <img src="../../assets/img/zhweixin.png" />
+            <img src="../../assets/img/weixin2.png" />
           </div>
         </div>
         <div class="center">
-          <el-button @click="bindWechat" type="primary" style="width: 430px;height:56px;background:#0074ff;font-size:18px"
+          <el-button @click="bindWechat" type="primary" style="width: 100%"
             >立即绑定</el-button
           >
         </div>
