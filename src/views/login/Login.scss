@@ -1,123 +1,126 @@
 .login {
-  width: 100%;
-  height: 100%;
-  //background: url(../../assets/img/login_back.jpg) no-repeat;
-  color: white;
-  .login_wrap {
-    width: 27%;
-    min-width: 400px;
+    width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    position: relative;
-    .logo {
-      margin-left: 15%;
-      padding-top: 50px;
+    //background: url(../../assets/img/login_back.jpg) no-repeat;
+    color: white;
+    .login_wrap {
+        width: 27%;
+        min-width: 678px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        position: relative;
+        .logo {
+            margin-left: 15%;
+            padding-top: 40px;
+        }
+        .title {
+            margin-left: 124px;
+            margin-top: 180px;
+            font-size: 28.19px;
+            padding: 30px 0;
+        }
+        .bindAccount {
+            width: 70%;
+            margin-left: 124px;
+            .bdwxtitle {
+                font-size: 16px;
+                color: #fff;
+                opacity: .8;
+            }
+            .top {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 50px 0 40px 0;
+                .left_log,
+                .right_log {
+                    display: flex;
+                    width: 110px;
+                    height: 110px;
+                    box-sizing: border-box;
+                    img {
+                        display: block;
+                        // width: 50%;
+                        margin: auto;
+                    }
+                }
+                .zhuanhua {
+                    margin: 0 27px;
+                }
+                .center_ico {
+                    margin: 0 10px;
+                    font-size: 20px;
+                    transform: rotateZ(90deg);
+                }
+            }
+            .footer {
+                text-align: center;
+                font-size: 16px;
+                padding: 30px 0;
+                span {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+        .weiChatLogin {
+            margin-left: 124px;
+            margin-top: 40px;
+            display: flex;
+            width: 70%;
+            .code {
+                width: 100%;
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+            .text {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                p {
+                    padding: 5px 0;
+                }
+            }
+        }
+        footer {
+            width: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 20px 0;
+            border-top: 1px solid gray;
+            .weixin,
+            .account,
+            .phone {
+                height: 15px;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                box-sizing: border-box;
+                cursor: pointer;
+                img {
+                    width: 25px;
+                }
+                span {
+                    margin-left: 10px;
+                }
+            }
+            .weixin,
+            .account {
+                justify-content: flex-end;
+                padding-right: 40px;
+            }
+            .phone {
+                border-left: 1px solid gray;
+                padding-left: 40px;
+            }
+        }
     }
-    .title {
-      margin-left: 15%;
-      margin-top: 100px;
-      font-size: 18px;
-      padding: 20px 0;
-    }
-    .bindAccount {
-      width: 70%;
-      margin-left: 15%;
-      .top {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 0;
-        .left_log,
-        .right_log {
-          display: flex;
-          width: 70px;
-          height: 70px;
-          box-sizing: border-box;
-          border: 1px solid gray;
-          border-radius: 50%;
-          img {
-            display: block;
-            width: 50%;
-            margin: auto;
-          }
-        }
-        .center_ico {
-          margin: 0 10px;
-          font-size: 20px;
-          transform: rotateZ(90deg);
-        }
-      }
-      .center {
-        margin-top: 10px;
-      }
-      .footer {
-        text-align: center;
-        font-size: 14px;
-        padding: 20px 0;
-        span {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
-    }
-    .weiChatLogin {
-      margin-left: 15%;
-      margin-top: 40px;
-      display: flex;
-      width: 70%;
-      .code {
-        width: 100%;
-        img {
-          width: 100%;
-          display: block;
-        }
-      }
-      .text {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        p {
-          padding: 5px 0;
-        }
-      }
-    }
-    footer {
-      width: 100%;
-      display: flex;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      padding: 20px 0;
-      border-top: 1px solid gray;
-      .weixin,
-      .account,
-      .phone {
-        height: 15px;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        box-sizing: border-box;
-        cursor: pointer;
-        img {
-          width: 25px;
-        }
-        span {
-          margin-left: 10px;
-        }
-      }
-      .weixin,
-      .account {
-        justify-content: flex-end;
-        padding-right: 40px;
-      }
-      .phone {
-        border-left: 1px solid gray;
-        padding-left: 40px;
-      }
-    }
-  }
 }
