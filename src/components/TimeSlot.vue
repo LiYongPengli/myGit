@@ -128,8 +128,4 @@ export default class TimeSolt extends Vue {
     content: none !important;
   }
 }
-.el-button--default {
-  //margin-left: 240px;
-  //width: 100px;
-}
 </style>

@@ -3,8 +3,7 @@
     <header>
       <div class="header">
         <h1>选择您感兴趣的选项</h1>
-
-        <span> 至少选择3个 </span>
+        <span class="zssg">至少选择3个，后期可随时调整</span>
         <div class="tab">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item
@@ -29,7 +28,7 @@
     <!-- 国家 -->
     <div v-if="pageIndex == 0" class="content ">
       <span class="yx">
-        已选:<span v-for="(v, i) in sub_form.country" :key="i">
+        已选：<span v-for="(v, i) in sub_form.country" :key="i">
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
@@ -70,7 +69,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-          style="width: 280px"
+          style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -80,7 +79,7 @@
     <!-- 媒体 -->
     <div v-if="pageIndex == 1" class="content content_mt">
       <span class="yx">
-        已选:<span v-for="(v, i) in sub_form.media" :key="i">
+        已选：<span v-for="(v, i) in sub_form.media" :key="i">
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
@@ -213,7 +212,7 @@
     <!-- 人物 -->
     <div v-if="pageIndex == 2" class="content">
       <span class="yx">
-        已选:<span v-for="(v, i) in sub_form.character" :key="i">
+        已选：<span v-for="(v, i) in sub_form.character" :key="i">
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         ></span
       >
@@ -252,7 +251,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.character.length < 3"
-          style="width: 280px"
+          style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
           type="primary"
           >下一步</el-button
         >
@@ -279,7 +278,7 @@
         <el-button
           @click="toFinish"
           :disabled="sub_form.channel.length < 3"
-          style="width: 280px"
+           style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
           type="primary"
           >完成</el-button
         >
