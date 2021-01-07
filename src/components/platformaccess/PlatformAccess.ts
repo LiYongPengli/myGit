@@ -7,6 +7,11 @@ import { State } from 'vuex-class';
 export default class PlatformAccessCom extends Vue {
     @State('topic_show') topic_show!: boolean;
     public dates: Date[] | null = [];
+    //1：累计登录次数排序,2:最后登录时间排序
+    public sortType:number = 1;
+    //累计次数倒序(大到小)
+    public sortContent:boolean = true;
+    public sortTime:boolean = true;
     public user_status: string = 'today';
     public userdates: Date[] | null = null;
     public date_data: string[] = [];
@@ -92,7 +97,7 @@ export default class PlatformAccessCom extends Vue {
                 textStyle: {
                     color: '#cdd6e5'
                 },
-                //rotate:45
+                rotate:25
             }
 
         },
@@ -213,7 +218,8 @@ export default class PlatformAccessCom extends Vue {
                 show: true,
                 textStyle: {
                     color: '#cdd6e5'
-                }
+                },
+                rotate:25
             }
 
         },
@@ -270,6 +276,42 @@ export default class PlatformAccessCom extends Vue {
     public ChartsResize(): void {
         this.chart1?.resize();
         this.chart2?.resize();
+    }
+    @Watch('sortType')
+    public listensortType(newVal:number,oldVal:number):void{
+        if(newVal==1){
+            this.sortContent = true;
+            this.listenSortContent()
+        }else{
+            this.sortTime = true;
+            this.listensortTime();
+        }
+    }
+
+    @Watch('sortContent')
+    public listenSortContent():void{
+        if(this.sortContent){
+            this.userLoginList.sort(function(a,b){
+                return b.login_times - a.login_times;
+            })
+        }else{
+            this.userLoginList.sort(function(a,b){
+                return a.login_times - b.login_times;
+            })
+        }
+    }
+
+    @Watch('sortTime')
+    public listensortTime():void{
+        if(this.sortTime){
+            this.userLoginList.sort(function(a,b){
+                return new Date(b.last_login_date).getTime()-new Date(a.last_login_date).getTime();
+            })
+        }else{
+            this.userLoginList.sort(function(a,b){
+                return new Date(a.last_login_date).getTime()-new Date(b.last_login_date).getTime();
+            })
+        }
     }
 
     public created(): void {
@@ -337,21 +379,29 @@ export default class PlatformAccessCom extends Vue {
         this.date_data = [];
         switch (this.form.stat_type) {
             case 'today':
+                this.charts1_option.xAxis.axisLabel.rotate = 25;
+                this.charts2_option.xAxis.axisLabel.rotate = 25;
                 for (let i = 0; i < 24; i++) {
-                    this.date_data.push(`${i>9?i:'0'+i}:00-${i+1>9?i+1:'0'+(i+1)}:00`);
+                    this.date_data.push(`${i>9?i:'0'+i}:00-${i>9?i:'0'+i}:59`);
                 }
                 break;
             case '7':
+                this.charts1_option.xAxis.axisLabel.rotate = 0;
+                this.charts2_option.xAxis.axisLabel.rotate = 0;
                 for (let i = 0; i < 7; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case '30':
+                this.charts1_option.xAxis.axisLabel.rotate = 30;
+                this.charts2_option.xAxis.axisLabel.rotate = 30;
                 for (let i = 0; i < 30; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case 'custom':
+                this.charts1_option.xAxis.axisLabel.rotate = 30;
+                this.charts2_option.xAxis.axisLabel.rotate = 30;
                 let start = (<Date[]>this.dates)[0].getTime();
                 let end = (<Date[]>this.dates)[1].getTime();
                 let days = Math.floor((end-start)/1000/60/60/24);
