@@ -8,7 +8,7 @@
             <div class="user_info" v-if="user_message">
               <div class="user_img">
                 <img
-                  :src="'http://zlbxxcj.bjceis.com/avatar/' + user_message.account"
+                  :src="axios.defaults.baseURL+'avatar/' + user_message.account"
                   alt=""
                 />
                 <!-- <img

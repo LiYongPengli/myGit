@@ -5,16 +5,18 @@ import Table2Xlsx from '@/libs/Table2xlsx';
 import { State } from 'vuex-class';
 @Component
 export default class PlatformAccessCom extends Vue {
-    @State('topic_show') topic_show!:boolean;
-    public dates: Date[]|null = [];
-    public user_status:string = 'today';
-    public userdates: Date[]|null = null;
-    public date_data:string[] = [];
+    @State('topic_show') topic_show!: boolean;
+    public dates: Date[] | null = [];
+    public user_status: string = 'today';
+    public userdates: Date[] | null = null;
+    public date_data: string[] = [];
     public userBehavior: any = "";
-    public userLoginList:any[] = [];
-    public search_user:string = "";
-    public chart1:ECharts|null = null;
-    public chart2:ECharts|null = null;
+    public userLoginList: any[] = [];
+    public search_user: string = "";
+    public chart1: ECharts | null = null;
+    public chart2: ECharts | null = null;
+    public chart1_data: any = null;
+    public chart2_data: any = null;
     //采集数据趋势图
     private charts1_option = {
         title: {
@@ -67,9 +69,9 @@ export default class PlatformAccessCom extends Vue {
                 saveAsImage: { show: true }
             }
         },
-        grid:{
-            left:50,
-            right:0
+        grid: {
+            left: 50,
+            right: 0
         },
         xAxis: {
             type: 'category',
@@ -89,7 +91,8 @@ export default class PlatformAccessCom extends Vue {
                 show: true,
                 textStyle: {
                     color: '#cdd6e5'
-                }
+                },
+                //rotate:45
             }
 
         },
@@ -173,9 +176,9 @@ export default class PlatformAccessCom extends Vue {
 
             }
         },
-        grid:{
-            left:50,
-            right:0
+        grid: {
+            left: 50,
+            right: 0
         },
         legend: {
             data: ['本期', '上期'],
@@ -264,21 +267,26 @@ export default class PlatformAccessCom extends Vue {
     }
 
     @Watch('topic_show')
-    public ChartsResize():void{
+    public ChartsResize(): void {
         this.chart1?.resize();
         this.chart2?.resize();
     }
 
-    public created():void{
+    public created(): void {
         let date = new Date().toLocaleDateString();
-        this.getUserLoginList(date,date);
+        this.getUserLoginList(date, date);
+        this.getUserBehavior();
     }
 
     public mounted(): void {
         this.fetchDataInfo();
         this.fetchDataInfo1();
-        this.getUserBehavior();
+        this.getData();
+    }
 
+    private getData():void{
+        this.init_chart1();
+        this.init_chart2();
     }
 
     //今天，7天，30天
@@ -287,7 +295,7 @@ export default class PlatformAccessCom extends Vue {
         this.dates = null;
         this.form.time_from = "";
         this.form.time_to = "";
-        this.getUserBehavior();
+        this.getData();
     }
 
     public setDate(): void {
@@ -298,43 +306,39 @@ export default class PlatformAccessCom extends Vue {
         this.form.stat_type = 'custom'
         this.form.time_from = this.dates[0].toLocaleDateString();
         this.form.time_to = this.dates[1].toLocaleDateString();
-        this.getUserBehavior();
+        this.getData();
     }
 
-    public setUserDay(type:string):void{
-        if(type=='today'){
+    public setUserDay(type: string): void {
+        if (type == 'today') {
             let date = new Date().toLocaleDateString()
-            
-            this.getUserLoginList(date,date);
-        }else{
-            this.getUserLoginList('','');
+
+            this.getUserLoginList(date, date);
+        } else {
+            this.getUserLoginList('', '');
         }
         this.userdates = null;
         this.user_status = type;
     }
 
-    public setUserDate():void{
-        if(!this.userdates){
+    public setUserDate(): void {
+        if (!this.userdates) {
             this.user_status = 'today';
             let date = new Date().toLocaleDateString()
-            this.getUserLoginList(date,date);
+            this.getUserLoginList(date, date);
             return;
         }
         this.user_status = 'custom';
-        this.getUserLoginList(this.userdates[0].toLocaleDateString(),this.userdates[1].toLocaleDateString())
+        this.getUserLoginList(this.userdates[0].toLocaleDateString(), this.userdates[1].toLocaleDateString())
     }
 
     //设置echarts显示配置项
     private setChartsData(): void {
-        this.charts1_option.series[0].data = this.userBehavior.visit_recent_detail;
-        this.charts1_option.series[1].data = this.userBehavior.visit_last_detail;
-        this.charts2_option.series[0].data = this.userBehavior.active_recent_detail;
-        this.charts2_option.series[1].data = this.userBehavior.active_last_detail;
         this.date_data = [];
         switch (this.form.stat_type) {
             case 'today':
                 for (let i = 0; i < 24; i++) {
-                    this.date_data.push((i + 1) + 'h');
+                    this.date_data.push(`${i>9?i:'0'+i}:00-${i+1>9?i+1:'0'+(i+1)}:00`);
                 }
                 break;
             case '7':
@@ -348,16 +352,14 @@ export default class PlatformAccessCom extends Vue {
                 }
                 break;
             case 'custom':
-                for (let i = 0; i < this.userBehavior.visit_last_detail.length; i++) {
+                let start = (<Date[]>this.dates)[0].getTime();
+                let end = (<Date[]>this.dates)[1].getTime();
+                let days = Math.floor((end-start)/1000/60/60/24);
+                for (let i = 0; i < days+1; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
         }
-        this.charts1_option.xAxis.data = this.date_data;
-        this.charts2_option.xAxis.data = this.date_data;
-
-        (<ECharts>this.chart2).setOption(<any>this.charts2_option);
-        (<ECharts>this.chart1).setOption(<any>this.charts1_option);
     }
 
     //获取用户行为
@@ -370,34 +372,85 @@ export default class PlatformAccessCom extends Vue {
         }
         this.axios
             .post('/v1/cmd/', {
-                cmd: 'user_behavior_stat',
+                cmd: 'user_behavior_summary_stat',
                 paras: data,
             }).then(res => {
                 this.userBehavior = res.data.data;
-                this.setChartsData();
             }).catch(err => {
                 console.log(err);
             })
+        // this.axios
+        //     .post('/v1/cmd/', {
+        //         cmd: 'user_behavior_stat',
+        //         paras: data,
+        //     }).then(res => {
+        //         this.userBehavior = res.data.data;
+        //         this.setChartsData();
+        //     }).catch(err => {
+        //         console.log(err);
+        //     })
+    }
+
+    private async init_chart1() {
+        this.chart1_data = await this.getUserCharts('visit');
+        this.charts1_option.series[0].data = this.chart1_data.visit_recent_detail;
+        this.charts1_option.series[1].data = this.chart1_data.visit_last_detail;
+        this.setChartsData();
+        this.charts1_option.xAxis.data = this.date_data;
+        (<ECharts>this.chart1).setOption(<any>this.charts1_option);
+    }
+    private async init_chart2() {
+        this.chart2_data = await this.getUserCharts('active');
+        this.charts2_option.series[0].data = this.chart2_data.active_recent_detail;
+        this.charts2_option.series[1].data = this.chart2_data.active_last_detail;
+        this.setChartsData();
+        this.charts2_option.xAxis.data = this.date_data;
+        (<ECharts>this.chart2).setOption(<any>this.charts2_option);
+    }
+
+    /**
+     * 
+     * @param type visit/active
+     */
+    private async getUserCharts(type: string) {
+        let data: any = {};
+        for (let i in this.form) {
+            if (this.form[i]) {
+                data[i] = this.form[i];
+            }
+        }
+        data.t_detail = type
+        try{
+            let res = await this.axios
+            .post('/v1/cmd/', {
+                cmd: 'user_behavior_detail_stat',
+                paras: data,
+            })
+            return res.data.data;
+        }catch(err){
+            console.log(err);
+        }
+        
     }
 
     //获取用户登录名单
-    private getUserLoginList(time_from:string,time_to:string):void{
-        let data:any = {};
-        if(time_from){
+    private getUserLoginList(time_from: string, time_to: string): void {
+        let data: any = {};
+        if (time_from) {
             data.time_from = time_from;
         }
-        if(time_to){
+        if (time_to) {
             data.time_to = time_to;
         }
         this.axios
-        .post('/v1/cmd/', {
-          cmd: 'user_login_stat',
-          paras: data
-        }).then(res=>{
-            this.userLoginList = res.data.data;
-        }).catch(err=>{
-            console.log(err);
-        })
+            .post('/v1/cmd/', {
+                cmd: 'user_login_stat',
+                paras: data
+            }).then(res => {
+                this.userLoginList = res.data.data;
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
     //采集数据趋势图
@@ -448,7 +501,7 @@ export default class PlatformAccessCom extends Vue {
         }
         if (!ch.test(this.search_user)) {
             if (nm.test(this.search_user)) {
-                if (user.phone_number == this.search_user||user.account==this.search_user) {
+                if (user.phone_number == this.search_user || user.account == this.search_user) {
                     flag = true;
                 }
             } else {
@@ -461,18 +514,21 @@ export default class PlatformAccessCom extends Vue {
     }
     //导出xlsx
     public toExport(): void {
-        let outdata:any[] = [];
-        for(let i of this.userLoginList){
-            let obj = {
-                '账号':i.account,
-                '昵称':i.nickname,
-                '手机号':i.phone_number,
-                '累计登录次数':i.login_times,
-                '最后登录时间':new Date(i.last_login_date).toLocaleString(),
+        let outdata: any[] = [];
+        for (let i of this.userLoginList) {
+            if (this.showUsers(i)) {
+                let obj = {
+                    '账号': i.account,
+                    '昵称': i.nickname,
+                    '手机号': i.phone_number,
+                    '累计登录次数': i.login_times,
+                    '最后登录时间': new Date(i.last_login_date).toLocaleString(),
+                }
+                outdata.push(obj);
             }
-            outdata.push(obj);
+
         }
-        new Table2Xlsx(outdata,"用户登录名单-"+new Date().toLocaleDateString());
+        new Table2Xlsx(outdata, "用户登录名单-" + new Date().toLocaleDateString());
     }
 
 }

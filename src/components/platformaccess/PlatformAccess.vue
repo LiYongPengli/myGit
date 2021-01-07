@@ -155,7 +155,7 @@
           <span @click="setUserDay('all')" :class="{'CumulativeActive':user_status=='all'}" class="Cumulative1">累计</span>
           <el-date-picker
             @change="setUserDate"
-            style="width: 250px; margin: 0 20px;border:1px solid rgb(58, 58, 72)"
+            style="width: 230px; margin: 0 10px;border:1px solid rgb(58, 58, 72)"
             v-model="userdates"
             type="daterange"
             start-placeholder="开始日期"
@@ -164,6 +164,7 @@
           </el-date-picker>
           <input
             v-model="search_user"
+            :style="{'width':(topic_show?170:200)+'px'}"
             type="text"
             placeholder="账号/昵称/手机号"
           />
@@ -180,7 +181,8 @@
               <div class="list_li_count">累计登录次数</div>
               <div class="list_li_time">最后登录时间</div>
             </li>
-            <my-scroll style="content_mt_onescroll">
+            <li style="height:250px;">
+              <my-scroll>
               <li
                 v-show="showUsers(v)"
                 v-for="(v, k) in userLoginList"
@@ -204,6 +206,7 @@
                 </div>
               </li>
             </my-scroll>
+            </li>
           </ul>
         </div>
       </div>

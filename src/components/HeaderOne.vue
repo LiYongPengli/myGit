@@ -30,7 +30,7 @@
             <div slot="reference" class="user_info_wrap">
               <img
                 :src="
-                  'http://zlbxxcj.bjceis.com/avatar/' + user_message.account
+                  axios.defaults.baseURL+'/avatar/' + user_message.account
                 "
                 alt="头像"
               />

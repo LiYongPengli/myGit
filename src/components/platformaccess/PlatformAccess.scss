@@ -140,6 +140,7 @@
             .content_form_one {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 .namelist {
                     font-size: 20px;
                     min-width: 120px;
@@ -164,7 +165,7 @@
                     border-radius: 3px;
                 }
                 .Cumulative {
-                    margin-right: 30px;
+                    margin: 0 10px;
                 }
                 .CumulativeActive {
                     background: #007aff;
@@ -223,7 +224,7 @@
                 ul {
                     background-color: #494959;
                     margin-top: 25px;
-                    height: 300px;
+                    //height: 300px;
                     overflow: hidden;
                     li:nth-child(1) {
                         border-bottom: 1px solid #5c5c6b;
