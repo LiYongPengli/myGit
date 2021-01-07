@@ -263,6 +263,26 @@
                             width: 30%;
                             text-align: right;
                             justify-content: right;
+                            position: relative;
+                            span{
+                                cursor: pointer;
+                                padding-right: 12px;
+                            }
+                            .up{
+                                position: absolute;
+                                right: -0;
+                                top: 18px;
+                                cursor: pointer;
+                            }
+                            .down{
+                                position:absolute;
+                                right:0;
+                                top:26px;
+                                cursor: pointer;
+                            }
+                            .actv{
+                                transform: rotateZ(180deg);
+                            }
                         }
                         .list_li_accountnumber {
                             width: 20%;
@@ -272,6 +292,27 @@
                             width: 10%;
                             justify-content: left;
                             text-align: center;
+                            position: relative;
+                            span{
+                                cursor: pointer;
+                            }
+                            .up{
+                                position: absolute;
+                                right: -8px;
+                                top: 18px;
+                                cursor: pointer;
+                                z-index: 5;
+                            }
+                            .down{
+                                position:absolute;
+                                right:-8px;
+                                top:26px;
+                                cursor: pointer;
+                                z-index: 5;
+                            }
+                            .actv{
+                                transform: rotateZ(180deg);
+                            }
                         }
                     }
                     li.active {

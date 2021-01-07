@@ -14,7 +14,9 @@ Vue.use(VueAxios,axios);
 Vue.config.productionTip = false;
 
 Vue.directive('time',{
-  inserted:init_time
+  inserted:init_time,
+  update:init_time,
+  //componentUpdated:init_time
 })
 
 router.beforeEach((to,from,next)=>{

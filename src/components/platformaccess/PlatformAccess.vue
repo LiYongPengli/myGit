@@ -178,8 +178,24 @@
               <div class="list_li_accountnumber">账号</div>
               <div class="list_li_name">昵称</div>
               <div class="list_li_phone">手机号</div>
-              <div class="list_li_count">累计登录次数</div>
-              <div class="list_li_time">最后登录时间</div>
+              <div class="list_li_count">
+                <div>
+                  <span @click="sortType=1">累计登录次数</span>
+                  <img v-show="sortType==1&&!sortContent" class="up" src="../../assets/img/up.png" alt="">
+                  <img @click="sortContent=!sortContent" v-show="sortType==1&&sortContent" class="up actv" src="../../assets/img/down.png" alt="">
+                  <img @click="sortContent=!sortContent" v-show="sortType==1&&!sortContent" class="down" src="../../assets/img/down.png" alt="">
+                  <img v-show="sortType==1&&sortContent" class="down actv" src="../../assets/img/up.png" alt="">
+                </div>
+              </div>
+              <div class="list_li_time">
+                <div>
+                  <span @click="sortType=2">最后登录时间</span>
+                  <img v-show="sortType==2&&!sortTime" class="up" src="../../assets/img/up.png" alt="">
+                  <img @click="sortTime=!sortTime" v-show="sortType==2&&sortTime" class="up actv" src="../../assets/img/down.png" alt="">
+                  <img @click="sortTime=!sortTime" v-show="sortType==2&&!sortTime" class="down" src="../../assets/img/down.png" alt="">
+                  <img v-show="sortType==2&&sortTime" class="down actv" src="../../assets/img/up.png" alt="">
+                </div>
+              </div>
             </li>
             <li style="height:250px;">
               <my-scroll>
@@ -201,8 +217,8 @@
                 <div class="list_li_count">
                   {{ v.login_times }}
                 </div>
-                <div class="list_li_time">
-                  {{ new Date(v.last_login_date).toLocaleString() }}
+                <div v-time="v.last_login_date" class="list_li_time">
+                  {{ v.last_login_date }}
                 </div>
               </li>
             </my-scroll>
