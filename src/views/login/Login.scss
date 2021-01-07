@@ -22,25 +22,33 @@
         .bindAccount {
             width: 70%;
             margin-left: 15%;
+            .bdwxtitle {
+                font-size: 16px;
+                color: #fff;
+                opacity: .8;
+            }
             .top {
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px 0;
+                padding: 30px 0 20px 0;
                 .left_log,
                 .right_log {
                     display: flex;
                     width: 70px;
                     height: 70px;
                     box-sizing: border-box;
-                    border: 1px solid gray;
+                    // border: 1px solid gray;
                     border-radius: 50%;
                     img {
                         display: block;
-                        width: 50%;
+                        width: 100%;
                         margin: auto;
                     }
+                }
+                .zhuanhua {
+                    margin: 0 27px;
                 }
                 .center_ico {
                     margin: 0 10px;
