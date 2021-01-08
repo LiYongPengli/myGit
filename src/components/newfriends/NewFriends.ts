@@ -12,35 +12,6 @@ export default class NewFriendsCom extends Vue {
     public remark_name: string = "";
     public inv_message: string = "";
     public cardList: any = "";
-    public zmlist = [
-        { name: 'A' },
-        { name: 'B' },
-        { name: 'C' },
-        { name: 'D' },
-        { name: 'E' },
-        { name: 'F' },
-        { name: 'G' },
-        { name: 'H' },
-        { name: 'I' },
-        { name: 'I' },
-        { name: 'J' },
-        { name: 'K ' },
-        { name: 'L' },
-        { name: 'M ' },
-        { name: 'N' },
-        { name: 'O' },
-        { name: 'P' },
-        { name: ' Q ' },
-        { name: 'R ' },
-        { name: 'S ' },
-        { name: 'T ' },
-        { name: 'U ' },
-        { name: 'V ' },
-        { name: 'W' },
-        { name: 'X' },
-        { name: 'Y' },
-        { name: 'Z ' },
-        { name: '其他 ' }]
 
     @Mutation("setTopicUrl") setTopicUrl: any;
     @Mutation("setTopicStatus") setTopicStatus: any;
@@ -68,6 +39,14 @@ export default class NewFriendsCom extends Vue {
                 this.$message.success('设置备注成功!');
                 this.remark = false;
             })
+    }
+
+    public showControl(key:string):void{
+        this.$set(this.cardList[key],'mouse',true);
+    }
+
+    public hideControl(key:number):void{
+        this.$set(this.cardList[key],'mouse',false);
     }
 
 

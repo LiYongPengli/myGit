@@ -70,15 +70,22 @@
                 margin-bottom: 5px;
                 .content_userlist {
                     color: white;
-                    img {
-                        float: left;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .user_info{
+                        display: flex;
+                        align-items: center;
+                        img.header {
+                            width: 40px;
+                        }
+                        .remarks_p {
+                            width: max-content;
+                            font-size: 14px;
+                            margin-left: 25px;
+                        }
                     }
-                    img.header {
-                        width: 40px;
-                    }
-                    p {
-                        float: left;
-                    }
+                    
                     .content_userlist_engname,
                     .content_userlist_chinename,
                     .content_userlist_sendmessage,
@@ -89,16 +96,7 @@
                         height: 40px;
                         line-height: 40px;
                     }
-                    .content_userlist_request {
-                        width: 110px;
-                        margin-left: 120px;
-                        cursor: pointer;
-                        img {
-                            margin-right: 10px;
-                            margin-top: 10px;
-                            cursor: pointer;
-                        }
-                    }
+                    
                     .request {
                         font-size: 14px;
                         margin-left: 50px;
@@ -114,10 +112,18 @@
                             margin-right: 10px;
                         }
                     }
-                    .remarks_p {
-                        margin-left: 5px;
-                        line-height: 40px;
-                        font-size: 14px;
+                    
+                    .control{
+                        display: flex;
+                        align-items: center;
+                        .content_userlist_request {
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            img {
+                                margin-right: 10px;
+                            }
+                        }
                     }
                     .content_userlist_engname {
                         background-color: #009688;
@@ -125,7 +131,7 @@
                     }
                     .content_userlist_chinename {
                         margin-left: 25px;
-                        width: 180px;
+                        width: max-content;
                         font-size: 14px;
                     }
                     .content_userlist_sendmessage,
