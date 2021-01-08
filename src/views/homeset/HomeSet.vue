@@ -6,9 +6,7 @@
         <span class="zssg">至少选择3个，后期可随时调整</span>
         <div class="tab">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item
-              :class="{ cur: pageIndex == 0 }"
-              :to="{ path: '/' }"
+            <el-breadcrumb-item :class="{ cur: pageIndex == 0 }" :to="{ path: '/' }"
               >国家
             </el-breadcrumb-item>
             <el-breadcrumb-item :class="{ cur: pageIndex == 1 }"
@@ -26,13 +24,17 @@
       </div>
     </header>
     <!-- 国家 -->
-    <div v-if="pageIndex == 0" class="content ">
+    <div v-if="pageIndex == 0" class="content">
       <span class="yx">
         已选：<span v-for="(v, i) in sub_form.country" :key="i">
           {{ i == 0 ? "" : "、" }} {{ v.name }}</span
         >
       </span>
-      <div class="content_wrap" v-loading="loadCountry" element-loading-background="rgba(0, 0, 0, 0.1)">
+      <div
+        class="content_wrap"
+        v-loading="loadCountry"
+        element-loading-background="rgba(0, 0, 0, 0.1)"
+      >
         <my-scroll @loading="loadingCountry">
           <ul>
             <li
@@ -43,7 +45,7 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img style="margin-top:20px" :src="v.flag" alt="" />
+                <img style="margin-top: 20px" :src="v.flag" alt="" />
 
                 <el-tooltip
                   class="item"
@@ -51,7 +53,7 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                  <span style="height:20px" class="chinese_gj">{{ v.name_zh }}</span>
+                  <span style="height: 20px" class="chinese_gj">{{ v.name_zh }}</span>
                 </el-tooltip>
                 <el-tooltip
                   class="item"
@@ -69,7 +71,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-          style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -86,81 +88,76 @@
       <!-- 7天活跃 -->
       <div v-show="media_list.week.length" class="content_wrap" style="height: 200px">
         <span class="qit">近7天内活跃的媒体</span>
-       <div style="height: 145px;overflow: hidden;">
+        <div style="height: 145px; overflow: hidden">
           <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
-          <ul class="mt">
-            <li
-              @click="chooseMediaItem('week', v, i)"
-              v-for="(v, i) in media_list.week"
-              :key="i"
-              :class="{ cur: v.choose }"
-            >
-              <a>
-                <!-- 50*30 -->
-                <img src="../../assets/img/morentx.png" alt="" />
-                <el-tooltip
-                  class="item itmemt_ch"
-                  effect="dark"
-                  :content="v.name_zh"
-                  placement="right"
-                >
-                  <span class="chinese_gj mt"  >{{ v.name_zh }}</span
+            <ul class="mt">
+              <li
+                @click="chooseMediaItem('week', v, i)"
+                v-for="(v, i) in media_list.week"
+                :key="i"
+                :class="{ cur: v.choose }"
+              >
+                <a>
+                  <!-- 50*30 -->
+                  <img src="../../assets/img/morentx.png" alt="" />
+                  <el-tooltip
+                    class="item itmemt_ch"
+                    effect="dark"
+                    :content="v.name_zh"
+                    placement="right"
                   >
-                </el-tooltip>
-                <el-tooltip
-                  style="left:74px"
-                  class="item itmemt_en"
-                  effect="dark"
-                  :content="v.name"
-                  placement="right"
-                >
-                  <span class="english_gj mt">{{ v.name }} </span> 
-                </el-tooltip>
-              </a>
-            </li>
-          </ul>
-        </my-scroll>
-       </div>
+                    <span class="chinese_gj mt">{{ v.name_zh }}</span>
+                  </el-tooltip>
+                  <el-tooltip
+                    style="left: 74px"
+                    class="item itmemt_en"
+                    effect="dark"
+                    :content="v.name"
+                    placement="right"
+                  >
+                    <span class="english_gj mt">{{ v.name }} </span>
+                  </el-tooltip>
+                </a>
+              </li>
+            </ul>
+          </my-scroll>
+        </div>
       </div>
       <!-- 30天活跃 -->
       <div v-show="media_list.month.length" class="content_wrap" style="height: 200px">
         <span class="sst">近30天内活跃的媒体</span>
-        <div style="height: 145px;overflow: hidden;">
+        <div style="height: 145px; overflow: hidden">
           <my-scroll @loading="loadingMedia">
-          <ul class="mt">
-            <li
-              @click="chooseMediaItem('month', v, i)"
-              v-for="(v, i) in media_list.month"
-              :key="i"
-              :class="{ cur: v.choose }"
-            >
-              <a>
-                <!-- 50*30 -->
-                <img src="../../assets/img/morentx.png" alt="" />
-                <el-tooltip
-                  class="item itmemt_ch"
-                  effect="dark"
-                  :content="v.name_zh"
-                  placement="right"
-                >
-                   <span
-                      class="chinese_gj mt"
-                      >{{ v.name_zh }}</span
-                    >
-                  
-                </el-tooltip>
-                <el-tooltip
-                  class="item itmemt_en"
-                  effect="dark"
-                  :content="v.name"
-                  placement="right"
-                >
-                  <span class="english_gj mt">{{ v.name }} </span>
-                </el-tooltip>
-              </a>
-            </li>
-          </ul>
-        </my-scroll>
+            <ul class="mt">
+              <li
+                @click="chooseMediaItem('month', v, i)"
+                v-for="(v, i) in media_list.month"
+                :key="i"
+                :class="{ cur: v.choose }"
+              >
+                <a>
+                  <!-- 50*30 -->
+                  <img src="../../assets/img/morentx.png" alt="" />
+                  <el-tooltip
+                    class="item itmemt_ch"
+                    effect="dark"
+                    :content="v.name_zh"
+                    placement="right"
+                  >
+                    <span class="chinese_gj mt">{{ v.name_zh }}</span>
+                  </el-tooltip>
+                  <el-tooltip
+                    class="item itmemt_en"
+                    effect="dark"
+                    :content="v.name"
+                    placement="right"
+                  >
+                    <span class="english_gj mt">{{ v.name }} </span>
+                  </el-tooltip>
+                </a>
+              </li>
+            </ul>
+          </my-scroll>
         </div>
       </div>
       <!-- 其他 -->
@@ -183,11 +180,7 @@
                   :content="v.name_zh"
                   placement="right"
                 >
-                   <span
-                      class="chinese_gj mt"
-                      >{{ v.name_zh }}</span
-                    >
-                  
+                  <span class="chinese_gj mt">{{ v.name_zh }}</span>
                 </el-tooltip>
                 <el-tooltip
                   class="item itmemt_en"
@@ -206,7 +199,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.media.length < 3"
-          style="width: 280px"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >下一步</el-button
         >
@@ -233,18 +226,19 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/morentx.png" alt="" />
-               <el-tooltip
+                <el-tooltip
                   class="item itmerw_ch"
                   effect="dark"
                   :content="v.name"
                   placement="right"
                 >
-                  <span
-                      style="top:-40px;width:120px"
-                      class="chinese_gj mt"
-                      >{{ v.name }}</span>
+                  <span style="top: -40px; width: 120px" class="chinese_gj mt">{{
+                    v.name
+                  }}</span>
                 </el-tooltip>
-                <span style="width:120px;top:-10px" class="english_gj mt">中国共产党中央委员会总书记</span>
+                <span style="width: 120px; top: -10px" class="english_gj mt"
+                  >中国共产党中央委员会总书记</span
+                >
               </a>
             </li>
           </ul>
@@ -255,7 +249,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.character.length < 3"
-          style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >下一步</el-button
         >
@@ -267,14 +261,17 @@
       <div class="content_wrap">
         <my-scroll @loading="loadingChannel">
           <ul class="tjpd">
+           
             <li
               @click="chooseItem('channel', v, i)"
               :class="{ cur: v.choose }"
               v-for="(v, i) in channel_list"
               :key="i"
-            >
+            > <div>
               <a>{{ v.name }}</a>
+               </div>
             </li>
+           
           </ul>
         </my-scroll>
       </div>
@@ -282,7 +279,7 @@
         <el-button
           @click="toFinish"
           :disabled="sub_form.channel.length < 3"
-           style="width: 280px;background-color: #0074ff;border-color: #0074ff;"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >完成</el-button
         >
@@ -314,7 +311,8 @@ export default class HomeSet extends mixins(HomeSetCom) {}
     width: 800px;
     height: 40px;
     line-height: 40px;
-    float: left;
+    display: flex;
+    align-items: center;
   }
 
   .el-breadcrumb__inner,
@@ -327,7 +325,7 @@ export default class HomeSet extends mixins(HomeSetCom) {}
   .el-row {
     text-align: center;
     margin-top: 80px;
-    
+
     .up {
       width: 140px;
       height: 60px;
@@ -344,4 +342,3 @@ export default class HomeSet extends mixins(HomeSetCom) {}
   }
 }
 </style>
-

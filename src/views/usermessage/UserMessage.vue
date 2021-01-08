@@ -3,8 +3,8 @@
     <div v-show="!showInfo" class="mymessage">
       <el-row>
         <span> 我的消息 </span>
-        <el-button @click="allRead" class="yidu" type="info">全部已读</el-button>
-        <el-button @click="clearMessage" class="clear" type="info">全部清空</el-button>
+        <el-button size="mini" @click="allRead" class="yidu" type="info">全部已读</el-button>
+        <el-button size="mini" @click="clearMessage" class="clear" type="info">全部清空</el-button>
       </el-row>
     </div>
     <div v-show="!showInfo" class="list">

@@ -9,7 +9,7 @@
     box-sizing: border-box;
     background: #272730;
     header {
-        height: 260px;
+        height: 250px;
         border-bottom: 1px solid #3a3a48;
         .header {
             width: 1000px;
@@ -23,6 +23,7 @@
             }
             .zssg {
                 padding-left: 20px;
+                font-size: 20px;
             }
             span {
                 color: #d9dfef;
@@ -54,7 +55,7 @@
                     width: 200px;
                     padding-left: 20px;
                     background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
-                    margin-top: 10px;
+                    margin-top: 5px;
                 }
                 input::-webkit-input-placeholder {
                     /* WebKit browsers */
@@ -164,7 +165,6 @@
             ul.rw {
                 overflow: unset;
                 li {
-                    margin-top: 40px;
                     width: 245px;
                     a {
                         img {
@@ -186,24 +186,44 @@
             }
             ul.tjpd {
                 margin-top: 20px;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                padding-bottom: 20px;
                 li {
                     height: 50px;
                     line-height: 50px;
                     width: 166px;
-                    a {
-                        img {
-                            width: 54px;
-                            height: 54px;
-                            margin-top: 8px;
-                        }
-                        span.chinese {
-                            top: -10px;
-                        }
-                        span.english {
-                            position: absolute;
-                            top: 10px;
+                    width: 200px;
+                    margin-bottom: 20px;
+                    div {
+                        width: 180px;
+                        border-radius: 5px;
+                        border: 1px solid #979797;
+                        a {
+                            img {
+                                width: 54px;
+                                height: 54px;
+                                margin-top: 8px;
+                            }
+                            span.chinese {
+                                top: -10px;
+                            }
+                            span.english {
+                                position: absolute;
+                                top: 10px;
+                            }
                         }
                     }
+                    // div.cur {
+                    //     background-color: #71718A;
+                    // }
+                }
+                li.cur {
+                    background-color: #272730;
+                }
+                li.cur>div {
+                    background-color: #71718A;
                 }
             }
         }
@@ -214,7 +234,7 @@
             padding-left: 20px;
         }
         .sst {
-            margin-top: 50px;
+            // margin-top: 50px;
             color: #6d6f7e;
             display: block;
             margin-bottom: 20px;

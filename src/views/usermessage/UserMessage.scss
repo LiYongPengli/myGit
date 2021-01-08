@@ -1,8 +1,7 @@
 .usermessage {
     .mymessage {
-        height: 70px;
+        height: 49px;
         margin-top: 30px;
-        line-height: 70px;
         border-bottom: 1px solid #3a3a48;
         span {
             font-size: 20px;
@@ -11,7 +10,7 @@
     .list {
         width: 1200px;
         min-height: 300px;
-        .nodata{
+        .nodata {
             text-align: center;
             margin-top: 150px;
             font-size: 20px;
@@ -46,8 +45,9 @@
                     color: #bcc2d5;
                 }
             }
-            li:hover{
+            li:hover {
                 background-color: #3a3a48;
+                padding-left: 20px;
             }
             .jzgd {
                 padding: 20px 0;
