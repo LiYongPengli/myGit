@@ -41,13 +41,41 @@
         <div class="list">
           <ul>
             <li v-for="(v, i) in newsList" :key="i">
-              <div v-if="v.cover.type!='text'" class="pic">
-                <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
-                <img @load="imgLoad" @error="loadErr(i)" v-if="v.cover.type=='image'&!v.error" :src="v.cover.url[0]" alt="" />
-                <img v-if="v.cover.type=='image'&&v.error" src="../../assets/img/404.jpg" alt="" />
+              <div v-if="v.cover.type != 'text'" class="pic">
+                <video-thum-bnail
+                  v-if="v.cover.type == 'video'"
+                  :video_photo="v.cover.url"
+                  :video_url="v.cover.video"
+                />
+                <el-image
+                  :fit="'scale-down'"
+                  class="img"
+                  lazy
+                  v-if="v.cover.type == 'image'"
+                  :src="v.cover.url[0]"
+                >
+                  <div slot="error" class="image-slot">
+                    <img
+                      style="width: 200px"
+                      src="../../assets/img/404.jpg"
+                      alt=""
+                    />
+                  </div>
+                </el-image>
+                <!-- <img
+                  @load="imgLoad"
+                  @error="loadErr(i)"
+                  v-if="(v.cover.type == 'image') & !v.error"
+                  :src="v.cover.url[0]"
+                  alt=""
+                />
+                <img
+                  v-if="v.cover.type == 'image' && v.error"
+                  src="../../assets/img/404.jpg"
+                  alt=""
+                /> -->
               </div>
               <div class="text">
-                
                 <p
                   v-show="language == 'crawler'"
                   @click="toNewsInfo(v)"
@@ -136,15 +164,29 @@
                     :key="i"
                     class="item"
                   >
-                    <img style="border-radius:50%" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
-                    <img v-if="v.avatar==-1||v.avatar==null" style="border-radius:50%" src="../../assets/img/tx.png" alt="" />
+                    <img
+                      style="border-radius: 50%"
+                      v-if="v.avatar != -1 && v.avatar != null && !v.error"
+                      :src="
+                        axios.defaults.baseURL +
+                        '/attachments/avator/' +
+                        v.avatar
+                      "
+                      alt=""
+                    />
+                    <img
+                      v-if="v.avatar == -1 || v.avatar == null"
+                      style="border-radius: 50%"
+                      src="../../assets/img/tx.png"
+                      alt=""
+                    />
                     <p :title="v.name" class="name">{{ v.name }}</p>
                   </div>
                 </div>
               </div>
               <!-- 媒体 -->
               <div class="swiper-slide">
-                <div class="media" style="width:457px">
+                <div class="media" style="width: 457px">
                   <div
                     @click="toFollowPage('media', i)"
                     v-for="(v, i) in media"
@@ -182,7 +224,7 @@ import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
     EditChannel,
     Hours24,
     ShareContent,
-    VideoThumBnail
+    VideoThumBnail,
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

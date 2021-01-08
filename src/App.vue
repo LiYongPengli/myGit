@@ -33,7 +33,7 @@
         </a>
       </share-content>
 
-      <a @click="setTopicShow(true)" class="chat">
+      <a @click="setTopic" class="chat">
         <el-badge :hidden="!isGlobMessage" is-dot>
           <img title="聊天工具" src="./assets/img/chat.png" alt="" />
         </el-badge>
@@ -105,6 +105,14 @@ export default class App extends Vue {
 
   private created(): void {
     window.addEventListener("message", this.getGlobMessage, false);
+  }
+
+  public setTopic():void{
+    if(!this.topic_show){
+      this.setTopicShow(true);
+    }else{
+      this.setTopicShow(false);
+    }
   }
 
   //获取全局消息

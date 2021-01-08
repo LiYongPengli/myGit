@@ -49,7 +49,7 @@ export default class Hours24Com extends Vue {
         this.list_24 = new Swiper('.list24', {
             direction: 'vertical',
             slidesPerView: 4,
-            slidesPerGroup: 1,
+            slidesPerGroup: 4,
             loop: true
         })
         this.autoPlay();

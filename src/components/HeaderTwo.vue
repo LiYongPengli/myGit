@@ -42,9 +42,9 @@
     <div class="search">
       <img src="../assets/img/search.png" alt="" />
       <input
-      @click="setShowIntelligent(true)"
+        @click="setShowIntelligent(true)"
         type="text"
-        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政策"
+        placeholder="输入人物、地点、事件等相关关键词进行搜索"
       />
     </div>
     <div class="language">

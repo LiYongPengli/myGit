@@ -106,7 +106,7 @@
           <li v-for="(v, i) in list" :key="i">
             <div class="ly">
               <div class="tx">
-                <img src="../../assets/img/media.png" alt="" />
+                <img src="../../assets/img/media_default.png" alt="" />
               </div>
               <div class="sjrs">
                 <span class="mt">媒体:{{ v.media_name }}</span>
@@ -132,18 +132,65 @@
                 <a @click="toNewsInfo(v)">{{ v.title["zh-CN"] }}</a>
               </p>
               <div class="ziyuan">
-                <div v-if="v.cover.type=='image'" class="imgwrap">
-                  <img @load="imgLoad" v-if="v.cover.url[0]" :src="v.cover.url[0]" alt="" />
-                  <img @load="imgLoad" v-if="v.cover.url[1]" :src="v.cover.url[1]" alt="" />
+                <div v-if="v.cover.type == 'image'" class="imgwrap">
+                  <el-image
+                    :fit="'scale-down'"
+                    class="img"
+                    lazy
+                    v-if="v.cover.url[0]"
+                    :src="v.cover.url[0]"
+                  >
+                    <div slot="error" class="image-slot">
+                      <img
+                        style="width: 200px"
+                        src="../../assets/img/404.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </el-image>
+                  <el-image
+                    :fit="'scale-down'"
+                    class="img"
+                    lazy
+                    v-if="v.cover.url[1]"
+                    :src="v.cover.url[1]"
+                  >
+                    <div slot="error" class="image-slot">
+                      <img
+                        style="width: 200px"
+                        src="../../assets/img/404.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </el-image>
+                  <!-- <img
+                    @load="imgLoad"
+                    v-if="v.cover.url[0]"
+                    :src="v.cover.url[0]"
+                    alt=""
+                  />
+                  <img
+                    @load="imgLoad"
+                    v-if="v.cover.url[1]"
+                    :src="v.cover.url[1]"
+                    alt=""
+                  /> -->
                 </div>
-                <div v-if="v.cover.type=='video'" class="video_wrap">
-                  <video v-show="!v.error" @error="loaderr(i)" :src="v.cover.video" controls></video>
-                  <img v-show="v.error" src="../../assets/img/404.jpg" alt="">
+                <div v-if="v.cover.type == 'video'" class="video_wrap">
+                  <video
+                    v-show="!v.error"
+                    @error="loaderr(i)"
+                    :src="v.cover.video"
+                    controls
+                  ></video>
+                  <img v-show="v.error" src="../../assets/img/404.jpg" alt="" />
                 </div>
               </div>
             </div>
           </li>
-          <div @click="getList" v-show="!isfinished" class="jzgd">点击加载更多</div>
+          <div @click="getList" v-show="!isfinished" class="jzgd">
+            点击加载更多
+          </div>
         </ul>
       </div>
     </div>

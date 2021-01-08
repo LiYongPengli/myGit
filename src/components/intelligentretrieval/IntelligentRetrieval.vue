@@ -183,7 +183,7 @@
                       </p>
                     </div>
                     <li
-                      :class="{ 'mtli': ~filter.media.indexOf(v.media_id) }"
+                      :class="{ mtli: ~filter.media.indexOf(v.media_id) }"
                       @click="chooseitem('media', v)"
                       v-for="(v, i) in mediaList"
                       :key="i"
@@ -402,11 +402,17 @@
               <ul>
                 <li v-for="(v, i) in newsList" :key="i">
                   <div class="pic">
-                    <img
+                    <el-image
+                      :fit="'scale-down'"
+                      class="img"
+                      lazy
                       v-if="v.cover.type == 'image'"
-                      :src="v.cover.url"
-                      alt=""
-                    />
+                      :src="v.cover.url[0]"
+                    >
+                      <div slot="error" class="image-slot">
+                        <img style="width:200px;" src="../../assets/img/404.jpg" alt="">
+                      </div>
+                    </el-image>
                     <video-thumbnail
                       style="width: 200px; margin-right: 30px"
                       v-if="v.cover.type == 'video'"
@@ -443,14 +449,13 @@
                 </li>
                 <div
                   element-loading-text="拼命加载中"
-                  
                   element-loading-background="rgba(0, 0, 0, 0)"
                   v-loading="loading"
                   @click="loadMore"
                   v-show="!finished"
                   class="jzgd"
                 >
-                  {{loading?'':'点击加载更多内容'}}
+                  {{ loading ? "" : "点击加载更多内容" }}
                 </div>
               </ul>
             </div>
