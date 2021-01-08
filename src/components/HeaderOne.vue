@@ -12,7 +12,7 @@
       /> -->
       <div @click="setShowIntelligent(true)" class="ss">
     <div @click="setShowIntelligent(true)" class="ss">
-      输入人物、地点、时间等相关关键词进行搜索
+      输入人物、地点、事件等关键词进行搜索
     </div>
       </div>
       <div class="bottom">

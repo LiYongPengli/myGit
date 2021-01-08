@@ -42,9 +42,9 @@
     <div class="search">
       <img src="../assets/img/search.png" alt="" />
       <input
-      @click="setShowIntelligent(true)"
+        @click="setShowIntelligent(true)"
         type="text"
-        placeholder="输入人物、地点、时间等相关关键词进行搜索"
+        placeholder="输入人物、地点、事件等相关关键词进行搜索"
       />
     </div>
     <div class="language">

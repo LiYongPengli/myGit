@@ -106,7 +106,7 @@
           <li v-for="(v, i) in list" :key="i">
             <div class="ly">
               <div class="tx">
-                <img src="../../assets/img/media.png" alt="" />
+                <img src="../../assets/img/media_default.png" alt="" />
               </div>
               <div class="sjrs">
                 <span class="mt">媒体:{{ v.media_name }}</span>
