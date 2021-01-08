@@ -68,7 +68,7 @@ export default class UserUsersCom extends Vue {
                 console.log(err);
             })
     }
-    //注册时间的转换 2020-01-01 12：23：24 转换为2020年-01月-01日 12：23：24
+    //注册时间的转换 2020-01-01 12：23：24 转换为2020年-01月-01日 12：23：24(已废弃)
     public UserCreatetime(str:any):any{
         let time=new Date(str)
         let year=time.getFullYear()

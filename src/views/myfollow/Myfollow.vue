@@ -132,8 +132,10 @@
                 <a @click="toNewsInfo(v)">{{ v.title["zh-CN"] }}</a>
               </p>
               <div class="ziyuan">
-                <img v-if="v.cover.type=='image'" :src="v.cover.url[0]" alt="" />
-                <img v-if="v.cover.type=='image'" :src="v.cover.url[1]" alt="" />
+                <div v-if="v.cover.type=='image'" class="imgwrap">
+                  <img @load="imgLoad" v-if="v.cover.url[0]" :src="v.cover.url[0]" alt="" />
+                  <img @load="imgLoad" v-if="v.cover.url[1]" :src="v.cover.url[1]" alt="" />
+                </div>
                 <div v-if="v.cover.type=='video'" class="video_wrap">
                   <video v-show="!v.error" @error="loaderr(i)" :src="v.cover.video" controls></video>
                   <img v-show="v.error" src="../../assets/img/404.jpg" alt="">

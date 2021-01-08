@@ -12,7 +12,7 @@
     </div>
     <div class="content">
       <h2 class="title">{{message.title}}</h2>
-      <span v-time class="time"> {{message.time}} </span>
+      <span v-time="message.time" class="time"></span>
       <p class="contentp">
         {{message.text}}
       </p>

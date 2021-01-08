@@ -73,6 +73,7 @@
               <div class="vvts">
                 <my-scroll>
                    <div class="spzm">视频字幕</div>
+                   <p class="nozm" v-if="!getYouTubeText(newsInfo.html[language][0].content).length">暂无字幕</p>
                   <p
                     v-for="(v, i) in getYouTubeText(newsInfo.html[language][0].content)"
                     :key="i"

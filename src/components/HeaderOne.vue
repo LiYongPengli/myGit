@@ -126,6 +126,7 @@ export default class HeaderOne extends Vue {
     z-index: 0;
     background: url(../assets/img/logo.png) 20px center no-repeat #30303c;
     border-right: 1px solid #3a3a48;
+    cursor: pointer;
   }
   .search {
     margin-left: 210px;

@@ -79,7 +79,7 @@
               <div class="td">
                 {{ v.wechat_info.binding ? v.wechat_info.nickname : "未绑定" }}
               </div>
-              <div class="td">{{ UserCreatetime(v.registration_date) }}</div>
+              <div class="td" v-time="v.registration_date"></div>
 
               <div class="td more">
                 <span

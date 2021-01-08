@@ -159,6 +159,14 @@ export default class MyFollowCom extends Vue {
         this.getList();
     }
 
+    //设置图片高度
+    public imgLoad(e:any):void{
+        let img = <HTMLImageElement>e.path[0]
+        if(img.offsetHeight<132){
+            img.style.height = 132+'px';
+        }
+    }
+
     //资源加载失败
     public loaderr(index:number):void{
         this.$set(this.list[index],'error',true);
@@ -190,7 +198,7 @@ export default class MyFollowCom extends Vue {
 
     //获取频道等列表
     private getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10&start='+start).then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);

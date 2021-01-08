@@ -124,6 +124,7 @@ export default class HeaderTwo extends Vue {
     border-right: 1px solid #3a3a48;
     align-items: center;
     flex-shrink: 0;
+    cursor: pointer;
     img {
       display: block;
       width: 55%;

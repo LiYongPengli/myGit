@@ -10,9 +10,10 @@
     }
     .list {
         width: 1200px;
+        min-height: 300px;
         .nodata{
             text-align: center;
-            margin-top: 50px;
+            margin-top: 150px;
             font-size: 20px;
         }
         ul {

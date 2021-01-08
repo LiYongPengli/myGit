@@ -69,7 +69,7 @@ export default class RecommendCom extends Vue {
 
     public imgLoad(e:any):void{
         let img = <HTMLImageElement>e.path[0]
-        if(img.offsetHeight<112){
+        if(img.offsetHeight<132){
             img.style.height = 132+'px';
         }
     }
