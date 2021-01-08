@@ -86,7 +86,8 @@
       <!-- 7天活跃 -->
       <div v-show="media_list.week.length" class="content_wrap" style="height: 200px">
         <span class="qit">近7天内活跃的媒体</span>
-        <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
+       <div style="height: 145px;overflow: hidden;">
+          <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
           <ul class="mt">
             <li
               @click="chooseMediaItem('week', v, i)"
@@ -119,11 +120,13 @@
             </li>
           </ul>
         </my-scroll>
+       </div>
       </div>
       <!-- 30天活跃 -->
       <div v-show="media_list.month.length" class="content_wrap" style="height: 200px">
         <span class="sst">近30天内活跃的媒体</span>
-        <my-scroll @loading="loadingMedia">
+        <div style="height: 145px;overflow: hidden;">
+          <my-scroll @loading="loadingMedia">
           <ul class="mt">
             <li
               @click="chooseMediaItem('month', v, i)"
@@ -158,6 +161,7 @@
             </li>
           </ul>
         </my-scroll>
+        </div>
       </div>
       <!-- 其他 -->
       <div v-show="!media_list.month.length" class="content_wrap">
