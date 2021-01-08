@@ -60,7 +60,7 @@ export default class PlatformAccessCom extends Vue {
             }
         },
         legend: {
-            data: ['本期', '上期'],
+            data: ['今天', '昨天'],
             right: 0,
             icon: 'rect',
             textStyle: {
@@ -125,7 +125,7 @@ export default class PlatformAccessCom extends Vue {
             }
         },
         series: [{
-            name: '本期',
+            name: '今天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -134,7 +134,7 @@ export default class PlatformAccessCom extends Vue {
             color: "#19d1ff"
         },
         {
-            name: '上期',
+            name: '昨天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -186,7 +186,7 @@ export default class PlatformAccessCom extends Vue {
             right: 0
         },
         legend: {
-            data: ['本期', '上期'],
+            data: ['今天', '昨天'],
             right: 0,
             icon: 'rect',
             textStyle: {
@@ -247,7 +247,7 @@ export default class PlatformAccessCom extends Vue {
             }
         },
         series: [{
-            name: '本期',
+            name: '今天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -256,7 +256,7 @@ export default class PlatformAccessCom extends Vue {
             color: "#19d1ff"
         },
         {
-            name: '上期',
+            name: '昨天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -278,8 +278,8 @@ export default class PlatformAccessCom extends Vue {
         this.chart2?.resize();
     }
     @Watch('sortType')
-    public listensortType(newVal:number,oldVal:number):void{
-        if(newVal==1){
+    public listensortType():void{
+        if(this.sortType==1){
             this.sortContent = true;
             this.listenSortContent()
         }else{
@@ -352,6 +352,8 @@ export default class PlatformAccessCom extends Vue {
     }
 
     public setUserDay(type: string): void {
+        this.sortType = 1;
+        this.listensortType();
         if (type == 'today') {
             let date = new Date().toLocaleDateString()
 
@@ -364,6 +366,8 @@ export default class PlatformAccessCom extends Vue {
     }
 
     public setUserDate(): void {
+        this.sortType = 1;
+        this.listensortType();
         if (!this.userdates) {
             this.user_status = 'today';
             let date = new Date().toLocaleDateString()
@@ -379,13 +383,27 @@ export default class PlatformAccessCom extends Vue {
         this.date_data = [];
         switch (this.form.stat_type) {
             case 'today':
-                this.charts1_option.xAxis.axisLabel.rotate = 25;
+                this.charts1_option.legend.data = ['今天','昨天'];
+                this.charts1_option.series[0].name = '今天';
+                this.charts1_option.series[1].name = '昨天';
+
+                this.charts2_option.legend.data = ['今天','昨天'];
+                this.charts2_option.series[0].name = '今天';
+                this.charts2_option.series[1].name = '昨天';
+                this.charts2_option.xAxis.axisLabel.rotate = 25;
                 this.charts2_option.xAxis.axisLabel.rotate = 25;
                 for (let i = 0; i < 24; i++) {
                     this.date_data.push(`${i>9?i:'0'+i}:00-${i>9?i:'0'+i}:59`);
                 }
                 break;
             case '7':
+                this.charts1_option.legend.data = ['近7天','上7天'];
+                this.charts1_option.series[0].name = '近7天';
+                this.charts1_option.series[1].name = '上7天';
+
+                this.charts2_option.legend.data = ['近7天','上7天'];
+                this.charts2_option.series[0].name = '近7天';
+                this.charts2_option.series[1].name = '上7天';
                 this.charts1_option.xAxis.axisLabel.rotate = 0;
                 this.charts2_option.xAxis.axisLabel.rotate = 0;
                 for (let i = 0; i < 7; i++) {
@@ -393,6 +411,13 @@ export default class PlatformAccessCom extends Vue {
                 }
                 break;
             case '30':
+                this.charts1_option.legend.data = ['近30天','上30天'];
+                this.charts1_option.series[0].name = '近30天';
+                this.charts1_option.series[1].name = '上30天';
+
+                this.charts2_option.legend.data = ['近30天','上30天'];
+                this.charts2_option.series[0].name = '近30天';
+                this.charts2_option.series[1].name = '上30天';
                 this.charts1_option.xAxis.axisLabel.rotate = 30;
                 this.charts2_option.xAxis.axisLabel.rotate = 30;
                 for (let i = 0; i < 30; i++) {
@@ -400,6 +425,13 @@ export default class PlatformAccessCom extends Vue {
                 }
                 break;
             case 'custom':
+                this.charts1_option.legend.data = ['本期','上期'];
+                this.charts1_option.series[0].name = '本期';
+                this.charts1_option.series[1].name = '上期';
+
+                this.charts2_option.legend.data = ['本期','上期'];
+                this.charts2_option.series[0].name = '本期';
+                this.charts2_option.series[1].name = '上期';
                 this.charts1_option.xAxis.axisLabel.rotate = 30;
                 this.charts2_option.xAxis.axisLabel.rotate = 30;
                 let start = (<Date[]>this.dates)[0].getTime();

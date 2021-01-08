@@ -43,7 +43,7 @@
             class="all"
             >全部</span
           >
-          <div v-show="people.length > 4" class="gd">更多+</div>
+          <!-- <div v-show="people.length > 4" class="gd">更多+</div> -->
           <ul>
             <!-- <li><a>中国</a>X</li> -->
             <li
@@ -64,7 +64,7 @@
           <span :class="{ cur: people_all }" @click="all('people')" class="all"
             >全部</span
           >
-          <div v-show="people.length > 4" class="gd">更多+</div>
+          <!-- <div v-show="people.length > 4" class="gd">更多+</div> -->
           <ul>
             <li
               :class="{ cur: v.choose }"
@@ -84,7 +84,7 @@
           <span :class="{ cur: media_all }" @click="all('media')" class="all"
             >全部</span
           >
-          <div v-show="people.length > 4" class="gd">更多+</div>
+          <!-- <div v-show="people.length > 4" class="gd">更多+</div> -->
           <ul>
             <li
               :class="{ cur: v.choose }"

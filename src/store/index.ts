@@ -27,7 +27,9 @@ export default new Vuex.Store({
     //被分享的新闻
     shareNews:null,
     //是否将聊天框插入到dom中
-    iframeShow:false
+    iframeShow:false,
+    //是否有全局消息
+    isGlobMessage:false
   },
   mutations: {
     setIndexChannelWindow(state,n):void{
@@ -65,6 +67,9 @@ export default new Vuex.Store({
     },
     setIframeShow(state,n):void{
       state.iframeShow = n;
+    },
+    setGlobMessage(state,n):void{
+      state.isGlobMessage = n;
     }
   },
   actions: {

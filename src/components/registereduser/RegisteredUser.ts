@@ -52,7 +52,7 @@ export default class RegisteredUserCom extends Vue {
             right:0
         },
         legend: {
-            data: ['本期', '上期'],
+            data: ['今天', '昨天'],
             right: 0,
             icon: 'rect',
             textStyle: {
@@ -84,7 +84,8 @@ export default class RegisteredUserCom extends Vue {
                 show: true,
                 textStyle: {
                     color: '#cdd6e5'
-                }
+                },
+                rotate:25
             }
 
         },
@@ -112,7 +113,7 @@ export default class RegisteredUserCom extends Vue {
             }
         },
         series: [{
-            name: '本期',
+            name: '今天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -121,7 +122,7 @@ export default class RegisteredUserCom extends Vue {
             color: "#19d1ff"
         },
         {
-            name: '上期',
+            name: '昨天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -135,6 +136,10 @@ export default class RegisteredUserCom extends Vue {
         stat_type: 'today',
         time_from: '',
         time_to: '',
+    }
+    public fetch_text = {
+        last:'昨日',
+        now:'今日'
     }
     public mounted(): void {
         let myChart2 = <HTMLDivElement>this.$refs.myChart3;
@@ -197,21 +202,53 @@ export default class RegisteredUserCom extends Vue {
         this.date_data = [];
         switch (this.search_form.stat_type) {
             case 'today':
+                this.fetch_text = {
+                    last:'昨日',
+                    now:'今日'
+                }
+                this.charts_option.legend.data = ['今天','昨天'];
+                this.charts_option.series[0].name = '今天';
+                this.charts_option.series[1].name = '昨天';
+                this.charts_option.xAxis.axisLabel.rotate = 25;
                 for (let i = 0; i < 24; i++) {
-                    this.date_data.push((i + 1) + 'h');
+                    this.date_data.push(`${i>9?i:'0'+i}:00-${i>9?i:'0'+i}:59`);
                 }
                 break;
             case '7':
+                this.fetch_text = {
+                    last:'近7天',
+                    now:'上7天'
+                }
+                this.charts_option.legend.data = ['近7天','上7天'];
+                this.charts_option.series[0].name = '近7天';
+                this.charts_option.series[1].name = '上7天';
+                this.charts_option.xAxis.axisLabel.rotate = 0;
                 for (let i = 0; i < 7; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case '30':
+                this.fetch_text = {
+                    last:'近30天',
+                    now:'上30天'
+                }
+                this.charts_option.legend.data = ['近30天','上30天'];
+                this.charts_option.series[0].name = '近30天';
+                this.charts_option.series[1].name = '上30天';
+                this.charts_option.xAxis.axisLabel.rotate = 30;
                 for (let i = 0; i < 30; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case 'custom':
+                this.fetch_text = {
+                    last:'本期',
+                    now:'上期'
+                }
+                this.charts_option.legend.data = ['本期','上期'];
+                this.charts_option.series[0].name = '本期';
+                this.charts_option.series[1].name = '上期';
+                this.charts_option.xAxis.axisLabel.rotate = 25;
                 for (let i = 0; i < this.result_data.last_detail.length; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
@@ -271,14 +308,16 @@ export default class RegisteredUserCom extends Vue {
     public toExport(): void {
         let outdata:any[] = [];
         for(let i of this.result_data.users){
-            let obj = {
-                '账号':i.account,
-                '昵称':i.nickname,
-                '手机号':i.phone_number,
-                '微信昵称':i.wechat_info.binding ? i.wechat_info.nickname : "未绑定",
-                '注册时间':new Date(i.registration_date).toLocaleString() ,
+            if(this.showUsers(i)){
+                let obj = {
+                    '账号':i.account,
+                    '昵称':i.nickname,
+                    '手机号':i.phone_number,
+                    '微信昵称':i.wechat_info.binding ? i.wechat_info.nickname : "未绑定",
+                    '注册时间':new Date(i.registration_date).toLocaleString() ,
+                }
+                outdata.push(obj);
             }
-            outdata.push(obj);
         }
         new Table2Xlsx(outdata,"注册用户名单-"+new Date().toLocaleDateString());
     }

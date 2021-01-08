@@ -37,11 +37,11 @@
         <div class="cjsjs_content">
           <div class="jqt">
             <p>{{ init_number(result_data.recent) }}</p>
-            <p>本周注册人数</p>
+            <p>{{fetch_text.now}}注册人数</p>
           </div>
           <div class="sqt">
             <p>{{ init_number(result_data.last) }}</p>
-            <p>上周注册人数</p>
+            <p>{{fetch_text.last}}注册人数</p>
           </div>
           <div>
             <p>{{ (result_data.rate * 100).toFixed(2) }}%</p>
@@ -84,7 +84,8 @@
               <div class="list_li_count">微信昵称</div>
               <div class="list_li_time">注册时间</div>
             </li>
-            <my-scroll style="content_mt_onescroll">
+            <li style="height:250px;">
+              <my-scroll>
               <li
                 v-show="showUsers(v)"
                 v-for="(v, k) in result_data.users"
@@ -108,6 +109,7 @@
                 </div>
               </li>
             </my-scroll>
+            </li>
           </ul>
         </div>
       </div>

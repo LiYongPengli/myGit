@@ -9,7 +9,11 @@
       src="./assets/video/index_back.mp4"
     ></video>
     <!-- 聊天工具 -->
-    <transition @after-enter="load_topic=true" @after-leave="load_topic=false" name="topic">
+    <transition
+      @after-enter="load_topic = true"
+      @after-leave="load_topic = false"
+      name="topic"
+    >
       <div v-show="topic_show" class="topics">
         <!-- 聊天工具组件 -->
         <topic v-show="load_topic" />
@@ -24,13 +28,16 @@
         ><img title="置顶" src="./assets/img/arrow-right.png" alt=""
       /></a>
       <share-content type="news" :content="shareNews">
-        <a v-show="$route.name == 'NewsInfo'" class="fenxiang" >
+        <a v-show="$route.name == 'NewsInfo'" class="fenxiang">
           <img title="分享" src="./assets/img/fenxiang.png" alt="" />
         </a>
       </share-content>
+
       <a @click="setTopicShow(true)" class="chat">
-        <img title="聊天工具" src="./assets/img/chat.png" alt=""
-      /></a>
+        <el-badge :hidden="!isGlobMessage" is-dot>
+          <img title="聊天工具" src="./assets/img/chat.png" alt="" />
+        </el-badge>
+      </a>
     </div>
   </div>
 </template>
@@ -39,11 +46,11 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import Topic from "@/components/topic/Topic.vue";
-import ShareContent from "@/components/sharecontent/ShareContent.vue"
+import ShareContent from "@/components/sharecontent/ShareContent.vue";
 @Component({
   components: {
     Topic,
-    ShareContent
+    ShareContent,
   },
 })
 export default class App extends Vue {
@@ -53,11 +60,14 @@ export default class App extends Vue {
   public shareWindow: boolean = false;
   public share_user: any = "";
   //是否加载聊天窗口
-  public load_topic:boolean = false;
+  public load_topic: boolean = false;
   //附加消息
-  public sharetext:string = "";
+  public sharetext: string = "";
   //是否展示聊天工具
   @State("topic_show") topic_show!: boolean;
+  @State("topic_status") topic_status!: number;
+  //是否有全局消息
+  @State("isGlobMessage") isGlobMessage!: boolean;
   @State("language") language!: string;
   //被分享的新闻
   @State("shareNews") shareNews!: any;
@@ -65,6 +75,7 @@ export default class App extends Vue {
   @Mutation("setUserMessage") setUserMessage: any;
   @Mutation("setSureTop") setSureTop!: any;
   @Mutation("setTopicShow") setTopicShow!: any;
+  @Mutation("setGlobMessage") setGlobMessage!: any;
 
   @Watch("$route.name")
   listenRoute(newVal: string, oldVal: string): void {
@@ -83,12 +94,33 @@ export default class App extends Vue {
     }
   }
 
-  /* private created(): void {
-    this.userLoginType();
-  } */
+  @Watch("topic_show")
+  public listenTopic(newVal:boolean,oldVal:boolean):void{
+    if(newVal){
+      if(this.topic_status==1){
+        this.setGlobMessage(false);
+      }
+    }
+  }
+
+  private created(): void {
+    window.addEventListener("message", this.getGlobMessage, false);
+  }
+
+  //获取全局消息
+  private getGlobMessage(e: MessageEvent): void {
+    // console.log(e.data.eventName); // event name
+    // console.log(e.data.data); // event data
+    if (e.data.eventName&&e.data.eventName=='new-message') {
+      if(!this.topic_show){
+        this.setGlobMessage(true);
+      }
+    }
+    
+  }
 
   //显示分享弹窗
-  setShare(user:any):void{
+  setShare(user: any): void {
     this.share_user = user;
     this.shareWindow = true;
   }
@@ -96,21 +128,26 @@ export default class App extends Vue {
   //分享新闻
   public shareMessage(): void {
     this.axios
-        .post('/v1/cmd/', {
-          cmd: 'share_news',
-          paras: {
-            account: this.share_user.account,
-            news_id: this.shareNews.news_id,
-            url:
-              'http://zlbxxcj.bjceis.com/#/newsinfo?id='+this.shareNews.news_id+'&md_id='+this.shareNews.media_id,
-            message: this.sharetext,
-          },
-        }).then(res=>{
-          this.$message.success("分享成功");
-          this.shareWindow = false;
-        }).catch(err=>{
-          console.log(err);
-        })
+      .post("/v1/cmd/", {
+        cmd: "share_news",
+        paras: {
+          account: this.share_user.account,
+          news_id: this.shareNews.news_id,
+          url:
+            "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
+            this.shareNews.news_id +
+            "&md_id=" +
+            this.shareNews.media_id,
+          message: this.sharetext,
+        },
+      })
+      .then((res) => {
+        this.$message.success("分享成功");
+        this.shareWindow = false;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   public getFriendList(): void {
@@ -183,14 +220,15 @@ body {
 #app {
   height: 100%;
   display: flex;
-  .share_wrap{
+  .share_wrap {
     color: white;
-    .share_user{
+    .share_user {
       padding: 5px 0;
       padding-left: 30px;
       display: flex;
       align-items: center;
-      .user_ico,img{
+      .user_ico,
+      img {
         display: block;
         width: 30px;
         height: 30px;
@@ -198,20 +236,20 @@ body {
         border-radius: 3px;
         margin-right: 5px;
       }
-      .user_ico{
+      .user_ico {
         display: flex;
         justify-content: center;
         align-items: center;
       }
     }
-    .news_content{
+    .news_content {
       padding: 5px 0;
       text-indent: 2em;
     }
-    .message{
+    .message {
       padding: 5px 0;
       padding-left: 30px;
-      textarea{
+      textarea {
         background: none;
         outline: none;
         color: white;
@@ -247,11 +285,12 @@ body {
       width: 60px;
       height: 60px;
       display: block;
-      line-height: 60px;
       text-align: center;
+      padding-top: 20px;
       img {
-        margin: 18px auto;
+        margin: auto;
         width: 24px;
+        cursor: pointer;
       }
     }
     a.arrow {
@@ -315,47 +354,46 @@ body {
 }
 .el-picker-panel__body {
   background: #494959;
-  .in-range div{
-    background: #3a3a48!important;
+  .in-range div {
+    background: #3a3a48 !important;
   }
 }
 .el-date-editor {
-  
-  background: #494959!important;
+  background: #494959 !important;
   input {
     background: #494959;
     border: 0;
-    color: white!important;
+    color: white !important;
     cursor: pointer;
   }
-  .el-range-separator{
-    color: white!important;
+  .el-range-separator {
+    color: white !important;
   }
   input::-webkit-input-placeholder {
-      /* WebKit browsers */
-      color: white;
-    }
-    input:-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: white;
-    }
-    input::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: white;
-    }
-    input:-ms-input-placeholder {
-      /* Internet Explorer 10+ */
-      color: white;
-    }
+    /* WebKit browsers */
+    color: white;
+  }
+  input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: white;
+  }
+  input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white;
+  }
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: white;
+  }
   .timesearch {
-    .el-date-editor{
-      .el-input__prefix{
-        .el-input__icon{
+    .el-date-editor {
+      .el-input__prefix {
+        .el-input__icon {
           color: white !important;
         }
       }
     }
-    
+
     .zhi {
       display: inline-block;
       width: 16px;

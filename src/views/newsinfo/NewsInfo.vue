@@ -23,7 +23,7 @@
                 >已关注</span
               >
               <span class="info"
-                >{{ newsInfo.media_name }} 丨 <span v-time>{{ newsInfo.time }}</span> 丨
+                >{{ newsInfo.media_name }} 丨 <span v-time="newsInfo.time"></span> 丨
                 {{ newsInfo.favorite }}人收藏 丨 {{ newsInfo.pv }}次浏览量</span
               >
             </div>

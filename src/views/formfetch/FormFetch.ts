@@ -5,7 +5,7 @@ import Table2Xlsx from '@/libs/Table2xlsx';
 import { State } from 'vuex-class';
 @Component
 export default class FormFetchCom extends Vue {
-    @State('topic_show') topic_show!:boolean;
+    @State('topic_show') topic_show!: boolean;
     public pickerOptions = {
         disabledDate(time: any) {
             return time.getTime() > Date.now();
@@ -32,7 +32,7 @@ export default class FormFetchCom extends Vue {
         }]
 
     }
-    public dates: Date[]|null = [];
+    public dates: Date[] | null = [];
     public value1: string = "";
     public value2: string = "";
     public day_data: string[] = []
@@ -80,7 +80,7 @@ export default class FormFetchCom extends Vue {
             left: 50,
         },
         legend: {
-            data: ['本期', '上期'],
+            data: ['昨天', '今天'],
             right: 100,
             icon: 'rect',
             textStyle: {
@@ -112,7 +112,8 @@ export default class FormFetchCom extends Vue {
                 show: true,
                 textStyle: {
                     color: '#cdd6e5'
-                }
+                },
+                rotate: 25
             }
 
         },
@@ -140,7 +141,7 @@ export default class FormFetchCom extends Vue {
             }
         },
         series: [{
-            name: '本期',
+            name: '今天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -149,7 +150,7 @@ export default class FormFetchCom extends Vue {
             color: "#19d1ff"
         },
         {
-            name: '上期',
+            name: '昨天',
             type: 'line',
             symbol: 'circle',     //设定为实心点
             symbolSize: 10,   //设定实心点的大小
@@ -166,34 +167,34 @@ export default class FormFetchCom extends Vue {
     }
 
     public fetch_text = {
-        last:'昨天',
-        now:'今天'
+        last: '昨天',
+        now: '今天'
     }
 
     @Watch('topic_show')
-    setChartSize():void{
+    setChartSize(): void {
         this.chart?.resize();
     }
 
     //今天，7天，30天
     public setDay(type: string): void {
-        switch(type){
+        switch (type) {
             case 'today':
                 this.fetch_text = {
-                    last:'昨天',
-                    now:'今天'
+                    last: '昨天',
+                    now: '今天'
                 }
                 break;
-                case '7':
+            case '7':
                 this.fetch_text = {
-                    last:'上7天',
-                    now:'近7天'
+                    last: '上7天',
+                    now: '近7天'
                 }
                 break;
-                case '30':
+            case '30':
                 this.fetch_text = {
-                    last:'上30天',
-                    now:'近30天'
+                    last: '上30天',
+                    now: '近30天'
                 }
                 break;
         }
@@ -210,8 +211,8 @@ export default class FormFetchCom extends Vue {
             return;
         }
         this.fetch_text = {
-            last:'上期',
-            now:'本期'
+            last: '上期',
+            now: '本期'
         }
         this.search_form.stat_type = 'custom'
         this.search_form.time_from = this.dates[0].toLocaleDateString();
@@ -247,21 +248,37 @@ export default class FormFetchCom extends Vue {
         this.date_data = [];
         switch (this.search_form.stat_type) {
             case 'today':
+                this.charts_option.legend.data = ['今天', '昨天'];
+                this.charts_option.series[0].name = '今天';
+                this.charts_option.series[1].name = '昨天';
+                this.charts_option.xAxis.axisLabel.rotate = 25;
                 for (let i = 0; i < 24; i++) {
-                    this.date_data.push((i + 1) + 'h');
+                    this.date_data.push(`${i>9?i:'0'+i}:00-${i>9?i:'0'+i}:59`);
                 }
                 break;
             case '7':
+                this.charts_option.legend.data = ['近7天', '上7天'];
+                this.charts_option.series[0].name = '近7天';
+                this.charts_option.series[1].name = '上7天';
+                this.charts_option.xAxis.axisLabel.rotate = 0;
                 for (let i = 0; i < 7; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case '30':
+                this.charts_option.legend.data = ['近30天', '上30天'];
+                this.charts_option.series[0].name = '近30天';
+                this.charts_option.series[1].name = '上30天';
+                this.charts_option.xAxis.axisLabel.rotate = 30;
                 for (let i = 0; i < 30; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
                 break;
             case 'custom':
+                this.charts_option.legend.data = ['本期', '上期'];
+                this.charts_option.series[0].name = '本期';
+                this.charts_option.series[1].name = '上期';
+                this.charts_option.xAxis.axisLabel.rotate = 30;
                 for (let i = 0; i < this.result_data.last_detail.length; i++) {
                     this.date_data.push('第' + (i + 1) + '天');
                 }
@@ -306,22 +323,22 @@ export default class FormFetchCom extends Vue {
 
     //导出xlsx
     public toExport(): void {
-        let outdata:any[] = [];
-        for(let i of this.result_data.not_updated){
+        let outdata: any[] = [];
+        for (let i of this.result_data.not_updated) {
             let obj = {
-                '站点名称':i.name_zh,
-                '最后更新时间':i.last_update
+                '站点名称': i.name_zh,
+                '最后更新时间': i.last_update
             }
             outdata.push(obj);
         }
-        new Table2Xlsx(outdata,"近七天未采集数据的源站点-"+new Date().toLocaleDateString());
+        new Table2Xlsx(outdata, "近七天未采集数据的源站点-" + new Date().toLocaleDateString());
     }
 
 
 
-    
 
-   
+
+
 
 
 }

@@ -79,7 +79,8 @@
               <div class="list_li_name">站点名称</div>
               <div class="list_li_time">最后更新时间</div>
             </li>
-            <my-scroll style="content_mt_onescroll">
+            <li style="height:250px;">
+              <my-scroll>
               <li
                 v-for="(v, k) in result_data.not_updated"
                 :key="k"
@@ -91,11 +92,10 @@
                 <div class="list_li_name">
                   {{ v.name_zh }}
                 </div>
-                <div class="list_li_time">
-                  {{ new Date(v.last_update).toLocaleString() }}
-                </div>
+                <div v-time="v.last_update" class="list_li_time"></div>
               </li>
             </my-scroll>
+            </li>
           </ul>
         </div>
       </div>

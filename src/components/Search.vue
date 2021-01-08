@@ -8,6 +8,7 @@
     <div class="historycontent">
       <input
         v-model="searchText"
+        ref="search"
         @blur="blur"
         @focus="focus"
         @keypress="toSearch"
@@ -73,6 +74,11 @@ export default class Search extends Vue {
     this.db = IDBDriver.getInstance();
     await this.db.connect('zlbxxcj','userHistory');
     this.getHistory();
+  }
+
+  public mounted():void{
+    let search = <HTMLInputElement>this.$refs.search;
+    search.focus();
   }
 
   public blur(): void {
