@@ -95,7 +95,7 @@
                     font-size: 14px;
                     width: 50px;
                     flex-shrink: 0;
-                    color: #5c5c60;
+                    color: #7c7c7c;
                     text-align: right;
                     background: url("../../assets/img/editor.png") left center no-repeat;
                     cursor: pointer;
@@ -236,7 +236,7 @@
                         width: 440px;
                         height: 230px;
                         scrollbar-width: none;
-                        padding: 6px 20px 0;
+                        padding: 0px 20px 0;
                         // align-content: baseline;
                         overflow-y: scroll;
                         scrollbar-width: none;
@@ -244,7 +244,7 @@
                             float: left;
                             width: 25%;
                             cursor: pointer;
-                            padding: 10px 0;
+                            padding: 5px 0;
                             line-height: 40px;
                             height: 56px;
                             img {
@@ -289,6 +289,11 @@
                             }
                         }
                     }
+                    .people {
+                        .item {
+                            padding-top: 20px !important;
+                        }
+                    }
                     .country {
                         .item {
                             height: auto;
@@ -299,11 +304,15 @@
                         }
                     }
                     .media {
+                        // padding-top: 0 !important;
                         .item {
-                            p {
-                                text-align: left;
-                            }
+                            padding-bottom: 5px;
                         }
+                        // .item {
+                        //     p {
+                        //         text-align: left;
+                        //     }
+                        // }
                     }
                     .people {
                         .item {

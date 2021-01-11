@@ -47,24 +47,13 @@
                 <!-- 50*30 -->
                 <img style="margin-top: 20px" :src="v.flag" alt="" />
 
-                <el-tooltip
-                  class="item"
-                  effect="dark"
-                  :content="v.name_zh"
-                  :open-delay="1000"
-                  placement="right"
-                >
-                  <span style="height: 20px" class="chinese_gj">{{ v.name_zh }}</span>
-                </el-tooltip>
-                <el-tooltip
-                  class="item"
-                  effect="dark"
-                  :open-delay="1000"
-                  :content="v.name"
-                  placement="right"
-                >
-                  <span class="english_gj">{{ v.name }} </span>
-                </el-tooltip>
+                <span style="height: 20px" class="chinese_gj">
+                  <speed-text width="100px" height="20px" :text="v.name_zh" />
+                </span>
+
+                <span class="english_gj"
+                  ><speed-text width="100px" height="20px" :text="v.name"
+                /></span>
               </a>
             </li>
           </ul>
@@ -73,7 +62,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-          style="width: 280px;"
+         style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -102,25 +91,13 @@
                 <a>
                   <!-- 50*30 -->
                   <img src="../../assets/img/media_default.png" alt="" />
-                  <el-tooltip
-                    class="item itmemt_ch"
-                    effect="dark"
-                    :open-delay="1000"
-                    :content="v.name_zh"
-                    placement="right"
-                  >
-                    <span class="chinese_gj mt">{{ v.name_zh }}</span>
-                  </el-tooltip>
-                  <el-tooltip
-                    style="left: 74px"
-                    class="item itmemt_en"
-                    effect="dark"
-                    :open-delay="1000"
-                    :content="v.name"
-                    placement="right"
-                  >
-                    <span class="english_gj mt">{{ v.name }} </span>
-                  </el-tooltip>
+
+                  <span class="chinese_gj mt">
+                    <speed-text width="110px" height="20px" :text="v.name_zh" />
+                  </span>
+                  <span class="english_gj mt">
+                    <speed-text width="110px" height="20px" :text="v.name" />
+                  </span>
                 </a>
               </li>
             </ul>
@@ -142,24 +119,14 @@
                 <a>
                   <!-- 50*30 -->
                   <img src="../../assets/img/media_default.png" alt="" />
-                  <el-tooltip
-                    class="item itmemt_ch"
-                    effect="dark"
-                    :open-delay="1000"
-                    :content="v.name_zh"
-                    placement="right"
-                  >
-                    <span class="chinese_gj mt">{{ v.name_zh }}</span>
-                  </el-tooltip>
-                  <el-tooltip
-                    class="item itmemt_en"
-                    effect="dark"
-                    :open-delay="1000"
-                    :content="v.name"
-                    placement="right"
-                  >
-                    <span class="english_gj mt">{{ v.name }} </span>
-                  </el-tooltip>
+
+                  <span class="chinese_gj mt">
+                    <speed-text width="110px" height="20px" :text="v.name_zh" />
+                  </span>
+
+                  <span class="english_gj mt">
+                    <speed-text width="110px" height="20px" :text="v.name" />
+                  </span>
                 </a>
               </li>
             </ul>
@@ -180,24 +147,12 @@
               <a>
                 <!-- 50*30 -->
                 <img src="../../assets/img/media_default.png" alt="" />
-                <el-tooltip
-                  class="item itmemt_ch"
-                  effect="dark"
-                  :open-delay="1000"
-                  :content="v.name_zh"
-                  placement="right"
-                >
-                  <span class="chinese_gj mt">{{ v.name_zh }}</span>
-                </el-tooltip>
-                <el-tooltip
-                  class="item itmemt_en"
-                  effect="dark"
-                  :open-delay="1000"
-                  :content="v.name"
-                  placement="right"
-                >
-                  <span class="english_gj mt">{{ v.name }} </span>
-                </el-tooltip>
+                <span class="chinese_gj mt">
+                  <speed-text width="110px" height="20px" :text="v.name_zh" />
+                </span>
+                <span class="english_gj mt">
+                  <speed-text width="110px" height="20px" :text="v.name_zh" />
+                </span>
               </a>
             </li>
           </ul>
@@ -207,7 +162,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.media.length < 3"
-          style="width: 280px;"
+         style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >下一步</el-button
         >
@@ -233,22 +188,29 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
-                <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/zwtx.png" alt="" />
-                <el-tooltip
-                  class="item itmerw_ch"
-                  effect="dark"
-                  :open-delay="1000"
-                  :content="v.name"
-                  placement="right"
-                >
-                  <span style="top: -40px; width: 120px" class="chinese_gj mt">{{
-                    v.name
-                  }}</span>
-                </el-tooltip>
-                <span style="width: 120px; top: -10px" class="english_gj mt"
-                  >中国共产党中央委员会总书记</span
-                >
+                <img
+                  v-if="v.avatar != -1 && v.avatar != null"
+                  :src="axios.defaults.baseURL + '/attachments/avator/' + v.avatar"
+                  alt=""
+                />
+                <img
+                  v-if="v.avatar == -1 || v.avatar == null"
+                  src="../../assets/img/zwtx.png"
+                  alt=""
+                />
+
+                <span style="top: -30px; width: 120px" class="chinese_gj mt">
+                  <speed-text width="110px" height="20px" :text="v.name" />
+                </span>
+
+                <span style="width: 120px;" class="english_gj mt"
+                  >
+                  <speed-text
+                    width="110px"
+                    height="20px"
+                    :text="v.name"
+                  />
+                </span>
               </a>
             </li>
           </ul>
@@ -259,7 +221,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.character.length < 3"
-          style="width: 280px;"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >下一步</el-button
         >
@@ -271,17 +233,16 @@
       <div class="content_wrap">
         <my-scroll @loading="loadingChannel">
           <ul class="tjpd">
-           
             <li
               @click="chooseItem('channel', v, i)"
               :class="{ cur: v.choose }"
               v-for="(v, i) in channel_list"
               :key="i"
-            > <div>
-              <a>{{ v.name }}</a>
-               </div>
+            >
+              <div>
+                <a>{{ v.name }}</a>
+              </div>
             </li>
-           
           </ul>
         </my-scroll>
       </div>
@@ -289,7 +250,7 @@
         <el-button
           @click="toFinish"
           :disabled="sub_form.channel.length < 3"
-          style="width: 280px;"
+          style="width: 280px"
           type="primary"
           >完成</el-button
         >
@@ -302,9 +263,11 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import HomeSetCom from "./HomeSet";
+import SpeedText from "@/components/SpeedText.vue";
 import MyScroll from "@/components/MyScroll.vue";
 @Component({
   components: {
+    SpeedText,
     MyScroll,
   },
 })

@@ -250,6 +250,7 @@ export default class Search extends Vue {
       color: white;
       // background: url("../assets/img/sousuo.png") 95% center no-repeat;
       background-color: #353541;
+      font-size: 16px;
     }
     input::-webkit-input-placeholder {
       /* WebKit browsers */

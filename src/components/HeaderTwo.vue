@@ -44,7 +44,7 @@
       <input
         @click="setShowIntelligent(true)"
         type="text"
-        placeholder="输入人物、地点、事件等相关关键词进行搜索"
+        placeholder="请输入关键，查询相关内容"
       />
     </div>
     <div class="language">
@@ -180,6 +180,7 @@ export default class HeaderTwo extends Vue {
       box-sizing: border-box;
       padding-left: 75px;
       color: white;
+      font-size: 16px;
     }
     input::-webkit-input-placeholder {
       /* WebKit browsers */

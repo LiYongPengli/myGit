@@ -186,14 +186,14 @@
               </div>
               <!-- 媒体 -->
               <div class="swiper-slide">
-                <div class="media" style="width: 457px">
+                <div class="media country people" style="width: 457px">
                   <div
                     @click="toFollowPage('media', i)"
                     v-for="(v, i) in media"
                     :key="i"
                     class="item"
                   >
-                    <!-- <img src="../../assets/img/media.png" alt="" /> -->
+                    <img src="../../assets/img/media_default.png" alt="" />
 
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>

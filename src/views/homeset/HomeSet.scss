@@ -109,17 +109,16 @@
                             margin-left: 20px;
                             position: absolute;
                             font-size: 15px;
-                            width: 60px;
+                            width: 100px;
                             overflow: hidden;
                             top: -15px;
                             overflow: hidden;
                         }
                         .english_gj {
                             font-size: 13px;
-                            width: 100px;
                             overflow: hidden;
                             float: right;
-                            width: 60px;
+                            width: 100px;
                             height: 20px;
                             display: block;
                             position: absolute;
@@ -146,6 +145,13 @@
                             height: 54px;
                             margin-top: 8px;
                             // margin-left: 20px;
+                        }
+                        .chinese_gj {
+                            top: -30px;
+                        }
+                        .english_gj {
+                            top: -9px;
+                            left: 75px;
                         }
                         span.itmemt_ch {
                             top: -40px;
@@ -175,6 +181,10 @@
                         span.chinese {
                             top: 10px;
                             font-size: 13px;
+                        }
+                        .english_gj {
+                            left: 74px;
+                            top: -9px;
                         }
                         span.english {
                             position: absolute;

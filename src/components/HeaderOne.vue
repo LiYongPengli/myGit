@@ -12,7 +12,7 @@
       /> -->
       <div @click="setShowIntelligent(true)" class="ss">
     <div @click="setShowIntelligent(true)" class="ss">
-      输入人物、地点、事件等关键词进行搜索
+     请输入关键，查询相关内容
     </div>
       </div>
       <div class="bottom">
@@ -199,7 +199,7 @@ export default class HeaderOne extends Vue {
         }
         span {
           margin-left: 23px;
-          font-size: 20px;
+          font-size: 16px;
         }
         i {
           margin-left: 13px;
@@ -246,11 +246,12 @@ export default class HeaderOne extends Vue {
         display: inline-block;
         text-align: center;
         font-size: 16px;
-        font-weight: bold;
+       
         cursor: pointer;
       }
       span.cur {
         background-color: #22222b;
+         font-weight: bold;
       }
     }
   }
