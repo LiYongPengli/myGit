@@ -28,6 +28,7 @@ export default class MessageInfoCom extends Vue{
         })
     }
 
+    //删除消息
     public remove():void{
         this.axios
         .post('/v1/cmd/', {

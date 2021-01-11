@@ -73,7 +73,7 @@ export default class HomeSetCom extends Vue {
 
     //获取频道等列表
     public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=100&start='+start).then(res => {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -87,7 +87,8 @@ export default class HomeSetCom extends Vue {
             this.page_data.country_list = this.country_list;
         },this.countryStart+=100)
     }
-    //分页加载人物列表
+
+    //分页加载人物列表(已废弃)
     public loadingCharacter():void{
         this.getSubscriptions("character", "unsub", res => {
             this.character_list = this.character_list.concat(res.data.data);

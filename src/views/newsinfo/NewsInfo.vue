@@ -4,16 +4,16 @@
 
     <div class="wrap" v-if="newsInfo" >
       <my-scroll>
-        <div class="wrap_content" :style="{'width':topic_show?'1000px':'1200px'}">
+        <div ref="wrap_content" class="wrap_content" :style="{'width':topic_show?'1000px':'1200px'}">
           <div class="crumbs">
             <!-- <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a> -->
             <a @click="$router.push('/')">首页</a><b>&gt;</b>
             <a v-if="newsInfo.media_name == 'YouTube'">视频详情</a>
             <a v-else>新闻详情</a>
           </div>
-          <p v-show="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
-          <p v-show="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
-          <p v-show="language == 'zh-CN'" class="title">{{ newsInfo.title["zh-CN"] }}</p>
+          <p v-if="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
+          <p v-if="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
+          <p v-if="language == 'zh-CN'" class="title">{{ newsInfo.title["zh-CN"] }}</p>
           <div class="control_wrap">
             <div class="left">
               <span @click="tofollow" v-if="!newsInfo.subscribed" class="unfollow"
@@ -57,7 +57,7 @@
             </div>
           </div>
           <!-- 文章主体 -->
-          <div ref="newsWrap" v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
+          <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
             <div
               v-if="newsInfo.media_name != 'YouTube'"
               v-html="getNewsContent()"

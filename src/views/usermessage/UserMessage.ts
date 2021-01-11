@@ -11,6 +11,9 @@ export default class UserMessageCom extends Vue{
     public created():void{
         this.queryMessageList('query',res=>{
             this.messageList = res.data.data;
+            this.messageList.sort(function(a,b){
+                return new Date(b.time).getTime()-new Date(a.time).getTime();
+            })
         });
     }
 
@@ -61,6 +64,23 @@ export default class UserMessageCom extends Vue{
         this.queryMessageList('deleted',res=>{
             this.messageList = [];
         },ids)
+    }
+
+    //删除消息
+    public remove(message:any,index:number):void{
+        this.axios
+        .post('/v1/cmd/', {
+          cmd: 'my_messages',
+          paras: {
+            oper: 'deleted',
+            msg_ids: [message.id],
+          }
+        }).then(res=>{
+            this.messageList.splice(index,1);
+            this.$message.success('删除消息成功');
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
 

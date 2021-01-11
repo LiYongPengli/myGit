@@ -51,6 +51,7 @@
                   class="item"
                   effect="dark"
                   :content="v.name_zh"
+                  :open-delay="1000"
                   placement="right"
                 >
                   <span style="height: 20px" class="chinese_gj">{{ v.name_zh }}</span>
@@ -58,6 +59,7 @@
                 <el-tooltip
                   class="item"
                   effect="dark"
+                  :open-delay="1000"
                   :content="v.name"
                   placement="right"
                 >
@@ -71,7 +73,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -99,10 +101,11 @@
               >
                 <a>
                   <!-- 50*30 -->
-                  <img src="../../assets/img/morentx.png" alt="" />
+                  <img src="../../assets/img/media_default.png" alt="" />
                   <el-tooltip
                     class="item itmemt_ch"
                     effect="dark"
+                    :open-delay="1000"
                     :content="v.name_zh"
                     placement="right"
                   >
@@ -112,6 +115,7 @@
                     style="left: 74px"
                     class="item itmemt_en"
                     effect="dark"
+                    :open-delay="1000"
                     :content="v.name"
                     placement="right"
                   >
@@ -137,10 +141,11 @@
               >
                 <a>
                   <!-- 50*30 -->
-                  <img src="../../assets/img/morentx.png" alt="" />
+                  <img src="../../assets/img/media_default.png" alt="" />
                   <el-tooltip
                     class="item itmemt_ch"
                     effect="dark"
+                    :open-delay="1000"
                     :content="v.name_zh"
                     placement="right"
                   >
@@ -149,6 +154,7 @@
                   <el-tooltip
                     class="item itmemt_en"
                     effect="dark"
+                    :open-delay="1000"
                     :content="v.name"
                     placement="right"
                   >
@@ -173,10 +179,11 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img src="../../assets/img/morentx.png" alt="" />
+                <img src="../../assets/img/media_default.png" alt="" />
                 <el-tooltip
                   class="item itmemt_ch"
                   effect="dark"
+                  :open-delay="1000"
                   :content="v.name_zh"
                   placement="right"
                 >
@@ -185,6 +192,7 @@
                 <el-tooltip
                   class="item itmemt_en"
                   effect="dark"
+                  :open-delay="1000"
                   :content="v.name"
                   placement="right"
                 >
@@ -199,7 +207,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.media.length < 3"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           type="primary"
           >下一步</el-button
         >
@@ -214,7 +222,7 @@
         ></span
       >
       <div class="content_wrap">
-        <my-scroll @loading="loadingCharacter">
+        <my-scroll>
           <ul class="rw">
             <li
               @click="chooseItem('character', v, i)"
@@ -225,10 +233,12 @@
             >
               <a>
                 <!-- 50*30 -->
-                <img src="../../assets/img/morentx.png" alt="" />
+                <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
+                <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/zwtx.png" alt="" />
                 <el-tooltip
                   class="item itmerw_ch"
                   effect="dark"
+                  :open-delay="1000"
                   :content="v.name"
                   placement="right"
                 >
@@ -249,7 +259,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.character.length < 3"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           type="primary"
           >下一步</el-button
         >
@@ -279,7 +289,7 @@
         <el-button
           @click="toFinish"
           :disabled="sub_form.channel.length < 3"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           type="primary"
           >完成</el-button
         >

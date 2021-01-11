@@ -10,11 +10,11 @@
     <div v-show="!showInfo" class="list">
       <div class="nodata" v-show="!messageList.length">暂无消息</div>
       <ul>
-        <li @mouseenter="$set(messageList[i],'delete',true)" @mouseleave="$delete(messageList[i],'delete')" v-for="(v,i) in messageList" :key="i">
+        <li @click="toInfo(v)" @mouseenter="$set(messageList[i],'delete',true)" @mouseleave="$delete(messageList[i],'delete')" v-for="(v,i) in messageList" :key="i">
           <span class="weidu"> {{v.status=='unread'?'未读':'已读'}} </span>
-          <a @click="toInfo(v)" class="name"> {{v.title}} </a>
+          <a class="name"> {{v.title}} </a>
           <span class="time"> 时间：<span v-time="v.time"></span> </span>
-          <el-button v-show="v.delete" class="shanchu" type="primary" icon="el-icon-delete"
+          <el-button @click.stop="remove(v,i)" v-show="v.delete" class="shanchu" type="primary" icon="el-icon-delete"
             >删除</el-button
           >
         </li>

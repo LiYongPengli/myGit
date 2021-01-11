@@ -138,6 +138,17 @@ export default class NewsInfoCom extends Vue {
 
     //导出world
     public downloadWord(): void {
-        Page2Word(this.newsInfo.title['zh-CN'] + '-' + new Date().toLocaleDateString(), <HTMLElement>this.$refs['newsWrap']);
+        let wrap_content = <HTMLElement>(<HTMLElement>this.$refs['wrap_content']).cloneNode(true);
+        //删除面包屑
+        wrap_content.removeChild(wrap_content.children[0])
+        //删除工具栏
+        wrap_content.children[1].removeChild(wrap_content.children[1].children[1])
+        //删除关注按钮
+        wrap_content.children[1].children[0].removeChild(wrap_content.children[1].children[0].children[0]);
+        //删除底部
+        wrap_content.removeChild(wrap_content.children[3]);
+        wrap_content.removeChild(wrap_content.children[3]);
+        //导出word
+        Page2Word(this.newsInfo.title['zh-CN'] + '-' + new Date().toLocaleDateString(), wrap_content);
     }
 }
