@@ -57,7 +57,7 @@
                   <div slot="error" class="image-slot">
                     <img
                       style="width: 200px"
-                      src="../../assets/img/404.jpg"
+                      src="../../assets/img/404.png"
                       alt=""
                     />
                   </div>
@@ -177,7 +177,7 @@
                     <img
                       v-if="v.avatar == -1 || v.avatar == null"
                       style="border-radius: 50%"
-                      src="../../assets/img/tx.png"
+                      src="../../assets/img/zwtx.png"
                       alt=""
                     />
                     <p :title="v.name" class="name">{{ v.name }}</p>

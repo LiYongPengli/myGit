@@ -410,7 +410,7 @@
                       :src="v.cover.url[0]"
                     >
                       <div slot="error" class="image-slot">
-                        <img style="width:200px;" src="../../assets/img/404.jpg" alt="">
+                        <img style="width:200px;" src="../../assets/img/404.png" alt="">
                       </div>
                     </el-image>
                     <video-thumbnail

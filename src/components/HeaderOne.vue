@@ -36,8 +36,7 @@
                 "
                 alt="头像"
               />
-              <!-- <img v-if="user_message.wechat_info.head_img&&!user_message.headimg" :src="user_message.wechat_info.head_img" alt="头像" />
-            <img v-if="!user_message.wechat_info.head_img&&!user_message.headimg" src="../assets/img/tx.png" alt="头像" /> -->
+              
               <span>{{ user_message.nickname }}</span>
               <i class="el-icon-arrow-down"></i>
             </div>
