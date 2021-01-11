@@ -182,7 +182,10 @@
                     @error="loaderr(i)"
                     :src="v.cover.video"
                     controls
-                  ></video>
+                  >
+                    <track v-if="v.attachments[2]" :src="v.attachments[2].url" label="原文" />
+                    <track v-if="v.attachments[3]" :src="v.attachments[3].url" label="中文" />
+                  </video>
                   <img v-show="v.error" src="../../assets/img/404.jpg" alt="" />
                 </div>
               </div>

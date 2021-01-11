@@ -42,6 +42,8 @@ export default class MaybeKnowCom extends Vue {
 
     public toAdd(user: any): void {
         this.inv_userInfo = user;
+        this.remark_name = "";
+        this.message = "";
     }
 
     //请求添加好友详情显示

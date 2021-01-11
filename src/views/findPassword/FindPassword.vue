@@ -5,7 +5,7 @@
         <img src="../../assets/logo.png" alt="" />
       </div>
       <div class="title">
-        <h3>找回密码</h3>
+        <h3>重置密码</h3>
         <span v-show="index == 0" @click="$router.back()"
           >返回登录<i class="el-icon-arrow-right"></i
         ></span>

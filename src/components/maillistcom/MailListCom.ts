@@ -197,6 +197,7 @@ export default class MailListCom extends Vue{
         this.inv_userInfo = "";
         this.remark_name = user.remark_name;
         this.inv_message = "";
+        this.remark_name = "";
         this.userInfo=user;
     }
     //请求添加好友详情显示

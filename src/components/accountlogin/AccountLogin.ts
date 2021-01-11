@@ -76,8 +76,16 @@ export default class AccountLoginCom extends Vue {
             callback(new Error('请输入密码!'));
             return;
         }
-        if (value.length < 8) {
-            callback(new Error('密码长度不可小于8位!'));
+        if(!(/^[a-zA-Z0-9_]{0,}$/.test(value))){
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
+            return;
+        }
+        if(value.length<8){
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
+            return;
+        }
+        if(value.length>16){
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         callback();
