@@ -143,7 +143,7 @@
                     <div slot="error" class="image-slot">
                       <img
                         style="width: 200px"
-                        src="../../assets/img/404.jpg"
+                        src="../../assets/img/404.png"
                         alt=""
                       />
                     </div>
@@ -158,7 +158,7 @@
                     <div slot="error" class="image-slot">
                       <img
                         style="width: 200px"
-                        src="../../assets/img/404.jpg"
+                        src="../../assets/img/404.png"
                         alt=""
                       />
                     </div>
@@ -186,7 +186,7 @@
                     <track v-if="v.attachments[2]" :src="v.attachments[2].url" label="原文" />
                     <track v-if="v.attachments[3]" :src="v.attachments[3].url" label="中文" />
                   </video>
-                  <img v-show="v.error" src="../../assets/img/404.jpg" alt="" />
+                  <img v-show="v.error" src="../../assets/img/404.png" alt="" />
                 </div>
               </div>
             </div>

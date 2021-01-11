@@ -5,7 +5,7 @@
       <div class="userIco">
         <img
           v-if="!user.headimg && !user.wechat_info.head_img"
-          src="../../assets/img/morentx.png"
+          src="../../assets/img/zwtx.png"
           alt=""
         />
         <img v-if="user.headimg" :src="user.headimg" alt="" />

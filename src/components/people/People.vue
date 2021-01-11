@@ -13,7 +13,7 @@
           <div class="concernedlistdiv">
             <img @error="imgError('f',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
             <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />
-            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
+            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/zwtx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
               <speed-text width="150px" height="20px" :text="v.description" />
@@ -44,7 +44,7 @@
           <div class="concernedlistdiv">
             <img @error="imgError('u',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
             <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />
-            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/tx.png" alt="" />
+            <img v-if="v.avatar==-1||v.avatar==null" src="../../assets/img/zwtx.png" alt="" />
             <span>{{ v.name }}</span>
             <div class="concernedname">
               <speed-text width="150px" height="20px" :text="v.description" />

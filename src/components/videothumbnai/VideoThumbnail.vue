@@ -11,7 +11,7 @@
       v-if="!showVideo&&!video_err"
     />
      <img  v-if="!showVideo&&!video_err" class="dianbo" src="../../assets/img/dianbo.png" alt="">
-     <img  v-if="video_err" class="img" src="../../assets/img/404.jpg" alt="">
+     <img  v-if="video_err" class="img" src="../../assets/img/404.png" alt="">
     <video
       @error="imgError"
       ref="video"

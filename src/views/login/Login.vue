@@ -20,7 +20,6 @@
             <img src="../../assets/img/zhuanhua.png" />
           </div>
           <div class="right_log">
-            <!-- <img src="../../assets/img/weixin2.png" /> -->
             <img src="../../assets/img/zhweixin.png" />
           </div>
         </div>
