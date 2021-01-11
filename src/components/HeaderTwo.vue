@@ -44,7 +44,7 @@
       <input
         @click="setShowIntelligent(true)"
         type="text"
-        placeholder="请输入关键，查询相关内容"
+        placeholder="请输入关键词，查询相关内容"
       />
     </div>
     <div class="language">
