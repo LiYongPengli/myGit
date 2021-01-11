@@ -12,7 +12,7 @@
       /> -->
       <div @click="setShowIntelligent(true)" class="ss">
     <div @click="setShowIntelligent(true)" class="ss">
-     请输入关键，查询相关内容
+     请输入关键词，查询相关内容
     </div>
       </div>
       <div class="bottom">
