@@ -56,7 +56,7 @@
                     margin-right: 30px;
                     position: relative;
                     width: 200px;
-                    img{
+                    img:first-child {
                         width: 100%;
                     }
                 }
@@ -67,11 +67,14 @@
                         font-size: 16px;
                         color: #e2e2e4;
                         cursor: pointer;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     .mt,
                     .time,
                     .ll {
-                        margin-top: 16px;
+                        margin-top: 10px;
                         display: block;
                         font-size: 13px;
                         color: #bcc2d5;
@@ -80,6 +83,7 @@
                 .zan {
                     float: right;
                     width: 140px;
+                    margin-right: 10px;
                     span {
                         float: right;
                         width: 55px;

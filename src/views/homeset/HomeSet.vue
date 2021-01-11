@@ -47,12 +47,12 @@
                 <!-- 50*30 -->
                 <img style="margin-top: 20px" :src="v.flag" alt="" />
 
-                <span style="height: 20px" class="chinese_gj">
-                  <speed-text width="100px" height="20px" :text="v.name_zh" />
+                <span style="height: 20px;width:130px" class="chinese_gj">
+                  <speed-text width="130px" height="20px" :text="v.name_zh" />
                 </span>
 
-                <span class="english_gj"
-                  ><speed-text width="100px" height="20px" :text="v.name"
+                <span style="width:130px"  class="english_gj"
+                  ><speed-text width="130px" height="20px" :text="v.name"
                 /></span>
               </a>
             </li>
@@ -62,7 +62,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-         style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -95,9 +95,9 @@
                   <span class="chinese_gj mt">
                     <speed-text width="110px" height="20px" :text="v.name_zh" />
                   </span>
-                  <span class="english_gj mt">
+                  <!-- <span class="english_gj mt">
                     <speed-text width="110px" height="20px" :text="v.name" />
-                  </span>
+                  </span> -->
                 </a>
               </li>
             </ul>
@@ -121,12 +121,12 @@
                   <img src="../../assets/img/media_default.png" alt="" />
 
                   <span class="chinese_gj mt">
-                    <speed-text width="110px" height="20px" :text="v.name_zh" />
+                    <speed-text width="130px" height="20px" :text="v.name_zh" />
                   </span>
 
-                  <span class="english_gj mt">
+                  <!-- <span class="english_gj mt">
                     <speed-text width="110px" height="20px" :text="v.name" />
-                  </span>
+                  </span> -->
                 </a>
               </li>
             </ul>
@@ -162,7 +162,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.media.length < 3"
-         style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
           type="primary"
           >下一步</el-button
         >
@@ -199,20 +199,19 @@
                   alt=""
                 />
 
-                <span style="top: -30px; width: 120px" class="chinese_gj mt">
-                  <speed-text width="110px" height="20px" :text="v.name" />
+                <span style="top: -30px; width: 220px" class="chinese_gj mt">
+                  <speed-text width="220px" height="20px" :text="v.name" />
                 </span>
 
-                <span style="width: 120px;" class="english_gj mt"
-                  >
-                  <speed-text
-                    width="110px"
-                    height="20px"
-                    :text="v.name"
-                  />
+                <span style="width: 220px" class="english_gj mt">
+                  <speed-text width="220px" height="20px" text="中国共产党中央委员" />
                 </span>
               </a>
             </li>
+            <div
+              data-v-49519b49=""
+              style="content: ''; display: block; clear: both"
+            ></div>
           </ul>
         </my-scroll>
       </div>
@@ -240,7 +239,9 @@
               :key="i"
             >
               <div>
-                <a>{{ v.name }}</a>
+                <a>{{ v.name }}
+                      
+                </a>
               </div>
             </li>
           </ul>
