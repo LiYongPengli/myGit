@@ -29,12 +29,18 @@
             </div>
             <div class="right">
               <span @click="showCollection = true" class="tool"
-                ><i class="el-icon-shoucang" :class="{ actives: newsInfo.favorited }"></i
-                >收藏</span
+                ><i v-show="!newsInfo.favorited" class="el-icon-shoucang"></i
+                >
+                <i v-show="newsInfo.favorited" class="el-icon-shoucangl" :class="{ actives: newsInfo.favorited }"></i
+                >
+                收藏 </span
               >
               <span @click="likes" class="tool"
-                ><i class="el-icon-zan" :class="{ actives: newsInfo.liked }"></i
-                >点赞</span
+                ><i v-show="!newsInfo.liked" class="el-icon-zan" ></i
+                >
+                <i  v-show="newsInfo.liked" class="el-icon-zanl" :class="{ actives: newsInfo.liked }"></i
+                >
+                点赞 </span
               >
               <span @click="notInterested" class="tool"
                 ><i
