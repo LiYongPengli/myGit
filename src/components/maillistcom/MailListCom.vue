@@ -36,32 +36,9 @@
                   :src="axios.defaults.baseURL+'/avatar/'+v.recommended.account"
                   alt=""
                 />
-                <!-- <img
-                  class="header"
-                  v-if="
-                    !v.recommended.headimg && v.recommended.wechat_info.head_img
-                  "
-                  :src="v.recommended.wechat_info.head_img"
-                  alt=""
-                />
-                <p
-                  v-if="
-                    !v.recommended.headimg &&
-                    !v.recommended.wechat_info.head_img
-                  "
-                  class="content_userlist_engname"
-                >
-                  {{ v.recommended.nickname.slice(0, 1) }}
-                </p> -->
-                <p class="content_userlist_chinename">
-                  {{ v.recommended.nickname }}
-                </p>
+                <speed-text class="content_userlist_chinename" width="60px" height="20px" :text="v.recommended.nickname" />
               </div>
-              <p class="remarks">
-                "{{ v.recommender.nickname }}"将"{{
-                  v.recommended.nickname
-                }}"的名片推荐给你
-              </p>
+              <speed-text class="remarks" width="300px" height="40px" :text="`“${v.recommender.nickname}”将“${v.recommended.nickname}”的名片推荐给你`" />
               <div class="content_userlist_three">
                  <img class="qq" src="../../assets/img/fabuqingqiu.png" alt="" />
                 <span
@@ -105,10 +82,10 @@
                 >
                   {{ v.nickname.slice(0, 1) }}
                 </p> -->
-                <p class="content_userlist_chinename">{{ v.nickname }}</p>
+                <speed-text class="content_userlist_chinename" width="60px" height="20px" :text="v.nickname" />
               </div>
               <!-- 备注 -->
-              <p class="remarks">{{ v.message }}</p>
+              <speed-text class="remarks" width="340px" height="40px" :text="v.message" />
               <div class="content_userlist_three">
               <img class="qq" src="../../assets/img/refuse.png" alt="" />
                 <span
@@ -302,9 +279,11 @@
 import Component, { mixins } from "vue-class-component";
 import MailListComs from "./MailListCom";
 import MyScroll from "@/components/MyScroll.vue";
+import SpeedText from "@/components/SpeedText.vue";
 @Component({
   components: {
     MyScroll,
+    SpeedText
   },
 })
 export default class MailListCom extends mixins(MailListComs) {}

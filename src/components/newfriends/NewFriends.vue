@@ -37,8 +37,7 @@
                   v-show="
                     (v.status == 'ignored' ||
                       v.status == 'pending' ||
-                      v.status == 'rejected') &&
-                    v.mouse
+                      v.status == 'rejected')
                   "
                   @click="showInvInfo(v, keys)"
                   class="content_userlist_request request"
@@ -115,13 +114,13 @@
                 </p>
                 <p
                   v-if="v.status == 'accepted'"
-                  class="btn"
+                  class="btn text"
                 >
                   已添加
                 </p>
                 <p
                   v-if="v.status == 'rejected'"
-                  class="btn"
+                  class="btn text"
                 >
                   已拒绝
                 </p>

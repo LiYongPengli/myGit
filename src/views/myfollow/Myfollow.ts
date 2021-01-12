@@ -196,6 +196,23 @@ export default class MyFollowCom extends Vue {
 
     }
 
+    public showTrack(type:string,item:any):string{
+        if(type=="ZH"){
+            for(let i of item.attachments){
+                if(i.position=='SUBTITLES_ZH'){
+                    return i.url;
+                }
+            }
+        }else{
+            for(let i of item.attachments){
+                if(i.position=='SUBTITLES_RAW'){
+                    return i.url;
+                }
+            }
+        }
+        return '';
+    }
+
     //获取频道等列表
     private getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
         this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {

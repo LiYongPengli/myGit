@@ -148,6 +148,9 @@ export default class MailListCom extends Vue {
                 cmd: 'new_friends'
             }).then(res => {
                 this.newFriendList = res.data.data;
+                this.newFriendList.sort(function(a,b){
+                    return new Date(b.request_time).getTime() - new Date(a.request_time).getTime();
+                })
                 let now = new Date().getTime();
                 for (let i = 0; i < this.newFriendList.length; i++) {
                     let date = new Date(this.newFriendList[i].request_time).getTime();

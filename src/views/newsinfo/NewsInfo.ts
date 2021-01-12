@@ -7,6 +7,8 @@ export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
     @State('topic_show') topic_show!: boolean;
     public newsInfo: any = "";
+    //中文字幕按钮选中状态
+    public track_language:string = "zh-CN";
     //是否展示下载附件弹框
     public showDownLoad: boolean = false;
     //是否展示收藏夹
@@ -49,6 +51,23 @@ export default class NewsInfoCom extends Vue {
         let parser = new DOMParser();
         let xmlDoc = parser.parseFromString(xml, "text/xml");
         return xmlDoc.getElementsByTagName('text') as any;
+    }
+
+    public showTrack(type:string):string{
+        if(type=="ZH"){
+            for(let i of this.newsInfo.attachments){
+                if(i.position=='SUBTITLES_ZH'){
+                    return i.url;
+                }
+            }
+        }else{
+            for(let i of this.newsInfo.attachments){
+                if(i.position=='SUBTITLES_RAW'){
+                    return i.url;
+                }
+            }
+        }
+        return '';
     }
 
     //获取新闻内容

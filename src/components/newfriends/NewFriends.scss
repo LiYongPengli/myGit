@@ -65,7 +65,7 @@
       height: 600px;
       li {
         // width: 95%;
-        padding: 5px 20px;
+        padding: 5px 20px 5px 0;
         height: 50px;
         margin-bottom: 5px;
         .content_userlist {
@@ -99,28 +99,33 @@
 
           .request {
             font-size: 14px;
-            margin-left: 50px;
             width: 120px;
+            line-height: 100%;
           }
           .hulve {
             font-size: 14px;
             display: flex;
             align-items: center;
             cursor: pointer;
+            line-height: 100%;
+            margin-left: 20px;
             img {
               margin-right: 10px;
+              width: 17px;
             }
           }
 
           .control {
             display: flex;
             align-items: center;
+            font-size: 14px;
             .content_userlist_request {
               cursor: pointer;
               display: flex;
               align-items: center;
               img {
                 margin-right: 10px;
+                width: 17px;
               }
             }
           }
@@ -191,6 +196,7 @@
           .control {
             display: flex;
             align-items: center;
+            font-size: 14px;
             .btn {
               line-height: 100%;
               cursor: pointer;
@@ -199,10 +205,15 @@
               img {
                 margin-right: 10px;
                 display: block;
+                width: 17px;
               }
             }
             .reject {
               margin-right: 30px;
+            }
+            .text{
+              color: #88898a;
+              
             }
           }
         }
