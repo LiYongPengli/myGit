@@ -3,7 +3,7 @@
   <div class="maillistcom">
     <div class="title">
       <span class="maybetitle">通讯录</span>
-      <span @click="$emit('update:visable', 2)" class="newfriend">
+      <span @click="$emit('update:visable', 2)" :class="{'newfriendActive':hasNewFriends}" class="newfriend">
         新的朋友
       </span>
       <span @click="$emit('update:visable', 4)" class="addfriend"
@@ -23,7 +23,7 @@
         <my-scroll>
           <!-- 接收到的分享名片 -->
           <li
-            v-show="v.status == 'pending'"
+            v-show="v.status == 'pending'&&!v.overdue"
             v-for="(v, keys, i) in cardList"
             :index="i"
             :key="keys"
@@ -81,7 +81,7 @@
           </li>
           <!-- 新好友 -->
           <li
-            v-show="v.status == 'pending'"
+            v-show="v.status == 'pending'&&!v.overdue"
             v-for="(v, i) in newFriendList"
             :key="i + 1"
             class="addnewfriend"

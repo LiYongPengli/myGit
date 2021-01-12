@@ -62,7 +62,7 @@
       <div class="footer">
         <el-button
           @click="toNext"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           :disabled="sub_form.country.length < 3"
           type="primary"
           >下一步</el-button
@@ -162,7 +162,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.media.length < 3"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           type="primary"
           >下一步</el-button
         >
@@ -204,7 +204,7 @@
                 </span>
 
                 <span style="width: 220px" class="english_gj mt">
-                  <speed-text width="220px" height="20px" text="中国共产党中央委员" />
+                  <speed-text width="220px" height="20px" :text="v.description" />
                 </span>
               </a>
             </li>
@@ -220,7 +220,7 @@
         <el-button
           @click="toNext"
           :disabled="sub_form.character.length < 3"
-          style="width: 280px; background-color: #0074ff; border-color: #0074ff"
+          style="width: 280px;"
           type="primary"
           >下一步</el-button
         >

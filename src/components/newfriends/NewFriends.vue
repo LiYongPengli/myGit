@@ -15,7 +15,13 @@
     <div class="content_userlists">
       <ul>
         <my-scroll>
-          <li @mouseenter="showControl(keys)" @mouseleave="hideControl(keys)" v-for="(v, keys, i) in cardList" :index="i" :key="keys">
+          <li
+            @mouseenter="showControl(keys)"
+            @mouseleave="hideControl(keys)"
+            v-for="(v, keys, i) in cardList"
+            :index="i"
+            :key="keys"
+          >
             <div class="content_userlist">
               <div class="user_info">
                 <img
@@ -23,18 +29,17 @@
                   :src="axios.defaults.baseURL + '/avatar/' + v.account"
                   alt=""
                 />
-                <p class="content_userlist_chinename">
-                  {{ v.recommended.nickname }}
-                </p>
-                <p class="remarks_p">
-                  "{{ v.recommender.nickname }}"将"{{
-                    v.recommended.nickname
-                  }}"的名片推荐给你
-                </p>
+                <speed-text class="content_userlist_chinename" width="60px" height="40px" :text="v.recommended.nickname" />
+               <speed-text class="remarks_p" width="300px" height="20px" :text="`“${v.recommender.nickname}”将“${v.recommended.nickname}”的名片推荐给你`" />
               </div>
               <div class="control">
                 <p
-                  v-show="(v.status == 'ignored' || v.status == 'pending'||v.status=='rejected')&&v.mouse"
+                  v-show="
+                    (v.status == 'ignored' ||
+                      v.status == 'pending' ||
+                      v.status == 'rejected') &&
+                    v.mouse
+                  "
                   @click="showInvInfo(v, keys)"
                   class="content_userlist_request request"
                 >
@@ -78,48 +83,49 @@
           </li>
           <!-- 新朋友列表 -->
           <li @click="showInfo(v)" v-for="(v, i) in newFriendList" :key="i">
-            <div class="content_userlist">
-              <img
-                class="header"
-                style="height: 40px"
-                :src="axios.defaults.baseURL + '/avatar/' + v.account"
-                alt=""
-              />
-              <!-- <img
-                class="header"
-                v-if="!v.headimg && v.wechat_info.head_img"
-                :src="v.wechat_info.head_img"
-                alt=""
-              />
-              <p v-if="!v.headimg && !v.wechat_info.head_img" class="content_userlist_engname">
-                {{ v.nickname.slice(0, 1) }}
-              </p> -->
-              <p class="content_userlist_chinename">{{ v.nickname }}</p>
-              <p class="remarks_p">
-                {{ v.message }}
-              </p>
-              <p
-                @click.stop="toReject(v)"
-                v-show="v.status == 'pending'"
-                class="content_userlist_hulve hulve"
-              >
-                <img src="../../assets/img/refuse.png" alt="" />
-                拒绝
-              </p>
-              <p
-                @click.stop="toAgree(v)"
-                v-show="v.status == 'pending'"
-                class="content_userlist_share share"
-              >
-                <img src="../../assets/img/accept.png" alt="" />
-                接受
-              </p>
-              <p v-show="v.status == 'accepted'" class="content_userlist_share">
-                已添加
-              </p>
-              <p v-show="v.status == 'rejected'" class="content_userlist_share">
-                已拒绝
-              </p>
+            <div class="new_user_list">
+              <div class="left">
+                <div class="user_info">
+                <img
+                  class="header"
+                  style="height: 40px"
+                  :src="axios.defaults.baseURL + '/avatar/' + v.account"
+                  alt=""
+                />
+                <speed-text class="content_userlist_chinename" width="60px" height="20px" :text="v.nickname" />
+              </div>
+              <speed-text class="remarks_p" width="350px" height="20px" :text="v.message" />
+              </div>
+              <div class="control">
+                <p
+                  @click.stop="toReject(v)"
+                  v-if="v.status == 'pending'"
+                  class="btn reject"
+                >
+                  <img src="../../assets/img/refuse.png" alt="" />
+                  拒绝
+                </p>
+                <p
+                  @click.stop="toAgree(v)"
+                  v-if="v.status == 'pending'"
+                  class="btn"
+                >
+                  <img src="../../assets/img/accept.png" alt="" />
+                  接受
+                </p>
+                <p
+                  v-if="v.status == 'accepted'"
+                  class="btn"
+                >
+                  已添加
+                </p>
+                <p
+                  v-if="v.status == 'rejected'"
+                  class="btn"
+                >
+                  已拒绝
+                </p>
+              </div>
             </div>
           </li>
         </my-scroll>
@@ -222,9 +228,11 @@
 import Component, { mixins } from "vue-class-component";
 import NewFriendsCom from "./NewFriends";
 import MyScroll from "@/components/MyScroll.vue";
+import SpeedText from "@/components/SpeedText.vue";
 @Component({
   components: {
     MyScroll,
+    SpeedText
   },
 })
 export default class NewFriends extends mixins(NewFriendsCom) {}

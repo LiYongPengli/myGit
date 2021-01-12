@@ -1,8 +1,9 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class MediaCom extends Vue{
+    @Prop({}) search!:string;
     public mediaList:any[] = [];
     public mediaFollowList:any[] = [];
 
@@ -88,5 +89,21 @@ export default class MediaCom extends Vue{
         }).catch(err=>{
             console.log(err);
         })
+    }
+
+    //搜索匹配
+    public showItem(name:string):boolean{
+        let ch = /[\u4E00-\u9FA5]+/;
+        if(!ch.test(name)){
+            if(~name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+                return true;
+            }
+        }else{
+            if(~name.indexOf(this.search)){
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

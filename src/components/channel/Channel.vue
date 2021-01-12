@@ -8,7 +8,7 @@
     >
       <p class="concerned_p">已关注</p>
       <ul>
-        <li v-for="(v, i) in channelFollowList" :key="i">
+        <li v-show="showItem(v.name)" v-for="(v, i) in channelFollowList" :key="i">
           <div>
             <speed-text class="pname" width="124px" height="40px" :text="v.name">
             
@@ -37,7 +37,7 @@
         <img v-else src="../../assets/img/shouqil.png" alt="" />
       </p>
       <ul>
-        <li v-for="(v, i) in showlist" :key="i">
+        <li v-show="showItem(v.name)" v-for="(v, i) in showlist" :key="i">
           <div class="no_noattention">
             <speed-text class="pname" width="124px" height="40px"  :text="v.name">
             </speed-text>

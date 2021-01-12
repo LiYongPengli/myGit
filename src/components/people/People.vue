@@ -9,7 +9,7 @@
         element-loading-background="rgba(58, 58, 72, 0.5)"
         v-loading="loading"
       >
-        <li v-for="(v, i) in characterFollowList" :key="i" class="concernedlist">
+        <li v-show="showItem(v)" v-for="(v, i) in characterFollowList" :key="i" class="concernedlist">
           <div class="concernedlistdiv">
             <img @error="imgError('f',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
             <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />
@@ -40,7 +40,7 @@
         </div>
       </div> -->
       <ul class="noattentionlists">
-        <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
+        <li v-show="showItem(v)" v-for="(v, i) in characterList" :key="i" class="noattentionlist">
           <div class="concernedlistdiv">
             <img @error="imgError('u',i)" v-if="v.avatar!=-1&&v.avatar!=null&&!v.error" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
             <img v-if="v.avatar!=-1&&v.avatar!=null&&v.error" src="../../assets/img/4041.jpg" alt="" />

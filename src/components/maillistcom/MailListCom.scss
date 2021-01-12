@@ -16,12 +16,15 @@
                     cursor: pointer;
                 }
                 .newfriend {
-                    background: url("../../assets/img/newfriendlogo.png") right top no-repeat;
+                    
                     color: white;
                     float: right;
                     font-size: 16px;
                     width: 80px;
                     cursor: pointer;
+                }
+                .newfriendActive{
+                    background: url("../../assets/img/newfriendlogo.png") right top no-repeat;
                 }
             }
             .search {

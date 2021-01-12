@@ -85,9 +85,17 @@ export default class CountryCom extends Vue {
 
     //搜索匹配
     public showItem(name:string):boolean{
-        if(~name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
-            return true;
+        let ch = /[\u4E00-\u9FA5]+/;
+        if(!ch.test(name)){
+            if(~name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+                return true;
+            }
+        }else{
+            if(~name.indexOf(this.search)){
+                return true;
+            }
         }
+        
         return false;
     }
 }

@@ -1,8 +1,9 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class PeopleCom extends Vue {
+    @Prop({}) search!:string;
     public characterList:any[] = [];
     public characterFollowList:any[] = [];
 
@@ -77,5 +78,33 @@ export default class PeopleCom extends Vue {
                 this.$set(this.characterList[index],'error',true);
                 break;
         }
+    }
+
+    //搜索匹配
+    public showItem(item:any):boolean{
+        console.log(item);
+        let ch = /[\u4E00-\u9FA5]+/;
+        let flag = false;
+        if(!ch.test(item.name)){
+            if(~item.name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+                flag = true;
+            }
+        }else{
+            if(~item.name.indexOf(this.search)){
+                flag = true;
+            }
+        }
+
+        if(!ch.test(item.description)){
+            if(~item.description.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+                flag = true;
+            }
+        }else{
+            if(~item.description.indexOf(this.search)){
+                flag = true;
+            }
+        }
+        
+        return flag;
     }
 }

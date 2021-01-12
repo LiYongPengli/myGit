@@ -59,11 +59,11 @@
           <!-- 文章主体 -->
           <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
             <div
-              v-if="newsInfo.media_name != 'YouTube'"
+              v-if="!newsInfo.is_video"
               v-html="getNewsContent()"
               class="news"
             ></div>
-            <div v-if="newsInfo.media_name == 'YouTube'" class="youtube">
+            <div v-if="newsInfo.is_video" class="youtube">
               <div class="video_wrap">
                 <video :src="'http://hk.zlbxxcj.bjceis.com'+newsInfo.attachments[1].url" controls>
                   <track v-if="newsInfo.attachments[2]" :src="newsInfo.attachments[2].url" label="原文" />

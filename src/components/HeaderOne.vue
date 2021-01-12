@@ -1,7 +1,7 @@
 <template>
   <!-- 首页头部导航 -->
   <div class="headerone">
-    <div @click="$router.push('/')" class="logo">
+    <div @click="jumpHome" class="logo">
       <a></a>
     </div>
     <div class="search">
@@ -104,6 +104,14 @@ export default class HeaderOne extends Vue {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  public jumpHome():void{
+    if(this.$route.path!='/recommend'){
+      this.$router.push('/')
+    }else{
+      this.$router.go(0);
+    }
   }
 }
 </script>
