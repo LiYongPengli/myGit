@@ -62,18 +62,6 @@
                     />
                   </div>
                 </el-image>
-                <!-- <img
-                  @load="imgLoad"
-                  @error="loadErr(i)"
-                  v-if="(v.cover.type == 'image') & !v.error"
-                  :src="v.cover.url[0]"
-                  alt=""
-                />
-                <img
-                  v-if="v.cover.type == 'image' && v.error"
-                  src="../../assets/img/404.jpg"
-                  alt=""
-                /> -->
               </div>
               <div class="text">
                 <p

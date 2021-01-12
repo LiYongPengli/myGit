@@ -8,23 +8,27 @@
       @mouseenter="play"
       @mouseleave="stop"
       :src="video_photo"
-      v-if="!showVideo&&!video_err"
+      v-if="!showVideo&&!img_err"
     />
-     <img  v-if="!showVideo&&!video_err" class="dianbo" src="../../assets/img/dianbo.png" alt="">
-     <img  v-if="video_err" class="img" src="../../assets/img/404.png" alt="">
+     <img  v-if="!showVideo&&!img_err&&!video_err" class="dianbo" src="../../assets/img/dianbo.png" alt="">
+     <img  v-if="img_err&&!showVideo" class="img" src="../../assets/img/404.png" alt="">
+     <img  v-if="video_err&&showVideo" class="img" src="../../assets/img/4041.png" alt="">
     <video
       @error="imgError"
+      width="200"
+      height="112"
       ref="video"
-      style="display: none"
+      v-show="showVideo&&!video_err"
+      @mouseleave="stop"
       :src="video_url"
     ></video>
-    <canvas
+    <!-- <canvas
       width="200"
       height="112"
       @mouseleave="stop"
       v-show="showVideo&&!video_err"
       ref="videoCtx"
-    ></canvas>
+    ></canvas> -->
   </div>
 </template>
 
@@ -38,41 +42,31 @@ export default class VideoThumbnail extends Vue {
   @Prop({}) public video_url!: string;
   //是否展示视频动画
   private showVideo: boolean = false;
-  //播放视频用的canvas上下文
-  private videoCtx!: HTMLCanvasElement;
   //视频组件
   private video!: HTMLVideoElement;
+  //视频加载失败
   private video_err:boolean = false;
+  //封面加载失败
+  private img_err:boolean = false;
   //定时器
-  private interval: any = null;
   private timeout:any = null;
 
   private mounted(): void {
-    this.videoCtx = this.$refs.videoCtx as HTMLCanvasElement;
     this.video = this.$refs.video as HTMLVideoElement;
   }
 
   //图片加载失败
   public imgError():void{
+    this.img_err = true;
+  }
+
+  public videoError():void{
     this.video_err = true;
   }
 
   //播放视频缩略动画
   private play(): void {
     this.timeout = setTimeout(() => {
-      if (this.interval) {
-        clearInterval(this.interval);
-      }
-      this.interval = setInterval(() => {
-        let ctx = this.videoCtx.getContext("2d") as CanvasRenderingContext2D;
-        ctx.drawImage(
-          this.video,
-          0,
-          0,
-          this.videoCtx.width,
-          this.videoCtx.height
-        );
-      });
       this.showVideo = true;
       this.video.volume = 0;
       this.video.play();
@@ -83,9 +77,6 @@ export default class VideoThumbnail extends Vue {
   private stop(): void {
     if(this.timeout){
       clearTimeout(this.timeout);
-    }
-    if (this.interval) {
-      clearInterval(this.interval);
     }
     this.showVideo = false;
     this.video.currentTime = 0;

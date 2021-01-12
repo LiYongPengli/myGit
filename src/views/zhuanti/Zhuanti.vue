@@ -23,7 +23,21 @@
                 :video_photo="v.cover.url"
                 :video_url="v.cover.video"
               />
-              <img v-if="v.cover.type == 'image'" :src="v.cover.url" alt="" />
+              <el-image
+                  :fit="'scale-down'"
+                  class="img"
+                  lazy
+                  v-if="v.cover.type == 'image'"
+                  :src="v.cover.url[0]"
+                >
+                  <div slot="error" class="image-slot">
+                    <img
+                      style="width: 200px"
+                      src="../../assets/img/404.png"
+                      alt=""
+                    />
+                  </div>
+                </el-image>
             </div>
             <div class="text">
               <p
