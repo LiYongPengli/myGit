@@ -200,12 +200,22 @@ export default class MyFollowCom extends Vue {
         if(type=="ZH"){
             for(let i of item.attachments){
                 if(i.position=='SUBTITLES_ZH'){
+                    let url = <string>i.url;
+                    let urlArr = url.split('/');
+                    urlArr.splice(0,3);
+                    let lastUrl = urlArr.join('/');
+                    i.url = '/'+lastUrl;
                     return i.url;
                 }
             }
         }else{
             for(let i of item.attachments){
                 if(i.position=='SUBTITLES_RAW'){
+                    let url = <string>i.url;
+                    let urlArr = url.split('/');
+                    urlArr.splice(0,3);
+                    let lastUrl = urlArr.join('/');
+                    i.url = '/'+lastUrl;
                     return i.url;
                 }
             }
@@ -227,14 +237,21 @@ export default class MyFollowCom extends Vue {
         this.filters.character = [];
         this.filters.media = [];
         this.filters.country = []
+        let flag = false;
         for (let i of this.country) {
+            flag = true;
             this.filters.country.push(i.name)
         }
         for (let i of this.media) {
+            flag = true;
             this.filters.media.push(i.sub_id)
         }
         for (let i of this.people) {
+            flag = true;
             this.filters.character.push(i.name)
+        }
+        if(!flag){
+            return;
         }
         this.getList();
     }
@@ -316,14 +333,15 @@ export default class MyFollowCom extends Vue {
             return '1分钟前';
         } else if (time < (60 * 60)) {
             return `${parseInt(time / 60 + '')}分钟前`
-        } else if (time < (60 * 60 * 24)) {
+        } else if (time <= (60 * 60 * 3)) {
             return `${parseInt(time / 60 / 60 + '')}小时前`
-        } else if (time < (60 * 60 * 24 * 30)) {
-            return `${parseInt(time / 60 / 60 / 24 + '')}天前`
-        } else if (time < (60 * 60 * 24 * 30 * 12)) {
-            return `${parseInt(time / 60 / 60 / 24 / 30 + '')}月前`
         } else {
-            return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let minits = date.getMinutes();
+            return `${year}-${month>9?month:'0'+month}-${day>9?day:'0'+day} ${hour>9?hour:'0'+hour}:${minits>9?minits:'0'+minits}`;
         }
     }
 

@@ -110,14 +110,15 @@ export default class Hours24Com extends Vue {
             return '1分钟前';
         } else if (time < (60 * 60)) {
             return `${parseInt(time / 60 + '')}分钟前`
-        } else if (time < (60 * 60 * 24)) {
+        } else if (time <= (60 * 60 * 3)) {
             return `${parseInt(time / 60 / 60 + '')}小时前`
-        } else if (time < (60 * 60 * 24 * 30)) {
-            return `${parseInt(time / 60 / 60 / 24 + '')}天前`
-        } else if (time < (60 * 60 * 24 * 30 * 12)) {
-            return `${parseInt(time / 60 / 60 / 24 / 30 + '')}月前`
         } else {
-            return `${parseInt(time / 60 / 60 / 24 / 30 / 12 + '')}年前`
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let minits = date.getMinutes();
+            return `${year}-${month>9?month:'0'+month}-${day>9?day:'0'+day} ${hour>9?hour:'0'+hour}:${minits>9?minits:'0'+minits}`;
         }
     }
 
