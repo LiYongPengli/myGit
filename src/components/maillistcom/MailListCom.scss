@@ -79,7 +79,8 @@
                     }
                     .recommend {
                         background-color: #0074ff;
-                        margin-bottom: 20px;
+                        margin-bottom: 10px;
+                        padding-left: 20px;
                         .remarks {
                             line-height: 40px;
                             font-size: 14px;
@@ -108,15 +109,16 @@
                     .addnewfriend {
                         background-color: #0074ff;
                         margin-bottom: 20px;
+                        padding-left: 20px;
                         .new {
                             .remarks {
                                 line-height: 40px;
                                 font-size: 14px;
                             }
-                            .content_userlist_sendmessage,
-                            .content_userlist_share {
-                                width: 60px;
-                            }
+                            // .content_userlist_sendmessage,
+                            // .content_userlist_share {
+                            //     width: 60px;
+                            // }
                             .content_userlist_sendmessage {
                                 // margin-left: 30px;
                             }
@@ -140,17 +142,17 @@
                     }
                     li {
                         //width: 95%;
-                        padding: 5px 20px;
+                        padding: 5px 20px 5px 0;
                         height: 50px;
                         margin-bottom: 5px;
                         .content_userlist {
                             color: white;
                             display: flex;
+                            align-items: center;
                             justify-content: space-between;
                             .content_userlist_one {
-                                img {
-                                    float: left;
-                                }
+                                display: flex;
+                                align-items: center;
                                 img.header {
                                     width: 40px;
                                     height: 40px;
@@ -174,7 +176,6 @@
                                 .content_userlist_chinename {
                                     margin-left: 25px;
                                     font-size: 14px;
-                                    line-height: 40px;
                                 }
                                 .content_userlist_sendmessage,
                                 .content_userlist_share,
@@ -196,13 +197,16 @@
                                 display: flex;
                                 align-items: center;
                                 cursor: pointer;
+                                font-size: 14px;
                                 .qq,
                                 .fs {
                                     margin: 0 10px;
+                                    width: 17px;
                                 }
                                 .hl,
                                 .fxx {
                                     margin: 0 10px 0 20px;
+                                    width: 17px;
                                 }
                                 .content_userlist_sendmessage {
                                     line-height: 40px;

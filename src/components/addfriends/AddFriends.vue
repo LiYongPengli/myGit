@@ -107,22 +107,9 @@
         <div class="username">
           <img
             class="header"
-            
             :src="axios.defaults.baseURL+'/avatar/'+userInfo.account"
             alt=""
           />
-          <!-- <img
-            class="header"
-            v-if="!userInfo.headimg && userInfo.wechat_info.head_img"
-            :src="userInfo.wechat_info.head_img"
-            alt=""
-          />
-          <p
-            v-if="!userInfo.headimg && !userInfo.wechat_info.head_img"
-            class="head"
-          >
-            {{ userInfo.nickname.slice(0, 1) }}
-          </p> -->
           <p class="name">{{ userInfo.nickname }}</p>
         </div>
         <div class="remarks_div">

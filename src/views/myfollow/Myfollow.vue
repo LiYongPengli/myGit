@@ -183,8 +183,8 @@
                     :src="v.cover.video"
                     controls
                   >
-                    <track v-if="v.attachments[2]" :src="v.attachments[2].url" label="原文" />
-                    <track v-if="v.attachments[3]" :src="v.attachments[3].url" label="中文" />
+                    <track v-if="showTrack('RAW',v)" :default="!showTrack('ZH',v)" :src="axios.defaults.baseURL+showTrack('RAW',v)" label="原文" />
+                    <track v-if="showTrack('ZH',v)" default :src="axios.defaults.baseURL+showTrack('ZH',v)" label="中文" />
                   </video>
                   <img v-show="v.error" src="../../assets/img/404.png" alt="" />
                 </div>

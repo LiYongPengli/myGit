@@ -15,7 +15,7 @@
                   <div class="logo">
                   <img
                     v-if="!v.media_logo"
-                    src="../../assets/img/media.png"
+                    src="../../assets/img/media_default.png"
                     alt=""
                   />
                   <img v-if="v.media_logo" :src="v.media_logo" alt="" />

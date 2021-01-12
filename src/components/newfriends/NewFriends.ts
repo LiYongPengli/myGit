@@ -72,6 +72,9 @@ export default class NewFriendsCom extends Vue {
                 cmd: 'new_friends'
             }).then(res => {
                 this.newFriendList = res.data.data;
+                this.newFriendList.sort(function(a,b){
+                    return new Date(b.request_time).getTime() - new Date(a.request_time).getTime();
+                })
             }).catch(err => {
                 console.log(err);
             })

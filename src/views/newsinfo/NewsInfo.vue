@@ -72,16 +72,22 @@
             <div v-if="newsInfo.is_video" class="youtube">
               <div class="video_wrap">
                 <video :src="'http://hk.zlbxxcj.bjceis.com'+newsInfo.attachments[1].url" controls>
-                  <track v-if="newsInfo.attachments[2]" :src="newsInfo.attachments[2].url" label="原文" />
-                  <track v-if="newsInfo.attachments[3]" :src="newsInfo.attachments[3].url" label="中文" />
+                  <track v-if="showTrack('RAW')" :default="!showTrack('ZH')" :src="axios.defaults.baseURL+showTrack('RAW')" label="原文" />
+                  <track v-if="showTrack('ZH')" default :src="axios.defaults.baseURL+showTrack('ZH')" label="中文" />
                 </video>
               </div>
               <div class="vvts">
                 <my-scroll>
-                   <div class="spzm">视频字幕</div>
-                   <p class="nozm" v-if="!getYouTubeText(newsInfo.html[language][0].content).length">暂无字幕</p>
+                   <div class="spzm">
+                     <span class="zm">视频字幕</span>
+                     <div class="control_btn">
+                       <span @click="track_language='crawler'" :class="{'active':track_language=='crawler'}">原文</span>
+                       <span @click="track_language='zh-CN'" :class="{'active':track_language=='zh-CN'}">中文</span>
+                     </div>
+                   </div>
+                   <p class="nozm" v-if="!getYouTubeText(newsInfo.html[track_language][0].content).length">暂无字幕</p>
                   <p
-                    v-for="(v, i) in getYouTubeText(newsInfo.html[language][0].content)"
+                    v-for="(v, i) in getYouTubeText(newsInfo.html[track_language][0].content)"
                     :key="i"
                   >
                     {{ v.innerHTML }}
