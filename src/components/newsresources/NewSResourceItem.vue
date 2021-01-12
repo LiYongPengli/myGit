@@ -21,7 +21,7 @@
         >
         <el-date-picker
           @change="setFormdate"
-          style="width: 250px; margin-right: 20px;border:1px solid rgb(58, 58, 72)"
+          style="width: 250px; margin-right: 20px; border: 1px solid rgb(58, 58, 72)"
           v-model="share_date"
           type="daterange"
           start-placeholder="开始日期"
@@ -31,33 +31,43 @@
         <!-- <div @click="setFormdate" class="searchdate">
         <img src="../../assets/img/search.png" alt="" />
       </div> -->
-        <span class="export" @click="toExport(page,form.stat_type)">导出</span>
+        <span class="export" @click="toExport(page, form.stat_type)">导出</span>
       </div>
     </div>
     <div class="content_form_list">
       <ul v-if="cells">
- 
-        <my-scroll style="content_mt_onescroll">
-          <li  class="list_li">
-            <div class="list_li_accountnumber">{{ cells[0] }}</div>
-            <div class="list_li_name">{{ cells[1] }}</div>
-            <div class="list_li_phone">{{ cells[2] }}</div>
-          </li>
-          <li v-show="!isnulldata" v-for="(v, k) in share_data" :key="k" :class="{ active: k % 2 != 0 }">
-            <div class="list_li_accountnumber">
-              {{ k + 1 }}
-            </div>
-            <div class="list_li_name">
-              {{ v.title ? v.title : v.name_zh }}
-            </div>
-            <div class="list_li_phone value">
-              {{ v.count }}
-            </div>
-          </li>
-          <li style="width: 100%; height: 250px; justify-content: center; align-items: center;"  v-show="isnulldata">
-            <div>暂无数据</div>
-          </li>
-        </my-scroll>
+        <li class="list_li">
+          <div class="list_li_accountnumber">{{ cells[0] }}</div>
+          <div class="list_li_name">{{ cells[1] }}</div>
+          <div class="list_li_phone">{{ cells[2] }}</div>
+        </li>
+        <li style="height: 250px">
+          <my-scroll style="content_mt_onescroll">
+            <li
+              v-show="!isnulldata"
+              v-for="(v, k) in share_data"
+              :key="k"
+              :class="{ active: k % 2 != 0 }"
+            >
+              <div class="list_li_accountnumber">
+                {{ k + 1 }}
+              </div>
+              <div class="list_li_name">
+                {{ v.title ? v.title : v.name_zh }}
+              </div>
+              <div class="list_li_phone value">
+                {{ v.count }}
+              </div>
+            </li>
+            <li
+          style="width: 100%; height: 250px; justify-content: center; align-items: center"
+          v-show="isnulldata"
+        >
+          <div>暂无数据</div>
+        </li>
+          </my-scroll>
+        </li>
+        
       </ul>
     </div>
   </div>

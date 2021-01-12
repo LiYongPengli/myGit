@@ -1,253 +1,253 @@
-.newsinfo {
-    width: 100%;
-    height: 100%;
-    background-image: url("../../assets/img/bg.png");
-    display: flex;
-    flex-direction: column;
-    .wrap {
+    .newsinfo {
         width: 100%;
-        flex: 1;
-        overflow: hidden;
-        .wrap_content {
-            width: 1200px;
-            margin: auto;
-            overflow-y: auto;
-            .crumbs {
-                height: 90px;
-                line-height: 90px;
-                font-size: 14px;
-                background: url("../../assets/img/home.png") left center no-repeat;
-                padding-left: 30px;
-                a {
-                    color: white;
-                    text-decoration: none;
-                    cursor: pointer;
+        height: 100%;
+        background-image: url("../../assets/img/bg.png");
+        display: flex;
+        flex-direction: column;
+        .wrap {
+            width: 100%;
+            flex: 1;
+            overflow: hidden;
+            .wrap_content {
+                width: 1200px;
+                margin: auto;
+                overflow-y: auto;
+                .crumbs {
+                    height: 90px;
+                    line-height: 90px;
+                    font-size: 14px;
+                    background: url("../../assets/img/home.png") left center no-repeat;
+                    padding-left: 30px;
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                    b {
+                        margin: 0 5px;
+                        font-weight: bold;
+                        color: white;
+                    }
                 }
-                b {
-                    margin: 0 5px;
-                    font-weight: bold;
-                    color: white;
+                .title {
+                    margin-top: 10px;
+                    font-size: 32px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #ffffff;
                 }
-            }
-            .title {
-                margin-top: 10px;
-                font-size: 32px;
-                font-weight: normal;
-                font-stretch: normal;
-                letter-spacing: 0px;
-                color: #ffffff;
-            }
-            .control_wrap {
-                padding: 21px 0;
-                display: flex;
-                justify-content: space-between;
-                .left {
+                .control_wrap {
+                    padding: 21px 0;
                     display: flex;
-                    align-items: center;
-                    .unfollow {
-                        display: block;
-                        width: 50px;
-                        height: 22px;
-                        border-radius: 3px;
-                        border: solid 1px #ffffff;
-                        font-size: 14px;
-                        font-weight: normal;
-                        font-stretch: normal;
-                        letter-spacing: 0px;
-                        color: #ffffff;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                    .follow {
-                        display: block;
-                        width: 50px;
-                        height: 22px;
-                        border-radius: 3px;
-                        border: solid 1px #ffffff;
-                        font-size: 14px;
-                        font-weight: normal;
-                        font-stretch: normal;
-                        letter-spacing: 0px;
-                        color: #ffffff;
-                        text-align: center;
-                        cursor: pointer;
-                        opacity: 0.5;
-                    }
-                    .info {
-                        font-size: 14px;
-                        letter-spacing: 0px;
-                        color: #bcc2d5;
-                        margin-left: 10px;
-                    }
-                }
-                .right {
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    .tool {
-                        cursor: pointer;
-                        font-size: 14px;
-                        margin-left: 29px;
-                        i {
-                            margin-right: 10px;
-                            font-size: 16px;
-                            margin-bottom: -2px;
-                        }
-                        .el-icon-shoucang::before {
-                            content: "";
+                    justify-content: space-between;
+                    .left {
+                        display: flex;
+                        align-items: center;
+                        .unfollow {
                             display: block;
-                            background: url("../../assets/img/shoucang.png") left 0px no-repeat;
-                            width: 18px;
-                            height: 18px;
-                        }
-                        .el-icon-zan::before {
-                            content: "";
-                            display: block;
-                            background: url("../../assets/img/zanpress.png") left 0px no-repeat;
-                            width: 18px;
-                            height: 18px;
-                        }
-                        .el-icon-nozan::before {
-                            content: "";
-                            display: block;
-                            background: url("../../assets/img/nozanpress.png") left center no-repeat;
-                            width: 18px;
-                            height: 18px;
-                        }
-                    }
-                    .tool:first-of-type {
-                        margin-left: 0;
-                    }
-                    .font {
-                        margin-left: 29px;
-                        span {
-                            margin: 0 5px;
+                            width: 50px;
+                            height: 22px;
+                            border-radius: 3px;
+                            border: solid 1px #ffffff;
+                            font-size: 14px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            text-align: center;
                             cursor: pointer;
                         }
+                        .follow {
+                            display: block;
+                            width: 50px;
+                            height: 22px;
+                            border-radius: 3px;
+                            border: solid 1px #ffffff;
+                            font-size: 14px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            text-align: center;
+                            cursor: pointer;
+                            opacity: 0.5;
+                        }
+                        .info {
+                            font-size: 14px;
+                            letter-spacing: 0px;
+                            color: #bcc2d5;
+                            margin-left: 10px;
+                        }
+                    }
+                    .right {
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        .tool {
+                            cursor: pointer;
+                            font-size: 14px;
+                            margin-left: 29px;
+                            i {
+                                margin-right: 10px;
+                                font-size: 16px;
+                                margin-bottom: -2px;
+                            }
+                            .el-icon-shoucang::before {
+                                content: "";
+                                display: block;
+                                background: url("../../assets/img/shoucang.png") left 0px no-repeat;
+                                width: 18px;
+                                height: 18px;
+                            }
+                            .el-icon-zan::before {
+                                content: "";
+                                display: block;
+                                background: url("../../assets/img/zanpress.png") left 0px no-repeat;
+                                width: 18px;
+                                height: 18px;
+                            }
+                            .el-icon-nozan::before {
+                                content: "";
+                                display: block;
+                                background: url("../../assets/img/nozanpress.png") left center no-repeat;
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+                        .tool:first-of-type {
+                            margin-left: 0;
+                        }
+                        .font {
+                            margin-left: 29px;
+                            span {
+                                margin: 0 5px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .content {
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: 30px;
+                    letter-spacing: 0px;
+                    color: #ffffff;
+                    border-bottom: 1px solid #3a3a48;
+                    padding: 56px 0;
+                    .youtube {
+                        display: flex;
+                        .video_wrap {
+                            flex: 2;
+                            video {
+                                height: 450px;
+                                width: 800px;
+                            }
+                        }
+                        .vvts {
+                            flex: 1;
+                            height: 450px;
+                            overflow-y: auto;
+                            padding: 0 40px 40px;
+                            background-color: #3b3b47;
+                            .spzm {
+                                font-size: 20px;
+                                height: 70px;
+                                line-height: 80px;
+                            }
+                            .nozm {
+                                text-align: center;
+                                margin-top: 40%;
+                            }
+                        }
+                    }
+                }
+                .footer {
+                    margin-top: 20px;
+                    margin-bottom: 40px;
+                    display: flex;
+                    justify-content: space-between;
+                    .left {
+                        span {
+                            display: block;
+                            width: 84px;
+                            height: 32px;
+                            text-align: center;
+                            color: white;
+                            border: 1px solid #676770;
+                            line-height: 30px;
+                            cursor: pointer;
+                            border-radius: 3px;
+                        }
+                        span:hover {
+                            background: #0079ed;
+                            border: none;
+                        }
+                    }
+                    .right {
+                        .download_this {
+                            width: 150px;
+                            height: 40px;
+                            border: solid 1px #3a3a48;
+                            font-size: 16px;
+                            line-height: 35px;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            text-align: right;
+                            padding-right: 20px;
+                            box-sizing: border-box;
+                            cursor: pointer;
+                            background: url("../../assets/img/dayin.png") 20px center no-repeat;
+                            border-radius: 3px;
+                        }
                     }
                 }
             }
-            .content {
-                font-weight: normal;
-                font-stretch: normal;
-                line-height: 30px;
+        }
+        .download_list {
+            padding: 0 50px;
+            li {
+                height: 60px;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 14px;
+                line-height: 40px;
                 letter-spacing: 0px;
                 color: #ffffff;
-                border-bottom: 1px solid #3a3a48;
-                padding: 56px 0;
-                .youtube {
-                    display: flex;
-                    .video_wrap {
-                        flex: 2;
-                        video {
-                            height: 450px;
-                            width: 800px;
-                        }
-                    }
-                    .vvts {
-                        flex: 1;
-                        height: 450px;
-                        overflow-y: auto;
-                        padding: 0 40px 40px;
-                        background-color: #3b3b47;
-                        .spzm {
-                            font-size: 20px;
-                            height: 70px;
-                            line-height: 80px;
-                        }
-                        .nozm{
-                            text-align: center;
-                            margin-top: 40%;
-                        }
-                    }
-                }
-            }
-            .footer {
-                margin-top: 20px;
-                margin-bottom: 40px;
-                display: flex;
-                justify-content: space-between;
-                .left {
-                    span {
-                        display: block;
-                        width: 84px;
-                        height: 32px;
-                        text-align: center;
-                        color: white;
-                        border: 1px solid #676770;
-                        line-height: 30px;
-                        cursor: pointer;
-                        border-radius: 3px;
-                    }
-                    span:hover {
-                        background: #0079ed;
-                        border: none;
-                    }
-                }
-                .right {
-                    .download_this {
-                        width: 150px;
-                        height: 40px;
-                        border: solid 1px #3a3a48;
-                        font-size: 16px;
-                        line-height: 35px;
-                        letter-spacing: 0px;
-                        color: #ffffff;
-                        text-align: right;
-                        padding-right: 20px;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                        background: url("../../assets/img/dayin.png") 20px center no-repeat;
-                        border-radius: 3px;
+                .downimg {
+                    width: 14px;
+                    color: white;
+                    margin-top: 10px;
+                    cursor: pointer;
+                    img {
+                        width: 100%;
                     }
                 }
             }
         }
-    }
-    .download_list {
-        padding: 0 50px;
-        li {
-            height: 60px;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 14px;
-            line-height: 40px;
-            letter-spacing: 0px;
-            color: #ffffff;
-            .downimg {
-                width: 14px;
-                color: white;
-                margin-top: 10px;
-                cursor: pointer;
-                img {
-                    width: 100%;
-                }
-            }
+        .downloadClose {
+            display: block;
+            width: 84px;
+            height: 32px;
+            text-align: center;
+            color: white;
+            border: 1px solid white;
+            line-height: 30px;
+            cursor: pointer;
+            margin: auto;
+        }
+        .fontActive {
+            text-decoration: underline;
+        }
+        .actives.el-icon-shoucang {
+            background: url("../../assets/img/shoucangl.png") left 0px no-repeat;
+        }
+        .actives.el-icon-zan {
+            background: url("../../assets/img/zanpressl.png") left 0px no-repeat;
+        }
+        .actives.el-icon-nozan {
+            background: url("../../assets/img/nozanpressl.png") left 0px no-repeat;
         }
     }
-    .downloadClose {
-        display: block;
-        width: 84px;
-        height: 32px;
-        text-align: center;
-        color: white;
-        border: 1px solid white;
-        line-height: 30px;
-        cursor: pointer;
-        margin: auto;
-    }
-    .fontActive {
-        text-decoration: underline;
-    }
-    .actives.el-icon-shoucang {
-        background: url("../../assets/img/shoucangl.png") left 0px no-repeat;
-    }
-    .actives.el-icon-zan {
-        background: url("../../assets/img/zanpressl.png") left 0px no-repeat;
-    }
-    .actives.el-icon-nozan {
-        background: url("../../assets/img/nozanpressl.png") left 0px no-repeat;
-    }
-}
