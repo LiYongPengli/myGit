@@ -24,6 +24,7 @@
                 />
               </div>
             </el-image>
+            <img src="" alt="" />
           </div>
         </div>
       </my-scroll>

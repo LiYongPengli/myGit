@@ -36,6 +36,10 @@
                             width: 40px;
                             height: 40px;
                             line-height: 40px;
+                            background: url("../../assets/img/maybeadd.png") right center no-repeat;
+                        }
+                        .content_userlist_add:hover {
+                            background: url("../../assets/img/maybeaddhover.png") right center no-repeat;
                         }
                         .content_userlist_engname {
                             background-color: #009688;
@@ -117,6 +121,7 @@
                 border: none;
                 padding-left: 20px;
                 color: white;
+                font-size: 16px;
             }
         }
         .remarks_div {

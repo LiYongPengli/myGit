@@ -7,7 +7,7 @@
         新的朋友
       </span>
       <span @click="$emit('update:visable', 4)" class="addfriend"
-        >+添加好友</span
+        >添加好友</span
       >
     </div>
     <div class="search">
