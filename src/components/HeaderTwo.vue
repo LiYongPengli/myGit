@@ -133,7 +133,7 @@ export default class HeaderTwo extends Vue {
       display: flex;
       align-items: center;
       color: white;
-      border-right: 1px solid #3a3a48;
+   
       .user_img {
         width: 39px;
         height: 39px;

@@ -289,6 +289,7 @@ body {
     border-radius: 5px;
     background-color: #343441;
     z-index: 100;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     a {
       width: 60px;
       height: 60px;

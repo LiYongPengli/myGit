@@ -16,7 +16,9 @@
                 <p class="content_userlist_chinename">
                   {{ v.nickname }}
                 </p>
-                <p @click="toAdd(v)" class="content_userlist_add">+</p>
+                <p @click="toAdd(v)" class="content_userlist_add">
+                  
+                </p>
               </div>
             </li>
           </my-scroll>

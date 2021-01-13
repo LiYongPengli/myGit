@@ -11,9 +11,7 @@
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
       /> -->
       <div @click="setShowIntelligent(true)" class="ss">
-    <div @click="setShowIntelligent(true)" class="ss">
-     请输入关键词，查询相关内容
-    </div>
+        <div @click="setShowIntelligent(true)" class="ss">请输入关键词，查询相关内容</div>
       </div>
       <div class="bottom">
         <div class="user_info" v-if="user_message">
@@ -31,12 +29,10 @@
             </ul>
             <div slot="reference" class="user_info_wrap">
               <img
-                :src="
-                  axios.defaults.baseURL+'/avatar/' + user_message.account
-                "
+                :src="axios.defaults.baseURL + '/avatar/' + user_message.account"
                 alt="头像"
               />
-              
+
               <span>{{ user_message.nickname }}</span>
               <i class="el-icon-arrow-down"></i>
             </div>
@@ -47,19 +43,13 @@
           <router-link to="/recommend">热门推荐</router-link>
         </div>
         <div class="lang">
-          <span
-            @click="setLanguage('crawler')"
-            :class="{ cur: language == 'crawler' }"
+          <span @click="setLanguage('crawler')" :class="{ cur: language == 'crawler' }"
             >原文</span
           >
-          <span
-            @click="setLanguage('zh-CN')"
-            :class="{ cur: language == 'zh-CN' }"
+          <span @click="setLanguage('zh-CN')" :class="{ cur: language == 'zh-CN' }"
             >中文</span
           >
-          <span @click="setLanguage('en')" :class="{ cur: language == 'en' }"
-            >英文</span
-          >
+          <span @click="setLanguage('en')" :class="{ cur: language == 'en' }">英文</span>
         </div>
       </div>
       <transition name="el-zoom-in-top">
@@ -106,10 +96,10 @@ export default class HeaderOne extends Vue {
       });
   }
 
-  public jumpHome():void{
-    if(this.$route.path!='/recommend'){
-      this.$router.push('/')
-    }else{
+  public jumpHome(): void {
+    if (this.$route.path != "/recommend") {
+      this.$router.push("/");
+    } else {
       this.$router.go(0);
     }
   }
@@ -178,10 +168,37 @@ export default class HeaderOne extends Vue {
     }
   }
   .bottom {
-    // margin-left: 210px;
-    height: 65px;
-    background: #282832;
+    height: 67px;
     border-top: 1px solid #3a3a48;
+    background: rgba(43, 43, 54, 1);
+    background: -moz-linear-gradient(
+      top,
+      rgba(43, 43, 54, 1) 0%,
+      rgba(39, 39, 48, 1) 100%
+    );
+    background: -webkit-gradient(
+      left top,
+      left bottom,
+      color-stop(0%, rgba(43, 43, 54, 1)),
+      color-stop(100%, rgba(39, 39, 48, 1))
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(43, 43, 54, 1) 0%,
+      rgba(39, 39, 48, 1) 100%
+    );
+    background: -o-linear-gradient(top, rgba(43, 43, 54, 1) 0%, rgba(39, 39, 48, 1) 100%);
+    background: -ms-linear-gradient(
+      top,
+      rgba(43, 43, 54, 1) 0%,
+      rgba(39, 39, 48, 1) 100%
+    );
+    background: linear-gradient(
+      to bottom,
+      rgba(43, 43, 54, 1) 0%,
+      rgba(39, 39, 48, 1) 100%
+    );
+
     .user_info {
       float: left;
       &_wrap {
@@ -190,7 +207,7 @@ export default class HeaderOne extends Vue {
         display: flex;
         align-items: center;
         color: white;
-        border-right: 1px solid #3a3a48;
+
         margin-top: 12px;
         img {
           margin-left: 30px;
@@ -218,6 +235,7 @@ export default class HeaderOne extends Vue {
       height: 65px;
       line-height: 65px;
       padding-left: 40px;
+      border-left: 1px solid #3a3a48;
       a {
         display: block;
         width: 150px;
@@ -244,7 +262,7 @@ export default class HeaderOne extends Vue {
     .lang {
       float: right;
       width: 282px;
-      height: 65px;
+      height: 67px;
       line-height: 65px;
       margin-right: 50px;
       span {
@@ -253,12 +271,13 @@ export default class HeaderOne extends Vue {
         display: inline-block;
         text-align: center;
         font-size: 16px;
-       
+
         cursor: pointer;
       }
       span.cur {
         background-color: #22222b;
-         font-weight: bold;
+        font-weight: bold;
+        height: 67px;
       }
     }
   }
