@@ -4,7 +4,11 @@
     <div v-if="show == 1" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
-        <input v-model="searchText" type="text" placeholder="请输入收藏夹名称" />
+        <input
+          v-model="searchText"
+          type="text"
+          placeholder="请输入收藏夹名称"
+        />
         <span @click="isShare = true" class="plfx" v-show="!isShare"
           >批量分享</span
         >
@@ -37,7 +41,7 @@
       <my-scroll v-if="listshow">
         <ul class="collectionlist_wrap">
           <li
-          v-show="~v.name.indexOf(searchText)"
+            v-show="~v.name.indexOf(searchText)"
             :style="{
               background: shares[i] == v.name ? '#409EFF' : ' #3a3a48',
             }"
@@ -85,7 +89,7 @@
                 >编辑</el-button
               >
               <el-button
-                @click.stop="deleteFav(v,i)"
+                @click.stop="deleteFav(v, i)"
                 v-show="v.showControl && v.name != '默认'"
                 class="delete"
                 type="danger"
@@ -109,7 +113,7 @@
       top="25vh"
       width="800px"
       :close-on-click-modal="false"
-      element-loading-background="rgba(0, 0, 0, 0.2)" 
+      element-loading-background="rgba(0, 0, 0, 0.2)"
       v-loading="isUpFile"
       :title="dialogTitle"
       :visible.sync="dialogVisible"
@@ -126,17 +130,13 @@
         <div v-show="favorite_form.cover" class="sqcj_img">
           <img :src="favorite_form.cover" alt="" />
         </div>
-        <div class="sqcj">
-          <label for="file">
-            <img src="../../assets/img/cjqs.png" alt="" />
-            <input
-              @change="chooseFile"
-              ref="fileipt"
-              style="display: none"
-              accept="image/*"
-              type="file"
-              id="file"
+        <div @click="choosePhoto = true" class="sqcj">
+          <label>
+            <img
+              src="../../assets/img/cjqs.png"
+              alt=""
             />
+
             <span class="scfm">上传封面</span>
           </label>
         </div>
@@ -146,6 +146,15 @@
           <el-button @click="dialogVisible = false">取 消</el-button>
         </div>
       </div>
+    </el-dialog>
+    <!-- 示例图片 -->
+    <el-dialog
+      :close-on-click-modal="false"
+      :visible.sync="choosePhoto"
+      title="选择封面"
+      width="800px"
+    >
+      <other-photos :default_photos="default_photos" @filechange="chooseFile" />
     </el-dialog>
     <!-- 上传封面 -->
     <el-dialog
@@ -166,11 +175,13 @@ import UserCollectionCom from "./UserCollection";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import OtherPhotos from "@/components/otherphotos/OtherPhotos.vue";
 @Component({
   components: {
     MyScroll,
     UpFile,
     ShareContent,
+    OtherPhotos
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}
@@ -184,32 +195,6 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
   .el-dialog {
     background: #3a3a48;
     min-height: 475px;
-    .el-dialog__header {
-      border-bottom: 1px solid #4d4d5d;
-      padding: 0;
-      line-height: 80px;
-      .el-dialog__title {
-        color: white;
-        font-size: 20px;
-        padding-left: 50px;
-        padding-top: 30px;
-      }
-      .el-dialog__headerbtn {
-        .el-dialog__close {
-          color: #c3c3c7;
-          background: url("../../assets/img/dialogclose.png") left no-repeat !important;
-          margin-right: 30px;
-          top: 30px;
-        }
-      }
-    }
-    .edit_wrap_footer {
-      .el-button {
-        span {
-          font-size: 16px;
-        }
-      }
-    }
   }
   .delete {
     .el-icon-delete {

@@ -19,7 +19,7 @@
               </div>
               <div class="user_message">
                 <p class="user_name">{{ user_message.nickname }}</p>
-                <span class="user_id">{{ user_message.phone_number }}</span>
+                <span class="user_id">{{ user_message.phone_number.slice(0,3) }}****{{user_message.phone_number.slice(7,11)}}</span>
               </div>
             </div>
             <ul class="user_menu">

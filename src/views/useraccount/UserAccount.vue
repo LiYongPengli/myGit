@@ -18,7 +18,7 @@
         </div>
         <div class="right">
           <p>如需更换手机号请联系运维人员</p>
-          <p>0452-1212454</p>
+          <!-- <p>0452-1212454</p> -->
         </div>
       </div>
       <div
@@ -56,6 +56,7 @@
       <!-- 头像 -->
       <div class="telephone">
         <img
+        
           class="ninameing"
           @click="headportraitupdate = true"
           src="../../assets/img/useraccountniname.png"

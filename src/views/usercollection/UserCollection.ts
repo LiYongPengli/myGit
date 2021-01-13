@@ -4,6 +4,10 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 export default class UserCollectionCom extends Vue {
     public dialogVisible = false;
     public isUpFile:boolean = false;
+    //上传封面显示默认封面
+    public choosePhoto:boolean = false;
+    //默认图片列表
+    public default_photos:string[] = [];
     //搜索内容
     public searchText:string = "";
     //是否开启分享
@@ -54,6 +58,7 @@ export default class UserCollectionCom extends Vue {
         this.axios.get('/v1/user/favorite/').then(res => {
             console.log(res.data);
             this.favoriteList = res.data.data.favorite;
+            this.default_photos = res.data.data.alternative;
         }).catch(err => {
             console.log(err);
         })
@@ -173,13 +178,11 @@ export default class UserCollectionCom extends Vue {
     }
 
     //选择文件
-    public chooseFile(): void {
-        let file = this.$refs.fileipt as HTMLInputElement;
-        let fileList = file.files as FileList;
-        if (fileList[0]) {
-            this.favorite_form.coverFile = fileList[0];
+    public chooseFile(file:File): void {
+        if (file) {
+            this.favorite_form.coverFile = file;
             this.upLoadPhoto = true;
-            file.value = "";
+            this.choosePhoto = false;
         }
     }
 

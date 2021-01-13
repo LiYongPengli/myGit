@@ -216,8 +216,8 @@ export default class RegisteredUserCom extends Vue {
                 break;
             case '7':
                 this.fetch_text = {
-                    last:'近7天',
-                    now:'上7天'
+                    last:'上7天',
+                    now:'近7天'
                 }
                 this.charts_option.legend.data = ['近7天','上7天'];
                 this.charts_option.series[0].name = '近7天';
@@ -229,8 +229,8 @@ export default class RegisteredUserCom extends Vue {
                 break;
             case '30':
                 this.fetch_text = {
-                    last:'近30天',
-                    now:'上30天'
+                    last:'上30天',
+                    now:'近30天'
                 }
                 this.charts_option.legend.data = ['近30天','上30天'];
                 this.charts_option.series[0].name = '近30天';
@@ -242,8 +242,8 @@ export default class RegisteredUserCom extends Vue {
                 break;
             case 'custom':
                 this.fetch_text = {
-                    last:'本期',
-                    now:'上期'
+                    last:'上期',
+                    now:'本期'
                 }
                 this.charts_option.legend.data = ['本期','上期'];
                 this.charts_option.series[0].name = '本期';

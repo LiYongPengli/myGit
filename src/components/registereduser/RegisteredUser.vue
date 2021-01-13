@@ -49,7 +49,7 @@
           </div>
           <div class="inline">
             <p>{{ init_number(result_data.reg_total) }}</p>
-            <p>当前注册人数</p>
+            <p>累计注册人数</p>
           </div>
         </div>
         <!-- 采集数据数图 -->

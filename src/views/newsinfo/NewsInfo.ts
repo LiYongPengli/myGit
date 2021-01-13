@@ -20,6 +20,7 @@ export default class NewsInfoCom extends Vue {
     public created(): void {
         this.getData();
     }
+    
     private getData(): void {
         this.axios.post('/v1/cmd/', {
             cmd: 'news_detail',
