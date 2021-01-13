@@ -79,6 +79,11 @@ export default class UserCollectionCom extends Vue {
 
     }
 
+    public default_chg(filePath:string):void{
+        this.favorite_form.cover = filePath;
+        this.choosePhoto = false;
+    }
+
     //获取好友列表
     public getFriendList(): void {
         this.axios
@@ -97,7 +102,12 @@ export default class UserCollectionCom extends Vue {
     private createFavorite(): void {
         let formdata = new FormData();
         formdata.append('name', this.favorite_form.name);
-        formdata.append('cover', this.favorite_form.coverFile);
+        if(!this.favorite_form.coverFile){
+            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1].split('.')[0];
+            formdata.append('cover', name);
+        }else{
+            formdata.append('cover', this.favorite_form.coverFile);
+        }
         this.axios.post('/v1/user/favorite/', formdata).then(res => {
             this.$message.success(res.data.data.msg);
             this.dialogVisible = false;
@@ -120,6 +130,9 @@ export default class UserCollectionCom extends Vue {
         formdata.append('new_name', this.favorite_form.name);
         if (this.favorite_form.coverFile) {
             formdata.append('cover', this.favorite_form.coverFile);
+        }else{
+            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1].split('.')[0];
+            formdata.append('cover', name);
         }
         this.axios.put('/v1/user/favorite/', formdata).then(res => {
             this.$message.success(res.data.data.msg);
@@ -194,10 +207,7 @@ export default class UserCollectionCom extends Vue {
             this.$message.error('请输入书签名称!');
             return;
         }
-        /* if (!this.favorite_form.cover) {
-            this.$message.error('请选择封面图片');
-            return;
-        } */
+        
         this.isUpFile = true;
         if (this.dialogTitle == '创建书签') {
             this.createFavorite();

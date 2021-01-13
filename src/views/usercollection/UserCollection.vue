@@ -127,10 +127,11 @@
           placeholder="请输入专题名称"
         />
         <span class="fm">书签封面:</span>
+        <span v-show="favorite_form.cover" @click="choosePhoto = true">重新选择...</span>
         <div v-show="favorite_form.cover" class="sqcj_img">
           <img :src="favorite_form.cover" alt="" />
         </div>
-        <div @click="choosePhoto = true" class="sqcj">
+        <div @click="choosePhoto = true" v-show="!favorite_form.cover" class="sqcj">
           <label>
             <img
               src="../../assets/img/cjqs.png"
@@ -140,7 +141,7 @@
             <span class="scfm">上传封面</span>
           </label>
         </div>
-
+        
         <div class="edit_wrap_footer">
           <el-button type="primary" @click="toSure">确 认</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
@@ -154,7 +155,7 @@
       title="选择封面"
       width="800px"
     >
-      <other-photos :default_photos="default_photos" @filechange="chooseFile" />
+      <other-photos v-if="choosePhoto" @default_chg="default_chg" @close="choosePhoto=false" :default_photos="default_photos" @filechange="chooseFile" />
     </el-dialog>
     <!-- 上传封面 -->
     <el-dialog

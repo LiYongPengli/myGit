@@ -44,7 +44,7 @@
       <el-button @click="sure" style="width: 80px" size="small" type="primary"
         >确 定</el-button
       >
-      <el-button style="width: 80px" size="small">取 消</el-button>
+      <el-button @click="ext" style="width: 80px" size="small">取 消</el-button>
     </div>
   </div>
 </template>
@@ -80,6 +80,11 @@ export default class OtherPhotos extends Vue {
       return;
     }
     return this.choose_photo;
+  }
+
+  @Emit("close")
+  public ext():boolean{
+      return false;
   }
 }
 </script>
