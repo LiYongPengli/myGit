@@ -197,8 +197,10 @@ export default class MyFollowCom extends Vue {
     }
 
     public showTrack(type:string,item:any):string{
+        let json = JSON.stringify(item);
+        let obj = JSON.parse(json);
         if(type=="ZH"){
-            for(let i of item.attachments){
+            for(let i of obj.attachments){
                 if(i.position=='SUBTITLES_ZH'){
                     let url = <string>i.url;
                     let urlArr = url.split('/');
@@ -209,7 +211,7 @@ export default class MyFollowCom extends Vue {
                 }
             }
         }else{
-            for(let i of item.attachments){
+            for(let i of obj.attachments){
                 if(i.position=='SUBTITLES_RAW'){
                     let url = <string>i.url;
                     let urlArr = url.split('/');

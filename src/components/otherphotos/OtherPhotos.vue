@@ -4,6 +4,7 @@
       <my-scroll>
         <div class="photo_list">
           <div class="default_photo" v-for="(v, i) in default_photos" :key="i">
+            <img v-show="choose_photo == v" class="duigou" src="../../assets/img/duigouf.png" alt="">
             <el-image
               :style="{
                 border:
@@ -102,6 +103,13 @@ export default class OtherPhotos extends Vue {
         height: 130px;
         text-align: center;
         margin-bottom: 10px;
+        position: relative;
+        .duigou{
+          position: absolute;
+          z-index: 10;
+          bottom: -1px;
+          right: 9px;
+        }
         .img {
           width: 233px;
           height: 100%;

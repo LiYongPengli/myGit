@@ -2,46 +2,62 @@
   <div class="newsinfo">
     <header-two />
 
-    <div class="wrap" v-if="newsInfo" >
+    <div class="wrap" v-if="newsInfo">
       <my-scroll>
-        <div ref="wrap_content" class="wrap_content" :style="{'width':topic_show?'1000px':'1200px'}">
+        <div
+          ref="wrap_content"
+          class="wrap_content"
+          :style="{ width: topic_show ? '1000px' : '1200px' }"
+        >
           <div class="crumbs">
             <!-- <a @click="$router.push('/')">首页</a><b>&gt;</b><a>新闻详情</a> -->
             <a @click="$router.push('/')">首页</a><b>&gt;</b>
             <a v-if="newsInfo.media_name == 'YouTube'">视频详情</a>
             <a v-else>新闻详情</a>
           </div>
-          <p v-if="language == 'crawler'" class="title">{{ newsInfo.title.crawler }}</p>
+          <p v-if="language == 'crawler'" class="title">
+            {{ newsInfo.title.crawler }}
+          </p>
           <p v-if="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
-          <p v-if="language == 'zh-CN'" class="title">{{ newsInfo.title["zh-CN"] }}</p>
+          <p v-if="language == 'zh-CN'" class="title">
+            {{ newsInfo.title["zh-CN"] }}
+          </p>
           <div class="control_wrap">
             <div class="left">
-              <span @click="tofollow" v-if="!newsInfo.subscribed" class="unfollow"
+              <span
+                @click="tofollow"
+                v-if="!newsInfo.subscribed"
+                class="unfollow"
                 >关注</span
               >
               <span @click="tofollow" v-if="newsInfo.subscribed" class="follow"
                 >已关注</span
               >
               <span class="info"
-                >{{ newsInfo.media_name }} 丨 <span v-time="newsInfo.time"></span> 丨
+                >{{ newsInfo.media_name }} 丨
+                <span v-time="newsInfo.time"></span> 丨
                 {{ newsInfo.favorite }}人收藏 丨 {{ newsInfo.pv }}次浏览量</span
               >
             </div>
             <div class="right">
               <span @click="showCollection = true" class="tool"
-                ><i v-show="!newsInfo.favorited" class="el-icon-shoucang"></i
-                >
-                <i v-show="newsInfo.favorited" class="el-icon-shoucangl" :class="{ actives: newsInfo.favorited }"></i
-                >
-                收藏 </span
-              >
+                ><i v-show="!newsInfo.favorited" class="el-icon-shoucang"></i>
+                <i
+                  v-show="newsInfo.favorited"
+                  class="el-icon-shoucangl"
+                  :class="{ actives: newsInfo.favorited }"
+                ></i>
+                收藏
+              </span>
               <span @click="likes" class="tool"
-                ><i v-show="!newsInfo.liked" class="el-icon-zan" ></i
-                >
-                <i  v-show="newsInfo.liked" class="el-icon-zanl" :class="{ actives: newsInfo.liked }"></i
-                >
-                点赞 </span
-              >
+                ><i v-show="!newsInfo.liked" class="el-icon-zan"></i>
+                <i
+                  v-show="newsInfo.liked"
+                  class="el-icon-zanl"
+                  :class="{ actives: newsInfo.liked }"
+                ></i>
+                点赞
+              </span>
               <span @click="notInterested" class="tool"
                 ><i
                   class="el-icon-nozan"
@@ -54,16 +70,24 @@
                   @click="fontSize = 14"
                   :class="{ fontActive: fontSize == 14 }"
                   >小</span
-                ><span @click="fontSize = 16" :class="{ fontActive: fontSize == 16 }"
+                ><span
+                  @click="fontSize = 16"
+                  :class="{ fontActive: fontSize == 16 }"
                   >中</span
-                ><span @click="fontSize = 20" :class="{ fontActive: fontSize == 20 }"
+                ><span
+                  @click="fontSize = 20"
+                  :class="{ fontActive: fontSize == 20 }"
                   >大</span
                 >】
               </div>
             </div>
           </div>
           <!-- 文章主体 -->
-          <div v-if="newsInfo" class="content" :style="{ 'font-size': fontSize + 'px' }">
+          <div
+            v-if="newsInfo"
+            class="content"
+            :style="{ 'font-size': fontSize + 'px' }"
+          >
             <div
               v-if="!newsInfo.is_video"
               v-html="getNewsContent()"
@@ -71,23 +95,56 @@
             ></div>
             <div v-if="newsInfo.is_video" class="youtube">
               <div class="video_wrap">
-                <video :src="'http://hk.zlbxxcj.bjceis.com'+newsInfo.attachments[1].url" controls>
-                  <track v-if="showTrack('RAW')" :default="!showTrack('ZH')" :src="axios.defaults.baseURL+showTrack('RAW')" label="原文" />
-                  <track v-if="showTrack('ZH')" default :src="axios.defaults.baseURL+showTrack('ZH')" label="中文" />
+                <video
+                  :src="
+                    'http://hk.zlbxxcj.bjceis.com' + newsInfo.attachments[1].url
+                  "
+                  controls
+                >
+                  <track
+                    v-if="showTrack('RAW')"
+                    :default="!showTrack('ZH')"
+                    :src="axios.defaults.baseURL + showTrack('RAW')"
+                    label="原文"
+                  />
+                  <track
+                    v-if="showTrack('ZH')"
+                    default
+                    :src="axios.defaults.baseURL + showTrack('ZH')"
+                    label="中文"
+                  />
                 </video>
               </div>
               <div class="vvts">
                 <my-scroll>
-                   <div class="spzm">
-                     <span class="zm">视频字幕</span>
-                     <div class="control_btn">
-                       <span @click="track_language='crawler'" :class="{'active':track_language=='crawler'}">原文</span>
-                       <span @click="track_language='zh-CN'" :class="{'active':track_language=='zh-CN'}">中文</span>
-                     </div>
-                   </div>
-                   <p class="nozm" v-if="!getYouTubeText(newsInfo.html[track_language][0].content).length">暂无字幕</p>
+                  <div class="spzm">
+                    <span class="zm">视频字幕</span>
+                    <div class="control_btn">
+                      <span
+                        @click="track_language = 'crawler'"
+                        :class="{ active: track_language == 'crawler' }"
+                        >原文</span
+                      >
+                      <span
+                        @click="track_language = 'zh-CN'"
+                        :class="{ active: track_language == 'zh-CN' }"
+                        >中文</span
+                      >
+                    </div>
+                  </div>
                   <p
-                    v-for="(v, i) in getYouTubeText(newsInfo.html[track_language][0].content)"
+                    class="nozm"
+                    v-if="
+                      !getYouTubeText(newsInfo.html[track_language][0].content)
+                        .length
+                    "
+                  >
+                    暂无字幕
+                  </p>
+                  <p
+                    v-for="(v, i) in getYouTubeText(
+                      newsInfo.html[track_language][0].content
+                    )"
                     :key="i"
                   >
                     {{ v.innerHTML }}
@@ -99,7 +156,11 @@
           <!-- 底部操作 -->
           <div class="footer">
             <div class="left">
-              <span v-show="newsInfo.attachments.length" @click="showDownLoad = true">附件下载</span>
+              <span
+                v-show="newsInfo.attachments.length"
+                @click="showDownLoad = true"
+                >附件下载</span
+              >
             </div>
             <div v-if="newsInfo.media_name != 'YouTube'" class="right">
               <div class="download_this">
@@ -119,8 +180,8 @@
       top="28vh"
       title="附件下载"
     >
-      <my-scroll>
-        <ul class="download_list">
+      <ul class="download_list">
+        <my-scroll>
           <li v-for="(v, i) in newsInfo.attachments" :key="i">
             <speed-text width="350px" :text="v.name" />
             <!-- <span v-if="v.name" class="file_name">{{ v.name }}</span> -->
@@ -129,8 +190,8 @@
               <img src="../../assets/img/download.png" alt="" />
             </div>
           </li>
-        </ul>
-      </my-scroll>
+        </my-scroll>
+      </ul>
       <span class="downloadClose" @click="showDownLoad = false">取消</span>
     </el-dialog>
     <!-- 收藏夹 -->
@@ -165,7 +226,7 @@ import SpeedText from "@/components/SpeedText.vue";
     MyFooter,
     MyScroll,
     AddCollection,
-    SpeedText
+    SpeedText,
   },
 })
 export default class NewsInfo extends mixins(NewsInfoCom) {}
