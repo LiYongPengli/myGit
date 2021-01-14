@@ -156,7 +156,8 @@ export default class HeaderOne extends Vue {
     }
     input {
       //width: 1618px;
-      width: calc(100% - 75px);
+      // width: calc(100% - 75px);
+      width: 100%;
       background-color: #272731;
       height: 65px;
       border: 0;
