@@ -303,6 +303,7 @@ body {
       }
     }
     a.arrow {
+      border-bottom: 1px solid #242432;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }

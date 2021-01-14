@@ -183,7 +183,13 @@
                 float: right;
                 margin-right: 40%;
                 margin-top: 4.5%;
+                cursor: pointer;
             }
+        }
+        .sqfm::after {
+            display: block;
+            content: "";
+            clear: both;
         }
         .nr {
             display: inline-block;
@@ -225,7 +231,7 @@
             width: 200px;
             height: 100px;
             position: absolute;
-            top: 110px;
+            top: 130px;
             left: 184px;
             overflow: hidden;
             img {
@@ -241,10 +247,10 @@
             // margin-top: 70px;
             text-align: center;
             .el-button--primary {
-                width: 190px;
+                width: 80px;
             }
             .el-button--default {
-                width: 190px;
+                width: 80px;
             }
         }
     }

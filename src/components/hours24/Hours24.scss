@@ -9,7 +9,8 @@
     background: -o-linear-gradient(top, rgba(49, 49, 61, 1) 0%, rgba(38, 38, 48, 1) 100%);
     background: -ms-linear-gradient(top, rgba(49, 49, 61, 1) 0%, rgba(38, 38, 48, 1) 100%);
     background: linear-gradient(to bottom, rgba(49, 49, 61, 1) 0%, rgba(38, 38, 48, 1) 100%);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    // box-shadow: 0px 2px 6px 0px rgba(62, 142, 255, 0.3);
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -21,9 +22,10 @@
         line-height: 70px;
         color: white;
         font-size: 20px;
-        border-bottom: 1px solid #3a3a48;
+        border-bottom: 1px solid #242432;
     }
     .content {
+        border-top: 1px solid #494958;
         padding-bottom: 30px;
         flex: 1;
         overflow: hidden;

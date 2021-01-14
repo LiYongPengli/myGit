@@ -2,16 +2,18 @@
   <!-- 首页头部导航 -->
   <div class="headerone">
     <div @click="jumpHome" class="logo">
+      <img src="../assets/img/logo.png" alt="">
       <a></a>
     </div>
     <div class="search">
-      <button value="" title=""></button>
+      <!-- <button value="" title=""></button> -->
       <!-- <input
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
       /> -->
       <div @click="setShowIntelligent(true)" class="ss">
-        <div @click="setShowIntelligent(true)" class="ss">请输入关键词，查询相关内容</div>
+        <!-- <div @click="setShowIntelligent(true)" class="ss">请输入关键词，查询相关内容</div> -->
+              请输入关键词，查询相关内容 
       </div>
       <div class="bottom">
         <div class="user_info" v-if="user_message">
@@ -109,23 +111,29 @@ export default class HeaderOne extends Vue {
 <style lang="scss" scoped>
 .headerone {
   width: 100%;
-  // border: 1px solid;
   position: fixed;
   left: 0;
   top: 0;
-  height: 130px;
+  height: 132px;
   z-index: 102;
   background-image: linear-gradient(to bottom, #31313d, #272730);
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   .logo {
     position: absolute;
     left: 0;
-    // top: 47px;
+    
     width: 210px;
     height: 132px;
     z-index: 0;
-    background: url(../assets/img/logo.png) 20px center no-repeat #30303c;
+    
+    background-image: url(../assets/img/grcenter.jpg)  ;
     border-right: 1px solid #3a3a48;
     cursor: pointer;
+    img{
+      display: block;
+      margin-left: 13%;
+      margin-top: 15%;
+    }
   }
   .search {
     margin-left: 210px;
@@ -151,15 +159,18 @@ export default class HeaderOne extends Vue {
       // margin-left: 10px;
     }
     .ss {
+       
+         background: url(../assets/img/scsearch.png) 30px center no-repeat #272731;
       // width: calc(100% - 75px);
       background-color: #272731;
-
+      padding-left: 75px;
       height: 65px;
       line-height: 65px;
       border: 0;
       box-sizing: border-box;
       color: white;
-      opacity: 0.5;
+      // opacity: 0.5;
+      border-bottom: 1px solid #242432;
     }
     input:focus {
       outline: none;
@@ -168,36 +179,38 @@ export default class HeaderOne extends Vue {
     }
   }
   .bottom {
-    height: 67px;
+    height: 65px;
     border-top: 1px solid #3a3a48;
-    background: rgba(43, 43, 54, 1);
-    background: -moz-linear-gradient(
-      top,
-      rgba(43, 43, 54, 1) 0%,
-      rgba(39, 39, 48, 1) 100%
-    );
-    background: -webkit-gradient(
-      left top,
-      left bottom,
-      color-stop(0%, rgba(43, 43, 54, 1)),
-      color-stop(100%, rgba(39, 39, 48, 1))
-    );
-    background: -webkit-linear-gradient(
-      top,
-      rgba(43, 43, 54, 1) 0%,
-      rgba(39, 39, 48, 1) 100%
-    );
-    background: -o-linear-gradient(top, rgba(43, 43, 54, 1) 0%, rgba(39, 39, 48, 1) 100%);
-    background: -ms-linear-gradient(
-      top,
-      rgba(43, 43, 54, 1) 0%,
-      rgba(39, 39, 48, 1) 100%
-    );
-    background: linear-gradient(
-      to bottom,
-      rgba(43, 43, 54, 1) 0%,
-      rgba(39, 39, 48, 1) 100%
-    );
+    // background: rgba(43, 43, 54, 1);
+    // background: -moz-linear-gradient(
+    //   top,
+    //   rgba(43, 43, 54, 1) 0%,
+    //   rgba(39, 39, 48, 1) 100%
+    // );
+    // background: -webkit-gradient(
+    //   left top,
+    //   left bottom,
+    //   color-stop(0%, rgba(43, 43, 54, 1)),
+    //   color-stop(100%, rgba(39, 39, 48, 1))
+    // );
+    // background: -webkit-linear-gradient(
+    //   top,
+    //   rgba(43, 43, 54, 1) 0%,
+    //   rgba(39, 39, 48, 1) 100%
+    // );
+    // background: -o-linear-gradient(top, rgba(43, 43, 54, 1) 0%, rgba(39, 39, 48, 1) 100%);
+    // background: -ms-linear-gradient(
+    //   top,
+    //   rgba(43, 43, 54, 1) 0%,
+    //   rgba(39, 39, 48, 1) 100%
+    // );
+    // background: linear-gradient(
+    //   to bottom,
+    //   rgba(43, 43, 54, 1) 0%,
+    //   rgba(39, 39, 48, 1) 100%
+    // )
+     background-image: url(../assets/img/gcenter.jpg)  ;
+   
 
     .user_info {
       float: left;
@@ -242,7 +255,7 @@ export default class HeaderOne extends Vue {
         text-align: center;
         color: white;
         font-size: 16px;
-        margin-right: 60px;
+   
         text-decoration: none;
         display: inline-block;
         // width: 70px;
@@ -278,6 +291,8 @@ export default class HeaderOne extends Vue {
         background-color: #22222b;
         font-weight: bold;
         height: 67px;
+        border-left: 1px solid #3a3a48;
+        border-right: 1px solid #3a3a48;
       }
     }
   }

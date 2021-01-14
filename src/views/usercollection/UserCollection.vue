@@ -118,15 +118,17 @@
             placeholder="请输入专题名称"
           />
         </div>
-
-        <div>
+        <div ></div>
+        <div class="sqfm">
           <span class="fm">书签封面:</span>
-          <span v-show="favorite_form.cover" @click="choosePhoto = true"
-            >重新选择...</span
-          >
+       
+          
           <div v-show="favorite_form.cover" class="sqcj_img">
             <img :src="favorite_form.cover" alt="" />
           </div>
+          <span class="cxxz" v-show="favorite_form.cover" @click="choosePhoto = true"
+            >重新选择...</span
+          >
         </div>
         <div @click="choosePhoto = true" v-show="!favorite_form.cover" class="sqcj">
           <label>
@@ -193,6 +195,7 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
 </style>
 <style lang="scss">
 .usercollection {
+
   .el-dialog {
     background: #3a3a48;
     min-height: 475px;
@@ -203,6 +206,13 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
     }
     span {
       margin-left: 2px;
+    }
+  }
+  .edit_wrap_footer{
+    .el-button--primary{
+      width: 80px;
+      height: 35px;
+      line-height: 35px;
     }
   }
 }
