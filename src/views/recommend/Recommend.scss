@@ -134,6 +134,10 @@
                             .img {
                                 width: 100%;
                                 height: 132px;
+                                transition: all 2s;
+                            }
+                            .img:hover {
+                                transform: scale(1.2);
                             }
                         }
                         .text {

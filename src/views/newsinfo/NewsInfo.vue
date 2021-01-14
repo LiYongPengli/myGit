@@ -41,12 +41,13 @@
             </div>
             <div class="right">
               <span @click="showCollection = true" class="tool"
-                ><i v-show="!newsInfo.favorited" class="el-icon-shoucang"></i>
-                <i
+                ><i   class="el-icon-shoucang"></i>
+                <!-- <i
                   v-show="newsInfo.favorited"
                   class="el-icon-shoucangl"
                   :class="{ actives: newsInfo.favorited }"
-                ></i>
+                > 
+                </i>-->
                 收藏
               </span>
               <span @click="likes" class="tool"
@@ -58,13 +59,24 @@
                 ></i>
                 点赞
               </span>
+
               <span @click="notInterested" class="tool"
-                ><i
+                ><i v-show="!newsInfo.not_interested"
                   class="el-icon-nozan"
                   :class="{ actives: newsInfo.not_interested }"
                 ></i
-                >不感兴趣</span
+                >
+
+                <i v-show="newsInfo.not_interested"
+                  class="el-icon-nozanl"
+                  :class="{ actives: newsInfo.not_interested }"
+                ></i
+                >
+                
+                不感兴趣</span
               >
+
+
               <div class="font">
                 【 字体:<span
                   @click="fontSize = 14"

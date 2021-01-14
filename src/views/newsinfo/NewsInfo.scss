@@ -226,7 +226,6 @@
         }
     }
     .download_list {
-        
         height: 300px;
         li {
             padding: 0 50px;
@@ -264,17 +263,19 @@
     .fontActive {
         text-decoration: underline;
     }
-    .actives.el-icon-shoucangl {
-        background: url("../../assets/img/shoucangl.png") left 0px no-repeat;
-        width: 20px;
-        height: 18px;
-    }
+    // .actives.el-icon-shoucangl {
+    //     background: url("../../assets/img/shoucangl.png") left 0px no-repeat;
+    //     width: 20px;
+    //     height: 18px;
+    // }
     .actives.el-icon-zanl {
         background: url("../../assets/img/zanpressl.png") left 0px no-repeat;
         width: 18px;
         height: 18px;
     }
-    .actives.el-icon-nozan {
+    .actives.el-icon-nozanl {
+        width: 18px;
+        height: 15px;
         background: url("../../assets/img/nozanpressl.png") left 0px no-repeat;
     }
 }
