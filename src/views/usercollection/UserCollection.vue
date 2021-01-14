@@ -208,12 +208,12 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
       margin-left: 2px;
     }
   }
-  .edit_wrap_footer{
-    .el-button--primary{
-      width: 80px;
-      height: 35px;
-      line-height: 35px;
-    }
-  }
+  // .edit_wrap_footer{
+  //   .el-button--primary{
+  //     width: 80px;
+  //     height: 35px;
+  //     line-height: 35px;
+  //   }
+  // }
 }
 </style>

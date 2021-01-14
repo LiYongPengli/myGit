@@ -11,10 +11,16 @@
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
       /> -->
-      <div @click="setShowIntelligent(true)" class="ss">
-        <!-- <div @click="setShowIntelligent(true)" class="ss">请输入关键词，查询相关内容</div> -->
+<input class="ss"
+        @click="setShowIntelligent(true)"
+        type="text"
+        placeholder="请输入关键词，查询相关内容"
+      />
+
+      <!-- <div @click="setShowIntelligent(true)" class="ss">
+   
               请输入关键词，查询相关内容 
-      </div>
+      </div> -->
       <div class="bottom">
         <div class="user_info" v-if="user_message">
           <!-- 头部下拉-->
