@@ -103,96 +103,9 @@
       <div class="list">
         <div class="nodata" v-show="!list.length">暂无数据</div>
         <ul>
-          <li v-for="(v, i) in list" :key="i">
-            <div class="ly">
-              <div class="tx">
-                <img src="../../assets/img/media_default.png" alt="" />
-              </div>
-              <div class="sjrs">
-                <span class="mt">媒体:{{ v.media_name }}</span>
-                <span class="time">时间: {{ init_time(v.time) }}</span>
-                <span class="ll">浏览次数: {{ v.pv }}</span>
-              </div>
-              <div class="zan">
-                <img src="../../assets/img/zanpress.png" alt="" />
-                <span>{{ v.like }}</span>
-                <share-content :content="v" type="news">
-                  <img src="../../assets/img/sczhuanfa.png" alt="" />
-                </share-content>
-              </div>
-            </div>
-            <div class="content">
-              <p v-show="language == 'crawler'" class="title">
-                <a @click="toNewsInfo(v)">{{ v.title.crawler }}</a>
-              </p>
-              <p v-show="language == 'en'" class="title">
-                <a @click="toNewsInfo(v)">{{ v.title.en }}</a>
-              </p>
-              <p v-show="language == 'zh-CN'" class="title">
-                <a @click="toNewsInfo(v)">{{ v.title["zh-CN"] }}</a>
-              </p>
-              <div class="ziyuan">
-                <div v-if="v.cover.type == 'image'" class="imgwrap">
-                  <el-image
-                    :fit="'scale-down'"
-                    class="img"
-                    lazy
-                    v-if="v.cover.url[0]"
-                    :src="v.cover.url[0]"
-                  >
-                    <div slot="error" class="image-slot">
-                      <img
-                        style="width: 200px"
-                        src="../../assets/img/404.png"
-                        alt=""
-                      />
-                    </div>
-                  </el-image>
-                  <el-image
-                    :fit="'scale-down'"
-                    class="img"
-                    lazy
-                    v-if="v.cover.url[1]"
-                    :src="v.cover.url[1]"
-                  >
-                    <div slot="error" class="image-slot">
-                      <img
-                        style="width: 200px"
-                        src="../../assets/img/404.png"
-                        alt=""
-                      />
-                    </div>
-                  </el-image>
-                  <!-- <img
-                    @load="imgLoad"
-                    v-if="v.cover.url[0]"
-                    :src="v.cover.url[0]"
-                    alt=""
-                  />
-                  <img
-                    @load="imgLoad"
-                    v-if="v.cover.url[1]"
-                    :src="v.cover.url[1]"
-                    alt=""
-                  /> -->
-                </div>
-                <div v-if="v.cover.type == 'video'" class="video_wrap">
-                  <video
-                    v-show="!v.error"
-                    @error="loaderr(i)"
-                    :src="v.cover.video"
-                    controls
-                  >
-                    <track v-if="showTrack('RAW',v)" :default="!showTrack('ZH',v)" :src="axios.defaults.baseURL+showTrack('RAW',v)" label="原文" />
-                    <track v-if="showTrack('ZH',v)" default :src="axios.defaults.baseURL+showTrack('ZH',v)" label="中文" />
-                  </video>
-                  <img v-show="v.error" src="../../assets/img/404.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <div @click="getList" v-show="!isfinished" class="jzgd">
-            点击加载更多
+          <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in list" :key="i" />
+          <div v-show="!isfinished" class="jzgd">
+            正在加载更多
           </div>
         </ul>
       </div>
@@ -204,9 +117,11 @@
 import Component, { mixins } from "vue-class-component";
 import MyFollowCom from "./Myfollow";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import ListItem from "@/components/ListItem.vue";
 @Component({
   components: {
     ShareContent,
+    ListItem
   },
 })
 export default class MyFollow extends mixins(MyFollowCom) {}

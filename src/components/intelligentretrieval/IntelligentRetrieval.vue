@@ -2,7 +2,7 @@
   <!-- 智能检索 -->
   <div class="intelligentretrieval">
     <div v-if="!showSearch" class="intelligent_wrap">
-      <my-scroll>
+      <my-scroll @loading="loadMore">
         <header>
           <div class="search">
             <div @click="setShowIntelligent(false)" class="gbjs">关闭检索</div>
@@ -400,62 +400,10 @@
             </div>
             <div class="result">
               <ul>
-                <li v-for="(v, i) in newsList" :key="i">
-                  <div class="pic">
-                    <el-image
-                      :fit="'scale-down'"
-                      class="img"
-                      lazy
-                      v-if="v.cover.type == 'image'"
-                      :src="v.cover.url[0]"
-                    >
-                      <div slot="error" class="image-slot">
-                        <img style="width:200px;" src="../../assets/img/404.png" alt="">
-                      </div>
-                    </el-image>
-                    <video-thumbnail
-                      style="width: 200px; margin-right: 30px"
-                      v-if="v.cover.type == 'video'"
-                      :video_photo="v.cover.url"
-                      :video_url="v.cover.video"
-                    />
-                  </div>
-                  <div class="text">
-                    <p
-                      v-show="language == 'crawler'"
-                      @click="toNewsInfo(v)"
-                      class="title"
-                    >
-                      {{ v.title.crawler }}
-                    </p>
-                    <p
-                      v-show="language == 'en'"
-                      @click="toNewsInfo(v)"
-                      class="title"
-                    >
-                      {{ v.title.en }}
-                    </p>
-                    <p
-                      v-show="language == 'zh-CN'"
-                      @click="toNewsInfo(v)"
-                      class="title"
-                    >
-                      {{ v.title["zh-CN"] }}
-                    </p>
-                    <span class="mt">媒体: {{ v.media_name }} </span>
-                    <span class="time">时间: {{ init_time(v.time) }}</span>
-                    <span class="ll">浏览次数: {{ v.pv }}人</span>
-                  </div>
-                </li>
-                <div
-                  element-loading-text="拼命加载中"
-                  element-loading-background="rgba(0, 0, 0, 0)"
-                  v-loading="loading"
-                  @click="loadMore"
-                  v-show="!finished"
-                  class="jzgd"
-                >
-                  {{ loading ? "" : "点击加载更多内容" }}
+                <list-item :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
+                
+                <div @click="loadMore" v-show="!finished" class="jzgd">
+                  正在加载更多内容
                 </div>
               </ul>
             </div>
@@ -475,6 +423,7 @@ import SearchCom from "@/components/Search.vue";
 import TimeSlot from "@/components/TimeSlot.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
+import ListItem from "@/components/ListItem.vue";
 
 @Component({
   components: {
@@ -482,6 +431,7 @@ import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
     TimeSlot,
     MyScroll,
     VideoThumbnail,
+    ListItem
   },
 })
 export default class IntelligentRetrieval extends mixins(

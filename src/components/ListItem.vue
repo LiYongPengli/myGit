@@ -151,6 +151,7 @@ export default class ListItem extends Vue {
 .listitem {
   border-bottom: 1px solid #3a3a48;
   padding: 20px;
+  color: white;
   .top {
     display: flex;
     justify-content: space-between;
@@ -201,6 +202,7 @@ export default class ListItem extends Vue {
   .title {
     margin-top: 15px;
     cursor: pointer;
+    max-width: 100%;
   }
   .title:hover {
     text-decoration: underline;

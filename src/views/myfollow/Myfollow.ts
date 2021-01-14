@@ -1,10 +1,11 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
-import { State } from 'vuex-class';
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Mutation, State } from 'vuex-class';
 @Component
 export default class MyFollowCom extends Vue {
     @State('language') language!: string;
+    @State('mainPageLoading') mainPageLoading!: boolean;
     public country: any[] = [];
     public people: any[] = [];
     public media: any[] = [];
@@ -25,12 +26,20 @@ export default class MyFollowCom extends Vue {
     }
 
     public chooseNav: string = 'all';
+    @Mutation('setMainPageLoading') setMainPageLoading!: any;
+    @Watch('mainPageLoading')
+    public loadingChange(newVal:boolean,oldVal:boolean):void{
+        console.log(newVal)
+        if(newVal&&!this.isfinished){
+            this.getList();
+        }
+    }
 
     public listenChooseNav(newVal: string): void {
         this.chooseNav = newVal;
         this.filters.search_after = [];
         this.isfinished = false;
-        this.list = [];
+        // this.list = [];
         switch (newVal) {
             case 'all':
                 if(!this.country.length&&!this.media.length&&!this.people.length){
@@ -154,7 +163,7 @@ export default class MyFollowCom extends Vue {
                 }
                 break;
         }
-        this.list = [];
+        // this.list = [];
         this.filters.search_after = [];
         this.getList();
     }
@@ -276,8 +285,8 @@ export default class MyFollowCom extends Vue {
             paras: filters
         }).then(res => {
             console.log(res.data);
-            this.filters.search_after = res.data.data.search_after;
-            if(res.data.data.search_after.length){
+            
+            if(this.filters.search_after.length){
                 this.list = this.list.concat(res.data.data.news);
             }else{
                 this.list = res.data.data.news;
@@ -285,6 +294,8 @@ export default class MyFollowCom extends Vue {
             if(!res.data.data.news.length){
                 this.isfinished = true;
             }
+            this.filters.search_after = res.data.data.search_after;
+            this.setMainPageLoading(false);
         }).catch(err => {
             console.log(err);
         })

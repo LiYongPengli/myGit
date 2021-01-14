@@ -12,7 +12,9 @@ switch (process.env.VUE_APP_MODE) {
         axios.defaults.baseURL = ''
         break;
 }
-
+axios.defaults.headers = {
+    'Cache-Control': 'no-cache'
+}
 export const baseApi = api;
 
 axios.interceptors.response.use(res=>{

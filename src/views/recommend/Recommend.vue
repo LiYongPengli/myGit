@@ -40,7 +40,8 @@
         </div>
         <div class="list">
           <ul>
-            <li v-for="(v, i) in newsList" :key="i">
+            <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in newsList" :key="i" />
+            <!-- <li v-for="(v, i) in newsList" :key="i">
               <div v-if="v.cover.type != 'text'" class="pic">
                 <video-thum-bnail
                   v-if="v.cover.type == 'video'"
@@ -98,9 +99,9 @@
                   <img src="../../assets/img/sczhuanfa.png" alt="" />
                 </share-content>
               </div>
-            </li>
-            <div @click="loading" v-show="!finished" class="jzgd">
-              点击加载更多精彩内容
+            </li> -->
+            <div v-show="!finished" class="jzgd">
+              正在加载更多精彩内容
             </div>
           </ul>
         </div>
@@ -206,13 +207,13 @@ import RecommendCom from "./Recommend";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
 import Hours24 from "@/components/hours24/Hours24.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
-import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
+import ListItem from "@/components/ListItem.vue";
 @Component({
   components: {
     EditChannel,
     Hours24,
     ShareContent,
-    VideoThumBnail,
+    ListItem,
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

@@ -1,6 +1,6 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import Swiper from 'swiper'
 import { Mutation, State } from 'vuex-class';
 @Component
@@ -42,12 +42,12 @@ export default class RecommendCom extends Vue {
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
     
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
-    /* @Watch('mainPageLoading')
+    @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
         if(newVal&&!this.finished){
             this.loading();
         }
-    } */
+    }
 
     public created(): void {
         this.setMainPageLoading(false);

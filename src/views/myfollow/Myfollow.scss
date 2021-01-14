@@ -41,7 +41,7 @@
         }
         .gjlb {
             background-color: #3a3a48;
-            position: relative;
+            // position: relative;
             p.sx {
                 margin-top: 10px;
                 margin-left: 30px;
@@ -118,97 +118,7 @@
             }
             ul {
                 list-style: none;
-                li {
-                    margin-top: 30px;
-                    padding-left: 40px;
-                    padding-bottom: 30px;
-                    overflow: hidden;
-                    // border-bottom: 1px solid #3a3a48;
-                    // box-sizing: border-box;
-                    border-bottom: 1px solid #3a3a48;
-                    .ly {
-                        overflow: hidden;
-                        .tx {
-                            float: left;
-                            width: 54px;
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .sjrs {
-                            float: left;
-                            // height: 54px;
-                            // border: 1px solid red;
-                            margin-left: 20px;
-                            // width: 780px;
-                            .time,
-                            .ll {
-                                color: #bcc2d5;
-                                font-size: 13px;
-                                color: #bcc2d5;
-                            }
-                            .time {
-                                margin-right: 25px;
-                            }
-                            .mt {
-                                font-size: 16px;
-                                color: white;
-                                display: block;
-                                margin-bottom: 15px;
-                            }
-                        }
-                    }
-                    .content {
-                        margin-top: 15px;
-                        .title {
-                            font-size: 16px;
-                            a {
-                                color: white;
-                                text-decoration: none;
-                                cursor: pointer;
-                            }
-                        }
-                        .ziyuan {
-                            margin-top: 20px;
-                            .imgwrap{
-                                height: 132px;
-                                overflow: hidden;
-                                display: flex;
-                                align-items: center;
-                                .img {
-                                    width: 200px;
-                                    height: 100%;
-                                    margin-right: 20px;
-                                    display: block;
-                                }
-
-                            }
-                        }
-                    }
-                    .text {
-                        float: left;
-                        width: 633px;
-                        .title {
-                            font-size: 16px;
-                            color: #e2e2e4;
-                        }
-                    }
-                    .zan {
-                        float: right;
-                        margin-right: 40px;
-                        display: flex;
-                        align-items: center;
-                        span {
-                            margin-left: 10px;
-                            margin-right: 20px;
-                            font-size: 13px;
-                            color: #bcc2d5;
-                        }
-                        img {
-                            display: block;
-                        }
-                    }
-                }
+                
                 .jzgd {
                     padding: 20px 0;
                     text-align: center;
