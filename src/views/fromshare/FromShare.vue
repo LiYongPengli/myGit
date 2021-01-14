@@ -25,14 +25,15 @@
           <!-- </div> -->
         </div>
         <div class="right">
-          <div @click="toAddCollection" v-show="favorite.status=='pending'" class="collect">收藏书签</div>
+          <div @click="toAddCollection" v-show="favorite.status=='pending'" class="collect">收藏收藏夹</div>
           <div v-show="favorite.status!='pending'" class="ready_collect">已收藏</div>
         </div>
       </div>
       <div class="collectionlist">
         <my-scroll>
           <ul>
-            <li v-for="(v, i) in favorite.news" :key="i">
+            <list-item @oncollection="collectionId=v.news_id;showCollection=true" :item="v" :shoControls="['collection']" v-for="(v, i) in favorite.news" :key="i" />
+            <!-- <li v-for="(v, i) in favorite.news" :key="i">
               <div class="pic">
                 <video-thum-bnail v-if="v.cover.type=='video'" :video_photo="v.cover.url" :video_url="v.cover.video" />
                 <img v-if="v.cover.type=='image'" :src="v.cover.url" alt="" />
@@ -63,12 +64,9 @@
               <div class="zan">
                 <span @click="collectionId=v.news_id;showCollection=true" v-show="!v.favorited" class="nocollection">收藏</span>
                 <span @click="collectionId=v.news_id;showCollection=true" v-show="v.favorited" class="collected">已收藏</span>
-                <!-- <span class="shanchu">已收藏</span> -->
-                <!-- <share-content :content="v" type="news">
-                  <span class="fenxiang">分享</span>
-                </share-content> -->
+                
               </div>
-            </li>
+            </li> -->
           </ul>
         </my-scroll>
       </div>
@@ -96,13 +94,15 @@ import MyScroll from "@/components/MyScroll.vue";
 import AddCollection from '@/components/addcollection/AddCollection.vue'
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
+import ListItem from "@/components/ListItem.vue";
 @Component({
   components: {
     HeaderTwo,
     MyScroll,
     VideoThumBnail,
     ShareContent,
-    AddCollection
+    AddCollection,
+    ListItem
   },
 })
 export default class FromShare extends mixins(FromShareCom) {}

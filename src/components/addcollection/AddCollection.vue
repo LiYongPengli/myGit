@@ -24,19 +24,19 @@
           </li>
         </ul>
       </my-scroll>
-      <span @click="createNewCollection = true" class="addnew">创建新书签</span>
+      <span @click="createNewCollection = true" class="addnew">创建新收藏夹</span>
       <div v-show="createNewCollection" class="addnewcontent">
         <div>
-          <span class="name"> 书签名称: </span>
+          <span class="name"> 收藏夹名称: </span>
           <input
             v-model="collection_name"
             type="text"
-            placeholder="请输入新书签名称"
+            placeholder="请输入新收藏夹名称"
            style=" border-bottom:1px solid #979797"
           />
         </div>
         <div class="sqfm">
-          <span class="sqfm"> 书签封面: </span>
+          <span class="sqfm"> 收藏夹封面: </span>
           <label for="upFile">
             <input
               style="display: none"

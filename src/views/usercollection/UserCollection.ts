@@ -12,9 +12,9 @@ export default class UserCollectionCom extends Vue {
     public searchText:string = "";
     //是否开启分享
     public isShare: boolean = false;
-    //分享的书签
+    //分享的收藏夹
     public shares:string[] = [];
-    public dialogTitle: string = "编辑书签";
+    public dialogTitle: string = "编辑收藏夹";
     public upLoadPhoto: boolean = false;
     private editItem: any = null;
     //控制展示组件1:个人收藏夹,2:分享的收藏夹,3:收藏夹新闻列表
@@ -175,13 +175,13 @@ export default class UserCollectionCom extends Vue {
     //点击创建收藏夹
     public toCreateFavorite(): void {
         this.dialogVisible = true;
-        this.dialogTitle = "创建书签";
+        this.dialogTitle = "创建收藏夹";
     }
 
     //编辑收藏夹
     public toEdit(item: any): void {
         this.dialogVisible = true;
-        this.dialogTitle = "编辑书签";
+        this.dialogTitle = "编辑收藏夹";
         this.editItem = item;
         this.favorite_form = {
             name: item.name,
@@ -204,12 +204,12 @@ export default class UserCollectionCom extends Vue {
     //弹框的确认
     public toSure(): void {
         if (!this.favorite_form.name) {
-            this.$message.error('请输入书签名称!');
+            this.$message.error('请输入收藏夹名称!');
             return;
         }
         
         this.isUpFile = true;
-        if (this.dialogTitle == '创建书签') {
+        if (this.dialogTitle == '创建收藏夹') {
             this.createFavorite();
         } else {
             this.editFavorite();

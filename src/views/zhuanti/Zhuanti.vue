@@ -10,7 +10,7 @@
         </li>
       </ul>
       <share-content :content="{ name: $route.query.name }" type="collection">
-        <span class="plfx right">分享书签</span>
+        <span class="plfx right">分享收藏夹</span>
       </share-content>
     </div>
     <div class="list">

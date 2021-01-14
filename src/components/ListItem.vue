@@ -28,6 +28,14 @@
             <img src="../assets/img/sczhuanfa.png" alt="" />
           </div>
         </share-content>
+        <div v-if="~shoControls.indexOf('collection')" @click="toCollection" class="btn">
+          <img src="../assets/img/nocollection.png" alt="" />
+          <span>收藏</span>
+        </div>
+        <!-- <div v-show="item.favorited" v-if="~shoControls.indexOf('collection')" @click="toCollection" class="btn">
+          <img src="../assets/img/shoucangl.png" alt="" />
+          <span>已收藏</span>
+        </div> -->
         <div
           v-if="~shoControls.indexOf('delete')"
           @click="toDelete"
@@ -144,6 +152,9 @@ export default class ListItem extends Vue {
   //点赞
   @Emit("onlike")
   public onlike() {}
+  //收藏
+  @Emit("oncollection")
+  public toCollection(){}
 }
 </script>
 

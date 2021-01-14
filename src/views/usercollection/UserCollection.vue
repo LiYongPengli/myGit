@@ -92,13 +92,13 @@
           <li style="background: #3a3a48" @click="toCreateFavorite">
             <div class="collection cjsqhz">
               <img class="cjsq" src="../../assets/img/cjqs.png" alt="" />
-              <span class="cjsqmz">创建书签</span>
+              <span class="cjsqmz">创建收藏夹</span>
             </div>
           </li>
         </ul>
       </my-scroll>
     </div>
-    <!-- 创建书签 -->
+    <!-- 创建收藏夹 -->
     <el-dialog
       top="25vh"
       width="800px"
@@ -110,7 +110,7 @@
     >
       <div class="edit_wrap">
         <div>
-          <span class="name">书签名称：</span>
+          <span class="name">收藏夹名称：</span>
           <input
             v-model="favorite_form.name"
             class="nr"
@@ -120,7 +120,7 @@
         </div>
         <div ></div>
         <div class="sqfm">
-          <span class="fm">书签封面:</span>
+          <span class="fm">收藏夹封面:</span>
        
           
           <div v-show="favorite_form.cover" class="sqcj_img">

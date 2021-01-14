@@ -11,7 +11,7 @@ export default class AddCollectionCom extends Vue {
     //要上传的文件
     public upimg: any = "";
     public upLoadPhoto: boolean = false;
-    //创建新书签
+    //创建新收藏夹
     public createNewCollection: boolean = false;
 
     public created(): void {
@@ -42,7 +42,7 @@ export default class AddCollectionCom extends Vue {
     //创建并收藏
     public async createCollection() {
         if (!this.collection_name) {
-            this.$message.error("请输入书签名称");
+            this.$message.error("请输入收藏夹名称");
             return;
         }
         if (!this.upimg) {
