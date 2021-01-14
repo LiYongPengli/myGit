@@ -4,14 +4,8 @@
     <div v-if="show == 1" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
-        <input
-          v-model="searchText"
-          type="text"
-          placeholder="请输入收藏夹名称"
-        />
-        <span @click="isShare = true" class="plfx" v-show="!isShare"
-          >批量分享</span
-        >
+        <input v-model="searchText" type="text" placeholder="请输入收藏夹名称" />
+        <span @click="isShare = true" class="plfx" v-show="!isShare">批量分享</span>
         <div v-show="isShare" class="share_control">
           <div class="ext_share">
             <el-button
@@ -53,11 +47,7 @@
           >
             <div class="collection">
               <div class="img_wrap">
-                <img
-                  v-if="v.name == '默认'"
-                  src="../../assets/img/scmr.png"
-                  alt=""
-                />
+                <img v-if="v.name == '默认'" src="../../assets/img/scmr.png" alt="" />
                 <img v-if="v.name != '默认'" :src="v.cover" alt="" />
               </div>
 
@@ -119,29 +109,33 @@
       :visible.sync="dialogVisible"
     >
       <div class="edit_wrap">
-        <span class="name">书签名称：</span>
-        <input
-          v-model="favorite_form.name"
-          class="nr"
-          type="text"
-          placeholder="请输入专题名称"
-        />
-        <span class="fm">书签封面:</span>
-        <span v-show="favorite_form.cover" @click="choosePhoto = true">重新选择...</span>
-        <div v-show="favorite_form.cover" class="sqcj_img">
-          <img :src="favorite_form.cover" alt="" />
+        <div>
+          <span class="name">书签名称：</span>
+          <input
+            v-model="favorite_form.name"
+            class="nr"
+            type="text"
+            placeholder="请输入专题名称"
+          />
+        </div>
+
+        <div>
+          <span class="fm">书签封面:</span>
+          <span v-show="favorite_form.cover" @click="choosePhoto = true"
+            >重新选择...</span
+          >
+          <div v-show="favorite_form.cover" class="sqcj_img">
+            <img :src="favorite_form.cover" alt="" />
+          </div>
         </div>
         <div @click="choosePhoto = true" v-show="!favorite_form.cover" class="sqcj">
           <label>
-            <img
-              src="../../assets/img/cjqs.png"
-              alt=""
-            />
+            <img src="../../assets/img/cjqs.png" alt="" />
 
             <span class="scfm">上传封面</span>
           </label>
         </div>
-        
+
         <div class="edit_wrap_footer">
           <el-button type="primary" @click="toSure">确 认</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
@@ -155,7 +149,13 @@
       title="选择封面"
       width="800px"
     >
-      <other-photos v-if="choosePhoto" @default_chg="default_chg" @close="choosePhoto=false" :default_photos="default_photos" @filechange="chooseFile" />
+      <other-photos
+        v-if="choosePhoto"
+        @default_chg="default_chg"
+        @close="choosePhoto = false"
+        :default_photos="default_photos"
+        @filechange="chooseFile"
+      />
     </el-dialog>
     <!-- 上传封面 -->
     <el-dialog
@@ -182,7 +182,7 @@ import OtherPhotos from "@/components/otherphotos/OtherPhotos.vue";
     MyScroll,
     UpFile,
     ShareContent,
-    OtherPhotos
+    OtherPhotos,
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

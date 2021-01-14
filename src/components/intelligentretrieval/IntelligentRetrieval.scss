@@ -348,7 +348,7 @@
                     .correlationsort {
                         cursor: pointer;
                         position: relative;
-                        width: 120px;
+                        // width: 120px;
                         height: 30px;
                         line-height: 30px;
                         float: left;
@@ -358,6 +358,7 @@
                         padding-right: 10px;
                         cursor: pointer;
                         text-align: center;
+                        margin-right: 20px;
                         // img.up {
                         //     cursor: pointer;
                         //     position: absolute;
@@ -379,7 +380,6 @@
                     }
                     .releasetimesort {
                         position: relative;
-                        width: 120px;
                         float: left;
                         font-size: 14px;
                         color: white;
@@ -389,6 +389,7 @@
                         cursor: pointer;
                         text-align: center;
                         opacity: .6;
+                        margin-right: 20px;
                         // img.up {
                         //     cursor: pointer;
                         //     position: absolute;

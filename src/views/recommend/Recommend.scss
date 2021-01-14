@@ -59,6 +59,7 @@
             background: -ms-linear-gradient(top, rgba(58, 58, 72, 1) 0%, rgba(38, 38, 48, 1) 100%);
             background: linear-gradient(to bottom, rgba(58, 58, 72, 1) 0%, rgba(38, 38, 48, 1) 100%);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            border-radius: 3px;
             .list_nav {
                 display: flex;
                 align-items: center;
@@ -108,7 +109,7 @@
                     background: url("../../assets/img/editor.png") left center no-repeat;
                     cursor: pointer;
                     height: 70px;
-                    line-height: 70px;
+                    line-height: 74px;
                 }
             }
             .list {
@@ -219,7 +220,7 @@
                 justify-content: center;
                 align-items: center;
                 height: 70px;
-                padding: 0 40px;
+                padding: 0 20px;
                 span {
                     cursor: pointer;
                     font-size: 16px;
@@ -229,7 +230,7 @@
                     display: block;
                     line-height: 70px;
                     padding: 0 5px;
-                    width: 140px;
+                    width: 150px;
                     text-align: center;
                 }
                 .cur {

@@ -37,6 +37,7 @@
                     background: #494959;
                     padding-left: 20px;
                     color: white;
+                    font-size: 14px;
                 }
                 input::placeholder {
                     color: #cdd6e5;
@@ -99,7 +100,8 @@
                 }
                 .th:nth-of-type(2) {
                     text-align: left;
-                }.th:nth-of-type(5) {
+                }
+                .th:nth-of-type(5) {
                     flex: 2;
                 }
                 .th:nth-of-type(6) {
