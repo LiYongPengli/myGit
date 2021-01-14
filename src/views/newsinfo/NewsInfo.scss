@@ -226,8 +226,10 @@
         }
     }
     .download_list {
-        padding: 0 50px;
+        
+        height: 300px;
         li {
+            padding: 0 50px;
             height: 60px;
             list-style: none;
             display: flex;
@@ -257,7 +259,7 @@
         border: 1px solid white;
         line-height: 30px;
         cursor: pointer;
-        margin: auto;
+        margin: 10px auto;
     }
     .fontActive {
         text-decoration: underline;
