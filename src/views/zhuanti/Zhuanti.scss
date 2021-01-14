@@ -5,7 +5,7 @@
         line-height: 70px;
         .position {
             float: left;
-            width: 1090px;
+            // width: 1090px;
             list-style: none;
             .L {
                 a {
@@ -25,17 +25,29 @@
             }
         }
         .plfx {
+            // margin-top: 20px;
+            // float: right;
+            // margin-right: 0;
+            // height: 30px;
+            // width: 110px;
+            // line-height: 30px;
+            // border: 1px solid #676770;
+            // box-sizing: border-box;
+            // padding-left: 40px;
+            // background: url("../../assets/img/sczhuanfa.png") 20% 50% no-repeat;
+            // cursor: pointer;
             margin-top: 20px;
             float: right;
             margin-right: 0;
             height: 30px;
-            width: 110px;
+            /* width: 162px; */
             line-height: 30px;
             border: 1px solid #676770;
             box-sizing: border-box;
-            padding-left: 40px;
-            background: url("../../assets/img/sczhuanfa.png") 20% 50% no-repeat;
+            padding-left: 35px;
+            background: url("../../assets/img/sczhuanfa.png") 14px no-repeat;
             cursor: pointer;
+            padding-right: 10px;
             // height: 110px;
         }
     }

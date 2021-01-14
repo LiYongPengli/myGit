@@ -216,7 +216,9 @@ export default class App extends Vue {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+	font-family: 'PingFangSC-Regular','helvetica neue',arial,'hiragino sans gb','microsoft yahei ui','microsoft yahei',sans-serif;
 }
+
 ul {
   list-style: none;
 }
