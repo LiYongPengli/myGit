@@ -16,7 +16,8 @@
     <div class="list">
       <my-scroll>
         <ul>
-          <li v-for="(v, i) in list" :key="i">
+          <list-item :shoControls="['share1','delete']" @ondelete="toDelete(v,i)" :item="v" v-for="(v, i) in list" :key="i" />
+          <!-- <li v-for="(v, i) in list" :key="i">
             <div class="pic">
               <video-thum-bnail
                 v-if="v.cover.type == 'video'"
@@ -68,7 +69,7 @@
                 <span class="fenxiang">分享</span>
               </share-content>
             </div>
-          </li>
+          </li> -->
           <!-- <div class="jzgd">更多精彩内容，加载中</div> -->
         </ul>
       </my-scroll>
@@ -93,12 +94,14 @@ import MyScroll from "@/components/MyScroll.vue";
 import Warning from "@/components/Warning.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
+import ListItem from "@/components/ListItem.vue";
 @Component({
   components: {
     MyScroll,
     Warning,
     ShareContent,
-    VideoThumBnail
+    VideoThumBnail,
+    ListItem
   },
 })
 export default class Zhuanti extends mixins(ZhuantiCom) {}
