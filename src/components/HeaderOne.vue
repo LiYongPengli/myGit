@@ -11,7 +11,8 @@
         type="text"
         placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
       /> -->
-<input class="ss"
+        <img class="imgss" src="../assets/img/search.png" alt="" />
+<input  class="ss"
         @click="setShowIntelligent(true)"
         type="text"
         placeholder="请输入关键词，查询相关内容"
@@ -144,6 +145,13 @@ export default class HeaderOne extends Vue {
   .search {
     margin-left: 210px;
     border-bottom: 1px solid #242432;
+    position: relative;
+    img.imgss{
+      position: absolute;
+    left: 31px;
+    top:23px;
+     
+    }
     button {
       background: url(../assets/img/search.png) 30px center no-repeat #272731;
       border: none;
@@ -167,17 +175,17 @@ export default class HeaderOne extends Vue {
     }
     .ss {
        
-         background: url(../assets/img/scsearch.png) 30px center no-repeat #272731;
+         //background: url(../assets/img/scsearch.png) 30px center no-repeat #272731;
       // width: calc(100% - 75px);
-      background-color: #272731;
-      padding-left: 75px;
-      height: 65px;
-      line-height: 65px;
-      border: 0;
-      box-sizing: border-box;
-      color: white;
-      // opacity: 0.5;
-      border-bottom: 1px solid #242432;
+      width: 100%;
+    /* height: 100%; */
+    background: #272731;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    padding-left: 75px;
+    color: white;
+    font-size: 16px;
     }
     input:focus {
       outline: none;
