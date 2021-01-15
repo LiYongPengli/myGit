@@ -151,7 +151,7 @@ export default class HeaderTwo extends Vue {
       }
       span {
         margin-left: 23px;
-        font-size: 20px;
+        font-size: 16px;
       }
       i {
         margin-left: 13px;

@@ -1,9 +1,9 @@
 .userform {
     .top_nav {
-        padding-top: 16px;
-        height: 80px;
-        line-height: 80px;
         display: flex;
+        margin-top: 48px;
+        margin-bottom: 29px;
+        line-height: 25px;
         ul {
             li {
                 float: left;
@@ -14,7 +14,6 @@
             }
             li.router-link-active {
                 font-size: 20px;
-                border-bottom: 1px solid red;
             }
         }
         ul:after {
