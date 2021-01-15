@@ -6,6 +6,7 @@ export default class MaybeKnowCom extends Vue {
     public message: string = "";
     public inv_userInfo:any = "";
     public remark_name:string = "";
+   
 
     public created(): void {
         this.getData();
