@@ -31,13 +31,13 @@ export default class NewsInfoCom extends Vue {
         }).then(res => {
             //console.log(res.data);
             this.newsInfo = res.data.data.news_detail;
-            for(let i=0;i<this.newsInfo.attachments.length;i++){
-                let url = <string>this.newsInfo.attachments[i].url;
-                let urlArr = url.split('/');
-                urlArr.splice(0,3);
-                let lastUrl = urlArr.join('/');
-                this.newsInfo.attachments[i].url = '/'+lastUrl;
-            }
+            // for(let i=0;i<this.newsInfo.attachments.length;i++){
+            //     let url = <string>this.newsInfo.attachments[i].url;
+            //     let urlArr = url.split('/');
+            //     urlArr.splice(0,3);
+            //     let lastUrl = urlArr.join('/');
+            //     this.newsInfo.attachments[i].url = '/'+lastUrl;
+            // }
             this.setShareNews(this.newsInfo);
         }).catch(err => {
             console.log(err);
@@ -81,7 +81,7 @@ export default class NewsInfoCom extends Vue {
             if (i.id) {
                 for (let j of this.newsInfo.attachments) {
                     if (j.position == i.id) {
-                        str += `<img style="display:block;margin:39px auto;max-width:100%;" src="${this.axios.defaults.baseURL+j.url}" />`
+                        str += `<img style="display:block;margin:39px auto;max-width:100%;" src="${j.url}" />`
                     }
                 }
             }

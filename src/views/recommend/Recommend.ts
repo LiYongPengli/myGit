@@ -79,7 +79,7 @@ export default class RecommendCom extends Vue {
         this.getSubscriptions("channel", "sub", (res) => {
             this.channel = res.data.data;
             this.channel_swiper = new Swiper('#swiper1', {
-                slidesPerView: 4,
+                slidesPerView: 'auto',
                 freeMode: true,
                 observer: true,
                 observeSlideChildren: true,

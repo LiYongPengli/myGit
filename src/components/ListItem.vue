@@ -228,6 +228,7 @@ export default class ListItem extends Vue {
       width: 200px;
       height: 132px;
       margin-right: 20px;
+      background: #393946;
     }
   }
 }

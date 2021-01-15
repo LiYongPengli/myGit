@@ -217,6 +217,7 @@
     >
       <add-collection
         :id="$route.query.id"
+        :attachments="newsInfo.attachments"
         v-if="showCollection"
         @status="getCollectionStatus"
       />

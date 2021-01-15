@@ -38,14 +38,14 @@
         <div class="sqfm">
           <span class="sqfm"> 收藏夹封面: </span>
           <label for="upFile">
-            <input
+            <!-- <input
               style="display: none"
               id="upFile"
               type="file"
               ref="upFile"
               @change="upFile"
-            />
-              <span :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
+            /> -->
+              <span @click="choosePhoto=true" :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
             <img v-show="img_pv" style="width:160px;height:90px;margin-top: -20px" :src="img_pv" alt="">
           
             
@@ -57,6 +57,23 @@
         <span @click="extCreateCollection">取消创建</span>
       </div>
     </div>
+
+    <!-- 示例图片 -->
+    <el-dialog
+      :close-on-click-modal="false"
+      :visible.sync="choosePhoto"
+      :append-to-body="true"
+      title="选择封面"
+      width="800px"
+    >
+      <other-photos
+        v-if="choosePhoto"
+        @default_chg="default_chg"
+        @close="choosePhoto = false"
+        :default_photos="default_photos"
+        @filechange="chooseFile"
+      />
+    </el-dialog>
     <!-- 上传封面 -->
     <el-dialog
       :visible.sync="upLoadPhoto"
@@ -76,10 +93,12 @@ import Component, { mixins } from "vue-class-component";
 import AddCollectionCom from "./AddCollection";
 import UpFile from "@/components/upfile/UpFile.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import OtherPhotos from "@/components/otherphotos/OtherPhotos.vue"
 @Component({
   components: {
     MyScroll,
     UpFile,
+    OtherPhotos
   },
 })
 export default class AddCollection extends mixins(AddCollectionCom) {}

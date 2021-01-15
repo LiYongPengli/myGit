@@ -99,10 +99,10 @@ export default class OtherPhotos extends Vue {
       flex-wrap: wrap;
 
       .default_photo {
-        flex: 1;
+        width: 253px;
         height: 130px;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         position: relative;
         .duigou{
           position: absolute;

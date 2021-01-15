@@ -2,8 +2,11 @@ import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class AddCollectionCom extends Vue {
     @Prop({}) id!:string;
+    @Prop({}) attachments!:any[];
     //收藏夹列表
     public favoriteList: any[] = [];
+    public default_photos:string[] = [];
+    public choosePhoto:boolean = false;
     //创建的收藏夹名称
     public collection_name: string = "";
     //图片预览路径
@@ -25,6 +28,19 @@ export default class AddCollectionCom extends Vue {
             .then((res) => {
                 console.log(res.data);
                 this.favoriteList = res.data.data.favorite;
+                let arr = res.data.data.alternative;
+                let attachments = [];
+                for(let i of this.attachments){
+                    attachments.push(i.url)
+                }
+                if(attachments.length>3){
+                    for(let i of attachments){
+                        arr.push(i);
+                    }
+                    this.default_photos = arr;
+                }else{
+                    this.default_photos = arr.concat(attachments);
+                }
             })
             .catch((err) => {
                 console.log(err);
@@ -45,13 +61,17 @@ export default class AddCollectionCom extends Vue {
             this.$message.error("请输入收藏夹名称");
             return;
         }
-        if (!this.upimg) {
-            this.$message.error("请上传封面");
-            return;
-        }
         let formdata = new FormData();
+        if (this.upimg) {
+            formdata.append("cover", this.upimg);
+        }else if(this.img_pv){
+            formdata.append("cover", this.img_pv.split('/')[this.img_pv.split('/').length-1].split('.')[0]);
+        }else{
+            formdata.append("cover", '');
+        }
+        
         formdata.append("name", this.collection_name);
-        formdata.append("cover", this.upimg);
+        
         try {
             await this.axios.post("/v1/user/favorite/", formdata);
         } catch (err) {
@@ -90,6 +110,12 @@ export default class AddCollectionCom extends Vue {
         })
     }
 
+    public default_chg(filePath:string):void{
+        this.img_pv = filePath;
+        this.upimg = "";
+        this.choosePhoto = false;
+    }
+
     @Emit("status")
     public collectStatus(status: boolean): boolean {
         return status;
@@ -104,6 +130,15 @@ export default class AddCollectionCom extends Vue {
             this.upLoadPhoto = true;
         }
         file.value = "";
+    }
+
+    //选择文件
+    public chooseFile(file:File): void {
+        if (file) {
+            this.upimg = file;
+            this.upLoadPhoto = true;
+            this.choosePhoto = false;
+        }
     }
 
     //取消创建

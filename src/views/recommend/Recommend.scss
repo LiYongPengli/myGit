@@ -85,13 +85,15 @@
                     flex: 1;
                     .swiper-wrapper {
                         .swiper-slide {
+                            width: auto;
                             text-align: center;
                             span {
+                                display: block;
                                 cursor: pointer;
                                 font-size: 16px;
                                 height: 70px;
                                 line-height: 70px;
-                                // width: 64px;
+                                margin: 0 20px;
                             }
                         }
                     }
