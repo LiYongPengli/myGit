@@ -3,19 +3,8 @@ import store from '@/store';
 import axios from 'axios'
 import { Message } from 'element-ui';
 
-let api = {api1:'',api2:''};
-switch (process.env.VUE_APP_MODE) {
-    case 'development':
-        axios.defaults.baseURL = '/aps'
-        break;
-    case 'production':
-        axios.defaults.baseURL = ''
-        break;
-}
-axios.defaults.headers = {
-    'Cache-Control': 'no-cache'
-}
-export const baseApi = api;
+axios.defaults.baseURL = process.env.VUE_APP_URL;
+axios.defaults.headers = {'Cache-Control': 'no-cache'};
 
 axios.interceptors.response.use(res=>{
     return res;

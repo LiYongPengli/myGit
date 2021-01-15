@@ -59,6 +59,9 @@ export default class UserCollectionCom extends Vue {
             console.log(res.data);
             this.favoriteList = res.data.data.favorite;
             this.default_photos = res.data.data.alternative;
+            this.favoriteList.sort(function(a,b){
+                return new Date(a.created_at).getTime()-new Date(b.created_at).getTime();
+            })
         }).catch(err => {
             console.log(err);
         })
