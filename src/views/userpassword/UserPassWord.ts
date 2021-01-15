@@ -4,11 +4,11 @@ import qs from 'qs'
 import { State } from 'vuex-class';
 @Component
 export default class UserPassWordCom extends Vue {
-    @State('user_message') user_message!:any;
+    @State('user_message') user_message!: any;
     //忘记原密码
     public fogetpwd: boolean = false;
     //否展示手机号错误信息
-    public showTelError:string = "";
+    public showTelError: string = "";
     //是否发送验证码
     public send_code: boolean = false;
     public img_vc_code: string = "";
@@ -39,15 +39,22 @@ export default class UserPassWordCom extends Vue {
         surenewpwd: [{ validator: this.initSurePwd, trigger: 'blur' }]
     }
 
-    public created():void{
-        let phone = this.user_message.phone_number as string;
-        this.fogetForm.tel = phone.slice(0,3)+'****'+phone.slice(7,11);
+
+    @Watch('user_message')
+    public listenUserMessage(newVal: any, oldVal: any): void {
+        if (newVal.phone_number) {
+            let phone = this.user_message.phone_number as string;
+            this.fogetForm.tel = phone.slice(0, 3) + '****' + phone.slice(7, 11);
+            console.log(this.fogetForm.tel)
+        }
     }
 
     @Watch('fogetpwd')
     public fogetPwdChange(newVal: boolean, oldVal: boolean): void {
-        (this.$refs['form'] as any).resetFields();
-        (this.$refs['fogetform'] as any).resetFields();
+        try {
+            (this.$refs['form'] as any).resetFields();
+            (this.$refs['fogetform'] as any).resetFields();
+        } catch (err) { }
     }
 
     @Watch('form.oldpwd')
@@ -93,9 +100,9 @@ export default class UserPassWordCom extends Vue {
     }
 
     @Watch('fogetForm.vc')
-    public listenTel(newVal:string,oldVal:string):void{
+    public listenTel(newVal: string, oldVal: string): void {
         let space = /(^\s+)|(\s+$)|\s+/g;
-        if(space.test(newVal)){
+        if (space.test(newVal)) {
             this.fogetForm.vc = oldVal;
             return;
         }
@@ -109,15 +116,19 @@ export default class UserPassWordCom extends Vue {
      */
     private initNewPwd(rule: any, value: string, callback: any): void {
         if (!value) {
-            callback(new Error('请输入新密码!'));
-            return;
-        }
-        if (value.length < 8) {
-            callback(new Error('密码长度最小为8位!'));
+            callback(new Error('请输入密码'));
             return;
         }
         if (!(/^[a-zA-Z0-9_]{0,}$/.test(value))) {
-            callback(new Error('密码中不可有汉字或其他特殊字符'));
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
+            return;
+        }
+        if (value.length < 8) {
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
+            return;
+        }
+        if (value.length > 16) {
+            callback(new Error('密码长度为8到16位且不可有汉字或特殊字符'));
             return;
         }
         if (!(/^(\d+[a-zA-Z]+|[a-zA-Z]+\d+)([0-9a-zA-Z]*)$/.test(value))) {
@@ -138,12 +149,12 @@ export default class UserPassWordCom extends Vue {
             callback(new Error('请输入确认密码!'));
             return;
         }
-        if(this.fogetpwd){
-            if(value!=this.fogetForm.newpwd){
+        if (this.fogetpwd) {
+            if (value != this.fogetForm.newpwd) {
                 callback(new Error('两次输入密码不一致!'));
                 return;
             }
-        }else{
+        } else {
             if (value != this.form.newpwd) {
                 callback(new Error('两次输入密码不一致!'));
                 return;
@@ -194,7 +205,7 @@ export default class UserPassWordCom extends Vue {
             return false;
         }
         try {
-            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
+            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }), { headers: { 'content-type': 'application/x-www-form-urlencoded' } });
             return true;
         } catch (code_err) {
             if (code_err.response.data.message == 'Verification code is uncorrect.') {
@@ -209,7 +220,7 @@ export default class UserPassWordCom extends Vue {
 
     //点击获取手机验证码
     public get_code(): void {
-        if(!this.is_send_img_code){
+        if (!this.is_send_img_code) {
             this.showTelError = "手机号格式有误!";
         }
         if (this.is_send_img_code && !this.send_code) {
@@ -222,20 +233,20 @@ export default class UserPassWordCom extends Vue {
     }
 
     //手机验证码确认
-    private async phoneCodeSure(phoneNumber:string,vc:string):Promise<boolean>{
-        try{
+    private async phoneCodeSure(phoneNumber: string, vc: string): Promise<boolean> {
+        try {
             let data = qs.stringify({
-                tel:phoneNumber,
-                vc:vc,
-                type:2
+                tel: phoneNumber,
+                vc: vc,
+                type: 2
             })
-            let res = await this.axios.put('/v1/verify/telphone',data,{headers:{'content-type': 'application/x-www-form-urlencoded'}});
-            if(!res.data.status){
+            let res = await this.axios.put('/v1/verify/telphone', data, { headers: { 'content-type': 'application/x-www-form-urlencoded' } });
+            if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 return false;
             }
             return true;
-        }catch(code_err){
+        } catch (code_err) {
             if (code_err.response.status == 401 && code_err.response.data.message) {
                 if (code_err.response.data.message == 'Verification code is uncorrect.') {
                     this.$message.error('手机验证码有误');
@@ -302,26 +313,32 @@ export default class UserPassWordCom extends Vue {
                 this.form.oldpwd = "";
                 this.form.surenewpwd = "";
                 this.$message.success('密码修改成功');
+                setTimeout(() => {
+                    this.$router.go(0);
+                }, 500)
             } else {
-                let phone_vc = await this.phoneCodeSure(this.user_message.phone_number,this.fogetForm.vc);
-                if(phone_vc){
+                let phone_vc = await this.phoneCodeSure(this.user_message.phone_number, this.fogetForm.vc);
+                if (phone_vc) {
                     let data = {
-                        password:this.fogetForm.newpwd
+                        password: this.fogetForm.newpwd
                     }
-                    this.axios.put('/v1/user/account/resetpw',qs.stringify(data),{headers:{'content-type': 'application/x-www-form-urlencoded'}}).then(res=>{
-                        if(res.data.status==0){
+                    this.axios.put('/v1/user/account/resetpw', qs.stringify(data), { headers: { 'content-type': 'application/x-www-form-urlencoded' } }).then(res => {
+                        if (res.data.status == 0) {
                             this.$message.error(res.data.msg);
                             return;
                         }
                         this.$message.success('密码修改成功!');
                         this.fogetForm = {
-                            tel:'',
-                            vc:'',
-                            newpwd:'',
-                            surenewpwd:''
+                            tel: '',
+                            vc: '',
+                            newpwd: '',
+                            surenewpwd: ''
                         }
-                    }).catch(err=>{
-                        if(err.response.status==403){
+                        setTimeout(() => {
+                            this.$router.go(0);
+                        }, 500)
+                    }).catch(err => {
+                        if (err.response.status == 403) {
                             this.$message.error(err.response.message);
                         }
                         console.log(err);

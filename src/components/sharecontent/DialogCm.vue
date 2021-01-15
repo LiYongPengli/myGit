@@ -126,7 +126,7 @@ export default class DialogCm extends Vue {
     let obj:any = {
       news_id: this.content.news_id,
       url:
-        "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
+        "/#/newsinfo?id=" +
         this.content.news_id +
         "&md_id=" +
         this.content.media_id,
@@ -144,6 +144,7 @@ export default class DialogCm extends Vue {
       })
       .then((res) => {
         this.$message.success("分享成功");
+        this.sharetext = "";
         this.close();
       })
       .catch((err) => {
@@ -179,6 +180,7 @@ export default class DialogCm extends Vue {
       })
       .then((res) => {
         this.$message.success("分享成功");
+        this.sharetext = "";
         this.close();
       })
       .catch((err) => {

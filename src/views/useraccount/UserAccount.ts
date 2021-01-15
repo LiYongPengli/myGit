@@ -39,6 +39,7 @@ export default class UserAccountCom extends Vue {
                 this.user_message.nickname = this.niname;
                 this.setUserMessage(this.user_message);
                 this.$message.success("昵称修改成功!")
+                this.niname = "";
             }).catch(err => {
                 console.log(err);
             })

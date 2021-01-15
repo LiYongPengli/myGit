@@ -54,7 +54,7 @@
         class="img"
         lazy
         v-if="item.cover.type == 'image'"
-        :src="item.cover.url[0]"
+        :src="item.cover.url[0]+'?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
           <img style="width: 200px" src="../assets/img/404.png" alt="" />
@@ -65,7 +65,7 @@
         class="img"
         lazy
         v-if="item.cover.type == 'image' && item.cover.url[1]"
-        :src="item.cover.url[1]"
+        :src="item.cover.url[1]+'?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
           <img style="width: 200px" src="../assets/img/404.png" alt="" />
