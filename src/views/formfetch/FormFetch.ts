@@ -45,7 +45,9 @@ export default class FormFetchCom extends Vue {
             text: '数据采集趋势图',
             subtext: '',
             textStyle: {
-                color: 'white'
+                color: 'white',
+                fontWeight:'bold',
+                fontSize:'20'
             }
         },
         tooltip: {

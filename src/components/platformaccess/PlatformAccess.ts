@@ -28,7 +28,9 @@ export default class PlatformAccessCom extends Vue {
             text: '浏览量数据趋势图',
             subtext: '',
             textStyle: {
-                color: 'white'
+                color: 'white',
+                fontWeight:'bold',
+                fontSize:'20'
             }
         },
         tooltip: {
@@ -150,7 +152,10 @@ export default class PlatformAccessCom extends Vue {
             text: '活动用户数趋势图',
             subtext: '',
             textStyle: {
-                color: 'white'
+                color: 'white',
+                fontWeight:'bold',
+                fontSize:'20'
+                
             }
         },
         tooltip: {

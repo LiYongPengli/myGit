@@ -16,7 +16,9 @@ export default class RegisteredUserCom extends Vue {
             text: '注册数量走势图',
             subtext: '',
             textStyle: {
-                color: 'white'
+                color: 'white',
+                fontWeight:'bold',
+                fontSize:'20'
             }
         },
         tooltip: {

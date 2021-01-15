@@ -10,8 +10,11 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        height: 40px;
         .namelist {
             font-size: 20px;
+            font-weight: bold;
+            line-height: 40px;
         }
         div {
             span:hover {
@@ -65,7 +68,7 @@
         width: 100%;
         ul {
             background-color: #494959;
-            margin-top: 15px;
+            // margin-top: 15px;
             height: 300px;
             li:nth-child(1) {
                 border-bottom: 1px solid #5c5c6b;
@@ -85,11 +88,12 @@
                     font-size: 14px;
                 }
                 .list_li_accountnumber {
-                    margin: 0 60px;
-                    width: 10%;
+                    width: 3%;
+                    margin-left: 51px;
+                    margin-right: 67px;
                 }
                 .list_li_name {
-                    width: 80%;
+                    width: 87%;
                     text-align: left;
                     overflow: hidden;
                     /*超出部分隐藏*/
@@ -105,7 +109,7 @@
                     text-align: left;
                 }
                 .list_li_phone {
-                    width: 10%;
+                    width: 17%;
                 }
                 .value {
                     padding-left: 10px;
