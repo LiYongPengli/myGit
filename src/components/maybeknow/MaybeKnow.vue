@@ -11,14 +11,16 @@
           <my-scroll style="content_mt_onescroll">
             <li v-for="(v, k) in userlists" :key="k">
               <div class="content_userlist">
-                <img style="height:40px;" :src="axios.defaults.baseURL+'/avatar/'+v.account" alt="" />
-                
+                <img
+                  style="height: 40px"
+                  :src="axios.defaults.baseURL + '/avatar/' + v.account"
+                  alt=""
+                />
+
                 <p class="content_userlist_chinename">
                   {{ v.nickname }}
                 </p>
-                <p @click="toAdd(v)" class="content_userlist_add">
-                  
-                </p>
+                <p @click="toAdd(v)" class="content_userlist_add"></p>
               </div>
             </li>
           </my-scroll>
@@ -29,21 +31,40 @@
     <!-- 用户验证信息 -->
     <div v-if="inv_userInfo" class="chat">
       <div class="chatcontent">
-        <div @click="inv_userInfo=''" class="close">
+        <div @click="inv_userInfo = ''" class="close">
           <img src="../../assets/img/chatclose.png" alt="" />
         </div>
         <div class="username">
-          <img :src="axios.defaults.baseURL+'/avatar/'+inv_userInfo.account" alt="">
+          <img :src="axios.defaults.baseURL + '/avatar/' + inv_userInfo.account" alt="" />
           <!-- <p class="head">{{inv_userInfo.nickname.slice(0,1)}}</p> -->
-          <p class="name">{{inv_userInfo.nickname}}</p>
+          <p class="name">{{ inv_userInfo.nickname }}</p>
+        </div>
+
+        <div class="remarks_yanzheng">
+          <span class="remarks_name">* 需要验证您的身份信息：</span>
+          <!-- <input
+            class="remarks_value"
+            v-model="message"
+            type="text"
+            placeholder="请输入验证消息"
+          /> -->
+          <el-input
+            type="textarea"
+            :rows="5"
+            class="remarks_value"
+            placeholder="请输入您的请求信息"
+            v-model="message"
+          >
+          </el-input>
         </div>
         <div class="remarks_div">
           <span class="remarks_name">备注名：</span>
-          <input class="remarks_value" v-model="remark_name" type="text" placeholder="设置备注" />
-        </div>
-        <div class="remarks_yanzheng">
-          <span class="remarks_name">验证消息：</span>
-          <input class="remarks_value" v-model="message" type="text" placeholder="请输入验证消息" />
+          <input
+            class="remarks_value"
+            v-model="remark_name"
+            type="text"
+            placeholder="设置备注"
+          />
         </div>
         <!-- <span class="nick_name">昵称：</span>
         <span class="nick_value">{{inv_userInfo.nickname}}</span> -->
@@ -67,4 +88,40 @@ export default class MaybeKnow extends mixins(MaybeKnowCom) {}
 
 <style lang="scss" scoped>
 @import "./MaybeKnow.scss";
+</style>
+
+<style lang="scss">
+.maybeknow {
+  .chat {
+    .chatcontent {
+      .remarks_yanzheng {
+        .remarks_value {
+          .el-textarea__inner {
+            background: #2f343d;
+            border: 1px solid #5e656e;
+            color: white;
+            font-size: 16px;
+          }
+          textarea::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: #6d6d6e;
+          }
+          textarea:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #6d6d6e;
+          }
+          textarea::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #6d6d6e;
+          }
+          textarea::-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            // color: #9c9c9c;
+            color: #6d6d6e;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
