@@ -124,7 +124,7 @@ export default class AccountLoginCom extends Vue {
                     return;
                 }
                 try {
-                    await this.axios.put('/v1/verify/img', qs.stringify({ vc: this.form.vc }));
+                    await this.axios.put('/v1/verify/img', qs.stringify({ vc: this.form.vc }),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
                 } catch (err) {
                     if (err.response.data.message == 'Verification code is uncorrect.') {
                         reject(new Error('图片验证码错误'))
@@ -158,7 +158,7 @@ export default class AccountLoginCom extends Vue {
                 password: this.form.password,
                 remember: this.remember_login
             }
-            let res = await this.axios.post('/v1/user/login/', qs.stringify(data));
+            let res = await this.axios.post('/v1/user/login/', qs.stringify(data),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
             if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 this.getImgCode();

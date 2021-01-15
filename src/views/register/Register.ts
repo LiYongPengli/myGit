@@ -178,7 +178,7 @@ export default class RegisterCom extends Vue {
                 vc:vc,
                 type:1
             })
-            let res = await this.axios.put('/v1/verify/telphone',data);
+            let res = await this.axios.put('/v1/verify/telphone',data,{headers:{'content-type': 'application/x-www-form-urlencoded'}});
             if(!res.data.status){
                 this.vcerr = res.data.msg
                 return false;
@@ -234,7 +234,7 @@ export default class RegisterCom extends Vue {
             return false;
         }
         try {
-            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }));
+            await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
             return true;
         } catch (code_err) {
             if (code_err.response.data.message == 'Verification code is uncorrect.') {
@@ -276,7 +276,7 @@ export default class RegisterCom extends Vue {
             tel:this.form.tel,
             nickname:this.form.nickname
         }
-        this.axios.post('/v1/user/account/signup',qs.stringify(data)).then(res=>{
+        this.axios.post('/v1/user/account/signup',qs.stringify(data),{headers:{'content-type': 'application/x-www-form-urlencoded'}}).then(res=>{
             if(res.data.status==0){
                 this.$message.error(res.data.msg);
                 return;

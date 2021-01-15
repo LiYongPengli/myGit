@@ -108,7 +108,7 @@ export default class phoneLoginCom extends Vue {
     public async imgCodeSure(img_code: string): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {
-                await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }));
+                await this.axios.put('/v1/verify/img', qs.stringify({ vc: img_code }),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
                 resolve(true)
             } catch (code_err) {
                 reject(code_err.response.data.message);
@@ -140,7 +140,7 @@ export default class phoneLoginCom extends Vue {
         })
         return new Promise(async (resolve, reject) => {
             try {
-                let res = await this.axios.put('/v1/verify/telphone', data);
+                let res = await this.axios.put('/v1/verify/telphone', data,{headers:{'content-type': 'application/x-www-form-urlencoded'}});
                 if (!res.data.status) {
                     reject(new Error(res.data.msg))
                     return false;
@@ -199,7 +199,7 @@ export default class phoneLoginCom extends Vue {
             return;
         }
         try {
-            let res = await this.axios.post('/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel,remember:0 }));
+            let res = await this.axios.post('/v1/user/login/telphone', qs.stringify({ tel: this.phone_form.tel,remember:0 }),{headers:{'content-type': 'application/x-www-form-urlencoded'}});
             if (!res.data.status) {
                 this.$message.error(res.data.msg);
                 return;

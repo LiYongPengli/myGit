@@ -85,7 +85,8 @@ export default class BindAccountCom extends Vue {
         try {
             await this.axios.put(
                 "/v1/verify/img",
-                qs.stringify({ vc: img_code })
+                qs.stringify({ vc: img_code }),
+                {headers:{'content-type': 'application/x-www-form-urlencoded'}}
             );
             this.vcerr = ""
             return true;
@@ -132,7 +133,8 @@ export default class BindAccountCom extends Vue {
             };
             let res = await this.axios.post(
                 "/v1/user/wechat/bind",
-                qs.stringify(data)
+                qs.stringify(data),
+                {headers:{'content-type': 'application/x-www-form-urlencoded'}}
             );
             if (res.data.data.status == 0) {
                 this.$message.error(res.data.data.msg);

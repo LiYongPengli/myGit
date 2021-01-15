@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <p class="title">{{ item.title[language] }}</p>
+    <p @click="toNewsInfo" class="title">{{ item.title[language] }}</p>
     <div class="content">
       <el-image
         :fit="'scale-down'"
@@ -123,6 +123,10 @@ export default class ListItem extends Vue {
     console.log(this.item);
     this.showTrack();
   }
+
+  public toNewsInfo():void{
+        window.open('#/newsinfo?id=' + this.item.news_id+'&md_id='+this.item.media_id);
+    }
 
   public showTrack(): void {
     for (let i = 0; i < this.item.attachments.length; i++) {
