@@ -20,7 +20,7 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
-              :src="axios.defaults.baseURL+'avatar/'+user_message.account"
+              :src="axios.defaults.baseURL+'/avatar/'+user_message.account"
               alt=""
             />
           </div>

@@ -58,7 +58,6 @@
         <img
         
           class="ninameing"
-          @click="headportraitupdate = true"
           src="../../assets/img/useraccountniname.png"
           alt=""
         />
@@ -72,67 +71,8 @@
       </div>
     </div>
     <div class="body">
-      <!-- 上传头像 -->
-      <el-dialog
-        :visible.sync="upLoadPhoto"
-        :close-on-click-modal="false"
-        :append-to-body="true"
-        title="头像上传"
-        width="800px"
-        top="25vh"
-      >
-        <up-file
-          v-if="upLoadPhoto"
-          @ext="upRes"
-          :width="70"
-          :height="70"
-          :img="headerPhotoPrv"
-        />
-      </el-dialog>
-      <!-- 头像修改 -->
-      <el-dialog
-        :visible.sync="headportraitupdate"
-        :close-on-click-modal="false"
-        title="头像修改"
-        class="ghsjh"
-        width="800px"
-        top="25vh"
-      >
-        <div class="niname">
-          <div class="ninam_top">
-            <span>头像:</span>
-            <label for="up">
-              <div v-if="headerPhoto" class="headportraitchoice1">
-                <img :src="headerPhotoURL" alt="" />
-              </div>
-              <div v-show="!headerPhoto" class="headportraitchoice">
-                <input
-                  @change="setHeaderPhoto"
-                  ref="file"
-                  style="display: none"
-                  type="file"
-                  id="up"
-                  name=""
-                />
-                <img src="../../assets/img/cjqs.png" alt="" />
-
-                <p>上传头像</p>
-              </div>
-            </label>
-          </div>
-          <div class="niname_foot">
-            <el-button
-              @click="changeheadportrait"
-              style="width: 190px"
-              type="primary"
-              >确认</el-button
-            >
-            <el-button @click="headportraitupdate = false" style="width: 190px"
-              >取消</el-button
-            >
-          </div>
-        </div>
-      </el-dialog>
+      
+      
       <!-- 微信绑定 -->
       <el-dialog
         :visible.sync="binding"
@@ -196,12 +136,11 @@ import Component, { mixins } from "vue-class-component";
 import UserAccountCom from "./UserAccount";
 import Warning from "@/components/Warning.vue";
 import wxlogin from "@/components/vue-wxlogin.vue";
-import UpFile from "@/components/upfile/UpFile.vue";
+
 @Component({
   components: {
     Warning,
-    wxlogin,
-    UpFile,
+    wxlogin
   },
 })
 export default class UserCollection extends mixins(UserAccountCom) {}
@@ -209,13 +148,4 @@ export default class UserCollection extends mixins(UserAccountCom) {}
 
 <style lang="scss" scoped>
 @import "./UserAccount.scss";
-</style>
-<style lang="scss">
-.useraccount{
-.nc{
-  .el-dialog{
-  background: #3a3a48 !important;
-  }
-}
-}
 </style>

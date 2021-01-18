@@ -88,6 +88,7 @@ export default class phoneLoginCom extends Vue {
 
     //获取手机验证码
     private getPhoneCode(phoneNumber: string): void {
+        this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel=' + phoneNumber).then(res => {
             this.send_code = true;
             this.show_vc_code = false;

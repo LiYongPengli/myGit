@@ -9,6 +9,16 @@ export default class UserCom extends Vue {
     @State('topic_show') topic_show!:boolean;
     //国家
     public country: any[] = [];
+    public showUpload:boolean = false;
+    public showUpload1:boolean = false;
+    public headportraitupdate:boolean = false;
+    //头像图片
+    public headerPhoto:Blob|null = null;
+    //处理后的头像地址
+    public headerPhotoURL:string = "";
+    //预处理头像
+    public headerPhotoPrv:any = "";
+    public upLoadPhoto:boolean = false;
     //人物
     public people: any[] = [];
     public choose_nav:string = "统计报表";
@@ -52,33 +62,57 @@ export default class UserCom extends Vue {
                 break;
             }
         }
-        /* //获取频道列表
-        this.getSubscriptions("channel", "sub", (res) => {
-            console.log(res.data);
-            this.channel = res.data.data.subscriptions;
-        }); */
-        /* //获取国家列表
-        this.getSubscriptions("country", "unsub", (res) => {
-            console.log(res.data);
-            this.country = res.data.data.subscriptions;
-        }); */
-        /* //获取人物列表
-        this.getSubscriptions("character", "unsub", (res) => {
-            console.log(res.data);
-            this.people = res.data.data.subscriptions;
-        }); */
-        /* //获取媒体列表
-        this.getSubscriptions("media", "sub", (res) => {
-            console.log(res.data);
-            this.media = res.data.data.subscriptions;
-        }); */
+        
     }
-    public add_follow(): void {
-        this.axios.post('/v1/user/sub/', {
-            sub_id: "5f8848a35e3d43b0e0fcc6f3",
-            sub_type: "character",
-            sub_oper_type: 'sub',
+
+    //设置用户头像
+	public setHeaderPhoto():void{
+		let ipt = this.$refs.file as HTMLInputElement;
+		let file = (ipt.files as FileList)[0]
+		if(file){
+			this.headerPhotoPrv = file;
+			this.upLoadPhoto = true;
+		}
+    }
+    
+    //更换头像
+    public changeheadportrait(): void {
+        if(!this.headerPhoto){
+            this.$message.error('请上传用户头像!');
+            return;
+        }
+        let formData = new FormData()
+        formData.append('cmd', 'user_modify_avatar')
+        formData.append('img', this.headerPhoto as any);
+        this.axios
+        .post('/v1/cmd/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }).then(res=>{
+            this.headportraitupdate = false;
+            this.$message.success('头像修改成功');
+            setTimeout(()=>{
+                this.$router.go(0);
+            },500)
+        }).catch(err=>{
+            console.log(err);
         })
+    }
+
+    public upRes(data:Blob):void{
+		if(data){
+            this.headerPhoto = data;
+            this.headerPhotoURL = URL.createObjectURL(this.headerPhoto);
+        }
+        (this.$refs.file as HTMLInputElement).value = "";
+        this.upLoadPhoto = false;
+    }
+    
+    public quit():void{
+        this.headportraitupdate = false;
+        this.headerPhotoURL = "";
+        this.headerPhoto = null;
     }
 
     public router_link(item:{path:string,name:string}):void{
@@ -89,14 +123,5 @@ export default class UserCom extends Vue {
     //监听当前路由变化判断当前导航选中状态
     get active_nav(): string {
         return this.$route.path;
-    }
-
-    //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void): void {
-        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=10').then(res => {
-            call(res);
-        }).catch(err => {
-            console.log(err);
-        })
     }
 }

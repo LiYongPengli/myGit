@@ -112,6 +112,7 @@ export default class FindPasswordCom extends Vue {
     }
     //获取手机验证码
     private getPhoneCode(phoneNumber:string):void{
+        this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel='+phoneNumber).then(res=>{
             console.log(res.data);
             this.send_code = true;

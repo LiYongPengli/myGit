@@ -44,6 +44,7 @@ export default class MyFollowCom extends Vue {
             case 'all':
                 if(!this.country.length&&!this.media.length&&!this.people.length){
                     this.isfinished = true;
+                    this.list = [];
                     return;
                 }
                 this.getAllData();
@@ -55,6 +56,7 @@ export default class MyFollowCom extends Vue {
                 this.country_all = true;
                 if(!this.country.length){
                     this.isfinished = true;
+                    this.list = [];
                     return;
                 }
                 for (let i of this.country) {
@@ -70,6 +72,7 @@ export default class MyFollowCom extends Vue {
                 this.media_all = true;
                 if(!this.media.length){
                     this.isfinished = true;
+                    this.list = [];
                     return;
                 }
                 for (let i of this.media) {
@@ -85,6 +88,7 @@ export default class MyFollowCom extends Vue {
                 this.people_all = true;
                 if(!this.people.length){
                     this.isfinished = true;
+                    this.list = [];
                     return;
                 }
                 for (let i of this.people) {

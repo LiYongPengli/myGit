@@ -1,4 +1,3 @@
-import axios from '@/axios/axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -22,7 +21,7 @@ export default new Vuex.Store({
     //首页分页加载开关
     mainPageLoading:false,
     //聊天工具iframe地址
-    topic_url:axios.defaults.baseURL+'/im/channel/general',
+    topic_url:'/im/channel/general',
     //聊天工具状态切换
     topic_status:1,
     //被分享的新闻

@@ -108,21 +108,22 @@
             <div v-if="newsInfo.is_video" class="youtube">
               <div class="video_wrap">
                 <video
+                  crossorigin="use-credentials"
                   :src="
-                    'http://hk.zlbxxcj.bjceis.com' + newsInfo.attachments[1].url
+                    newsInfo.attachments[1].url
                   "
                   controls
                 >
                   <track
                     v-if="showTrack('RAW')"
                     :default="!showTrack('ZH')"
-                    :src="axios.defaults.baseURL + showTrack('RAW')"
+                    :src="showTrack('RAW')"
                     label="原文"
                   />
                   <track
                     v-if="showTrack('ZH')"
                     default
-                    :src="axios.defaults.baseURL + showTrack('ZH')"
+                    :src="showTrack('ZH')"
                     label="中文"
                   />
                 </video>
