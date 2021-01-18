@@ -65,7 +65,7 @@ export default class AddCollectionCom extends Vue {
         if (this.upimg) {
             formdata.append("cover", this.upimg);
         }else if(this.img_pv){
-            formdata.append("cover", this.img_pv.split('/')[this.img_pv.split('/').length-1].split('.')[0]);
+            formdata.append("cover", this.img_pv.split('/')[this.img_pv.split('/').length-1]);
         }else{
             formdata.append("cover", '');
         }

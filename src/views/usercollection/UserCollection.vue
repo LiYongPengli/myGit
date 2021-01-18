@@ -72,7 +72,7 @@
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
                 @click.stop="toEdit(v)"
-                v-show="v.showControl && v.name != '默认'"
+                v-show="v.showControl"
                 class="edit"
                 type="primary"
                 icon="el-icon-edit-outline"
@@ -80,7 +80,7 @@
               >
               <el-button
                 @click.stop="deleteFav(v, i)"
-                v-show="v.showControl && v.name != '默认'"
+                v-show="v.showControl"
                 class="delete"
                 type="danger"
                 icon="el-icon-delete"
@@ -121,8 +121,6 @@
         <div ></div>
         <div class="sqfm">
           <span class="fm">收藏夹封面:</span>
-       
-          
           <div v-show="favorite_form.cover" class="sqcj_img">
             <img :src="favorite_form.cover" alt="" />
           </div>

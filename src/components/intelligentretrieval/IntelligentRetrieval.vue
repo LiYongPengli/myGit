@@ -400,7 +400,7 @@
             </div>
             <div class="result">
               <ul>
-                <list-item :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
+                <list-item :language1="language" :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
                 
                 <div @click="loadMore" v-show="!finished" class="jzgd">
                   正在加载更多内容

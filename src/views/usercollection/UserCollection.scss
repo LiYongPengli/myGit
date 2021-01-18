@@ -74,12 +74,15 @@
         height: 530px;
         &_wrap {
             list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -20px;
             li {
                 position: relative;
                 width: 285px;
-                float: left;
                 height: 240px;
-                margin-right: 15px;
+                margin-bottom: 15px;
+                margin-left: 20px;
                 div.cjsqhz {
                     border: 2px dashed #9499aa;
                     margin: 10px;
