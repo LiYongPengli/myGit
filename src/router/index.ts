@@ -82,6 +82,12 @@ const routes: RouteConfig[] = [
     name:'Publicity',
     component:()=>import('../views/publicity/Publicity.vue')
   },
+  //宣传介绍
+  {
+    path:'/xjpublicity',
+    name:'XjPublicity',
+    component:()=>import('../views/xjpublicity/XjPublicity.vue')
+  },
   //个人中心
   {
     path: '/user',
