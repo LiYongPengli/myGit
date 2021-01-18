@@ -76,6 +76,12 @@ const routes: RouteConfig[] = [
     name:'FromShare',
     component:()=>import('../views/fromshare/FromShare.vue')
   },
+  //宣传介绍
+  {
+    path:'/publicity',
+    name:'Publicity',
+    component:()=>import('../views/publicity/Publicity.vue')
+  },
   //个人中心
   {
     path: '/user',

@@ -1,0 +1,105 @@
+.publicity {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, #18181e, #2f2f3b);
+    .container {
+        margin: 0 359px 0 361px;
+        height: 100%;
+        .top {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 33px;
+            padding-bottom: 31px;
+            border-bottom: 1px solid #3a3a48;
+            h1 {
+                // width: 190px;
+                font-size: 32px;
+                font-weight: normal;
+                font-stretch: normal;
+                line-height: 41px;
+                letter-spacing: 0px;
+                color: #ffffff;
+            }
+            input {
+                margin-top: 5px;
+                border: none;
+                outline: none;
+                box-sizing: border-box;
+                height: 30px;
+                width: 200px;
+                padding-left: 20px;
+                background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            input::-webkit-input-placeholder {
+                /* WebKit browsers */
+                color: #cdd6e5;
+            }
+            input:-moz-placeholder {
+                /* Mozilla Firefox 4 to 18 */
+                color: #cdd6e5;
+            }
+            input::-moz-placeholder {
+                /* Mozilla Firefox 19+ */
+                color: #cdd6e5;
+            }
+            input:-ms-input-placeholder {
+                /* Internet Explorer 10+ */
+                color: #cdd6e5;
+            }
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            .content_left {
+                //50 57 0 26
+                padding: 50px 57px 0 26px;
+                border-right: 1px solid #3a3a48;
+                nav {
+                    ul {
+                        li {
+                            height: 55px;
+                            line-height: 55px;
+                            width: 64px;
+                            a {
+                                text-decoration: none;
+                                color: #ffffff;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+            .content_right {
+                padding-left: 45px;
+                // padding-top: 53px;
+                // .rdgk {
+                //     display: none;
+                // }
+                // .yhdl {
+                //     display: none;
+                // }
+                .yhzc {
+                    color: white;
+                    h2 {
+                        color: white;
+                        font-size: 20px;
+                        padding-top: 53px;
+                    }
+                    h3 {
+                        padding-top: 53px;
+                        font-size: 16px;
+                    }
+                    p {
+                        line-height: 30px;
+                    }
+                }
+                .active {
+                    display: block;
+                }
+            }
+        }
+    }
+}
