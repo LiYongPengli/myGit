@@ -106,7 +106,7 @@ export default class UserCollectionCom extends Vue {
         let formdata = new FormData();
         formdata.append('name', this.favorite_form.name);
         if(!this.favorite_form.coverFile){
-            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1].split('.')[0];
+            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1];
             formdata.append('cover', name);
         }else{
             formdata.append('cover', this.favorite_form.coverFile);
@@ -134,7 +134,7 @@ export default class UserCollectionCom extends Vue {
         if (this.favorite_form.coverFile) {
             formdata.append('cover', this.favorite_form.coverFile);
         }else{
-            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1].split('.')[0];
+            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1];
             formdata.append('cover', name);
         }
         this.axios.put('/v1/user/favorite/', formdata).then(res => {

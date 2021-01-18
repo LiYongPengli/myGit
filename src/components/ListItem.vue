@@ -13,21 +13,25 @@
         </div>
       </div>
       <div class="controls">
+        <!-- 点赞 -->
         <div v-if="~shoControls.indexOf('like')" @click="onlike" class="btn">
           <img src="../assets/img/zanpress.png" alt="" />
           <span>{{ item.like }}</span>
         </div>
+        <!-- 分享 -->
         <share-content :content="item" type="news">
           <div v-if="~shoControls.indexOf('share1')" class="btn">
             <img src="../assets/img/sczhuanfa.png" alt="" />
             <span>分享</span>
           </div>
         </share-content>
+        <!-- 分享 -->
         <share-content :content="item" type="news">
           <div v-if="~shoControls.indexOf('share2')" class="btn">
             <img src="../assets/img/sczhuanfa.png" alt="" />
           </div>
         </share-content>
+        <!-- 收藏 -->
         <div v-if="~shoControls.indexOf('collection')" @click="toCollection" class="btn">
           <img src="../assets/img/nocollection.png" alt="" />
           <span>收藏</span>
@@ -47,7 +51,7 @@
         </div>
       </div>
     </div>
-    <p @click="toNewsInfo" class="title">{{ item.title[language] }}</p>
+    <p @click="toNewsInfo" class="title">{{ item.title[language1?language1:language] }}</p>
     <div class="content">
       <el-image
         :fit="'scale-down'"
@@ -109,6 +113,7 @@ import ShareContent from "@/components/sharecontent/ShareContent.vue";
 export default class ListItem extends Vue {
   @Prop({}) item: any;
   @Prop({}) shoControls!: string[];
+  @Prop({default:''}) language1!: string[];
   @State("language") language!: string;
   public error:boolean = false;
   public track_zh = {
@@ -217,6 +222,7 @@ export default class ListItem extends Vue {
   .title {
     margin-top: 15px;
     cursor: pointer;
+    width: max-content;
     max-width: 100%;
   }
   .title:hover {

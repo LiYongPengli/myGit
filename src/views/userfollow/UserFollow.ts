@@ -22,7 +22,7 @@ export default class UserFollow extends Vue {
             case 2:
                 str = "请输入人物名称";
                 break;
-            case 2:
+            case 3:
                 str = "请输入频道名称";
                 break;
         }
