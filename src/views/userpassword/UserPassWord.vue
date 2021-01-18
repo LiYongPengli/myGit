@@ -98,8 +98,5 @@ export default class UserPassWord extends mixins(UserPassWordCom) {}
     content: ""!important;
     margin-right:0!important;
   }
-  .el-dialog{
-    background: #3a3a48;
-  }
 }
 </style>

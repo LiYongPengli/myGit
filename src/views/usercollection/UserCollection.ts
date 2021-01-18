@@ -73,7 +73,7 @@ export default class UserCollectionCom extends Vue {
             this.favorite_form.cover = URL.createObjectURL(data);
         } else {
             this.favorite_form.coverFile = "";
-            this.favorite_form.cover = "";
+            this.choosePhoto = true;
         }
         this.upLoadPhoto = false;
     }
@@ -172,8 +172,8 @@ export default class UserCollectionCom extends Vue {
         }
         this.$set(this.favoriteList[index], 'showControl', true);
     }
-    public hideBtn(item: any, index: number): void {
-        item.showControl = false;
+    public hideBtn(index: number): void {
+        this.$set(this.favoriteList[index], 'showControl', false);
     }
     //点击创建收藏夹
     public toCreateFavorite(): void {

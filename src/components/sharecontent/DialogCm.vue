@@ -231,11 +231,3 @@ export default class DialogCm extends Vue {
   }
 }
 </style>
-<style lang="scss">
-.el-dialog {
-  background: #2d2d39 !important;
-  .el-dialog__title {
-    color: white;
-  }
-}
-</style>

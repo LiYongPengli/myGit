@@ -41,7 +41,7 @@
             }"
             @click.stop="toCollectionList(v)"
             @mouseenter="showBtn(i)"
-            @mouseleave="hideBtn(v, i)"
+            @mouseleave="hideBtn(i)"
             v-for="(v, i) in favoriteList"
             :key="i"
           >
@@ -72,7 +72,7 @@
               <span class="time">{{ v.created_at.split(".")[0] }} 创建</span>
               <el-button
                 @click.stop="toEdit(v)"
-                v-show="v.showControl"
+                v-show="v.showControl&&v.name!='默认'"
                 class="edit"
                 type="primary"
                 icon="el-icon-edit-outline"
@@ -80,7 +80,7 @@
               >
               <el-button
                 @click.stop="deleteFav(v, i)"
-                v-show="v.showControl"
+                v-show="v.showControl&&v.name!='默认'"
                 class="delete"
                 type="danger"
                 icon="el-icon-delete"
@@ -100,7 +100,6 @@
     </div>
     <!-- 创建收藏夹 -->
     <el-dialog
-      top="25vh"
       width="800px"
       :close-on-click-modal="false"
       element-loading-background="rgba(0, 0, 0, 0.2)"
@@ -163,7 +162,6 @@
       :close-on-click-modal="false"
       title="封面上传"
       width="800px"
-      top="25vh"
     >
       <up-file v-if="upLoadPhoto" @ext="upRes" :img="favorite_form.coverFile" />
     </el-dialog>
@@ -193,9 +191,7 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
 </style>
 <style lang="scss">
 .usercollection {
-
   .el-dialog {
-    background: #3a3a48;
     min-height: 475px;
   }
   .delete {
@@ -206,12 +202,5 @@ export default class UserCollection extends mixins(UserCollectionCom) {}
       margin-left: 2px;
     }
   }
-  // .edit_wrap_footer{
-  //   .el-button--primary{
-  //     width: 80px;
-  //     height: 35px;
-  //     line-height: 35px;
-  //   }
-  // }
 }
 </style>

@@ -110,7 +110,6 @@
       title="温馨提示"
       class="czmm"
       width="800px"
-      top="41vh"
     >
       <div class="reminder">
        <img  src="../../assets/img/czcg.png" alt="">
@@ -146,59 +145,10 @@ export default class UserUsersAccount extends mixins(UserUsersAccountCom) {}
 </style>
 <style lang="scss">
 .userusersaccount {
-  .el-dialog {
-    background: #3a3a48;
-    .el-dialog__header {
-      .el-dialog__title {
-        color: white;
-      }
-    }
-  }
   .el-button--primary {
     // background-color: #0074ff;
     // border-color: #409EFF;
     font-size: 16px;
-  }
-  .ghsjh{
-    .el-dialog{
-      height: 330px;
-      .el-dialog__header{
-        padding-top: 30px;
-        height: 80px;
-        padding-left: 50px;
-        border-bottom: 1px solid #4d4d5d;
-        .el-dialog__title{
-          font-size: 20px;
-        }
-        .el-dialog__headerbtn{
-          margin-right: 30px;
-          color: white;
-          top: 30px;
-        }
-      }
-      .el-dialog__body{
-        padding: 60px 20px;
-      }
-    }
-  }
-  .czmm{
-    .el-dialog{
-      height: 380px;
-      .el-dialog__header{
-        padding-top: 30px;
-        height: 80px;
-        padding-left: 50px;
-        border-bottom: 1px solid #4d4d5d;
-        .el-dialog__title{
-          font-size: 20px;
-        }
-        .el-dialog__headerbtn{
-          margin-right: 30px;
-          color: white;
-          top: 30px;
-        }
-      }
-    }
   }
 }
 </style>

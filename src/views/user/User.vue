@@ -9,14 +9,19 @@
         >
           <div class="user_header">
             <div class="user_info" v-if="user_message">
-              <div @mouseenter="showUpload=true" class="user_img">
+              <div @mouseenter="showUpload = true" class="user_img">
                 <img
                   :src="
                     axios.defaults.baseURL + '/avatar/' + user_message.account
                   "
                   alt=""
                 />
-                <div @mouseleave="showUpload=false" @click="headportraitupdate = true" v-show="showUpload" class="img_float">
+                <div
+                  @mouseleave="showUpload = false"
+                  @click="headportraitupdate = true"
+                  v-show="showUpload"
+                  class="img_float"
+                >
                   <span>点击上传</span>
                 </div>
               </div>
@@ -55,22 +60,22 @@
       </my-scroll>
     </div>
     <!-- 上传头像 -->
-      <el-dialog
-        :visible.sync="upLoadPhoto"
-        :close-on-click-modal="false"
-        :append-to-body="true"
-        title="头像上传"
-        width="800px"
-        top="25vh"
-      >
-        <up-file
-          v-if="upLoadPhoto"
-          @ext="upRes"
-          :width="70"
-          :height="70"
-          :img="headerPhotoPrv"
-        />
-      </el-dialog>
+    <el-dialog
+      :visible.sync="upLoadPhoto"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+      title="头像上传"
+      width="800px"
+      top="25vh"
+    >
+      <up-file
+        v-if="upLoadPhoto"
+        @ext="upRes"
+        :width="70"
+        :height="70"
+        :img="headerPhotoPrv"
+      />
+    </el-dialog>
     <!-- 头像修改 -->
     <el-dialog
       :visible.sync="headportraitupdate"
@@ -84,21 +89,29 @@
         <div class="ninam_top">
           <span>头像:</span>
           <label for="up">
-            <div @mouseenter="showUpload1=true" v-if="headerPhoto" class="headportraitchoice1">
+            <div
+              @mouseenter="showUpload1 = true"
+              v-if="headerPhoto"
+              class="headportraitchoice1"
+            >
               <img :src="headerPhotoURL" alt="" />
-              <div v-if="showUpload1" @mouseleave="showUpload1=false" class="header_float">
+              <div
+                v-if="showUpload1"
+                @mouseleave="showUpload1 = false"
+                class="header_float"
+              >
                 <span>重新上传</span>
               </div>
             </div>
+            <input
+              @change="setHeaderPhoto"
+              ref="file"
+              style="display: none"
+              type="file"
+              id="up"
+              name=""
+            />
             <div v-if="!headerPhoto" class="headportraitchoice">
-              <input
-                @change="setHeaderPhoto"
-                ref="file"
-                style="display: none"
-                type="file"
-                id="up"
-                name=""
-              />
               <img src="../../assets/img/cjqs.png" alt="" />
 
               <p>上传头像</p>
@@ -112,9 +125,7 @@
             type="primary"
             >确认</el-button
           >
-          <el-button @click="quit" style="width: 190px"
-            >取消</el-button
-          >
+          <el-button @click="quit" style="width: 190px">取消</el-button>
         </div>
       </div>
     </el-dialog>
@@ -131,7 +142,7 @@ import UpFile from "@/components/upfile/UpFile.vue";
   components: {
     HeaderTwo,
     MyScroll,
-    UpFile
+    UpFile,
   },
 })
 export default class User extends mixins(UserCom) {}

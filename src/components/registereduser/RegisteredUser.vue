@@ -138,16 +138,6 @@ export default class RegisteredUser extends mixins(RegisteredUserCom) {}
     button {
       width: 100px;
     }
-    button:hover {
-      background-color: #0074ff;
-      border: 1px solid #0074ff;
-      color: white;
-    }
-    .el-button--primary {
-      background-color: #0074ff;
-      border: 1px solid #0074ff;
-      color: white;
-    }
   }
 }
 </style>

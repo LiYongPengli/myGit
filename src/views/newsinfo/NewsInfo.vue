@@ -249,37 +249,3 @@ export default class NewsInfo extends mixins(NewsInfoCom) {}
 <style lang="scss" scoped>
 @import "./NewsInfo.scss";
 </style>
-<style lang="scss">
-.newsinfo {
-  /* .el-dialog {
-    background: #3a3a48;
-    min-height: 450px;
-    .el-dialog__header {
-      height: 80px;
-      line-height: 80px;
-      padding: 0;
-      padding-left: 20px;
-      border-bottom: 1px solid #4D4D5D;
-      .el-dialog__title {
-        font-size: 20px;
-      }
-      .el-dialog__headerbtn {
-        right: 50px;
-      }
-    }
-    
-  }
-
-  .el-icon-close {
-    line-height: 24px;
-    color: white;
-  }
-  .el-icon-close:hover {
-    color: white;
-  }
-  .el-dialog__title {
-    color: white;
-    margin-left: 30px;
-  } */
-}
-</style>
