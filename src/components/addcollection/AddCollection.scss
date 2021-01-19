@@ -84,7 +84,7 @@
                 label {
                     // position:relative;
                     margin-left: 10px;
-                    span {
+                    span.xzfm {
                         width: 170px;
                         height: 100px;
                         display: inline-block;
@@ -104,6 +104,12 @@
                         top: 25px;
                         left: 176px;
                     }
+                    .cxxz {
+                        margin-left: 25px;
+                        color: #B2D5FF;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
                 }
             }
         }
@@ -121,7 +127,7 @@
                 border-radius: 3px;
             }
             span:hover {
-                background-color: #0079ED;
+                background-color: #409EFF;
             }
         }
     }

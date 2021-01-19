@@ -45,12 +45,12 @@
               ref="upFile"
               @change="upFile"
             /> -->
-              <span @click="choosePhoto=true" :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 
-                <img src="../../assets/img/cjqs1.png" alt="">
-                 <p>选择封面</p>
+              <span class="xzfm" v-show="!img_pv" @click="choosePhoto=true" :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 
+                <img  src="../../assets/img/cjqs1.png" alt="">
+                 <p >选择封面</p>
                  </span>
-            <img v-show="img_pv" style="width:160px;height:90px;margin-top: -20px" :src="img_pv" alt="">
-          
+            <img v-show="img_pv" style="width:160px;height:90px;" :src="img_pv" alt="">
+            <span  v-show="img_pv" @click="choosePhoto=true" :class="img_pv ? 'cxxz':''" >重新选择...</span>
             
           </label>
         </div>
