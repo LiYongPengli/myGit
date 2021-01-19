@@ -71,8 +71,8 @@
       <up-file
         v-if="upLoadPhoto"
         @ext="upRes"
-        :width="70"
-        :height="70"
+        :width="210"
+        :height="210"
         :img="headerPhotoPrv"
       />
     </el-dialog>

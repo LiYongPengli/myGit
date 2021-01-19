@@ -51,7 +51,7 @@ export default class Hours24Com extends Vue {
              slidesPerView: 4,
             slidesPerGroup: 4,
             loop: true,
-            autoHeight:true
+            autoHeight:true,
           
         })
         this.autoPlay();
@@ -63,9 +63,9 @@ export default class Hours24Com extends Vue {
     }
     private slides(type:string):void{
         if(type=='next'){
-            this.list_24.slideNext(1000);
+            this.list_24.slideNext(3000);
         }else{
-            this.list_24.slidePrev(1000);
+            this.list_24.slidePrev(3000);
         }
         
     }
@@ -78,7 +78,7 @@ export default class Hours24Com extends Vue {
                 this.get24Hour();
                 this.count = 0;
             }
-        }, 3000)
+        }, 5000)
     }
 
     //滚轮事件

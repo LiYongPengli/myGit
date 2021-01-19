@@ -5,14 +5,11 @@
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
         <input v-model="searchText" type="text" placeholder="请输入收藏夹名称" />
-        <span @click="isShare = true" class="plfx" v-show="!isShare">批量分享</span>
+        <span @click="setIsShare(true)" class="plfx" v-show="!isShare">批量分享</span>
         <div v-show="isShare" class="share_control">
           <div class="ext_share">
             <el-button
-              @click="
-                isShare = false;
-                shares = [];
-              "
+              @click="setIsShare(false)"
               style="width: 80px"
               size="mini"
               type="danger"
@@ -107,7 +104,7 @@
       :title="dialogTitle"
       :visible.sync="dialogVisible"
     >
-      <div class="edit_wrap">
+      <div v-if="dialogVisible" class="edit_wrap">
         <div>
           <span class="name">收藏夹名称：</span>
           <input
@@ -136,8 +133,8 @@
         </div>
 
         <div class="edit_wrap_footer">
-          <el-button type="primary" @click="toSure">确 认</el-button>
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button size="small" style="width:80px;" type="primary" @click="toSure">确 认</el-button>
+          <el-button size="small" style="width:80px;" @click="dialogVisible = false">取 消</el-button>
         </div>
       </div>
     </el-dialog>

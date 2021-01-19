@@ -13,12 +13,12 @@
               <div class="swiper-slide" v-for="(v, i) in hours_24" :key="i">
                 <div class="li">
                   <div class="logo">
-                  <img
+                  <!-- <img
                     v-if="!v.media_logo"
                     src="../../assets/img/media_default.png"
                     alt=""
-                  />
-                  <img v-if="v.media_logo" :src="v.media_logo" alt="" />
+                  /> -->
+                  <img v-if="v.media_icon" :src="v.media_icon" alt="" />
                   <span class="ly">
                     {{ v.media_name }}
                   </span>

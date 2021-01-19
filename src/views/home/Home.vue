@@ -30,7 +30,3 @@ export default class Home extends mixins(HomeCom) {}
 <style lang="scss" scoped>
 @import "./Home.scss";
 </style>
-<style lang="scss">
-.home {
-}
-</style>

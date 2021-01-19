@@ -3,11 +3,20 @@
   background-image: linear-gradient(-15deg, #31313d, #17171d);
   margin-top: 130px;
   overflow: hidden;
-  .body {
-    //height: 100%;
-    max-width: 1500px;
-    min-width: 1030px;
-    margin: auto;
-    
+  position: relative;
+  .sydht{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    .body {
+      height: 100%;
+      max-width: 1500px;
+      min-width: 1030px;
+      margin: auto;
+      
+    }
   }
+  
 }

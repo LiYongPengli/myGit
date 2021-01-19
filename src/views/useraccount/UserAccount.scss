@@ -82,11 +82,10 @@
             span {
                 display: block;
                 padding-bottom: 5px;
-                vertical-align: top;
-                height: 42px;
+                margin-left: 40px;
             }
             input {
-                margin-left: 40px;
+                margin-left: 20px;
                 padding-left: 10px;
                 background: #3a3a48;
                 outline: none;
@@ -97,7 +96,7 @@
                 width: 400px;
                 font-size: 16px;
                 vertical-align: top;
-                padding-bottom: 20px;
+                // padding-bottom: 20px;
             }
             input::-webkit-input-placeholder {
                 /* WebKit browsers */
@@ -143,9 +142,7 @@
             padding-bottom: 50px;
             margin-top: 60px;
             text-align: center;
-            button {
-                height: 50px;
-            }
+            
         }
     }
 }

@@ -26,8 +26,8 @@
                 width: 200px;
                 padding-left: 20px;
                 background: url("../../assets//img/scsearch.png") 90% 50% no-repeat #494959;
-                cursor: pointer;
                 font-size: 14px;
+                color: white;
             }
             input::-webkit-input-placeholder {
                 /* WebKit browsers */
@@ -169,12 +169,12 @@
         }
     }
     .edit_wrap {
-        height: 200px;
+        width: 700px;
         position: relative;
         color: white;
         font-size: 16px;
         padding: 0;
-        padding-left: 65px;
+        margin: auto;
         .sqfm {
             height: 170px;
             padding-top: 20px;
@@ -184,7 +184,7 @@
             }
             .cxxz {
                 float: right;
-                margin-right: 40%;
+                margin-right: 37%;
                 margin-top: 4.5%;
                 cursor: pointer;
                 color: #B2D5FF;
@@ -236,7 +236,7 @@
             height: 100px;
             position: absolute;
             top: 130px;
-            left: 184px;
+            left: 135px;
             overflow: hidden;
             img {
                 width: 100%;
@@ -245,17 +245,11 @@
         }
         &_footer {
             padding: 10px 20px 20px;
-            text-align: right;
             box-sizing: border-box;
             /* margin-bottom: 50px; */
             // margin-top: 70px;
             text-align: center;
-            .el-button--primary {
-                width: 190px;
-            }
-            .el-button--default {
-                width: 190px;
-            }
+            
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
 <!-- 警告 -->
   <div class="warning">
-      <div class="warning_wrap" :style="{'margin-top':top}">
+      <div class="warning_wrap">
           <div class="top">
               <span class="title">{{title}}</span>
               <span @click="ext" class="el-icon-close"></span>
@@ -54,15 +54,19 @@ export default class Warning extends Vue{
         margin: auto;
         background: #3a3a48;
         padding-bottom: 50px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
         .top{
-            height: 80px;
+            height: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 50px;
             border-bottom: 1px solid #4d4d5d;
             .title{
-                font-size: 20px;
+                font-size: 17px;
             }
             span:last-of-type{
                 font-size: 20px;

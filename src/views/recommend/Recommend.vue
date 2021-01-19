@@ -182,7 +182,7 @@
                     :key="i"
                     class="item"
                   >
-                    <img src="../../assets/img/media_default.png" alt="" />
+                    <img :src="v.media_icon" alt="" />
 
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>

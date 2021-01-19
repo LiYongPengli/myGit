@@ -1,7 +1,10 @@
 
 import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Mutation, State } from 'vuex-class';
 @Component
 export default class UserCollectionCom extends Vue {
+    //是否开启分享
+    @State('isShare') isShare!:boolean;
     public dialogVisible = false;
     public isUpFile:boolean = false;
     //上传封面显示默认封面
@@ -10,8 +13,6 @@ export default class UserCollectionCom extends Vue {
     public default_photos:string[] = [];
     //搜索内容
     public searchText:string = "";
-    //是否开启分享
-    public isShare: boolean = false;
     //分享的收藏夹
     public shares:string[] = [];
     public dialogTitle: string = "编辑收藏夹";
@@ -29,6 +30,14 @@ export default class UserCollectionCom extends Vue {
         coverFile: '' as any
     }
 
+    @Mutation('setIsShare') setIsShare!:(n:boolean)=>void;
+
+    @Watch('isShare')
+    public listenIsShare(newVal:boolean,oldVal:boolean):void{
+        if(!newVal){
+            this.shares = [];
+        }
+    }
     @Watch('$route.query')
     public rout_change(newVal:any,oldVal:any):void{
         if(newVal.rf_id){
@@ -50,6 +59,9 @@ export default class UserCollectionCom extends Vue {
     }
 
     public created(): void {
+        if(this.isShare){
+            this.setIsShare(false);
+        }
         //this.createFavorite();
         this.getData();
     }

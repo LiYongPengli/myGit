@@ -39,7 +39,7 @@ export default class AddCollectionCom extends Vue {
                     }
                     this.default_photos = arr;
                 }else{
-                    this.default_photos = arr.concat(attachments);
+                    this.default_photos = attachments.concat(arr);
                 }
             })
             .catch((err) => {

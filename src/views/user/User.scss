@@ -165,17 +165,20 @@
         }
       }
       .headportraitchoice1 {
-        height: 72px;
-        width: 72px;
+        height: 122px;
+        width: 122px;
         display: inline-block;
         border: 1px dashed #9499aa;
         margin-left: 50px;
         text-align: center;
         position: relative;
+        img{
+          width: 100%;
+        }
         .header_float {
           position: absolute;
-          height: 70px;
-          width: 70px;
+          height: 120px;
+          width: 120px;
           background: linear-gradient(
             rgba(255, 255, 255, 0),
             rgba(0, 0, 0, 0.9)

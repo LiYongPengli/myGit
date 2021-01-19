@@ -76,7 +76,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
-import { State } from "vuex-class";
+import { Mutation, State } from "vuex-class";
 
 @Component
 export default class DialogCm extends Vue {
@@ -91,6 +91,7 @@ export default class DialogCm extends Vue {
   names!: string[];
   @Prop({}) share_user!: any;
   @State("language") language!: string;
+  @Mutation('setIsShare') setIsShare!:(n:boolean)=>void;
 
   //附加消息
   public sharetext: string = "";
@@ -181,6 +182,7 @@ export default class DialogCm extends Vue {
       .then((res) => {
         this.$message.success("分享成功");
         this.sharetext = "";
+        this.setIsShare(false);
         this.close();
       })
       .catch((err) => {

@@ -4,7 +4,7 @@
     <div class="top">
       <div class="itemInfo">
         <div class="logo">
-          <img src="../assets/img/media_default.png" alt="" />
+          <img :src="item.media_icon" alt="" />
         </div>
         <div class="itemInfo_info">
           <p class="name">媒体:{{ item.media_name }}</p>

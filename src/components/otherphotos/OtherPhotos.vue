@@ -122,9 +122,10 @@ export default class OtherPhotos extends Vue {
   /* 上传其他封面 */
   .other_photo {
     span {
-      font-size: 18px;
+      font-size: 16px;
       color: #b2d5ff;
       cursor: pointer;
+      margin-left: 10px;
     }
   }
   .dialog-footer {
