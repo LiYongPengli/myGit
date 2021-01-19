@@ -26,8 +26,8 @@
       </my-scroll>
       <span @click="createNewCollection = true" class="addnew">创建新收藏夹</span>
       <div v-show="createNewCollection" class="addnewcontent">
-        <div>
-          <span class="name"> 收藏夹名称: </span>
+        <div class="scjmc">
+          <span class="name"> 收藏夹名称： </span>
           <input
             v-model="collection_name"
             type="text"
@@ -36,7 +36,7 @@
           />
         </div>
         <div class="sqfm">
-          <span class="sqfm"> 收藏夹封面: </span>
+          <span class="sqfms"> 收藏夹封面： </span>
           <label for="upFile">
             <!-- <input
               style="display: none"
@@ -45,7 +45,10 @@
               ref="upFile"
               @change="upFile"
             /> -->
-              <span @click="choosePhoto=true" :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 点击上传封面 </span>
+              <span @click="choosePhoto=true" :class="img_pv ? 'kaoyou':''" style="cursor: pointer;color:#8FC8FF;font-size:14px"> 
+                <img src="../../assets/img/cjqs1.png" alt="">
+                 <p>选择封面</p>
+                 </span>
             <img v-show="img_pv" style="width:160px;height:90px;margin-top: -20px" :src="img_pv" alt="">
           
             
@@ -53,8 +56,8 @@
         </div>
       </div>
       <div v-show="createNewCollection" class="caozuo">
-        <span @click="createCollection">创建并收藏</span>
-        <span @click="extCreateCollection">取消创建</span>
+        <span @click="createCollection">确认</span>
+        <span @click="extCreateCollection">取消</span>
       </div>
     </div>
 
