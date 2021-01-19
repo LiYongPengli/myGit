@@ -14,7 +14,7 @@
       <input
         type="text"
         v-model="keyword"
-        placeholder="通过账户/用户昵称/手机号/微信昵称搜索好友"
+        placeholder="通过账号/用户昵称/手机号/微信昵称搜索好友"
       />
       <img @click="searchFriends" src="../../assets/img/search.png" alt="" />
     </div>

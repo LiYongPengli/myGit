@@ -119,12 +119,12 @@
           <span
             :class="{ cur: mediaSwiperCurrentIndex == 1 }"
             @click="mediaTab(1)"
-            >人物</span
+            >媒体</span
           >
           <span
             :class="{ cur: mediaSwiperCurrentIndex == 2 }"
             @click="mediaTab(2)"
-            >媒体</span
+            >人物</span
           >
         </div>
         <div class="media_content">
@@ -140,6 +140,21 @@
                     class="item"
                   >
                     <img :src="v.flag" alt="" />
+                    <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- 媒体 -->
+              <div class="swiper-slide">
+                <div class="media country people" style="width: 457px">
+                  <div
+                    @click="toFollowPage('media', i)"
+                    v-for="(v, i) in media"
+                    :key="i"
+                    class="item"
+                  >
+                    <img :src="v.media_icon" alt="" />
+
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
@@ -170,21 +185,6 @@
                       alt=""
                     />
                     <p :title="v.name" class="name">{{ v.name }}</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 媒体 -->
-              <div class="swiper-slide">
-                <div class="media country people" style="width: 457px">
-                  <div
-                    @click="toFollowPage('media', i)"
-                    v-for="(v, i) in media"
-                    :key="i"
-                    class="item"
-                  >
-                    <img :src="v.media_icon" alt="" />
-
-                    <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
               </div>

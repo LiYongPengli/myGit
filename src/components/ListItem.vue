@@ -4,7 +4,8 @@
     <div class="top">
       <div class="itemInfo">
         <div class="logo">
-          <img :src="item.media_icon" alt="" />
+          <img v-if="item.media_icon&&!item.error" :src="item.media_icon" alt="" />
+          <img v-if="item.error" src="../assets/img/media_default.png" alt="" />
         </div>
         <div class="itemInfo_info">
           <p class="name">媒体:{{ item.media_name }}</p>

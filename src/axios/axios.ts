@@ -5,6 +5,7 @@ import { Message } from 'element-ui';
 
 axios.defaults.baseURL = process.env.VUE_APP_URL;
 axios.defaults.headers = {'Cache-Control': 'no-cache'};
+store.commit('setEnv',process.env.VUE_APP_MODE);
 
 axios.interceptors.response.use(res=>{
     return res;

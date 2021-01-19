@@ -3,22 +3,7 @@
     <p>分享给:</p>
     <!-- 好友信息 -->
     <div v-if="share_type == 'user'" class="share_user">
-      <img v-if="share_user.headimg" :src="share_user.headimg" alt="" />
-      <img
-        v-if="!share_user.headimg && share_user.wechat_info.head_img"
-        :src="share_user.wechat_info.head_img"
-        alt=""
-      />
-      <p
-        v-if="!share_user.headimg && !share_user.wechat_info.head_img"
-        class="user_ico"
-      >
-        {{
-          share_user.nickname
-            ? share_user.nickname.slice(0, 1)
-            : share_user.name.slice(0, 1)
-        }}
-      </p>
+      <img :src="axios.defaults.baseURL + '/avatar/' + share_user.account" alt="" />
       <p class="user_name">
         {{ share_user.nickname
         }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}

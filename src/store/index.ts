@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    //环境配置
+    env:'development',
     //用户信息
     user_message:'' as any,
     index_channel_window:false,
@@ -34,6 +36,9 @@ export default new Vuex.Store({
     isShare:false
   },
   mutations: {
+    setEnv(state,n):void{
+      state.env = n;
+    },
     setIndexChannelWindow(state,n):void{
       state.index_channel_window = n;
     },

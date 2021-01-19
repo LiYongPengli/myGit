@@ -18,14 +18,7 @@
             :key="i"
           >
             <div class="left">
-              <img v-if="v.headimg" :src="v.headimg" alt="" />
-              <img
-                v-if="!v.headimg && v.wechat_info.head_img"
-                :src="v.headimg"
-                alt=""
-              />
-
-              <div class="user_ico">{{ v.nickname.slice(0, 1) }}</div>
+              <img class="user_ico" :src="axios.defaults.baseURL + '/avatar/' + v.account" alt="" />
               <p class="user_name">
                 {{ v.nickname
                 }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
@@ -38,6 +31,7 @@
           </li>
         </my-scroll>
       </ul>
+      <!-- 群组 -->
       <ul v-show="choose_state==1" class="grop">
         <my-scroll>
           <li v-show="~v.name.indexOf(search)" class="friendlist_item" v-for="(v, i) in grop_list" :key="i">

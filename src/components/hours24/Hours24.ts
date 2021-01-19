@@ -125,4 +125,12 @@ export default class Hours24Com extends Vue {
     public toNewsInfo(item:any):void{
         window.open('#/newsinfo?id='+item.news_id+'&md_id='+item.media_id)
     }
+
+    public toFollowPage(index:number):void{
+        this.$router.push('/myfollow?item='+JSON.stringify({
+            type:'media',
+            choise:true,
+            index:index
+        }))
+    }
 }

@@ -13,7 +13,7 @@
         type="text"
         @keypress="searchFriends"
         v-model="keyword"
-        placeholder="搜索您想要添加的账号/手机号/微信名"
+        placeholder="搜索您想要添加的账号/用户昵称/手机号/微信昵称"
       />
       <img @click="searchFriends" src="../../assets/img/search.png" alt="" />
     </div>
