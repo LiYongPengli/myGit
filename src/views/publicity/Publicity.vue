@@ -1,53 +1,64 @@
 <template>
   <div class="publicity">
     <header-two />
-    <div :style="{ width: (topic_show ? 1000 : 1200) + 'px' }" class="container">
-    
-        <div class="top">
-          <h1>睿读使用指南</h1>
-          <input type="text" placeholder="请输入收藏夹名称" />
+    <div
+      :style="{ width: (topic_show ? 1000 : 1200) + 'px' }"
+      class="container"
+    >
+      <div class="top">
+        <h1>睿读使用指南</h1>
+        <input type="text" placeholder="请输入收藏夹名称" />
+      </div>
+      <div class="content">
+        <div class="content_left">
+          <nav>
+            <ul>
+              <li @click="cur = 0" :class="{ active: cur == 0 }">
+                <a class="rdgk">睿读概况</a>
+              </li>
+              <li @click="cur = 1" :class="{ active: cur == 1 }">
+                <a class="rdgk">用户登录</a>
+              </li>
+              <li @click="cur = 2" :class="{ active: cur == 2 }">
+                <a class="rdgk">用户注册 </a>
+              </li>
+              <li @click="cur = 3" :class="{ active: cur == 3 }">
+                <a href="#">用户关注</a>
+              </li>
+              <li @click="cur = 4" :class="{ active: cur == 4 }">
+                <a href="#">推荐新闻</a>
+              </li>
+              <li @click="cur = 5" :class="{ active: cur == 5 }">
+                <a href="#">平台搜索</a>
+              </li>
+              <li @click="cur = 6" :class="{ active: cur == 6 }">
+                <a href="#">即时通讯</a>
+              </li>
+              <li @click="cur = 7" :class="{ active: cur == 7 }">
+                <a href="#">密码管理</a>
+              </li>
+              <li @click="cur = 8" :class="{ active: cur == 8 }">
+                <a href="#">账号管理</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <div class="content">
-          <div class="content_left">
-            <nav>
-              <ul>
-                <li @click="cur = 0" :class="{ active: cur == 0 }">
-                  <a class="rdgk">睿读概况</a>
-                </li>
-                <li @click="cur = 1" :class="{ active: cur == 1 }">
-                  <a class="rdgk">用户登录</a>
-                </li>
-                <li @click="cur = 2" :class="{ active: cur == 2 }">
-                  <a class="rdgk">用户注册 </a>
-                </li>
-                <li @click="cur = 3" :class="{ active: cur == 3 }">
-                  <a href="#">用户关注</a>
-                </li>
-                <li @click="cur = 4" :class="{ active: cur == 4 }">
-                  <a href="#">推荐新闻</a>
-                </li>
-                <li @click="cur = 5" :class="{ active: cur == 5 }">
-                  <a href="#">平台搜索</a>
-                </li>
-                <li @click="cur = 6" :class="{ active: cur == 6 }">
-                  <a href="#">即时通讯</a>
-                </li>
-                <li @click="cur = 7" :class="{ active: cur == 7 }">
-                  <a href="#">密码管理</a>
-                </li>
-                <li @click="cur = 8" :class="{ active: cur == 8 }">
-                  <a href="#">账号管理</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="content_right">
-            <div class="rdgk" v-show="cur == 0">睿读概况</div>
-            <div class="yhdl" v-show="cur == 1">用户登录</div>
+        <div class="content_right">
+          <div class="content_right_text">
+            <my-scroll>
+            <div class="rdgk" v-show="cur == 0">
+              <h2>睿读概况</h2>
+            </div>
+            <div class="yhdl" v-show="cur == 1">
+              <h2>
+                用户登录
+              </h2>
+            </div>
             <div class="yhzc" v-show="cur == 2">
-                <my-scroll>
               <h2>用户登录</h2>
-              <p>用户登录分为【账号登录】、【手机登录】、【微信登录】三种登录方式。</p>
+              <p>
+                用户登录分为【账号登录】、【手机登录】、【微信登录】三种登录方式。
+              </p>
               <p>
                 用户登录系统无操作30分钟后，系统自动退出登录，再次点击任何页面均跳转登录页面重新进行登录。
               </p>
@@ -60,7 +71,10 @@
               <p>
                 2.所有手机号/账号或密码输入框最长可输入30个字符，只可输入字符和数字，不可输入汉字。所有密码输入框为密文显示，所有输入框需过滤空格。
               </p>
-              <p>3. 账号密码匹配不成功不可进入系统，提示“账号或密码错误，请重新输入”。</p>
+              <p>
+                3.
+                账号密码匹配不成功不可进入系统，提示“账号或密码错误，请重新输入”。
+              </p>
               <p>
                 4.用户累计密码输入错误5次，锁定账号5分钟，5分钟内不可再进行登录，5分钟过后可正常再次使用账号密码登录，在账号锁定期间，仍可通过微信和手机验证码进行登录。
               </p>
@@ -81,7 +95,10 @@
                 9.
                 账号与微信进行绑定后，直接进入系统到首页面，自动记录该用户的微信名称、微信头像。
               </p>
-              <p>10. 点击【暂不绑定】后，该账号无绑定微信信息，可直接进入到首页面。</p>
+              <p>
+                10.
+                点击【暂不绑定】后，该账号无绑定微信信息，可直接进入到首页面。
+              </p>
               <p>
                 11.提示用户绑定微信页面只在用户第一次登录时提示，如用户点击【暂不绑定】，则以后登录时均不再弹出此页面。
               </p>
@@ -98,7 +115,8 @@
                 3.短信验证码的有效时间为60秒，在60秒内不可重新发送验证码，60秒内关闭网页再次进入该页面后验证码仍然继续倒计时。
               </p>
               <p>
-                4. 每个手机号每天接收短信验证码次数为10次，超出10次将不再发送短信验证码。
+                4.
+                每个手机号每天接收短信验证码次数为10次，超出10次将不再发送短信验证码。
               </p>
               <p>
                 5.手机号需验证格式，只有格式为数字1开头且11位数字方为正确，非此格式的手机号提示“手机格式错误，请重新输入”。
@@ -113,11 +131,11 @@
               <p>9. 手机登录流程图如下</p>
               <h3>微信登录</h3>
               <p>1.页面加载出微信登录接口的二维码。"</p>
-                 </my-scroll>
             </div>
+          </my-scroll>
           </div>
         </div>
-   
+      </div>
     </div>
   </div>
 </template>
