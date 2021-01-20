@@ -32,7 +32,7 @@
                     user_message.phone_number.slice(7, 11)
                   }}</span
                 > -->
-                <speed-text width="100%" height="16px" :text="user_message.account" class="user_id" />
+                <span class="user_id" >{{user_message.account}}</span>
               </div>
             </div>
             <ul class="user_menu">

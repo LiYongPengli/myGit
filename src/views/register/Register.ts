@@ -53,7 +53,7 @@ export default class RegisterCom extends Vue {
     @Watch('form.nickname')
     public listenNickname(newVal:string,oldVal:string):void{
         this.form.nickname = newVal.trim();
-        if(newVal.length>10){
+        if(newVal.length>20){
             this.form.nickname = oldVal;
         }
     }

@@ -9,6 +9,12 @@
       </div>
       <div class="list_wrap">
         <div class="list_nav">
+          <div class="page_left">
+            <img src="../../assets/img/page_left.png" alt="" />
+          </div>
+          <div class="page_right">
+            <img src="../../assets/img/page_right.png" alt="" />
+          </div>
           <span
             class="recommend_nav"
             @click="change_recommend(0, '推荐')"
