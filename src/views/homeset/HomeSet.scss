@@ -139,33 +139,20 @@
             ul.mt {
                 li {
                     width: 25%;
+                    display: flex;
                     a {
-                        img {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        img.mrtx {
                             width: 54px;
                             height: 54px;
-                            margin-top: 8px;
-                            // margin-left: 20px;
+                            // margin-top: 8px;
                         }
-                        .chinese_gj {
-                            top: -20px;
-                            width: 130px;
-                        }
-                        .english_gj {
-                            top: -9px;
-                            left: 75px;
-                            width: 130px;
-                        }
-                        span.itmemt_ch {
-                            top: -40px;
-                        }
-                        span.itmemt_en {
-                            position: absolute;
-                            top: 15px;
-                            font-size: 13px;
-                            left: 70px;
-                            top: 20px;
-                            // margin-left: 20px;
-                            top: -10px;
+                        .zyname {
+                            margin-left: 20px;
+                            display: flex;
+                            flex-direction: column;
                         }
                     }
                 }
@@ -179,19 +166,6 @@
                             width: 54px;
                             height: 54px;
                             margin-top: 8px;
-                        }
-                        span.chinese {
-                            top: 10px;
-                            font-size: 13px;
-                        }
-                        .english_gj {
-                            left: 74px;
-                            top: -9px;
-                        }
-                        span.english {
-                            position: absolute;
-                            top: 10px;
-                            font-size: 13px;
                         }
                     }
                 }
@@ -247,7 +221,7 @@
             padding-left: 20px;
         }
         .sst {
-            // margin-top: 50px;
+            margin-top: 20px;
             color: #6d6f7e;
             display: block;
             margin-bottom: 20px;

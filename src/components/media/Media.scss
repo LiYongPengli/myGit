@@ -20,43 +20,75 @@
                 margin-top: 30px;
                 display: flex;
                 width: 216px;
-                div {
-                    width: 184px;
-                    height: 40px;
-                    background: #71718A;
+                // div {
+                //     width: 184px;
+                //     height: 40px;
+                //     background: #71718A;
+                //     align-items: center;
+                //     position: relative;
+                //     line-height: 40px;
+                //     padding-left: 15px;
+                //     p {
+                //         font-size: 15px;
+                //         width: 139px;
+                //         white-space: nowrap;
+                //         display: inline-block;
+                //         overflow: hidden;
+                //         padding-left: 15px;
+                //         height: 40px;
+                //         line-height: 40px;
+                //     }
+                //     .i_mg {
+                //         // width: 45px;
+                //         // height: 40px;
+                //         // padding: 0;
+                //         // background: #555566;
+                //         position: absolute;
+                //         right: 0;
+                //         top: 0;
+                //         width: 43px;
+                //         height: 40px;
+                //         line-height: 40px;
+                //         padding: 0;
+                //         display: inline-block;
+                //         border-left: 1px solid #979797;
+                //         background: #555566;
+                //         img.close {
+                //             cursor: pointer;
+                //             margin-left: 17.6px;
+                //         }
+                //     }
+                // }
+                a {
+                    display: flex;
+                    flex-direction: row;
                     align-items: center;
-                    position: relative;
-                    line-height: 40px;
-                    padding-left: 15px;
-                    p {
-                        font-size: 15px;
-                        width: 139px;
-                        white-space: nowrap;
-                        display: inline-block;
-                        overflow: hidden;
-                        padding-left: 15px;
-                        height: 40px;
-                        line-height: 40px;
+                    // position: relative;
+                    img.mrtx {
+                        width: 54px;
+                        height: 54px;
+                    }
+                    .zyname {
+                        margin-left: 20px;
+                        display: flex;
+                        flex-direction: column;
                     }
                     .i_mg {
-                        // width: 45px;
-                        // height: 40px;
-                        // padding: 0;
-                        // background: #555566;
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        width: 43px;
-                        height: 40px;
-                        line-height: 40px;
                         padding: 0;
                         display: inline-block;
-                        border-left: 1px solid #979797;
-                        background: #555566;
+                        margin-left: 5px;
                         img.close {
                             cursor: pointer;
-                            margin-left: 17.6px;
                         }
+                    }
+                    span.itmemt_ch {
+                        top: -40px;
+                    }
+                    span.itmemt_en {
+                        // position: absolute;
+                        font-size: 13px;
+                        // left: 70px;
+                        // top: -10px;
                     }
                 }
             }
@@ -91,43 +123,75 @@
                 margin-top: 30px;
                 display: flex;
                 width: 216px;
-                div.no_noattention {
-                    position: relative;
-                    width: 184px;
-                    height: 40px;
+                a {
+                    display: flex;
+                    flex-direction: row;
                     align-items: center;
-                    border: 1px solid #979797;
-                    box-sizing: border-box;
-                    padding-left: 15px;
-                    .pname {
-                        font-size: 15px;
-                        width: 139px;
-                        white-space: nowrap;
-                        // display: inline-block;
-                        overflow: hidden;
-                        // padding-left: 15px;
-                        height: 40px;
-                        line-height: 40px;
-                        .dom {
-                            left: 15px !important;
-                        }
+                    // position: relative;
+                    img.mrtx {
+                        width: 54px;
+                        height: 54px;
+                    }
+                    .zyname {
+                        margin-left: 20px;
+                        display: flex;
+                        flex-direction: column;
                     }
                     .i_mg {
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        width: 43px;
-                        height: 40px;
-                        line-height: 40px;
                         padding: 0;
                         display: inline-block;
-                        border-left: 1px solid #979797;
+                        margin-left: 5px;
                         img.add {
                             cursor: pointer;
-                            margin-left: 17.6px;
                         }
                     }
+                    span.itmemt_ch {
+                        top: -40px;
+                    }
+                    span.itmemt_en {
+                        // position: absolute;
+                        font-size: 13px;
+                        // left: 70px;
+                        // top: -10px;
+                    }
                 }
+                // div.no_noattention {
+                //     position: relative;
+                //     width: 184px;
+                //     height: 40px;
+                //     align-items: center;
+                //     border: 1px solid #979797;
+                //     box-sizing: border-box;
+                //     padding-left: 15px;
+                //     .pname {
+                //         font-size: 15px;
+                //         width: 139px;
+                //         white-space: nowrap;
+                //         // display: inline-block;
+                //         overflow: hidden;
+                //         // padding-left: 15px;
+                //         height: 40px;
+                //         line-height: 40px;
+                //         .dom {
+                //             left: 15px !important;
+                //         }
+                //     }
+                //     .i_mg {
+                //         position: absolute;
+                //         right: 0;
+                //         top: 0;
+                //         width: 43px;
+                //         height: 40px;
+                //         line-height: 40px;
+                //         padding: 0;
+                //         display: inline-block;
+                //         border-left: 1px solid #979797;
+                //         img.add {
+                //             cursor: pointer;
+                //             margin-left: 17.6px;
+                //         }
+                //     }
+                // }
             }
             li:nth-child(5n) {
                 margin-right: 0;

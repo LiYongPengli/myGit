@@ -9,7 +9,7 @@
       <p class="concerned_p">已关注</p>
       <ul>
         <li v-show="showItem(v.name)" v-for="(v, i) in mediaFollowList" :key="v.sub_id">
-          <div>
+          <!-- <div>
             <speed-text class="pname" width="124px" height="40px" :text="v.name_zh" />
             <p class="i_mg">
               <img
@@ -19,7 +19,27 @@
                 alt=""
               />
             </p>
-          </div>
+          </div> -->
+
+          <a>
+            <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
+            <div class="zyname">
+              <div class="chinese_gj mt">
+                <speed-text width="100px" height="20px" :text="v.name_zh" />
+              </div>
+              <div v-show="v.name_en" class="english_gj mt">
+                <speed-text width="100px" height="20px" :text="v.name_en" />
+              </div>
+            </div>
+            <p class="i_mg">
+              <img
+                class="close"
+                @click="unsub(v, i)"
+                src="../../assets/img/close.png"
+                alt=""
+              />
+            </p>
+          </a>
         </li>
       </ul>
     </div>
@@ -38,12 +58,8 @@
       </p>
       <ul>
         <li v-show="showItem(v.name)" v-for="(v, i) in showlist" :key="v.sub_id">
-          <div class="no_noattention">
-            <!-- <p>{{v.name_zh}}<img @click="addFollow(v,i)" src="../../assets/img/add.png" alt=""></p> -->
+          <!-- <div class="no_noattention">
             <speed-text class="pname" width="124px" height="40px" :text="v.name_zh" />
-            <!-- <p class="pname"> -->
-
-            <!-- </p> -->
             <p class="i_mg">
               <img
                 class="add"
@@ -52,7 +68,28 @@
                 alt=""
               />
             </p>
-          </div>
+          </div> -->
+           <a>
+            <img src="../../assets/img/media_default.png" alt="" />
+            <div class="zyname">
+              <div class="chinese_gj mt">
+                <speed-text width="100px" height="20px" :text="v.name_zh" />
+              </div>
+              <div v-show="v.name_en" class="english_gj mt">
+                <speed-text width="100px" height="20px" :text="v.name_en" />
+              </div>
+            </div>
+            <p class="i_mg">
+              <img
+                class="add"
+                @click="addFollow(v, i)"
+                src="../../assets/img/add.png"
+                alt=""
+              />
+            </p>
+          </a>
+            
+
         </li>
       </ul>
     </div>
