@@ -1,5 +1,6 @@
 <template>
   <div class="homeset">
+     <my-scroll>
     <header>
       <div class="header">
         <h1>选择您感兴趣的选项</h1>
@@ -156,8 +157,8 @@
           </ul>
         </my-scroll>
       </div>
-      <div class="footer">
-        <el-button @click="toNext" style="width: 280px" type="primary">下一步</el-button>
+      <div class="footer" style="margin-bottom:50px">
+        <el-button @click="toNext" style="width: 280px;" type="primary">下一步</el-button>
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
@@ -236,6 +237,7 @@
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
+     </my-scroll>
   </div>
 </template>
 
@@ -244,6 +246,7 @@ import Component, { mixins } from "vue-class-component";
 import HomeSetCom from "./HomeSet";
 import SpeedText from "@/components/SpeedText.vue";
 import MyScroll from "@/components/MyScroll.vue";
+
 @Component({
   components: {
     SpeedText,
