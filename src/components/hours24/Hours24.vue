@@ -15,7 +15,7 @@
                   <div class="logo">
                   <img v-if="v.error" src="../../assets/img/media_default.png" alt="">
                   <img @error="v.error=true" v-if="v.media_icon&&!v.error" :src="v.media_icon" alt="" />
-                  <span @click="toFollowPage(i)" class="ly">
+                  <span @click="toFollowPage(v,i)" class="ly">
                     {{ v.media_name }}
                   </span>
                   <span class="sj">

@@ -27,9 +27,9 @@ export default class MyFollowCom extends Vue {
 
     public chooseNav: string = 'all';
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
+
     @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
-        console.log(newVal)
         if(newVal&&!this.isfinished){
             this.getList();
         }
@@ -101,13 +101,22 @@ export default class MyFollowCom extends Vue {
     }
 
     //选择
-    public choose(type: string,choise:boolean, index: number): void {
+    public choose(type: string,choise:boolean,name:string): void {
         switch (type) {
             case 'country':
                 if(choise){
-                    this.$set(this.country[index], 'choose', true);
+                    this.country.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.country[index], 'choose', true);
+                        }
+                    })
+                    
                 }else{
-                    this.$set(this.country[index], 'choose', false);
+                    this.country.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.country[index], 'choose', false);
+                        }
+                    })
                 }
                 this.filters.country = [];
                 for (let i of this.country) {
@@ -126,9 +135,17 @@ export default class MyFollowCom extends Vue {
                 break;
             case 'media':
                 if(choise){
-                    this.$set(this.media[index], 'choose', true);
+                    this.media.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.media[index], 'choose', true);
+                        }
+                    })
                 }else{
-                    this.$set(this.media[index], 'choose', false);
+                    this.media.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.media[index], 'choose', false);
+                        }
+                    })
                 }
                 this.filters.media = [];
                 for (let i of this.media) {
@@ -146,10 +163,19 @@ export default class MyFollowCom extends Vue {
                 }
                 break;
             case 'people':
+                
                 if(choise){
-                    this.$set(this.people[index], 'choose', true);
+                    this.people.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.people[index], 'choose', true);
+                        }
+                    })
                 }else{
-                    this.$set(this.people[index], 'choose', false);
+                    this.people.forEach((item,index)=>{
+                        if(item.name_zh==name||item.zh_name==name){
+                            this.$set(this.people[index], 'choose', false);
+                        }
+                    })
                 }
                 this.filters.character = [];
                 for (let i of this.people) {
@@ -195,10 +221,11 @@ export default class MyFollowCom extends Vue {
                 //获取媒体列表
                 this.getSubscriptions("media", "sub", (res) => {
                     this.media = res.data.data;
+                    console.log(this.media)
                     if(this.$route.query.item){
                         let obj = JSON.parse(this.$route.query.item as string);
                         this.chooseNav = obj.type;
-                        this.choose(obj.type,obj.choise,obj.index);
+                        this.choose(obj.type,obj.choise,obj.name);
                         return;
                     }
                     this.getAllData();
@@ -252,21 +279,14 @@ export default class MyFollowCom extends Vue {
         this.filters.character = [];
         this.filters.media = [];
         this.filters.country = []
-        let flag = false;
         for (let i of this.country) {
-            flag = true;
             this.filters.country.push(i.name)
         }
         for (let i of this.media) {
-            flag = true;
             this.filters.media.push(i.sub_id)
         }
         for (let i of this.people) {
-            flag = true;
             this.filters.character.push(i.name)
-        }
-        if(!flag){
-            return;
         }
         this.getList();
     }
@@ -275,15 +295,18 @@ export default class MyFollowCom extends Vue {
     //获取列表
     private getList(): void {
         let filters: any = {}
+        let flag = false;
         for (let i in this.filters) {
             if (this.filters[i].constructor == Array) {
                 if (this.filters[i].length) {
+                    flag = true;
                     filters[i] = this.filters[i];
                 }
             } else {
                 filters[i] = this.filters[i];
             }
         }
+        if(!flag) return;
         this.axios.post('/v1/cmd/', {
             cmd: 'my_sub_news',
             paras: filters

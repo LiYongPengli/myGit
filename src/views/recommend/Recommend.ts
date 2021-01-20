@@ -207,11 +207,11 @@ export default class RecommendCom extends Vue {
      * @param choise 是否选择
      * @param index 该类型索引
      */
-    public toFollowPage(type:string,index:number):void{
+    public toFollowPage(type:string,item:any):void{
         this.$router.push('/myfollow?item='+JSON.stringify({
             type:type,
             choise:true,
-            index:index
+            name:item.name_zh?item.name_zh:item.zh_name
         }))
     }
 }

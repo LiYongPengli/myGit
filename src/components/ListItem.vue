@@ -126,7 +126,6 @@ export default class ListItem extends Vue {
     type: false,
   };
   public created() {
-    console.log(this.item);
     this.showTrack();
   }
 

@@ -241,13 +241,13 @@ export default class HomeSetCom extends Vue {
                 if (!this.country_list[index].choose) {
                     this.$set(this.country_list[index], 'choose', true);
                     this.sub_form.country.push({
-                        name:item.name,
+                        name:item.name_zh,
                         id:item.sub_id
                     });
                 } else {
                     this.$set(this.country_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.country.length; i++) {
-                        if (item.name == this.sub_form.country[i].name) {
+                        if (item.name_zh == this.sub_form.country[i].name) {
                             this.$delete(this.sub_form.country, i)
                         }
                     }
@@ -257,13 +257,13 @@ export default class HomeSetCom extends Vue {
                 if (!this.character_list[index].choose) {
                     this.$set(this.character_list[index], 'choose', true);
                     this.sub_form.character.push({
-                        name:item.name,
+                        name:item.zh_name,
                         id:item.sub_id
                     });
                 } else {
                     this.$set(this.character_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.character.length; i++) {
-                        if (item.name == this.sub_form.character[i].name) {
+                        if (item.zh_name == this.sub_form.character[i].name) {
                             this.$delete(this.sub_form.character, i)
                         }
                     }
@@ -298,13 +298,13 @@ export default class HomeSetCom extends Vue {
             if (!this.media_list.week[index].choose) {
                 this.$set(this.media_list.week[index], 'choose', true);
                 this.sub_form.media.push({
-                    name:item.name,
+                    name:item.name_zh,
                     id:item.sub_id
                 });
             } else {
                 this.$set(this.media_list.week[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
-                    if (item.name == this.sub_form.media[i].name) {
+                    if (item.name_zh == this.sub_form.media[i].name) {
                         this.$delete(this.sub_form.media, i)
                     }
                 }
@@ -313,13 +313,13 @@ export default class HomeSetCom extends Vue {
             if (!this.media_list.month[index].choose) {
                 this.$set(this.media_list.month[index], 'choose', !this.media_list.month[index].choose);
                 this.sub_form.media.push({
-                    name:item.name,
+                    name:item.name_zh,
                     id:item.sub_id
                 });
             } else {
                 this.$set(this.media_list.month[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
-                    if (item.name == this.sub_form.media[i].name) {
+                    if (item.name_zh == this.sub_form.media[i].name) {
                         this.$delete(this.sub_form.media, i)
                     }
                 }
@@ -328,13 +328,13 @@ export default class HomeSetCom extends Vue {
             if (!this.media_list.other[index].choose) {
                 this.$set(this.media_list.other[index], 'choose', !this.media_list.other[index].choose);
                 this.sub_form.media.push({
-                    name:item.name,
+                    name:item.name_zh,
                     id:item.sub_id
                 });
             } else {
                 this.$set(this.media_list.other[index], 'choose', false);
                 for (let i = 0; i < this.sub_form.media.length; i++) {
-                    if (item.name == this.sub_form.media[i].name) {
+                    if (item.name_zh == this.sub_form.media[i].name) {
                         this.$delete(this.sub_form.media, i)
                     }
                 }

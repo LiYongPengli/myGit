@@ -134,7 +134,7 @@
               <div class="swiper-slide">
                 <div class="country">
                   <div
-                    @click="toFollowPage('country', i)"
+                    @click="toFollowPage('country', v)"
                     v-for="(v, i) in country"
                     :key="i"
                     class="item"
@@ -148,7 +148,7 @@
               <div class="swiper-slide">
                 <div class="media country people" style="width: 457px">
                   <div
-                    @click="toFollowPage('media', i)"
+                    @click="toFollowPage('media', v)"
                     v-for="(v, i) in media"
                     :key="i"
                     class="item"
@@ -163,7 +163,7 @@
               <div class="swiper-slide">
                 <div class="country people">
                   <div
-                    @click="toFollowPage('people', i)"
+                    @click="toFollowPage('people', v)"
                     v-for="(v, i) in people"
                     :key="i"
                     class="item"
