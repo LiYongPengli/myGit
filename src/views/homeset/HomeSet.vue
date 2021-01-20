@@ -47,11 +47,11 @@
                 <!-- 50*30 -->
                 <img style="margin-top: 20px" :src="v.flag" alt="" />
 
-                <span style="height: 20px;width:130px" class="chinese_gj">
+                <span style="height: 20px; width: 130px" class="chinese_gj">
                   <speed-text width="130px" height="20px" :text="v.name_zh" />
                 </span>
 
-                <span style="width:130px"  class="english_gj"
+                <span style="width: 130px" class="english_gj"
                   ><speed-text width="130px" height="20px" :text="v.name"
                 /></span>
               </a>
@@ -60,12 +60,7 @@
         </my-scroll>
       </div>
       <div class="footer">
-        <el-button
-          @click="toNext"
-          style="width: 280px;"
-          type="primary"
-          >下一步</el-button
-        >
+        <el-button @click="toNext" style="width: 280px" type="primary">下一步</el-button>
       </div>
     </div>
     <!-- 媒体 -->
@@ -76,9 +71,9 @@
         >
       </span>
       <!-- 7天活跃 -->
-      <div v-show="media_list.week.length" class="content_wrap" style="height: 200px">
+      <div v-show="media_list.week.length" class="content_wrap" style="height: 320px">
         <span class="qit">近7天内活跃的媒体</span>
-        <div style="height: 145px; overflow: hidden">
+        <div style="height: 285px; overflow: hidden">
           <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
             <ul class="mt">
               <li
@@ -89,14 +84,15 @@
               >
                 <a>
                   <!-- 50*30 -->
-                  <img src="../../assets/img/media_default.png" alt="" />
-
-                  <span class="chinese_gj mt">
-                    <speed-text width="110px" height="20px" :text="v.name_zh" />
-                  </span>
-                  <!-- <span class="english_gj mt">
-                    <speed-text width="110px" height="20px" :text="v.name" />
-                  </span> -->
+                  <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
+                  <div class="zyname">
+                    <div class="">
+                      <speed-text width="110px" height="20px" :text="v.name_zh" />
+                    </div>
+                    <div class="">
+                      <speed-text width="110px" height="20px" :text="v.name" />
+                    </div>
+                  </div>
                 </a>
               </li>
             </ul>
@@ -104,9 +100,9 @@
         </div>
       </div>
       <!-- 30天活跃 -->
-      <div v-show="media_list.month.length" class="content_wrap" style="height: 200px">
+      <div v-show="media_list.month.length" class="content_wrap" style="height: 320px">
         <span class="sst">近30天内活跃的媒体</span>
-        <div style="height: 145px; overflow: hidden">
+        <div style="height: 285px; overflow: hidden">
           <my-scroll @loading="loadingMedia">
             <ul class="mt">
               <li
@@ -117,15 +113,17 @@
               >
                 <a>
                   <!-- 50*30 -->
-                  <img src="../../assets/img/media_default.png" alt="" />
+                  <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
 
-                  <span class="chinese_gj mt">
-                    <speed-text width="130px" height="20px" :text="v.name_zh" />
-                  </span>
+                  <div class="zyname">
+                    <div class="">
+                      <speed-text width="130px" height="20px" :text="v.name_zh" />
+                    </div>
 
-                  <!-- <span class="english_gj mt">
-                    <speed-text width="110px" height="20px" :text="v.name" />
-                  </span> -->
+                    <div class="">
+                      <speed-text width="110px" height="20px" :text="v.name" />
+                    </div>
+                  </div>
                 </a>
               </li>
             </ul>
@@ -144,26 +142,22 @@
               :class="{ cur: v.choose }"
             >
               <a>
-                <!-- 50*30 -->
-                <img src="../../assets/img/media_default.png" alt="" />
-                <span class="chinese_gj mt">
-                  <speed-text width="110px" height="20px" :text="v.name_zh" />
-                </span>
-                <span class="english_gj mt">
-                  <speed-text width="110px" height="20px" :text="v.name_zh" />
-                </span>
+                <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
+                <div class="zyname">
+                  <div class="">
+                    <speed-text width="110px" height="20px" :text="v.name_zh" />
+                  </div>
+                  <div class="">
+                    <speed-text width="110px" height="20px" :text="v.name_zh" />
+                  </div>
+                </div>
               </a>
             </li>
           </ul>
         </my-scroll>
       </div>
       <div class="footer">
-        <el-button
-          @click="toNext"
-          style="width: 280px;"
-          type="primary"
-          >下一步</el-button
-        >
+        <el-button @click="toNext" style="width: 280px" type="primary">下一步</el-button>
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
@@ -215,13 +209,7 @@
       </div>
 
       <div class="footer">
-        <el-button
-          @click="toNext"
-          
-          style="width: 280px;"
-          type="primary"
-          >下一步</el-button
-        >
+        <el-button @click="toNext" style="width: 280px" type="primary">下一步</el-button>
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
@@ -237,21 +225,14 @@
               :key="i"
             >
               <div>
-                <a>{{ v.name }}
-                      
-                </a>
+                <a>{{ v.name }} </a>
               </div>
             </li>
           </ul>
         </my-scroll>
       </div>
       <div class="footer">
-        <el-button
-          @click="toFinish"
-          style="width: 280px"
-          type="primary"
-          >完成</el-button
-        >
+        <el-button @click="toFinish" style="width: 280px" type="primary">完成</el-button>
         <div @click="pageIndex--" class="up">上一步</div>
       </div>
     </div>
