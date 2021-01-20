@@ -17,7 +17,7 @@
             prefix-icon="el-icon-user"
             type="text"
             v-model="form.account"
-            placeholder="请输入账号(支持30位以内的字母、数字以及常规字符)"
+            placeholder="请输入账号(支持最多30位字母、数字以及常规字符)"
           />
         </el-form-item>
 
