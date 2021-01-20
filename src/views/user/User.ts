@@ -92,9 +92,11 @@ export default class UserCom extends Vue {
         }).then(res=>{
             this.headportraitupdate = false;
             this.$message.success('头像修改成功');
-            setTimeout(()=>{
-                this.$router.go(0);
-            },500)
+            let reader = new FileReader();
+            reader.readAsDataURL(<Blob>this.headerPhoto);
+            reader.onloadend = (e)=>{
+                this.user_message.headimg = (<FileReader>e.target).result;
+            }
         }).catch(err=>{
             console.log(err);
         })

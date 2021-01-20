@@ -12,7 +12,7 @@
               <div @mouseenter="showUpload = true" class="user_img">
                 <img
                   :src="
-                    axios.defaults.baseURL + '/avatar/' + user_message.account
+                    user_message.headimg
                   "
                   alt=""
                 />
@@ -27,11 +27,12 @@
               </div>
               <div class="user_message">
                 <p class="user_name">{{ user_message.nickname }}</p>
-                <span class="user_id"
+                <!-- <span class="user_id"
                   >{{ user_message.phone_number.slice(0, 3) }}****{{
                     user_message.phone_number.slice(7, 11)
                   }}</span
-                >
+                > -->
+                <speed-text width="100%" height="16px" :text="user_message.account" class="user_id" />
               </div>
             </div>
             <ul class="user_menu">
@@ -138,11 +139,13 @@ import UserCom from "./User";
 import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
+import SpeedText from "@/components/SpeedText.vue";
 @Component({
   components: {
     HeaderTwo,
     MyScroll,
     UpFile,
+    SpeedText
   },
 })
 export default class User extends mixins(UserCom) {}

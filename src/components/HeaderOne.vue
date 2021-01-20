@@ -38,7 +38,7 @@
             </ul>
             <div slot="reference" class="user_info_wrap">
               <img
-                :src="axios.defaults.baseURL + '/avatar/' + user_message.account"
+                :src="user_message.headimg"
                 alt="头像"
               />
 
@@ -84,6 +84,7 @@ export default class HeaderOne extends Vue {
   @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
+  @Mutation("setUserMessage") setUserMessage!: any;
 
   @State("show_intelligent") show_intelligent!: boolean;
 
@@ -97,7 +98,8 @@ export default class HeaderOne extends Vue {
         console.log(res.data);
         if (res.data.status == 1) {
           this.$router.push("/login");
-          this.$message.success("已登录");
+          this.$message.success("已登出");
+          this.setUserMessage('');
         }
       })
       .catch((err) => {

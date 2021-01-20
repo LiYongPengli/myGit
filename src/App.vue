@@ -65,6 +65,7 @@ export default class App extends Vue {
   public sharetext: string = "";
   //是否展示聊天工具
   @State("topic_show") topic_show!: boolean;
+  @State("user_message") user_message!: any;
   @State("topic_status") topic_status!: number;
   //是否有全局消息
   @State("isGlobMessage") isGlobMessage!: boolean;
@@ -90,7 +91,9 @@ export default class App extends Vue {
     } else {
       this.isshow = false;
       this.show_fx = true;
-      this.userLoginType();
+      if(!this.user_message){
+        this.userLoginType();
+      }
     }
   }
 
@@ -199,6 +202,10 @@ export default class App extends Vue {
         paras: { user_id: user_id },
       })
       .then((res) => {
+        this.axios.get("/avatar/"+res.data.data.account+"?format=base64").then(result=>{
+          res.data.data.headimg = result.data;
+          this.setUserMessage(res.data.data);
+        })
         this.setUserMessage(res.data.data);
         if (!res.data.data.sub_prompted && this.$route.name != "HomeSet") {
           this.$router.push("/homeset");

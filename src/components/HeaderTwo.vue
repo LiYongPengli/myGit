@@ -20,7 +20,7 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
-              :src="axios.defaults.baseURL+'/avatar/'+user_message.account"
+              :src="user_message.headimg"
               alt=""
             />
           </div>
@@ -76,6 +76,7 @@ export default class HeaderTwo extends Vue {
   @State("user_message") user_message!: string;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
+  @Mutation("setUserMessage") setUserMessage!: any;
   @State('show_intelligent') show_intelligent!:boolean;
 
   @Mutation('setShowIntelligent') setShowIntelligent:any;
@@ -88,6 +89,7 @@ export default class HeaderTwo extends Vue {
         if (res.data.status == 1) {
           this.$router.push("/login");
           this.$message.success("已登出");
+          this.setUserMessage('');
         }
       })
       .catch((err) => {
