@@ -111,7 +111,7 @@
             v-model="favorite_form.name"
             class="nr"
             type="text"
-            placeholder="请输入专题名称"
+            placeholder="请输入收藏夹名称"
           />
         </div>
         <div ></div>
@@ -128,7 +128,7 @@
           <label>
             <img src="../../assets/img/cjqs.png" alt="" />
 
-            <span class="scfm">上传封面</span>
+            <span class="scfm">选择封面</span>
           </label>
         </div>
 

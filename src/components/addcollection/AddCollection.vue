@@ -24,14 +24,14 @@
           </li>
         </ul>
       </my-scroll>
-      <span @click="createNewCollection = true" class="addnew">创建新收藏夹</span>
+      <span @click="createNewCollection = true" class="addnew">创建收藏夹</span>
       <div v-show="createNewCollection" class="addnewcontent">
         <div class="scjmc">
           <span class="name"> 收藏夹名称： </span>
           <input
             v-model="collection_name"
             type="text"
-            placeholder="请输入新收藏夹名称"
+            placeholder="请输入收藏夹名称"
            style=" border-bottom:1px solid #979797"
           />
         </div>
@@ -49,16 +49,20 @@
                 <img  src="../../assets/img/cjqs1.png" alt="">
                  <p >选择封面</p>
                  </span>
-            <img v-show="img_pv" style="width:160px;height:90px;" :src="img_pv" alt="">
+            <img v-show="img_pv" style="width:170px;height:100px;" :src="img_pv" alt="">
             <span  v-show="img_pv" @click="choosePhoto=true" :class="img_pv ? 'cxxz':''" >重新选择...</span>
             
           </label>
         </div>
       </div>
-      <div v-show="createNewCollection" class="caozuo">
+      <!-- <div v-show="createNewCollection" class="caozuo">
         <span @click="createCollection">确认</span>
         <span @click="extCreateCollection">取消</span>
-      </div>
+      </div> -->
+      <div v-show="createNewCollection"  class="edit_wrap_footer">
+          <el-button size="small" style="width:80px;" type="primary" @click="createCollection" >确 认</el-button>
+          <el-button size="small" style="width:80px;" @click="extCreateCollection" >取 消</el-button>
+        </div>
     </div>
 
     <!-- 示例图片 -->

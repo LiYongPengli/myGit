@@ -7,7 +7,7 @@
     >
       <div class="top">
         <h1>睿读使用指南</h1>
-        <input type="text" placeholder="请输入收藏夹名称" />
+        <!-- <input type="text" placeholder="请输入收藏夹名称" /> -->
       </div>
       <div class="content">
         <div class="content_left">
@@ -130,7 +130,25 @@
               </p>
               <p>9. 手机登录流程图如下</p>
               <h3>微信登录</h3>
-              <p>1.页面加载出微信登录接口的二维码。"</p>
+              <p>1.页面加载出微信登录接口的二维码。</p>
+            </div>
+            <div class="yhgz" v-show="cur == 3" >
+              <h2>用户关注</h2>
+            </div>
+              <div class="tjxw" v-show="cur == 4" >
+              <h2>推荐新闻</h2>
+            </div>
+              <div class="ptss" v-show="cur == 5" >
+              <h2>平台搜索</h2>
+            </div>
+              <div class="jstx" v-show="cur == 6" >
+              <h2>即时通讯</h2>
+            </div>
+              <div class="mmgl" v-show="cur == 7" >
+              <h2>密码管理</h2>
+            </div>
+              <div class="zhgl" v-show="cur == 8" >
+              <h2>账号管理</h2>
             </div>
           </my-scroll>
           </div>
