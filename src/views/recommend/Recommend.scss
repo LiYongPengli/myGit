@@ -80,21 +80,24 @@
                     justify-content: center;
                     
                     img{
-                        width: 15px;
+                        width: 10px;
+                        cursor: pointer;
                     }
                 }
                 .page_left{
-                    width: 30px;
+                    width: 60px;
                     height: 30px;
-                    left: 90px;
+                    left: 70px;
                     background: -webkit-linear-gradient(left,#292934 0%,rgba(41,41,52,.5) 100%);
                 }
                 .page_right{
                     right: 90px;
+                    height: 105%;
                     background: -webkit-linear-gradient(left,rgba(41,41,52,.5) 0%,#292934 100%);
                 }
                 .cur {
                     background-image: url("../../assets/img/cur.png") !important;
+                    background-size: 100% 100%;
                     background-position: center bottom !important;
                     background-repeat: no-repeat !important;
                 }
@@ -109,6 +112,7 @@
                 }
                 .swiper-container {
                     flex: 1;
+                    margin-right: 30px;
                     .swiper-wrapper {
                         .swiper-slide {
                             width: auto;
@@ -119,7 +123,7 @@
                                 font-size: 16px;
                                 height: 70px;
                                 line-height: 70px;
-                                margin: 0 20px;
+                                padding: 0 35px;
                             }
                         }
                     }

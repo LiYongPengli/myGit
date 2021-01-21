@@ -6,7 +6,7 @@
         @keypress="toSearch"
         v-model="searchText"
         type="text"
-        placeholder="请输入想要搜索的人物名称"
+        placeholder="请输入想要搜索的人物名称(搜索内容不能为空)"
       />
       <img
         @click="searchCharacter"
@@ -16,6 +16,7 @@
       />
     </div>
     <ul class="noattentionlists">
+      <p class="nodata" v-if="!characterList.length&&noTextSearch">暂无该人物数据...</p>
       <li v-for="(v, i) in characterList" :key="i" class="noattentionlist">
         <div class="concernedlistdiv">
           <img v-if="v.avatar!=-1&&v.avatar!=null" :src="axios.defaults.baseURL+'/attachments/avator/'+v.avatar" alt="" />
@@ -58,6 +59,7 @@ export default class NoPeople extends Vue {
   public characterList: any[] = [];
   public searchText: string = "";
   public request: CancelTokenSource | null = null;
+  public noTextSearch:boolean = false;
   @Emit("close")
   public close(): boolean {
     return false;
@@ -83,6 +85,7 @@ export default class NoPeople extends Vue {
         this.characterList = [];
       return;
     }
+    this.noTextSearch = true;
     this.axios
       .post(
         "/v1/cmd/",
@@ -181,6 +184,12 @@ export default class NoPeople extends Vue {
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
+    .nodata{
+      width: 100%;
+      text-align: center;
+      color: #b7b7bf;
+      font-size: 17px;
+    }
     li {
       width: 270px;
       position: relative;

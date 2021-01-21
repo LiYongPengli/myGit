@@ -82,7 +82,7 @@ export default class RecommendCom extends Vue {
                 slidesPerView: 'auto',
                 freeMode: true,
                 observer: true,
-                observeSlideChildren: true,
+                observeSlideChildren: true
             })
         });
         let that = this;

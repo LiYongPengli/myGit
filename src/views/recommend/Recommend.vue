@@ -10,10 +10,10 @@
       <div class="list_wrap">
         <div class="list_nav">
           <div class="page_left">
-            <img src="../../assets/img/page_left.png" alt="" />
+            <img @click="channel_swiper.slidePrev()" src="../../assets/img/page_left.png" alt="" />
           </div>
           <div class="page_right">
-            <img src="../../assets/img/page_right.png" alt="" />
+            <img @click="channel_swiper.slideNext()" src="../../assets/img/page_right.png" alt="" />
           </div>
           <span
             class="recommend_nav"
@@ -24,7 +24,6 @@
           <!-- <span class="selected swiper-slide-active">推荐</span> -->
           <div class="swiper-container" id="swiper1">
             <div class="swiper-wrapper">
-              <!-- <span class="swiper-slide swiper-slide-next">菜单 2</span> -->
               <div
                 v-for="(v, i) in channel"
                 :key="i"

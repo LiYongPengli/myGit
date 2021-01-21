@@ -9,17 +9,6 @@ export default class CountryCom extends Vue {
     public loading:boolean = true;
     public loadFollow:boolean = true;
 
-    //定义数据是否需要完全显示的属性
-    public showAll: boolean = false;
-    public get word(): any {
-        if (this.showAll == false) {
-            return '展开'
-        }
-        else {
-            return '收起'
-        }
-    }
-
     public created(): void {
         this.getList();
     }
@@ -27,16 +16,10 @@ export default class CountryCom extends Vue {
         this.getSubscriptions('country', 'sub', res => {
             console.log(res.data)
             this.country_follow_list = res.data.data;
-            this.country_follow_list.sort((a,b)=>{
-                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
-            })
             this.loading = false;
         });
         this.getSubscriptions('country', 'unsub', res => {
             this.country_list = res.data.data;
-            this.country_list.sort((a,b)=>{
-                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
-            })
             this.loadFollow = false;
         });
     }
@@ -56,11 +39,10 @@ export default class CountryCom extends Vue {
             sub_type: 'country',
             sub_oper_type: 'unsub',
         }).then(res=>{
-            this.country_list.push(item);
             this.country_follow_list.splice(index,1);
-            this.country_list.sort((a,b)=>{
-                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
-            })
+            this.getSubscriptions('country', 'unsub', res => {
+                this.country_list = res.data.data;
+            });
         }).catch(err=>{
             console.log(err);
         })
@@ -75,9 +57,6 @@ export default class CountryCom extends Vue {
         }).then(res=>{
             this.country_follow_list.push(item);
             this.country_list.splice(index,1);
-            this.country_follow_list.sort((a,b)=>{
-                return a.name.charCodeAt(0)-b.name.charCodeAt(0);
-            })
         }).catch(err=>{
             console.log(err);
         })
