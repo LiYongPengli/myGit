@@ -8,13 +8,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'swiper/swiper-bundle.min.css';
 import { init_time } from './libs/OverallLib';
-//import VueLazyLoad from 'vue-lazyload';
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios);
 Vue.config.productionTip = false;
-/* Vue.use(VueLazyLoad,{
-  preLoad: 1
-}); */
 
 Vue.directive('time',{
   inserted:init_time,

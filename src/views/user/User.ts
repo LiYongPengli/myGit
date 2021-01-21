@@ -121,6 +121,7 @@ export default class UserCom extends Vue {
                     this.user_message.headimg = wechat.head_img;
                     this.headerPhotoURL = "";
                     this.headerPhoto = null;
+                    this.showWeiChatHeader = false;
                 }).catch(err => {
                     console.log(err);
                 })

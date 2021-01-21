@@ -11,6 +11,8 @@ export default class RecommendCom extends Vue {
     @State('language') language!: string;
     
     @State('topic_show') topic_show!: boolean;
+    public left_btn:boolean = false;
+    public right_btn:boolean = true;
     //被激活的推荐频道导航
     public active_recommend: number = 0;
     public active_recommend_name: string = '推荐';
@@ -74,15 +76,38 @@ export default class RecommendCom extends Vue {
         }
     }
 
+    public next(){
+        this.channel_swiper.slideNext();
+        if(this.channel_swiper.isEnd){
+            this.right_btn = false;
+            this.left_btn = true;
+        }
+    }
+
     public mounted(): void {
         //获取频道列表
         this.getSubscriptions("channel", "sub", (res) => {
+            let that = this;
             this.channel = res.data.data;
             this.channel_swiper = new Swiper('#swiper1', {
                 slidesPerView: 'auto',
                 freeMode: true,
                 observer: true,
-                observeSlideChildren: true
+                observeSlideChildren: true,
+                on:{
+                    slideChangeTransitionEnd(swiper){
+                        if(swiper.isBeginning){
+                            that.left_btn = false;
+                            that.right_btn = true;
+                        }else if(swiper.isEnd){
+                            that.right_btn = false;
+                            that.left_btn = true;
+                        }else{
+                            that.left_btn = true;
+                            that.right_btn = true;
+                        }
+                    }
+                }
             })
         });
         let that = this;

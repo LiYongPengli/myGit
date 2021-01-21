@@ -9,11 +9,11 @@
       </div>
       <div class="list_wrap">
         <div class="list_nav">
-          <div class="page_left">
+          <div v-show="left_btn" class="page_left">
             <img @click="channel_swiper.slidePrev()" src="../../assets/img/page_left.png" alt="" />
           </div>
-          <div class="page_right">
-            <img @click="channel_swiper.slideNext()" src="../../assets/img/page_right.png" alt="" />
+          <div v-show="right_btn" class="page_right">
+            <img @click="next" src="../../assets/img/page_right.png" alt="" />
           </div>
           <span
             class="recommend_nav"

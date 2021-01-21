@@ -78,10 +78,10 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
-          v-lazy="item.cover.video"
+          :src="item.cover.video"
           v-show="!error"
           @error="error = true"
-          
+          crossorigin="use-credentials"
           controls
         >
           <track
@@ -97,7 +97,7 @@
             label="中文"
           />
         </video>
-        <img v-show="error" src="../assets/img/404.png" alt="" />
+        <img v-show="error" src="../assets/img/4041.png" alt="" />
       </div>
     </div>
   </div>
