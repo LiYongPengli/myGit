@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="">
-                      <speed-text width="110px" height="20px" :text="v.name" />
+                      <speed-text width="130px" height="20px" :text="v.name" />
                     </div>
                   </div>
                 </a>
