@@ -141,7 +141,7 @@ export default class RecommendCom extends Vue {
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { start:this.start.pageStart,name: this.active_recommend_name, size: 10 };
+                paras = { start:this.start.pageStart,sub_id: this.active_recommend_name, size: 10 };
                 break;
         }
         this.axios.post('/v1/cmd/', {

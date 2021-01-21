@@ -75,18 +75,18 @@
                         // margin-left: 25px;
                         margin-right: 25px;
                         margin-bottom: 10px;
+                        // padding-right: 10px;
+                        position: relative;
                         a {
                             padding: 0 10px;
                             font-size: 15px;
                         }
                         span {
-                            margin-right: 5px;
-                            position: relative;
-                            img {
-                                position: absolute;
-                                top: 7px;
-                                left: -5px;
-                            }
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            right: 0px;
+                            transform: translateY(-50%);
                         }
                     }
                 }

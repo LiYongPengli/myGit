@@ -35,7 +35,7 @@
                   :class="{ cur: active_recommend == i + 1 }"
                   >{{ v.name }}</span
                 > -->
-                <span @click="change_recommend(i + 1, v.name)">{{
+                <span @click="change_recommend(i + 1, v.sub_id)">{{
                   v.name
                 }}</span>
               </div>

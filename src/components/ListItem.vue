@@ -78,9 +78,10 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
+          v-lazy="item.cover.video"
           v-show="!error"
           @error="error = true"
-          :src="item.cover.video"
+          
           controls
         >
           <track

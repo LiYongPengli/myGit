@@ -9,22 +9,37 @@
         >
           <div class="user_header">
             <div class="user_info" v-if="user_message">
-              <div @mouseenter="showUpload = true" class="user_img">
-                <img
-                  :src="
-                    user_message.headimg
-                  "
-                  alt=""
-                />
+              <el-popover
+                placement="bottom-start"
+                popper-class="header_img_list_wrap"
+                width="150"
+                trigger="click"
+              >
+                <ul class="header_img_list">
+                  <li @click="headportraitupdate = true">上传头像...</li>
+                  <li @click="showWeiChatHeader=true" v-if="user_message.wechat_info.binding">使用微信头像</li>
+                </ul>
                 <div
-                  @mouseleave="showUpload = false"
-                  @click="headportraitupdate = true"
-                  v-show="showUpload"
-                  class="img_float"
+                  slot="reference"
+                  @mouseenter="showUpload = true"
+                  class="user_img"
                 >
-                  <span>点击上传</span>
+                  <img
+                    class="camera"
+                    src="../../assets/img/camera.png"
+                    alt=""
+                  />
+                  <img :src="user_message.headimg" alt="" />
+                  <div
+                    @mouseleave="showUpload = false"
+                    v-show="showUpload"
+                    class="img_float"
+                  >
+                    <span>点击上传</span>
+                  </div>
                 </div>
-              </div>
+              </el-popover>
+
               <div class="user_message">
                 <p class="user_name">{{ user_message.nickname }}</p>
                 <!-- <span class="user_id"
@@ -32,7 +47,7 @@
                     user_message.phone_number.slice(7, 11)
                   }}</span
                 > -->
-                <span class="user_id" >{{user_message.account}}</span>
+                <span class="user_id">{{ user_message.account }}</span>
               </div>
             </div>
             <ul class="user_menu">
@@ -130,6 +145,7 @@
         </div>
       </div>
     </el-dialog>
+    <warning icon="headimg" @ext="showWeiChatHeader=false" @sure="useWeiChatHeader" v-if="showWeiChatHeader" title="提示" text="确定要使用微信头像吗" />
   </div>
 </template>
 
@@ -140,12 +156,14 @@ import HeaderTwo from "@/components/HeaderTwo.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
 import SpeedText from "@/components/SpeedText.vue";
+import Warning from "@/components/Warning.vue";
 @Component({
   components: {
     HeaderTwo,
     MyScroll,
     UpFile,
-    SpeedText
+    SpeedText,
+    Warning
   },
 })
 export default class User extends mixins(UserCom) {}
@@ -153,4 +171,22 @@ export default class User extends mixins(UserCom) {}
 
 <style lang="scss" scoped>
 @import "./User.scss";
+</style>
+<style lang="scss">
+.header_img_list_wrap {
+  padding: 0;
+  background: rgb(76,75,91)!important;
+  .header_img_list {
+    li {
+      width: 100%;
+      padding: 10px 0;
+      padding-left: 20px;
+      color: #bcc2d5;
+      cursor: pointer;
+    }
+    li:first-of-type {
+      border-bottom: 1px solid #4d4d5d;
+    }
+  }
+}
 </style>

@@ -30,7 +30,7 @@ export default class Hours24Com extends Vue {
     private get24Hour(): void {
         this.axios.post('/v1/cmd/', {
             cmd: 'hours24',
-            paras: { size: 50 }
+            paras: { size: 100 }
         }).then(res => {
             this.hours_24 = res.data.data;
             setTimeout(() => {

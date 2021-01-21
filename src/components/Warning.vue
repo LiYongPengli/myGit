@@ -8,13 +8,14 @@
           </div>
           <div class="content">
               <div class="warning_ico">
-                  <img src="../assets/img/warning.png" alt="">
+                  <img v-if="icon=='warning'" src="../assets/img/warning.png" alt="">
+                  <img v-if="icon=='headimg'" src="../assets/img/headimg.png" alt="">
               </div>
               <p>{{text}}</p>
           </div>
           <div class="footer">
-              <el-button @click="sure" style="width:190px;" type="primary">确认</el-button>
-              <el-button @click="ext" style="width:190px;">取消</el-button>
+              <el-button size="small" @click="sure" style="width:120px;" type="primary">确认</el-button>
+              <el-button size="small" @click="ext" style="width:120px;margin-left:20px;">取消</el-button>
           </div>
       </div>
   </div>
@@ -27,6 +28,7 @@ export default class Warning extends Vue{
     @Prop({default:'',type:String}) title!:string;
     @Prop({default:'',type:String}) text!:string;
     @Prop({default:'',type:String}) top!:string;
+    @Prop({default:'warning',type:String}) icon!:string;
 
     @Emit('ext')
     public ext():boolean{
@@ -50,7 +52,7 @@ export default class Warning extends Vue{
     z-index: 200;
     background: rgba(0,0,0,0.5);
     &_wrap{
-        width: 800px;
+        width: 600px;
         margin: auto;
         background: #3a3a48;
         padding-bottom: 50px;
@@ -63,8 +65,9 @@ export default class Warning extends Vue{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 50px;
+            padding: 0 30px;
             border-bottom: 1px solid #4d4d5d;
+            color: white;
             .title{
                 font-size: 17px;
             }
