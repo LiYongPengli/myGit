@@ -8,7 +8,7 @@
     <div class="vue-scrollbar" v-if="rate < 1">
       <div
         class="vue-scrollbar-thumb"
-        :style="{ height: thumbH, top: thumbTop,background:thumbColor }"
+        :style="{ height: thumbH, top: thumbTop, background: thumbColor }"
         @mousedown="onmousedown"
         @mouseup="onmouseup"
       ></div>
@@ -19,11 +19,15 @@
 <script>
 export default {
   name: "my-scroll",
-  props:{
-    thumbColor:{
-      default:' rgb(61, 61, 73)',
-      type:String
-    }
+  props: {
+    thumbColor: {
+      default: " rgb(61, 61, 73)",
+      type: String,
+    },
+    animate: {
+      default: true,
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -70,12 +74,12 @@ export default {
 
     me.refresh();
   },
-  watch:{
-    '$store.state.suretop':function(newVal,oldVal){
-      if(newVal){
+  watch: {
+    "$store.state.suretop": function (newVal, oldVal) {
+      if (newVal) {
         this.toTop();
       }
-    }
+    },
   },
   methods: {
     mutationCallback(mutationsList) {
@@ -83,13 +87,18 @@ export default {
     },
     toTop() {
       let top = this.$refs.vueScroll.scrollTop;
-      let timer = setInterval(() => {
-        this.$refs.vueScroll.scrollTo({ top: (top -= 50) });
-        if (top <= 0) {
-          clearInterval(timer);
-          this.$store.commit('setSureTop',false)
-        }
-      });
+      if (this.animate) {
+        let timer = setInterval(() => {
+          this.$refs.vueScroll.scrollTo({ top: (top -= 50) });
+          if (top <= 0) {
+            clearInterval(timer);
+            this.$store.commit("setSureTop", false);
+          }
+        });
+      }else{
+        this.$refs.vueScroll.scrollTo({ top: 0});
+        this.$store.commit("setSureTop", false);
+      }
     },
     onscroll() {
       this.top = this.$refs.vueScroll.scrollTop * this.rate; //计算滚动条所在的高度
@@ -213,7 +222,7 @@ export default {
       // background: rgb(61, 61, 73);
       cursor: pointer;
       &:hover {
-        background: #bbb!important;
+        background: #bbb !important;
       }
       &:active {
         background: #aaa;
