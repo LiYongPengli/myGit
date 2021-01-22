@@ -144,14 +144,26 @@
                         display: flex;
                         flex-direction: row;
                         align-items: center;
+                        position: relative;
                         img.mrtx {
                             width: 54px;
                             height: 54px;
                         }
-                        img.duigou {
-                            width: 15px;
-                            height: 16px;
-                            // padding-left: 5px;
+                        .dgdiv {
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            top: 40px;
+                            left: 40px;
+                            background-color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img.duigou {
+                                width: 16px;
+                                height: 16px;
+                            }
                         }
                         .zyname {
                             margin-left: 20px;

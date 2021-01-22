@@ -61,7 +61,10 @@
           </my-scroll>
         </div>
         <div class="footer">
-          <el-button @click="toNext" style="width: 280px;font-size:16px;margin-left:320px" type="primary"
+          <el-button
+            @click="toNext"
+            style="width: 280px; font-size: 16px; margin-left: 320px"
+            type="primary"
             >下一步</el-button
           >
           <a class="shsz" href="#">稍后设置</a>
@@ -88,8 +91,10 @@
                 >
                   <a>
                     <!-- 50*30 -->
-                    <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
-                     <img class="duigou" src="../../assets/img/mtdg.png" alt="">
+                    <img class="mrtx" :src="v.media_icon" alt="" />
+                    <div class="dgdiv">
+                      <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                    </div>
                     <div class="zyname">
                       <div class="">
                         <speed-text width="130px" height="20px" :text="v.name_zh" />
@@ -118,8 +123,10 @@
                 >
                   <a>
                     <!-- 50*30 -->
-                    <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
-
+                    <img class="mrtx" :src="v.media_icon"  alt="" />
+                    <div class="dgdiv">
+                      <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                    </div>
                     <div class="zyname">
                       <div class="">
                         <speed-text width="130px" height="20px" :text="v.name_zh" />
@@ -129,9 +136,6 @@
                         <speed-text width="130px" height="20px" :text="v.name" />
                       </div> -->
                     </div>
-                    <a class="mtdg" href="">
-                      <img src="../../assets/img/mtdg.png" alt="">
-                    </a>
                   </a>
                 </li>
               </ul>
@@ -150,7 +154,10 @@
                 :class="{ cur: v.choose }"
               >
                 <a>
-                  <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
+                  <img class="mrtx" :src="v.media_icon"  alt="" />
+                  <div class="dgdiv">
+                    <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                  </div>
                   <div class="zyname">
                     <div class="">
                       <speed-text width="110px" height="20px" :text="v.name_zh" />
@@ -159,21 +166,21 @@
                       <speed-text width="110px" height="20px" :text="v.name_zh" />
                     </div> -->
                   </div>
-                  <a class="mtdg" href="">
-                      <img src="../../assets/img/mtdg.png" alt="">
-                    </a>
                 </a>
               </li>
             </ul>
           </my-scroll>
         </div>
         <div class="footer" style="margin-bottom: 50px">
-               <div @click="pageIndex--" class="up">上一步</div>
-          <el-button @click="toNext" style="width: 280px;font-size:16px;margin-left:50px" type="primary"
+          <div @click="pageIndex--" class="up">上一步</div>
+          <el-button
+            @click="toNext"
+            style="width: 280px; font-size: 16px; margin-left: 50px"
+            type="primary"
             >下一步</el-button
           >
-     
-             <a class="shsz" href="#">稍后设置</a>
+
+          <a class="shsz" href="#">稍后设置</a>
         </div>
       </div>
       <!-- 人物 -->
@@ -225,7 +232,10 @@
 
         <div class="footer">
           <div @click="pageIndex--" class="up">上一步</div>
-          <el-button @click="toNext" style="width: 280px;font-size:16px;margin-left:50px" type="primary"
+          <el-button
+            @click="toNext"
+            style="width: 280px; font-size: 16px; margin-left: 50px"
+            type="primary"
             >下一步</el-button
           >
           <a class="shsz" href="#">稍后设置</a>
@@ -248,21 +258,20 @@
                 :key="i"
               >
                 <div class="tjpddiv">
-                  
-                  <div style="width:160px" class="tjpddivname">
-                    
-                     <speed-text width="140px" height="40px" :text="v.name" />
-                     </div>
-                      
+                  <div style="width: 160px" class="tjpddivname">
+                    <speed-text width="140px" height="40px" :text="v.name" />
+                  </div>
                 </div>
               </li>
             </ul>
           </my-scroll>
         </div>
         <div class="footer">
-         
           <div @click="pageIndex--" class="up">上一步</div>
-           <el-button @click="toFinish" style="width: 280px;font-size:16px;margin-left:50px" type="primary"
+          <el-button
+            @click="toFinish"
+            style="width: 280px; font-size: 16px; margin-left: 50px"
+            type="primary"
             >完成</el-button
           >
         </div>
@@ -299,7 +308,7 @@ export default class HomeSet extends mixins(HomeSetCom) {}
     display: flex;
     align-items: center;
   }
- 
+
   .el-breadcrumb__inner,
   .el-breadcrumb__inner {
     color: #9898a9 !important;
