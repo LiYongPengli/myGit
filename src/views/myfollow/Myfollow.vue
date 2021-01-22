@@ -48,14 +48,12 @@
             <!-- <li><a>中国</a>X</li> -->
             <li
               :class="{ cur: v.choose }"
-              @click="choose('country', true, v.name_zh)"
+              @click="choose('country', (v.choose?false:true), v.name_zh)"
               v-for="(v, i) in country"
               :key="i"
             >
-              <a>{{ v.name_zh }}</a
-              ><span @click.stop="choose('country', false, v.name_zh)" v-show="v.choose"
-                ><img src="../../assets/img/close.png" alt=""
-              /></span>
+              <a>{{ v.name_zh }}</a>
+              <!-- <span class="el-icon-close" @click.stop="choose('country', false, v.name_zh)" v-show="v.choose"></span> -->
             </li>
           </ul>
         </div>
@@ -68,14 +66,11 @@
           <ul>
             <li
               :class="{ cur: v.choose }"
-              @click="choose('people', true, v.zh_name)"
+              @click="choose('people', (v.choose?false:true), v.zh_name)"
               v-for="(v, i) in people"
               :key="i"
             >
-              <a>{{ v.zh_name }}</a
-              ><span @click.stop="choose('people', false, v.name)" v-show="v.choose"
-                ><img src="../../assets/img/close.png" alt=""
-              /></span>
+              <a>{{ v.zh_name }}</a>
             </li>
           </ul>
         </div>
@@ -88,14 +83,11 @@
           <ul>
             <li
               :class="{ cur: v.choose }"
-              @click="choose('media', true, v.name_zh)"
+              @click="choose('media', (v.choose?false:true), v.name_zh)"
               v-for="(v, i) in media"
               :key="i"
             >
-              <a>{{ v.name_zh }}</a
-              ><span @click.stop="choose('media', false, v.name_zh)" v-show="v.choose"
-                ><img src="../../assets/img/close.png" alt=""
-              /></span>
+              <a>{{ v.name_zh }}</a>
             </li>
           </ul>
         </div>

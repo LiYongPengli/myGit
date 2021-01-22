@@ -6,7 +6,12 @@ import { Message } from 'element-ui';
 axios.defaults.baseURL = process.env.VUE_APP_URL;
 axios.defaults.headers = {'Cache-Control': 'no-cache'};
 store.commit('setEnv',process.env.VUE_APP_MODE);
-
+//请求配置
+axios.interceptors.request.use(req=>{
+    req.timeout = 5000;
+ return req;   
+})
+//响应配置
 axios.interceptors.response.use(res=>{
     return res;
 },err=>{
@@ -20,6 +25,9 @@ axios.interceptors.response.use(res=>{
             break;
         case 400:
             Message.error(err.response.data.message._schema[0]);
+            break;
+        case 500:
+            Message.error('服务器已经崩溃，请不要试了');
             break;
     }
     return Promise.reject(err);

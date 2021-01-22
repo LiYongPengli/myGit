@@ -8,7 +8,7 @@
     <div class="vue-scrollbar" v-if="rate < 1">
       <div
         class="vue-scrollbar-thumb"
-        :style="{ height: thumbH, top: thumbTop }"
+        :style="{ height: thumbH, top: thumbTop,background:thumbColor }"
         @mousedown="onmousedown"
         @mouseup="onmouseup"
       ></div>
@@ -19,7 +19,12 @@
 <script>
 export default {
   name: "my-scroll",
-  
+  props:{
+    thumbColor:{
+      default:' rgb(61, 61, 73)',
+      type:String
+    }
+  },
   data() {
     return {
       thumb: 0,
@@ -205,10 +210,10 @@ export default {
       right: 0;
       width: 6px;
       border-radius: 4px;
-      background: rgb(61, 61, 73);
+      // background: rgb(61, 61, 73);
       cursor: pointer;
       &:hover {
-        background: #bbb;
+        background: #bbb!important;
       }
       &:active {
         background: #aaa;

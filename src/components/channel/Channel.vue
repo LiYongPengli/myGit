@@ -30,14 +30,9 @@
       class="noattention"
     >
       <p class="noattention_p">未关注</p>
-      <p class="open" @click="showAll = !showAll">
-        {{ word }}
-
-        <img v-if="word == '展开'" src="../../assets/img/open.png" alt="" />
-        <img v-else src="../../assets/img/shouqil.png" alt="" />
-      </p>
       <ul>
-        <li v-show="showItem(v.name)" v-for="(v, i) in showlist" :key="i">
+        <p v-show="!channelList.length" class="nodata">无未关注频道...</p>
+        <li v-show="showItem(v.name)" v-for="(v, i) in channelList" :key="i">
           <div class="no_noattention">
             <speed-text class="pname" width="124px" height="40px"  :text="v.name">
             </speed-text>

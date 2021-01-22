@@ -86,6 +86,8 @@
             justify-content: flex-start;
             flex-wrap: wrap;
             padding-bottom: 20px;
+            min-height: 180px;
+            position: relative;
             li {
                 margin-top: 30px;
                 display: flex;
@@ -130,6 +132,14 @@
             }
             li:nth-child(5n) {
                 margin-right: 0;
+            }
+            .nodata{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                font-size: 17px;
+                color: #b7b7bf;
             }
         }
     }
