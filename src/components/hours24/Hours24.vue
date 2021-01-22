@@ -13,24 +13,32 @@
           <div class="swiper-slide" v-for="(v, i) in hours_24" :key="i">
             <div class="li">
               <div class="logo">
-                <div class="mttx">
-                  <img v-if="v.error" src="../../assets/img/media_default.png" alt="" />
-                  <img
-                    @error="v.error = true"
-                    v-if="v.media_icon && !v.error"
-                    :src="v.media_icon"
-                    alt=""
-                  />
-                  <div class="dgdiv">
-                    <img class="duigou" src="../../assets/img/mtdgx.png" alt="" />
+                <div class="left">
+                  <div class="mttx">
+                    <img
+                      v-if="v.error"
+                      src="../../assets/img/media_default.png"
+                      alt=""
+                    />
+                    <img
+                      @error="v.error = true"
+                      v-if="v.media_icon && !v.error"
+                      :src="v.media_icon"
+                      alt=""
+                    />
+                    <div v-if="v.media_source == 'Spider'" class="dgdiv">
+                      <img
+                        class="duigou"
+                        src="../../assets/img/mtdgx.png"
+                        alt=""
+                      />
+                    </div>
                   </div>
+                  <span @click="toFollowPage(v, i)" class="ly">
+                    {{ v.media_name }}
+                  </span>
                 </div>
-                <span @click="toFollowPage(v, i)" class="ly">
-                  {{ v.media_name }}
-                </span>
-                <span class="sj">
-                  {{ init_time(v.release_time) }}
-                </span>
+                <span v-time="v.release_time" class="sj"></span>
               </div>
               <a @click="toNewsInfo(v)">
                 <p v-show="language == 'crawler'">{{ v.news_title.crawler }}</p>

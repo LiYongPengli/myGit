@@ -4,11 +4,15 @@
     <div class="top">
       <div class="itemInfo">
         <div class="logo">
-          <img v-if="item.media_icon&&!item.error" :src="item.media_icon" alt="" />
+          <img
+            v-if="item.media_icon && !item.error"
+            :src="item.media_icon"
+            alt=""
+          />
           <img v-if="item.error" src="../assets/img/media_default.png" alt="" />
-           <div class="dgdiv">
-                      <img class="duigou" src="../assets/img/mtdg.png" alt="" />
-                    </div>
+          <div v-if="item.media_source=='Spider'" class="dgdiv">
+            <img class="duigou" src="../assets/img/mtdg.png" alt="" />
+          </div>
         </div>
         <div class="itemInfo_info">
           <p class="name">媒体:{{ item.media_name }}</p>
@@ -25,7 +29,7 @@
         <!-- 分享 -->
         <share-content :content="item" type="news">
           <div v-if="~shoControls.indexOf('share1')" class="btn">
-            <img style="width:15px;" src="../assets/img/sczhuanfa.png" alt="" />
+            <img style="width: 15px" src="../assets/img/sczhuanfa.png" alt="" />
             <span>分享</span>
           </div>
         </share-content>
@@ -36,7 +40,11 @@
           </div>
         </share-content>
         <!-- 收藏 -->
-        <div v-if="~shoControls.indexOf('collection')" @click="toCollection" class="btn">
+        <div
+          v-if="~shoControls.indexOf('collection')"
+          @click="toCollection"
+          class="btn"
+        >
           <img src="../assets/img/nocollection.png" alt="" />
           <span>收藏</span>
         </div>
@@ -55,14 +63,16 @@
         </div>
       </div>
     </div>
-    <p @click="toNewsInfo" class="title">{{ item.title[language1?language1:language] }}</p>
+    <p @click="toNewsInfo" class="title">
+      {{ item.title[language1 ? language1 : language] }}
+    </p>
     <div class="content">
       <el-image
         :fit="'scale-down'"
         class="img"
         lazy
         v-if="item.cover.type == 'image'"
-        :src="item.cover.url[0]+'?imageMogr2/thumbnail/200x'"
+        :src="item.cover.url[0] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
           <img style="width: 200px" src="../assets/img/404.png" alt="" />
@@ -73,7 +83,7 @@
         class="img"
         lazy
         v-if="item.cover.type == 'image' && item.cover.url[1]"
-        :src="item.cover.url[1]+'?imageMogr2/thumbnail/200x'"
+        :src="item.cover.url[1] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
           <img style="width: 200px" src="../assets/img/404.png" alt="" />
@@ -118,9 +128,9 @@ import ShareContent from "@/components/sharecontent/ShareContent.vue";
 export default class ListItem extends Vue {
   @Prop({}) item: any;
   @Prop({}) shoControls!: string[];
-  @Prop({default:''}) language1!: string[];
+  @Prop({ default: "" }) language1!: string[];
   @State("language") language!: string;
-  public error:boolean = false;
+  public error: boolean = false;
   public track_zh = {
     url: "",
     type: false,
@@ -133,9 +143,11 @@ export default class ListItem extends Vue {
     this.showTrack();
   }
 
-  public toNewsInfo():void{
-        window.open('#/newsinfo?id=' + this.item.news_id+'&md_id='+this.item.media_id);
-    }
+  public toNewsInfo(): void {
+    window.open(
+      "#/newsinfo?id=" + this.item.news_id + "&md_id=" + this.item.media_id
+    );
+  }
 
   public showTrack(): void {
     for (let i = 0; i < this.item.attachments.length; i++) {
@@ -154,7 +166,7 @@ export default class ListItem extends Vue {
         urlArr.splice(0, 3);
         let lastUrl = urlArr.join("/");
         this.track_cw.url = "/" + lastUrl;
-        console.log(this.track_cw.url)
+        console.log(this.track_cw.url);
       }
     }
   }
@@ -167,7 +179,7 @@ export default class ListItem extends Vue {
   public onlike() {}
   //收藏
   @Emit("oncollection")
-  public toCollection(){}
+  public toCollection() {}
 }
 </script>
 
@@ -186,22 +198,22 @@ export default class ListItem extends Vue {
       .logo {
         width: 54px;
         position: relative;
-          .dgdiv {
-                            position: absolute;
-                            width: 20px;
-                            height: 20px;
-                            bottom: 0px;
-                            right: -5px;
-                            background-color: white;
-                            border-radius: 50%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            img.duigou {
-                                width: 20px;
-                                height: 20px;
-                            }
-                        }
+        .dgdiv {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          bottom: 0px;
+          right: -5px;
+          background-color: white;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img.duigou {
+            width: 120%;
+            display: block;
+          }
+        }
         img {
           display: block;
           width: 100%;

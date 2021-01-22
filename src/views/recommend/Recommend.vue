@@ -166,7 +166,7 @@
                     <div class="mttx">
                       <img :src="v.media_icon" alt="" />
 
-                      <div class="dgdiv">
+                      <div v-if="v.media_source=='Spider'" class="dgdiv">
                         <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
                       </div>
                     </div>
