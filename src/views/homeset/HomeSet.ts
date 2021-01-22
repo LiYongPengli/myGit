@@ -5,20 +5,20 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 export default class HomeSetCom extends Vue {
     public show = false;
     public searchText: string = "";
-    public loadCountry:boolean = true;
-    public countryStart:number = 0;
-    public mediaStart:number = 0;
-    public characterStart:number = 0;
-    public channelStart:number = 0;
+    public loadCountry: boolean = true;
+    public countryStart: number = 0;
+    public mediaStart: number = 0;
+    public characterStart: number = 0;
+    public channelStart: number = 0;
     //搜索防抖
     private search_timeout: any = null;
     //目前所处的页码
     public pageIndex: number = 0;
     public sub_form = {
-        country: [] as {name:string;id:string}[],
-        media: [] as {name:string;id:string}[],
-        character: [] as {name:string;id:string}[],
-        channel: [] as {name:string;id:string}[]
+        country: [] as { name: string; id: string }[],
+        media: [] as { name: string; id: string }[],
+        character: [] as { name: string; id: string }[],
+        channel: [] as { name: string; id: string }[]
     }
     private page_data = {
         country_list: [] as any[],
@@ -27,16 +27,16 @@ export default class HomeSetCom extends Vue {
         media_list: {
             week: [] as any[],
             month: [] as any[],
-            other:[]  as any[]
+            other: [] as any[]
         },
     }
     public country_list: any[] = [];
     public character_list: any[] = [];
     public channel_list: any[] = [];
-    public media_list: { week: any[]; month: any[],other:any[] } = {
+    public media_list: { week: any[]; month: any[], other: any[] } = {
         week: [],
         month: [],
-        other:[]
+        other: []
     }
 
     @Watch('searchText')
@@ -72,8 +72,8 @@ export default class HomeSetCom extends Vue {
     }
 
     //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start='+start).then(res => {
+    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void, start: number = 0): void {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&limit=0&start=' + start).then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
@@ -81,30 +81,30 @@ export default class HomeSetCom extends Vue {
     }
 
     //分页加载国家列表
-    public loadingCountry():void{
+    public loadingCountry(): void {
         this.getSubscriptions("country", "unsub", res => {
             this.country_list = this.country_list.concat(res.data.data);
             this.page_data.country_list = this.country_list;
-        },this.countryStart+=100)
+        }, this.countryStart += 100)
     }
 
     //分页加载人物列表(已废弃)
-    public loadingCharacter():void{
+    public loadingCharacter(): void {
         this.getSubscriptions("character", "unsub", res => {
             this.character_list = this.character_list.concat(res.data.data);
             this.page_data.character_list = this.character_list;
-        },this.characterStart+=100)
+        }, this.characterStart += 100)
     }
     //分页加载人物列表
-    public loadingChannel():void{
+    public loadingChannel(): void {
         this.getSubscriptions("channel", "unsub", res => {
             this.channel_list = this.channel_list.concat(res.data.data);
             this.page_data.channel_list = this.channel_list;
-        },this.characterStart+=100)
+        }, this.characterStart += 100)
     }
 
     //分页加载媒体
-    public loadingMedia():void{
+    public loadingMedia(): void {
         this.getMedia_list(100);
     }
 
@@ -134,7 +134,7 @@ export default class HomeSetCom extends Vue {
         let obj = {
             week: [] as any[],
             month: [] as any[],
-            other:[] as any[]
+            other: [] as any[]
         }
         if (reg_zh.test(str)) {
             for (let i of this.page_data.media_list.week) {
@@ -178,7 +178,7 @@ export default class HomeSetCom extends Vue {
         let arr = [];
         if (reg_zh.test(str)) {
             for (let i of this.page_data.character_list) {
-                if (~i.name_zh.indexOf(str)) {
+                if (~i.zh_name.indexOf(str)) {
                     arr.push(i);
                 }
             }
@@ -211,22 +211,22 @@ export default class HomeSetCom extends Vue {
         this.channel_list = arr;
     }
 
-    private getMedia_list(num:number): void {
+    private getMedia_list(num: number): void {
         this.getSubscriptions("media", "unsub", (res) => {
             let media_list = res.data.data as any[];
-            let week = new Date().getTime()-(7*24*60*60*1000);
-            let month = new Date().getTime()-(30*24*60*60*1000);
+            let week = new Date().getTime() - (7 * 24 * 60 * 60 * 1000);
+            let month = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
             for (let i = 0; i < media_list.length; i++) {
-                if (new Date(media_list[i].update_time).getTime()>=week) {
+                if (new Date(media_list[i].update_time).getTime() >= week) {
                     this.media_list.week.push(media_list[i])
-                } else if(new Date(media_list[i].update_time).getTime()>month) {
+                } else if (new Date(media_list[i].update_time).getTime() > month) {
                     this.media_list.month.push(media_list[i])
-                }else{
+                } else {
                     this.media_list.other.push(media_list[i])
                 }
             }
             this.page_data.media_list = this.media_list;
-        },this.mediaStart+=num)
+        }, this.mediaStart += num)
     }
 
     /**
@@ -241,8 +241,8 @@ export default class HomeSetCom extends Vue {
                 if (!this.country_list[index].choose) {
                     this.$set(this.country_list[index], 'choose', true);
                     this.sub_form.country.push({
-                        name:item.name_zh,
-                        id:item.sub_id
+                        name: item.name_zh,
+                        id: item.sub_id
                     });
                 } else {
                     this.$set(this.country_list[index], 'choose', false);
@@ -257,13 +257,13 @@ export default class HomeSetCom extends Vue {
                 if (!this.character_list[index].choose) {
                     this.$set(this.character_list[index], 'choose', true);
                     this.sub_form.character.push({
-                        name:item.zh_name,
-                        id:item.sub_id
+                        name: item.name,
+                        id: item.sub_id
                     });
                 } else {
                     this.$set(this.character_list[index], 'choose', false);
                     for (let i = 0; i < this.sub_form.character.length; i++) {
-                        if (item.zh_name == this.sub_form.character[i].name) {
+                        if (item.name == this.sub_form.character[i].name) {
                             this.$delete(this.sub_form.character, i)
                         }
                     }
@@ -273,8 +273,8 @@ export default class HomeSetCom extends Vue {
                 if (!this.channel_list[index].choose) {
                     this.$set(this.channel_list[index], 'choose', true);
                     this.sub_form.channel.push({
-                        name:item.name,
-                        id:item.sub_id
+                        name: item.name,
+                        id: item.sub_id
                     });
                 } else {
                     this.$set(this.channel_list[index], 'choose', false);
@@ -298,8 +298,8 @@ export default class HomeSetCom extends Vue {
             if (!this.media_list.week[index].choose) {
                 this.$set(this.media_list.week[index], 'choose', true);
                 this.sub_form.media.push({
-                    name:item.name_zh,
-                    id:item.sub_id
+                    name: item.name_zh,
+                    id: item.sub_id
                 });
             } else {
                 this.$set(this.media_list.week[index], 'choose', false);
@@ -309,12 +309,12 @@ export default class HomeSetCom extends Vue {
                     }
                 }
             }
-        } else if(type=='month'){
+        } else if (type == 'month') {
             if (!this.media_list.month[index].choose) {
                 this.$set(this.media_list.month[index], 'choose', !this.media_list.month[index].choose);
                 this.sub_form.media.push({
-                    name:item.name_zh,
-                    id:item.sub_id
+                    name: item.name_zh,
+                    id: item.sub_id
                 });
             } else {
                 this.$set(this.media_list.month[index], 'choose', false);
@@ -324,12 +324,12 @@ export default class HomeSetCom extends Vue {
                     }
                 }
             }
-        }else{
+        } else {
             if (!this.media_list.other[index].choose) {
                 this.$set(this.media_list.other[index], 'choose', !this.media_list.other[index].choose);
                 this.sub_form.media.push({
-                    name:item.name_zh,
-                    id:item.sub_id
+                    name: item.name_zh,
+                    id: item.sub_id
                 });
             } else {
                 this.$set(this.media_list.other[index], 'choose', false);
@@ -373,30 +373,30 @@ export default class HomeSetCom extends Vue {
     }
     //完成
     public toFinish(): void {
-        let sub_form:any = {
-            country:[],
-            media:[],
-            character:[],
-            channel:[]
+        let sub_form: any = {
+            country: [],
+            media: [],
+            character: [],
+            channel: []
         }
-        for(let i of this.sub_form.country){
+        for (let i of this.sub_form.country) {
             sub_form.country.push(i.id);
         }
-        for(let i of this.sub_form.media){
+        for (let i of this.sub_form.media) {
             sub_form.media.push(i.id);
         }
-        for(let i of this.sub_form.character){
+        for (let i of this.sub_form.character) {
             sub_form.character.push(i.id);
         }
-        for(let i of this.sub_form.channel){
+        for (let i of this.sub_form.channel) {
             sub_form.channel.push(i.id);
         }
-        this.axios.post('/v1/cmd/',{
-            cmd:'first_login_sub',
-            paras:sub_form
-        }).then(res=>{
+        this.axios.post('/v1/cmd/', {
+            cmd: 'first_login_sub',
+            paras: sub_form
+        }).then(res => {
             this.$router.push('/')
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
     }

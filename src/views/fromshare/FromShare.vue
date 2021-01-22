@@ -25,8 +25,14 @@
           <!-- </div> -->
         </div>
         <div class="right">
-          <div @click="toAddCollection" v-show="favorite.status=='pending'" class="collect">收藏收藏夹</div>
-          <div v-show="favorite.status!='pending'" class="ready_collect">已收藏</div>
+          <div @click="toAddCollection" class="collect">
+            <img src="../../assets/img/nocollection.png" alt="">
+            <span>收藏该文件夹</span>
+          </div>
+          <!-- <div v-show="favorite.status!='pending'" class="ready_collect">
+            <img src="../../assets/img/shoucangl.png" alt="">
+            <span>已收藏</span>
+          </div> -->
         </div>
       </div>
       <div class="collectionlist">

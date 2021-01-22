@@ -22,7 +22,7 @@
         <!-- 分享 -->
         <share-content :content="item" type="news">
           <div v-if="~shoControls.indexOf('share1')" class="btn">
-            <img src="../assets/img/sczhuanfa.png" alt="" />
+            <img style="width:15px;" src="../assets/img/sczhuanfa.png" alt="" />
             <span>分享</span>
           </div>
         </share-content>

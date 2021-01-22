@@ -94,6 +94,15 @@ export default class PeopleCom extends Vue {
                 flag = true;
             }
         }
+        if(!ch.test(item.zh_name)){
+            if(~item.zh_name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){
+                flag = true;
+            }
+        }else{
+            if(~item.zh_name.indexOf(this.search)){
+                flag = true;
+            }
+        }
 
         if(!ch.test(item.description)){
             if(~item.description.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase())){

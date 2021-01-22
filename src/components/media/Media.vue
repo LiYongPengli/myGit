@@ -3,14 +3,14 @@
     <!-- 已关注 -->
     <div
       class="concerned"
-      v-loading="loadFollow"
+      v-loading="loading"
       element-loading-background="rgba(58, 58, 72, 0.5)"
     >
       <p class="concerned_p">已关注</p>
       <my-scroll :thumbColor="'#9292a7'" class="list_wrap">
         <ul>
           <li
-            v-show="showItem(v.name)"
+            v-show="showItem(v)"
             v-for="(v, i) in mediaFollowList"
             :key="v.sub_id"
           >
@@ -29,7 +29,7 @@
             <a>
               <img
                 class="mrtx"
-                src="../../assets/img/media_default.png"
+                :src="v.media_icon"
                 alt=""
               />
               <div class="zyname">
@@ -63,7 +63,7 @@
       <my-scroll :thumbColor="'#9292a7'" class="list_wrap">
         <ul>
           <li
-            v-show="showItem(v.name)"
+            v-show="showItem(v)"
             v-for="(v, i) in mediaList"
             :key="v.sub_id"
           >
@@ -79,7 +79,7 @@
             </p>
           </div> -->
             <a>
-              <img src="../../assets/img/media_default.png" alt="" />
+              <img :src="v.media_icon" alt="" />
               <div class="zyname">
                 <div class="chinese_gj mt">
                   <speed-text width="100px" height="20px" :text="v.name_zh" />
