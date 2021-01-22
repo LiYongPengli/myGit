@@ -68,7 +68,8 @@
                 border-bottom: 1px solid #242432;
                 margin-left: 40px;
                 position: relative;
-                .page_left,.page_right{
+                .page_left,
+                .page_right {
                     width: 50px;
                     height: 50px;
                     position: absolute;
@@ -78,22 +79,21 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    
-                    img{
+                    img {
                         width: 10px;
                         cursor: pointer;
                     }
                 }
-                .page_left{
+                .page_left {
                     width: 60px;
                     height: 30px;
                     left: 70px;
-                    background: -webkit-linear-gradient(left,#292934 0%,rgba(41,41,52,.5) 100%);
+                    background: -webkit-linear-gradient(left, #292934 0%, rgba(41, 41, 52, .5) 100%);
                 }
-                .page_right{
+                .page_right {
                     right: 90px;
                     height: 105%;
-                    background: -webkit-linear-gradient(left,rgba(41,41,52,.5) 0%,#292934 100%);
+                    background: -webkit-linear-gradient(left, rgba(41, 41, 52, .5) 0%, #292934 100%);
                 }
                 .cur {
                     background-image: url("../../assets/img/cur.png") !important;
@@ -355,6 +355,25 @@
                         // padding-top: 0 !important;
                         .item {
                             padding-bottom: 5px;
+                        }
+                        .mttx {
+                            position: relative;
+                            .dgdiv {
+                                position: absolute;
+                                width: 20px;
+                                height: 20px;
+                                right: 22.125px;
+                                bottom: 0px;
+                                background-color: white;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                img.duigou {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
                         }
                         // .item {
                         //     p {

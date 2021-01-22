@@ -3,10 +3,10 @@
   <div class="recommend">
     <div class="mainpage">
       <div class="banner">
-        <router-link to="/xjpublicity">
-            <img src="../../assets/img/banner.png" alt="" />
+        <router-link target="_blank" to="/xjpublicity">
+          <img src="../../assets/img/banner.png" alt="" />
         </router-link>
-        
+
         <!-- <a href="#">
         <img src="../../assets/img/banner.png" alt="" />
         </a> -->
@@ -16,7 +16,11 @@
       <div class="list_wrap">
         <div class="list_nav">
           <div v-show="left_btn" class="page_left">
-            <img @click="channel_swiper.slidePrev()" src="../../assets/img/page_left.png" alt="" />
+            <img
+              @click="channel_swiper.slidePrev()"
+              src="../../assets/img/page_left.png"
+              alt=""
+            />
           </div>
           <div v-show="right_btn" class="page_right">
             <img @click="next" src="../../assets/img/page_right.png" alt="" />
@@ -41,9 +45,7 @@
                   :class="{ cur: active_recommend == i + 1 }"
                   >{{ v.name }}</span
                 > -->
-                <span @click="change_recommend(i + 1, v.sub_id)">{{
-                  v.name
-                }}</span>
+                <span @click="change_recommend(i + 1, v.sub_id)">{{ v.name }}</span>
               </div>
             </div>
           </div>
@@ -51,7 +53,12 @@
         </div>
         <div class="list">
           <ul>
-            <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in newsList" :key="i" />
+            <list-item
+              :shoControls="['like', 'share2']"
+              :item="v"
+              v-for="(v, i) in newsList"
+              :key="i"
+            />
             <!-- <li v-for="(v, i) in newsList" :key="i">
               <div v-if="v.cover.type != 'text'" class="pic">
                 <video-thum-bnail
@@ -111,9 +118,7 @@
                 </share-content>
               </div>
             </li> -->
-            <div v-show="!finished" class="jzgd">
-              正在加载更多精彩内容
-            </div>
+            <div v-show="!finished" class="jzgd">正在加载更多精彩内容</div>
           </ul>
         </div>
       </div>
@@ -122,19 +127,13 @@
       <!-- 国家媒体列表 -->
       <div class="top">
         <div class="media_nav">
-          <span
-            :class="{ cur: mediaSwiperCurrentIndex == 0 }"
-            @click="mediaTab(0)"
+          <span :class="{ cur: mediaSwiperCurrentIndex == 0 }" @click="mediaTab(0)"
             >国家</span
           >
-          <span
-            :class="{ cur: mediaSwiperCurrentIndex == 1 }"
-            @click="mediaTab(1)"
+          <span :class="{ cur: mediaSwiperCurrentIndex == 1 }" @click="mediaTab(1)"
             >媒体</span
           >
-          <span
-            :class="{ cur: mediaSwiperCurrentIndex == 2 }"
-            @click="mediaTab(2)"
+          <span :class="{ cur: mediaSwiperCurrentIndex == 2 }" @click="mediaTab(2)"
             >人物</span
           >
         </div>
@@ -164,8 +163,13 @@
                     :key="i"
                     class="item"
                   >
-                    <img :src="v.media_icon" alt="" />
+                    <div class="mttx">
+                      <img :src="v.media_icon" alt="" />
 
+                      <div class="dgdiv">
+                        <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                      </div>
+                    </div>
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
                 </div>
@@ -182,11 +186,7 @@
                     <img
                       style="border-radius: 50%"
                       v-if="v.avatar != -1 && v.avatar != null && !v.error"
-                      :src="
-                        axios.defaults.baseURL +
-                        '/attachments/avator/' +
-                        v.avatar
-                      "
+                      :src="axios.defaults.baseURL + '/attachments/avator/' + v.avatar"
                       alt=""
                     />
                     <img

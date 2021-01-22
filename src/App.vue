@@ -84,7 +84,9 @@ export default class App extends Vue {
       newVal == "Login" ||
       newVal == "Register" ||
       newVal == "Findpassword" ||
-      newVal == "BindAccount"
+      newVal == "BindAccount" ||
+      newVal =="XjPublicity" ||
+      newVal =="HomeSet"  
     ) {
       this.isshow = true;
       this.show_fx = false;

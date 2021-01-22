@@ -6,6 +6,9 @@
         <div class="logo">
           <img v-if="item.media_icon&&!item.error" :src="item.media_icon" alt="" />
           <img v-if="item.error" src="../assets/img/media_default.png" alt="" />
+           <div class="dgdiv">
+                      <img class="duigou" src="../assets/img/mtdg.png" alt="" />
+                    </div>
         </div>
         <div class="itemInfo_info">
           <p class="name">媒体:{{ item.media_name }}</p>
@@ -182,6 +185,23 @@ export default class ListItem extends Vue {
       align-items: center;
       .logo {
         width: 54px;
+        position: relative;
+          .dgdiv {
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            bottom: 0px;
+                            right: -5px;
+                            background-color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img.duigou {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
         img {
           display: block;
           width: 100%;

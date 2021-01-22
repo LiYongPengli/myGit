@@ -91,10 +91,12 @@
                 >
                   <a>
                     <!-- 50*30 -->
+                     <div class="mttx">
                     <img class="mrtx" :src="v.media_icon" alt="" />
                     <div class="dgdiv">
                       <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
                     </div>
+                     </div>
                     <div class="zyname">
                       <div class="">
                         <speed-text width="130px" height="20px" :text="v.name_zh" />
@@ -123,10 +125,12 @@
                 >
                   <a>
                     <!-- 50*30 -->
+                    <div class="mttx">
                     <img class="mrtx" :src="v.media_icon"  alt="" />
                     <div class="dgdiv">
                       <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
                     </div>
+                      </div>
                     <div class="zyname">
                       <div class="">
                         <speed-text width="130px" height="20px" :text="v.name_zh" />
@@ -154,10 +158,12 @@
                 :class="{ cur: v.choose }"
               >
                 <a>
+                   <div class="mttx">
                   <img class="mrtx" :src="v.media_icon"  alt="" />
                   <div class="dgdiv">
                     <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
                   </div>
+                   </div>
                   <div class="zyname">
                     <div class="">
                       <speed-text width="110px" height="20px" :text="v.name_zh" />

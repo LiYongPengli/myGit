@@ -37,8 +37,29 @@
                     border-bottom: 1px solid #3a3a48;
                     .logo {
                         margin-top: 25px;
-                        img {
+                        .mttx {
+                            position: relative;
                             width: 35px;
+                            display: inline-block;
+                            img {
+                                width: 35px;
+                            }
+                            .dgdiv {
+                                position: absolute;
+                                width: 14px;
+                                height: 14px;
+                                bottom: 0;
+                                right: -5px;
+                                background-color: white;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                img.duigou {
+                                    width: 14px;
+                                    height: 14px;
+                                }
+                            }
                         }
                         .ly {
                             font-size: 14px;

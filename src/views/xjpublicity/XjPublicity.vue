@@ -15,13 +15,13 @@
    <div  class="logo">
       <img src="../../assets/img/xjlogo.png" alt="" />
     </div>
-    <div class="return">
+    <!-- <div class="return">
       <a  href="#">
         返回 >
       </a>
-    </div>
+    </div> -->
     <div class="ljzn">
-              <router-link to="/publicity">
+              <router-link  to="/publicity">
                <img src="../../assets/img/rdsyzn.png" alt="">
               </router-link>
       <!-- <a href="/#/publicity">
