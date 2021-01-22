@@ -9,12 +9,13 @@
     box-sizing: border-box;
     background: #272730;
     header {
-        height: 250px;
+        // height: 250px;
         border-bottom: 1px solid #3a3a48;
         .header {
             width: 1000px;
             margin: 0 auto;
             padding-top: 75px;
+            padding-bottom: 9px;
             h1 {
                 font-size: 40px;
                 color: white;
@@ -26,9 +27,8 @@
                 font-size: 20px;
             }
             span {
-                color: #d9dfef;
+                color: #9898A9;
                 font-size: 16px;
-                font-weight: bold;
             }
             .tab {
                 overflow: hidden;
@@ -154,6 +154,13 @@
                             display: flex;
                             flex-direction: column;
                         }
+                        .mtdg {
+                            img {
+                                width: 15px;
+                                height: 16px;
+                                // padding-left: 5px;
+                            }
+                        }
                     }
                 }
             }
@@ -182,12 +189,14 @@
                     width: 166px;
                     width: 200px;
                     margin-bottom: 20px;
-                    div {
+                    div.tjpddiv {
                         width: 180px;
                         border-radius: 5px;
                         border: 1px solid #979797;
-                        a {
+                        .tjpddivname {
                             padding-left: 20px;
+                            color: white;
+                            line-height: 42px;
                             img {
                                 width: 54px;
                                 height: 54px;
@@ -228,16 +237,23 @@
             padding-left: 20px;
         }
         .footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
             margin-top: 70px;
             .up {
-                margin-left: 20px;
                 cursor: pointer;
-                font-size: 18px;
-                font-weight: bold;
+                font-size: 16px;
+                // font-weight: bold;
                 color: white;
+                margin-left: 222px;
+                float: left;
+                line-height: 40px;
+            }
+            .shsz {
+                color: white;
+                text-decoration: none;
+                padding-left: 50px;
             }
         }
     }

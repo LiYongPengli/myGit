@@ -1,10 +1,7 @@
 <template>
   <div class="publicity">
     <header-two />
-    <div
-      :style="{ width: (topic_show ? 1000 : 1200) + 'px' }"
-      class="container"
-    >
+    <div :style="{ width: (topic_show ? 1000 : 1200) + 'px' }" class="container">
       <div class="top">
         <h1>睿读使用指南</h1>
         <!-- <input type="text" placeholder="请输入收藏夹名称" /> -->
@@ -14,31 +11,22 @@
           <nav>
             <ul>
               <li @click="cur = 0" :class="{ active: cur == 0 }">
-                <a class="rdgk">睿读概况</a>
+                <a class="rdgk">个人中心</a>
               </li>
               <li @click="cur = 1" :class="{ active: cur == 1 }">
-                <a class="rdgk">用户登录</a>
+                <a class="rdgk">我的关注</a>
               </li>
               <li @click="cur = 2" :class="{ active: cur == 2 }">
-                <a class="rdgk">用户注册 </a>
+                <a class="rdgk">热门推荐 </a>
               </li>
               <li @click="cur = 3" :class="{ active: cur == 3 }">
-                <a href="#">用户关注</a>
+                <a href="#">新闻详情</a>
               </li>
               <li @click="cur = 4" :class="{ active: cur == 4 }">
-                <a href="#">推荐新闻</a>
+                <a href="#">聊天工具</a>
               </li>
               <li @click="cur = 5" :class="{ active: cur == 5 }">
-                <a href="#">平台搜索</a>
-              </li>
-              <li @click="cur = 6" :class="{ active: cur == 6 }">
-                <a href="#">即时通讯</a>
-              </li>
-              <li @click="cur = 7" :class="{ active: cur == 7 }">
-                <a href="#">密码管理</a>
-              </li>
-              <li @click="cur = 8" :class="{ active: cur == 8 }">
-                <a href="#">账号管理</a>
+                <a href="#">智能检索</a>
               </li>
             </ul>
           </nav>
@@ -46,111 +34,177 @@
         <div class="content_right">
           <div class="content_right_text">
             <my-scroll>
-            <div class="rdgk" v-show="cur == 0">
-              <h2>睿读概况</h2>
-            </div>
-            <div class="yhdl" v-show="cur == 1">
-              <h2>
-                用户登录
-              </h2>
-            </div>
-            <div class="yhzc" v-show="cur == 2">
-              <h2>用户登录</h2>
-              <p>
-                用户登录分为【账号登录】、【手机登录】、【微信登录】三种登录方式。
-              </p>
-              <p>
-                用户登录系统无操作30分钟后，系统自动退出登录，再次点击任何页面均跳转登录页面重新进行登录。
-              </p>
-              <h3>账号登录：</h3>
-              <p></p>
-
-              <p>
-                1.账号登录需提供“注册账号”时预留的手机号码或者账号，输入“密码”和“动态图形验证码”进行匹配校验。
-              </p>
-              <p>
-                2.所有手机号/账号或密码输入框最长可输入30个字符，只可输入字符和数字，不可输入汉字。所有密码输入框为密文显示，所有输入框需过滤空格。
-              </p>
-              <p>
-                3.
-                账号密码匹配不成功不可进入系统，提示“账号或密码错误，请重新输入”。
-              </p>
-              <p>
-                4.用户累计密码输入错误5次，锁定账号5分钟，5分钟内不可再进行登录，5分钟过后可正常再次使用账号密码登录，在账号锁定期间，仍可通过微信和手机验证码进行登录。
-              </p>
-              <p>
-                5.
-                动态图形验证码检验不成功则提示：“图形验证码错误，请重新输入”且图形验证码立即刷新。图形验证码在输入四位数字后直接触发图形验证码是否正确并提示。
-              </p>
-              <p>6. 鼠标点击图形验证码可刷新该图形验证码。</p>
-              <p>
-                7.
-                七天内免登录：勾选七天内免登录后，下次用户进入系统可直接进入首页，无需再经过登录页面，七天内有效。
-              </p>
-              <p>
-                8.
-                账号密码图形验证码均匹配成功后，检测该用户是否为第一次登录，否：直接进入系统到首页面。是：弹出绑定微信弹窗，提示用户进行微信绑定。
-              </p>
-              <p>
-                9.
-                账号与微信进行绑定后，直接进入系统到首页面，自动记录该用户的微信名称、微信头像。
-              </p>
-              <p>
-                10.
-                点击【暂不绑定】后，该账号无绑定微信信息，可直接进入到首页面。
-              </p>
-              <p>
-                11.提示用户绑定微信页面只在用户第一次登录时提示，如用户点击【暂不绑定】，则以后登录时均不再弹出此页面。
-              </p>
-              <p>
-                12.点击【忘记密码】后，弹出重置密码的页面，需输入该用户预留的手机号验证码，校验通过后，输入新密码，确认新密码，即可使用新密码进行登录。两次密码输入不一致时，立即给出提示：两次密码输入不一致，请重新输入。
-              </p>
-              <p>13. 点击【注册】后，直接跳转注册页面，见【用户注册】模块。</p>
-              <h3>手机登录</h3>
-              <p>1.手机登录可直接使用已注册的手机号码加短信验证码登录。</p>
-              <p>
-                2.输入已注册的手机号码，点击获取验证码按钮，在进行手动验证通过后即可成功获取短信验证码，手动验证不通过不可发送短信验证码。
-              </p>
-              <p>
-                3.短信验证码的有效时间为60秒，在60秒内不可重新发送验证码，60秒内关闭网页再次进入该页面后验证码仍然继续倒计时。
-              </p>
-              <p>
-                4.
-                每个手机号每天接收短信验证码次数为10次，超出10次将不再发送短信验证码。
-              </p>
-              <p>
-                5.手机号需验证格式，只有格式为数字1开头且11位数字方为正确，非此格式的手机号提示“手机格式错误，请重新输入”。
-              </p>
-              <p>
-                6.输入短信验证码后校验该验证码是否正确，不正确则提示：“验证码错误，请重新输入”。
-              </p>
-              <p>7. 短信验证码正确后可直接点击登录按钮进行登录。</p>
-              <p>
-                8.进入系统首页前先检验该手机号是否已注册，如该手机号未注册，则提示：“该手机号尚未注册账号，请先注册账号”。已注册手机号直接登录成功进入首页。
-              </p>
-              <p>9. 手机登录流程图如下</p>
-              <h3>微信登录</h3>
-              <p>1.页面加载出微信登录接口的二维码。</p>
-            </div>
-            <div class="yhgz" v-show="cur == 3" >
-              <h2>用户关注</h2>
-            </div>
-              <div class="tjxw" v-show="cur == 4" >
-              <h2>推荐新闻</h2>
-            </div>
-              <div class="ptss" v-show="cur == 5" >
-              <h2>平台搜索</h2>
-            </div>
-              <div class="jstx" v-show="cur == 6" >
-              <h2>即时通讯</h2>
-            </div>
-              <div class="mmgl" v-show="cur == 7" >
-              <h2>密码管理</h2>
-            </div>
-              <div class="zhgl" v-show="cur == 8" >
-              <h2>账号管理</h2>
-            </div>
-          </my-scroll>
+              <div class="rdgk" v-show="cur == 0">
+                <h2>1 个人中心</h2>
+                <p>点击用户信息，在下拉列表中选择“个人中心”，可以进入个人中心。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/tp1.png" alt="" />
+                </div>
+                <h3>1.1 我的关注</h3>
+                <p>用户可查看和修改关注的国家、媒体、人物及推荐频道。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/tp1.1.png" alt="" />
+                </div>
+                <p>
+                  查看新闻详情时，也可关注此新闻发布的国家、媒体或人物，新关注的媒体就会自动增加至我的关注内。
+                </p>
+                <p>关注前：</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/tp1.1.1.png" alt="" />
+                </div>
+                <p>关注后：</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/tp1.1.2.png" alt="" />
+                </div>
+                <p>再次点击关注按钮，取消关注。</p>
+                <h3>1.2 我的收藏</h3>
+                <p>用户可查看日常收藏的新闻，如无分组则显示在默认标签组。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/wdsc1.png" alt="" />
+                </div>
+                <p>
+                  用户可创建新的标签，对新闻有针对性的管理。新建书签时，请输入书签名称及选择或上传书签封面。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/wdsc2.png" alt="" />
+                </div>
+                <h4>1.2.1 新闻页收藏</h4>
+                <p>
+                  查看新闻详情时，收藏此篇新闻，可收藏至默认收藏夹，也可创建新的收藏夹，实现新闻信息分类管理的概念，并且收藏夹也可批量站内分享。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/xwysc1.png" alt="" />
+                </div>
+                <div class="tpjz">
+                  <img src="../../assets/img/xwysc2.png" alt="" />
+                </div>
+                <p>
+                  点击创建新书签，输入书签名称，上传书签封面即可完成创建，点击创建并收藏，新闻就可以收藏至新建的书签中。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/xwysc3.png" alt="" />
+                </div>
+                <div class="tpjz">
+                  <img src="../../assets/img/xwysc4.png" alt="" />
+                </div>
+                <p>前往个人中心-->我的收藏即可看到刚刚创建的收藏夹。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/xwysc5.png" alt="" />
+                </div>
+                <h4>1.2.2 分享我的收藏</h4>
+                <p>
+                  创建成功后，可通过睿读聊天进行分享，有兴趣的小伙伴就可以一起讨论了。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/fxwdsc.png" alt="" />
+                </div>
+                <p>可以分享给好友或群组。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/fxwdsc1.png" alt="" />
+                </div>
+                <p>分享的同时，还可以编辑其他消息对此分享进行说明。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/fxwdsc2.png" alt="" />
+                </div>
+                <p>可在睿读聊天中查看刚刚分享的收藏夹。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/fxwdsc3.png" alt="" />
+                </div>
+                <h3>1.3 我的消息</h3>
+                <p>用户可查看、删除系统发送的消息。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/wdxx.png" alt="" />
+                </div>
+                <h3>1.4 账号管理</h3>
+                <p>
+                  用户可绑定微信、修改昵称、修改头像。如需更换手机号码，请联系运维工作人员进行更换。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/zhgl.png" alt="" />
+                </div>
+                <p>点击头像框，可进行头像修改。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/zhgl1.png" alt="" />
+                </div>
+                <p>上传您喜欢的头像图片。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/zhgl2.png" alt="" />
+                </div>
+                <p>根据喜好进行调整和截取，点击保存。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/zhgl3.png" alt="" />
+                </div>
+                <p>点击确认，修改头像。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/zhgl4.png" alt="" />
+                </div>
+                <h4>1.5 1.5密码管理</h4>
+                <p>用户可重置密码。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/mmgl.png" alt="" />
+                </div>
+                <p>如忘记密码，选择[忘记原密码]功能，通过绑定的手机号码进行密码重置。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/mmgl1.png" alt="" />
+                </div>
+              </div>
+              <div class="yhdl" v-show="cur == 1">
+                <h2>2 我的关注</h2>
+                <p>
+                  用户关注的国家、媒体及人物有关的新闻可在此处查看。如需修改我的关注，请前往个人中心-->我的关注进行修改。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/wdgz.png" alt="" />
+                </div>
+              </div>
+              <div class="yhzc" v-show="cur == 2">
+                <h2>热门推荐</h2>
+                <p>推送用户可能感兴趣的、最新最热的新闻内容。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/rmtj.png" alt="" />
+                </div>
+                <h3>3.1 热点推荐</h3>
+                <p>本站抓取最新最热的新闻资讯，会重点在此处展示，点击查看新闻内容。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/rdtj.png" alt="" />
+                </div>
+                <h3>3.2 关注窗口</h3>
+                <p>此处显示您关注的国家、人物和媒体列表，点击可查看详细的新闻列表。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/gzck.png" alt="" />
+                </div>
+                <p>例如点击埃及国旗，进入我的关注-->国家-->埃及新闻列表。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/gzck1.png" alt="" />
+                </div>
+                <h3>3.3 推荐频道</h3>
+                <p>睿读会对某项事件进行收集制作，形成频道。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/tjpd.png" alt="" />
+                </div>
+              </div>
+              <div class="yhgz" v-show="cur == 3">
+                <h2>4 新闻详情</h2>
+                <h3>4.1 点赞</h3>
+                <p>
+                  如对谋篇新闻感兴趣，可以点击点赞按钮，系统会根据您的点赞来推送您可能感兴趣的新闻，再次点击取消点赞。
+                </p>
+                <div class="tpjz">
+                  <img src="../../assets/img/dz.png" alt="" />
+                </div>
+                <h3>4.2 不感兴趣</h3>
+                <p>对此类新闻不感兴趣，并希望未来减少推荐。</p>
+                <div class="tpjz">
+                  <img src="../../assets/img/bgxq.png" alt="" />
+                </div>
+              </div>
+              <div class="tjxw" v-show="cur == 4">
+                <h2>聊天工具</h2>
+              </div>
+              <div class="ptss" v-show="cur == 5">
+                <h2>智能检索</h2>
+              </div>
+            </my-scroll>
           </div>
         </div>
       </div>
