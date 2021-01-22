@@ -3,9 +3,15 @@
   <div class="recommend">
     <div class="mainpage">
       <div class="banner">
+        <router-link to="/xjpublicity">
+            <img src="../../assets/img/banner.png" alt="" />
+        </router-link>
+        
+        <!-- <a href="#">
         <img src="../../assets/img/banner.png" alt="" />
-        <a class="banner-p">福奇公开与特朗普唱反调 称美疫情或持续至明年底</a>
-        <p class="load"></p>
+        </a> -->
+        <!-- <a class="banner-p">福奇公开与特朗普唱反调 称美疫情或持续至明年底</a>
+        <p class="load"></p> -->
       </div>
       <div class="list_wrap">
         <div class="list_nav">

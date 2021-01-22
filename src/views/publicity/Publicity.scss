@@ -89,6 +89,7 @@
                     padding-left: 45px;
                     padding-bottom: 50px;
                     padding-right: 5px;
+                    padding-top: 50px;
                     .rdgk,
                     .yhdl,
                     .yhzc,
@@ -107,28 +108,34 @@
                         h2 {
                             color: white;
                             font-size: 20px;
-                            padding-top: 53px;
-                            line-height: 24px;
+                            line-height: 30px;
+                            margin-bottom: 10px;
                         }
                         h3,
+                        h4,
                         h5 {
-                            padding-top: 53px;
                             font-size: 16px;
                             line-height: 24px;
+                            margin-bottom: 10px;
+                        }
+                        h4,
+                        h5 {
+                            padding-top: 0;
+                            font-weight: normal;
                         }
                         p {
                             text-indent: 2em;
                             line-height: 24px;
-                            margin: 24px 0;
+                            margin-bottom: 10px;
                         }
                         .tpjz {
                             text-align: center;
                             img {
-                                width: 70%;
+                                width: 93%;
                                 // display: flex;
                                 // align-items: center;
                                 text-align: center;
-                                margin: 24px 0;
+                                margin-bottom: 10px;
                             }
                         }
                     }

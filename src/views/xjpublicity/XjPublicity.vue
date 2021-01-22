@@ -21,9 +21,12 @@
       </a>
     </div>
     <div class="ljzn">
-      <a href="#">
+              <router-link to="/publicity">
+               <img src="../../assets/img/rdsyzn.png" alt="">
+              </router-link>
+      <!-- <a href="/#/publicity">
         <img src="../../assets/img/rdsyzn.png" alt="">
-      </a>
+      </a> -->
     </div>
   </div>
 </template>
