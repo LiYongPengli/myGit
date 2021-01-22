@@ -86,30 +86,18 @@
                   :key="i"
                   :class="{ cur: v.choose }"
                 >
-                  <!-- <a>
-                    
-                    <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
-                    <div class="zyname">
-                      <div class="">
-                        <speed-text width="110px" height="20px" :text="v.name_zh" />
-                      </div>
-                       
-                    </div>
-                    <a class="mtdg" href="">
-                      <img src="../../assets/img/mtdg.png" alt="">
-                    </a>
-                  </a> -->
                   <a>
                     <!-- 50*30 -->
                     <img class="mrtx" src="../../assets/img/media_default.png" alt="" />
+                     <img class="duigou" src="../../assets/img/mtdg.png" alt="">
                     <div class="zyname">
                       <div class="">
                         <speed-text width="130px" height="20px" :text="v.name_zh" />
                       </div>
                     </div>
-                    <a class="mtdg" href="">
+                    <!-- <a class="mtdg" href="">
                       <img src="../../assets/img/mtdg.png" alt="">
-                    </a>
+                    </a> -->
                   </a>
                 </li>
               </ul>
@@ -246,7 +234,7 @@
       <!-- 推荐频道 -->
       <div v-if="pageIndex == 3" class="content">
         <span class="yx">
-          已选：<span v-for="(v, i) in sub_form.character" :key="i">
+          已选：<span v-for="(v, i) in sub_form.channel" :key="i">
             {{ i == 0 ? "" : "、" }} {{ v.name }}</span
           ></span
         >
