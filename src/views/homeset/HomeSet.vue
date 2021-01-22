@@ -67,7 +67,7 @@
             type="primary"
             >下一步</el-button
           >
-          <a class="shsz" href="#">稍后设置</a>
+          <a @click="toFinish" class="shsz">稍后设置</a>
         </div>
       </div>
       <!-- 媒体 -->
@@ -186,7 +186,7 @@
             >下一步</el-button
           >
 
-          <a class="shsz" href="#">稍后设置</a>
+          <a class="shsz" @click="toFinish">稍后设置</a>
         </div>
       </div>
       <!-- 人物 -->
@@ -220,7 +220,7 @@
                   />
 
                   <span style="top: -30px; width: 220px" class="chinese_gj mt">
-                    <speed-text width="220px" height="20px" :text="v.zh_name" />
+                    <speed-text width="220px" height="20px" :text="v.name" />
                   </span>
 
                   <span style="width: 220px" class="english_gj mt">
@@ -244,7 +244,7 @@
             type="primary"
             >下一步</el-button
           >
-          <a class="shsz" href="#">稍后设置</a>
+          <a class="shsz" @click="toFinish">稍后设置</a>
         </div>
       </div>
       <!-- 推荐频道 -->

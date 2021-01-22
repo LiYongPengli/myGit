@@ -83,6 +83,7 @@ export default class phoneLoginCom extends Vue {
             console.log(err);
             return;
         }
+        this.img_vc_code = "";
         this.getPhoneCode(this.phone_form.tel);
     }
 

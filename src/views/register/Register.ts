@@ -224,6 +224,7 @@ export default class RegisterCom extends Vue {
     //点击确认校验图片验证码
     public async img_srue():Promise<void>{
         if(await this.imgCodeSure(this.img_vc_code)){
+            this.img_vc_code = "";
             this.getPhoneCode(this.form.tel);
         }
     }
