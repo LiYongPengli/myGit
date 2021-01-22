@@ -10,22 +10,22 @@
         <div class="content_left">
           <nav>
             <ul>
-              <li @click="cur = 0" :class="{ active: cur == 0 }">
+              <li @click="cur = 0,setSureTop(true)" :class="{ active: cur == 0 }">
                 <a class="rdgk">热门推荐</a>
               </li>
-              <li @click="cur = 1" :class="{ active: cur == 1 }">
+              <li @click="cur = 1,setSureTop(true)" :class="{ active: cur == 1 }">
                 <a class="rdgk">我的关注</a>
               </li>
-              <li @click="cur = 2" :class="{ active: cur == 2 }">
+              <li @click="cur = 2,setSureTop(true)" :class="{ active: cur == 2 }">
                 <a class="rdgk">智能检索 </a>
               </li>
-              <li @click="cur = 3" :class="{ active: cur == 3 }">
+              <li @click="cur = 3,setSureTop(true)" :class="{ active: cur == 3 }">
                 <a href="#">新闻详情</a>
               </li>
-              <li @click="cur = 4" :class="{ active: cur == 4 }">
+              <li @click="cur = 4,setSureTop(true)" :class="{ active: cur == 4 }">
                 <a href="#">聊天工具</a>
               </li>
-              <li @click="cur = 5" :class="{ active: cur == 5 }">
+              <li @click="cur = 5,setSureTop(true)" :class="{ active: cur == 5 }">
                 <a href="#">个人中心</a>
               </li>
             </ul>
@@ -33,7 +33,7 @@
         </div>
         <div class="content_right">
           <div class="content_right_text">
-            <my-scroll>
+            <my-scroll :animate="false">
                  <!-- 热门推荐 -->
               <div class="yhzc" v-show="cur == 0">
                 <h2>1 热门推荐</h2>
