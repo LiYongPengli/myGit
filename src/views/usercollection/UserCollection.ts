@@ -19,8 +19,7 @@ export default class UserCollectionCom extends Vue {
     public upLoadPhoto: boolean = false;
     private editItem: any = null;
     //控制展示组件1:个人收藏夹,2:分享的收藏夹,3:收藏夹新闻列表
-    public show:number = 1;
-    public listshow = true;
+    public showList:boolean = false;
     public favoriteList: any[] = [];
     //好友列表
     public friend_list: any[] = [];
@@ -36,14 +35,6 @@ export default class UserCollectionCom extends Vue {
     public listenIsShare(newVal:boolean,oldVal:boolean):void{
         if(!newVal){
             this.shares = [];
-        }
-    }
-    @Watch('$route.query')
-    public rout_change(newVal:any,oldVal:any):void{
-        if(newVal.rf_id){
-            this.show = 2;
-        }else{
-            this.show = 1;
         }
     }
 
@@ -238,6 +229,11 @@ export default class UserCollectionCom extends Vue {
         if(this.isShare){
             return;
         }
-        this.$router.push('/user/collectioninfo?name=' + item.name);
+        this.$router.push({
+            name:'Collection',
+            params:{
+                name:item.name
+            }
+        });
     }
 }

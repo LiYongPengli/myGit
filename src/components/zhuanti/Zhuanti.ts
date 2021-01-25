@@ -1,8 +1,9 @@
 
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
 @Component
 export default class ZhuantiCom extends Vue{
+    @Prop({}) name!:string;
     @State('language') language!:string;
     public showWarning:boolean = false;
 
@@ -24,7 +25,7 @@ export default class ZhuantiCom extends Vue{
         this.axios.post('/v1/cmd/', {
             cmd: 'favorite_preview',
             paras: {
-              name: this.$route.query.name,
+              name: this.name,
               language:this.language
             }
           }).then(res=>{
@@ -78,7 +79,7 @@ export default class ZhuantiCom extends Vue{
         this.axios.post('/v1/cmd/',{
             cmd:'favorite_news',
             paras:{
-                name:this.$route.query.name,
+                name:this.name,
                 news_id:this.deleteObj.item.news_id,
                 news_oper:'undo'
             }

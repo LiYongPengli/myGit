@@ -59,7 +59,7 @@
                 tag="li"
                 :to="v.path"
                 class="item"
-                :class="{ user_nav_active: ~active_nav.indexOf(v.path) }"
+                :class="{ user_nav_active: active_nav == v.routename }"
               >
                 {{ v.name }}
               </li>

@@ -1,7 +1,7 @@
 <template>
   <!-- 我的收藏 -->
   <div class="usercollection">
-    <div v-if="show == 1" class="ss">
+    <div v-if="$route.params.name==0" class="ss">
       <p>我的收藏({{ favoriteList.length }})</p>
       <div class="right">
         <input v-model="searchText" type="text" placeholder="请输入收藏夹名称" />
@@ -28,8 +28,8 @@
         </div>
       </div>
     </div>
-    <div v-if="show == 1" class="collectionlist">
-      <my-scroll v-if="listshow">
+    <div v-if="$route.params.name==0" class="collectionlist">
+      <my-scroll>
         <ul class="collectionlist_wrap">
           <li
             v-show="~v.name.indexOf(searchText)"
@@ -95,6 +95,7 @@
         </ul>
       </my-scroll>
     </div>
+    <zhuan-ti :name="$route.params.name" v-if="$route.params.name!=0" />
     <!-- 创建收藏夹 -->
     <el-dialog
       width="800px"
@@ -172,12 +173,14 @@ import MyScroll from "@/components/MyScroll.vue";
 import UpFile from "@/components/upfile/UpFile.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import OtherPhotos from "@/components/otherphotos/OtherPhotos.vue";
+import ZhuanTi from "@/components/zhuanti/Zhuanti.vue";
 @Component({
   components: {
     MyScroll,
     UpFile,
     ShareContent,
     OtherPhotos,
+    ZhuanTi
   },
 })
 export default class UserCollection extends mixins(UserCollectionCom) {}

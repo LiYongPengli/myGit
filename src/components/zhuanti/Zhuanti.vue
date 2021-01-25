@@ -3,7 +3,7 @@
     <div class="mycollect">
       <ul class="position">
         <li class="L">
-          <a @click="$router.push('/user/collection')"> 我的收藏 </a>
+          <a @click="$router.push('/user/collection/0')"> 我的收藏 </a>
           >
           <a> {{ $route.query.name }} </a>
           <span class="tongji"> 共 {{ list.length }} 篇文章 </span>

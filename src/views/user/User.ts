@@ -24,33 +24,40 @@ export default class UserCom extends Vue {
     public choose_nav: string = "统计报表";
     public user_nav_list = [
         {
-            path: '/user/form',
+            path: '/user/form/fetch',
+            routename:'Form',
             name: '统计报表',
             nosee: 'user'
         },
         {
             path: '/user/users',
             name: '用户管理',
+            routename:'Users',
             nosee: 'user'
         },
         {
-            path: '/user/follow',
+            path: '/user/follow/country',
+            routename:'Follow',
             name: '我的关注'
         },
         {
-            path: '/user/collection',
+            path: '/user/collection/0',
+            routename:'Collection',
             name: '我的收藏'
         },
         {
             path: '/user/message',
+            routename:'Message',
             name: '我的消息'
         },
         {
             path: '/user/account',
+            routename:'Account',
             name: '账号管理'
         },
         {
             path: '/user/password',
+            routename:'PassWord',
             name: '密码管理'
         }
     ]
@@ -166,6 +173,6 @@ export default class UserCom extends Vue {
 
     //监听当前路由变化判断当前导航选中状态
     get active_nav(): string {
-        return this.$route.path;
+        return <string>this.$route.name;
     }
 }

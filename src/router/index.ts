@@ -92,79 +92,52 @@ const routes: RouteConfig[] = [
   {
     path: '/user',
     name: 'User',
-    redirect: '/user/form',
+    redirect: '/user/form/fetch',
     component: () => import('../views/user/User.vue'),
     children: [
       //统计报表
       {
-        path: 'form',
-        name: 'UserForm',
+        path: 'form/:type',
+        name: 'Form',
         meta:{auth:true},
-        redirect:'/user/form/fetch',
         component: () => import('../views/userform/UserForm.vue'),
-        children:[
-          //数据采集统计
-          {
-            path:'fetch',
-            name:'Fetch',
-            component:()=>import('../views/formfetch/FormFetch.vue')
-          },
-          //平台运行统计
-          {
-            path:'platform',
-            name:'Platform',
-            component:()=>import('../views/platformoperations/PlatformOperations.vue')
-          },
-            //资源使用率统计
-            {
-              path:'resource',
-              name:'Resource',
-              component:()=>import('../views/resourceuses/ResourceUses.vue')
-            }
-        ]
       },
       //密码管理
       {
         path: 'password',
-        name: 'UserPassWord',
+        name: 'PassWord',
         component: () => import('../views/userpassword/UserPassWord.vue')
       },
       //我的收藏
       {
-        path: 'collection',
-        name: 'UserCollection',
+        path: 'collection/:name',
+        name: 'Collection',
         component: () => import('../views/usercollection/UserCollection.vue')
-      },
-      //我的收藏/新闻列表
-      {
-        path: 'collectioninfo',
-        name: 'CollectionInfo',
-        component: () => import('../views/zhuanti/Zhuanti.vue')
       },
       //我的关注
       {
-        path: 'follow',
-        name: 'UserFollow',
+        path: 'follow/:type',
+        name: 'Follow',
         component: () => import('../views/userfollow/UserFollow.vue')
       },
       //我的消息
       {
         path: 'message',
-        name: 'UserMessage',
+        name: 'Message',
         component: () => import('../views/usermessage/UserMessage.vue')
       },
 
       //账号管理
       {
         path: "account",
-        name: "UserAccount",
+        name: "Account",
         component: () => import('../views/useraccount/UserAccount.vue')
       },
       //用户管理
       {
         path: "users",
         meta:{auth:true},
-        name: "UserUsers",
+        name: "Users",
         component: () => import('../views/userusers/UserUsers.vue')
       }
     ]

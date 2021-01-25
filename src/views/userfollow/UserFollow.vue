@@ -3,30 +3,32 @@
   <div class="userfollow">
     <div class="top">
       <ul class="top_nav">
-        <li class="item" @click="pageIndex=0" :class="{active:pageIndex==0}">国家</li>
-        <li class="item" @click="pageIndex=1" :class="{active:pageIndex==1}">媒体</li>
-        <li class="item" @click="pageIndex=2" :class="{active:pageIndex==2}">人物</li>
-        <li class="item" @click="pageIndex=3" :class="{active:pageIndex==3}">推荐频道</li>
+        <li class="item" @click="chooseItem('country')" :class="{active:$route.params.type=='country'}">国家</li>
+        <li class="item" @click="chooseItem('media')" :class="{active:$route.params.type=='media'}">媒体</li>
+        <li class="item" @click="chooseItem('people')" :class="{active:$route.params.type=='people'}">人物</li>
+        <li class="item" @click="chooseItem('channel')" :class="{active:$route.params.type=='channel'}">推荐频道</li>
       </ul>
       <div class="top_search">
+        <div @click="searchText=''" v-show="searchText" class="clear el-icon-close"></div>
+        <img v-show="!searchText" src="../../assets//img/scsearch.png" alt="">
         <input v-model="searchText" type="text" :placeholder="getPlaceHolder()" />
       </div>
     </div>
     <div class="content">
       <!-- 国家 -->
-      <div v-if="pageIndex == 0" class="country">
+      <div v-if="$route.params.type=='country'" class="country">
         <country :search="searchText" />
       </div>
 
-      <div v-if="pageIndex == 1" class="media">
+      <div v-if="$route.params.type=='media'" class="media">
         <media :search="searchText" />
       </div>
 
-      <div v-if="pageIndex == 2" class="media">
+      <div v-if="$route.params.type=='people'" class="media">
         <people :search="searchText" />
       </div>
 
-       <div v-if="pageIndex == 3" class="media">
+       <div v-if="$route.params.type=='channel'" class="media">
         <channel :search="searchText" />
       </div>
     </div>

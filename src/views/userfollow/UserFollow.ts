@@ -1,8 +1,6 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 @Component
 export default class UserFollow extends Vue {
-    //目前所处的页码
-    public pageIndex: number = 0;
     public searchText:string = "";
 
     @Watch('pageIndex')
@@ -10,19 +8,28 @@ export default class UserFollow extends Vue {
         this.searchText = "";
     }
 
+    public chooseItem(type:string):void{
+        this.$router.push({
+            name:'Follow',
+            params:{
+                type:type
+            }
+        })
+    }
+
     public getPlaceHolder(): string {
         let str = "";
-        switch (this.pageIndex) {
-            case 0:
+        switch (this.$route.params.type) {
+            case 'country':
                 str = "请输入国家名称";
                 break;
-            case 1:
+            case 'media':
                 str = "请输入媒体名称";
                 break;
-            case 2:
-                str = "请输入人物名称";
+            case 'people':
+                str = "请输入人物名称或简介";
                 break;
-            case 3:
+            case 'channel':
                 str = "请输入频道名称";
                 break;
         }

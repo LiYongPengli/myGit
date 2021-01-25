@@ -21,6 +21,7 @@
             }
         }
         &_search {
+            position: relative;
             input {
                 width: 199px;
                 height: 30px;
@@ -30,11 +31,19 @@
                 color: white;
                 box-sizing: border-box;
                 padding: 9px 20px 7px 19px;
-                background: url("../../assets//img/scsearch.png") 90% 60% no-repeat #494959;
                 font-size: 14px;
             }
             input::placeholder {
                 color: #cdd6e5;
+            }
+            .clear,img{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 10px;
+            }
+            .clear{
+                cursor: pointer;
             }
         }
     }

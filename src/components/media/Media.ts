@@ -19,6 +19,9 @@ export default class MediaCom extends Vue{
         this.getSubscriptions('media', 'unsub', res => {
             this.mediaList = res.data.data;
             this.loadFollow = false;
+            this.mediaList.sort(function(a,b){
+                return new Date(b.update_time).getTime() - new Date(a.update_time).getTime();
+            })
         });
     }
 
@@ -41,6 +44,9 @@ export default class MediaCom extends Vue{
             this.mediaFollowList.splice(index,1);
             this.getSubscriptions('media', 'unsub', res => {
                 this.mediaList = res.data.data;
+                this.mediaList.sort(function(a,b){
+                    return new Date(b.update_time).getTime() - new Date(a.update_time).getTime();
+                })
             });
         }).catch(err=>{
             console.log(err);

@@ -101,9 +101,9 @@
                     <img :src="v.flag" alt="" />
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
-                  <div class="item">
+                  <div @click="$router.push('/user/follow/country')" class="item">
                     <div class="other">+</div>
-                    <p class="name">其他</p>
+                    <p class="name">添加</p>
                   </div>
                 </div>
               </div>
@@ -129,14 +129,14 @@
                     </div>
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
-                  <div class="item">
+                  <div @click="$router.push('/user/follow/media')" class="item">
                     <div class="other">+</div>
-                    <p class="name">其他</p>
+                    <p class="name">添加</p>
                   </div>
                 </div>
               </div>
               <!-- 人物 -->
-              <div class="swiper-slide">
+              <div @click="$router.push('/user/follow/people')" class="swiper-slide">
                 <div class="country people">
                   <div
                     @click="toFollowPage('people', v)"
@@ -164,7 +164,7 @@
                   </div>
                   <div class="item">
                     <div class="other">+</div>
-                    <p class="name">其他</p>
+                    <p class="name">添加</p>
                   </div>
                 </div>
               </div>
