@@ -89,7 +89,7 @@ export default {
       let top = this.$refs.vueScroll.scrollTop;
       if (this.animate) {
         let timer = setInterval(() => {
-          this.$refs.vueScroll.scrollTo({ top: (top -= 50) });
+          this.$refs.vueScroll.scrollTo({ top: (top -= 300) });
           if (top <= 0) {
             clearInterval(timer);
             this.$store.commit("setSureTop", false);

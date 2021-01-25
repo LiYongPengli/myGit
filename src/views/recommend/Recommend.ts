@@ -33,13 +33,13 @@ export default class RecommendCom extends Vue {
     }
     
     //关注频道列表
-    public channel: { sub_id: string; name: string }[] = [];
+    public channel: any[] = [];
     //媒体列表
-    public media: { sub_id: string; name: string }[] = [];
+    public media: any[] = [];
     //人物列表
-    public people: { sub_id: string; name: string }[] = [];
+    public people: any[] = [];
     //国家列表
-    public country: { sub_id: string; name: string }[] = [];
+    public country: any[] = [];
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
     

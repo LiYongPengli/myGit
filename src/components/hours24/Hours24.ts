@@ -32,7 +32,7 @@ export default class Hours24Com extends Vue {
             cmd: 'hours24',
             paras: { size: 100 }
         }).then(res => {
-            this.hours_24 = res.data.data;
+            this.hours_24 = res.data.data.news;
             setTimeout(() => {
                 this.init_24HourCom();
             }, 200)

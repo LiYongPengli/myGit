@@ -10,6 +10,7 @@ export default class MyFollowCom extends Vue {
     public people: any[] = [];
     public media: any[] = [];
     public list: any[] = [];
+    public initData:boolean = true;
     public isfinished:boolean = false;
 
     public country_all: boolean = false;
@@ -17,8 +18,8 @@ export default class MyFollowCom extends Vue {
     public people_all: boolean = false;
 
     public filters = {
-        search_after: [],
-        size: 10,
+        start: 0,
+        size: 5,
         country: [] as any[],
         media: [] as any[],
         language: 'crawler',
@@ -37,7 +38,7 @@ export default class MyFollowCom extends Vue {
 
     public listenChooseNav(newVal: string): void {
         this.chooseNav = newVal;
-        this.filters.search_after = [];
+        this.filters.start = 0;
         this.isfinished = false;
         // this.list = [];
         switch (newVal) {
@@ -194,7 +195,7 @@ export default class MyFollowCom extends Vue {
                 break;
         }
         // this.list = [];
-        this.filters.search_after = [];
+        this.filters.start = 0;
         this.getList();
     }
 
@@ -312,16 +313,16 @@ export default class MyFollowCom extends Vue {
             paras: filters
         }).then(res => {
             console.log(res.data);
-            
-            if(this.filters.search_after.length){
+            this.initData = false;
+            if(this.filters.start!=0){
                 this.list = this.list.concat(res.data.data.news);
             }else{
                 this.list = res.data.data.news;
             }
-            if(!res.data.data.news.length){
+            if(res.data.data.over){
                 this.isfinished = true;
             }
-            this.filters.search_after = res.data.data.search_after;
+            this.filters.start+=5;
             this.setMainPageLoading(false);
         }).catch(err => {
             console.log(err);
@@ -356,7 +357,7 @@ export default class MyFollowCom extends Vue {
                 this.people_all = true;
                 break;
         }
-        this.filters.search_after = [];
+        this.filters.start = 0;
         this.getList();
     }
 

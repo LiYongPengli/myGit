@@ -402,9 +402,7 @@
               <ul>
                 <list-item :language1="language" :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
                 
-                <div @click="loadMore" v-show="!finished" class="jzgd">
-                  正在加载更多内容
-                </div>
+                <loading v-if="!finished" />
               </ul>
             </div>
           </div>
@@ -424,6 +422,7 @@ import TimeSlot from "@/components/TimeSlot.vue";
 import MyScroll from "@/components/MyScroll.vue";
 import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
 import ListItem from "@/components/ListItem.vue";
+import Loading from "@/components/Loading.vue";
 
 @Component({
   components: {
@@ -431,7 +430,8 @@ import ListItem from "@/components/ListItem.vue";
     TimeSlot,
     MyScroll,
     VideoThumbnail,
-    ListItem
+    ListItem,
+    Loading
   },
 })
 export default class IntelligentRetrieval extends mixins(

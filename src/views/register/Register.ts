@@ -151,7 +151,7 @@ export default class RegisterCom extends Vue {
             console.log(err);
         }
     }
-    //获取手机验证码
+    //获取短信验证码
     private getPhoneCode(phoneNumber:string):void{
         this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel='+phoneNumber).then(res=>{
@@ -171,7 +171,7 @@ export default class RegisterCom extends Vue {
         })
     }
 
-    //手机验证码确认
+    //短信验证码确认
     private async phoneCodeSure(phoneNumber:string,vc:string):Promise<boolean>{
         try{
             let data = qs.stringify({
@@ -188,11 +188,11 @@ export default class RegisterCom extends Vue {
         }catch(code_err){
             if (code_err.response.status == 401 && code_err.response.data.message) {
                 if (code_err.response.data.message == 'Verification code is uncorrect.') {
-                    this.vcerr='手机验证码有误';
+                    this.vcerr='短信验证码有误';
                     return false;
                 }
                 if (code_err.response.data.message == 'Verification code is out of date.') {
-                    this.vcerr = '手机验证码已过期,请重新发送';
+                    this.vcerr = '短信验证码已过期,请重新发送';
                     return false;
                 }
             }
@@ -205,7 +205,7 @@ export default class RegisterCom extends Vue {
         }
     }
 
-    //点击获取手机验证码
+    //点击获取短信验证码
     public async get_code(): Promise<void> {
         if (this.send_code) {
             return;

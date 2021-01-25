@@ -31,7 +31,7 @@
             placeholder="请输入短信验证码"
           />
           <span @click="get_code" class="get_code">{{
-            send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
+            send_code ? "(" + time + ")秒后可重新发送" : "获取短信验证码"
           }}</span>
         </el-form-item>
         <div style="margin-top: 20px">

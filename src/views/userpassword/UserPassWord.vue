@@ -41,7 +41,7 @@
         <el-form-item class="item" label="验证码:" prop="vc">
           <el-input class="usrpwd" v-model="fogetForm.vc" placeholder="请输入短信验证码" />
           <span @click.stop="get_code" class="get_code">{{
-            send_code ? "(" + time + ")秒后可重新发送" : "获取手机验证码"
+            send_code ? "(" + time + ")秒后可重新发送" : "获取短信验证码"
           }}</span>
         </el-form-item>
         <el-form-item class="item" label="新密码:" prop="newpwd">

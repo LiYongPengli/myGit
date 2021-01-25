@@ -93,12 +93,13 @@
         </div>
       </div>
       <div class="list">
-        <div class="nodata" v-show="!list.length">暂无数据</div>
+        <div class="nodata" v-show="!list.length&&isfinished">暂无数据</div>
+        <div class="loadingData">
+          <loading v-if="initData" />
+        </div>
         <ul>
           <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in list" :key="i" />
-          <div v-show="!isfinished" class="jzgd">
-            正在加载更多
-          </div>
+          <loading v-if="!isfinished&&mainPageLoading" />
         </ul>
       </div>
     </div>
@@ -110,10 +111,12 @@ import Component, { mixins } from "vue-class-component";
 import MyFollowCom from "./Myfollow";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import ListItem from "@/components/ListItem.vue";
+import Loading from "@/components/Loading.vue";
 @Component({
   components: {
     ShareContent,
-    ListItem
+    ListItem,
+    Loading
   },
 })
 export default class MyFollow extends mixins(MyFollowCom) {}

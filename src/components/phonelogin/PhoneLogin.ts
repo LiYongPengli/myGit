@@ -25,7 +25,7 @@ export default class phoneLoginCom extends Vue {
 
     public rules = {
         tel: [{ validator: this.inittel, trigger: 'blur' }],
-        tel_vc: [{ required: true, message: '请输入手机验证码', trigger: 'blur' }]
+        tel_vc: [{ required: true, message: '请输入短信验证码', trigger: 'blur' }]
     }
 
     @Watch('phone_form.tel')
@@ -87,7 +87,7 @@ export default class phoneLoginCom extends Vue {
         this.getPhoneCode(this.phone_form.tel);
     }
 
-    //获取手机验证码
+    //获取短信验证码
     private getPhoneCode(phoneNumber: string): void {
         this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel=' + phoneNumber).then(res => {
@@ -118,7 +118,7 @@ export default class phoneLoginCom extends Vue {
         })
     }
 
-    //点击获取手机验证码
+    //点击获取短信验证码
     public async get_code(): Promise<void> {
         if (this.send_code) {
             return;
@@ -133,7 +133,7 @@ export default class phoneLoginCom extends Vue {
         await this.getImgCode();
     }
 
-    //手机验证码确认
+    //短信验证码确认
     private async phoneCodeSure(phoneNumber: string, vc: string): Promise<boolean> {
         let data = qs.stringify({
             tel: phoneNumber,
@@ -151,11 +151,11 @@ export default class phoneLoginCom extends Vue {
             } catch (code_err) {
                 if (code_err.response.status == 401 && code_err.response.data.message) {
                     if (code_err.response.data.message == 'Verification code is uncorrect.') {
-                        reject(new Error('手机验证码有误'))
+                        reject(new Error('短信验证码有误'))
                         return false;
                     }
                     if (code_err.response.data.message == 'Verification code is out of date.') {
-                        reject(new Error('手机验证码已过期,请重新发送'))
+                        reject(new Error('短信验证码已过期,请重新发送'))
                         return false;
                     }
                 }

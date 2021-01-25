@@ -109,10 +109,18 @@
             clear: both;
             padding-top: 10px;
             min-height: 500px;
+            position: relative;
             .nodata {
                 color: white;
                 text-align: center;
                 margin-top: 20%;
+            }
+            .loadingData{
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
             }
             ul {
                 list-style: none;

@@ -45,7 +45,9 @@
                   :class="{ cur: active_recommend == i + 1 }"
                   >{{ v.name }}</span
                 > -->
-                <span @click="change_recommend(i + 1, v.sub_id)">{{ v.name }}</span>
+                <span @click="change_recommend(i + 1, v.sub_id)">{{
+                  v.name
+                }}</span>
               </div>
             </div>
           </div>
@@ -59,66 +61,7 @@
               v-for="(v, i) in newsList"
               :key="i"
             />
-            <!-- <li v-for="(v, i) in newsList" :key="i">
-              <div v-if="v.cover.type != 'text'" class="pic">
-                <video-thum-bnail
-                  v-if="v.cover.type == 'video'"
-                  :video_photo="v.cover.url"
-                  :video_url="v.cover.video"
-                />
-                <el-image
-                  :fit="'scale-down'"
-                  class="img"
-                  lazy
-                  v-if="v.cover.type == 'image'"
-                  :src="v.cover.url[0]"
-                >
-                  <div slot="error" class="image-slot">
-                    <img
-                      style="width: 200px"
-                      src="../../assets/img/404.png"
-                      alt=""
-                    />
-                  </div>
-                </el-image>
-              </div>
-              <div class="text">
-                <p
-                  v-show="language == 'crawler'"
-                  @click="toNewsInfo(v)"
-                  class="title"
-                  :title="v.title.crawler"
-                >
-                  {{ v.title.crawler }}
-                </p>
-                <p
-                  v-show="language == 'en'"
-                  @click="toNewsInfo(v)"
-                  class="title"
-                >
-                  {{ v.title.en }}
-                </p>
-                <p
-                  v-show="language == 'zh-CN'"
-                  @click="toNewsInfo(v)"
-                  class="title"
-                >
-                  {{ v.title["zh-CN"] }}
-                </p>
-                <span class="mt">媒体: {{ v.media_name }} </span>
-                <span class="time">时间: {{ init_time(v.time) }}</span>
-                <span class="ll">浏览次数: {{ v.pv }}人</span>
-              </div>
-
-              <div class="zan">
-                <img src="../../assets/img/zanpress.png" alt="" />
-                <span>{{ v.like }}</span>
-                <share-content :content="v" type="news" class="sczhuanfa">
-                  <img src="../../assets/img/sczhuanfa.png" alt="" />
-                </share-content>
-              </div>
-            </li> -->
-            <div v-show="!finished" class="jzgd">正在加载更多精彩内容</div>
+            <loading v-if="!finished" />
           </ul>
         </div>
       </div>
@@ -127,13 +70,19 @@
       <!-- 国家媒体列表 -->
       <div class="top">
         <div class="media_nav">
-          <span :class="{ cur: mediaSwiperCurrentIndex == 0 }" @click="mediaTab(0)"
+          <span
+            :class="{ cur: mediaSwiperCurrentIndex == 0 }"
+            @click="mediaTab(0)"
             >国家</span
           >
-          <span :class="{ cur: mediaSwiperCurrentIndex == 1 }" @click="mediaTab(1)"
+          <span
+            :class="{ cur: mediaSwiperCurrentIndex == 1 }"
+            @click="mediaTab(1)"
             >媒体</span
           >
-          <span :class="{ cur: mediaSwiperCurrentIndex == 2 }" @click="mediaTab(2)"
+          <span
+            :class="{ cur: mediaSwiperCurrentIndex == 2 }"
+            @click="mediaTab(2)"
             >人物</span
           >
         </div>
@@ -152,11 +101,15 @@
                     <img :src="v.flag" alt="" />
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
                   </div>
+                  <div class="item">
+                    <div class="other">+</div>
+                    <p class="name">其他</p>
+                  </div>
                 </div>
               </div>
               <!-- 媒体 -->
               <div class="swiper-slide">
-                <div class="media country people" style="width: 457px">
+                <div class="media country people">
                   <div
                     @click="toFollowPage('media', v)"
                     v-for="(v, i) in media"
@@ -166,11 +119,19 @@
                     <div class="mttx">
                       <img :src="v.media_icon" alt="" />
 
-                      <div v-if="v.media_source=='Spider'" class="dgdiv">
-                        <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                      <div v-if="v.media_source == 'Spider'" class="dgdiv">
+                        <img
+                          class="duigou"
+                          src="../../assets/img/mtdg.png"
+                          alt=""
+                        />
                       </div>
                     </div>
                     <p :title="v.name_zh" class="name">{{ v.name_zh }}</p>
+                  </div>
+                  <div class="item">
+                    <div class="other">+</div>
+                    <p class="name">其他</p>
                   </div>
                 </div>
               </div>
@@ -186,7 +147,11 @@
                     <img
                       style="border-radius: 50%"
                       v-if="v.avatar != -1 && v.avatar != null && !v.error"
-                      :src="axios.defaults.baseURL + '/attachments/avator/' + v.avatar"
+                      :src="
+                        axios.defaults.baseURL +
+                        '/attachments/avator/' +
+                        v.avatar
+                      "
                       alt=""
                     />
                     <img
@@ -196,6 +161,10 @@
                       alt=""
                     />
                     <p :title="v.name" class="name">{{ v.name }}</p>
+                  </div>
+                  <div class="item">
+                    <div class="other">+</div>
+                    <p class="name">其他</p>
                   </div>
                 </div>
               </div>
@@ -219,12 +188,14 @@ import EditChannel from "@/components/editchannel/EditChannel.vue";
 import Hours24 from "@/components/hours24/Hours24.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import ListItem from "@/components/ListItem.vue";
+import Loading from "@/components/Loading.vue";
 @Component({
   components: {
     EditChannel,
     Hours24,
     ShareContent,
     ListItem,
+    Loading
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

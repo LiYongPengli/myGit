@@ -10,7 +10,7 @@
             alt=""
           />
           <img v-if="item.error" src="../assets/img/media_default.png" alt="" />
-          <div v-if="item.media_source=='Spider'" class="dgdiv">
+          <div v-if="item.media_source == 'Spider'" class="dgdiv">
             <img class="duigou" src="../assets/img/mtdg.png" alt="" />
           </div>
         </div>
@@ -22,8 +22,14 @@
       </div>
       <div class="controls">
         <!-- 点赞 -->
-        <div v-if="~shoControls.indexOf('like')" @click="onlike" class="btn">
-          <img src="../assets/img/zanpress.png" alt="" />
+        <div
+          ref="like"
+          v-if="~shoControls.indexOf('like')"
+          @click="onlike"
+          class="btn"
+        >
+          <img v-if="!item.liked" src="../assets/img/zanpress.png" alt="" />
+          <img v-if="item.liked" src="../assets/img/zanpressl.png" alt="" />
           <span>{{ item.like }}</span>
         </div>
         <!-- 分享 -->
@@ -91,10 +97,12 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
+          width="640px"
+          height="360px"
           :src="item.cover.video"
           v-show="!error"
           @error="error = true"
-          crossorigin="use-credentials"
+          :crossorigin="env == 'development' ? false : 'use-credentials'"
           controls
         >
           <track
@@ -119,6 +127,7 @@
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { State } from "vuex-class";
+import ClickAble from "@/libs/ClickAble";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 @Component({
   components: {
@@ -130,6 +139,7 @@ export default class ListItem extends Vue {
   @Prop({}) shoControls!: string[];
   @Prop({ default: "" }) language1!: string[];
   @State("language") language!: string;
+  @State("env") env!: string;
   public error: boolean = false;
   public track_zh = {
     url: "",
@@ -166,7 +176,6 @@ export default class ListItem extends Vue {
         urlArr.splice(0, 3);
         let lastUrl = urlArr.join("/");
         this.track_cw.url = "/" + lastUrl;
-        console.log(this.track_cw.url);
       }
     }
   }
@@ -176,7 +185,30 @@ export default class ListItem extends Vue {
   public toDelete() {}
   //点赞
   @Emit("onlike")
-  public onlike() {}
+  public onlike() {
+    if (this.item.liked) {
+      return;
+    }
+    let like = <HTMLElement>this.$refs.like;
+    this.axios
+      .post("/v1/cmd/", {
+        cmd: "like_news",
+        paras: {
+          news_id: this.item.news_id,
+          news_oper: "do",
+        },
+      })
+      .then((res) => {
+        if (res.data.data.msg == "操作成功") {
+          this.item.like++;
+          this.item.liked = !this.item.liked;
+          new ClickAble(like, like.offsetLeft + 10, like.offsetTop);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   //收藏
   @Emit("oncollection")
   public toCollection() {}
