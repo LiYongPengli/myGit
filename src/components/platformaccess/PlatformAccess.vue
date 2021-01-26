@@ -151,7 +151,7 @@
         <div class="content_form_one">
           <span class="namelist">用户登录名单</span>
           <div>
-            <span @click="setUserDay('today')" :class="{'CumulativeActive':user_status=='today'}" class="Cumulative">今日</span>
+            <!-- <span @click="setUserDay('today')" :class="{'CumulativeActive':user_status=='today'}" class="Cumulative">今日</span> -->
           <span @click="setUserDay('all')" :class="{'CumulativeActive':user_status=='all'}" class="Cumulative1">累计</span>
           <el-date-picker
             @change="setUserDate"

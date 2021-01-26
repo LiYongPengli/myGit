@@ -89,6 +89,11 @@ export default class App extends Vue {
       newVal =="HomeSet"   ||
       newVal =="Publicity"
     ) {
+      if(newVal =="Publicity"){
+        if(!this.user_message){
+        this.userLoginType();
+      }
+      }
       this.isshow = true;
       this.show_fx = false;
     } else {

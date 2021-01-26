@@ -12,7 +12,7 @@ export default class PlatformAccessCom extends Vue {
     //累计次数倒序(大到小)
     public sortContent:boolean = true;
     public sortTime:boolean = true;
-    public user_status: string = 'today';
+    public user_status: string = 'all';
     public userdates: Date[] | null = null;
     public date_data: string[] = [];
     public userBehavior: any = "";
