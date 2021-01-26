@@ -29,7 +29,7 @@
                     src="../../assets/img/camera.png"
                     alt=""
                   />
-                  <img :src="user_message.headimg" alt="" />
+                  <img v-if="user_message.headimg.constructor==String" :src="user_message.headimg" alt="" />
                   <div
                     @mouseleave="showUpload = false"
                     v-show="showUpload"

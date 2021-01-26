@@ -5,11 +5,11 @@
         <li class="L">
           <a @click="$router.push('/user/collection/0')"> 我的收藏 </a>
           >
-          <a> {{ $route.query.name }} </a>
+          <a> {{ name }} </a>
           <span class="tongji"> 共 {{ list.length }} 篇文章 </span>
         </li>
       </ul>
-      <share-content :content="{ name: $route.query.name }" type="collection">
+      <share-content :content="{ name: name }" type="collection">
         <span class="plfx right">分享收藏夹</span>
       </share-content>
     </div>
