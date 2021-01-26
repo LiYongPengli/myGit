@@ -176,11 +176,7 @@ export default class HeaderOne extends Vue {
       // margin-left: 10px;
     }
     .ss {
-       
-         //background: url(../assets/img/scsearch.png) 30px center no-repeat #272731;
-      // width: calc(100% - 75px);
       width: 100%;
-    /* height: 100%; */
     background: #272731;
     border: none;
     outline: none;
@@ -189,11 +185,11 @@ export default class HeaderOne extends Vue {
     color: white;
     font-size: 16px;
     }
-    input:focus {
-      outline: none;
-      border: 10px solid #272731;
-      background-color: #272731;
-    }
+    // input:focus {
+    //   outline: none;
+    //   border: 10px solid #272731;
+    //   background-color: #272731;
+    // }
   }
   .bottom {
     height: 65px;
