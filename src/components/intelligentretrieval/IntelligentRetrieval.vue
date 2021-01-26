@@ -80,6 +80,8 @@
                   />
                 </div>
                 <!-- </el-tooltip> -->
+                <div :style="{ height: showCountry ? '205px' : '30px' }">
+                      <my-scroll>
                 <ul
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
@@ -111,6 +113,8 @@
                     </el-tooltip>
                   </li>
                 </ul>
+                      </my-scroll>
+                </div>
               </div>
 
               <div class="operation">
@@ -169,10 +173,17 @@
                       alt=""
                     />
                   </div>
+                  <div :style="{ height: showMedia ? '205px' : '30px' }">
+                      <my-scroll>
                   <ul
                     v-show="filter.media.length < 2 || multipleMedia"
                     :style="{ height: showMedia ? 'auto' : '30px' }"
                   >
+                    <!-- <ul
+                    v-show="filter.media.length < 2 || multipleMedia"
+                    style="height:250px;"
+                  >
+                     -->
                     <div v-show="!multipleMedia && filter.media.length < 2">
                       <p
                         class="all"
@@ -182,6 +193,7 @@
                         全部
                       </p>
                     </div>
+                  
                     <li
                       :class="{ mtli: ~filter.media.indexOf(v.media_id) }"
                       @click="chooseitem('media', v)"
@@ -200,6 +212,8 @@
                       </el-tooltip>
                     </li>
                   </ul>
+                   </my-scroll>
+                  </div>
                 </div>
               </div>
               <div class="operation">
@@ -247,6 +261,8 @@
                       alt=""
                     />
                   </div>
+                  <div :style="{ height: showCharacter ? '205px' : '30px' }">
+                      <my-scroll>
                   <ul
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"
@@ -280,6 +296,8 @@
                       </el-tooltip>
                     </li>
                   </ul>
+                      </my-scroll>
+                  </div>
                 </div>
               </div>
               <div class="operation">

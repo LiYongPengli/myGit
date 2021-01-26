@@ -66,6 +66,7 @@ export default class IntelligentRetrievalCom extends Vue {
         { name: 'X', choose: false },
         { name: 'Y', choose: false },
         { name: 'Z', choose: false },
+        { name: '其他', choose: false },
     ];
 
     public cache_country: string[] = [];
