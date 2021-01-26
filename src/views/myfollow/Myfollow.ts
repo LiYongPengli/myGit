@@ -19,7 +19,7 @@ export default class MyFollowCom extends Vue {
 
     public filters = {
         start: 0,
-        size: 5,
+        size: 10,
         country: [] as any[],
         media: [] as any[],
         language: 'crawler',
@@ -322,7 +322,7 @@ export default class MyFollowCom extends Vue {
             if(res.data.data.over){
                 this.isfinished = true;
             }
-            this.filters.start+=5;
+            this.filters.start+=10;
             this.setMainPageLoading(false);
         }).catch(err => {
             console.log(err);

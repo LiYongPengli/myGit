@@ -5,14 +5,14 @@ import Swiper from 'swiper'
 import { Mutation, State } from 'vuex-class';
 @Component
 export default class RecommendCom extends Vue {
-    
+
     @State('index_channel_window') index_channel_window!: boolean;
     @State('mainPageLoading') mainPageLoading!: boolean;
     @State('language') language!: string;
-    
+
     @State('topic_show') topic_show!: boolean;
-    public left_btn:boolean = false;
-    public right_btn:boolean = true;
+    public left_btn: boolean = false;
+    public right_btn: boolean = true;
     //被激活的推荐频道导航
     public active_recommend: number = 0;
     public active_recommend_name: string = '推荐';
@@ -23,15 +23,15 @@ export default class RecommendCom extends Vue {
     public channel_swiper!: Swiper;
 
     //是否加载完毕
-    public finished:boolean = false;
-    
+    public finished: boolean = false;
+
     //新闻列表
     public newsList: any[] = [];
     //起始页码
     public start = {
-        pageStart:0
+        pageStart: 0
     }
-    
+
     //关注频道列表
     public channel: any[] = [];
     //媒体列表
@@ -42,11 +42,11 @@ export default class RecommendCom extends Vue {
     public country: any[] = [];
 
     @Mutation('setIndexChannelWindow') setEditChannel!: any;
-    
+
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
     @Watch('mainPageLoading')
-    public loadingChange(newVal:boolean,oldVal:boolean):void{
-        if(newVal&&!this.finished){
+    public loadingChange(newVal: boolean, oldVal: boolean): void {
+        if (newVal && !this.finished) {
             this.loading();
         }
     }
@@ -69,16 +69,16 @@ export default class RecommendCom extends Vue {
         this.get_recommend();
     }
 
-    public imgLoad(e:any):void{
+    public imgLoad(e: any): void {
         let img = <HTMLImageElement>e.path[0]
-        if(img.offsetHeight<132){
-            img.style.height = 132+'px';
+        if (img.offsetHeight < 132) {
+            img.style.height = 132 + 'px';
         }
     }
 
-    public next(){
+    public next() {
         this.channel_swiper.slideNext();
-        if(this.channel_swiper.isEnd){
+        if (this.channel_swiper.isEnd) {
             this.right_btn = false;
             this.left_btn = true;
         }
@@ -94,45 +94,47 @@ export default class RecommendCom extends Vue {
                 freeMode: true,
                 observer: true,
                 observeSlideChildren: true,
-                on:{
-                    slideChangeTransitionEnd(swiper){
-                        if(swiper.isBeginning){
+                on: {
+                    slideChangeTransitionEnd(swiper) {
+                        if (swiper.isBeginning) {
                             that.left_btn = false;
                             that.right_btn = true;
-                        }else if(swiper.isEnd){
-                            that.right_btn = false;
-                            that.left_btn = true;
-                        }else{
-                            that.left_btn = true;
-                            that.right_btn = true;
+                            return;
                         }
+                        if(swiper.isEnd){
+                            that.left_btn = true;
+                            that.right_btn = false;
+                            return;
+                        }
+                        that.left_btn = true;
+                        that.right_btn = true;
                     }
                 }
             })
         });
         let that = this;
-        this.media_swiper = new Swiper('#swiper2',{
-            on:{
-                slideChange(swiper){
+        this.media_swiper = new Swiper('#swiper2', {
+            on: {
+                slideChange(swiper) {
                     that.mediaSwiperCurrentIndex = swiper.activeIndex;
                 }
             }
         })
     }
 
-    public loadErr(index:number):void{
-        this.$set(this.newsList[index],'error',true);
+    public loadErr(index: number): void {
+        this.$set(this.newsList[index], 'error', true);
     }
 
 
-    public loading():void{
-        this.start.pageStart+=10;
+    public loading(): void {
+        this.start.pageStart += 10;
         this.get_recommend();
     }
 
-    
 
-    
+
+
 
 
     public mediaTab(index: number): void {
@@ -141,20 +143,20 @@ export default class RecommendCom extends Vue {
     }
     //到新闻详情页
     public toNewsInfo(item: any): void {
-        window.open('#/newsinfo?id=' + item.news_id+'&md_id='+item.media_id);
+        window.open('#/newsinfo?id=' + item.news_id + '&md_id=' + item.media_id);
     }
 
 
     //获取频道等列表
-    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void,start:number=0): void {
-        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type +'&start='+ start + '&limit=0').then(res => {
+    public getSubscriptions(sub_type: string, sub_oper_type: string, call: (res: AxiosResponse<any>) => void, start: number = 0): void {
+        this.axios.get('/v1/user/sub/?sub_type=' + sub_type + '&sub_oper_type=' + sub_oper_type + '&start=' + start + '&limit=0').then(res => {
             call(res);
         }).catch(err => {
             console.log(err);
         })
     }
 
-    
+
 
     //获取推荐文章列表
     private get_recommend(): void {
@@ -162,21 +164,21 @@ export default class RecommendCom extends Vue {
         let paras: any = {};
         switch (this.active_recommend) {
             case 0:
-                paras = { start:this.start.pageStart,size: 10 };
+                paras = { start: this.start.pageStart, size: 10 };
                 break;
             default:
                 cmd = 'query_channel';
-                paras = { start:this.start.pageStart,sub_id: this.active_recommend_name, size: 10 };
+                paras = { start: this.start.pageStart, sub_id: this.active_recommend_name, size: 10 };
                 break;
         }
         this.axios.post('/v1/cmd/', {
             cmd: cmd,
             paras: paras,
         }).then(res => {
-            if(this.start.pageStart==0){
+            if (this.start.pageStart == 0) {
                 this.newsList = res.data.data;
-            }else{
-                if(!res.data.data.length){
+            } else {
+                if (!res.data.data.length) {
                     this.finished = true;
                     return;
                 }
@@ -187,7 +189,7 @@ export default class RecommendCom extends Vue {
             console.log(err);
         })
     }
-    
+
     /**
      * 推荐频道发生改变
      * @param index 所点击的索引
@@ -218,11 +220,11 @@ export default class RecommendCom extends Vue {
             return `${parseInt(time / 60 / 60 + '')}小时前`
         } else {
             let year = date.getFullYear();
-            let month = date.getMonth()+1;
+            let month = date.getMonth() + 1;
             let day = date.getDate();
             let hour = date.getHours();
             let minits = date.getMinutes();
-            return `${year}-${month>9?month:'0'+month}-${day>9?day:'0'+day} ${hour>9?hour:'0'+hour}:${minits>9?minits:'0'+minits}`;
+            return `${year}-${month > 9 ? month : '0' + month}-${day > 9 ? day : '0' + day} ${hour > 9 ? hour : '0' + hour}:${minits > 9 ? minits : '0' + minits}`;
         }
     }
 
@@ -232,11 +234,11 @@ export default class RecommendCom extends Vue {
      * @param choise 是否选择
      * @param index 该类型索引
      */
-    public toFollowPage(type:string,item:any):void{
-        this.$router.push('/myfollow?item='+JSON.stringify({
-            type:type,
-            choise:true,
-            name:item.name_zh?item.name_zh:item.zh_name
+    public toFollowPage(type: string, item: any): void {
+        this.$router.push('/myfollow?item=' + JSON.stringify({
+            type: type,
+            choise: true,
+            name: item.name_zh ? item.name_zh : item.zh_name
         }))
     }
 }

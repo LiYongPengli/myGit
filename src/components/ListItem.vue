@@ -125,7 +125,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 import { State } from "vuex-class";
 import ClickAble from "@/libs/ClickAble";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
@@ -150,6 +150,10 @@ export default class ListItem extends Vue {
     type: false,
   };
   public created() {
+    this.showTrack();
+  }
+  @Watch('item.news_id')
+  public listenNewsId(newVal:string,oldVal:string):void{
     this.showTrack();
   }
 
