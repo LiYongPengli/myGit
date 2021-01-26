@@ -59,7 +59,7 @@ export default class HomeSetCom extends Vue {
                     this.searchChannel(newVal);
                     break;
             }
-        }, 1000)
+        }, 500)
 
     }
 
@@ -344,6 +344,7 @@ export default class HomeSetCom extends Vue {
 
     //下一步
     public toNext(): void {
+        this.searchText = "";
         switch (this.pageIndex++) {
             case 0:
                 if (!this.media_list.week.length || !this.media_list.month.length)

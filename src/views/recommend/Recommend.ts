@@ -95,6 +95,20 @@ export default class RecommendCom extends Vue {
                 observer: true,
                 observeSlideChildren: true,
                 on: {
+                    sliderMove(swiper) {
+                        if (swiper.isBeginning) {
+                            that.left_btn = false;
+                            that.right_btn = true;
+                            return;
+                        }
+                        if(swiper.isEnd){
+                            that.left_btn = true;
+                            that.right_btn = false;
+                            return;
+                        }
+                        that.left_btn = true;
+                        that.right_btn = true;
+                    },
                     slideChangeTransitionEnd(swiper) {
                         if (swiper.isBeginning) {
                             that.left_btn = false;

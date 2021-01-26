@@ -97,6 +97,8 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
+          preload="none"
+          :poster="item.cover.url"
           width="640px"
           height="360px"
           :src="item.cover.video"
@@ -188,25 +190,25 @@ export default class ListItem extends Vue {
   @Emit("ondelete")
   public toDelete() {}
   //点赞
-  @Emit("onlike")
   public onlike() {
-    if (this.item.liked) {
-      return;
-    }
     let like = <HTMLElement>this.$refs.like;
     this.axios
       .post("/v1/cmd/", {
         cmd: "like_news",
         paras: {
           news_id: this.item.news_id,
-          news_oper: "do",
+          news_oper: this.item.liked?"undo":"do",
         },
       })
       .then((res) => {
         if (res.data.data.msg == "操作成功") {
-          this.item.like++;
+          if(this.item.liked){
+            this.item.like--;
+          }else{
+            this.item.like++;
+            new ClickAble(like, like.offsetLeft + 10, like.offsetTop);
+          }
           this.item.liked = !this.item.liked;
-          new ClickAble(like, like.offsetLeft + 10, like.offsetTop);
         }
       })
       .catch((err) => {
@@ -304,6 +306,11 @@ export default class ListItem extends Vue {
       height: 132px;
       margin-right: 20px;
       background: #393946;
+    }
+    .video_wrap{
+      video{
+        outline: none;
+      }
     }
   }
 }

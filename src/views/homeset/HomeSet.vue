@@ -5,22 +5,34 @@
         <div class="header">
           <h1>选择您感兴趣的选项</h1>
           <!-- <span class="zssg">至少选择3个，后期可随时调整</span> -->
-          <div class="tab">
-            <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item :class="{ cur: pageIndex == 0 }" :to="{ path: '/' }"
-                >国家
-              </el-breadcrumb-item>
-              <el-breadcrumb-item :class="{ cur: pageIndex == 1 }"
-                >媒体
-              </el-breadcrumb-item>
-              <el-breadcrumb-item :class="{ cur: pageIndex == 2 }"
-                >人物
-              </el-breadcrumb-item>
-              <el-breadcrumb-item :class="{ cur: pageIndex == 3 }"
-                >推荐频道
-              </el-breadcrumb-item>
-            </el-breadcrumb>
-            <input v-model="searchText" type="text" placeholder="请输入关键词" />
+          <div class="header_bottom">
+            <div class="tab">
+              <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item
+                  :class="{ cur: pageIndex == 0 }"
+                  :to="{ path: '/' }"
+                  >国家
+                </el-breadcrumb-item>
+                <el-breadcrumb-item :class="{ cur: pageIndex == 1 }"
+                  >媒体
+                </el-breadcrumb-item>
+                <el-breadcrumb-item :class="{ cur: pageIndex == 2 }"
+                  >人物
+                </el-breadcrumb-item>
+                <el-breadcrumb-item :class="{ cur: pageIndex == 3 }"
+                  >推荐频道
+                </el-breadcrumb-item>
+              </el-breadcrumb>
+            </div>
+            <div class="input_wrap">
+              <img v-show="!searchText" src="../../assets/img/scsearch.png" alt="">
+              <span @click.stop="searchText=''" v-show="searchText" class="el-icon-close close"></span>
+              <input
+                v-model="searchText"
+                type="text"
+                placeholder="请输入关键词"
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -78,7 +90,11 @@
           >
         </span>
         <!-- 7天活跃 -->
-        <div v-show="media_list.week.length" class="content_wrap" style="height: 320px">
+        <div
+          v-show="media_list.week.length"
+          class="content_wrap"
+          style="height: 320px"
+        >
           <span class="qit">近7天内活跃的媒体</span>
           <div style="height: 285px; overflow: hidden">
             <my-scroll @loading="loadingMedia" style="content_mt_onescroll">
@@ -91,15 +107,23 @@
                 >
                   <a>
                     <!-- 50*30 -->
-                     <div class="mttx">
-                    <img class="mrtx" :src="v.media_icon" alt="" />
-                    <div class="dgdiv">
-                      <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                    <div class="mttx">
+                      <img class="mrtx" :src="v.media_icon" alt="" />
+                      <div class="dgdiv">
+                        <img
+                          class="duigou"
+                          src="../../assets/img/mtdg.png"
+                          alt=""
+                        />
+                      </div>
                     </div>
-                     </div>
                     <div class="zyname">
                       <div class="">
-                        <speed-text width="130px" height="20px" :text="v.name_zh" />
+                        <speed-text
+                          width="130px"
+                          height="20px"
+                          :text="v.name_zh"
+                        />
                       </div>
                     </div>
                     <!-- <a class="mtdg" href="">
@@ -112,7 +136,11 @@
           </div>
         </div>
         <!-- 30天活跃 -->
-        <div v-show="media_list.month.length" class="content_wrap" style="height: 320px">
+        <div
+          v-show="media_list.month.length"
+          class="content_wrap"
+          style="height: 320px"
+        >
           <span class="sst">近30天内活跃的媒体</span>
           <div style="height: 285px; overflow: hidden">
             <my-scroll @loading="loadingMedia">
@@ -126,14 +154,22 @@
                   <a>
                     <!-- 50*30 -->
                     <div class="mttx">
-                    <img class="mrtx" :src="v.media_icon"  alt="" />
-                    <div class="dgdiv">
-                      <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
-                    </div>
+                      <img class="mrtx" :src="v.media_icon" alt="" />
+                      <div class="dgdiv">
+                        <img
+                          class="duigou"
+                          src="../../assets/img/mtdg.png"
+                          alt=""
+                        />
                       </div>
+                    </div>
                     <div class="zyname">
                       <div class="">
-                        <speed-text width="130px" height="20px" :text="v.name_zh" />
+                        <speed-text
+                          width="130px"
+                          height="20px"
+                          :text="v.name_zh"
+                        />
                       </div>
 
                       <!-- <div class="">
@@ -158,15 +194,23 @@
                 :class="{ cur: v.choose }"
               >
                 <a>
-                   <div class="mttx">
-                  <img class="mrtx" :src="v.media_icon"  alt="" />
-                  <div class="dgdiv">
-                    <img class="duigou" src="../../assets/img/mtdg.png" alt="" />
+                  <div class="mttx">
+                    <img class="mrtx" :src="v.media_icon" alt="" />
+                    <div class="dgdiv">
+                      <img
+                        class="duigou"
+                        src="../../assets/img/mtdg.png"
+                        alt=""
+                      />
+                    </div>
                   </div>
-                   </div>
                   <div class="zyname">
                     <div class="">
-                      <speed-text width="110px" height="20px" :text="v.name_zh" />
+                      <speed-text
+                        width="110px"
+                        height="20px"
+                        :text="v.name_zh"
+                      />
                     </div>
                     <!-- <div class="">
                       <speed-text width="110px" height="20px" :text="v.name_zh" />
@@ -210,7 +254,9 @@
                   <!-- 50*30 -->
                   <img
                     v-if="v.avatar != -1 && v.avatar != null"
-                    :src="axios.defaults.baseURL + '/attachments/avator/' + v.avatar"
+                    :src="
+                      axios.defaults.baseURL + '/attachments/avator/' + v.avatar
+                    "
                     alt=""
                   />
                   <img
@@ -224,7 +270,11 @@
                   </span>
 
                   <span style="width: 220px" class="english_gj mt">
-                    <speed-text width="220px" height="20px" :text="v.description" />
+                    <speed-text
+                      width="220px"
+                      height="20px"
+                      :text="v.description"
+                    />
                   </span>
                 </a>
               </li>
