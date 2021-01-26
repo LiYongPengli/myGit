@@ -81,7 +81,7 @@
                 </div>
                 <!-- </el-tooltip> -->
                 <div :style="{ height: showCountry ? '205px' : '30px' }">
-                      <my-scroll>
+                      <my-scroll thumbColor="rgb(172, 172, 181)" >
                 <ul
                   v-show="filter.country.length < 2 || multipleCountry"
                   :style="{ height: showCountry ? 'auto' : '30px' }"
@@ -174,7 +174,7 @@
                     />
                   </div>
                   <div :style="{ height: showMedia ? '205px' : '30px' }">
-                      <my-scroll>
+                    <my-scroll thumbColor="rgb(172, 172, 181)" >
                   <ul
                     v-show="filter.media.length < 2 || multipleMedia"
                     :style="{ height: showMedia ? 'auto' : '30px' }"
@@ -262,7 +262,7 @@
                     />
                   </div>
                   <div :style="{ height: showCharacter ? '205px' : '30px' }">
-                      <my-scroll>
+                    <my-scroll thumbColor="rgb(172, 172, 181)" >
                   <ul
                     v-show="filter.character.length < 2 || multipleCharacter"
                     :style="{ height: showCharacter ? 'auto' : '30px' }"

@@ -13,7 +13,9 @@
          </my-scroll>
    </div>
    <div  class="logo">
+         <router-link  to="/">
       <img src="../../assets/img/xjlogo.png" alt="" />
+         </router-link>
     </div>
     <!-- <div class="return">
       <a  href="#">

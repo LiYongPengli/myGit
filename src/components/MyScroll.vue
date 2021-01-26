@@ -21,7 +21,7 @@ export default {
   name: "my-scroll",
   props: {
     thumbColor: {
-      default: " rgb(61, 61, 73)",
+      default: "rgb(61, 61, 73)",
       type: String,
     },
     animate: {
