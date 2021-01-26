@@ -1,13 +1,15 @@
 <template>
   <div class="dialogcm">
-    <p>分享给:</p>
-    <!-- 好友信息 -->
-    <div v-if="share_type == 'user'" class="share_user">
-      <img :src="axios.defaults.baseURL + '/avatar/' + share_user.account" alt="" />
-      <p class="user_name">
-        {{ share_user.nickname
-        }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
-      </p>
+    <div class="fxg">
+      <p class="fxgp">分享给:</p>
+      <!-- 好友信息 -->
+      <div v-if="share_type == 'user'" class="share_user">
+        <img :src="axios.defaults.baseURL + '/avatar/' + share_user.account" alt="" />
+        <p class="user_name">
+          {{ share_user.nickname
+          }}{{ share_user.remark_name ? "(" + share_user.remark_name + ")" : "" }}
+        </p>
+      </div>
     </div>
     <!-- 群组信息 -->
     <div v-if="share_type == 'group'" class="share_user">
@@ -20,41 +22,35 @@
       </p>
       <p class="user_name">{{ share_user.name }}</p>
     </div>
-    <p>内容:</p>
-    <p v-if="language == 'crawler' && type == 'news'" class="news_content">
-      {{ content.title.crawler }}
-    </p>
-    <p v-if="language == 'en' && type == 'news'" class="news_content">
-      {{ content.title.en }}
-    </p>
-    <p v-if="language == 'zh-CN' && type == 'news'" class="news_content">
-      {{ content.title["zh-CN"] }}
-    </p>
-    <p v-if="type == 'collection' && content" class="news_content">
-      {{ content.name }}
-    </p>
-    <p v-if="type == 'collection' && !content" class="news_content">
-      {{ showNames() }}
-    </p>
-    <p>附加消息:</p>
-    <div class="message">
-      <textarea
-        v-model="sharetext"
-        placeholder="说点什么吧"
-        rows="5"
-      ></textarea>
+    <div class="nr">
+      <p class="nrp">分享内容:</p>
+      <p v-if="language == 'crawler' && type == 'news'" class="news_content">
+        {{ content.title.crawler }}
+      </p>
+      <p v-if="language == 'en' && type == 'news'" class="news_content">
+        {{ content.title.en }}
+      </p>
+      <p v-if="language == 'zh-CN' && type == 'news'" class="news_content">
+        {{ content.title["zh-CN"] }}
+      </p>
+      <p v-if="type == 'collection' && content" class="news_content">
+        {{ content.name }}
+      </p>
+      <p v-if="type == 'collection' && !content" class="news_content">
+        {{ showNames() }}
+      </p>
     </div>
-    <div style="text-align: right" class="footer">
-      <el-button
-        @click="shareMessage"
-        style="width: 100px"
-        size="mini"
-        type="primary"
+   <div class="fjxx">
+      <p class="fjxxp">附加消息:</p>
+    <div class="message">
+      <textarea v-model="sharetext" placeholder="说点什么吧" rows="5"></textarea>
+    </div>
+   </div>
+    <div style="text-align: center;margin-top:100px" class="footer">
+      <el-button @click="shareMessage" style="width: 100px" size="mini" type="primary"
         >分享</el-button
       >
-      <el-button @click="close" style="width: 100px" size="mini"
-        >取消</el-button
-      >
+      <el-button @click="close" style="width: 100px" size="mini">取消</el-button>
     </div>
   </div>
 </template>
@@ -76,7 +72,7 @@ export default class DialogCm extends Vue {
   names!: string[];
   @Prop({}) share_user!: any;
   @State("language") language!: string;
-  @Mutation('setIsShare') setIsShare!:(n:boolean)=>void;
+  @Mutation("setIsShare") setIsShare!: (n: boolean) => void;
 
   //附加消息
   public sharetext: string = "";
@@ -109,19 +105,15 @@ export default class DialogCm extends Vue {
 
   //分享新闻
   private requestMessage(): void {
-    let obj:any = {
+    let obj: any = {
       news_id: this.content.news_id,
-      url:
-        "/#/newsinfo?id=" +
-        this.content.news_id +
-        "&md_id=" +
-        this.content.media_id,
+      url: "/#/newsinfo?id=" + this.content.news_id + "&md_id=" + this.content.media_id,
       message: this.sharetext,
     };
-    if(this.share_type=="user"){
-      obj.account = this.share_user.account
-    }else{
-      obj.room_id = this.share_user.room_id
+    if (this.share_type == "user") {
+      obj.account = this.share_user.account;
+    } else {
+      obj.room_id = this.share_user.room_id;
     }
     this.axios
       .post("/v1/cmd/", {
@@ -154,10 +146,10 @@ export default class DialogCm extends Vue {
     } else {
       obj.one = this.content.name;
     }
-    if(this.share_type=="user"){
-      obj.account = this.share_user.account
-    }else{
-      obj.room_id = this.share_user.room_id
+    if (this.share_type == "user") {
+      obj.account = this.share_user.account;
+    } else {
+      obj.room_id = this.share_user.room_id;
     }
     this.axios
       .post("/v1/cmd/", {
@@ -182,7 +174,7 @@ export default class DialogCm extends Vue {
   color: white;
   .share_user {
     padding: 5px 0;
-    padding-left: 30px;
+    // padding-left: 30px;
     display: flex;
     align-items: center;
     .user_ico,
@@ -200,15 +192,30 @@ export default class DialogCm extends Vue {
       align-items: center;
     }
   }
+  .fxg,.nr,.fjxx{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+      .fxgp,.nrp,.fjxxp{
+        display: flex;
+        flex: 1;
+      }
+      .share_user,.news_content,.message{
+        display: flex;
+        flex: 10;
+      }
+  }
   .news_content {
     padding: 5px 0;
-    text-indent: 2em;
+    // text-indent: 2em;
   }
   .message {
-    padding: 5px 0;
-    padding-left: 30px;
+    height: 150px;
+    // padding: 5px 0;
+    // padding-left: 30px;
     textarea {
-      width: 700px;
+       width: 100%;
       background: none;
       outline: none;
       color: white;
