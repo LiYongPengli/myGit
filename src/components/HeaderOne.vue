@@ -38,6 +38,7 @@
             </ul>
             <div slot="reference" class="user_info_wrap">
               <img
+                v-if="user_message.headimg.constructor==String"
                 :src="user_message.headimg"
                 alt="头像"
               />
@@ -81,7 +82,7 @@ export default class HeaderOne extends Vue {
   //当前系统语言
   @State("language") language!: string;
   //用户信息
-  @State("user_message") user_message!: string;
+  @State("user_message") user_message!: any;
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
   @Mutation("setUserMessage") setUserMessage!: any;
@@ -89,7 +90,6 @@ export default class HeaderOne extends Vue {
   @State("show_intelligent") show_intelligent!: boolean;
 
   @Mutation("setShowIntelligent") setShowIntelligent: any;
-
   //登出
   public logout(): void {
     this.axios
@@ -106,7 +106,6 @@ export default class HeaderOne extends Vue {
         console.log(err);
       });
   }
-
   public jumpHome(): void {
     if (this.$route.path != "/recommend") {
       this.$router.push("/");

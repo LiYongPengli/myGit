@@ -65,12 +65,12 @@ export default class ClickAble {
         let increase = 0;
         setTimeout( ()=> {
             this.anim = setInterval(()=>{
-                if (++increase == 150) {
+                if (++increase >= 50) {
                     clearInterval(<number>this.anim);
                     this.html.removeChild($elem);
                 }
                 $elem.style.top = y - 20 - increase + "px";
-                $elem.style.opacity = ((150 - increase) / 120)+"";
+                $elem.style.opacity = ((50 - increase) / 50)+"";
             }, 8);
         }, 70);
         this.html.appendChild($elem);

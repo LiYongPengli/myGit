@@ -40,9 +40,9 @@ export default class UserPassWordCom extends Vue {
     }
 
 
-    @Watch('user_message')
+    @Watch('user_message.phone_number')
     public listenUserMessage(newVal: any, oldVal: any): void {
-        if (newVal.phone_number) {
+        if (newVal) {
             let phone = this.user_message.phone_number as string;
             this.fogetForm.tel = phone.slice(0, 3) + '****' + phone.slice(7, 11);
             console.log(this.fogetForm.tel)
@@ -105,6 +105,13 @@ export default class UserPassWordCom extends Vue {
         if (space.test(newVal)) {
             this.fogetForm.vc = oldVal;
             return;
+        }
+    }
+
+    public created():void{
+        if (this.user_message) {
+            let phone = this.user_message.phone_number as string;
+            this.fogetForm.tel = phone.slice(0, 3) + '****' + phone.slice(7, 11);
         }
     }
 

@@ -20,6 +20,7 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
+              v-if="user_message.headimg.constructor==String"
               :src="user_message.headimg"
               alt=""
             />

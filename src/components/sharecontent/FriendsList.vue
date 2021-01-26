@@ -12,7 +12,7 @@
       <ul v-show="choose_state==0" class="friend">
         <my-scroll>
           <li
-            v-show="~v.nickname.indexOf(search)"
+            v-show="showItem(v)"
             class="friendlist_item"
             v-for="(v, i) in friend_list"
             :key="i"
@@ -71,7 +71,7 @@ import MyScroll from "@/components/MyScroll.vue";
 export default class FriendsList extends Vue {
   @Prop({}) friend_list!: any[];
   @Prop({}) grop_list!: any[];
-  public placeholder:string = "根据用户昵称进行搜索";
+  public placeholder:string = "根据用户信息进行搜索";
   public search: string = "";
   public choose_state:number = 0;
 
@@ -79,10 +79,33 @@ export default class FriendsList extends Vue {
   public chooseStateChg(newVal:number,oldVal:number):void{
     this.search = "";
     if(newVal==0){
-      this.placeholder = "根据用户昵称进行搜索"
+      this.placeholder = "根据用户信息进行搜索"
     }else{
       this.placeholder = "根据群名称进行搜索"
     }
+  }
+
+  public showItem(item:any):boolean{
+    if(~item.account.indexOf(this.search)){
+      return true;
+    }
+    if(~item.nickname.indexOf(this.search)){
+      return true;
+    }
+    if(item.remark_name){
+      if(~item.remark_name.indexOf(this.search)){
+      return true;
+    }
+    }
+    if(~item.phone_number.indexOf(this.search)){
+      return true;
+    }
+    if(item.wechat_info.binding){
+      if(~item.wechat_info.nickname.indexOf(this.search)){
+        return true;
+      }
+    }
+    return false;
   }
 
   @Emit("show")

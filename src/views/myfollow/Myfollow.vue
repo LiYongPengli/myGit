@@ -99,7 +99,7 @@
         </div>
         <ul>
           <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in list" :key="i" />
-          <loading v-if="!isfinished&&mainPageLoading" />
+          <loading v-if="!isfinished&&mainPageLoading&&!initData" />
         </ul>
       </div>
     </div>

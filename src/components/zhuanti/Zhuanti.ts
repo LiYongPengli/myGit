@@ -31,6 +31,9 @@ export default class ZhuantiCom extends Vue{
           }).then(res=>{
               console.log(res.data);
               this.list = res.data.data
+              this.list.sort(function(a,b){
+                  return new Date(b.time).getTime() - new Date(a.time).getTime();
+              })
           }).catch(err=>{
               console.log(err);
           })

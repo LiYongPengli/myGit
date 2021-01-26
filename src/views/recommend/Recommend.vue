@@ -136,7 +136,7 @@
                 </div>
               </div>
               <!-- 人物 -->
-              <div @click="$router.push('/user/follow/people')" class="swiper-slide">
+              <div class="swiper-slide">
                 <div class="country people">
                   <div
                     @click="toFollowPage('people', v)"
@@ -162,7 +162,7 @@
                     />
                     <p :title="v.name" class="name">{{ v.name }}</p>
                   </div>
-                  <div class="item">
+                  <div @click="$router.push('/user/follow/people')" class="item">
                     <div class="other">+</div>
                     <p class="name">添加</p>
                   </div>
