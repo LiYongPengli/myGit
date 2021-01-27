@@ -25,7 +25,13 @@ const routes: RouteConfig[] = [
         path: '/myfollow',
         name: 'Myfollow',
         component: () => import('../views/myfollow/Myfollow.vue')
-      }
+      },
+      //精选
+      {
+        path: '/selected',
+        name: 'selected',
+        component: () => import('../views/selected/Selected.vue')
+      },
     ]
   },
   //注册

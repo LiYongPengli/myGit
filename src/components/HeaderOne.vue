@@ -2,21 +2,22 @@
   <!-- 首页头部导航 -->
   <div class="headerone">
     <div @click="jumpHome" class="logo">
-      <img src="../assets/img/logo.png" alt="">
+      <img src="../assets/img/logo.png" alt="" />
       <a></a>
     </div>
     <div class="search">
-      <!-- <button value="" title=""></button> -->
-      <!-- <input
-        type="text"
-        placeholder="大家正在搜：加码挑拨！美议员提决议案：呼吁美国恢复与台“邦交”，终结一中政�"
-      /> -->
+      <div class="searchheader">
         <img class="imgss" src="../assets/img/search.png" alt="" />
-<input  class="ss"
-        @click="setShowIntelligent(true)"
-        type="text"
-        placeholder="请输入关键词，查询相关内容"
-      />
+        <input
+          class="ss"
+          @click="setShowIntelligent(true)"
+          type="text"
+          placeholder="请输入关键词，查询相关内容"
+        />
+        <p class="becareful">
+          非涉密系统，禁止处理涉密信息，增强政治敏感性，资料仅供工作参考，严禁外传。
+        </p>
+      </div>
 
       <!-- <div @click="setShowIntelligent(true)" class="ss">
    
@@ -38,7 +39,7 @@
             </ul>
             <div slot="reference" class="user_info_wrap">
               <img
-                v-if="user_message.headimg.constructor==String"
+                v-if="user_message.headimg.constructor == String"
                 :src="user_message.headimg"
                 alt="头像"
               />
@@ -51,6 +52,7 @@
         <div class="nav">
           <router-link to="/myfollow">我的关注</router-link>
           <router-link to="/recommend">热门推荐</router-link>
+           <router-link to="/selected">精选</router-link>
         </div>
         <div class="lang">
           <span @click="setLanguage('crawler')" :class="{ cur: language == 'crawler' }"
@@ -99,7 +101,7 @@ export default class HeaderOne extends Vue {
         if (res.data.status == 1) {
           this.$router.push("/login");
           this.$message.success("已登出");
-          this.setUserMessage('');
+          this.setUserMessage("");
         }
       })
       .catch((err) => {
@@ -125,19 +127,19 @@ export default class HeaderOne extends Vue {
   height: 132px;
   z-index: 102;
   background-image: linear-gradient(to bottom, #31313d, #272730);
-   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   .logo {
     position: absolute;
     left: 0;
-    
+
     width: 210px;
     height: 132px;
     z-index: 0;
-    
-    background-image: url(../assets/img/grcenter.jpg)  ;
+
+    background-image: url(../assets/img/grcenter.jpg);
     border-right: 1px solid #3a3a48;
     cursor: pointer;
-    img{
+    img {
       display: block;
       margin-left: 13%;
       margin-top: 15%;
@@ -147,48 +149,60 @@ export default class HeaderOne extends Vue {
     margin-left: 210px;
     border-bottom: 1px solid #242432;
     position: relative;
-    img.imgss{
-      position: absolute;
-    left: 31px;
-    top:23px;
-     
+    .searchheader {
+      display: flex;
+    flex-direction: row;
+    
+      img.imgss {
+        position: absolute;
+        left: 31px;
+        top: 23px;
+      }
+      button {
+        background: url(../assets/img/search.png) 30px center no-repeat #272731;
+        border: none;
+        cursor: pointer;
+        border: 0;
+        height: 65px;
+        width: 75px;
+        float: left;
+        outline: none;
+      }
+      input {
+        //width: 1618px;
+        // width: calc(100% - 75px);
+        background-color: #272731;
+        height: 65px;
+        border: 0;
+        box-sizing: border-box;
+        color: white;
+        // margin-left: 10px;
+      }
+      .ss {
+        display: flex;
+        flex: 1;
+        width: 50%;
+        background: #272731;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        padding-left: 75px;
+        color: white;
+        font-size: 16px;
+      }
+      .becareful {
+        flex: 1;
+        color: #e96464;
+        font-size: 16px;
+        width: 50%;
+        background: #272731;
+        height: 65px;
+        text-align: right;
+        line-height: 65px;
+        overflow: hidden;
+        padding-right: 30px;
+      }
     }
-    button {
-      background: url(../assets/img/search.png) 30px center no-repeat #272731;
-      border: none;
-      cursor: pointer;
-      border: 0;
-      height: 65px;
-      width: 75px;
-      float: left;
-      outline: none;
-    }
-    input {
-      //width: 1618px;
-      // width: calc(100% - 75px);
-      width: 100%;
-      background-color: #272731;
-      height: 65px;
-      border: 0;
-      box-sizing: border-box;
-      color: white;
-      // margin-left: 10px;
-    }
-    .ss {
-      width: 100%;
-    background: #272731;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    padding-left: 75px;
-    color: white;
-    font-size: 16px;
-    }
-    // input:focus {
-    //   outline: none;
-    //   border: 10px solid #272731;
-    //   background-color: #272731;
-    // }
   }
   .bottom {
     height: 65px;
@@ -221,8 +235,7 @@ export default class HeaderOne extends Vue {
     //   rgba(43, 43, 54, 1) 0%,
     //   rgba(39, 39, 48, 1) 100%
     // )
-     background-image: url(../assets/img/gcenter.jpg)  ;
-   
+    background-image: url(../assets/img/gcenter.jpg);
 
     .user_info {
       float: left;
@@ -267,14 +280,14 @@ export default class HeaderOne extends Vue {
         text-align: center;
         color: white;
         font-size: 16px;
-   
+
         text-decoration: none;
         display: inline-block;
         // width: 70px;
       }
-      a:last-of-type {
-        margin-left: 10px;
-      }
+      // a:last-of-type {
+      //   margin-left: 10px;
+      // }
       a.router-link-active {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
