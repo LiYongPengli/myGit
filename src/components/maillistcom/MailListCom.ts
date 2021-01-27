@@ -19,8 +19,6 @@ export default class MailListCom extends Vue {
     public userInfo: any = "";
     //备注
     public remark_name: string = "";
-    //验证消息
-    public inv_message: string = "";
 
     @Mutation("setTopicUrl") setTopicUrl: any;
     @Mutation("setTopicStatus") setTopicStatus: any;
@@ -221,7 +219,6 @@ export default class MailListCom extends Vue {
     public showInfo(user: any): void {
         this.inv_userInfo = "";
         this.remark_name = user.remark_name;
-        this.inv_message = "";
         this.remark_name = "";
         this.userInfo = user;
     }
@@ -229,29 +226,10 @@ export default class MailListCom extends Vue {
     public showInvInfo(user: any, key: string): void {
         this.userInfo = "";
         this.remark_name = "";
-        this.inv_message = "";
         this.inv_userInfo = user;
         this.inv_userInfo.id = key;
     }
 
-    //添加到通讯录
-    public async toAddMaiList() {
-        console.log(this.inv_userInfo)
-        try {
-            await this.axios.post('/v1/cmd/', {
-                cmd: 'request_add_friend',
-                paras: {
-                    user_id: this.inv_userInfo.recommended.user_id,
-                    message: this.inv_message,
-                    remark_name: this.remark_name,
-                    r_id: this.inv_userInfo.id
-                }
-            })
-            this.$message.success('验证消息发送成功');
-        } catch (err) {
-            console.log(err);
-        }
-    }
     //忽略
     public igron(user: any, key: string): void {
         this.axios

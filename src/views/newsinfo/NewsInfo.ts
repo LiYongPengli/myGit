@@ -6,6 +6,7 @@ import Page2Word from '@/libs/Page2Word'
 export default class NewsInfoCom extends Vue {
     @State('language') language!: string;
     @State('topic_show') topic_show!: boolean;
+    @State("env") env!: string;
     public newsInfo: any = "";
     //中文字幕按钮选中状态
     public track_language:string = "zh-CN";
