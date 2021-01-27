@@ -74,10 +74,11 @@
     </p>
     <div class="content">
       <el-image
+        @error="showImg1=false"
         :fit="'scale-down'"
         class="img"
         lazy
-        v-if="item.cover.type == 'image'"
+        v-if="item.cover.type == 'image'&&showImg1"
         :src="item.cover.url[0] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
@@ -85,10 +86,11 @@
         </div>
       </el-image>
       <el-image
+        @error="showImg2=false"
         :fit="'scale-down'"
         class="img"
         lazy
-        v-if="item.cover.type == 'image' && item.cover.url[1]"
+        v-if="item.cover.type == 'image' && item.cover.url[1]&&showImg2"
         :src="item.cover.url[1] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
@@ -97,6 +99,8 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
+          @click="toPlay"
+          ref="video"
           preload="none"
           :poster="item.cover.url"
           width="640px"
@@ -142,7 +146,10 @@ export default class ListItem extends Vue {
   @Prop({ default: "" }) language1!: string[];
   @State("language") language!: string;
   @State("env") env!: string;
+  public video_play: boolean = false;
   public error: boolean = false;
+  public showImg1: boolean = true;
+  public showImg2: boolean = true;
   public track_zh = {
     url: "",
     type: false,
@@ -154,14 +161,33 @@ export default class ListItem extends Vue {
   public created() {
     this.showTrack();
   }
-  @Watch('item.news_id')
-  public listenNewsId(newVal:string,oldVal:string):void{
+
+  @Watch("item.news_id")
+  public listenNewsId(newVal: string, oldVal: string): void {
     this.track_zh.type = false;
     this.track_zh.url = "";
     this.track_cw.type = false;
     this.track_cw.url = "";
     this.error = false;
+    this.video_play = false;
     this.showTrack();
+  }
+
+  public mounted(): void {
+    let video = <HTMLVideoElement>this.$refs.video;
+    if (video) {
+      video.onplay = () => {
+        this.video_play = true;
+      };
+    }
+  }
+
+  public toPlay(): void {
+    let video = <HTMLVideoElement>this.$refs.video;
+    if (!this.video_play) {
+      video.play();
+    }
+    this.video_play = true;
   }
 
   public toNewsInfo(): void {
@@ -202,14 +228,14 @@ export default class ListItem extends Vue {
         cmd: "like_news",
         paras: {
           news_id: this.item.news_id,
-          news_oper: this.item.liked?"undo":"do",
+          news_oper: this.item.liked ? "undo" : "do",
         },
       })
       .then((res) => {
         if (res.data.data.msg == "操作成功") {
-          if(this.item.liked){
+          if (this.item.liked) {
             this.item.like--;
-          }else{
+          } else {
             this.item.like++;
             new ClickAble(like, like.offsetLeft + 10, like.offsetTop);
           }
@@ -312,8 +338,8 @@ export default class ListItem extends Vue {
       margin-right: 20px;
       background: #393946;
     }
-    .video_wrap{
-      video{
+    .video_wrap {
+      video {
         outline: none;
       }
     }

@@ -96,13 +96,12 @@
           </div>
           <!-- 文章主体 -->
           <div
-            v-if="newsInfo"
             class="content"
             :style="{ 'font-size': fontSize + 'px' }"
           >
             <div
               v-if="!newsInfo.is_video"
-              v-html="getNewsContent()"
+              ref="newsText"
               class="news"
             ></div>
             <div v-if="newsInfo.is_video" class="youtube">

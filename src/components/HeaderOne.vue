@@ -276,11 +276,11 @@ export default class HeaderOne extends Vue {
       border-left: 1px solid #3a3a48;
       a {
         display: block;
-        width: 150px;
+        // width: 150px;
+        padding: 0 40px;
         text-align: center;
         color: white;
         font-size: 16px;
-
         text-decoration: none;
         display: inline-block;
         // width: 70px;
@@ -292,7 +292,7 @@ export default class HeaderOne extends Vue {
         background-image: url(../assets/img/cur.png);
         background-position: bottom;
         background-repeat: no-repeat;
-        background-size: 100%;
+        background-size: 100% 150%;
         //  width: 70px;
         text-align: center;
       }

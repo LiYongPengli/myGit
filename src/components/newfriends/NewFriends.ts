@@ -121,6 +121,7 @@ export default class NewFriendsCom extends Vue {
 
     //显示用户详细信息
     public showInfo(user: any): void {
+        this.inv_userInfo = "";
         return;
         // if (user.status == 'pending' || user.status == 'rejected') {
         //     return;

@@ -85,6 +85,11 @@ export default class MailListCom extends Vue {
             this.letterSearch = letter.value;
         }
     }
+    public keyPress(e:KeyboardEvent):void{
+        if(e.keyCode==13){
+            this.searchFriends();
+        }
+    }
 
     //搜索好友
     public searchFriends(): void {
@@ -226,7 +231,7 @@ export default class MailListCom extends Vue {
     public showInvInfo(user: any, key: string): void {
         this.userInfo = "";
         this.remark_name = "";
-        this.inv_userInfo = user;
+        this.inv_userInfo = user.recommended;
         this.inv_userInfo.id = key;
     }
 

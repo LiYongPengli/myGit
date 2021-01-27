@@ -14,6 +14,7 @@
       <input
         type="text"
         v-model="keyword"
+        @keypress="keyPress"
         placeholder="通过账号/用户昵称/手机号/微信昵称搜索好友"
       />
       <img @click="searchFriends" src="../../assets/img/search.png" alt="" />

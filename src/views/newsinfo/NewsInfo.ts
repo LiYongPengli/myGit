@@ -1,5 +1,5 @@
 
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 import Page2Word from '@/libs/Page2Word'
 @Component
@@ -21,6 +21,7 @@ export default class NewsInfoCom extends Vue {
     public created(): void {
         this.getData();
     }
+    
     //获取数据
     private getData(): void {
         this.axios.post('/v1/cmd/', {
@@ -39,6 +40,9 @@ export default class NewsInfoCom extends Vue {
             //     let lastUrl = urlArr.join('/');
             //     this.newsInfo.attachments[i].url = '/'+lastUrl;
             // }
+            setTimeout(()=>{
+                this.getNewsContent();
+            },200)
             this.setShareNews(this.newsInfo);
         }).catch(err => {
             console.log(err);
@@ -73,21 +77,30 @@ export default class NewsInfoCom extends Vue {
     }
 
     //获取新闻内容
-    public getNewsContent(): string {
-        let str = "";
+    public getNewsContent(): void {
+        let newsText = this.$refs.newsText as HTMLElement;
+        if(!newsText) return;
         for (let i of this.newsInfo.html[this.language]) {
             if (i.content) {
-                str += `<${i.tag} style="text-indent: 2em;line-height:30px;margin-bottom:20px">${i.content}</${i.tag}>`
+                let ele = <HTMLElement>document.createElement(i.tag);
+                ele.style.cssText = "text-indent: 2em;line-height:30px;margin-bottom:20px;"
+                ele.innerText = i.content;
+                newsText.appendChild(ele);
             }
             if (i.id) {
                 for (let j of this.newsInfo.attachments) {
                     if (j.position == i.id) {
-                        str += `<img style="display:block;margin:39px auto;max-width:100%;" src="${j.url}" />`
+                        let img = new Image();
+                        img.style.cssText = "display:block;margin:39px auto;max-width:100%;";
+                        img.src = j.url;
+                        img.onerror = function(){
+                            img.remove();
+                        }
+                        newsText.appendChild(img);
                     }
                 }
             }
         }
-        return str;
     }
 
     //不感兴趣或取消不感兴趣

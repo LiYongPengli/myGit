@@ -19,22 +19,9 @@
             <div class="content_userlist">
               <img
               class="ico"
-                v-if="!v.headimg && !v.wechat_info.head_img"
-                :src="v.headimg"
+                :src="axios.defaults.baseURL+'/avatar/'+v.account"
                 alt=""
               />
-              <img
-              class="ico"
-                v-if="!v.headimg && v.wechat_info.head_img"
-                :src="v.wechat_info.head_img"
-                alt=""
-              />
-              <p
-                v-if="!v.headimg && !v.wechat_info.head_img"
-                class="content_userlist_engname"
-              >
-                {{ v.nickname.slice(0, 1) }}
-              </p>
               <p class="content_userlist_chinename">
                 {{ v.nickname
                 }}{{ v.remark_name ? "(" + v.remark_name + ")" : "" }}
