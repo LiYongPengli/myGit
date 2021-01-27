@@ -27,7 +27,7 @@ axios.interceptors.response.use(res=>{
             Message.error(err.response.data.message._schema[0]);
             break;
         case 500:
-            Message.error('服务器已经崩溃，请不要试了');
+            Message.error('服务器出现错误,请稍后再试');
             break;
     }
     return Promise.reject(err);

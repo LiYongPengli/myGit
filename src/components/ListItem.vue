@@ -156,6 +156,11 @@ export default class ListItem extends Vue {
   }
   @Watch('item.news_id')
   public listenNewsId(newVal:string,oldVal:string):void{
+    this.track_zh.type = false;
+    this.track_zh.url = "";
+    this.track_cw.type = false;
+    this.track_cw.url = "";
+    this.error = false;
     this.showTrack();
   }
 
