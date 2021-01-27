@@ -217,61 +217,7 @@
     </div>
 
     <!-- 用户验证信息 -->
-    <div v-if="inv_userInfo" class="chat">
-      <div class="chatcontent">
-        <div @click="inv_userInfo = ''" class="close">
-          <img src="../../assets/img/chatclose.png" alt="" />
-        </div>
-        <div class="username">
-          <img
-            class="header"
-            
-            :src="axios.defaults.baseURL+'/avatar/'+inv_userInfo.account"
-            alt=""
-          />
-         <!--  <img
-            class="header"
-            v-if="
-              !inv_userInfo.recommended.headimg &&
-              inv_userInfo.recommended.wechat_info.head_img
-            "
-            :src="inv_userInfo.recommended.wechat_info.head_img"
-            alt=""
-          />
-          <p
-            v-if="
-              !inv_userInfo.recommended.headimg &&
-              !inv_userInfo.recommended.wechat_info.head_img
-            "
-            class="head"
-          >
-            {{ inv_userInfo.recommended.nickname.slice(0, 1) }}
-          </p> -->
-          <p class="name">{{ inv_userInfo.recommended.nickname }}</p>
-        </div>
-        <div class="remarks_div">
-          <span class="remarks_name">备注名：</span>
-          <input
-            class="remarks_value"
-            v-model="remark_name"
-            type="text"
-            placeholder="设置备注"
-          />
-        </div>
-        <div class="remarks_yanzheng">
-          <span class="remarks_name">验证消息：</span>
-          <input
-            class="remarks_value"
-            v-model="inv_message"
-            type="text"
-            placeholder="请输入验证消息"
-          />
-        </div>
-        <!-- <span class="nick_name">昵称：</span>
-        <span class="nick_value">{{inv_userInfo.nickname}}</span> -->
-        <div @click="toAddMaiList" class="sendmes">添加到通讯录</div>
-      </div>
-    </div>
+    <inv-user-info v-if="inv_userInfo" :inv_userInfo.sync="inv_userInfo" />
   </div>
 </template>
 
@@ -280,10 +226,12 @@ import Component, { mixins } from "vue-class-component";
 import MailListComs from "./MailListCom";
 import MyScroll from "@/components/MyScroll.vue";
 import SpeedText from "@/components/SpeedText.vue";
+import InvUserInfo from "@/components/InvUserInfo.vue";
 @Component({
   components: {
     MyScroll,
-    SpeedText
+    SpeedText,
+    InvUserInfo
   },
 })
 export default class MailListCom extends mixins(MailListComs) {}

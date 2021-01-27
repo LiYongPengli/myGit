@@ -25,7 +25,7 @@
           type="textarea"
           :rows="5"
           class="remarks_value"
-          placeholder="请输入您的请求信息"
+          placeholder="请输入您的请求信息(必填)"
           v-model="message"
         >
         </el-input>
@@ -41,18 +41,13 @@
       </div>
       <!-- <span class="nick_name">昵称：</span>
         <span class="nick_value">{{inv_userInfo.nickname}}</span> -->
-      <el-tooltip
-        effect="dark"
-        v-model="showToolTip"
-        :manual="true"
-        :enterable="false"
-        content="请输入验证消息"
-        placement="top-end"
+      <el-button
+        :disabled="!message"
+        type="primary"
+        @click="sendMessage"
+        class="sendmes"
+        >添加到通讯录</el-button
       >
-        <el-button :disabled="showToolTip" type="primary" @click="sendMessage" class="sendmes"
-          >添加到通讯录</el-button
-        >
-      </el-tooltip>
     </div>
   </div>
 </template>
@@ -65,26 +60,18 @@ export default class InvUserInfo extends Vue {
   public message: string = "";
   public remark_name: string = "";
   public height: number = 0;
-  public showToolTip: boolean = false;
 
   public created(): void {
     this.height = document.documentElement.clientHeight;
   }
 
-  @Watch('inv_userInfo.user_id')
-  public listenUserId():void{
-      this.message = "";
-      this.remark_name = "";
+  @Watch("inv_userInfo.user_id")
+  public listenUserId(): void {
+    this.message = "";
+    this.remark_name = "";
   }
 
   public sendMessage(): void {
-    if (!this.message) {
-        this.showToolTip = true;
-        setTimeout(()=>{
-            this.showToolTip = false;
-        },2000)
-        return;
-    }
     this.axios
       .post("/v1/cmd/", {
         cmd: "request_add_friend",
@@ -92,7 +79,7 @@ export default class InvUserInfo extends Vue {
           user_id: this.inv_userInfo.user_id,
           message: this.message,
           remark_name: this.remark_name,
-          r_id: "",
+          r_id: this.inv_userInfo.id ? this.inv_userInfo.id : "",
         },
       })
       .then((res) => {

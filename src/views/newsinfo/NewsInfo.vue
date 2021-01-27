@@ -108,7 +108,7 @@
             <div v-if="newsInfo.is_video" class="youtube">
               <div class="video_wrap">
                 <video
-                  crossorigin="use-credentials"
+                  :crossorigin="env == 'development' ? false : 'use-credentials'"
                   :src="
                     newsInfo.attachments[1].url
                   "
