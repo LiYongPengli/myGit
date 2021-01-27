@@ -29,7 +29,7 @@
       </div>
     </div>
     <div v-if="$route.params.name==0" class="collectionlist">
-      <my-scroll>
+      <!-- <my-scroll> -->
         <ul class="collectionlist_wrap">
           <li
             v-show="~v.name.indexOf(searchText)"
@@ -93,7 +93,7 @@
             </div>
           </li>
         </ul>
-      </my-scroll>
+      <!-- </my-scroll> -->
     </div>
     <zhuan-ti :name="$route.params.name" v-if="$route.params.name!=0" />
     <!-- 创建收藏夹 -->

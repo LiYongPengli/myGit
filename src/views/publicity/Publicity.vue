@@ -33,7 +33,7 @@
         </div>
         <div class="content_right">
           <div class="content_right_text">
-            <my-scroll :animate="false">
+            <my-scroll :animate="false" thumbColor="rgb(172, 172, 181)" >
                  <!-- 热门推荐 -->
               <div class="yhzc" v-show="cur == 0">
                 <h2>1 热门推荐</h2>
@@ -211,7 +211,7 @@
                 </div>
                 <h3>分享</h3>
                 <p>
-                  分享一篇新闻给其他的小伙伴。通过新闻内容右侧分享按钮，分享给其他用户，分享内容会显示值聊天工具内。
+                  分享一篇新闻给其他的小伙伴。通过新闻内容右侧分享按钮，分享给其他用户，分享内容会显示在聊天工具内。
                 </p>
                 <div class="tpjz">
                   <img src="../../assets/img/fx.png" alt="" />
