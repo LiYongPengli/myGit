@@ -10,6 +10,7 @@ export default class NewsResourcesItemCom extends Vue {
 
     //判断数据是否为空
     public isnulldata: boolean = true;
+    public dateState:string = 'today';
     //转发次数统计
     public share_data: any[] = [];
     public share_date: Date[] = [];
@@ -86,9 +87,11 @@ export default class NewsResourcesItemCom extends Vue {
         if (this.share_date) {
             this.form.time_from = this.share_date[0].toLocaleDateString();
             this.form.time_to = this.share_date[1].toLocaleDateString();
+            this.dateState = "custom"
         } else {
             this.form.time_from = ""
             this.form.time_to = ""
+            this.dateState = "today"
         }
         if (this.page == 1) {
             this.usage_rate();
@@ -100,9 +103,11 @@ export default class NewsResourcesItemCom extends Vue {
         switch (type) {
             case 'today':
                 this.form.time_from = this.form.time_to = new Date().toLocaleDateString();
+                this.dateState = "today"
                 break;
             case 'all':
                 this.form.time_from = this.form.time_to = '';
+                this.dateState = "all"
                 break;
         }
         this.share_date = [];

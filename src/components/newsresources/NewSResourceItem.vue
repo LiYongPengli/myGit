@@ -7,14 +7,14 @@
           @click="setDate('today')"
           class="today"
           :class="{
-            dateActive: form.time_from == form.time_to && form.time_from,
+            dateActive: dateState=='today',
           }"
           >今日</span
         >
         <span
           @click="setDate('all')"
           :class="{
-            dateActive: form.time_from == form.time_to && !form.time_from,
+            dateActive: dateState=='all',
           }"
           class="Cumulative"
           >累计</span
