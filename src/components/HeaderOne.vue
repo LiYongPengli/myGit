@@ -52,7 +52,7 @@
         <div class="nav">
           <router-link to="/myfollow">我的关注</router-link>
           <router-link to="/recommend">热门推荐</router-link>
-           <router-link to="/selected">精选</router-link>
+           <!-- <router-link to="/selected">精选</router-link> -->
         </div>
         <div class="lang">
           <span @click="setLanguage('crawler')" :class="{ cur: language == 'crawler' }"

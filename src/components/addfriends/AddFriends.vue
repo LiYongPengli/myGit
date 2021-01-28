@@ -139,7 +139,7 @@
     </div>
 
     <!-- 用户验证信息 -->
-    <inv-user-info v-if="inv_userInfo" :inv_userInfo="inv_userInfo" />
+    <inv-user-info v-if="inv_userInfo" :inv_userInfo.sync="inv_userInfo" />
   </div>
 </template>
 

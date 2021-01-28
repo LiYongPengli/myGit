@@ -18,6 +18,11 @@ export default class NewsInfoCom extends Vue {
     public fontSize: number = 16;
     @Mutation('setShareNews') setShareNews: any;
 
+    @Watch('language')
+    public listenLanguage():void{
+        this.getNewsContent();
+    }
+
     public created(): void {
         this.getData();
     }
@@ -80,6 +85,7 @@ export default class NewsInfoCom extends Vue {
     public getNewsContent(): void {
         let newsText = this.$refs.newsText as HTMLElement;
         if(!newsText) return;
+        newsText.innerHTML = "";
         for (let i of this.newsInfo.html[this.language]) {
             if (i.content) {
                 let ele = <HTMLElement>document.createElement(i.tag);
