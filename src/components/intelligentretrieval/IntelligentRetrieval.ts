@@ -217,7 +217,7 @@ export default class IntelligentRetrievalCom extends Vue {
                 this.newsList = this.newsList.concat(arr);
             }
             this.filter.search_after = res.data.data.search_after
-            if (!res.data.data.news.length) {
+            if (res.data.data.over) {
                 this.finished = true;
             }
             this.loading = false;

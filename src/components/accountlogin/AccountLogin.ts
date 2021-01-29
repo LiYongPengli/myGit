@@ -4,7 +4,7 @@ import qs from 'qs'
 export default class AccountLoginCom extends Vue {
     @Prop({}) account!:boolean;
     @Prop({}) bindAccount!:boolean;
-    public remember_login: number = 0;
+    public remember_login: number = 1;
     //验证码错误提示消息
     public vc_err: string = "";
     //base64图片验证码

@@ -3,6 +3,7 @@
   <div class="topic">
     <div class="topic_wrap">
       <iframe
+      ref="iframe"
         v-show="topic_status == 1"
         v-if="iframeShow && env == 'production'"
         :src="axios.defaults.baseURL + topic_url"

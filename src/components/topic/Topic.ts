@@ -11,6 +11,13 @@ export default class TopicCom extends Vue{
     @Mutation('setTopicShow') setTopicShow!: any;
     @Mutation('setTopicStatus') setTopicStatus!: any;
 
+    @Watch('topic_url')
+    public listenTopicUrl():void{
+        let iframe = this.$refs.iframe as HTMLIFrameElement;
+        if(iframe){
+            iframe.contentWindow?.history.go(0);
+        }
+    }
     @Watch('topic_show')
     public listenTopicShow():void{
         this.setTopicStatus(1);

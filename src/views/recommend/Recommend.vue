@@ -61,7 +61,7 @@
               v-for="(v, i) in newsList"
               :key="i"
             />
-            <loading v-if="!finished" />
+            <loading v-if="!finished&&mainPageLoading" />
           </ul>
         </div>
       </div>

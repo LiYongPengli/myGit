@@ -90,6 +90,7 @@ export default class DialogCm extends Vue {
 
   @Emit("close")
   public close(): boolean {
+    this.sharetext = "";
     return false;
   }
 
@@ -122,7 +123,6 @@ export default class DialogCm extends Vue {
       })
       .then((res) => {
         this.$message.success("分享成功");
-        this.sharetext = "";
         this.close();
       })
       .catch((err) => {
@@ -158,7 +158,6 @@ export default class DialogCm extends Vue {
       })
       .then((res) => {
         this.$message.success("分享成功");
-        this.sharetext = "";
         this.setIsShare(false);
         this.close();
       })

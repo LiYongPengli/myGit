@@ -420,7 +420,7 @@
               <ul>
                 <list-item :language1="language" :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
                 
-                <loading v-if="!finished" />
+                <loading v-if="!finished&&loading" />
               </ul>
             </div>
           </div>
