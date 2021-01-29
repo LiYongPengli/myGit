@@ -136,6 +136,7 @@ export default class HeaderOne extends Vue {
   z-index: 102;
   background-image: linear-gradient(to bottom, #31313d, #272730);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  user-select: none;
   .logo {
     position: absolute;
     left: 0;

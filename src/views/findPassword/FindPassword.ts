@@ -35,6 +35,11 @@ export default class FindPasswordCom extends Vue {
         surepassword:[{ validator: this.initsurepassword, trigger: 'blur' }],
     }
 
+    @Watch('show_vc_code')
+    public listenVcCode():void{
+        this.img_vc_code = "";
+    }
+
     @Watch('phone_form.tel')
     public listenTel(newVal:string,oldVal:string):void{
         this.verified = false;
@@ -112,7 +117,6 @@ export default class FindPasswordCom extends Vue {
     }
     //获取短信验证码
     private getPhoneCode(phoneNumber:string):void{
-        this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel='+phoneNumber).then(res=>{
             console.log(res.data);
             this.send_code = true;

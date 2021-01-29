@@ -93,15 +93,14 @@ export default class RecommendCom extends Vue {
                 slidesPerView: 'auto',
                 freeMode: true,
                 observer: true,
-                // observeSlideChildren: true,
                 on: {
-                    sliderMove(swiper) {
-                        if (swiper.isBeginning) {
+                    sliderMove() {
+                        if (that.channel_swiper.isBeginning) {
                             that.left_btn = false;
                             that.right_btn = true;
                             return;
                         }
-                        if(swiper.isEnd){
+                        if(that.channel_swiper.isEnd){
                             that.left_btn = true;
                             that.right_btn = false;
                             return;
@@ -109,13 +108,13 @@ export default class RecommendCom extends Vue {
                         that.left_btn = true;
                         that.right_btn = true;
                     },
-                    slideChangeTransitionEnd(swiper) {
-                        if (swiper.isBeginning) {
+                    slideChangeTransitionEnd() {
+                        if (that.channel_swiper.isBeginning) {
                             that.left_btn = false;
                             that.right_btn = true;
                             return;
                         }
-                        if(swiper.isEnd){
+                        if(that.channel_swiper.isEnd){
                             that.left_btn = true;
                             that.right_btn = false;
                             return;
@@ -129,8 +128,8 @@ export default class RecommendCom extends Vue {
         let that = this;
         this.media_swiper = new Swiper('#swiper2', {
             on: {
-                slideChange(swiper) {
-                    that.mediaSwiperCurrentIndex = swiper.activeIndex;
+                slideChange() {
+                    that.mediaSwiperCurrentIndex = that.media_swiper.activeIndex;
                 }
             }
         })

@@ -34,6 +34,11 @@ export default class RegisterCom extends Vue {
         tel:[{ validator: this.inittel, trigger: 'blur' }]
     }
 
+    @Watch('show_vc_code')
+    public listenVcCode():void{
+        this.img_vc_code = "";
+    }
+
     @Watch('form.account')
     public listenAccount(newVal:string,oldVal:string):void{
         let space = /(^\s+)|(\s+$)|\s+/g;
@@ -153,7 +158,6 @@ export default class RegisterCom extends Vue {
     }
     //获取短信验证码
     private getPhoneCode(phoneNumber:string):void{
-        this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel='+phoneNumber).then(res=>{
             console.log(res.data);
             this.send_code = true;

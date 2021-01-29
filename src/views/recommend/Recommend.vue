@@ -15,14 +15,14 @@
       </div>
       <div class="list_wrap">
         <div class="list_nav">
-          <div v-show="left_btn" class="page_left">
+          <div v-show="left_btn&&channel.length" class="page_left">
             <img
               @click="channel_swiper.slidePrev()"
               src="../../assets/img/page_left.png"
               alt=""
             />
           </div>
-          <div v-show="right_btn" class="page_right">
+          <div v-show="right_btn&&channel.length" class="page_right">
             <img @click="next" src="../../assets/img/page_right.png" alt="" />
           </div>
           <span

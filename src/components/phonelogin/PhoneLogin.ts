@@ -23,6 +23,11 @@ export default class phoneLoginCom extends Vue {
         tel_vc: ''
     }
 
+    @Watch('show_vc_code')
+    public listenVcCode():void{
+        this.img_vc_code = "";
+    }
+
     public rules = {
         tel: [{ validator: this.inittel, trigger: 'blur' }],
         tel_vc: [{ required: true, message: '请输入短信验证码', trigger: 'blur' }]
@@ -89,7 +94,6 @@ export default class phoneLoginCom extends Vue {
 
     //获取短信验证码
     private getPhoneCode(phoneNumber: string): void {
-        this.img_vc_code = "";
         this.axios.get('/v1/verify/telphone?tel=' + phoneNumber).then(res => {
             this.send_code = true;
             this.show_vc_code = false;

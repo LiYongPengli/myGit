@@ -6,8 +6,8 @@ import axios from './axios/axios'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import 'swiper/dist/css/swiper.min.css';
-import 'swiper/swiper-bundle.min.css';
+import 'swiper/dist/css/swiper.min.css';
+// import 'swiper/swiper-bundle.min.css';
 
 import { init_time } from './libs/OverallLib';
 Vue.use(ElementUI);
