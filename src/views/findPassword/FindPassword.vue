@@ -134,5 +134,8 @@ export default class Findpassword extends mixins(FindPasswordCom) {}
       left: 30px;
     }
   }
+  .el-icon-close{
+    color: #909399!important;
+  }
 }
 </style>

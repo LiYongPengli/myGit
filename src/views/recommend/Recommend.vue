@@ -3,7 +3,7 @@
   <div class="recommend">
     <div class="mainpage">
       <div class="banner">
-        <router-link target="_blank" to="/xjpublicity">
+        <router-link to="/xjpublicity">
           <img src="../../assets/img/banner.png" alt="" />
         </router-link>
 

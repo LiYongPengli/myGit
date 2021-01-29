@@ -28,9 +28,11 @@
           <!-- 头部下拉-->
           <el-popover placement="bottom-start" width="265" trigger="click">
             <ul id="setting_list">
-              <router-link to="/user" tag="li">
-                <img src="../assets/img/shezhi.png" alt="" />
-                <span>个人中心</span>
+              <router-link custom v-slot="{ navigate }" to="/user">
+                <li @click="navigate">
+                  <img src="../assets/img/shezhi.png" alt="" />
+                  <span>个人中心</span>
+                </li>
               </router-link>
               <li @click="logout">
                 <img src="../assets/img/icon_loginout.png" alt="" />
@@ -52,16 +54,22 @@
         <div class="nav">
           <router-link to="/myfollow">我的关注</router-link>
           <router-link to="/recommend">热门推荐</router-link>
-           <!-- <router-link to="/selected">精选</router-link> -->
+          <!-- <router-link to="/selected">精选</router-link> -->
         </div>
         <div class="lang">
-          <span @click="setLanguage('crawler')" :class="{ cur: language == 'crawler' }"
+          <span
+            @click="setLanguage('crawler')"
+            :class="{ cur: language == 'crawler' }"
             >原文</span
           >
-          <span @click="setLanguage('zh-CN')" :class="{ cur: language == 'zh-CN' }"
+          <span
+            @click="setLanguage('zh-CN')"
+            :class="{ cur: language == 'zh-CN' }"
             >中文</span
           >
-          <span @click="setLanguage('en')" :class="{ cur: language == 'en' }">英文</span>
+          <span @click="setLanguage('en')" :class="{ cur: language == 'en' }"
+            >英文</span
+          >
         </div>
       </div>
       <transition name="el-zoom-in-top">
@@ -151,8 +159,8 @@ export default class HeaderOne extends Vue {
     position: relative;
     .searchheader {
       display: flex;
-    flex-direction: row;
-    
+      flex-direction: row;
+
       img.imgss {
         position: absolute;
         left: 31px;

@@ -1,19 +1,18 @@
 
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State } from 'vuex-class';
-import Swiper from 'swiper'
+const Scroll = require('vue-seamless-scroll');
+Vue.component('vue-seamless-scroll',Scroll)
 @Component
 export default class Hours24Com extends Vue {
-    //24小时列表滑动组件
-    public list_24!: Swiper;
-    //24小时轮播定时器
-    public list_24_auto: any = null;
-    public slide_index: number = 4;
-    public count:number = 0;
     
-    public iswheel:boolean = false;
     //24小时列表
     public hours_24: any[] = [];
+    //滚动配置
+    public scrollOption = {
+        //滚动速度
+        step:0.5
+    }
     @State('topic_show') topic_show!: boolean;
     @State('language') language!: string;
     @State('mainPageScrollTop') mainPageScrollTop!: number;
@@ -23,7 +22,7 @@ export default class Hours24Com extends Vue {
     }
 
     public beforeDestroy():void{
-        this.clearAutoPlay();
+        // this.clearAutoPlay();
     }
 
     //获取24小时数据
@@ -33,68 +32,9 @@ export default class Hours24Com extends Vue {
             paras: { size: 100 }
         }).then(res => {
             this.hours_24 = res.data.data.news;
-            setTimeout(() => {
-                this.init_24HourCom();
-            }, 200)
         }).catch(err => {
             console.log(err);
         })
-    }
-
-    private init_24HourCom(): void {
-        if (this.list_24) {
-            this.list_24.update();
-            return;
-        }
-        this.list_24 = new Swiper('.list24', {
-            direction: 'vertical',
-            slidesPerView: 'auto',
-            slidesPerGroup: 4,
-            loop: true,
-            autoHeight:true,
-          
-        })
-        this.autoPlay();
-    }
-
-    //清除自动播放
-    public clearAutoPlay(): void {
-        clearInterval(this.list_24_auto);
-    }
-    private slides(type:string):void{
-        if(type=='next'){
-            this.list_24.slideNext(3000);
-        }else{
-            this.list_24.slidePrev(3000);
-        }
-        
-    }
-
-    public autoPlay(): void {
-        this.list_24_auto = setInterval(() => {
-            this.slides('next');
-            this.count++
-            if(this.count>50){
-                this.get24Hour();
-                this.count = 0;
-            }
-        }, 5000)
-    }
-
-    //滚轮事件
-    public toWheel(e:any):void{
-        if(this.iswheel){
-            return;
-        }
-        this.iswheel = true;
-        if(e.wheelDelta>0){
-            this.slides('up');
-        }else{
-            this.slides('next');
-        }
-        setTimeout(()=>{
-            this.iswheel = false;
-        },1000)
     }
 
     /**

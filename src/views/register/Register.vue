@@ -144,5 +144,8 @@ export default class Register extends mixins(RegisterCom) {}
       left: 30px;
     }
   }
+  .el-icon-close{
+    color: #909399!important;
+  }
 }
 </style>

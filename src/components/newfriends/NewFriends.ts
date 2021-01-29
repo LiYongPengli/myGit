@@ -58,7 +58,7 @@ export default class NewFriendsCom extends Vue {
                 paras: { account: user.account }
             }).then(res => {
                 console.log(res.data)
-                this.setTopicUrl("http://zlbxxcj.bjceis.com/im/direct/" + res.data.data.room.rid)
+                this.setTopicUrl(this.axios.defaults.baseURL+"/im/direct/" + res.data.data.room.rid)
                 this.setTopicStatus(1);
             }).catch(err => {
                 console.log(err);

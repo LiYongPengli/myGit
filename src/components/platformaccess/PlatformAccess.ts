@@ -321,7 +321,7 @@ export default class PlatformAccessCom extends Vue {
 
     public created(): void {
         let date = new Date().toLocaleDateString();
-        this.getUserLoginList(date, date);
+        this.getUserLoginList('', '');
         this.getUserBehavior();
     }
 

@@ -25,7 +25,8 @@ let wordExport=async function(fileName:string,ele:HTMLElement){
 
         // Embed all images using Data URLs
         var images = Array();
-        var img = markup.find('img');
+        // var img = markup.find('img');
+        let img:any[] = [];
         for (var i = 0; i < img.length; i++) {
             // Calculate dimensions of output image
             var w = Math.min(img[i].width, options.maxWidth);
@@ -50,7 +51,6 @@ let wordExport=async function(fileName:string,ele:HTMLElement){
                 data: uri.substring(uri.indexOf(",") + 1)
             };
         }
-
         // Prepare bottom of mhtml file with image data
         var mhtmlBottom = "\n";
         for (var i = 0; i < images.length; i++) {
@@ -63,7 +63,7 @@ let wordExport=async function(fileName:string,ele:HTMLElement){
         mhtmlBottom += "--NEXT.ITEM-BOUNDARY--";
 
         //TODO: load css from included stylesheets
-        var styles = "";
+        var styles = "body img{width:300px;}";
 
         // Aggregate parts of the file together
         var fileContent = staticInfo.mhtml.top.replace("_html_", staticInfo.mhtml.head.replace("_styles_", styles) + staticInfo.mhtml.body.replace("_body_", markup.html())) + mhtmlBottom;

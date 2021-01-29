@@ -2,15 +2,15 @@
   <!-- 24小时 -->
   <div
     class="hours24"
-    @mouseover="clearAutoPlay"
-    @mouseout="autoPlay"
+    
     :class="{ fixed: mainPageScrollTop >= 350 }"
   >
     <div class="bt">24小时</div>
     <div class="content">
-      <div @mousewheel="toWheel" class="swiper-container list24">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(v, i) in hours_24" :key="i">
+      <vue-seamless-scroll :class-option="scrollOption" :data="hours_24" class="list24">
+        <ul class="item">
+          
+          <li v-for="(v, i) in hours_24" :key="i">
             <div class="li">
               <div class="logo">
                 <div class="left">
@@ -46,9 +46,10 @@
                 <p v-show="language == 'zh-CN'">{{ v.news_title["zh-CN"] }}</p>
               </a>
             </div>
-          </div>
-        </div>
-      </div>
+          </li>
+
+        </ul>
+      </vue-seamless-scroll>
       <!-- <div class="more">查看更多</div> -->
     </div>
   </div>
@@ -57,6 +58,7 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import Hours24Com from "./Hours24";
+
 @Component
 export default class Hours24 extends mixins(Hours24Com) {}
 </script>

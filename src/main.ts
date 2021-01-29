@@ -6,7 +6,9 @@ import axios from './axios/axios'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// import 'swiper/dist/css/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
+
 import { init_time } from './libs/OverallLib';
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios);
@@ -17,6 +19,8 @@ Vue.directive('time',{
   update:init_time,
   //componentUpdated:init_time
 })
+
+
 
 router.beforeEach((to,from,next)=>{
   if(to.path=='/login'||to.path=='/register'||to.path=='/findpassword'){
@@ -30,7 +34,7 @@ router.beforeEach((to,from,next)=>{
       next();
     }else{
       if(user_message.role=='user'){
-        next({path:'/user/follow'});
+        next({path:'/user/follow/country'});
       }else{
         next();
       }

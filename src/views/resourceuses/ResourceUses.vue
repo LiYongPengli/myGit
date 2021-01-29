@@ -43,7 +43,7 @@
             />
           </div>
           <div v-show="pageIndex == 1" class="shiyonglv">
-            <news-resources-item :cells="['排名', '新闻名称', '浏览次数']" :page="2" :type="'share'" :title="'站点浏览次数统计'" />
+            <news-resources-item :cells="['排名', '站点名称', '浏览次数']" :page="2" :type="'share'" :title="'站点浏览次数统计'" />
           </div>
         </div>
         <!-- <div v-show="pageIndex == 0" class="country">

@@ -8,9 +8,11 @@
       <!-- 头部下拉框 -->
       <el-popover placement="bottom-start" width="265" trigger="click">
         <ul id="setting_list">
-          <router-link to="/user" tag="li">
-            <img src="../assets/img/shezhi.png" alt="" />
-            <span>个人中心</span>
+          <router-link custom v-slot="{ navigate }" to="/user">
+            <li @click="navigate">
+              <img src="../assets/img/shezhi.png" alt="" />
+              <span>个人中心</span>
+            </li>
           </router-link>
           <li @click="logout">
             <img src="../assets/img/icon_loginout.png" alt="" />
@@ -20,7 +22,7 @@
         <div slot="reference" class="user_wrap">
           <div class="user_img" v-if="user_message">
             <img
-              v-if="user_message.headimg.constructor==String"
+              v-if="user_message.headimg.constructor == String"
               :src="user_message.headimg"
               alt=""
             />
@@ -64,11 +66,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
-import IntelligentRetrieval from '@/components/intelligentretrieval/IntelligentRetrieval.vue'
+import IntelligentRetrieval from "@/components/intelligentretrieval/IntelligentRetrieval.vue";
 @Component({
-  components:{
-    IntelligentRetrieval
-  }
+  components: {
+    IntelligentRetrieval,
+  },
 })
 export default class HeaderTwo extends Vue {
   //当前系统语言
@@ -78,9 +80,9 @@ export default class HeaderTwo extends Vue {
   //设置语言
   @Mutation("setLanguage") setLanguage!: any;
   @Mutation("setUserMessage") setUserMessage!: any;
-  @State('show_intelligent') show_intelligent!:boolean;
+  @State("show_intelligent") show_intelligent!: boolean;
 
-  @Mutation('setShowIntelligent') setShowIntelligent:any;
+  @Mutation("setShowIntelligent") setShowIntelligent: any;
   //登出
   private logout(): void {
     this.axios
@@ -90,7 +92,7 @@ export default class HeaderTwo extends Vue {
         if (res.data.status == 1) {
           this.$router.push("/login");
           this.$message.success("已登出");
-          this.setUserMessage('');
+          this.setUserMessage("");
         }
       })
       .catch((err) => {
@@ -136,7 +138,7 @@ export default class HeaderTwo extends Vue {
       display: flex;
       align-items: center;
       color: white;
-   
+
       .user_img {
         width: 39px;
         height: 39px;

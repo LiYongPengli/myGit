@@ -32,6 +32,7 @@
                 :src="v.media_icon"
                 alt=""
               />
+              <img v-if="v.media_source == 'Spider'" class="icon" src="../../assets/img/mtdg.png" alt="">
               <div class="zyname">
                 <div class="chinese_gj mt">
                   <speed-text width="100px" height="20px" :text="v.name_zh" />
@@ -80,6 +81,7 @@
           </div> -->
             <a>
               <img :src="v.media_icon" alt="" />
+              <img v-if="v.media_source == 'Spider'" class="icon" src="../../assets/img/mtdg.png" alt="">
               <div class="zyname">
                 <div class="chinese_gj mt">
                   <speed-text width="100px" height="20px" :text="v.name_zh" />

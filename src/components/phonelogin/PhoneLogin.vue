@@ -88,5 +88,8 @@ export default class phoneLogin extends mixins(phoneLoginCom) {}
       left: 30px;
     }
   }
+  .el-icon-close{
+    color: #909399!important;
+  }
 }
 </style>

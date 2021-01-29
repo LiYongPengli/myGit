@@ -104,7 +104,7 @@ export default class IntelligentRetrievalCom extends Vue {
         }
         this.timer = setTimeout(() => {
             this.getSearchList(this.searchText);
-        }, 300);
+        }, 600);
     }
 
     private getSearchList(val: string): void {

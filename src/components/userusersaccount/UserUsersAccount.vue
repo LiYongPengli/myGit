@@ -98,7 +98,7 @@
           <el-button @click="changePhones" style="width: 190px" type="primary"
             >确认</el-button
           >
-          <el-button @click="changePhone = false" style="width: 190px"
+          <el-button @click="changePhone = false;phone=''" style="width: 190px"
             >取消</el-button
           >
         </div>

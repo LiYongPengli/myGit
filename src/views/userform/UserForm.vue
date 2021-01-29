@@ -3,15 +3,21 @@
   <div class="userform">
     <div class="top_nav">
       <ul>
-        <router-link tag="li" class="cur" to="/user/form/fetch"
-          >数据采集统计</router-link
-        >
-        <router-link tag="li" to="/user/form/platform"
+        <router-link custom v-slot="{navigate,isActive}" to="/user/form/fetch">
+          <li :class="{'router-link-active':isActive}" @click="navigate">数据采集统计</li>
+        </router-link>
+        <router-link active-class="cllll" custom v-slot="{navigate,isActive}" to="/user/form/platform">
+          <li :class="{'router-link-active':isActive}" @click="navigate">平台运行统计</li>
+        </router-link>
+        <router-link active-class="cllll" custom v-slot="{navigate,isActive}" to="/user/form/resource">
+          <li :class="{'router-link-active':isActive}" @click="navigate">资源使用率统计</li>
+        </router-link>
+        <!-- <router-link tag="li" to="/user/form/platform"
           >平台运行统计</router-link
         >
         <router-link tag="li" to="/user/form/resource"
           >资源使用率统计</router-link
-        >
+        > -->
       </ul>
     </div>
     <form-fetch v-if="$route.params.type=='fetch'" />

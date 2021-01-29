@@ -34,7 +34,7 @@
                 >已关注</span
               >
               <span class="info"
-                >{{ newsInfo.media_name }} 丨
+                >{{ newsInfo.media_name_zh }} 丨
                 <span v-time="newsInfo.time"></span> 丨
                 {{ newsInfo.favorite }}人收藏 丨 {{ newsInfo.pv }}次浏览量</span
               >
@@ -174,7 +174,7 @@
                 >附件下载</span
               >
             </div>
-            <div v-if="newsInfo.media_name != 'YouTube'" class="right">
+            <div v-if="!newsInfo.is_video" class="right">
               <div class="download_this">
                 <span @click="downloadWord"><i></i>下载到本地</span>
               </div>

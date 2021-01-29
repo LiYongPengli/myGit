@@ -153,7 +153,7 @@ export default class App extends Vue {
           account: this.share_user.account,
           news_id: this.shareNews.news_id,
           url:
-            "http://zlbxxcj.bjceis.com/#/newsinfo?id=" +
+            this.axios.defaults.baseURL+"/#/newsinfo?id=" +
             this.shareNews.news_id +
             "&md_id=" +
             this.shareNews.media_id,

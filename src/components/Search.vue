@@ -102,7 +102,7 @@ export default class Search extends Vue {
     }
     this.timer = setTimeout(() => {
       this.getSearchList(newVal);
-    }, 300);
+    }, 600);
   }
 
   private getSearchList(val: string): void {

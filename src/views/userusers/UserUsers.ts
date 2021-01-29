@@ -50,6 +50,11 @@ export default class UserUsersCom extends Vue {
                 }
             }
         }
+        if(user.wechat_info.binding){
+            if(~user.wechat_info.nickname.indexOf(this.search_user)){
+                flag = true;
+            }
+        }
         return flag;
     }
 
