@@ -284,8 +284,12 @@ export default class RegisterCom extends Vue {
             nickname:this.form.nickname
         }
         this.reqFinished = false;
+        let timeOut = setTimeout(()=>{
+            this.reqFinished = true;
+        },8000);
         this.axios.post('/v1/user/account/signup',qs.stringify(data),{headers:{'content-type': 'application/x-www-form-urlencoded'}}).then(res=>{
             this.reqFinished = true;
+            clearTimeout(timeOut);
             if(res.data.status==0){
                 this.$message.error(res.data.msg);
                 return;
@@ -294,6 +298,8 @@ export default class RegisterCom extends Vue {
             this.$message.success('注册成功!');
             this.$router.push('/login');
         }).catch(err=>{
+            this.reqFinished = true;
+            clearTimeout(timeOut);
             console.log(err);
         })
     }

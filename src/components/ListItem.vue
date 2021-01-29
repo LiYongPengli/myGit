@@ -191,9 +191,9 @@ export default class ListItem extends Vue {
   }
 
   public toNewsInfo(): void {
-    window.open(
-      "#/newsinfo?id=" + this.item.news_id + "&md_id=" + this.item.media_id
-    );
+    // window.open(
+    //   "#/newsinfo?id=" + this.item.news_id + "&md_id=" + this.item.media_id
+    // );
   }
 
   public showTrack(): void {
