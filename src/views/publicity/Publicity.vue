@@ -20,13 +20,13 @@
                 <a class="rdgk">智能检索 </a>
               </li>
               <li @click="cur = 3,setSureTop(true)" :class="{ active: cur == 3 }">
-                <a href="#">新闻详情</a>
+                <a >新闻详情</a>
               </li>
               <li @click="cur = 4,setSureTop(true)" :class="{ active: cur == 4 }">
-                <a href="#">聊天工具</a>
+                <a >聊天工具</a>
               </li>
               <li @click="cur = 5,setSureTop(true)" :class="{ active: cur == 5 }">
-                <a href="#">个人中心</a>
+                <a >个人中心</a>
               </li>
             </ul>
           </nav>
