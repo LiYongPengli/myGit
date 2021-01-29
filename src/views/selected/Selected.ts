@@ -51,6 +51,7 @@ export default class SelectedCom extends Vue {
         console.log(newVal);
         this.chooseNav = newVal;
         this.filters.start = 0;
+        this.isfinished = false;
         this.getList();
     }
 

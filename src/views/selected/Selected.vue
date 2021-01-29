@@ -34,6 +34,7 @@
         </div>
         <ul>
           <list-item
+            :selected="true"
             :shoControls="[]"
             :item="v"
             v-for="(v, i) in list"
