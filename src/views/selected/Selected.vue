@@ -6,9 +6,9 @@
         <span
           v-for="(v, i) in menu_list"
           :key="i"
-          @click="listenChooseNav(v)"
-          :class="{ cur: chooseNav == v }"
-          >{{ v }}</span
+          @click="listenChooseNav(v.name)"
+          :class="{ cur: chooseNav == v.name }"
+          >{{ v.zh_name }}</span
         >
         <!-- <span
           @click="listenChooseNav('country')"
