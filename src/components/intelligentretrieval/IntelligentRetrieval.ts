@@ -8,7 +8,7 @@ export default class IntelligentRetrievalCom extends Vue {
     @Mutation('setShowIntelligent') setShowIntelligent: any;
     public searchText: string = "";
     //加载中
-    public loading: boolean = false;
+    public loading: boolean = true;
     //加载完成
     public finished: boolean = false;
     //多选开关
@@ -217,11 +217,10 @@ export default class IntelligentRetrievalCom extends Vue {
                 this.newsList = this.newsList.concat(arr);
             }
             this.filter.search_after = res.data.data.search_after
-            if (res.data.data.over) {
+            if (!res.data.data.news.length) {
                 this.finished = true;
             }
             this.loading = false;
-            
         }).catch(err => {
             console.log(err);
         })
@@ -401,6 +400,7 @@ export default class IntelligentRetrievalCom extends Vue {
                 break;
 
         }
+        this.dateTime = [];
         this.filter.search_after = [];
         this.finished = false;
         this.toFilter();

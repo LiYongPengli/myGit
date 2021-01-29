@@ -19,7 +19,7 @@ export default class MyFollowCom extends Vue {
 
     public filters = {
         start: 0,
-        size: 10,
+        size: 25,
         country: [] as any[],
         media: [] as any[],
         language: 'crawler',
@@ -307,12 +307,14 @@ export default class MyFollowCom extends Vue {
                 filters[i] = this.filters[i];
             }
         }
-        if(!flag) return;
+        if(!flag){
+            this.setMainPageLoading(false);
+            return;
+        }
         this.axios.post('/v1/cmd/', {
             cmd: 'my_sub_news',
             paras: filters
         }).then(res => {
-            console.log(res.data);
             this.initData = false;
             if(this.filters.start!=0){
                 this.list = this.list.concat(res.data.data.news);
@@ -322,7 +324,7 @@ export default class MyFollowCom extends Vue {
             if(res.data.data.over){
                 this.isfinished = true;
             }
-            this.filters.start+=10;
+            this.filters.start+=25;
             this.setMainPageLoading(false);
         }).catch(err => {
             console.log(err);

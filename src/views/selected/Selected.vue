@@ -4,36 +4,42 @@
     <div class="list_wrap">
       <div class="list_nav">
         <span
-          @click="listenChooseNav('all')"
-          :class="{ cur: chooseNav == 'all' }"
-          >精选频道1</span
+          v-for="(v, i) in menu_list"
+          :key="i"
+          @click="listenChooseNav(v)"
+          :class="{ cur: chooseNav == v }"
+          >{{ v }}</span
         >
-        <span
+        <!-- <span
           @click="listenChooseNav('country')"
           :class="{ cur: chooseNav == 'country' }"
-          >精选频道2</span
+          ></span
         >
         <span
           @click="listenChooseNav('people')"
           :class="{ cur: chooseNav == 'people' }"
-          >精选频道3</span
-        >
-        <span
+          ></span
+        > -->
+        <!-- <span
           @click="listenChooseNav('media')"
           :class="{ cur: chooseNav == 'media' }"
           >精选频道4</span
-        >
-         
+        > -->
       </div>
-     
-      <div class="list">   
-        <div class="nodata" v-show="!list.length&&isfinished">暂无数据</div>
+
+      <div class="list">
+        <div class="nodata" v-show="!list.length && isfinished">暂无数据</div>
         <div class="loadingData">
           <loading v-if="initData" />
         </div>
         <ul>
-          <list-item :shoControls="['like','share2']" :item="v" v-for="(v, i) in list" :key="i" />
-          <loading v-if="!isfinished&&mainPageLoading&&!initData" />
+          <list-item
+            :shoControls="[]"
+            :item="v"
+            v-for="(v, i) in list"
+            :key="i"
+          />
+          <loading v-if="!isfinished && mainPageLoading && !initData" />
         </ul>
       </div>
     </div>
@@ -50,7 +56,7 @@ import Loading from "@/components/Loading.vue";
   components: {
     ShareContent,
     ListItem,
-    Loading
+    Loading,
   },
 })
 export default class Selected extends mixins(SelectedCom) {}

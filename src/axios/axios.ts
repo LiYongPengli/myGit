@@ -5,12 +5,13 @@ import { Message } from 'element-ui';
 
 axios.defaults.baseURL = process.env.VUE_APP_URL;
 axios.defaults.headers = {'Cache-Control': 'no-cache'};
+// axios.defaults.timeout = 5000;
 store.commit('setEnv',process.env.VUE_APP_MODE);
 //请求配置
-axios.interceptors.request.use(req=>{
-    req.timeout = 5000;
- return req;   
-})
+// axios.interceptors.request.use(req=>{
+//     req.timeout = 5000;
+//  return req;   
+// })
 //响应配置
 axios.interceptors.response.use(res=>{
     return res;

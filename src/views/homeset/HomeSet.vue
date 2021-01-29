@@ -109,7 +109,7 @@
                     <!-- 50*30 -->
                     <div class="mttx">
                       <img class="mrtx" :src="v.media_icon" alt="" />
-                      <div class="dgdiv">
+                      <div v-if="v.media_source=='Spider'" class="dgdiv">
                         <img
                           class="duigou"
                           src="../../assets/img/mtdg.png"
@@ -155,7 +155,7 @@
                     <!-- 50*30 -->
                     <div class="mttx">
                       <img class="mrtx" :src="v.media_icon" alt="" />
-                      <div class="dgdiv">
+                      <div v-if="v.media_source=='Spider'" class="dgdiv">
                         <img
                           class="duigou"
                           src="../../assets/img/mtdg.png"

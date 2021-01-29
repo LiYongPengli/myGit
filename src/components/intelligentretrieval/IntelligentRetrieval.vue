@@ -419,8 +419,8 @@
             <div class="result">
               <ul>
                 <list-item :language1="language" :item="v" :shoControls="['like','share2']" v-for="(v, i) in newsList" :key="i" />
-                
-                <loading v-if="!finished" />
+                <no-data v-show="!newsList.length&&!loading" />
+                <loading v-if="!finished&&loading" />
               </ul>
             </div>
           </div>
@@ -441,7 +441,7 @@ import MyScroll from "@/components/MyScroll.vue";
 import VideoThumbnail from "@/components/videothumbnai/VideoThumbnail.vue";
 import ListItem from "@/components/ListItem.vue";
 import Loading from "@/components/Loading.vue";
-
+import NoData from "@/components/NoData.vue";
 @Component({
   components: {
     SearchCom,
@@ -449,7 +449,8 @@ import Loading from "@/components/Loading.vue";
     MyScroll,
     VideoThumbnail,
     ListItem,
-    Loading
+    Loading,
+    NoData
   },
 })
 export default class IntelligentRetrieval extends mixins(
