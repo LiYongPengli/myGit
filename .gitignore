@@ -5,6 +5,9 @@ node_modules
 #js
 vue.config.js
 
+#json
+package-lock.json
+
 # local env files
 .env.local
 .env.*.local
