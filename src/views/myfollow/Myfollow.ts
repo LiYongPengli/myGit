@@ -40,11 +40,13 @@ export default class MyFollowCom extends Vue {
         this.chooseNav = newVal;
         this.filters.start = 0;
         this.isfinished = false;
+        this.initData = true;
         // this.list = [];
         switch (newVal) {
             case 'all':
                 if(!this.country.length&&!this.media.length&&!this.people.length){
                     this.isfinished = true;
+                    this.initData = false;
                     this.list = [];
                     return;
                 }
@@ -57,6 +59,7 @@ export default class MyFollowCom extends Vue {
                 this.country_all = true;
                 if(!this.country.length){
                     this.isfinished = true;
+                    this.initData = false;
                     this.list = [];
                     return;
                 }
@@ -73,6 +76,7 @@ export default class MyFollowCom extends Vue {
                 this.media_all = true;
                 if(!this.media.length){
                     this.isfinished = true;
+                    this.initData = false;
                     this.list = [];
                     return;
                 }
@@ -89,6 +93,7 @@ export default class MyFollowCom extends Vue {
                 this.people_all = true;
                 if(!this.people.length){
                     this.isfinished = true;
+                    this.initData = false;
                     this.list = [];
                     return;
                 }
@@ -196,20 +201,9 @@ export default class MyFollowCom extends Vue {
         }
         // this.list = [];
         this.filters.start = 0;
+        this.isfinished = false;
+        this.initData = true;
         this.getList();
-    }
-
-    //设置图片高度
-    public imgLoad(e:any):void{
-        let img = <HTMLImageElement>e.path[0]
-        if(img.offsetHeight<132){
-            img.style.height = 132+'px';
-        }
-    }
-
-    //资源加载失败
-    public loaderr(index:number):void{
-        this.$set(this.list[index],'error',true);
     }
 
     public created(): void {
@@ -235,35 +229,6 @@ export default class MyFollowCom extends Vue {
         });
 
 
-    }
-
-    public showTrack(type:string,item:any):string{
-        let json = JSON.stringify(item);
-        let obj = JSON.parse(json);
-        if(type=="ZH"){
-            for(let i of obj.attachments){
-                if(i.position=='SUBTITLES_ZH'){
-                    let url = <string>i.url;
-                    let urlArr = url.split('/');
-                    urlArr.splice(0,3);
-                    let lastUrl = urlArr.join('/');
-                    i.url = '/'+lastUrl;
-                    return i.url;
-                }
-            }
-        }else{
-            for(let i of obj.attachments){
-                if(i.position=='SUBTITLES_RAW'){
-                    let url = <string>i.url;
-                    let urlArr = url.split('/');
-                    urlArr.splice(0,3);
-                    let lastUrl = urlArr.join('/');
-                    i.url = '/'+lastUrl;
-                    return i.url;
-                }
-            }
-        }
-        return '';
     }
 
     //获取频道等列表
@@ -309,6 +274,8 @@ export default class MyFollowCom extends Vue {
         }
         if(!flag){
             this.setMainPageLoading(false);
+            this.isfinished = true;
+            this.initData = false;
             return;
         }
         this.axios.post('/v1/cmd/', {
@@ -360,6 +327,8 @@ export default class MyFollowCom extends Vue {
                 break;
         }
         this.filters.start = 0;
+        this.isfinished = false;
+        this.initData = true;
         this.getList();
     }
 

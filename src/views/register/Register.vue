@@ -70,7 +70,7 @@
           />
         </el-form-item>
         <div class="submit">
-          <el-button @click="toRegister" style="width: 100%" type="danger"
+          <el-button :disabled="!reqFinished" @click="toRegister" style="width: 100%" type="danger"
             >确认注册</el-button
           >
         </div>

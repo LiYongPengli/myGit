@@ -10,6 +10,7 @@ export default class RegisterCom extends Vue {
     public show_vc_code:boolean = false;
     //手机错误验证信息
     public phoneerr:string="";
+    public reqFinished:boolean = true;
     //验证码错误提示
     public vcerr:string = "";
     //是否可以获取验证码
@@ -282,7 +283,9 @@ export default class RegisterCom extends Vue {
             tel:this.form.tel,
             nickname:this.form.nickname
         }
+        this.reqFinished = false;
         this.axios.post('/v1/user/account/signup',qs.stringify(data),{headers:{'content-type': 'application/x-www-form-urlencoded'}}).then(res=>{
+            this.reqFinished = true;
             if(res.data.status==0){
                 this.$message.error(res.data.msg);
                 return;
