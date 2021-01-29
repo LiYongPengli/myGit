@@ -168,7 +168,7 @@
                 .country {
                     overflow: hidden;
                     padding-top: 20px;
-                    span {
+                    span.countryspan {
                         font-size: 14px;
                         color: white;
                         float: left;
@@ -206,8 +206,17 @@
                         .countryli p,
                         .mtli p,
                         .rwli p {
-                            background-color: #0079ed;
-                            border-radius: 3px;
+                            span {
+                                background-color: #0079ed;
+                                border-radius: 3px;
+                                height: 26px;
+                                line-height: 26px;
+                                display: block;
+                                text-align: center;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
                         }
                         ul {
                             list-style: none;

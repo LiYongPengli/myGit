@@ -63,7 +63,7 @@
                   {{ v.name }}
                 </li>
               </ul>
-              <span>国家：</span>
+              <span class="countryspan">国家：</span>
               <div class="list">
                 <!-- <el-tooltip class="item" effect="dark"  placement="top"> -->
                 <div
@@ -109,7 +109,11 @@
                       :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
                       placement="top"
                     >
-                      <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                      <p>
+                        <span>
+                          {{ v.name.en }}({{ v.name["zh-CN"] }})
+                        </span>
+                      </p>
                     </el-tooltip>
                   </li>
                 </ul>
@@ -157,7 +161,7 @@
                   {{ v.name }}
                 </li>
               </ul>
-              <span>媒体：</span>
+              <span class="countryspan">媒体：</span>
               <div class="list">
                 <div class="other">
                   <div
@@ -208,7 +212,11 @@
                         :content="v.name.en + '(' + v.name['zh-CN'] + ')'"
                         placement="top"
                       >
-                        <p>{{ v.name.en }}({{ v.name["zh-CN"] }})</p>
+                        <p>
+                          <span>
+                            {{ v.name.en }}({{ v.name["zh-CN"] }})
+                          </span>
+                        </p>
                       </el-tooltip>
                     </li>
                   </ul>
@@ -245,7 +253,7 @@
             </div>
             <!-- 人物 -->
             <div class="country">
-              <span>人物：</span>
+              <span class="countryspan">人物：</span>
               <div class="list">
                 <div class="other">
                   <div
@@ -292,7 +300,11 @@
                         :content="v"
                         placement="top"
                       >
-                        <p>{{ v }}</p>
+                        <p>
+                          <span>
+                            {{ v }}
+                          </span>
+                        </p>
                       </el-tooltip>
                     </li>
                   </ul>
