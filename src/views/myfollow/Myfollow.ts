@@ -31,7 +31,7 @@ export default class MyFollowCom extends Vue {
 
     @Watch('mainPageLoading')
     public loadingChange(newVal:boolean,oldVal:boolean):void{
-        if(newVal&&!this.isfinished){
+        if(newVal&&!this.isfinished&&!this.initData){
             this.getList();
         }
     }
@@ -273,6 +273,7 @@ export default class MyFollowCom extends Vue {
             }
         }
         if(!flag){
+            console.log('sssss')
             this.setMainPageLoading(false);
             this.isfinished = true;
             this.initData = false;

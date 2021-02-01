@@ -53,7 +53,6 @@
 import { Component, Emit, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import MyScroll from "@/components/MyScroll.vue";
-import { ElStep } from "element-ui/types/step";
 import IDBDriver from "@/libs/IdbDriver";
 @Component({
   components: {
@@ -70,7 +69,7 @@ export default class Search extends Vue {
   private db!:IDBDriver;
   //搜索内容
   public searchText: string = "";
-  private async created() {
+  public async created() {
     this.db = IDBDriver.getInstance();
     await this.db.connect('zlbxxcj','userHistory');
     this.getHistory();
@@ -153,6 +152,9 @@ export default class Search extends Vue {
   @Emit("tosearch")
   public toSearch(e: KeyboardEvent): string {
     if (e.keyCode == 13) {
+      if(this.timer){
+        clearTimeout(this.timer);
+      }
       if (!this.searchText) {
         return "";
       }

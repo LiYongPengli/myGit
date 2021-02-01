@@ -39,6 +39,11 @@
         </el-badge>
       </a>
     </div>
+    <context-menu
+      :left="menuleft"
+      :top="menutop"
+      v-if="showContextMenu && env == 'development'"
+    />
   </div>
 </template>
 
@@ -47,14 +52,19 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 import Topic from "@/components/topic/Topic.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
+import ContextMenu from "@/components/ContextMenu.vue";
 @Component({
   components: {
     Topic,
     ShareContent,
+    ContextMenu,
   },
 })
 export default class App extends Vue {
-  private isshow = true;
+  public isshow = false;
+  public showContextMenu: boolean = false;
+  public menuleft: number = 0;
+  public menutop: number = 0;
   public show_fx = true;
   public friend_list: any[] = [];
   public shareWindow: boolean = false;
@@ -72,6 +82,7 @@ export default class App extends Vue {
   @State("language") language!: string;
   //被分享的新闻
   @State("shareNews") shareNews!: any;
+  @State("env") env!: string;
   //设置用户信息
   @Mutation("setUserMessage") setUserMessage: any;
   @Mutation("setSureTop") setSureTop!: any;
@@ -85,43 +96,106 @@ export default class App extends Vue {
       newVal == "Register" ||
       newVal == "Findpassword" ||
       newVal == "BindAccount" ||
-      newVal =="XjPublicity" ||
-      newVal =="HomeSet"   ||
-      newVal =="Publicity"
+      newVal == "XjPublicity" ||
+      newVal == "HomeSet" ||
+      newVal == "Publicity"
     ) {
-      if(newVal =="Publicity"){
-        if(!this.user_message){
-        this.userLoginType();
-      }
+      if (newVal == "Publicity") {
+        if (!this.user_message) {
+          this.userLoginType();
+        }
       }
       this.isshow = true;
       this.show_fx = false;
     } else {
       this.isshow = false;
       this.show_fx = true;
-      if(!this.user_message){
+      if (!this.user_message) {
         this.userLoginType();
       }
     }
   }
 
   @Watch("topic_show")
-  public listenTopic(newVal:boolean,oldVal:boolean):void{
-    if(newVal){
-      if(this.topic_status==1){
+  public listenTopic(newVal: boolean, oldVal: boolean): void {
+    if (newVal) {
+      if (this.topic_status == 1) {
         this.setGlobMessage(false);
       }
     }
   }
 
-  private created(): void {
+  public created(): void {
     window.addEventListener("message", this.getGlobMessage, false);
   }
 
-  public setTopic():void{
-    if(!this.topic_show){
+  public mounted(): void {
+    if (this.env == "development") {
+      window.addEventListener("contextmenu", this.contextMenu, false);
+      document.addEventListener("click", this.hideContextMenu, false);
+      window.addEventListener("keydown", this.kedown, false);
+    }
+  }
+
+  private hideContextMenu(): void {
+    this.showContextMenu = false;
+  }
+
+  private contextMenu(e: MouseEvent): void {
+    e.preventDefault();
+    let width = document.documentElement.clientWidth;
+    let height = document.documentElement.clientHeight;
+    if (width - e.clientX >= 250) {
+      this.menuleft = e.clientX;
+    } else {
+      this.menuleft = e.clientX - 250;
+    }
+    if (height - e.clientY > 200) {
+      this.menutop = e.clientY;
+    } else {
+      this.menutop = e.clientY - 190;
+    }
+    this.showContextMenu = true;
+  }
+
+  private kedown(e: KeyboardEvent): void {
+    let ctr = e.ctrlKey;
+    let shift = e.shiftKey;
+    if (ctr && shift && e.keyCode == 73) {
+      const h = this.$createElement;
+
+      this.$notify({
+        title: "标题名称",
+        message: h(
+          "i",
+          { style: "color: teal" },
+          "你还没有权限使用开发者工具(不要再挣扎了，还是乖乖的按规则行事吧)"
+        ),
+      });
+      e.preventDefault();
+    }
+    if (ctr && e.keyCode == 85) {
+      e.preventDefault();
+    }
+    if (e.keyCode == 123) {
+      e.preventDefault();
+      const h = this.$createElement;
+
+      this.$notify({
+        title: "标题名称",
+        message: h(
+          "i",
+          { style: "color: teal" },
+          "你还没有权限使用开发者工具(不要再挣扎了，还是乖乖的按规则行事吧)"
+        ),
+      });
+    }
+  }
+
+  public setTopic(): void {
+    if (!this.topic_show) {
       this.setTopicShow(true);
-    }else{
+    } else {
       this.setTopicShow(false);
     }
   }
@@ -130,12 +204,11 @@ export default class App extends Vue {
   private getGlobMessage(e: MessageEvent): void {
     // console.log(e.data.eventName); // event name
     // console.log(e.data.data); // event data
-    if (e.data.eventName&&e.data.eventName=='new-message') {
-      if(!this.topic_show){
+    if (e.data.eventName && e.data.eventName == "new-message") {
+      if (!this.topic_show) {
         this.setGlobMessage(true);
       }
     }
-    
   }
 
   //显示分享弹窗
@@ -153,7 +226,8 @@ export default class App extends Vue {
           account: this.share_user.account,
           news_id: this.shareNews.news_id,
           url:
-            this.axios.defaults.baseURL+"/#/newsinfo?id=" +
+            this.axios.defaults.baseURL +
+            "/#/newsinfo?id=" +
             this.shareNews.news_id +
             "&md_id=" +
             this.shareNews.media_id,
@@ -210,10 +284,12 @@ export default class App extends Vue {
         paras: { user_id: user_id },
       })
       .then((res) => {
-        this.axios.get("/avatar/"+res.data.data.account+"?format=base64").then(result=>{
-          res.data.data.headimg = result.data;
-          this.setUserMessage(res.data.data);
-        })
+        this.axios
+          .get("/avatar/" + res.data.data.account + "?format=base64")
+          .then((result) => {
+            res.data.data.headimg = result.data;
+            this.setUserMessage(res.data.data);
+          });
         this.setUserMessage(res.data.data);
         if (!res.data.data.sub_prompted && this.$route.name != "HomeSet") {
           this.$router.push("/homeset");
@@ -227,5 +303,5 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
-@import './style.scss';
+@import "./style.scss";
 </style>
