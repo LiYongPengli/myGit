@@ -69,7 +69,10 @@
         </div>
       </div>
     </div>
-    <p @click="toNewsInfo" class="title">
+    <p v-if="!selected" @click="toNewsInfo" class="title">
+      {{ item.title[language1 ? language1 : language] }}
+    </p>
+    <p v-if="selected" @click="toNewsInfo" class="title2">
       {{ item.title[language1 ? language1 : language] }}
     </p>
     <div class="content">
@@ -99,10 +102,37 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
+          v-if="item.cover.url[item.cover.url.length-1]!='/'"
           @click="toPlay"
           ref="video"
           preload="none"
           :poster="item.cover.url"
+          width="640px"
+          height="360px"
+          :src="item.cover.video"
+          v-show="!error"
+          @error="error = true"
+          :crossorigin="env == 'development' ? false : 'use-credentials'"
+          controls
+        >
+          <track
+            v-if="track_cw.type"
+            :default="!track_zh.type"
+            :src="axios.defaults.baseURL + track_cw.url"
+            label="原文"
+          />
+          <track
+            v-if="track_zh.type"
+            default
+            :src="axios.defaults.baseURL + track_zh.url"
+            label="中文"
+          />
+        </video>
+
+        <!-- 五封面视频 -->
+        <video
+          v-if="item.cover.url[item.cover.url.length-1]=='/'"
+          ref="video"
           width="640px"
           height="360px"
           :src="item.cover.video"
@@ -142,6 +172,7 @@ import ShareContent from "@/components/sharecontent/ShareContent.vue";
 })
 export default class ListItem extends Vue {
   @Prop({}) item: any;
+  @Prop({default:false}) selected!: boolean;
   @Prop({}) shoControls!: string[];
   @Prop({ default: "" }) language1!: string[];
   @State("language") language!: string;
@@ -191,6 +222,9 @@ export default class ListItem extends Vue {
   }
 
   public toNewsInfo(): void {
+    if(this.selected){
+      return;
+    }
     window.open(
       "#/newsinfo?id=" + this.item.news_id + "&md_id=" + this.item.media_id
     );
@@ -320,6 +354,11 @@ export default class ListItem extends Vue {
         }
       }
     }
+  }
+  .title2{
+    margin-top: 15px;
+    width: max-content;
+    max-width: 100%;
   }
   .title {
     margin-top: 15px;

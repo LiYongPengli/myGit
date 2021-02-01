@@ -8,7 +8,6 @@ export default class SelectedCom extends Vue {
     public list: any[] = [];
     public initData: boolean = true;
     public isfinished: boolean = false;
-    public chooseNav: string = '詹姆斯·科登今晚秀';
  
 
     public menu_list = [
@@ -52,6 +51,7 @@ export default class SelectedCom extends Vue {
         console.log(newVal);
         this.chooseNav = newVal;
         this.filters.start = 0;
+        this.isfinished = false;
         this.getList();
     }
 

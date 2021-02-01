@@ -35,7 +35,7 @@
                     </div>
                   </div>
                   <span @click="toFollowPage(v, i)" class="ly">
-                    {{ v.media_name }}
+                    {{ v.media_name_zh }}
                   </span>
                 </div>
                 <span v-time="v.release_time" class="sj"></span>

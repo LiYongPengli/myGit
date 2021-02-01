@@ -4,29 +4,31 @@
     <!-- 已关注 -->
     <div class="concerned">
       <p class="concerned_p">已关注</p>
-      <my-scroll thumbColor="#9292a7" class="list_wrap">
-        <ul
-          element-loading-background="rgba(58, 58, 72, 0.5)"
-          v-loading="loading"
-        >
-          <li
-            v-show="showItem(v)"
-            v-for="(v, k) in country_follow_list"
-            :key="k"
+      <div ref="list_wrap" class="list_wrap">
+        <my-scroll thumbColor="#9292a7">
+          <ul
+            element-loading-background="rgba(58, 58, 72, 0.5)"
+            v-loading="loading"
           >
-            <div>
-              <img class="flag" :src="v.flag" alt="" />
-              <speed-text width="60px" height="20px" :text="v.name" />
-              <img
-                class="close"
-                @click.stop="unsub(v, k)"
-                src="../../assets/img/close.png"
-                alt=""
-              />
-            </div>
-          </li>
-        </ul>
-      </my-scroll>
+            <li
+              v-show="showItem(v)"
+              v-for="(v, k) in country_follow_list"
+              :key="k"
+            >
+              <div>
+                <img class="flag" :src="v.flag" alt="" />
+                <speed-text width="60px" height="20px" :text="v.name" />
+                <img
+                  class="close"
+                  @click.stop="unsub(v, k)"
+                  src="../../assets/img/close.png"
+                  alt=""
+                />
+              </div>
+            </li>
+          </ul>
+        </my-scroll>
+      </div>
     </div>
     <!-- 未关注 -->
     <div class="noattention">
