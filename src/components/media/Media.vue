@@ -7,7 +7,8 @@
       element-loading-background="rgba(58, 58, 72, 0.5)"
     >
       <p class="concerned_p">已关注</p>
-      <my-scroll :thumbColor="'#9292a7'" class="list_wrap">
+      <div ref="list_wrap" class="list_wrap">
+      <my-scroll :thumbColor="'#9292a7'" >
         <ul>
           <li
             v-show="showItem(v)"
@@ -53,6 +54,8 @@
           </li>
         </ul>
       </my-scroll>
+       <no-data v-show="!mediaFollowList.length" />
+       </div>
     </div>
     <!-- 未关注 -->
     <div
@@ -110,10 +113,12 @@ import Component, { mixins } from "vue-class-component";
 import MediaCom from "./Media";
 import SpeedText from "@/components/SpeedText.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import NoData from "@/components/NoData.vue";
 @Component({
   components: {
     SpeedText,
     MyScroll,
+    NoData,
   },
 })
 export default class Media extends mixins(MediaCom) {}

@@ -7,6 +7,7 @@
       element-loading-background="rgba(58, 58, 72, 0.5)"
     >
       <p class="concerned_p">已关注</p>
+       
       <ul>
         <li v-show="showItem(v.name)" v-for="(v, i) in channelFollowList" :key="i">
           <div>
@@ -24,6 +25,8 @@
           </div>
         </li>
       </ul>
+        <no-data v-show="!channelFollowList.length" />
+        
     </div>
     <!-- 未关注 -->
     <div
@@ -54,9 +57,11 @@
 import Component, { mixins } from "vue-class-component";
 import ChannelCom from "./Channel";
 import SpeedText from "@/components/SpeedText.vue";
+import NoData from "@/components/NoData.vue";
 @Component({
   components: {
     SpeedText,
+    NoData,
   },
 })
 export default class Channel extends mixins(ChannelCom) {}

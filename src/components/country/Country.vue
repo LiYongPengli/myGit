@@ -26,8 +26,11 @@
                 />
               </div>
             </li>
+           
+
           </ul>
         </my-scroll>
+         <no-data v-show="!country_follow_list.length" />
       </div>
     </div>
     <!-- 未关注 -->
@@ -65,10 +68,12 @@ import Component, { mixins } from "vue-class-component";
 import CountryCom from "./Country";
 import SpeedText from "@/components/SpeedText.vue";
 import MyScroll from "@/components/MyScroll.vue";
+import NoData from "@/components/NoData.vue";
 @Component({
   components: {
     SpeedText,
     MyScroll,
+    NoData,
   },
 })
 export default class Country extends mixins(CountryCom) {}
