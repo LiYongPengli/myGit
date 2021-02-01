@@ -1,6 +1,6 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop,Ref, Vue } from 'vue-property-decorator'
 @Component
 export default class MediaCom extends Vue{
     @Prop({}) search!:string;
@@ -10,11 +10,22 @@ export default class MediaCom extends Vue{
     public loading:boolean = true;
     public loadFollow:boolean = true;
 
+    @Ref('list_wrap') readonly list_wrap!: HTMLElement;
+
     public created():void{
         this.getSubscriptions('media', 'sub', res => {
             console.log(res.data)
             this.mediaFollowList = res.data.data;
             this.loading = false;
+            setTimeout(() => {
+                let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
+                console.log('初始化获取高度'+dom.offsetHeight);
+                if (dom.offsetHeight >= 350) {
+                    this.list_wrap.style.height = 350 + 'px';
+                } else {
+                    this.list_wrap.style.height = "auto";
+                }
+            }, 200)
         });
         this.getSubscriptions('media', 'unsub', res => {
             this.mediaList = res.data.data;
@@ -42,6 +53,14 @@ export default class MediaCom extends Vue{
             sub_oper_type: 'unsub',
         }).then(res=>{
             this.mediaFollowList.splice(index,1);
+            setTimeout(() => {
+                let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
+                if (dom.offsetHeight >= 350) {
+                    this.list_wrap.style.height = 350 + 'px';
+                } else {
+                    this.list_wrap.style.height = "auto";
+                }
+            }, 200)
             this.getSubscriptions('media', 'unsub', res => {
                 this.mediaList = res.data.data;
                 this.mediaList.sort(function(a,b){
@@ -62,6 +81,15 @@ export default class MediaCom extends Vue{
         }).then(res=>{
             this.mediaFollowList.push(item);
             this.mediaList.splice(index,1);
+            setTimeout(() => {
+                let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
+                if (dom.offsetHeight >= 350) {
+                    this.list_wrap.style.height = 350 + 'px';
+                } else {
+                    this.list_wrap.style.height = "auto";
+                }
+            }, 200)
+            
         }).catch(err=>{
             console.log(err);
         })

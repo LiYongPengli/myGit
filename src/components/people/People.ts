@@ -1,6 +1,6 @@
 
 import { AxiosResponse } from 'axios';
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop,Ref,  Vue } from 'vue-property-decorator'
 @Component
 export default class PeopleCom extends Vue {
     @Prop({}) search!:string;
@@ -14,11 +14,22 @@ export default class PeopleCom extends Vue {
     public loading:boolean = true;
     public loadFollow:boolean = true;
 
+    @Ref('concernedlists') readonly concernedlists!: HTMLElement;
+
     public created():void{
         this.getSubscriptions('character', 'sub', res => {
-            console.log(res.data)
+            console.log(res.data.data)
             this.characterFollowList = res.data.data;
             this.loading = false;
+            setTimeout(() => {
+                let dom = this.concernedlists.children[0].children[0].children[0].children[0] as HTMLElement;
+                console.log('初始化获取高度'+dom.offsetHeight);
+                if (dom.offsetHeight >= 350) {
+                    this.concernedlists.style.height = 350 + 'px';
+                } else {
+                    this.concernedlists.style.height = "auto";
+                }
+            }, 200)
         });
         this.getSubscriptions('character', 'unsub', res => {
             this.characterList = res.data.data;
@@ -45,6 +56,15 @@ export default class PeopleCom extends Vue {
         }).then(res=>{
             this.characterList.push(item);
             this.characterFollowList.splice(index,1);
+            setTimeout(() => {
+                let dom = this.concernedlists.children[0].children[0].children[0].children[0] as HTMLElement;
+                console.log('初始化获取高度'+dom.offsetHeight);
+                if (dom.offsetHeight >= 350) {
+                    this.concernedlists.style.height = 350 + 'px';
+                } else {
+                    this.concernedlists.style.height = "auto";
+                }
+            }, 200)
         }).catch(err=>{
             console.log(err);
         })
@@ -59,6 +79,15 @@ export default class PeopleCom extends Vue {
         }).then(res=>{
             this.characterFollowList.push(item);
             this.characterList.splice(index,1);
+            setTimeout(() => {
+                let dom = this.concernedlists.children[0].children[0].children[0].children[0] as HTMLElement;
+                console.log('初始化获取高度'+dom.offsetHeight);
+                if (dom.offsetHeight >= 350) {
+                    this.concernedlists.style.height = 350 + 'px';
+                } else {
+                    this.concernedlists.style.height = "auto";
+                }
+            }, 200)
         }).catch(err=>{
             console.log(err);
         })

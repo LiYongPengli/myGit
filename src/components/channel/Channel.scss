@@ -1,10 +1,14 @@
 .channel {
     margin: 0 60px;
     .concerned {
-        min-height: 320px;
+        // min-height: 320px;
         padding-top: 40px;
         padding-bottom: 20px;
         border-bottom: 1px solid #5c5c6b;
+        .nodata {
+            display: flex;
+            justify-content: center;
+        }
         .concerned_p {
             font-size: 20px;
             font-weight: bold;
@@ -27,7 +31,7 @@
                     position: relative;
                     line-height: 40px;
                     padding-left: 15px;
-                    .pname{
+                    .pname {
                         font-size: 15px;
                     }
                     p {
@@ -136,11 +140,11 @@
             li:nth-child(5n) {
                 margin-right: 0;
             }
-            .nodata{
+            .nodata {
                 position: absolute;
                 left: 50%;
                 top: 50%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
                 font-size: 17px;
                 color: #b7b7bf;
             }

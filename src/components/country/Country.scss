@@ -1,121 +1,125 @@
 .country {
-  // height: 640px;
-  margin: 0 59px;
-  .concerned {
-    min-height: 320px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #5c5c6b;
-    .concerned_p {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .list_wrap {
-      overflow: hidden;
-      margin-top: 30px;
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        li {
-          margin-bottom: 40px;
-          width: 135px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          div {
-            .flag {
-              height: 40px;
-              display: block;
-              width: 70px;
-            }
-            .speedtext {
-              display: inline-block;
-              margin-top: 20px;
-              p {
-                font-size: 15px;
-                margin-top: 20px;
-                width: 60px;
-                // 是禁止换行。
-                white-space: nowrap;
-                display: inline-block;
-                overflow: hidden;
-                text-align: center;
-                margin-left: 10px;
-              }
-            }
-            img.close {
-              cursor: pointer;
-              margin-left: 10px;
-              margin-bottom: 5px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .noattention {
-    // min-height: 320px;
-    padding-top: 40px;
-    .noattention_p,
-    .open {
-      font-size: 20px;
-      font-weight: bold;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .open {
-      float: right;
-      img {
-        cursor: pointer;
-      }
-    }
-    .list_wrap {
-      height: 740px;
-      overflow: hidden;
-      margin-top: 30px;
-      ul {
-        display: flex;
-        // 显示不开就换行
-        flex-wrap: wrap;
+    // height: 640px;
+    margin: 0 59px;
+    .concerned {
+        // min-height: 320px;
+        padding-top: 40px;
         padding-bottom: 20px;
-        li {
-          margin-bottom: 40px;
-          width: 135px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          div {
-            .flag {
-              height: 40px;
-              display: block;
-              width: 70px;
-            }
-            .speedtext {
-              display: inline-block;
-              margin-top: 20px;
-              p {
-                font-size: 15px;
-                margin-top: 20px;
-                width: 60px;
-                // 是禁止换行。
-                white-space: nowrap;
-                display: inline-block;
-                overflow: hidden;
-                text-align: center;
-                margin-left: 10px;
-              }
-            }
-            img.add {
-              cursor: pointer;
-              margin-left: 10px;
-              margin-bottom: 5px;
-            }
-          }
+        border-bottom: 1px solid #5c5c6b;
+        .concerned_p {
+            font-size: 20px;
+            font-weight: bold;
         }
-        // li:nth-last-child(1) {
-        //     margin-bottom: 20px;
-        // }
-      }
+        .list_wrap {
+            overflow: hidden;
+            margin-top: 30px;
+            .nodata {
+                display: flex;
+                justify-content: center;
+            }
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    margin-bottom: 40px;
+                    width: 135px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    div {
+                        .flag {
+                            height: 40px;
+                            display: block;
+                            width: 70px;
+                        }
+                        .speedtext {
+                            display: inline-block;
+                            margin-top: 20px;
+                            p {
+                                font-size: 15px;
+                                margin-top: 20px;
+                                width: 60px;
+                                // 是禁止换行。
+                                white-space: nowrap;
+                                display: inline-block;
+                                overflow: hidden;
+                                text-align: center;
+                                margin-left: 10px;
+                            }
+                        }
+                        img.close {
+                            cursor: pointer;
+                            margin-left: 10px;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
+    .noattention {
+        // min-height: 320px;
+        padding-top: 40px;
+        .noattention_p,
+        .open {
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .open {
+            float: right;
+            img {
+                cursor: pointer;
+            }
+        }
+        .list_wrap {
+            height: 740px;
+            overflow: hidden;
+            margin-top: 30px;
+            ul {
+                display: flex;
+                // 显示不开就换行
+                flex-wrap: wrap;
+                padding-bottom: 20px;
+                li {
+                    margin-bottom: 40px;
+                    width: 135px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    div {
+                        .flag {
+                            height: 40px;
+                            display: block;
+                            width: 70px;
+                        }
+                        .speedtext {
+                            display: inline-block;
+                            margin-top: 20px;
+                            p {
+                                font-size: 15px;
+                                margin-top: 20px;
+                                width: 60px;
+                                // 是禁止换行。
+                                white-space: nowrap;
+                                display: inline-block;
+                                overflow: hidden;
+                                text-align: center;
+                                margin-left: 10px;
+                            }
+                        }
+                        img.add {
+                            cursor: pointer;
+                            margin-left: 10px;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+                // li:nth-last-child(1) {
+                //     margin-bottom: 20px;
+                // }
+            }
+        }
+    }
 }
