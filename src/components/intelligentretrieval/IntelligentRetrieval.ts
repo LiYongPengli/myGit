@@ -95,7 +95,7 @@ export default class IntelligentRetrievalCom extends Vue {
     public blur(): void {
         setTimeout(() => {
             this.showSearchList = false;
-        }, 200)
+        }, 100)
     }
 
     public listenSearch(): void {
@@ -437,6 +437,9 @@ export default class IntelligentRetrievalCom extends Vue {
     //去搜索
     public toSearch(e: KeyboardEvent): void {
         if (e.keyCode == 13) {
+            if(this.timer){
+                clearTimeout(this.timer);
+            }
             if (!this.searchText) {
                 return;
             }

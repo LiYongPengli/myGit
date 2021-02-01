@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="itemInfo_info">
-          <p class="name">媒体:{{ item.media_name_zh }}</p>
+          <p class="name">媒体:{{ item.media_name_zh=='其他'?item.media_name:item.media_name_zh }}</p>
           <span class="time">时间: <span v-time="item.time"></span></span>
           <span class="pv">浏览次数:{{ item.pv }}</span>
         </div>
@@ -114,6 +114,7 @@
           @error="error = true"
           :crossorigin="env == 'development' ? false : 'use-credentials'"
           controls
+          :controlsList="selected?'nodownload noremote footbar':''"
         >
           <track
             v-if="track_cw.type"
@@ -129,7 +130,7 @@
           />
         </video>
 
-        <!-- 五封面视频 -->
+        <!-- 无封面视频 -->
         <video
           v-if="item.cover.url[item.cover.url.length-1]=='/'"
           ref="video"
@@ -140,6 +141,7 @@
           @error="error = true"
           :crossorigin="env == 'development' ? false : 'use-credentials'"
           controls
+          :controlsList="selected?'nodownload noremote footbar':''"
         >
           <track
             v-if="track_cw.type"
