@@ -66,16 +66,16 @@ export default class Search extends Vue {
   public searchList: any[] = [];
   public showSearchList: boolean = false;
   public timer: any = null;
-  private db!:IDBDriver;
+  private db!: IDBDriver;
   //搜索内容
   public searchText: string = "";
   public async created() {
     this.db = IDBDriver.getInstance();
-    await this.db.connect('zlbxxcj','userHistory');
+    await this.db.connect("zlbxxcj", "userHistory");
     this.getHistory();
   }
 
-  public mounted():void{
+  public mounted(): void {
     let search = <HTMLInputElement>this.$refs.search;
     search.focus();
   }
@@ -98,6 +98,10 @@ export default class Search extends Vue {
   public listenSearch(newVal: string, oldVal: string): void {
     if (this.timer) {
       clearTimeout(this.timer);
+    }
+    if (!this.searchText) {
+      this.showSearchList = false;
+      return;
     }
     this.timer = setTimeout(() => {
       this.getSearchList(newVal);
@@ -129,17 +133,20 @@ export default class Search extends Vue {
 
   //获取历史记录
   private getHistory(): void {
-    this.db.read(this.user_message.phone_number).then(res=>{
-      if(res){
-        this.historyList = res.historys
-      }else{
-        this.db.add(this.user_message.phone_number,[]).catch(err=>{
-          console.log(err);
-        })
-      }
-    }).catch(err=>{
-      console.log(err);
-    })
+    this.db
+      .read(this.user_message.phone_number)
+      .then((res) => {
+        if (res) {
+          this.historyList = res.historys;
+        } else {
+          this.db.add(this.user_message.phone_number, []).catch((err) => {
+            console.log(err);
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   @Emit("tosearch")
@@ -152,7 +159,7 @@ export default class Search extends Vue {
   @Emit("tosearch")
   public toSearch(e: KeyboardEvent): string {
     if (e.keyCode == 13) {
-      if(this.timer){
+      if (this.timer) {
         clearTimeout(this.timer);
       }
       if (!this.searchText) {
@@ -180,33 +187,39 @@ export default class Search extends Vue {
   //删除某条历史记录
   public deleteItemHistory(index: number): void {
     this.historyList.splice(index, 1);
-    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
-      console.log(err);
-    })
+    this.db
+      .put(this.user_message.phone_number, this.historyList)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //记录搜索历史
   public setHistory(): void {
-    for(let i of this.historyList){
-      if(i==this.searchText){
+    for (let i of this.historyList) {
+      if (i == this.searchText) {
         return;
       }
     }
-    if(this.historyList.length>=10){
+    if (this.historyList.length >= 10) {
       this.historyList.pop();
     }
     this.historyList.unshift(this.searchText);
-    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
-      console.log(err);
-    })
+    this.db
+      .put(this.user_message.phone_number, this.historyList)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //清空历史记录
   public clearHistory(): void {
     this.historyList = [];
-    this.db.put(this.user_message.phone_number,this.historyList).catch(err=>{
-      console.log(err);
-    })
+    this.db
+      .put(this.user_message.phone_number, this.historyList)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 </script>

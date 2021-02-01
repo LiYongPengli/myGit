@@ -178,7 +178,7 @@ export default class App extends Vue {
       e.preventDefault();
     }
     if (e.keyCode == 123) {
-      e.preventDefault();
+      // e.preventDefault();
       const h = this.$createElement;
 
       this.$notify({

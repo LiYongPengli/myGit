@@ -74,13 +74,12 @@ export default class OtherPhotos extends Vue {
     return false;
   }
 
-  @Emit("default_chg")
   public sure() {
     if (!this.choose_photo) {
       this.$message.error("请选择要上传的封面图片");
       return;
     }
-    return this.choose_photo;
+    this.$emit('default_chg',this.choose_photo);
   }
 
   @Emit("close")

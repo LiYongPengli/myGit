@@ -102,6 +102,10 @@ export default class IntelligentRetrievalCom extends Vue {
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        if(!this.searchText){
+            this.showSearchList = false;
+            return;
+        }
         this.timer = setTimeout(() => {
             this.getSearchList(this.searchText);
         }, 600);
@@ -523,6 +527,7 @@ export default class IntelligentRetrievalCom extends Vue {
                     break;
                 case 'media':
                     for (let i of this.searchData.filters.media) {
+                        console.log(i)
                         if (~i.letter.indexOf(filter.name)) {
                             arr.push(i)
                         }
