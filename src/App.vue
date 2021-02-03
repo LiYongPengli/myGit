@@ -126,6 +126,29 @@ export default class App extends Vue {
   }
 
   public created(): void {
+    if (
+      this.$route.name == "Login" ||
+      this.$route.name == "Register" ||
+      this.$route.name == "Findpassword" ||
+      this.$route.name == "BindAccount" ||
+      this.$route.name == "XjPublicity" ||
+      this.$route.name == "HomeSet" ||
+      this.$route.name == "Publicity"
+    ) {
+      if (this.$route.name == "Publicity") {
+        if (!this.user_message) {
+          this.userLoginType();
+        }
+      }
+      this.isshow = true;
+      this.show_fx = false;
+    } else {
+      this.isshow = false;
+      this.show_fx = true;
+      if (!this.user_message) {
+        this.userLoginType();
+      }
+    }
     window.addEventListener("message", this.getGlobMessage, false);
   }
 

@@ -37,7 +37,8 @@ export default class FromShareCom extends Vue{
           paras: { rf_id: this.$route.query.rf_id }
         }).then(res=>{
             console.log(res.data);
-            this.favorite.status = "received"
+            this.favorite.status = "received";
+            this.$message.success('收藏成功');
         }).catch(err=>{
             console.log(err);
         })
