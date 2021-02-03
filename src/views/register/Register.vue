@@ -70,7 +70,11 @@
           />
         </el-form-item>
         <div class="submit">
-          <el-button :disabled="!reqFinished" @click="toRegister" style="width: 100%" type="danger"
+          <el-button
+            :disabled="!reqFinished"
+            @click="toRegister"
+            style="width: 100%"
+            type="danger"
             >确认注册</el-button
           >
         </div>
@@ -88,7 +92,11 @@
     >
       <div class="code_wrap">
         <span class="icon el-icon-warning-outline"></span>
-        <input v-model="img_vc_code" type="text" placeholder="请输入图片验证码" />
+        <input
+          v-model="img_vc_code"
+          type="text"
+          placeholder="请输入图片验证码"
+        />
         <img @click="getImgCode" class="code" :src="img_vc" alt="" />
       </div>
       <el-button
@@ -98,6 +106,12 @@
         >确认</el-button
       >
     </el-dialog>
+    <!-- 注册中的动画 -->
+    <div v-if="!reqFinished" class="loading">
+      <div class="loader"></div>
+      <div class="loader"></div>
+      <p class="text">注册中...</p>
+    </div>
   </div>
 </template>
 
@@ -144,8 +158,8 @@ export default class Register extends mixins(RegisterCom) {}
       left: 30px;
     }
   }
-  .el-icon-close{
-    color: #909399!important;
+  .el-icon-close {
+    color: #909399 !important;
   }
 }
 </style>
