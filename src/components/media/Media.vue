@@ -54,7 +54,7 @@
           </li>
         </ul>
       </my-scroll>
-       <no-data v-show="!mediaFollowList.length" />
+       <no-data text="暂无关注" v-show="!mediaFollowList.length" />
        </div>
     </div>
     <!-- 未关注 -->

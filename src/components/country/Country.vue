@@ -30,7 +30,7 @@
 
           </ul>
         </my-scroll>
-         <no-data v-show="!country_follow_list.length" />
+         <no-data text="暂无关注" v-show="!country_follow_list.length" />
       </div>
     </div>
     <!-- 未关注 -->

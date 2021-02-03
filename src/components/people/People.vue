@@ -43,7 +43,7 @@
             </li>
           </ul>
         </my-scroll>
-        <no-data v-show="!characterFollowList.length" />
+        <no-data text="暂无关注" v-show="!characterFollowList.length" />
       </div>
     </div>
     <!-- 未关注 -->

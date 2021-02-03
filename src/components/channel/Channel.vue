@@ -25,7 +25,7 @@
           </div>
         </li>
       </ul>
-        <no-data v-show="!channelFollowList.length" />
+        <no-data text="暂无关注" v-show="!channelFollowList.length" />
         
     </div>
     <!-- 未关注 -->

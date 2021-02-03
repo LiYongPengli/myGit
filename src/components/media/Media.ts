@@ -20,8 +20,8 @@ export default class MediaCom extends Vue{
             setTimeout(() => {
                 let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
                 console.log('初始化获取高度'+dom.offsetHeight);
-                if (dom.offsetHeight >= 350) {
-                    this.list_wrap.style.height = 350 + 'px';
+                if (dom.offsetHeight >= 346) {
+                    this.list_wrap.style.height = 346 + 'px';
                 } else {
                     this.list_wrap.style.height = "auto";
                 }
@@ -55,8 +55,8 @@ export default class MediaCom extends Vue{
             this.mediaFollowList.splice(index,1);
             setTimeout(() => {
                 let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
-                if (dom.offsetHeight >= 350) {
-                    this.list_wrap.style.height = 350 + 'px';
+                if (dom.offsetHeight >= 346) {
+                    this.list_wrap.style.height = 346 + 'px';
                 } else {
                     this.list_wrap.style.height = "auto";
                 }
@@ -83,8 +83,8 @@ export default class MediaCom extends Vue{
             this.mediaList.splice(index,1);
             setTimeout(() => {
                 let dom = this.list_wrap.children[0].children[0].children[0].children[0] as HTMLElement;
-                if (dom.offsetHeight >= 350) {
-                    this.list_wrap.style.height = 350 + 'px';
+                if (dom.offsetHeight >= 346) {
+                    this.list_wrap.style.height = 346 + 'px';
                 } else {
                     this.list_wrap.style.height = "auto";
                 }
