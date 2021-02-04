@@ -6,6 +6,7 @@ export default class ZhuantiCom extends Vue{
     @Prop({}) name!:string;
     @State('language') language!:string;
     public showWarning:boolean = false;
+    public loading:boolean = true;
 
     private deleteObj = {
         item:'' as any,
@@ -30,7 +31,8 @@ export default class ZhuantiCom extends Vue{
             }
           }).then(res=>{
               console.log(res.data);
-              this.list = res.data.data
+              this.list = res.data.data;
+              this.loading = false;
               this.list.sort(function(a,b){
                   return new Date(b.time).getTime() - new Date(a.time).getTime();
               })

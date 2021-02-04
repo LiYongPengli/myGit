@@ -8,7 +8,7 @@
       </el-row>
     </div>
     <div v-show="!showInfo" class="list">
-      <div class="nodata" v-show="!messageList.length">暂无消息</div>
+      <div class="nodata" v-show="!messageList.length&&!loadingList">暂无消息</div>
       <ul>
         <li @click="toInfo(v)" @mouseenter="$set(messageList[i],'delete',true)" @mouseleave="$delete(messageList[i],'delete')" v-for="(v,i) in messageList" :key="i">
           <span class="weidu"> {{v.status=='unread'?'未读':'已读'}} </span>

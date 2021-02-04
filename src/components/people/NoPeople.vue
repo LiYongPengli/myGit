@@ -83,9 +83,10 @@ export default class NoPeople extends Vue {
   public searchCharacter(): void {
     if (!this.searchText) {
         this.characterList = [];
+        this.noTextSearch = true;
       return;
     }
-    this.noTextSearch = true;
+    this.noTextSearch = false;
     this.axios
       .post(
         "/v1/cmd/",
@@ -97,6 +98,9 @@ export default class NoPeople extends Vue {
       )
       .then((res) => {
         this.characterList = res.data.data;
+        if(!this.characterList.length){
+          this.noTextSearch = true;
+        }
       })
       .catch((err) => {
         if (this.axios.isCancel(err)) {

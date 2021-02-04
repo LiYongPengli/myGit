@@ -4,13 +4,15 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class UserMessageCom extends Vue{
     public showInfo:boolean = false;
     public chooseMessage:any = "";
-    public messageList:any[] = []
+    public messageList:any[] = [];
+    public loadingList:boolean = true;
 
 
 
     public created():void{
         this.queryMessageList('query',res=>{
             this.messageList = res.data.data;
+            this.loadingList = false;
             this.messageList.sort(function(a,b){
                 return new Date(b.time).getTime()-new Date(a.time).getTime();
             })

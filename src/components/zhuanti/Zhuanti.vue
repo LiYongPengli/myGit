@@ -17,60 +17,7 @@
       <my-scroll>
         <ul>
           <list-item :shoControls="['share1','delete']" @ondelete="toDelete(v,i)" :item="v" v-for="(v, i) in list" :key="i" />
-          <!-- <li v-for="(v, i) in list" :key="i">
-            <div class="pic">
-              <video-thum-bnail
-                v-if="v.cover.type == 'video'"
-                :video_photo="v.cover.url"
-                :video_url="v.cover.video"
-              />
-              <el-image
-                  :fit="'scale-down'"
-                  class="img"
-                  lazy
-                  v-if="v.cover.type == 'image'"
-                  :src="v.cover.url[0]"
-                >
-                  <div slot="error" class="image-slot">
-                    <img
-                      style="width: 200px"
-                      src="../../assets/img/404.png"
-                      alt=""
-                    />
-                  </div>
-                </el-image>
-            </div>
-            <div class="text">
-              <p
-                v-if="language == 'crawler'"
-                @click="toNewsInfo(v)"
-                class="title"
-              >
-                {{ v.title.crawler }}
-              </p>
-              <p v-if="language == 'en'" @click="toNewsInfo(v)" class="title">
-                {{ v.title.en }}
-              </p>
-              <p
-                v-if="language == 'zh-CN'"
-                @click="toNewsInfo(v)"
-                class="title"
-              >
-                {{ v.title["zh-CN"] }}
-              </p>
-              <span class="mt">媒体: {{ v.media_name }} </span>
-              <span class="time">时间: {{ init_time(v.time) }}</span>
-              <span class="ll">浏览次数: {{ v.pv }}</span>
-            </div>
-
-            <div class="zan">
-              <span @click="toDelete(v, i)" class="shanchu"> 删除</span>
-              <share-content :content="v" type="news">
-                <span class="fenxiang">分享</span>
-              </share-content>
-            </div>
-          </li> -->
-          <!-- <div class="jzgd">更多精彩内容，加载中</div> -->
+          <no-data style="margin-top:100px;" v-if="!loading&&!list.length" />
         </ul>
       </my-scroll>
     </div>
@@ -95,13 +42,15 @@ import Warning from "@/components/Warning.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
 import VideoThumBnail from "@/components/videothumbnai/VideoThumbnail.vue";
 import ListItem from "@/components/ListItem.vue";
+import NoData from "@/components/NoData.vue";
 @Component({
   components: {
     MyScroll,
     Warning,
     ShareContent,
     VideoThumBnail,
-    ListItem
+    ListItem,
+    NoData
   },
 })
 export default class Zhuanti extends mixins(ZhuantiCom) {}
