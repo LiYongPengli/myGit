@@ -10,21 +10,6 @@
           :class="{ cur: chooseNav == v.name }"
           >{{ v.zh_name }}</span
         >
-        <!-- <span
-          @click="listenChooseNav('country')"
-          :class="{ cur: chooseNav == 'country' }"
-          ></span
-        >
-        <span
-          @click="listenChooseNav('people')"
-          :class="{ cur: chooseNav == 'people' }"
-          ></span
-        > -->
-        <!-- <span
-          @click="listenChooseNav('media')"
-          :class="{ cur: chooseNav == 'media' }"
-          >精选频道4</span
-        > -->
       </div>
 
       <div class="list">

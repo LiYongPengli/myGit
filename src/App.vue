@@ -39,11 +39,11 @@
         </el-badge>
       </a>
     </div>
-    <context-menu
+    <!-- <context-menu
       :left="menuleft"
       :top="menutop"
       v-if="showContextMenu && env == 'development'"
-    />
+    /> -->
   </div>
 </template>
 
@@ -152,13 +152,13 @@ export default class App extends Vue {
     window.addEventListener("message", this.getGlobMessage, false);
   }
 
-  public mounted(): void {
-    if (this.env == "development") {
-      window.addEventListener("contextmenu", this.contextMenu, false);
-      document.addEventListener("click", this.hideContextMenu, false);
-      window.addEventListener("keydown", this.kedown, false);
-    }
-  }
+  // public mounted(): void {
+  //   if (this.env == "development") {
+  //     window.addEventListener("contextmenu", this.contextMenu, false);
+  //     document.addEventListener("click", this.hideContextMenu, false);
+  //     window.addEventListener("keydown", this.kedown, false);
+  //   }
+  // }
 
   private hideContextMenu(): void {
     this.showContextMenu = false;

@@ -11,12 +11,19 @@ export default class SelectedCom extends Vue {
  
 
     public menu_list = [
-        // 'The Late Late Show with James Corden',
-        // 'Late Night with Seth Meyers',
-        // 'The Tonight Show Starring Jimmy Fallon'
-        // '詹姆斯·科登今晚秀',
-        // '塞思·迈耶斯今晚秀 ',
-        // '吉米·法伦今晚秀'
+        {
+            zh_name: '白宫',
+            name: 'The White House',
+            
+        },
+        {
+            zh_name: '经济学人',
+            name: 'The Economist',
+        },
+        {
+            zh_name: 'PBS前线',
+            name: 'FRONTLINE PBS Official',
+        },
         {
             zh_name: '詹姆斯·科登今晚秀',
             name: 'The Late Late Show with James Corden',
@@ -30,6 +37,7 @@ export default class SelectedCom extends Vue {
             name: 'The Tonight Show Starring Jimmy Fallon',
 
         }
+        
     ]
 
     public filters = {
@@ -37,7 +45,7 @@ export default class SelectedCom extends Vue {
         size: 10
     }
 
-    public chooseNav: string = 'The Late Late Show with James Corden';
+    public chooseNav: string = 'The White House';
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
 
     @Watch('mainPageLoading')

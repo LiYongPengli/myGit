@@ -17,7 +17,7 @@
         <div class="itemInfo_info">
           <p class="name">媒体:{{ item.media_name_zh=='其他'?item.media_name:item.media_name_zh }}</p>
           <span class="time">时间: <span v-time="item.time"></span></span>
-          <span class="pv">浏览次数:{{ item.pv }}</span>
+          <span v-if="!selected" class="pv">浏览次数:{{ item.pv }}</span>
         </div>
       </div>
       <div class="controls">

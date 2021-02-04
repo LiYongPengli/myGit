@@ -107,7 +107,7 @@
       >
     </el-dialog>
     <!-- 注册中的动画 -->
-    <div v-if="!reqFinished" class="loading">
+    <div v-if="false" class="loading">
       <div class="loader"></div>
       <div class="loader"></div>
       <p class="text">注册中...</p>
