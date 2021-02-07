@@ -130,15 +130,22 @@ export default class UserCollectionCom extends Vue {
         })
     }
     //编辑收藏夹
-    private editFavorite(): void {
+    private async editFavorite() {
         let formdata = new FormData();
         formdata.append('name', this.editItem.name);
         formdata.append('new_name', this.favorite_form.name);
         if (this.favorite_form.coverFile) {
             formdata.append('cover', this.favorite_form.coverFile);
         }else{
-            let name = this.favorite_form.cover.split("/")[this.favorite_form.cover.split("/").length-1];
-            formdata.append('cover', name);
+            let namearr = this.favorite_form.cover.split("/");
+            if(!~namearr.indexOf('alternative')){
+                let name = "/"+namearr.slice(3).join('/');
+                let res = await this.axios.get(name,{responseType:'blob'});
+                formdata.append('cover',res.data);
+            }else{
+                let name = namearr[namearr.length-1];
+                formdata.append('cover', name);
+            }
         }
         this.axios.put('/v1/user/favorite/', formdata).then(res => {
             this.$message.success(res.data.data.msg);

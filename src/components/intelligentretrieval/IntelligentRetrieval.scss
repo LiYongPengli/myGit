@@ -296,6 +296,7 @@
                     clear: both;
                 }
                 .time {
+                    display: flex;
                     overflow: hidden;
                     margin-top: 10px;
                     padding-bottom: 30px;
@@ -311,7 +312,7 @@
                     }
                     .list {
                         width: 756px;
-                        float: left;
+                        margin-left: 20px;
                         .other {
                             ul {
                                 list-style: none;

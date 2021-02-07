@@ -7,6 +7,7 @@ export default class AddCollectionCom extends Vue {
     public favoriteList: any[] = [];
     public default_photos:string[] = [];
     public choosePhoto:boolean = false;
+    public attach_arr:string[] = []; 
     //创建的收藏夹名称
     public collection_name: string = "";
     //图片预览路径
@@ -31,12 +32,14 @@ export default class AddCollectionCom extends Vue {
                 let arr = res.data.data.alternative;
                 let attachments = [];
                 for(let i of this.attachments){
-                    attachments.push(i.url)
+                    if(i.type=='IMG'){
+                        attachments.push('/'+i.url.split('/').slice(3).join('/'))
+                    }
                 }
                 if(attachments.length>3){
-                    for(let i of attachments){
-                        arr.push(i);
-                    }
+                    arr.push(attachments[0]);
+                    arr.push(attachments[1]);
+                    arr.push(attachments[2]);
                     this.default_photos = arr;
                 }else{
                     this.default_photos = attachments.concat(arr);
@@ -65,7 +68,12 @@ export default class AddCollectionCom extends Vue {
         if (this.upimg) {
             formdata.append("cover", this.upimg);
         }else if(this.img_pv){
-            formdata.append("cover", this.img_pv.split('/')[this.img_pv.split('/').length-1]);
+            if(~this.img_pv.indexOf('http')){
+                formdata.append("cover", this.img_pv.split('/')[this.img_pv.split('/').length-1]);
+            }else{
+                let res = await this.axios.get(this.img_pv,{responseType:'blob'});
+                formdata.append('cover',res.data);
+            }
         }else{
             formdata.append("cover", '');
         }

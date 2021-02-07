@@ -348,7 +348,7 @@
                     <!-- <time-slot :clear="clearDate" @dateChange="dateChange" /> -->
                     <el-date-picker
                       @change="dateChange"
-                      style="width: 250px; margin-right: 20px"
+                      style="width: 250px; margin-left: 20px"
                       v-model="dateTime"
                       type="daterange"
                       start-placeholder="开始日期"

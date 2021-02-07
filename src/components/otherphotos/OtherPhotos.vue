@@ -15,7 +15,7 @@
               @click="choose_photo = v"
               
               class="img"
-              :src="v"
+              :src="~v.indexOf('http')?v:axios.defaults.baseURL+v"
             >
               <div slot="error" class="image-slot">
                 <img

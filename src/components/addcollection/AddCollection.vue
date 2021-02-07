@@ -49,7 +49,7 @@
                 <img  src="../../assets/img/cjqs1.png" alt="">
                  <p >选择封面</p>
                  </span>
-            <img v-show="img_pv" style="width:170px;height:100px;" :src="img_pv" alt="">
+            <img v-show="img_pv" style="width:170px;height:100px;" :src="~img_pv.indexOf('http')?img_pv:axios.defaults.baseURL+img_pv" alt="">
             <span  v-show="img_pv" @click="choosePhoto=true" :class="img_pv ? 'cxxz':''" >重新选择...</span>
             
           </label>
