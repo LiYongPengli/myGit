@@ -288,20 +288,18 @@ export default class RegisteredUserCom extends Vue {
     //过滤用户信息
     public showUsers(user: any): boolean {
         let flag = false;
-        let ch = /[\u4E00-\u9FA5]+/;
-        let nm = /[0-9]+/
+        if (~user.account.indexOf(this.search_user)) {
+            flag = true;
+        }
         if (~user.nickname.indexOf(this.search_user)) {
             flag = true;
         }
-        if (!ch.test(this.search_user)) {
-            if (nm.test(this.search_user)) {
-                if (user.phone_number == this.search_user||user.account==this.search_user) {
-                    flag = true;
-                }
-            } else {
-                if (user.account == this.search_user) {
-                    flag = true;
-                }
+        if (~user.phone_number.indexOf(this.search_user)) {
+            flag = true;
+        }
+        if(user.wechat_info.binding){
+            if (~user.nickname.indexOf(this.search_user)) {
+                flag = true;
             }
         }
         return flag;
