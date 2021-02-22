@@ -73,7 +73,6 @@ export default class UserUsersAccountCom extends Vue{
             this.changePhone = false;
             this.success = true;
             this.user.phone_number = this.phone;
-            this.phone = "";
         }).catch(err=>{
             console.log(err);
         })

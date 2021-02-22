@@ -8,6 +8,7 @@ export default class ShareContentCom extends Vue {
     
     
     public friend_list: any[] = [];
+    public clear:boolean = false;
     public grop_list:any[] = [];
     public share_user: any = "";
     //分享类型(user/group)

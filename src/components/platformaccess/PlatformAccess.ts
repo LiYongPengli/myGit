@@ -374,9 +374,8 @@ export default class PlatformAccessCom extends Vue {
         this.sortType = 1;
         this.listensortType();
         if (!this.userdates) {
-            this.user_status = 'today';
-            let date = new Date().toLocaleDateString()
-            this.getUserLoginList(date, date);
+            this.user_status = 'all';
+            this.getUserLoginList('', '');
             return;
         }
         this.user_status = 'custom';
@@ -589,11 +588,6 @@ export default class PlatformAccessCom extends Vue {
         }
         if (~user.phone_number.indexOf(this.search_user)) {
             flag = true;
-        }
-        if(user.wechat_info.binding){
-            if (~user.nickname.indexOf(this.search_user)) {
-                flag = true;
-            }
         }
         return flag;
     }

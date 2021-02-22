@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit, Watch } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 
 @Component
@@ -64,6 +64,7 @@ export default class DialogCm extends Vue {
   @Prop({ default: "" }) type!: string;
   @Prop({}) share_type!: string;
   @Prop({}) content!: any;
+  @Prop({}) clear!: boolean;
   @Prop({
     default() {
       return [];
@@ -88,9 +89,14 @@ export default class DialogCm extends Vue {
     }
   }
 
+  @Watch('clear')
+  public listenClear():void{
+    this.sharetext = "";
+    this.clear = false;
+  }
+
   @Emit("close")
   public close(): boolean {
-    this.sharetext = "";
     return false;
   }
 

@@ -13,6 +13,7 @@
       <!-- 分享弹窗 -->
       <el-dialog
       title="分享"
+      @closed="clear=true"
       :modal="false"
       :append-to-body="true"
       :close-on-click-modal="false"
@@ -20,7 +21,7 @@
       width="800px"
       top="25vh"
     >
-      <dialog-cm :type="type" @close="shareWindow=false" :share_type="share_type" v-if="share_user" :share_user="share_user" :names="names" :content="content" />
+      <dialog-cm :clear="clear" :type="type" @close="shareWindow=false" :share_type="share_type" v-if="share_user" :share_user="share_user" :names="names" :content="content" />
       
     </el-dialog>
   </div>

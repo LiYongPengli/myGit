@@ -54,8 +54,10 @@ export default class PeopleCom extends Vue {
             sub_type: 'character',
             sub_oper_type: 'unsub',
         }).then(res=>{
-            this.characterList.push(item);
-            this.characterFollowList.splice(index,1);
+            this.getSubscriptions('character', 'unsub', res => {
+                this.characterList = res.data.data;
+                this.loadFollow = false;
+            });
             setTimeout(() => {
                 let dom = this.concernedlists.children[0].children[0].children[0].children[0] as HTMLElement;
                 console.log('初始化获取高度'+dom.offsetHeight);
