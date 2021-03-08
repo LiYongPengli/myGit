@@ -1,5 +1,5 @@
 
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, Canceler } from 'axios';
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class';
 @Component
@@ -12,7 +12,7 @@ export default class MyFollowCom extends Vue {
     public list: any[] = [];
     public initData:boolean = true;
     public isfinished:boolean = false;
-
+    public requestBuffer:Canceler[] = [];
     public country_all: boolean = false;
     public media_all: boolean = false;
     public people_all: boolean = false;
@@ -42,6 +42,10 @@ export default class MyFollowCom extends Vue {
         this.isfinished = false;
         this.initData = true;
         // this.list = [];
+        for(let i of this.requestBuffer){
+            i('stop request');
+        }
+        this.requestBuffer = [];
         switch (newVal) {
             case 'all':
                 if(!this.country.length&&!this.media.length&&!this.people.length){
@@ -108,6 +112,10 @@ export default class MyFollowCom extends Vue {
 
     //选择
     public choose(type: string,choise:boolean,name:string): void {
+        for(let i of this.requestBuffer){
+            i('stop request');
+        }
+        this.requestBuffer = [];
         switch (type) {
             case 'country':
                 if(choise){
@@ -273,16 +281,18 @@ export default class MyFollowCom extends Vue {
             }
         }
         if(!flag){
-            console.log('sssss')
             this.setMainPageLoading(false);
             this.isfinished = true;
             this.initData = false;
             return;
         }
+        let token = new this.axios.CancelToken((c)=>{
+            this.requestBuffer.push(c);
+        })
         this.axios.post('/v1/cmd/', {
             cmd: 'my_sub_news',
             paras: filters
-        }).then(res => {
+        },{cancelToken:token}).then(res => {
             this.initData = false;
             if(this.filters.start!=0){
                 this.list = this.list.concat(res.data.data.news);
@@ -301,6 +311,10 @@ export default class MyFollowCom extends Vue {
 
     //全部
     public all(type: string): void {
+        for(let i of this.requestBuffer){
+            i('stop request');
+        }
+        this.requestBuffer = [];
         switch (type) {
             case 'country':
                 this.filters.country = [];

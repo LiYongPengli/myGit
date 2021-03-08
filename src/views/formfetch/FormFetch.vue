@@ -21,41 +21,41 @@
         <div class="cjsjs_head">
           <p>采集数据数</p>
           <div class="cjsjs_head_right">
-          <el-button
-            @click="setDay('today')"
-            :type="search_form.stat_type == 'today' ? 'primary' : ''"
-            >今日</el-button
-          >
-          <el-button
-            @click="setDay('7')"
-            :type="search_form.stat_type == '7' ? 'primary' : ''"
-            >最近7天</el-button
-          >
-          <el-button
-            @click="setDay('30')"
-            class="zjsst"
-            :type="search_form.stat_type == '30' ? 'primary' : ''"
-            >最近30天</el-button
-          >
-          <el-date-picker
-            @change="setDate"
-            style="width: 250px;border:1px solid #3a3a48"
-            v-model="dates"
-            type="daterange"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-          >
-          </el-date-picker>
+            <el-button
+              @click="setDay('today')"
+              :type="search_form.stat_type == 'today' ? 'primary' : ''"
+              >今日</el-button
+            >
+            <el-button
+              @click="setDay('7')"
+              :type="search_form.stat_type == '7' ? 'primary' : ''"
+              >最近7天</el-button
+            >
+            <el-button
+              @click="setDay('30')"
+              class="zjsst"
+              :type="search_form.stat_type == '30' ? 'primary' : ''"
+              >最近30天</el-button
+            >
+            <el-date-picker
+              @change="setDate"
+              style="width: 250px; border: 1px solid #3a3a48"
+              v-model="dates"
+              type="daterange"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+            >
+            </el-date-picker>
           </div>
         </div>
         <div class="cjsjs_content">
           <div class="jqt">
             <p>{{ init_number(result_data.recent) }}</p>
-            <p>{{fetch_text.now}}采集数</p>
+            <p>{{ fetch_text.now }}采集数</p>
           </div>
           <div class="sqt">
             <p>{{ init_number(result_data.last) }}</p>
-            <p>{{fetch_text.last}}采集数</p>
+            <p>{{ fetch_text.last }}采集数</p>
           </div>
           <div>
             <p>{{ (result_data.rate * 100).toFixed(2) }}%</p>
@@ -73,30 +73,59 @@
         <span class="site_p">近七天未采集数据的源站点</span>
         <span @click="toExport" class="site_p_export">导出</span>
         <div class="list">
-          <ul>
-            <li class="list_li">
-              <div class="list_li_number">编号</div>
-              <div class="list_li_name">站点名称</div>
-              <div class="list_li_time">最后更新时间</div>
-            </li>
-            <li style="height:250px;">
-              <my-scroll>
-              <li
+          <div class="table">
+            <div :style="{'left':-theadLeft+'px'}" class="thead">
+              <div class="th" style="width: 100px">编号</div>
+              <div style="width: 200px" class="th">站点名称</div>
+              <div style="width: 200px" class="th">最后更新时间</div>
+              <div style="width: 100px" class="th">采集类型</div>
+              <div style="width: 250px" class="th">与源网站更新是否一致</div>
+              <div style="width: 200px" class="th">详细状态</div>
+              <div style="width: 200px" class="th">复检时间</div>
+              <div style="width: 300px" class="th">站点ID</div>
+            </div>
+            <overlay-scrollbars ref="vuebar" :options="barOption" class="tbody" style="height: 250px">
+              <div
+                class="tr"
                 v-for="(v, k) in result_data.not_updated"
                 :key="k"
                 :class="{ active: k % 2 != 0 }"
               >
-                <div class="list_li_number">
+                <div class="td" style="width: 100px">
                   {{ k + 1 }}
                 </div>
-                <div class="list_li_name">
+                <div class="td" style="width: 200px">
                   {{ v.name_zh }}
                 </div>
-                <div v-time="v.last_update" class="list_li_time"></div>
-              </li>
-            </my-scroll>
-            </li>
-          </ul>
+                <div
+                  v-time="v.last_update"
+                  class="td"
+                  style="width: 200px"
+                ></div>
+                <div class="td" style="width: 100px">{{ v.source }}</div>
+                <div class="td" style="width: 250px">
+                  {{ v.consistency }}
+                </div>
+                <div class="td" style="width: 200px">
+                  <p :title="v.remark">{{ v.remark ? v.remark : "无" }}</p>
+                </div>
+                <div
+                  v-if="v.check_time && v.check_time != 'None'"
+                  v-time="v.check_time"
+                  class="td"
+                  style="width: 200px"
+                ></div>
+                <div
+                  v-if="!v.check_time || v.check_time == 'None'"
+                  class="td"
+                  style="width: 200px"
+                >
+                  暂无数据
+                </div>
+                <div class="td" style="width: 300px">{{ v.media_id }}</div>
+              </div>
+            </overlay-scrollbars>
+          </div>
         </div>
       </div>
     </div>
@@ -165,11 +194,10 @@ export default class FormFetch extends mixins(FormFetchCom) {}
       color: white;
     }
   }
-  .cjsjs_head_right{
-    button{
+  .cjsjs_head_right {
+    button {
       width: 100px;
     }
   }
-
 }
 </style>

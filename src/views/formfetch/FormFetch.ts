@@ -40,6 +40,7 @@ export default class FormFetchCom extends Vue {
     public date_data: string[] = []
     public result_data: any = "";
     private chart: ECharts | null = null;
+    public theadLeft:number = 0;
     private charts_option = {
         title: {
             text: '数据采集趋势图',
@@ -162,6 +163,7 @@ export default class FormFetchCom extends Vue {
         }]
 
     }
+    public barOption:any = {};
     public search_form = {
         stat_type: 'today',
         time_from: '',
@@ -293,6 +295,22 @@ export default class FormFetchCom extends Vue {
 
 
     public mounted(): void {
+        let vuebar = this.$refs.vuebar as any;
+        let scrollbarHorizontal = vuebar.osInstance().getElements('scrollbarHorizontal.handle') as HTMLElement;
+        let scrollbarVertical = vuebar.osInstance().getElements('scrollbarVertical.handle') as HTMLElement;
+        let scrollCss = "background: rgba(255, 255, 255,0.3);cursor: pointer;";
+        scrollbarHorizontal.style.cssText = scrollCss;
+        scrollbarVertical.style.cssText = scrollCss;
+        let that = this;
+        this.barOption = {
+            callbacks:{
+                onScroll(){
+                    let positionx = vuebar.osInstance().scroll().position.x;
+                    that.theadLeft = positionx;
+                }
+            }
+        }
+        console.log();
         let myChart2 = <HTMLDivElement>this.$refs.myChart2;
         this.chart = echarts.init(myChart2);
         this.getData();
@@ -329,7 +347,12 @@ export default class FormFetchCom extends Vue {
         for (let i of this.result_data.not_updated) {
             let obj = {
                 '站点名称': i.name_zh,
-                '最后更新时间': i.last_update
+                '最后更新时间': i.last_update,
+                '采集类型':i.source,
+                '与源网站更新是否一致':i.consistency,
+                '详细状态':i.remark ? i.remark : "无",
+                '复检时间':i.check_time,
+                '站点ID': i.media_id
             }
             outdata.push(obj);
         }

@@ -27,7 +27,7 @@ export default {
     animate: {
       default: true,
       type: Boolean,
-    },
+    }
   },
   data() {
     return {
@@ -58,6 +58,7 @@ export default {
   },
   mounted() {
     var me = this;
+    this.$emit('getscroll',this.$refs.vueScroll)
     me.$refs.vueScroll.addEventListener("scroll", me.onscroll.bind(me));
     window.addEventListener("mouseup", me.onmouseup.bind(me));
     window.addEventListener("mousemove", me.onmousemove.bind(me));
@@ -72,14 +73,16 @@ export default {
       });
     }
 
-    me.refresh();
+    setTimeout(()=>{
+      me.refresh();
+    },500)
   },
   watch: {
     "$store.state.suretop": function (newVal, oldVal) {
       if (newVal) {
         this.toTop();
       }
-    },
+    }
   },
   methods: {
     mutationCallback(mutationsList) {
@@ -202,6 +205,12 @@ export default {
     .vue-scroll-c {
       position: relative;
       width: 10%;
+      .vue-scroll-wrap{
+        min-width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
     }
   }
   .vue-scrollbar {

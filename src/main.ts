@@ -7,10 +7,14 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'swiper/dist/css/swiper.min.css';
+import "overlayscrollbars/css/OverlayScrollbars.css";
+import OverlayScrollbars from "overlayscrollbars";
+import { OverlayScrollbarsPlugin } from "overlayscrollbars-vue";
 // import 'swiper/swiper-bundle.min.css';
-
 import { init_time } from './libs/OverallLib';
 Vue.use(ElementUI);
+Vue.use(OverlayScrollbarsPlugin);
+Vue.use(OverlayScrollbars as any);
 Vue.use(VueAxios,axios);
 Vue.config.productionTip = false;
 

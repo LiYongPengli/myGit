@@ -3,9 +3,10 @@
   <div class="recommend">
     <div class="mainpage">
       <div class="banner">
-        <router-link to="/xjpublicity">
+        <home-banner />
+        <!-- <router-link to="/xjpublicity">
           <img src="../../assets/img/banner.png" alt="" />
-        </router-link>
+        </router-link> -->
 
         <!-- <a href="#">
         <img src="../../assets/img/banner.png" alt="" />
@@ -184,6 +185,7 @@
 <script lang="ts">
 import Component, { mixins } from "vue-class-component";
 import RecommendCom from "./Recommend";
+import HomeBanner from "@/components/homebanner/HomeBanner.vue";
 import EditChannel from "@/components/editchannel/EditChannel.vue";
 import Hours24 from "@/components/hours24/Hours24.vue";
 import ShareContent from "@/components/sharecontent/ShareContent.vue";
@@ -195,7 +197,8 @@ import Loading from "@/components/Loading.vue";
     Hours24,
     ShareContent,
     ListItem,
-    Loading
+    Loading,
+    HomeBanner
   },
 })
 export default class Recommend extends mixins(RecommendCom) {}

@@ -47,6 +47,7 @@ export default class SelectedCom extends Vue {
 
     public chooseNav: string = 'The White House';
     @Mutation('setMainPageLoading') setMainPageLoading!: any;
+    @Mutation('setSureTop') setSureTop!: (sure:boolean)=>void;
 
     @Watch('mainPageLoading')
     public loadingChange(newVal: boolean, oldVal: boolean): void {
@@ -56,15 +57,19 @@ export default class SelectedCom extends Vue {
     }
 
     public listenChooseNav(newVal: string): void {
-        console.log(newVal);
         this.chooseNav = newVal;
         this.filters.start = 0;
         this.isfinished = false;
         this.getList();
+        this.setSureTop(true);
     }
 
     public created(): void {
         this.getList();
+    }
+
+    public getIcon(v:any):string{
+        return require('../../assets/img/'+v.name+'.png');
     }
 
 

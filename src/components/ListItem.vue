@@ -15,7 +15,13 @@
           </div>
         </div>
         <div class="itemInfo_info">
-          <p class="name">媒体:{{ item.media_name_zh=='其他'?item.media_name:item.media_name_zh }}</p>
+          <p class="name">
+            媒体:{{
+              item.media_name_zh == "其他"
+                ? item.media_name
+                : item.media_name_zh
+            }}
+          </p>
           <span class="time">时间: <span v-time="item.time"></span></span>
           <span v-if="!selected" class="pv">浏览次数:{{ item.pv }}</span>
         </div>
@@ -77,11 +83,11 @@
     </p>
     <div class="content">
       <el-image
-        @error="showImg1=false"
+        @error="showImg1 = false"
         :fit="'scale-down'"
         class="img"
         lazy
-        v-if="item.cover.type == 'image'&&showImg1"
+        v-if="item.cover.type == 'image' && showImg1"
         :src="item.cover.url[0] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
@@ -89,11 +95,11 @@
         </div>
       </el-image>
       <el-image
-        @error="showImg2=false"
+        @error="showImg2 = false"
         :fit="'scale-down'"
         class="img"
         lazy
-        v-if="item.cover.type == 'image' && item.cover.url[1]&&showImg2"
+        v-if="item.cover.type == 'image' && item.cover.url[1] && showImg2"
         :src="item.cover.url[1] + '?imageMogr2/thumbnail/200x'"
       >
         <div slot="error" class="image-slot">
@@ -102,7 +108,7 @@
       </el-image>
       <div v-if="item.cover.type == 'video'" class="video_wrap">
         <video
-          v-if="item.cover.url[item.cover.url.length-1]!='/'"
+          v-if="item.cover.url[item.cover.url.length - 1] != '/'"
           @click="toPlay"
           ref="video"
           preload="none"
@@ -114,7 +120,7 @@
           @error="error = true"
           :crossorigin="env == 'development' ? false : 'use-credentials'"
           controls
-          :controlsList="selected?'nodownload noremote footbar':''"
+          :controlsList="selected ? 'nodownload noremote footbar' : ''"
         >
           <track
             v-if="track_cw.type"
@@ -132,7 +138,7 @@
 
         <!-- 无封面视频 -->
         <video
-          v-if="item.cover.url[item.cover.url.length-1]=='/'"
+          v-if="item.cover.url[item.cover.url.length - 1] == '/'"
           ref="video"
           width="640px"
           height="360px"
@@ -141,7 +147,7 @@
           @error="error = true"
           :crossorigin="env == 'development' ? false : 'use-credentials'"
           controls
-          :controlsList="selected?'nodownload noremote footbar':''"
+          :controlsList="selected ? 'nodownload noremote footbar' : ''"
         >
           <track
             v-if="track_cw.type"
@@ -174,7 +180,7 @@ import ShareContent from "@/components/sharecontent/ShareContent.vue";
 })
 export default class ListItem extends Vue {
   @Prop({}) item: any;
-  @Prop({default:false}) selected!: boolean;
+  @Prop({ default: false }) selected!: boolean;
   @Prop({}) shoControls!: string[];
   @Prop({ default: "" }) language1!: string[];
   @State("language") language!: string;
@@ -183,6 +189,8 @@ export default class ListItem extends Vue {
   public error: boolean = false;
   public showImg1: boolean = true;
   public showImg2: boolean = true;
+  public video: HTMLElement | null = null;
+  public IntersectionObserver: IntersectionObserver | null = null;
   public track_zh = {
     url: "",
     type: false,
@@ -204,14 +212,51 @@ export default class ListItem extends Vue {
     this.error = false;
     this.video_play = false;
     this.showTrack();
+    setTimeout(() => {
+      this.init_video();
+    }, 500);
   }
 
   public mounted(): void {
+    this.init_video();
+  }
+
+  public init_video() {
+    let that = this;
+    if (this.IntersectionObserver) {
+      if (this.video) {
+        this.IntersectionObserver.disconnect();
+        this.IntersectionObserver.unobserve(<HTMLElement>this.video);
+        this.IntersectionObserver = null;
+      }
+    }
     let video = <HTMLVideoElement>this.$refs.video;
+    this.video = video;
     if (video) {
+      if (!this.IntersectionObserver) {
+        this.IntersectionObserver = new IntersectionObserver(function (
+          entries,
+          observer
+        ) {
+          console.log(entries[0]);
+          if (!entries[0].isIntersecting) {
+            video.pause();
+            // that.video_play = false;
+          }
+        });
+      }
+      this.IntersectionObserver.observe(video);
       video.onplay = () => {
         this.video_play = true;
       };
+    }
+  }
+
+  public beforeDestroy(): void {
+    if (this.IntersectionObserver) {
+      this.IntersectionObserver.disconnect();
+      this.IntersectionObserver.unobserve(<HTMLElement>this.$refs.video);
+      this.IntersectionObserver = null;
     }
   }
 
@@ -224,7 +269,7 @@ export default class ListItem extends Vue {
   }
 
   public toNewsInfo(): void {
-    if(this.selected){
+    if (this.selected) {
       return;
     }
     window.open(
@@ -357,7 +402,7 @@ export default class ListItem extends Vue {
       }
     }
   }
-  .title2{
+  .title2 {
     margin-top: 15px;
     width: max-content;
     max-width: 100%;

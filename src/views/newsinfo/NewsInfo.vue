@@ -18,6 +18,7 @@
           <p v-if="language == 'crawler'" class="title">
             {{ newsInfo.title.crawler }}
           </p>
+          <p v-if="newsInfo.url" title="url备注" v-show="false">{{newsInfo.url}}</p>
           <p v-if="language == 'en'" class="title">{{ newsInfo.title.en }}</p>
           <p v-if="language == 'zh-CN'" class="title">
             {{ newsInfo.title["zh-CN"] }}
